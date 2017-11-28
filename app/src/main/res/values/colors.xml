@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#12be38</color>
+
+    <color name="colorPrimaryDark">#7e7b7b</color>
+    <color name="avisoApagar">#f20303</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="verdeBotao">#11ff45</color>
+    <color name="criarConta">#47525E</color>
+    <color name="esqueceuSenha">#6b87ec</color>
+    <color name="textoEntrada">#b1afaf</color>
+    <color name="preto">#000000</color>
+
+
+    <color name="branco">#ffffff</color>
+</resources>

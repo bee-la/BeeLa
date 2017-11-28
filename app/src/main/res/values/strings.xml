@@ -1,0 +1,48 @@
+<resources>
+    <string name="app_name">Bee La</string>
+    <string name="BeeLa">Bee La</string>
+    
+    
+    <!--Alterar senha-->
+    <string name="SenhaAtual">Senha Atual</string>
+    <string name="NovaSenha">Nova Senha</string>
+    <string name="RepetirSenha">Repetir Senha</string>
+
+    <!--Anterar nome-->
+    <string name="NovoNome">Novo Nome</string>
+
+    <!--Apagar Conta-->
+    <string name="avisoApagar1">Atenção, \napagar sua conta irá:</string>
+    <string name="avisoApagar2">- Excluir sua conta no Bee La; \n- Apagar seu histórico de lugares; \n- Prosseguir com a exclusão de sua conta? Será impossível reverter esta ação.</string>
+    <string name="apagarMinhaConta">Apagar Minha Conta</string>
+
+    <!--Configurações-->
+    <string name="Configuracoes">Configurações</string>
+    <string name="AlterarNome">Alterar Nome</string>
+    <string name="AlterarSenha">Alterar Senha</string>
+    <string name="ApagarConta">Apagar Conta</string>
+    <string name="Sair">Sair</string>
+
+    <!-- Login-->
+    <string name="Senha">Senha</string>
+    <string name="Email">E-mail</string>
+    <string name="Lembrar">Lembrar de mim</string>
+    <string name="criarConta">Criar Conta</string>
+    <string name="Entrar">Entrar</string>
+    <string name="Esqueceu">Esqueceu sua senha?</string>
+
+    <!-- Criar Conta-->
+    <string name="NomeCriarC">Nome</string>
+    <string name="CelularCriarC">Celular</string>
+    <string name="emailCriarC">E-mail</string>
+    <string name="senhaCriarC">senha</string>
+    <string name="repetirSenhaCriarC">senha</string>
+    <string name="criar">Criar</string>
+
+    <!--Home-->
+    <string name="E_ai">E ai, \nqual vai ser?</string>
+    <string name="O_que_tu_quer">O que tu quer\n eu quero!</string>
+
+    <!--Geral-->
+    <string name="Alterar">Alterar</string>
+</resources>
