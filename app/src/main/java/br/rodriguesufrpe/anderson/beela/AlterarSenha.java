@@ -3,10 +3,12 @@ package br.rodriguesufrpe.anderson.beela;
 import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class AlterarSenha extends AppCompatActivity {
 
@@ -31,7 +33,9 @@ public class AlterarSenha extends AppCompatActivity {
         senhaAtualText7 = (TextView) findViewById(R.id.editText7);
         senhaAtualText7.setTypeface(fonte1);
 //--------------------------------------------------------------------------------------------------
-        //----------------------------Validacao do clique do botao Alterar Senha----------------------------
+
+
+//----------------------------Validacao do clique do botao Alterar Senha----------------------------
         alterarSenhaButton10 = (Button) findViewById(R.id.button10);
         alterarSenhaButton10.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -41,7 +45,8 @@ public class AlterarSenha extends AppCompatActivity {
         });
     }
 
-    //----------------------------------Validacao dos campos----------------------------------------
+
+//----------------------------------Validacao dos campos----------------------------------------
 
     public void validarCliqueAlterarSenha(){
         senhaAtual=senhaEditText7.getText().toString().trim();
@@ -54,7 +59,7 @@ public class AlterarSenha extends AppCompatActivity {
     }
 
     public void alterarSucessoSenha(){
-        // TODO what will go after the valid  input
+        // TODO código que der certo se coloca aqui(Query do banco). Validar se o email e celular já estão cadastrados.
     }
 
     public boolean ehValidoAlterarSenha(){

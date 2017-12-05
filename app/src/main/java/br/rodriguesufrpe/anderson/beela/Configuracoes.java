@@ -8,38 +8,43 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-public class Configuracoes extends AppCompatActivity {
-    private TextView TextButton5;
-    private TextView TextButton6;
-    private TextView TextButton7;
-    private TextView Textbutton8;
-    private TextView TextButton11;
+import java.util.ArrayList;
 
-    private Button apagarButton7;
-    private Button alterarNomeButton5;
-    private Button alterarSenhaButton6;
+public class Configuracoes extends AppCompatActivity {
+//    private TextView TextButton5, TextButton6, TextButton7, Textbutton8;
+//    private TextView TextButton11;
+
+    private Button apagarButton7, alterarNomeButton5, alterarSenhaButton6;
+
+    private ArrayList<TextView> textos= new ArrayList<TextView>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_configuracoes);
 
-//      ----------------------------------Mudar letra-------------------------------------------
-        TextButton5 = (TextView) findViewById(R.id.button5);
-        Typeface fonte1 = Typeface.createFromAsset(getAssets(), "fonts/Chewy.ttf");
-        TextButton5.setTypeface(fonte1);
+//      ----------------------------------Alteração da fonte-------------------------------------------
 
-        TextButton6 = (TextView) findViewById(R.id.button6);
-        Typeface fonte2 = Typeface.createFromAsset(getAssets(), "fonts/Chewy.ttf");
-        TextButton6.setTypeface(fonte2);
+        textos.add((TextView) findViewById(R.id.button5));
+        textos.add((TextView) findViewById(R.id.button6));
+        textos.add((TextView) findViewById(R.id.button7));
+        textos.add((TextView) findViewById(R.id.button8));
 
-        TextButton7 = (TextView) findViewById(R.id.button7);
-        Typeface fonte3 = Typeface.createFromAsset(getAssets(), "fonts/Chewy.ttf");
-        TextButton7.setTypeface(fonte3);
-
-        Textbutton8 = (TextView) findViewById(R.id.button8);
-        Typeface fonte4 = Typeface.createFromAsset(getAssets(), "fonts/Chewy.ttf");
-        Textbutton8.setTypeface(fonte4);
+        Typeface fonte = Typeface.createFromAsset(getAssets(), "fonts/Chewy.ttf");
+        for (TextView txtView: textos) {
+            txtView.setTypeface(fonte);
+        }
+//        TextButton5 = (TextView) findViewById(R.id.button5);
+//        TextButton5.setTypeface(fonte);
+//
+//        TextButton6 = (TextView) findViewById(R.id.button6);
+//        TextButton6.setTypeface(fonte);
+//
+//        TextButton7 = (TextView) findViewById(R.id.button7);
+//        TextButton7.setTypeface(fonte);
+//
+//        Textbutton8 = (TextView) findViewById(R.id.button8);
+//        Textbutton8.setTypeface(fonte);
 
         //---------------------------------Trocar de tela------------------------------------
         //-------------------------------------Alterar Nome----------------------------------------
@@ -59,17 +64,17 @@ public class Configuracoes extends AppCompatActivity {
         apagarButton7.setOnClickListener(new View.OnClickListener() {@Override public void onClick(View v) {apagarButton7();}});
     }
 
-//----------------------------------Alterar Nome Método-------------------------------------
+    //----------------------------------Alterar Nome Função -------------------------------------
     private void alterarNomeButton5() {
         startActivity(new Intent(Configuracoes.this, AlterarNome.class));
     }
 
-    //----------------------------------Alterar Senha Método-------------------------------------
+    //----------------------------------Alterar Senha Função-------------------------------------
     private void alterarSenhaButton6 () {
         startActivity(new Intent(Configuracoes.this, AlterarSenha.class));
     }
 
-//----------------------------------Apagar Conta Método-------------------------------------
+//----------------------------------Apagar Conta Função-------------------------------------
 
     private void apagarButton7() {
         startActivity(new Intent(Configuracoes.this, ApagarConta.class));

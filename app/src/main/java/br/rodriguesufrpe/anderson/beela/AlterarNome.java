@@ -16,6 +16,7 @@ public class AlterarNome extends AppCompatActivity {
     private String alterarNome;
     private EditText alterarNomeEditText3;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,7 +24,7 @@ public class AlterarNome extends AppCompatActivity {
 
         alterarNomeEditText3=(EditText)findViewById(R.id.editText3);
 
-//      ----------------------------------Mudar fonte-------------------------------------------
+//------------------------------------------Mudar Fonte-------------------------------------------
         alterarNomeText3 = (TextView) findViewById(R.id.editText3);
         Typeface fonte1 = Typeface.createFromAsset(getAssets(), "fonts/Chewy.ttf");
         alterarNomeText3.setTypeface(fonte1);
@@ -47,7 +48,7 @@ public class AlterarNome extends AppCompatActivity {
     }
 
     public void alterarSucessoNome(){
-        // TODO what will go after the valid  input
+        // TODO código que der certo se coloca aqui(Query do banco). Validar se o email e celular já estão cadastrados.
     }
 //-------------------------------------------------------------------------------------------------------
 
@@ -61,5 +62,4 @@ public class AlterarNome extends AppCompatActivity {
         }
         return valido;
     }
-
 }

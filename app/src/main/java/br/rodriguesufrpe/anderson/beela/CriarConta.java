@@ -9,13 +9,18 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import org.w3c.dom.Text;
+
+import java.util.ArrayList;
 
 public class CriarConta extends AppCompatActivity {
-    private TextView textViewNome, textViewCelular,  textViewEmail, textViewSenha, textViewRepetirSenha;
     private Button criarButton3;
 
     private String nomeValidar, celularValidar, emailValidar, senhaValidar, repetirSenhaValidar;
     private EditText editText4Nome, editText5Celular, editText6Email, editText10Senha, editText11RepetirSenha;
+    private ArrayList<TextView> textos= new ArrayList<TextView>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,35 +34,31 @@ public class CriarConta extends AppCompatActivity {
         editText11RepetirSenha=(EditText)findViewById(R.id.editText11);
 
 
-//----------------------------------Alteração da fonte-------------------------------------------
+//-----------------------------------Alteração da fonte-------------------------------------------
+        textos.add((TextView) findViewById(R.id.editText4));
+        textos.add((TextView) findViewById(R.id.editText5));
+        textos.add((TextView) findViewById(R.id.editText6));
+        textos.add((TextView) findViewById(R.id.editText10));
+        textos.add((TextView) findViewById(R.id.editText11));
 
-        Typeface fonte = Typeface.createFromAsset(getAssets(), "fonts/Chewy.ttf");
-        textViewNome = (TextView) findViewById(R.id.editText4);
-        textViewNome.setTypeface(fonte);
 
-        textViewCelular = (TextView) findViewById(R.id.editText5);
-        textViewCelular.setTypeface(fonte);
+        Typeface fonte1 = Typeface.createFromAsset(getAssets(), "fonts/Chewy.ttf");
+        for (TextView txtView: textos) {
+            txtView.setTypeface(fonte1);
+        }
 
-        textViewEmail = (TextView) findViewById(R.id.editText6);
-        textViewEmail.setTypeface(fonte);
-
-        textViewSenha = (TextView) findViewById(R.id.editText10);
-        textViewSenha.setTypeface(fonte);
-
-        textViewRepetirSenha = (TextView) findViewById(R.id.editText11);
-        textViewRepetirSenha.setTypeface(fonte);
-
-//      ----------------------Validacao do clique do botao Criar------------------------------------------
+//----------------------------Validacao do clique do botao Criar------------------------------------------
         criarButton3 = (Button) findViewById(R.id.button3);
         criarButton3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                validarCliqueCriar();}
+                validarCliqueCriar();
+            }
         });
     }
 
 
-//    --------------------------------------Validação dos campos---------------------------------------
+    //----------------------------------Validacao dos campos----------------------------------------
     public void validarCliqueCriar(){
         nomeValidar=editText4Nome.getText().toString().trim();
         celularValidar=editText5Celular.getText().toString().trim();
@@ -71,7 +72,7 @@ public class CriarConta extends AppCompatActivity {
     }
 
     public void entrarSucessoCriarConta(){
-        // TODO what will go after the valid  input
+        // TODO código que der certo se coloca aqui(Query do banco). Validar se o email e celular já estão cadastrados.
     }
 
     public boolean ehValidoCriarConta(){
@@ -92,7 +93,12 @@ public class CriarConta extends AppCompatActivity {
         }
 
         if(senhaValidar.isEmpty()){
-            editText10Senha.setError(getString(R.string.senhaInvalida));
+            editText10Senha.setError(getString(R.string.campoVazio));
+            valido=false;
+        }
+
+        if (repetirSenhaValidar.isEmpty()){
+            editText11RepetirSenha.setError(getString(R.string.campoVazio));
             valido=false;
         }
 
@@ -103,6 +109,5 @@ public class CriarConta extends AppCompatActivity {
 
         return valido;
     }
-
 
 }

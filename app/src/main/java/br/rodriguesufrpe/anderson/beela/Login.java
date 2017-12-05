@@ -29,7 +29,7 @@ public class Login extends AppCompatActivity {
         Typeface fonte = Typeface.createFromAsset(getAssets(), "fonts/Chewy.ttf");
         t.setTypeface(fonte);
 
-//--------------------------Função trocar tela para Criar Conta------------------------------------------
+//--------------------------Trocar tela para Criar Conta------------------------------------------
         criarContaButton2 = (Button) findViewById(R.id.button2);
         criarContaButton2.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -65,7 +65,7 @@ public class Login extends AppCompatActivity {
     }
 
     public void entrarSucessoLogin(){
-        // TODO what will go after the valid  input
+        // TODO código que der certo se coloca aqui(Query do banco). Validar se o email e celular já estão cadastrados.
     }
 
     public boolean ehValidoLogin(){
