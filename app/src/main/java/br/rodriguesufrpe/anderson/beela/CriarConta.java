@@ -10,12 +10,22 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.UUID;
+
 public class CriarConta extends AppCompatActivity {
+
     private TextView textViewNome, textViewCelular,  textViewEmail, textViewSenha, textViewRepetirSenha;
     private Button criarButton3;
 
     private String nomeValidar, celularValidar, emailValidar, senhaValidar, repetirSenhaValidar;
     private EditText editText4Nome, editText5Celular, editText6Email, editText10Senha, editText11RepetirSenha;
+
+    FirebaseDatabase firebaseDatabase;
+    DatabaseReference databaseReference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,7 +81,22 @@ public class CriarConta extends AppCompatActivity {
     }
 
     public void entrarSucessoCriarConta(){
-        // TODO what will go after the valid  input
+        //TODO fazer busca
+        iniciarFirebase();
+        salvarBanco();
+        limparCampos();
+    }
+
+    private void limparCampos() {
+
+        editText6Email.setText("");
+        editText4Nome.setText("");
+        editText10Senha.setText("");
+        editText11RepetirSenha.setText("");
+        editText5Celular.setText("");
+
+
+
     }
 
     public boolean ehValidoCriarConta(){
@@ -104,5 +129,46 @@ public class CriarConta extends AppCompatActivity {
         return valido;
     }
 
+    public Usuario criarObjetoPessoa(){
+
+        editText6Email = (EditText)findViewById(R.id.editText6);
+        editText4Nome = (EditText)findViewById(R.id.editText4);
+        editText10Senha = (EditText)findViewById(R.id.editText10);
+        editText5Celular = (EditText)findViewById(R.id.editText5);
+
+        Usuario u = new Usuario();
+        u.setId(UUID.randomUUID().toString());
+        u.setCelular(editText5Celular.getText().toString());
+        u.setEmail(editText6Email.getText().toString());
+        u.setNome(editText4Nome.getText().toString());
+        u.setSenha(editText10Senha.getText().toString());
+
+        return u;
+
+    }
+
+    public void iniciarFirebase() {
+        FirebaseApp.initializeApp(CriarConta.this);
+        firebaseDatabase = FirebaseDatabase.getInstance();
+        databaseReference = firebaseDatabase.getReference();
+    }
+    public void salvarBanco(){
+
+        databaseReference.child("Usuário").child(criarObjetoPessoa().getId()).setValue(criarObjetoPessoa());
+
+
+    }
+
+    public void clear(View v) {
+        editText4Nome.setText("");
+        editText11RepetirSenha.setText("");
+        editText10Senha.setText("");
+        editText6Email.setText("");
+        editText5Celular.setText("");
+
+    }
+
 
 }
+
+

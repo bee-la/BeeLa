@@ -81,5 +81,10 @@ public class Login extends AppCompatActivity {
     }
 //-------------------------------------------------------------------------------------------
 
+    public void clear(View v) {
+        editTextEmail.setText("");
+        editTextEmail.setText("");
+    }
+
 
 }
