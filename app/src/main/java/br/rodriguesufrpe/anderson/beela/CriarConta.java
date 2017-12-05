@@ -9,6 +9,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import org.w3c.dom.Text;
+
+import java.util.ArrayList;
 
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.database.DatabaseReference;
@@ -17,12 +22,16 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.util.UUID;
 
 public class CriarConta extends AppCompatActivity {
+<<<<<<< HEAD
 
     private TextView textViewNome, textViewCelular,  textViewEmail, textViewSenha, textViewRepetirSenha;
+=======
+>>>>>>> 115da1b18c5f872deeea1a8bb019c32f3546001b
     private Button criarButton3;
 
     private String nomeValidar, celularValidar, emailValidar, senhaValidar, repetirSenhaValidar;
     private EditText editText4Nome, editText5Celular, editText6Email, editText10Senha, editText11RepetirSenha;
+    private ArrayList<TextView> textos= new ArrayList<TextView>();
 
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
@@ -39,35 +48,31 @@ public class CriarConta extends AppCompatActivity {
         editText11RepetirSenha=(EditText)findViewById(R.id.editText11);
 
 
-//----------------------------------Alteração da fonte-------------------------------------------
+//-----------------------------------Alteração da fonte-------------------------------------------
+        textos.add((TextView) findViewById(R.id.editText4));
+        textos.add((TextView) findViewById(R.id.editText5));
+        textos.add((TextView) findViewById(R.id.editText6));
+        textos.add((TextView) findViewById(R.id.editText10));
+        textos.add((TextView) findViewById(R.id.editText11));
 
-        Typeface fonte = Typeface.createFromAsset(getAssets(), "fonts/Chewy.ttf");
-        textViewNome = (TextView) findViewById(R.id.editText4);
-        textViewNome.setTypeface(fonte);
 
-        textViewCelular = (TextView) findViewById(R.id.editText5);
-        textViewCelular.setTypeface(fonte);
+        Typeface fonte1 = Typeface.createFromAsset(getAssets(), "fonts/Chewy.ttf");
+        for (TextView txtView: textos) {
+            txtView.setTypeface(fonte1);
+        }
 
-        textViewEmail = (TextView) findViewById(R.id.editText6);
-        textViewEmail.setTypeface(fonte);
-
-        textViewSenha = (TextView) findViewById(R.id.editText10);
-        textViewSenha.setTypeface(fonte);
-
-        textViewRepetirSenha = (TextView) findViewById(R.id.editText11);
-        textViewRepetirSenha.setTypeface(fonte);
-
-//      ----------------------Validacao do clique do botao Criar------------------------------------------
+//----------------------------Validacao do clique do botao Criar------------------------------------------
         criarButton3 = (Button) findViewById(R.id.button3);
         criarButton3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                validarCliqueCriar();}
+                validarCliqueCriar();
+            }
         });
     }
 
 
-//    --------------------------------------Validação dos campos---------------------------------------
+    //----------------------------------Validacao dos campos----------------------------------------
     public void validarCliqueCriar(){
         nomeValidar=editText4Nome.getText().toString().trim();
         celularValidar=editText5Celular.getText().toString().trim();
@@ -81,6 +86,7 @@ public class CriarConta extends AppCompatActivity {
     }
 
     public void entrarSucessoCriarConta(){
+<<<<<<< HEAD
         //TODO fazer busca
         iniciarFirebase();
         salvarBanco();
@@ -97,6 +103,9 @@ public class CriarConta extends AppCompatActivity {
 
 
 
+=======
+        // TODO código que der certo se coloca aqui(Query do banco). Validar se o email e celular já estão cadastrados.
+>>>>>>> 115da1b18c5f872deeea1a8bb019c32f3546001b
     }
 
     public boolean ehValidoCriarConta(){
@@ -117,7 +126,12 @@ public class CriarConta extends AppCompatActivity {
         }
 
         if(senhaValidar.isEmpty()){
-            editText10Senha.setError(getString(R.string.senhaInvalida));
+            editText10Senha.setError(getString(R.string.campoVazio));
+            valido=false;
+        }
+
+        if (repetirSenhaValidar.isEmpty()){
+            editText11RepetirSenha.setError(getString(R.string.campoVazio));
             valido=false;
         }
 
@@ -129,6 +143,7 @@ public class CriarConta extends AppCompatActivity {
         return valido;
     }
 
+<<<<<<< HEAD
     public Usuario criarObjetoPessoa(){
 
         editText6Email = (EditText)findViewById(R.id.editText6);
@@ -169,6 +184,8 @@ public class CriarConta extends AppCompatActivity {
     }
 
 
+=======
+>>>>>>> 115da1b18c5f872deeea1a8bb019c32f3546001b
 }
 
 
