@@ -45,4 +45,9 @@
 
     <!--Geral-->
     <string name="Alterar">Alterar</string>
+    <string name="emailInvalido">Email Invalido</string>
+    <string name="senhaInvalida">Senha inválida</string>
+    <string name="campoVazio">Campo vazio</string>
+    <string name="celularInvalido">Celular inválido</string>
+    <string name="senhasDiferentes">Senhas diferentes</string>
 </resources>
