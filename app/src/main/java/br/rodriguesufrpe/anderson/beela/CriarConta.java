@@ -22,11 +22,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.util.UUID;
 
 public class CriarConta extends AppCompatActivity {
-<<<<<<< HEAD
 
     private TextView textViewNome, textViewCelular,  textViewEmail, textViewSenha, textViewRepetirSenha;
-=======
->>>>>>> 115da1b18c5f872deeea1a8bb019c32f3546001b
     private Button criarButton3;
 
     private String nomeValidar, celularValidar, emailValidar, senhaValidar, repetirSenhaValidar;
@@ -86,7 +83,6 @@ public class CriarConta extends AppCompatActivity {
     }
 
     public void entrarSucessoCriarConta(){
-<<<<<<< HEAD
         //TODO fazer busca
         iniciarFirebase();
         salvarBanco();
@@ -102,10 +98,6 @@ public class CriarConta extends AppCompatActivity {
         editText5Celular.setText("");
 
 
-
-=======
-        // TODO código que der certo se coloca aqui(Query do banco). Validar se o email e celular já estão cadastrados.
->>>>>>> 115da1b18c5f872deeea1a8bb019c32f3546001b
     }
 
     public boolean ehValidoCriarConta(){
@@ -143,7 +135,6 @@ public class CriarConta extends AppCompatActivity {
         return valido;
     }
 
-<<<<<<< HEAD
     public Usuario criarObjetoPessoa(){
 
         editText6Email = (EditText)findViewById(R.id.editText6);
@@ -174,18 +165,8 @@ public class CriarConta extends AppCompatActivity {
 
     }
 
-    public void clear(View v) {
-        editText4Nome.setText("");
-        editText11RepetirSenha.setText("");
-        editText10Senha.setText("");
-        editText6Email.setText("");
-        editText5Celular.setText("");
-
-    }
 
 
-=======
->>>>>>> 115da1b18c5f872deeea1a8bb019c32f3546001b
 }
 
 
