@@ -146,7 +146,6 @@ public class CriarConta extends AppCompatActivity {
 
         Usuario u = new Usuario();
        // u.setId(Integer.parseInt(UUID.randomUUID().toString()));
-
         u.setCelular(editText5Celular.getText().toString());
         u.setEmail(editText6Email.getText().toString());
         u.setNome(editText4Nome.getText().toString());

@@ -1,8 +1,8 @@
 <resources>
     <string name="app_name">Bee La</string>
     <string name="BeeLa">Bee La</string>
-    
-    
+
+
     <!--Alterar senha-->
     <string name="SenhaAtual">Senha Atual</string>
     <string name="NovaSenha">Nova Senha</string>
@@ -45,11 +45,18 @@
 
     <!--Geral-->
     <string name="Alterar">Alterar</string>
+    <string name="contaCriada">Conta Criada</string>
+
+    <!--Validação de campos-->
     <string name="emailInvalido">Email Inválido</string>
     <string name="senhaInvalida">Senha Inválida</string>
     <string name="campoVazio">Campo Vazio</string>
     <string name="celularInvalido">Celular Inválido</string>
     <string name="senhasDiferentes">Senhas Diferentes</string>
-    <string name="contaCriada">Conta Criada</string>
     <string name="erroNoLoginDoBanco">Email ou Senha Inválidos</string>
+
+    <!--Esqueceu Senha-->
+    <string name="esqueciSenha">Esqueci minha senha</string>
+    <string name="redefinirSenha">Enviaremos um link para seu email para você redefinir sua senha.</string>
+    <string name="enviarCodigo">Enviar</string>
 </resources>

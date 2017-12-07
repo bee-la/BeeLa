@@ -36,30 +36,30 @@
 
         <EditText
             android:id="@+id/editText"
-            android:layout_width="309dp"
+            android:layout_width="0dp"
             android:layout_height="47dp"
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
             android:ems="10"
-            android:inputType="textEmailAddress"
             android:hint="@string/Email"
-            android:textColorHint="@color/textoEntrada"
+            android:inputType="textEmailAddress"
             android:textColor="@color/branco"
+            android:textColorHint="@color/textoEntrada"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView" />
 
         <EditText
             android:id="@+id/editText2"
-            android:layout_width="310dp"
+            android:layout_width="0dp"
             android:layout_height="42dp"
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
             android:ems="10"
-            android:inputType="textPassword"
             android:hint="@string/Senha"
-            android:textColorHint="@color/textoEntrada"
+            android:inputType="textPassword"
             android:textColor="@color/branco"
+            android:textColorHint="@color/textoEntrada"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/editText" />
@@ -67,26 +67,24 @@
         <TextView
             android:id="@+id/textView2"
             android:layout_width="105dp"
-            android:layout_height="20dp"
+            android:layout_height="21dp"
             android:layout_marginBottom="8dp"
-            android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="12dp"
             android:text="@string/Lembrar"
             android:textColor="@color/branco"
             app:layout_constraintBottom_toTopOf="@+id/button"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.079"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/editText2"
-            app:layout_constraintVertical_bias="1.0" />
+            app:layout_constraintVertical_bias="0.0" />
 
         <CheckBox
             android:id="@+id/checkBox"
             android:layout_width="28dp"
             android:layout_height="20dp"
             android:layout_marginEnd="8dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="12dp"
             android:buttonTint="@color/verdeBotao"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"

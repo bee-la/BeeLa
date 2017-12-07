@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="br.rodriguesufrpe.anderson.beela">
+
     <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/logo"
+        android:label="@string/BeeLa"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:label="@string/BeeLa"
         android:theme="@style/Theme">
         <activity
             android:name=".Login"
@@ -33,8 +35,13 @@
         <activity
             android:name=".AlterarNome"
             android:label="@string/AlterarNome" />
-        <activity android:name=".AlterarSenha"
-            android:label="@string/AlterarSenha"></activity>
+        <activity
+            android:name=".AlterarSenha"
+            android:label="@string/AlterarSenha" />
+        <activity
+            android:name=".EsqueceuSenha"
+            android:label="@string/esqueciSenha">
+        </activity>
     </application>
 
 </manifest>

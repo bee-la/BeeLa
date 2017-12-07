@@ -9,11 +9,13 @@ import android.widget.TextView;
 import android.view.View;
 import android.widget.*;
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class Login extends AppCompatActivity {
-    private TextView t;
+    private TextView t, EsqueceuTextView3;
     Button criarContaButton2, entrarButton;
 
     private EditText editTextEmail, editText2Senha;
@@ -33,6 +35,22 @@ public class Login extends AppCompatActivity {
         t.setTypeface(fonte);
 
 //--------------------------Trocar tela para Criar Conta------------------------------------------
+        entrarButton = (Button) findViewById(R.id.button);
+        entrarButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                entrarSucessoLogin();
+            }
+        });
+
+        EsqueceuTextView3=(TextView)findViewById(R.id.textView3);
+        EsqueceuTextView3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                esqueceuSenha();
+            }
+        });
+
         criarContaButton2 = (Button) findViewById(R.id.button2);
         criarContaButton2.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -41,13 +59,9 @@ public class Login extends AppCompatActivity {
             }
         });
 
-        entrarButton = (Button) findViewById(R.id.button);
-        entrarButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                entrarSucessoLogin();
-            }
-        });
+
+
+
 //------------------------------Validacao do clique do botao Entrar---------------------------
         entrarButton=(Button) findViewById(R.id.button);
         entrarButton.setOnClickListener(new View.OnClickListener() {
@@ -57,6 +71,11 @@ public class Login extends AppCompatActivity {
             }
         });
 
+    }
+
+//-----------------------------------------Métodos para trocar de tela--------------------------------------------
+    private void esqueceuSenha() {
+        startActivity(new Intent(Login.this, EsqueceuSenha.class));
     }
 
     private void criarContaButton2() {
