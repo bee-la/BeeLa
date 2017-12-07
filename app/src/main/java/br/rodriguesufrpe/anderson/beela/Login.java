@@ -9,6 +9,9 @@ import android.widget.TextView;
 import android.view.View;
 import android.widget.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Login extends AppCompatActivity {
     private TextView t;
     Button criarContaButton2, entrarButton;
@@ -38,7 +41,13 @@ public class Login extends AppCompatActivity {
             }
         });
 
-
+        entrarButton = (Button) findViewById(R.id.button);
+        entrarButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                entrarSucessoLogin();
+            }
+        });
 //------------------------------Validacao do clique do botao Entrar---------------------------
         entrarButton=(Button) findViewById(R.id.button);
         entrarButton.setOnClickListener(new View.OnClickListener() {
@@ -65,8 +74,18 @@ public class Login extends AppCompatActivity {
     }
 
     public void entrarSucessoLogin(){
-        // TODO código que der certo se coloca aqui(Query do banco). Validar se o email e celular já estão cadastrados.
-    }
+        List<Usuario> list = new ArrayList<Usuario>();
+        BDcomandos bd = new BDcomandos(this);
+        list = bd.buscar();
+        for (int i = 0; list.size()>i; i++ ){
+
+            if (email.equals(list.get(i).getEmail())) {
+                entrarHome();
+            }
+        }
+    }// returna uma lista com os usuarios
+
+    private void entrarHome() {startActivity(new Intent(Login.this, home.class));}
 
     public boolean ehValidoLogin(){
         boolean valido=true;

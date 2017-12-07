@@ -47,6 +47,7 @@ public class Configuracoes extends AppCompatActivity {
 //        Textbutton8.setTypeface(fonte);
 
         //---------------------------------Trocar de tela------------------------------------
+
         //-------------------------------------Alterar Nome----------------------------------------
         alterarNomeButton5 =(Button) findViewById(R.id.button5);
         alterarNomeButton5.setOnClickListener(new View.OnClickListener() {@Override public void onClick (View v){alterarNomeButton5();}});
@@ -67,7 +68,7 @@ public class Configuracoes extends AppCompatActivity {
     //----------------------------------Alterar Nome Função -------------------------------------
     private void alterarNomeButton5() {
         startActivity(new Intent(Configuracoes.this, AlterarNome.class));
-    }
+}
 
     //----------------------------------Alterar Senha Função-------------------------------------
     private void alterarSenhaButton6 () {

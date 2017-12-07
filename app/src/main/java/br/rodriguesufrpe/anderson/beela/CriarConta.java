@@ -84,7 +84,7 @@ public class CriarConta extends AppCompatActivity {
 
     public void entrarSucessoCriarConta(){
         //TODO fazer busca
-        iniciarFirebase();
+        //iniciarFirebase();
         salvarBanco();
         limparCampos();
         contaCriada=Toast.makeText(getApplicationContext(), R.string.contaCriada, Toast.LENGTH_SHORT);
@@ -145,7 +145,7 @@ public class CriarConta extends AppCompatActivity {
         editText5Celular = (EditText)findViewById(R.id.editText5);
 
         Usuario u = new Usuario();
-        u.setId(UUID.randomUUID().toString());
+        u.setId(Long.parseLong(UUID.randomUUID().toString()));
         u.setCelular(editText5Celular.getText().toString());
         u.setEmail(editText6Email.getText().toString());
         u.setNome(editText4Nome.getText().toString());
@@ -156,15 +156,9 @@ public class CriarConta extends AppCompatActivity {
         return u;
 
     }
-
-    public void iniciarFirebase() {
-        FirebaseApp.initializeApp(CriarConta.this);
-        firebaseDatabase = FirebaseDatabase.getInstance();
-        databaseReference = firebaseDatabase.getReference();
-    }
     public void salvarBanco(){
-
-        databaseReference.child("Usuário").child(criarObjetoPessoa().getId()).setValue(criarObjetoPessoa());
+        BDcomandos bd = new BDcomandos(this);
+        bd.inserir(criarObjetoPessoa());
     }
 
 
