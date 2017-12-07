@@ -21,7 +21,9 @@ public class BD extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase bd) {
         bd.execSQL("create table usuario(_id integer primary key  autoincrement, nome text not null, senha text not null, email text not null, celular text not null); ");
         //bd.execSQL("create table pessoa(_id integer primary key  autoincrement, nome text not null,id_usario interger not null); ");
-        //bd.execSQL("create table perfil(_id integer primary key autoincrement, nome text not null);");
+        //bd.execSQL("create table perfilPessoa(_id integer primary key autoincrement, nome_perfil text not null, id_pessoa interger not null, comida text null, musica text null);");
+        //bd.execSQL("create table lugar (_id integer primary key autoincrement, nome_lugar text not null);");
+        //bd.execSQL("create table perfilLugar(_id integer primary key autoincrement, id_lugar interger not null, comida text null, musica text null);");
     }
 
     @Override

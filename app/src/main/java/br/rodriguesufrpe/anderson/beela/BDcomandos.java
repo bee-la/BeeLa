@@ -15,10 +15,10 @@ import java.util.List;
 
 public class BDcomandos {
     private SQLiteDatabase bd;
-
-    public BDcomandos(Context context) {
+    public BDcomandos(Context context,String tipo){
         BD auxBd = new BD(context);
-        bd = auxBd.getWritableDatabase();
+        if(tipo.equals("R")){ bd = auxBd.getReadableDatabase();}
+        else{bd = auxBd.getWritableDatabase();}
     }
 
     public void inserir(Usuario usuario) {
@@ -30,19 +30,22 @@ public class BDcomandos {
         System.out.println(valores);
 
         bd.insert("usuario", null, valores);
+        bd.close();
     }
 
     public void delete(Usuario usuario) {
-        bd.delete("usuario", "_id = " + usuario.getId(), null);
+        bd.delete("usuario", "_id = " + usuario.getId(), null);bd.close();
     }
 
     public void update(Usuario usuario) {
+        String where = "email =  '" + usuario.getEmail() + "'";
         ContentValues valores = new ContentValues();
         valores.put("nome", usuario.getNome());
         valores.put("email", usuario.getEmail());
         valores.put("senha", usuario.getSenha());
         valores.put("celular", usuario.getCelular());
-        bd.update("usuario", valores, "_id = ? ", new String[]{"" + usuario.getId()});
+        bd.update("usuario", valores, where,null);
+        bd.close();
     }
 
     public List<Usuario> buscar() {
@@ -64,6 +67,8 @@ public class BDcomandos {
                 list.add(u);
             } while (cursor.moveToNext());
         }
+        bd.close();
         return list;
     }
+
 }

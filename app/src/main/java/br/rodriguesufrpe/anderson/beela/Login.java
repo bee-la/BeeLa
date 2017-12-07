@@ -9,8 +9,6 @@ import android.widget.TextView;
 import android.view.View;
 import android.widget.*;
 
-import org.w3c.dom.Text;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -94,7 +92,7 @@ public class Login extends AppCompatActivity {
 
     public void entrarSucessoLogin(){
         List<Usuario> list = new ArrayList<Usuario>();
-        BDcomandos bd = new BDcomandos(this);
+        BDcomandos bd = new BDcomandos(this,"R");
         list = bd.buscar();
         String senhaCriptografada = Criptografia.criptografar(senha);
         Toast Erro;
@@ -104,7 +102,7 @@ public class Login extends AppCompatActivity {
                 entrarHome();
                 break;
             }
-        }
+        else{Erro.show();}}//DUAS BIXONAS
     }// returna uma lista com os usuarios
 
     private void entrarHome() {startActivity(new Intent(Login.this, home.class));}
