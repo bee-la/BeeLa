@@ -78,9 +78,14 @@ public class Login extends AppCompatActivity {
         BDcomandos bd = new BDcomandos(this);
         list = bd.buscar();
         for (int i = 0; list.size()>i; i++ ){
-
-            if (email.equals(list.get(i).getEmail())) {
+            String senhaCriptografada = Criptografia.criptografar(senha);
+            if (email.equals(list.get(i).getEmail()) && (senhaCriptografada.equals(list.get(i).getSenha()))) {
                 entrarHome();
+            }
+            else {
+                Toast Erro;
+                Erro = Toast.makeText(getApplicationContext(), R.string.erroNoLoginDoBanco, Toast.LENGTH_SHORT);
+                Erro.show();
             }
         }
     }// returna uma lista com os usuarios
