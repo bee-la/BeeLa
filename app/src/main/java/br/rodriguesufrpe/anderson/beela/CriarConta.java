@@ -22,9 +22,9 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.util.UUID;
 
 public class CriarConta extends AppCompatActivity {
-
-    private TextView textViewNome, textViewCelular,  textViewEmail, textViewSenha, textViewRepetirSenha;
+//    private TextView textViewNome, textViewCelular,  textViewEmail, textViewSenha, textViewRepetirSenha;
     private Button criarButton3;
+    private Toast contaCriada;
 
     private String nomeValidar, celularValidar, emailValidar, senhaValidar, repetirSenhaValidar;
     private EditText editText4Nome, editText5Celular, editText6Email, editText10Senha, editText11RepetirSenha;
@@ -87,6 +87,8 @@ public class CriarConta extends AppCompatActivity {
         iniciarFirebase();
         salvarBanco();
         limparCampos();
+        contaCriada=Toast.makeText(getApplicationContext(), R.string.contaCriada, Toast.LENGTH_SHORT);
+        contaCriada.show();
     }
 
     private void limparCampos() {
@@ -149,6 +151,8 @@ public class CriarConta extends AppCompatActivity {
         u.setNome(editText4Nome.getText().toString());
         u.setSenha(editText10Senha.getText().toString());
 
+        u.setSenha(Criptografia.criptografar(u.getSenha()));
+
         return u;
 
     }
@@ -161,8 +165,6 @@ public class CriarConta extends AppCompatActivity {
     public void salvarBanco(){
 
         databaseReference.child("Usuário").child(criarObjetoPessoa().getId()).setValue(criarObjetoPessoa());
-
-
     }
 
 

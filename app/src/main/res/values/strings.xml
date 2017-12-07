@@ -35,8 +35,8 @@
     <string name="NomeCriarC">Nome</string>
     <string name="CelularCriarC">Celular</string>
     <string name="emailCriarC">E-mail</string>
-    <string name="senhaCriarC">senha</string>
-    <string name="repetirSenhaCriarC">senha</string>
+    <string name="senhaCriarC">Senha</string>
+    <string name="repetirSenhaCriarC">Repetir Senha</string>
     <string name="criar">Criar</string>
 
     <!--Home-->
@@ -45,9 +45,10 @@
 
     <!--Geral-->
     <string name="Alterar">Alterar</string>
-    <string name="emailInvalido">Email Invalido</string>
-    <string name="senhaInvalida">Senha inválida</string>
-    <string name="campoVazio">Campo vazio</string>
-    <string name="celularInvalido">Celular inválido</string>
-    <string name="senhasDiferentes">Senhas diferentes</string>
+    <string name="emailInvalido">Email Inválido</string>
+    <string name="senhaInvalida">Senha Inválida</string>
+    <string name="campoVazio">Campo Vazio</string>
+    <string name="celularInvalido">Celular Inválido</string>
+    <string name="senhasDiferentes">Senhas Diferentes</string>
+    <string name="contaCriada">Conta Criada</string>
 </resources>
