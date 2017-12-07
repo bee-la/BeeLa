@@ -145,7 +145,8 @@ public class CriarConta extends AppCompatActivity {
         editText5Celular = (EditText)findViewById(R.id.editText5);
 
         Usuario u = new Usuario();
-        u.setId(Long.parseLong(UUID.randomUUID().toString()));
+       // u.setId(Integer.parseInt(UUID.randomUUID().toString()));
+
         u.setCelular(editText5Celular.getText().toString());
         u.setEmail(editText6Email.getText().toString());
         u.setNome(editText4Nome.getText().toString());

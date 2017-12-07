@@ -5,7 +5,7 @@ package br.rodriguesufrpe.anderson.beela;
  */
 
 public class Usuario {
-    private Long Id;
+    private int Id = 0;
     private String nome;
     private String senha;
     private String email;
@@ -19,11 +19,11 @@ public class Usuario {
         this.celular = celular;
     }
 
-    public Long getId() {
+    public int getId() {
         return Id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         Id = id;
     }
 

@@ -77,15 +77,13 @@ public class Login extends AppCompatActivity {
         List<Usuario> list = new ArrayList<Usuario>();
         BDcomandos bd = new BDcomandos(this);
         list = bd.buscar();
+        String senhaCriptografada = Criptografia.criptografar(senha);
+        Toast Erro;
+        Erro = Toast.makeText(getApplicationContext(), R.string.erroNoLoginDoBanco, Toast.LENGTH_SHORT);
         for (int i = 0; list.size()>i; i++ ){
-            String senhaCriptografada = Criptografia.criptografar(senha);
-            if (email.equals(list.get(i).getEmail()) && (senhaCriptografada.equals(list.get(i).getSenha()))) {
+            if(email.equals(list.get(i).getEmail()) && senhaCriptografada.equals(list.get(i).getSenha())) {
                 entrarHome();
-            }
-            else {
-                Toast Erro;
-                Erro = Toast.makeText(getApplicationContext(), R.string.erroNoLoginDoBanco, Toast.LENGTH_SHORT);
-                Erro.show();
+                break;
             }
         }
     }// returna uma lista com os usuarios

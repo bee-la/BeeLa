@@ -27,7 +27,7 @@ public class BDcomandos {
         valores.put("email", usuario.getEmail());
         valores.put("senha", usuario.getSenha());
         valores.put("celular", usuario.getCelular());
-
+        System.out.println(valores);
 
         bd.insert("usuario", null, valores);
     }
@@ -56,7 +56,7 @@ public class BDcomandos {
             cursor.moveToFirst();
             do {
                 Usuario u = new Usuario();
-                u.setId(cursor.getLong(0));
+                u.setId(cursor.getInt(0));
                 u.setNome(cursor.getString(1));
                 u.setSenha(cursor.getString(2));
                 u.setEmail(cursor.getString(3));
