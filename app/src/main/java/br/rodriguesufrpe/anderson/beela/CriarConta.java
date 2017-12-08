@@ -11,6 +11,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -19,6 +20,7 @@ public class CriarConta extends AppCompatActivity {
 //    private TextView textViewNome, textViewCelular,  textViewEmail, textViewSenha, textViewRepetirSenha;
     private Button criarButton3;
     private Toast contaCriada;
+    private boolean existeCelularEmail=false;
 
     private String nomeValidar, celularValidar, emailValidar, senhaValidar, repetirSenhaValidar;
     private EditText editText4Nome, editText5Celular, editText6Email, editText10Senha, editText11RepetirSenha;
@@ -72,17 +74,26 @@ public class CriarConta extends AppCompatActivity {
         repetirSenhaValidar=editText11RepetirSenha.getText().toString().trim();
 
         if(ehValidoCriarConta()){
-            entrarSucessoCriarConta();
+            sucessoCriarConta();
         }
     }
 
-    public void entrarSucessoCriarConta(){
+    public void sucessoCriarConta(){
         //TODO fazer busca
         //iniciarFirebase();
-        salvarBanco();
-        limparCampos();
-        contaCriada=Toast.makeText(getApplicationContext(), R.string.contaCriada, Toast.LENGTH_SHORT);
-        contaCriada.show();
+        verificarEmailCelular();
+        if (existeCelularEmail==false){
+            salvarBanco();
+            limparCampos();
+            contaCriada = Toast.makeText(getApplicationContext(), R.string.contaCriada, Toast.LENGTH_SHORT);
+            contaCriada.show();
+            existeCelularEmail=true;
+        }
+        else {
+            Toast erro;
+            erro = Toast.makeText(getApplicationContext(), R.string.emailCelularExiste, Toast.LENGTH_SHORT);
+            erro.show();
+        }
     }
 
     private void limparCampos() {
@@ -92,8 +103,6 @@ public class CriarConta extends AppCompatActivity {
         editText10Senha.setText("");
         editText11RepetirSenha.setText("");
         editText5Celular.setText("");
-
-
     }
 
     public boolean ehValidoCriarConta(){
@@ -144,17 +153,36 @@ public class CriarConta extends AppCompatActivity {
         u.setEmail(editText6Email.getText().toString());
         u.setNome(editText4Nome.getText().toString());
         u.setSenha(editText10Senha.getText().toString());
-
         u.setSenha(Criptografia.criptografar(u.getSenha()));
 
         return u;
-
     }
     public void salvarBanco(){
         BDcomandos bd = new BDcomandos(this,"W");
         bd.inserir(criarObjetoPessoa());
     }
 
+    public void verificarEmailCelular(){
+        String email=editText6Email.getText().toString().trim();
+        String celular=editText5Celular.getText().toString().trim();
+
+        List<Usuario> list = new ArrayList<Usuario>();
+        List<String> listaEmail=new ArrayList<String>();
+        List<String> listaCelular=new ArrayList<String>();
+
+        BDcomandos bd = new BDcomandos(this,"R");
+        list = bd.buscar();
+        for (int i = 0; list.size()>i; i++ ){
+            listaEmail.add(list.get(i).getEmail());
+            listaCelular.add(list.get(i).getCelular());
+        }
+        if (listaCelular.contains(celular) || listaEmail.contains(email)){
+            existeCelularEmail=true;
+        }
+        else {
+            existeCelularEmail=false;
+        }
+    }
 
 
 }

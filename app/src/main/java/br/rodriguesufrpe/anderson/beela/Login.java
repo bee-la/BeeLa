@@ -14,7 +14,9 @@ import java.util.List;
 
 public class Login extends AppCompatActivity {
     private TextView t, EsqueceuTextView3;
-    Button criarContaButton2, entrarButton;
+    private boolean loga=false;
+
+    private Button criarContaButton2, entrarButton;
 
     private EditText editTextEmail, editText2Senha;
     private String email, senha;
@@ -95,15 +97,19 @@ public class Login extends AppCompatActivity {
         BDcomandos bd = new BDcomandos(this,"R");
         list = bd.buscar();
         String senhaCriptografada = Criptografia.criptografar(senha);
+
         Toast Erro;
         Erro = Toast.makeText(getApplicationContext(), R.string.erroNoLoginDoBanco, Toast.LENGTH_SHORT);
+
         for (int i = 0; list.size()>i; i++ ){
             if(email.equals(list.get(i).getEmail()) && senhaCriptografada.equals(list.get(i).getSenha())) {
-                entrarHome();
-                break;
-            }
-        else{Erro.show();}}//DUAS BIXONAS
-    }// returna uma lista com os usuarios
+                loga=true; }
+        }
+        if(loga==true){
+            entrarHome(); }
+        else{
+            Erro.show(); }
+    }
 
     private void entrarHome() {startActivity(new Intent(Login.this, home.class));}
 
