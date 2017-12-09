@@ -36,9 +36,28 @@ public class BDcomandos {
     public void delete(Usuario usuario) {
         bd.delete("usuario", "_id = " + usuario.getId(), null);bd.close();
     }
-
+    public void updateSenha(Usuario usuario,String senha) {
+        String where = "_id =  '" + usuario.getId() + "'";
+        ContentValues valores = new ContentValues();
+        valores.put("nome", usuario.getNome());
+        valores.put("email", usuario.getEmail());
+        valores.put("senha", senha);
+        valores.put("celular", usuario.getCelular());
+        bd.update("usuario", valores, where,null);
+        bd.close();
+    }
+    public void updateNome(Usuario usuario,String nome) {
+        String where = "_id =  '" + usuario.getId() + "'";
+        ContentValues valores = new ContentValues();
+        valores.put("nome", nome);
+        valores.put("email", usuario.getEmail());
+        valores.put("senha", usuario.getSenha());
+        valores.put("celular", usuario.getCelular());
+        bd.update("usuario", valores, where,null);
+        bd.close();
+    }
     public void update(Usuario usuario) {
-        String where = "email =  '" + usuario.getEmail() + "'";
+        String where = "_id =  '" + usuario.getId() + "'";
         ContentValues valores = new ContentValues();
         valores.put("nome", usuario.getNome());
         valores.put("email", usuario.getEmail());
@@ -47,8 +66,7 @@ public class BDcomandos {
         bd.update("usuario", valores, where,null);
         bd.close();
     }
-
-    public List<Usuario> sqlRetornaObjet0() {
+    public List<Usuario> sqlRetornaGeral() {
         List<Usuario> list = new ArrayList<Usuario>();
         String[] colunas = new String[]{"_id", "nome","senha", "email","celular"};
 
@@ -70,6 +88,35 @@ public class BDcomandos {
         bd.close();
         return list;
 
+    }
+//    public void sqlAlterarNome(String email,String senha){
+//        Usuario usuario = new Usuario();
+//        String where ="SELECT * FROM usuario WHERE email ='"+email+"'"+"OR celular = '"+senha+"'";
+//        Cursor cursor = bd.rawQuery(where, null);
+//        cursor.moveToFirst();
+//        usuario.setId(cursor.getInt(0));
+//        usuario.setNome(cursor.getString(1));
+//        usuario.setSenha(cursor.getString(2));
+//        usuario.setEmail(cursor.getString(3));
+//        usuario.setCelular(cursor.getString(4));
+//        bd.close();
+//        update(usuario);
+//    }
+
+    public Usuario sqlRetornaObjetoUsuario(String email,String senha){
+        Usuario usuario = new Usuario();
+        String where ="SELECT * FROM usuario WHERE email ='"+email+"'"+"OR celular = '"+senha+"'";
+        Cursor cursor = bd.rawQuery(where, null);
+        if(cursor.getCount()>0){
+            cursor.moveToFirst();
+            usuario.setId(cursor.getInt(0));
+            usuario.setNome(cursor.getString(1));
+            usuario.setSenha(cursor.getString(2));
+            usuario.setEmail(cursor.getString(3));
+            usuario.setCelular(cursor.getString(4));
+        }
+        bd.close();
+        return usuario;
     }
     public boolean buscarVEmail(String email,String celular){
         boolean resultado=false;

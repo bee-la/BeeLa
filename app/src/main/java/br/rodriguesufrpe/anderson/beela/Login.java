@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Login extends AppCompatActivity {
+    public static Usuario usuario = new Usuario();
     private TextView t, EsqueceuTextView3;
     private boolean loga=false;
 
@@ -20,7 +21,6 @@ public class Login extends AppCompatActivity {
 
     private EditText editTextEmail, editText2Senha;
     private String email, senha;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -93,7 +93,6 @@ public class Login extends AppCompatActivity {
     }
 
     public void entrarSucessoLogin(){
-        List<Usuario> list = new ArrayList<Usuario>();
         BDcomandos bd = new BDcomandos(this,"R");
         //list = bd.buscar();
         String senhaCriptografada = Criptografia.criptografar(senha);
@@ -107,12 +106,14 @@ public class Login extends AppCompatActivity {
 //        }
 //        if(loga==true){
         if(bd.buscarVLogin(email, senhaCriptografada)){
+            usuario = bd.sqlRetornaObjetoUsuario(email, senhaCriptografada);
             entrarHome(); }
         else{
             Erro.show(); }
     }
 
-    private void entrarHome() {startActivity(new Intent(Login.this, home.class));}
+    private void entrarHome() {
+        startActivity(new Intent(Login.this, home.class));}
 
     public boolean ehValidoLogin(){
         boolean valido=true;

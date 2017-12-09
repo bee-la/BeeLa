@@ -8,12 +8,13 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-public class home extends AppCompatActivity {
+import java.util.ArrayList;
+import java.util.List;
 
+public class home extends AppCompatActivity {
     private TextView eAi;
     private TextView oQueTuQuer;
     private Button configuracoesImageButton3;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

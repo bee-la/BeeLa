@@ -1,5 +1,6 @@
 package br.rodriguesufrpe.anderson.beela;
 
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -48,18 +49,34 @@ public class AlterarSenha extends AppCompatActivity {
 
 //----------------------------------Validacao dos campos----------------------------------------
 
-    public void validarCliqueAlterarSenha(){
-        senhaAtual=senhaEditText7.getText().toString().trim();
-        novaSenha=novaSenhaEditText8.getText().toString().trim();
-        repetirSenha=repetirSenhaEditText9.getText().toString().trim();
+    public void validarCliqueAlterarSenha() {
+        senhaAtual = senhaEditText7.getText().toString().trim();
+        if (Criptografia.criptografar(senhaAtual).equals(Login.usuario.getSenha())) {
+            novaSenha = novaSenhaEditText8.getText().toString().trim();
+            repetirSenha = repetirSenhaEditText9.getText().toString().trim();
 
-        if(ehValidoAlterarSenha()){
-            alterarSucessoSenha();
+            if (ehValidoAlterarSenha()) {
+                alterarSucessoSenha();
+            }
+        }
+        else{
+            Toast Erro;
+            Erro = Toast.makeText(getApplicationContext(), "SenhaAtual Diferente", Toast.LENGTH_SHORT);
+            Erro.show();
         }
     }
 
     public void alterarSucessoSenha(){
         // TODO código que der certo se coloca aqui(Query do banco). Validar se o email e celular já estão cadastrados.
+        BDcomandos bd = new BDcomandos(this,"W");
+        bd.updateSenha(Login.usuario,Criptografia.criptografar(novaSenha));
+        Toast Sucesso;
+        Sucesso = Toast.makeText(getApplicationContext(), "Senha Alterado", Toast.LENGTH_SHORT);
+        Sucesso.show();
+        startActivity(new Intent(AlterarSenha.this, Login.class));
+        //ATENÇÃO : Se botar volta para home criar um bug na alterações
+        // salva mais o objeto ainda fica com as informações antiga tem que atualizar o objeto por isso
+        // faço o usuario voltar para Tela Login
     }
 
     public boolean ehValidoAlterarSenha(){

@@ -1,5 +1,6 @@
 package br.rodriguesufrpe.anderson.beela;
 
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -7,9 +8,9 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Button;
+import android.widget.Toast;
 
 public class AlterarNome extends AppCompatActivity {
-
     private TextView alterarNomeText3;
     private Button alterarNomeButton11;
 
@@ -48,7 +49,16 @@ public class AlterarNome extends AppCompatActivity {
     }
 
     public void alterarSucessoNome(){
-        // TODO código que der certo se coloca aqui(Query do banco). Validar se o email e celular já estão cadastrados.
+        BDcomandos bd = new BDcomandos(this,"W");
+        bd.updateNome(Login.usuario,alterarNome);
+        Toast Sucesso;
+        Sucesso = Toast.makeText(getApplicationContext(), "Nome Alterado", Toast.LENGTH_SHORT);
+        Sucesso.show();
+        startActivity(new Intent(AlterarNome.this, Login.class));
+        //ATENÇÃO : Se botar volta para home criar um bug na alterações
+        // salva mais o objeto ainda fica com as informações antiga tem que atualizar o objeto por isso
+        // faço o usuario voltar para Tela Login
+
     }
 //-------------------------------------------------------------------------------------------------------
 
