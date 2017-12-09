@@ -48,7 +48,7 @@ public class BDcomandos {
         bd.close();
     }
 
-    public List<Usuario> buscar() {
+    public List<Usuario> sqlRetornaObjet0() {
         List<Usuario> list = new ArrayList<Usuario>();
         String[] colunas = new String[]{"_id", "nome","senha", "email","celular"};
 
@@ -69,6 +69,25 @@ public class BDcomandos {
         }
         bd.close();
         return list;
-    }
 
+    }
+    public boolean buscarVEmail(String email,String celular){
+        boolean resultado=false;
+        String where ="SELECT * FROM usuario WHERE email ='"+email+"'"+"OR celular = '"+celular+"'";
+        Cursor cursor = bd.rawQuery(where, null);
+        if(cursor.getCount()>0){
+            return resultado=true;
+        }
+        return resultado;
+    }
+    public boolean buscarVLogin(String email,String senha){
+        boolean resultado=false;
+        String where ="SELECT * FROM usuario WHERE email ='"+email+"'"+"AND senha = '"+senha+"'";
+        Cursor cursor = bd.rawQuery(where, null);
+        if(cursor.getCount()>0){
+            resultado=true;
+            return resultado;
+        }
+        return resultado;
+    }
 }

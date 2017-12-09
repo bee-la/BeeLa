@@ -95,17 +95,18 @@ public class Login extends AppCompatActivity {
     public void entrarSucessoLogin(){
         List<Usuario> list = new ArrayList<Usuario>();
         BDcomandos bd = new BDcomandos(this,"R");
-        list = bd.buscar();
+        //list = bd.buscar();
         String senhaCriptografada = Criptografia.criptografar(senha);
 
         Toast Erro;
         Erro = Toast.makeText(getApplicationContext(), R.string.erroNoLoginDoBanco, Toast.LENGTH_SHORT);
 
-        for (int i = 0; list.size()>i; i++ ){
-            if(email.equals(list.get(i).getEmail()) && senhaCriptografada.equals(list.get(i).getSenha())) {
-                loga=true; }
-        }
-        if(loga==true){
+//        for (int i = 0; list.size()>i; i++ ){
+//            if(email.equals(list.get(i).getEmail()) && senhaCriptografada.equals(list.get(i).getSenha()))  {
+//                loga=true; }
+//        }
+//        if(loga==true){
+        if(bd.buscarVLogin(email, senhaCriptografada)){
             entrarHome(); }
         else{
             Erro.show(); }

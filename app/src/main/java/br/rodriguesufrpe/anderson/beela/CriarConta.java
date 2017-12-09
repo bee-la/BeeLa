@@ -166,17 +166,8 @@ public class CriarConta extends AppCompatActivity {
         String email=editText6Email.getText().toString().trim();
         String celular=editText5Celular.getText().toString().trim();
 
-        List<Usuario> list = new ArrayList<Usuario>();
-        List<String> listaEmail=new ArrayList<String>();
-        List<String> listaCelular=new ArrayList<String>();
-
         BDcomandos bd = new BDcomandos(this,"R");
-        list = bd.buscar();
-        for (int i = 0; list.size()>i; i++ ){
-            listaEmail.add(list.get(i).getEmail());
-            listaCelular.add(list.get(i).getCelular());
-        }
-        if (listaCelular.contains(celular) || listaEmail.contains(email)){
+        if (bd.buscarVEmail(email,celular)){
             existeCelularEmail=true;
         }
         else {
