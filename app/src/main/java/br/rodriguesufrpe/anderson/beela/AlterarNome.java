@@ -50,13 +50,12 @@ public class AlterarNome extends AppCompatActivity {
     public void alterarSucessoNome(){
         BDcomandos bd = new BDcomandos(this,"W");
         bd.updateNome(Login.usuario,alterarNome);
+        Login.usuario.setNome(alterarNome);
         Toast Sucesso;
         Sucesso = Toast.makeText(getApplicationContext(), "Nome Alterado", Toast.LENGTH_SHORT);
         Sucesso.show();
-        startActivity(new Intent(AlterarNome.this, Login.class));
-        //ATENÇÃO : Se botar volta para home criar um bug na alterações
-        // salva mais o objeto ainda fica com as informações antiga tem que atualizar o objeto por isso
-        // faço o usuario voltar para Tela Login
+        startActivity(new Intent(AlterarNome.this, home.class));
+
 
     }
 //-------------------------------------------------------------------------------------------------------

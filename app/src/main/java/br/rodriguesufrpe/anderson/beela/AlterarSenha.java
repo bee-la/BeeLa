@@ -76,14 +76,9 @@ public class AlterarSenha extends AppCompatActivity {
         // TODO código que der certo se coloca aqui(Query do banco).
         BDcomandos bd = new BDcomandos(this,"W");
         bd.updateSenha(Login.usuario,Criptografia.criptografar(novaSenha));
-
- //TODO     acho que falta setar a nova senha no usuário ---->>> Login.usuario.setSenha(Criptografia.criptografar(novaSenha));
-
+        Login.usuario.setSenha(Criptografia.criptografar(novaSenha));
         senhaAlterada.show();
-        startActivity(new Intent(AlterarSenha.this, Login.class));
-        //ATENÇÃO : Se botar volta para home criar um bug na alterações
-        // salva mais o objeto ainda fica com as informações antiga tem que atualizar o objeto por isso
-        // faço o usuario voltar para Tela Login
+        startActivity(new Intent(AlterarSenha.this, home.class));
     }
 
     public boolean ehValidoAlterarSenha(){

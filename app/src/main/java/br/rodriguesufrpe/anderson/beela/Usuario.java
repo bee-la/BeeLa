@@ -10,6 +10,8 @@ public class Usuario {
     private String senha;
     private String email;
     private String celular;
+    Perfil perfil = new Perfil();
+
 
     public String getCelular() {
         return celular;

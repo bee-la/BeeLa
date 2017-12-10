@@ -17,7 +17,7 @@ public class PerguntasComidas extends AppCompatActivity {
     private Button RespostaButton13, RespostaButton15, RespostaButton16, RespostaButton17;
     private PerguntasRespostas perguntasTela=new PerguntasRespostas();
     private List<String> comidaEscolhida=new ArrayList<String>();
-    private String comidaSelecionada="";
+    private String comidaSelecionada;
     private Toast mensagem;
     private int contador;
     private TextView ComidaPreferidatextView7;
@@ -62,10 +62,11 @@ public class PerguntasComidas extends AppCompatActivity {
         RespostaButton17.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                comidaSelecionada="";
-                comidaSelecionada+=RespostaButton17.getText();
+                comidaSelecionada =RespostaButton17.getText().toString();
                 mensagem=Toast.makeText(getApplicationContext(), "Sua Escolha: "+comidaSelecionada, Toast.LENGTH_SHORT);
                 mensagem.show();
+                // ESTOU SETANDO DIRETO
+                //Login.usuario.perfil.setComida(comidaSelecionada);
                 alterarTelaMusica();
             }
         });
@@ -73,10 +74,11 @@ public class PerguntasComidas extends AppCompatActivity {
 
     private void atualizarRespostasMassa(){
         if(contador==1){
-            comidaSelecionada="";
-            comidaSelecionada+=RespostaButton13.getText();
+            comidaSelecionada = RespostaButton13.getText().toString();
             mensagem=Toast.makeText(getApplicationContext(), "Sua Escolha: "+comidaSelecionada, Toast.LENGTH_SHORT);
             mensagem.show();
+            // ESTOU SETANDO DIRETO
+            //Login.usuario.perfil.setComida(comidaSelecionada);
             alterarTelaMusica();
 
         }
@@ -91,10 +93,11 @@ public class PerguntasComidas extends AppCompatActivity {
 
     private void atualizarRespostasOriental(){
         if(contador==1){
-            comidaSelecionada="";
-            comidaSelecionada+=RespostaButton15.getText();
+            comidaSelecionada = RespostaButton15.getText().toString();
             mensagem=Toast.makeText(getApplicationContext(), "Sua Escolha: "+comidaSelecionada, Toast.LENGTH_SHORT);
             mensagem.show();
+            // ESTOU SETANDO DIRETO
+            //Login.usuario.perfil.setComida(comidaSelecionada);
             alterarTelaMusica();
 
         }
@@ -113,6 +116,8 @@ public class PerguntasComidas extends AppCompatActivity {
             comidaSelecionada+=RespostaButton16.getText();
             mensagem=Toast.makeText(getApplicationContext(), "Sua Escolha: "+comidaSelecionada, Toast.LENGTH_SHORT);
             mensagem.show();
+            // ESTOU SETANDO DIRETO
+            //Login.usuario.perfil.setComida(comidaSelecionada);
             alterarTelaMusica();
 
         }

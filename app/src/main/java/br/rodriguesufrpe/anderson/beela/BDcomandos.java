@@ -27,7 +27,7 @@ public class BDcomandos {
         valores.put("email", usuario.getEmail());
         valores.put("senha", usuario.getSenha());
         valores.put("celular", usuario.getCelular());
-        System.out.println(valores);
+//        System.out.println(valores);
 
         bd.insert("usuario", null, valores);
         bd.close();
@@ -105,7 +105,7 @@ public class BDcomandos {
 
     public Usuario sqlRetornaObjetoUsuario(String email,String senha){
         Usuario usuario = new Usuario();
-        String where ="SELECT * FROM usuario WHERE email ='"+email+"'"+"OR celular = '"+senha+"'";
+        String where ="SELECT * FROM usuario WHERE email ='"+email+"'"+"AND senha = '"+senha+"'";
         Cursor cursor = bd.rawQuery(where, null);
         if(cursor.getCount()>0){
             cursor.moveToFirst();
@@ -137,4 +137,16 @@ public class BDcomandos {
         }
         return resultado;
     }
+ //   =========================================================================================================
+    public void inserirPerfil(Perfil perfil) {
+        ContentValues valores = new ContentValues();
+        valores.put("nome", perfil.getNome());
+        valores.put("comida", perfil.getComida());
+        valores.put("musica", perfil.getMusica());
+//        valores.put("senha", perfil.getEsporte());
+
+        bd.insert("perfilUsuario", null, valores);
+        bd.close();
+    }
+
 }

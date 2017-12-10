@@ -34,10 +34,10 @@ public class PerguntasMusica extends AppCompatActivity {
         forroButton18.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                musicaSelecionada="";
-                musicaSelecionada+=forroButton18.getText();
+                musicaSelecionada=forroButton18.getText().toString();
                 mensagem=Toast.makeText(getApplicationContext(), "Sua Escolha: "+musicaSelecionada, Toast.LENGTH_SHORT);
                 mensagem.show();
+              //  Login.usuario.perfil.setMusica(musicaSelecionada);
                 alterarTelaPerfil();
             }
         });
@@ -45,10 +45,10 @@ public class PerguntasMusica extends AppCompatActivity {
         sambaButton19.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                musicaSelecionada="";
-                musicaSelecionada+=sambaButton19.getText();
+                musicaSelecionada=sambaButton19.getText().toString();
                 mensagem=Toast.makeText(getApplicationContext(), "Sua Escolha: "+musicaSelecionada, Toast.LENGTH_SHORT);
                 mensagem.show();
+            //    Login.usuario.perfil.setMusica(musicaSelecionada);
                 alterarTelaPerfil();
             }
         });
@@ -56,10 +56,10 @@ public class PerguntasMusica extends AppCompatActivity {
         sertanejoButton20.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                musicaSelecionada="";
-                musicaSelecionada+=sertanejoButton20.getText();
+                musicaSelecionada=sertanejoButton20.getText().toString();
                 mensagem=Toast.makeText(getApplicationContext(), "Sua Escolha: "+musicaSelecionada, Toast.LENGTH_SHORT);
                 mensagem.show();
+          //      Login.usuario.perfil.setMusica(musicaSelecionada);
                 alterarTelaPerfil();
             }
         });
@@ -67,10 +67,11 @@ public class PerguntasMusica extends AppCompatActivity {
         rockButton21.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                musicaSelecionada="";
-                musicaSelecionada+=rockButton21.getText();
+                musicaSelecionada=rockButton21.getText().toString();
                 mensagem=Toast.makeText(getApplicationContext(), "Sua Escolha: "+musicaSelecionada, Toast.LENGTH_SHORT);
                 mensagem.show();
+// TO SETANDO DIRETO OS ATRIBUTOS
+        //        Login.usuario.perfil.setMusica(musicaSelecionada);
                 alterarTelaPerfil();
             }
         });
@@ -78,6 +79,7 @@ public class PerguntasMusica extends AppCompatActivity {
 
     public void alterarTelaPerfil(){
 //TODO      Na tela de Perfil falta aparecer o perfil que foi adicionado.
+
         startActivity(new Intent(PerguntasMusica.this, Perfil.class));
 
     }

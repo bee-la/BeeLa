@@ -1,5 +1,6 @@
 package br.rodriguesufrpe.anderson.beela;
 
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -88,6 +89,7 @@ public class CriarConta extends AppCompatActivity {
             contaCriada = Toast.makeText(getApplicationContext(), R.string.contaCriada, Toast.LENGTH_SHORT);
             contaCriada.show();
             existeCelularEmail=true;
+            startActivity(new Intent(CriarConta.this, Login.class));
         }
         else {
             Toast erro;
