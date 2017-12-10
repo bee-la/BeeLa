@@ -7,6 +7,7 @@
     <string name="SenhaAtual">Senha Atual</string>
     <string name="NovaSenha">Nova Senha</string>
     <string name="RepetirSenha">Repetir Senha</string>
+    <string name="senhaAlterada">Senha alterada</string>
 
     <!--Anterar nome-->
     <string name="NovoNome">Novo Nome</string>
@@ -38,6 +39,7 @@
     <string name="senhaCriarC">Senha</string>
     <string name="repetirSenhaCriarC">Repetir Senha</string>
     <string name="criar">Criar</string>
+    <string name="emailCelularExiste">Email ou celular já existentes</string>
 
     <!--Home-->
     <string name="E_ai">E ai, \nqual vai ser?</string>
@@ -59,5 +61,22 @@
     <string name="esqueciSenha">Esqueci minha senha</string>
     <string name="redefinirSenha">Enviaremos um link para seu email para você redefinir sua senha.</string>
     <string name="enviarCodigo">Enviar</string>
-    <string name="emailCelularExiste">Email ou celular já existentes</string>
+    <string name="title_activity_perfis">Perfis</string>
+
+    <!--Perfil-->
+    <string name="perfil">Perfil</string>
+    <string name="comecar">Começar</string>
+
+    <!--Adicionar Perfil-->
+    <string name="adicionarPerfil">Adicionar Perfil</string>
+    <string name="massas">Massas</string>
+    <string name="orientais">Orientais</string>
+    <string name="carnes">Carnes</string>
+    <string name="vegetariano">Vegetariano</string>
+    <string name="tipoMusica">Qual tipo de música você \nprefere?</string>
+    <string name="forro">Forró</string>
+    <string name="sambaPagode">Samba/Pagode</string>
+    <string name="sertanejo">Sertanejo</string>
+    <string name="rock">Rock</string>
+
 </resources>

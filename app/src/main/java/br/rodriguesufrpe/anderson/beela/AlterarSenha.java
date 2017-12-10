@@ -13,9 +13,9 @@ import android.widget.Toast;
 
 public class AlterarSenha extends AppCompatActivity {
 
-    private TextView senhaAtualText7;
+    private TextView senhaAtualText7,novaSenhaText8, repetirSenhaText9;
     private Button alterarSenhaButton10;
-
+    Toast senhaAlterada;
     private String senhaAtual, novaSenha, repetirSenha;
     private EditText senhaEditText7, novaSenhaEditText8, repetirSenhaEditText9;
 
@@ -33,7 +33,12 @@ public class AlterarSenha extends AppCompatActivity {
         Typeface fonte1 = Typeface.createFromAsset(getAssets(), "fonts/Chewy.ttf");
         senhaAtualText7 = (TextView) findViewById(R.id.editText7);
         senhaAtualText7.setTypeface(fonte1);
-//--------------------------------------------------------------------------------------------------
+
+        novaSenhaText8 = (TextView) findViewById(R.id.editText8);
+        novaSenhaText8.setTypeface(fonte1);
+
+        repetirSenhaText9 = (TextView) findViewById(R.id.editText9);
+        repetirSenhaText9.setTypeface(fonte1);
 
 
 //----------------------------Validacao do clique do botao Alterar Senha----------------------------
@@ -67,12 +72,11 @@ public class AlterarSenha extends AppCompatActivity {
     }
 
     public void alterarSucessoSenha(){
-        // TODO código que der certo se coloca aqui(Query do banco). Validar se o email e celular já estão cadastrados.
+        senhaAlterada=Toast.makeText(getApplicationContext(), R.string.senhaAlterada, Toast.LENGTH_SHORT);
+        // TODO código que der certo se coloca aqui(Query do banco).
         BDcomandos bd = new BDcomandos(this,"W");
         bd.updateSenha(Login.usuario,Criptografia.criptografar(novaSenha));
-        Toast Sucesso;
-        Sucesso = Toast.makeText(getApplicationContext(), "Senha Alterado", Toast.LENGTH_SHORT);
-        Sucesso.show();
+        senhaAlterada.show();
         startActivity(new Intent(AlterarSenha.this, Login.class));
         //ATENÇÃO : Se botar volta para home criar um bug na alterações
         // salva mais o objeto ainda fica com as informações antiga tem que atualizar o objeto por isso

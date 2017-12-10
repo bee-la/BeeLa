@@ -40,8 +40,16 @@
             android:label="@string/AlterarSenha" />
         <activity
             android:name=".EsqueceuSenha"
-            android:label="@string/esqueciSenha">
-        </activity>
+            android:label="@string/esqueciSenha" />
+        <activity
+            android:name=".Perfil"
+            android:label="@string/perfil" />
+        <activity
+            android:name=".PrimeirasPerguntas"
+            android:label="@string/adicionarPerfil" />
+        <activity
+            android:name=".PerguntasMusica"
+            android:label="@string/adicionarPerfil"></activity>
     </application>
 
 </manifest>
