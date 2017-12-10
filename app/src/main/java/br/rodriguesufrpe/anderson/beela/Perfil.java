@@ -24,7 +24,7 @@ public class Perfil extends AppCompatActivity {
     }
 
     private void adicionarPerfilTrocarTela() {
-        startActivity(new Intent(Perfil.this, PrimeirasPerguntas.class));
+        startActivity(new Intent(Perfil.this, PerguntasComidas.class));
     }
 
 }

@@ -5,13 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/preto"
-    tools:context="br.rodriguesufrpe.anderson.beela.PrimeirasPerguntas">
+    tools:context="br.rodriguesufrpe.anderson.beela.PerguntasComidas">
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/preto"
-        tools:context="br.rodriguesufrpe.anderson.beela.PrimeirasPerguntas">
+        tools:context="br.rodriguesufrpe.anderson.beela.PerguntasComidas">
 
     <TextView
         android:id="@+id/textView7"

@@ -12,7 +12,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PrimeirasPerguntas extends AppCompatActivity {
+public class PerguntasComidas extends AppCompatActivity {
 
     private Button RespostaButton13, RespostaButton15, RespostaButton16, RespostaButton17;
     private PerguntasRespostas perguntasTela=new PerguntasRespostas();
@@ -25,7 +25,7 @@ public class PrimeirasPerguntas extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_primeiras_perguntas);
+        setContentView(R.layout.activity_perguntas_comidas);
 //---------------------------Alterar Fonte---------------------------------------
         Typeface fonte = Typeface.createFromAsset(getAssets(), "fonts/Chewy.ttf");
         ComidaPreferidatextView7 = (TextView) findViewById(R.id.textView7);
@@ -126,6 +126,6 @@ public class PrimeirasPerguntas extends AppCompatActivity {
     }
 
     private void alterarTelaMusica(){
-        startActivity(new Intent(PrimeirasPerguntas.this, PerguntasMusica.class));
+        startActivity(new Intent(PerguntasComidas.this, PerguntasMusica.class));
     }
 }
