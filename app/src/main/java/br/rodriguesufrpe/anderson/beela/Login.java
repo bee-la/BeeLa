@@ -15,8 +15,6 @@ import java.util.List;
 public class Login extends AppCompatActivity {
     public static Usuario usuario = new Usuario();
     private TextView t, EsqueceuTextView3;
-    private boolean loga=false;
-
     private Button criarContaButton2, entrarButton;
 
     private EditText editTextEmail, editText2Senha;

@@ -66,7 +66,7 @@ public class AlterarSenha extends AppCompatActivity {
         }
         else{
             Toast Erro;
-            Erro = Toast.makeText(getApplicationContext(), "SenhaAtual Diferente", Toast.LENGTH_SHORT);
+            Erro = Toast.makeText(getApplicationContext(), R.string.senhaAtualDiferente, Toast.LENGTH_SHORT);
             Erro.show();
         }
     }
@@ -76,6 +76,9 @@ public class AlterarSenha extends AppCompatActivity {
         // TODO código que der certo se coloca aqui(Query do banco).
         BDcomandos bd = new BDcomandos(this,"W");
         bd.updateSenha(Login.usuario,Criptografia.criptografar(novaSenha));
+
+ //TODO     acho que falta setar a nova senha no usuário ---->>> Login.usuario.setSenha(Criptografia.criptografar(novaSenha));
+
         senhaAlterada.show();
         startActivity(new Intent(AlterarSenha.this, Login.class));
         //ATENÇÃO : Se botar volta para home criar um bug na alterações

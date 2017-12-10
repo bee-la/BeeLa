@@ -8,6 +8,7 @@
     <string name="NovaSenha">Nova Senha</string>
     <string name="RepetirSenha">Repetir Senha</string>
     <string name="senhaAlterada">Senha alterada</string>
+    <string name="senhaAtualDiferente">Senha Atual Diferente</string>
 
     <!--Anterar nome-->
     <string name="NovoNome">Novo Nome</string>

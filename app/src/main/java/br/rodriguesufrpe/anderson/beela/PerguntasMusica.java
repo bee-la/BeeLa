@@ -10,7 +10,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class PerguntasMusica extends AppCompatActivity {
-    private TextView tipoMusicaTextView9;
+    private TextView fonteTextView9;
     private Toast mensagem;
     private String musicaSelecionada;
     private Button forroButton18, sambaButton19, sertanejoButton20, rockButton21;
@@ -22,8 +22,8 @@ public class PerguntasMusica extends AppCompatActivity {
 
         Typeface fonte = Typeface.createFromAsset(getAssets(), "fonts/Chewy.ttf");
 
-        tipoMusicaTextView9 = (TextView) findViewById(R.id.textView9);
-        tipoMusicaTextView9.setTypeface(fonte);
+        fonteTextView9 = (TextView) findViewById(R.id.textView9);
+        fonteTextView9.setTypeface(fonte);
 
 
         forroButton18=(Button)findViewById(R.id.button18);
