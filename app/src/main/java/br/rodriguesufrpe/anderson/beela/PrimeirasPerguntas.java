@@ -64,7 +64,6 @@ public class PrimeirasPerguntas extends AppCompatActivity {
             public void onClick(View view) {
                 comidaSelecionada="";
                 comidaSelecionada+=RespostaButton17.getText();
-                Toast mensagem;
                 mensagem=Toast.makeText(getApplicationContext(), "Sua Escolha: "+comidaSelecionada, Toast.LENGTH_SHORT);
                 mensagem.show();
                 alterarTelaMusica();

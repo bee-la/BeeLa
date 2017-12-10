@@ -13,31 +13,31 @@
         android:background="@color/preto"
         tools:context="br.rodriguesufrpe.anderson.beela.Perfil">
 
-    <ImageButton
-        android:id="@+id/imageButton4"
-        android:layout_width="71dp"
-        android:layout_height="74dp"
-        android:layout_marginEnd="44dp"
-        android:layout_marginTop="360dp"
-        android:backgroundTint="@color/verdeBotao"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/adicionar" />
+        <ImageButton
+            android:id="@+id/imageButton4"
+            android:layout_width="71dp"
+            android:layout_height="74dp"
+            android:layout_marginEnd="36dp"
+            android:layout_marginTop="344dp"
+            android:backgroundTint="@color/verdeBotao"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/adicionar" />
 
-    <Button
-        android:id="@+id/button14"
-        android:layout_width="177dp"
-        android:layout_height="74dp"
-        android:layout_marginEnd="36dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="360dp"
-        android:text="@string/comecar"
-        android:textSize="25sp"
-        android:textAllCaps="false"
-        android:backgroundTint="@color/verdeBotao"
-        app:layout_constraintEnd_toStartOf="@+id/imageButton4"
-        app:layout_constraintHorizontal_bias="0.583"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <Button
+            android:id="@+id/button14"
+            android:layout_width="158dp"
+            android:layout_height="73dp"
+            android:layout_marginEnd="36dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="344dp"
+            android:backgroundTint="@color/verdeBotao"
+            android:text="@string/comecar"
+            android:textAllCaps="false"
+            android:textSize="25sp"
+            app:layout_constraintEnd_toStartOf="@+id/imageButton4"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 </android.support.constraint.ConstraintLayout>
 </ScrollView>
