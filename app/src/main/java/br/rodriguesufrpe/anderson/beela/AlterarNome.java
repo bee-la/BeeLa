@@ -42,7 +42,6 @@ public class AlterarNome extends AppCompatActivity {
 
     public void validarCliqueAlterarNome(){
         alterarNome=alterarNomeEditText3.getText().toString().trim();
-
         if(ehValidoAlterarNome()){
             alterarSucessoNome();
         }
@@ -68,6 +67,10 @@ public class AlterarNome extends AppCompatActivity {
         boolean valido = true;
         if (alterarNome.isEmpty()) {
             alterarNomeEditText3.setError(getString(R.string.campoVazio));
+            valido = false;
+        }
+        else if(alterarNome.equals(Login.usuario.getNome())){
+            alterarNomeEditText3.setError("Nome Iguais");
             valido = false;
         }
         return valido;
