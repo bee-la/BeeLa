@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
 
+import java.util.ArrayList;
+
 public class Perfil extends AppCompatActivity {
     private int id;
     private int id_usuario;
@@ -23,10 +25,7 @@ public class Perfil extends AppCompatActivity {
     public String getEsporte(){return this.esporte;}
 
     public void setId(int id){this.id = id;}
-
-    public void setId_usuario(int id_usuario) {this.id_usuario =Login.usuario.getId();
-    }
-
+    public void setId_usuario(int id_usuario) {this.id_usuario =Login.usuario.getId();}
     public void setNome(String nome){this.nome = nome;}
     public void setComida(String comida){this.comida = comida;}
     public void setMusica(String musica){this.musica = musica;}
@@ -45,9 +44,12 @@ public class Perfil extends AppCompatActivity {
                 adicionarPerfilTrocarTela();}
         });
     }
-
     private void adicionarPerfilTrocarTela() {
         startActivity(new Intent(Perfil.this, PerguntasComidas.class));
     }
-
+    private ArrayList chamarPerfil(){
+        ArrayList<Perfil> listaPerfil = new ArrayList<Perfil>();
+        BDcomandos bd = new BDcomandos(this,"R");
+        return listaPerfil = bd.getPerfil();
+    }
 }

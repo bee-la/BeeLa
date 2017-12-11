@@ -9,13 +9,13 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
 public class home extends AppCompatActivity {
     private TextView eAi;
     private TextView oQueTuQuer;
-
     private Button configuracoesImageButton3;
 
     private Button oQueTuQuerButton4;
@@ -57,6 +57,7 @@ public class home extends AppCompatActivity {
     }
 
     private void perfilImageButton() {
+
         startActivity(new Intent(home.this, Perfil.class));
     }
 }
