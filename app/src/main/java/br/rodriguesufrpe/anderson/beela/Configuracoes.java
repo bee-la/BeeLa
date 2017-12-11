@@ -13,6 +13,7 @@ import java.util.ArrayList;
 public class Configuracoes extends AppCompatActivity {
 
     private Button apagarButton7, alterarNomeButton5, alterarSenhaButton6, sairButton8;
+    private TextView nomeTextView11;
     private ArrayList<TextView> textos= new ArrayList<TextView>();
 
     @Override
@@ -21,7 +22,6 @@ public class Configuracoes extends AppCompatActivity {
         setContentView(R.layout.activity_configuracoes);
 
 //      ----------------------------------Alteração da fonte-------------------------------------------
-
         textos.add((TextView) findViewById(R.id.button5));
         textos.add((TextView) findViewById(R.id.button6));
         textos.add((TextView) findViewById(R.id.button7));
@@ -31,6 +31,9 @@ public class Configuracoes extends AppCompatActivity {
         for (TextView txtView: textos) {
             txtView.setTypeface(fonte);
         }
+
+        nomeTextView11=(TextView)findViewById(R.id.textView11);
+        nomeTextView11.setTypeface(fonte);
         //---------------------------------Clique Trocar de tela------------------------------------
         alterarNomeButton5 =(Button) findViewById(R.id.button5);
         alterarNomeButton5.setOnClickListener(new View.OnClickListener() {@Override public void onClick (View v){alterarNomeButton5();}});
@@ -43,6 +46,7 @@ public class Configuracoes extends AppCompatActivity {
 
         sairButton8 = (Button) findViewById(R.id.button8);
         sairButton8.setOnClickListener(new View.OnClickListener() {@Override public void onClick(View v) {sairButton7();}});
+        setarNome();
     }
 
     //----------------------------------Trocar Tela Funções -------------------------------------
@@ -60,5 +64,9 @@ public class Configuracoes extends AppCompatActivity {
 
     private void sairButton7() {
         startActivity(new Intent(Configuracoes.this, Login.class));
+    }
+
+    private void setarNome(){
+        nomeTextView11.setText(Login.usuario.getNome());
     }
 }
