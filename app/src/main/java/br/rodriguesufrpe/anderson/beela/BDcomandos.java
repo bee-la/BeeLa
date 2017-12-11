@@ -144,7 +144,7 @@ public class BDcomandos {
         valores.put("nome", perfil.getNome());
         valores.put("comida", perfil.getComida());
         valores.put("musica", perfil.getMusica());
-//        valores.put("senha", perfil.getEsporte());
+//        valores.put("esporte", perfil.getEsporte());
 
         bd.insert("perfilUsuario", null, valores);
         bd.close();
