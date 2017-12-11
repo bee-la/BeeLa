@@ -17,7 +17,7 @@ public class home extends AppCompatActivity {
     private TextView eAi;
     private TextView oQueTuQuer;
     private Button configuracoesImageButton3;
-
+    private TextView nome;
     private Button oQueTuQuerButton4;
     private ImageButton imageButtonPerfil, imageButton2Lugares, imageButton3Configuracoes;
 
@@ -26,12 +26,14 @@ public class home extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-
+//      TODO: Mudar Fonte
 //      ------------------------------Mudar letra------------------------------------------
         Typeface fonte1 = Typeface.createFromAsset(getAssets(), "fonts/Chewy.ttf");
 
         eAi = (TextView) findViewById(R.id.textView4);
         eAi.setTypeface(fonte1);
+
+        nome = (TextView) findViewById(R.id.textView11);
 
         oQueTuQuer= (TextView) findViewById(R.id.button4);
         oQueTuQuer.setTypeface(fonte1);
@@ -59,5 +61,8 @@ public class home extends AppCompatActivity {
     private void perfilImageButton() {
 
         startActivity(new Intent(home.this, Perfil.class));
+    }
+    private void setNomeHome(){
+        nome.setText(Login.usuario.getNome());
     }
 }

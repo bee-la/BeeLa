@@ -27,7 +27,7 @@ public class Login extends AppCompatActivity {
         editTextEmail=(EditText)findViewById(R.id.editText);
         editText2Senha=(EditText)findViewById(R.id.editText2);
 
-        //        Mudar fonte
+        /* TODO:        Mudar fonte */
         t = (TextView) findViewById(R.id.textView);
         Typeface fonte = Typeface.createFromAsset(getAssets(), "fonts/Chewy.ttf");
         t.setTypeface(fonte);
