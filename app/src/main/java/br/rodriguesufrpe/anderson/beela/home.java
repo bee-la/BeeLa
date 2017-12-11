@@ -17,7 +17,7 @@ public class home extends AppCompatActivity {
     private TextView eAi;
     private TextView oQueTuQuer;
     private Button configuracoesImageButton3;
-    private TextView nomeTextView10;
+//    private TextView nomeTextView10;
     private Button oQueTuQuerButton4;
     private ImageButton imageButtonPerfil, imageButton2Lugares, imageButton3Configuracoes;
 
@@ -33,8 +33,8 @@ public class home extends AppCompatActivity {
         eAi = (TextView) findViewById(R.id.textView4);
         eAi.setTypeface(fonte1);
 
-        nomeTextView10 = (TextView) findViewById(R.id.textView10);
-        nomeTextView10.setTypeface(fonte1);
+//        nomeTextView10 = (TextView) findViewById(R.id.textView10);
+//        nomeTextView10.setTypeface(fonte1);
 
         oQueTuQuer= (TextView) findViewById(R.id.button4);
         oQueTuQuer.setTypeface(fonte1);
@@ -53,7 +53,7 @@ public class home extends AppCompatActivity {
             public void onClick(View v) {
                 perfilImageButton();}
         });
-        setNomeHome();
+//        setNomeHome();
     }
 //-------------------------------------------Método Trocar de Tela-------------------------------
     private void configuracoesImageButton3() {
@@ -64,7 +64,7 @@ public class home extends AppCompatActivity {
 
         startActivity(new Intent(home.this, Perfil.class));
     }
-    private void setNomeHome(){
-        nomeTextView10.setText(Login.usuario.getNome());
-    }
+//    private void setNomeHome(){
+//        nomeTextView10.setText(Login.usuario.getNome());
+//    }
 }
