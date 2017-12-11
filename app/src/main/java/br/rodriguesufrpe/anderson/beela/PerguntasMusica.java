@@ -38,7 +38,7 @@ public class PerguntasMusica extends AppCompatActivity {
                 musicaSelecionada=forroButton18.getText().toString();
                 mensagem=Toast.makeText(getApplicationContext(), "Sua Escolha: "+musicaSelecionada, Toast.LENGTH_SHORT);
                 mensagem.show();
-              //  Login.usuario.perfil.setMusica(musicaSelecionada);
+                Login.usuario.perfil.setMusica(musicaSelecionada);
                 alterarTelaPerfil();
             }
         });
@@ -49,7 +49,7 @@ public class PerguntasMusica extends AppCompatActivity {
                 musicaSelecionada=sambaButton19.getText().toString();
                 mensagem=Toast.makeText(getApplicationContext(), "Sua Escolha: "+musicaSelecionada, Toast.LENGTH_SHORT);
                 mensagem.show();
-            //    Login.usuario.perfil.setMusica(musicaSelecionada);
+                Login.usuario.perfil.setMusica(musicaSelecionada);
                 alterarTelaPerfil();
             }
         });
@@ -60,7 +60,7 @@ public class PerguntasMusica extends AppCompatActivity {
                 musicaSelecionada=sertanejoButton20.getText().toString();
                 mensagem=Toast.makeText(getApplicationContext(), "Sua Escolha: "+musicaSelecionada, Toast.LENGTH_SHORT);
                 mensagem.show();
-          //      Login.usuario.perfil.setMusica(musicaSelecionada);
+                Login.usuario.perfil.setMusica(musicaSelecionada);
                 alterarTelaPerfil();
             }
         });
@@ -72,7 +72,7 @@ public class PerguntasMusica extends AppCompatActivity {
                 mensagem=Toast.makeText(getApplicationContext(), "Sua Escolha: "+musicaSelecionada, Toast.LENGTH_SHORT);
                 mensagem.show();
 // TO SETANDO DIRETO OS ATRIBUTOS
-        //        Login.usuario.perfil.setMusica(musicaSelecionada);
+                Login.usuario.perfil.setMusica(musicaSelecionada);
                 alterarTelaPerfil();
             }
         });
@@ -82,7 +82,8 @@ public class PerguntasMusica extends AppCompatActivity {
 
     public void alterarTelaPerfil(){
 //TODO      Na tela de Perfil falta aparecer o perfil que foi adicionado.
-
+        BDcomandos bd = new BDcomandos(this,"W");
+        bd.inserirPerfil(Login.usuario.perfil);
         startActivity(new Intent(PerguntasMusica.this, Perfil.class));
 
     }
