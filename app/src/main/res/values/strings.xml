@@ -44,6 +44,7 @@
 
     <!--Home-->
     <string name="E_ai">E ai, \nqual vai ser?</string>
+    <string name="Nome">nome</string>
     <string name="O_que_tu_quer">O que tu quer\n eu quero!</string>
 
     <!--Geral-->
