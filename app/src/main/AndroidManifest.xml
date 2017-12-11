@@ -49,7 +49,7 @@
             android:label="@string/adicionarPerfil" />
         <activity
             android:name=".PerguntasMusica"
-            android:label="@string/adicionarPerfil"></activity>
+            android:label="@string/adicionarPerfil" />
     </application>
 
 </manifest>

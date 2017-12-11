@@ -66,7 +66,7 @@ public class PerguntasComidas extends AppCompatActivity {
                 mensagem=Toast.makeText(getApplicationContext(), "Sua Escolha: "+comidaSelecionada, Toast.LENGTH_SHORT);
                 mensagem.show();
                 // ESTOU SETANDO DIRETO
-                //Login.usuario.perfil.setComida(comidaSelecionada);
+                Login.usuario.perfil.setComida(comidaSelecionada);
                 alterarTelaMusica();
             }
         });
@@ -78,7 +78,7 @@ public class PerguntasComidas extends AppCompatActivity {
             mensagem=Toast.makeText(getApplicationContext(), "Sua Escolha: "+comidaSelecionada, Toast.LENGTH_SHORT);
             mensagem.show();
             // ESTOU SETANDO DIRETO
-            //Login.usuario.perfil.setComida(comidaSelecionada);
+            Login.usuario.perfil.setComida(comidaSelecionada);
             alterarTelaMusica();
 
         }
@@ -97,7 +97,7 @@ public class PerguntasComidas extends AppCompatActivity {
             mensagem=Toast.makeText(getApplicationContext(), "Sua Escolha: "+comidaSelecionada, Toast.LENGTH_SHORT);
             mensagem.show();
             // ESTOU SETANDO DIRETO
-            //Login.usuario.perfil.setComida(comidaSelecionada);
+            Login.usuario.perfil.setComida(comidaSelecionada);
             alterarTelaMusica();
 
         }
@@ -117,7 +117,7 @@ public class PerguntasComidas extends AppCompatActivity {
             mensagem=Toast.makeText(getApplicationContext(), "Sua Escolha: "+comidaSelecionada, Toast.LENGTH_SHORT);
             mensagem.show();
             // ESTOU SETANDO DIRETO
-            //Login.usuario.perfil.setComida(comidaSelecionada);
+            Login.usuario.perfil.setComida(comidaSelecionada);
             alterarTelaMusica();
 
         }

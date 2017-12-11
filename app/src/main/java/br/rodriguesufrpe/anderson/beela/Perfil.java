@@ -20,7 +20,6 @@ public class Perfil extends AppCompatActivity {
 
     private ImageButton adicionarPerfilTrocarTela;
 
-
     public int getId_Usuario(){return this.id_usuario;}
     public String getNome(){return this.nome;}
     public String getComida(){return this.comida;}
@@ -39,6 +38,7 @@ public class Perfil extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_perfil);
 
+
 //-------------------------------------Trocar tela--------------------------------------------
         adicionarPerfilTrocarTela = (ImageButton) findViewById(R.id.imageButton4);
         adicionarPerfilTrocarTela.setOnClickListener(new View.OnClickListener() {
@@ -50,6 +50,8 @@ public class Perfil extends AppCompatActivity {
     private void adicionarPerfilTrocarTela() {
         startActivity(new Intent(Perfil.this, PerguntasComidas.class));
     }
+
+
     private ArrayList chamarPerfil(){
         ArrayList<Perfil> listaPerfil = new ArrayList<Perfil>();
         BDcomandos bd = new BDcomandos(this,"R");

@@ -15,6 +15,7 @@ public class PerguntasMusica extends AppCompatActivity {
     private String musicaSelecionada;
     private Button forroButton18, sambaButton19, sertanejoButton20, rockButton21;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -75,6 +76,8 @@ public class PerguntasMusica extends AppCompatActivity {
                 alterarTelaPerfil();
             }
         });
+        Login.usuario.perfil.setNome(musicaSelecionada);
+
     }
 
     public void alterarTelaPerfil(){
@@ -83,4 +86,5 @@ public class PerguntasMusica extends AppCompatActivity {
         startActivity(new Intent(PerguntasMusica.this, Perfil.class));
 
     }
+
 }
