@@ -39,5 +39,15 @@
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-</android.support.constraint.ConstraintLayout>
+
+        <CheckBox
+            android:id="@+id/checkBox2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:buttonTint="@color/verdeBotao"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="62dp" />
+
+    </android.support.constraint.ConstraintLayout>
 </ScrollView>

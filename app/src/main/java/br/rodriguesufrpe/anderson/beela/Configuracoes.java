@@ -38,6 +38,7 @@ public class Configuracoes extends AppCompatActivity {
         alterarNomeButton5 =(Button) findViewById(R.id.button5);
         alterarNomeButton5.setOnClickListener(new View.OnClickListener() {@Override public void onClick (View v){alterarNomeButton5();}});
 
+
         alterarSenhaButton6 = (Button) findViewById(R.id.button6);
         alterarSenhaButton6.setOnClickListener(new View.OnClickListener() {@Override public void onClick(View v) {alterarSenhaButton6();}});
 

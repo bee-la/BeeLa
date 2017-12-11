@@ -4,7 +4,9 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -16,7 +18,10 @@ public class Perfil extends AppCompatActivity {
     private String musica;
     private String esporte;
 
+    private CheckBox checkBox1;
+
     private ImageButton adicionarPerfilTrocarTela;
+
 
     public int getId_Usuario(){return this.id_usuario;}
     public String getNome(){return this.nome;}
@@ -36,6 +41,9 @@ public class Perfil extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_perfil);
 
+        checkBox1 = (CheckBox) findViewById(R.id.checkBox2);
+
+        checkBox1.setVisibility();
 //-------------------------------------Trocar tela--------------------------------------------
         adicionarPerfilTrocarTela = (ImageButton) findViewById(R.id.imageButton4);
         adicionarPerfilTrocarTela.setOnClickListener(new View.OnClickListener() {
@@ -52,4 +60,6 @@ public class Perfil extends AppCompatActivity {
         BDcomandos bd = new BDcomandos(this,"R");
         return listaPerfil = bd.getPerfil();
     }
+
+
 }
