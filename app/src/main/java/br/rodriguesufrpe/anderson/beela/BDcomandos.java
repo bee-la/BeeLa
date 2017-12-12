@@ -141,7 +141,7 @@ public class BDcomandos {
     public void inserirPerfil(Perfil perfil) {
         ContentValues valores = new ContentValues();
         valores.put("id_usuario",perfil.getId_Usuario());
-        valores.put("nome", perfil.getNome());
+        valores.put("nome_perfil", perfil.getNome());
         valores.put("comida", perfil.getComida());
         valores.put("musica", perfil.getMusica());
 //        valores.put("esporte", perfil.getEsporte());
@@ -151,7 +151,7 @@ public class BDcomandos {
     }
     public ArrayList<Perfil> getPerfil(){
         ArrayList<Perfil> list = new ArrayList<Perfil>();
-        String where ="SELECT * FROM perfil WHERE id_usuario = '"+Login.usuario.getId()+"'";
+        String where ="SELECT * FROM perfilUsuario WHERE id_usuario = '"+Login.usuario.getId()+"'";
         Cursor cursor = bd.rawQuery(where,null);
         if (cursor.getCount()>0){
             cursor.moveToFirst();

@@ -82,8 +82,7 @@ public class PerguntasMusica extends AppCompatActivity {
 
     public void alterarTelaPerfil(){
 //TODO      Na tela de Perfil falta aparecer o perfil que foi adicionado.
-        BDcomandos bd = new BDcomandos(this,"W");
-        bd.inserirPerfil(Login.usuario.perfil);
+
         startActivity(new Intent(PerguntasMusica.this, NomePerfil.class));
 
     }

@@ -26,6 +26,8 @@ public class NomePerfil extends AppCompatActivity {
 
         nomePerfil=nomePerfilEditText12.getText().toString().trim();
         Login.usuario.perfil.setNome(nomePerfil);
+        BDcomandos bd = new BDcomandos(this,"W");
+        bd.inserirPerfil(Login.usuario.perfil);
 
         nomearButton22.setOnClickListener(new View.OnClickListener() {
             @Override
