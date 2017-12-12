@@ -40,11 +40,6 @@ public class Perfil extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_perfil);
-<<<<<<< HEAD
-
-
-=======
->>>>>>> desenvolvedor
 //-------------------------------------Trocar tela--------------------------------------------
         Typeface fonte = Typeface.createFromAsset(getAssets(), "fonts/Chewy.ttf");
         nomeTextView =(TextView)findViewById(R.id.textViewPerfil1);
@@ -59,17 +54,16 @@ public class Perfil extends AppCompatActivity {
     }
     private void adicionarPerfilTrocarTela() {
         startActivity(new Intent(Perfil.this, PerguntasComidas.class));
-        Login.usuario.perfil.setNome("TESTEPORRA");
-        setarNome();
+//        Login.usuario.perfil.setNome("TESTE");
+//        setarNome();
     }
-
 
     private ArrayList chamarPerfil(){
         ArrayList<Perfil> listaPerfil = new ArrayList<Perfil>();
         BDcomandos bd = new BDcomandos(this,"R");
         return listaPerfil = bd.getPerfil();
     }
-    private void setarNome(){
-        nomeTextView.setText(Login.usuario.perfil.getNome());
-    }
+//    private void setarNome(){
+//        nomeTextView.setText(Login.usuario.perfil.getNome());
+//    }
 }

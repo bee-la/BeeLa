@@ -81,5 +81,7 @@
     <string name="sertanejo">Sertanejo</string>
     <string name="rock">Rock</string>
     <string name="nomePerfil">Nome Perfil</string>
+    <string name="nomeDoPerfil">Nome do perfil</string>
+    <string name="nomear">Nomear</string>
 
 </resources>

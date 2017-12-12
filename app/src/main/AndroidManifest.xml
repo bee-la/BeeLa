@@ -50,6 +50,9 @@
         <activity
             android:name=".PerguntasMusica"
             android:label="@string/adicionarPerfil" />
+        <activity
+            android:name=".NomePerfil"
+            android:label="@string/nomePerfil"></activity>
     </application>
 
 </manifest>
