@@ -30,12 +30,10 @@ public class NomePerfil extends AppCompatActivity {
         nomearButton22.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setarNomePerfil();
-            }
-        });
-
+                setarNomePerfil(); }});
     }
-
+    
+//TODO      NullPointExcept ao chamar essa função
     public void setarNomePerfil(){
         nomeTextViewPerfil1.setText(Login.usuario.perfil.getNome());
     }
