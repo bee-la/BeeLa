@@ -1,4 +1,4 @@
-package br.ufrpe.beela.GUI;
+package br.ufrpe.beela.gui;
 
 import android.content.Intent;
 import android.graphics.Typeface;
@@ -10,9 +10,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import br.ufrpe.beela.NEGOCIAÇAO.Criptografia;
-import br.ufrpe.beela.GUI.R;
-import br.ufrpe.beela.DAO.BDcomandosUsuario;
+import br.ufrpe.beela.negociaçao.Criptografia;
+import br.ufrpe.beela.gui.R;
+import br.ufrpe.beela.dao.BDcomandosUsuario;
 
 public class AlterarSenha extends AppCompatActivity {
 

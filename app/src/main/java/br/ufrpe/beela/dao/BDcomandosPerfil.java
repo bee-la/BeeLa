@@ -1,4 +1,4 @@
-package br.ufrpe.beela.DAO;
+package br.ufrpe.beela.dao;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -7,8 +7,8 @@ import android.database.sqlite.SQLiteDatabase;
 
 import java.util.ArrayList;
 
-import br.ufrpe.beela.GUI.Login;
-import br.ufrpe.beela.GUI.Perfil;
+import br.ufrpe.beela.gui.Login;
+import br.ufrpe.beela.gui.Perfil;
 
 /**
  * Created by vidal on 05/12/2017.
@@ -34,7 +34,7 @@ public class BDcomandosPerfil {
         bd.insert("perfilUsuario", null, valores);
         bd.close();
     }
-    public ArrayList<Perfil> getPerfil(){
+    public ArrayList<Perfil> sqlGetPerfil(){
         ArrayList<Perfil> list = new ArrayList<Perfil>();
         String where ="SELECT * FROM perfilUsuario WHERE id_usuario = '"+ Login.usuario.getId()+"'";
         Cursor cursor = bd.rawQuery(where,null);

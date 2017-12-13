@@ -1,4 +1,4 @@
-package br.ufrpe.beela.GUI;
+package br.ufrpe.beela.gui;
 
 import android.content.Intent;
 import android.graphics.Typeface;
@@ -12,7 +12,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.ufrpe.beela.GUI.R;
+import br.ufrpe.beela.gui.R;
 
 public class PerguntasComidas extends AppCompatActivity {
 

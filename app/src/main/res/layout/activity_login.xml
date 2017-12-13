@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/preto"
-        tools:context="br.ufrpe.beela.GUI.Login"
+        tools:context="br.ufrpe.beela.gui.Login"
         tools:layout_editor_absoluteY="25dp">
 
         <ImageView

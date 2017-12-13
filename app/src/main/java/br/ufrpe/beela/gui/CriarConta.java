@@ -1,4 +1,4 @@
-package br.ufrpe.beela.GUI;
+package br.ufrpe.beela.gui;
 
 import android.content.Intent;
 import android.graphics.Typeface;
@@ -16,10 +16,10 @@ import java.util.ArrayList;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-import br.ufrpe.beela.NEGOCIAÇAO.Criptografia;
-import br.ufrpe.beela.GUI.R;
-import br.ufrpe.beela.DAO.BDcomandosUsuario;
-import br.ufrpe.beela.NEGOCIAÇAO.Usuario;
+import br.ufrpe.beela.negociaçao.Criptografia;
+import br.ufrpe.beela.gui.R;
+import br.ufrpe.beela.dao.BDcomandosUsuario;
+import br.ufrpe.beela.negociaçao.Usuario;
 
 public class CriarConta extends AppCompatActivity {
 //    private TextView textViewNome, textViewCelular,  textViewEmail, textViewSenha, textViewRepetirSenha;

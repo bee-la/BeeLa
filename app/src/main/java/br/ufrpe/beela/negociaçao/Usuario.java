@@ -1,6 +1,6 @@
-package br.ufrpe.beela.NEGOCIAÇAO;
+package br.ufrpe.beela.negociaçao;
 
-import br.ufrpe.beela.GUI.Perfil;
+import br.ufrpe.beela.gui.Perfil;
 
 /**
  * Created by max on 05/12/17.

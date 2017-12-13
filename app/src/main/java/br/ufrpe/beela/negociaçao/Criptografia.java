@@ -1,4 +1,4 @@
-package br.ufrpe.beela.NEGOCIAÇAO;
+package br.ufrpe.beela.negociaçao;
 
 import java.math.BigInteger;
 import java.security.MessageDigest;

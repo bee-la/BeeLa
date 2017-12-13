@@ -1,9 +1,9 @@
-package br.ufrpe.beela.GUI;
+package br.ufrpe.beela.gui;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-import br.ufrpe.beela.GUI.R;
+import br.ufrpe.beela.gui.R;
 
 public class EsqueceuSenha extends AppCompatActivity {
 

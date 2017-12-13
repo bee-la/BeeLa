@@ -1,4 +1,4 @@
-package br.ufrpe.beela.GUI;
+package br.ufrpe.beela.gui;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -9,7 +9,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 
-import br.ufrpe.beela.DAO.BDcomandosPerfil;
+import br.ufrpe.beela.dao.BDcomandosPerfil;
 
 public class NomePerfil extends AppCompatActivity {
 
