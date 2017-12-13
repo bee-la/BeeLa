@@ -55,14 +55,17 @@ public class Configuracoes extends AppCompatActivity {
     //----------------------------------Trocar Tela Funções -------------------------------------
     private void alterarNomeButton5() {
         startActivity(new Intent(Configuracoes.this, AlterarNome.class));
+//        finish();
 }
 
     private void alterarSenhaButton6 () {
         startActivity(new Intent(Configuracoes.this, AlterarSenha.class));
+//        finish();
     }
 
     private void apagarButton7() {
         startActivity(new Intent(Configuracoes.this, ApagarConta.class));
+        finish();
     }
 
     private void sairButton7() {

@@ -57,7 +57,8 @@ public class AlterarNome extends AppCompatActivity {
         Toast Sucesso;
         Sucesso = Toast.makeText(getApplicationContext(), "Nome Alterado", Toast.LENGTH_SHORT);
         Sucesso.show();
-        startActivity(new Intent(AlterarNome.this, home.class));
+        finish();
+//        startActivity(new Intent(AlterarNome.this, home.class));
 
 
     }

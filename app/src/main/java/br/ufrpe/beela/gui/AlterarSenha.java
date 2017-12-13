@@ -76,12 +76,13 @@ public class AlterarSenha extends AppCompatActivity {
 
     public void alterarSucessoSenha(){
         senhaAlterada=Toast.makeText(getApplicationContext(), R.string.senhaAlterada, Toast.LENGTH_SHORT);
-        // TODO código que der certo se coloca aqui(Query do banco).
+//TODO      O código que der certo se coloca aqui(Query do banco).
         BDcomandosUsuario bd = new BDcomandosUsuario(this,"W");
         bd.updateSenha(Login.usuario,Criptografia.criptografar(novaSenha));
         Login.usuario.setSenha(Criptografia.criptografar(novaSenha));
         senhaAlterada.show();
-        startActivity(new Intent(AlterarSenha.this, home.class));
+        finish();
+//        startActivity(new Intent(AlterarSenha.this, home.class));
     }
 
     public boolean ehValidoAlterarSenha(){
