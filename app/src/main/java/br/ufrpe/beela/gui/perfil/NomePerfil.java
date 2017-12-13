@@ -1,4 +1,4 @@
-package br.ufrpe.beela.gui;
+package br.ufrpe.beela.gui.perfil;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -9,7 +9,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 
-import br.ufrpe.beela.dao.BDcomandosPerfil;
+import br.ufrpe.beela.dao.perfil.BDcomandosPerfil;
+import br.ufrpe.beela.gui.Login;
+import br.ufrpe.beela.gui.R;
 
 public class NomePerfil extends AppCompatActivity {
 
@@ -33,16 +35,15 @@ public class NomePerfil extends AppCompatActivity {
         nomearButton22.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setarNomePerfil(); }});
+                chamarSetarNomePerfil(nomePerfil); }});
     }
     
 //TODO      NullPointExcept ao chamar essa função
-    public void setarNomePerfil(){
+    public void chamarSetarNomePerfil(String nomePerfil){
         Login.usuario.getPerfil().setNome(nomePerfil);
         BDcomandosPerfil bd = new BDcomandosPerfil(this,"W");
         bd.inserirPerfil(Login.usuario.getPerfil());
         startActivity(new Intent(NomePerfil.this, Perfil.class));
-        //nomeTextViewPerfil1.setText(Login.usuario.getPerfil().getNome());
     }
 
 

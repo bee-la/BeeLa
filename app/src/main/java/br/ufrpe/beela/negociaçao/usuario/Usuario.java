@@ -1,6 +1,6 @@
-package br.ufrpe.beela.negociaçao;
+package br.ufrpe.beela.negociaçao.usuario;
 
-import br.ufrpe.beela.gui.Perfil;
+import br.ufrpe.beela.negociaçao.perfil.PerfilUsuario;
 
 /**
  * Created by max on 05/12/17.
@@ -12,51 +12,43 @@ public class Usuario {
     private String senha;
     private String email;
     private String celular;
-    Perfil perfil = new Perfil();
+    PerfilUsuario perfil = new PerfilUsuario();
 
-    public void setPerfil(Perfil perfil){this.perfil = perfil;}
-    public Perfil getPerfil(){return perfil;}
-
+    public PerfilUsuario getPerfil(){return perfil;}
+    public String getNome() {
+        return nome;
+    }
+    public String getEmail() {
+        return email;
+    }
+    public String getSenha() {
+        return senha;
+    }
+    public int getId() {
+        return Id;
+    }
     public String getCelular() {
         return celular;
     }
+
+    public void setPerfil(PerfilUsuario perfil){this.perfil = perfil;}
     public void setCelular(String celular) {
         this.celular = celular;
-    }
-
-    public int getId() {
-        return Id;
     }
     public void setId(int id) {
         Id = id;
     }
-
-    public String getNome() {
-        return nome;
-    }
     public void setNome(String nome) {
         this.nome = nome;
     }
-
-    public String getSenha() {
-        return senha;
-    }
     public void setSenha(String senha) {
         this.senha = senha;
-    }
-
-    public String getEmail() {
-        return email;
     }
     public void setEmail(String email) {
         this.email = email;
     }
 
     @Override
-    public String toString(){
-
-        return nome;
-
-    }
+    public String toString(){return nome;}
 
 }

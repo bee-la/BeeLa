@@ -1,4 +1,4 @@
-package br.ufrpe.beela.gui;
+package br.ufrpe.beela.gui.perfil;
 
 import android.content.Intent;
 import android.graphics.Typeface;
@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import br.ufrpe.beela.gui.Login;
 import br.ufrpe.beela.gui.R;
 
 public class PerguntasMusica extends AppCompatActivity {

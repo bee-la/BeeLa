@@ -1,4 +1,4 @@
-package br.ufrpe.beela.gui;
+package br.ufrpe.beela.gui.perfil;
 
 import android.content.Intent;
 import android.graphics.Typeface;
@@ -12,6 +12,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.ufrpe.beela.gui.Login;
 import br.ufrpe.beela.gui.R;
 
 public class PerguntasComidas extends AppCompatActivity {
@@ -42,33 +43,23 @@ public class PerguntasComidas extends AppCompatActivity {
 
         RespostaButton13.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                atualizarRespostasMassa();
-            }
+            public void onClick(View view) {atualizarRespostasMassa();}
         });
-
         RespostaButton15.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                atualizarRespostasOriental();
-            }
+            public void onClick(View view) {atualizarRespostasOriental();}
         });
-
         RespostaButton16.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                atualizarRespostasCarne();
-            }
+            public void onClick(View view) {atualizarRespostasCarne();}
         });
-
         RespostaButton17.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 comidaSelecionada =RespostaButton17.getText().toString();
                 mensagem=Toast.makeText(getApplicationContext(), "Sua Escolha: "+comidaSelecionada, Toast.LENGTH_SHORT);
                 mensagem.show();
-                // ESTOU SETANDO DIRETO
-                //Login.usuario.getPerfil().setComida(comidaSelecionada);
+
                 alterarTelaMusica();
             }
         });
@@ -79,8 +70,6 @@ public class PerguntasComidas extends AppCompatActivity {
             comidaSelecionada = RespostaButton13.getText().toString();
             mensagem=Toast.makeText(getApplicationContext(), "Sua Escolha: "+comidaSelecionada, Toast.LENGTH_SHORT);
             mensagem.show();
-            // ESTOU SETANDO DIRETO
-            //Login.usuario.perfil.setComida(comidaSelecionada);
             alterarTelaMusica();
 
         }
@@ -98,8 +87,6 @@ public class PerguntasComidas extends AppCompatActivity {
             comidaSelecionada = RespostaButton15.getText().toString();
             mensagem=Toast.makeText(getApplicationContext(), "Sua Escolha: "+comidaSelecionada, Toast.LENGTH_SHORT);
             mensagem.show();
-            // ESTOU SETANDO DIRETO
-            //Login.usuario.perfil.setComida(comidaSelecionada);
             alterarTelaMusica();
 
         }
@@ -118,8 +105,6 @@ public class PerguntasComidas extends AppCompatActivity {
             comidaSelecionada+=RespostaButton16.getText();
             mensagem=Toast.makeText(getApplicationContext(), "Sua Escolha: "+comidaSelecionada, Toast.LENGTH_SHORT);
             mensagem.show();
-            // ESTOU SETANDO DIRETO
-            //Login.usuario.perfil.setComida(comidaSelecionada);
             alterarTelaMusica();
 
         }
