@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import br.ufrpe.beela.GUI.R;
 
 public class Configuracoes extends AppCompatActivity {
-
+    //Jesus
     private Button apagarButton7, alterarNomeButton5, alterarSenhaButton6, sairButton8;
     private TextView nomeTextView11;
     private ArrayList<TextView> textos= new ArrayList<TextView>();
