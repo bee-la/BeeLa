@@ -10,7 +10,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:230371755173:android:4820e05055a70916",
         "android_client_info": {
-          "package_name": "br.rodriguesufrpe.anderson.beela"
+          "package_name": "br.ufrpe.beela"
         }
       },
       "oauth_client": [
@@ -18,7 +18,7 @@
           "client_id": "230371755173-v1nk9lmicjfla9a294634klqjqnvji38.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "br.rodriguesufrpe.anderson.beela",
+            "package_name": "br.ufrpe.beela",
             "certificate_hash": "2022aabc0c5dabd63e6a84e1bccd933241980f2b"
           }
         },

@@ -1,4 +1,4 @@
-package br.rodriguesufrpe.anderson.beela;
+package br.ufrpe.beela.GUI;
 
 import android.content.Intent;
 import android.graphics.Typeface;
@@ -9,9 +9,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.List;
+import br.ufrpe.beela.GUI.R;
 
 public class home extends AppCompatActivity {
     private TextView eAi;

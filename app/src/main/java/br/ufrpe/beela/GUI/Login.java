@@ -1,4 +1,4 @@
-package br.rodriguesufrpe.anderson.beela;
+package br.ufrpe.beela.GUI;
 
 import android.content.Intent;
 import android.graphics.Typeface;
@@ -9,8 +9,10 @@ import android.widget.TextView;
 import android.view.View;
 import android.widget.*;
 
-import java.util.ArrayList;
-import java.util.List;
+import br.ufrpe.beela.NEGOCIAÇAO.Criptografia;
+import br.ufrpe.beela.GUI.R;
+import br.ufrpe.beela.DAO.BDcomandosUsuario;
+import br.ufrpe.beela.NEGOCIAÇAO.Usuario;
 
 public class Login extends AppCompatActivity {
     public static Usuario usuario = new Usuario();
@@ -91,7 +93,7 @@ public class Login extends AppCompatActivity {
     }
 
     public void entrarSucessoLogin(){
-        BDcomandos bd = new BDcomandos(this,"R");
+        BDcomandosUsuario bd = new BDcomandosUsuario(this,"R");
         //list = bd.buscar();
         String senhaCriptografada = Criptografia.criptografar(senha);
 

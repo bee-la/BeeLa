@@ -1,4 +1,4 @@
-package br.rodriguesufrpe.anderson.beela;
+package br.ufrpe.beela.GUI;
 
 import android.content.Intent;
 import android.graphics.Typeface;
@@ -9,6 +9,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Button;
 import android.widget.Toast;
+
+import br.ufrpe.beela.GUI.R;
+import br.ufrpe.beela.DAO.BDcomandosUsuario;
 
 public class AlterarNome extends AppCompatActivity {
     private TextView alterarNomeText3;
@@ -48,7 +51,7 @@ public class AlterarNome extends AppCompatActivity {
     }
 
     public void alterarSucessoNome(){
-        BDcomandos bd = new BDcomandos(this,"W");
+        BDcomandosUsuario bd = new BDcomandosUsuario(this,"W");
         bd.updateNome(Login.usuario,alterarNome);
         Login.usuario.setNome(alterarNome);
         Toast Sucesso;

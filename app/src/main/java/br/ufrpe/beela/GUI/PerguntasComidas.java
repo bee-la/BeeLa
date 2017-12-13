@@ -1,4 +1,4 @@
-package br.rodriguesufrpe.anderson.beela;
+package br.ufrpe.beela.GUI;
 
 import android.content.Intent;
 import android.graphics.Typeface;
@@ -11,6 +11,8 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import br.ufrpe.beela.GUI.R;
 
 public class PerguntasComidas extends AppCompatActivity {
 
@@ -66,7 +68,7 @@ public class PerguntasComidas extends AppCompatActivity {
                 mensagem=Toast.makeText(getApplicationContext(), "Sua Escolha: "+comidaSelecionada, Toast.LENGTH_SHORT);
                 mensagem.show();
                 // ESTOU SETANDO DIRETO
-                Login.usuario.perfil.setComida(comidaSelecionada);
+                //Login.usuario.getPerfil().setComida(comidaSelecionada);
                 alterarTelaMusica();
             }
         });
@@ -78,7 +80,7 @@ public class PerguntasComidas extends AppCompatActivity {
             mensagem=Toast.makeText(getApplicationContext(), "Sua Escolha: "+comidaSelecionada, Toast.LENGTH_SHORT);
             mensagem.show();
             // ESTOU SETANDO DIRETO
-            Login.usuario.perfil.setComida(comidaSelecionada);
+            //Login.usuario.perfil.setComida(comidaSelecionada);
             alterarTelaMusica();
 
         }
@@ -97,7 +99,7 @@ public class PerguntasComidas extends AppCompatActivity {
             mensagem=Toast.makeText(getApplicationContext(), "Sua Escolha: "+comidaSelecionada, Toast.LENGTH_SHORT);
             mensagem.show();
             // ESTOU SETANDO DIRETO
-            Login.usuario.perfil.setComida(comidaSelecionada);
+            //Login.usuario.perfil.setComida(comidaSelecionada);
             alterarTelaMusica();
 
         }
@@ -117,7 +119,7 @@ public class PerguntasComidas extends AppCompatActivity {
             mensagem=Toast.makeText(getApplicationContext(), "Sua Escolha: "+comidaSelecionada, Toast.LENGTH_SHORT);
             mensagem.show();
             // ESTOU SETANDO DIRETO
-            Login.usuario.perfil.setComida(comidaSelecionada);
+            //Login.usuario.perfil.setComida(comidaSelecionada);
             alterarTelaMusica();
 
         }
@@ -131,6 +133,7 @@ public class PerguntasComidas extends AppCompatActivity {
     }
 
     private void alterarTelaMusica(){
+        Login.usuario.getPerfil().setComida(comidaSelecionada);
         startActivity(new Intent(PerguntasComidas.this, PerguntasMusica.class));
     }
 }

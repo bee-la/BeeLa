@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--suppress ALL -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="br.rodriguesufrpe.anderson.beela">
+    package="br.ufrpe.beela.GUI">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -12,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme">
         <activity
-            android:name=".Login"
+            android:name="br.ufrpe.beela.GUI.Login"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -21,37 +22,37 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".CriarConta"
+            android:name="br.ufrpe.beela.GUI.CriarConta"
             android:label="@string/criarConta" />
         <activity
-            android:name=".home"
+            android:name="br.ufrpe.beela.GUI.home"
             android:label="@string/BeeLa" />
         <activity
-            android:name=".Configuracoes"
+            android:name="br.ufrpe.beela.GUI.Configuracoes"
             android:label="@string/Configuracoes" />
         <activity
-            android:name=".ApagarConta"
+            android:name="br.ufrpe.beela.GUI.ApagarConta"
             android:label="@string/ApagarConta" />
         <activity
-            android:name=".AlterarNome"
+            android:name="br.ufrpe.beela.GUI.AlterarNome"
             android:label="@string/AlterarNome" />
         <activity
-            android:name=".AlterarSenha"
+            android:name="br.ufrpe.beela.GUI.AlterarSenha"
             android:label="@string/AlterarSenha" />
         <activity
-            android:name=".EsqueceuSenha"
+            android:name="br.ufrpe.beela.GUI.EsqueceuSenha"
             android:label="@string/esqueciSenha" />
         <activity
             android:name=".Perfil"
             android:label="@string/perfil" />
         <activity
-            android:name=".PerguntasComidas"
+            android:name="br.ufrpe.beela.GUI.PerguntasComidas"
             android:label="@string/adicionarPerfil" />
         <activity
-            android:name=".PerguntasMusica"
+            android:name="br.ufrpe.beela.GUI.PerguntasMusica"
             android:label="@string/adicionarPerfil" />
         <activity
-            android:name=".NomePerfil"
+            android:name="br.ufrpe.beela.GUI.NomePerfil"
             android:label="@string/nomePerfil"></activity>
     </application>
 

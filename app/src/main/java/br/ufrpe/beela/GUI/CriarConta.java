@@ -1,4 +1,4 @@
-package br.rodriguesufrpe.anderson.beela;
+package br.ufrpe.beela.GUI;
 
 import android.content.Intent;
 import android.graphics.Typeface;
@@ -12,10 +12,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+
+import br.ufrpe.beela.NEGOCIAÇAO.Criptografia;
+import br.ufrpe.beela.GUI.R;
+import br.ufrpe.beela.DAO.BDcomandosUsuario;
+import br.ufrpe.beela.NEGOCIAÇAO.Usuario;
 
 public class CriarConta extends AppCompatActivity {
 //    private TextView textViewNome, textViewCelular,  textViewEmail, textViewSenha, textViewRepetirSenha;
@@ -150,7 +154,6 @@ public class CriarConta extends AppCompatActivity {
         editText5Celular = (EditText)findViewById(R.id.editText5);
 
         Usuario u = new Usuario();
-       // u.setId(Integer.parseInt(UUID.randomUUID().toString()));
         u.setCelular(editText5Celular.getText().toString());
         u.setEmail(editText6Email.getText().toString());
         u.setNome(editText4Nome.getText().toString());
@@ -160,7 +163,7 @@ public class CriarConta extends AppCompatActivity {
         return u;
     }
     public void salvarBanco(){
-        BDcomandos bd = new BDcomandos(this,"W");
+        BDcomandosUsuario bd = new BDcomandosUsuario(this,"W");
         bd.inserir(criarObjetoPessoa());
     }
 
@@ -168,7 +171,7 @@ public class CriarConta extends AppCompatActivity {
         String email=editText6Email.getText().toString().trim();
         String celular=editText5Celular.getText().toString().trim();
 
-        BDcomandos bd = new BDcomandos(this,"R");
+        BDcomandosUsuario bd = new BDcomandosUsuario(this,"R");
         if (bd.buscarVEmail(email,celular)){
             existeCelularEmail=true;
         }

@@ -1,21 +1,22 @@
-package br.rodriguesufrpe.anderson.beela;
+package br.ufrpe.beela.GUI;
 
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
 import java.util.ArrayList;
 
+import br.ufrpe.beela.GUI.R;
+import br.ufrpe.beela.DAO.BDcomandosPerfil;
+
 public class Perfil extends AppCompatActivity {
     private int id;
     private int id_usuario;
-    private String nome;
+    private String nome = "";
     private String comida;
     private String musica;
     private String esporte;
@@ -30,7 +31,7 @@ public class Perfil extends AppCompatActivity {
     public String getEsporte(){return this.esporte;}
 
     public void setId(int id){this.id = id;}
-    public void setId_usuario(int id_usuario) {this.id_usuario =Login.usuario.getId();}
+    public void setId_usuario(int id_usuario) {this.id_usuario = Login.usuario.getId();}
     public void setNome(String nome){this.nome = nome;}
     public void setComida(String comida){this.comida = comida;}
     public void setMusica(String musica){this.musica = musica;}
@@ -55,15 +56,19 @@ public class Perfil extends AppCompatActivity {
     private void adicionarPerfilTrocarTela() {
         startActivity(new Intent(Perfil.this, PerguntasComidas.class));
 //        Login.usuario.perfil.setNome("TESTE");
-//        setarNome();
+          setarNome();
     }
 
     private ArrayList chamarPerfil(){
         ArrayList<Perfil> listaPerfil = new ArrayList<Perfil>();
-        BDcomandos bd = new BDcomandos(this,"R");
+        BDcomandosPerfil bd = new BDcomandosPerfil(this,"R");
         return listaPerfil = bd.getPerfil();
     }
-//    private void setarNome(){
-//        nomeTextView.setText(Login.usuario.perfil.getNome());
-//    }
+    private void setarNome(){
+        if (Login.usuario.getPerfil().getNome() == ""){
+        nomeTextView.setText(Login.usuario.getPerfil().getNome());}
+        else{
+        nomeTextView.setText(Login.usuario.getPerfil().getNome());}
+
+    }
 }

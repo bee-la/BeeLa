@@ -1,4 +1,6 @@
-package br.rodriguesufrpe.anderson.beela;
+package br.ufrpe.beela.NEGOCIAÇAO;
+
+import br.ufrpe.beela.GUI.Perfil;
 
 /**
  * Created by max on 05/12/17.
@@ -12,11 +14,12 @@ public class Usuario {
     private String celular;
     Perfil perfil = new Perfil();
 
+    public void setPerfil(Perfil perfil){this.perfil = perfil;}
+    public Perfil getPerfil(){return perfil;}
 
     public String getCelular() {
         return celular;
     }
-
     public void setCelular(String celular) {
         this.celular = celular;
     }
@@ -24,7 +27,6 @@ public class Usuario {
     public int getId() {
         return Id;
     }
-
     public void setId(int id) {
         Id = id;
     }
@@ -32,7 +34,6 @@ public class Usuario {
     public String getNome() {
         return nome;
     }
-
     public void setNome(String nome) {
         this.nome = nome;
     }
@@ -40,7 +41,6 @@ public class Usuario {
     public String getSenha() {
         return senha;
     }
-
     public void setSenha(String senha) {
         this.senha = senha;
     }
@@ -48,7 +48,6 @@ public class Usuario {
     public String getEmail() {
         return email;
     }
-
     public void setEmail(String email) {
         this.email = email;
     }

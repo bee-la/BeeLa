@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--suppress ALL -->
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/preto"
-    tools:context="br.rodriguesufrpe.anderson.beela.home">
+    tools:context="beela.br.ufrpe.beela.GUI.home">
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/preto"
-        tools:context="br.rodriguesufrpe.anderson.beela.home">
+        tools:context="beela.br.ufrpe.beela.GUI.home">
 
         <TextView
             android:id="@+id/textView4"

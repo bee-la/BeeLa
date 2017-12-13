@@ -1,15 +1,18 @@
-package br.rodriguesufrpe.anderson.beela;
+package br.ufrpe.beela.GUI;
 
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import br.ufrpe.beela.NEGOCIAÇAO.Criptografia;
+import br.ufrpe.beela.GUI.R;
+import br.ufrpe.beela.DAO.BDcomandosUsuario;
 
 public class AlterarSenha extends AppCompatActivity {
 
@@ -74,7 +77,7 @@ public class AlterarSenha extends AppCompatActivity {
     public void alterarSucessoSenha(){
         senhaAlterada=Toast.makeText(getApplicationContext(), R.string.senhaAlterada, Toast.LENGTH_SHORT);
         // TODO código que der certo se coloca aqui(Query do banco).
-        BDcomandos bd = new BDcomandos(this,"W");
+        BDcomandosUsuario bd = new BDcomandosUsuario(this,"W");
         bd.updateSenha(Login.usuario,Criptografia.criptografar(novaSenha));
         Login.usuario.setSenha(Criptografia.criptografar(novaSenha));
         senhaAlterada.show();

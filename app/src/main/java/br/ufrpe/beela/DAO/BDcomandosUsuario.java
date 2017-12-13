@@ -1,4 +1,4 @@
-package br.rodriguesufrpe.anderson.beela;
+package br.ufrpe.beela.DAO;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -8,14 +8,18 @@ import android.database.sqlite.SQLiteDatabase;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.ufrpe.beela.GUI.Login;
+import br.ufrpe.beela.GUI.Perfil;
+import br.ufrpe.beela.NEGOCIAÇAO.Usuario;
+
 /**
  * Created by vidal on 05/12/2017.
  * modificado por vidal 07/12
  */
 
-public class BDcomandos {
+public class BDcomandosUsuario {
     private SQLiteDatabase bd;
-    public BDcomandos(Context context,String tipo){
+    public BDcomandosUsuario(Context context, String tipo){
         BD auxBd = new BD(context);
         if(tipo.equals("R")){ bd = auxBd.getReadableDatabase();}
         else{bd = auxBd.getWritableDatabase();}
@@ -151,7 +155,7 @@ public class BDcomandos {
     }
     public ArrayList<Perfil> getPerfil(){
         ArrayList<Perfil> list = new ArrayList<Perfil>();
-        String where ="SELECT * FROM perfilUsuario WHERE id_usuario = '"+Login.usuario.getId()+"'";
+        String where ="SELECT * FROM perfilUsuario WHERE id_usuario = '"+ Login.usuario.getId()+"'";
         Cursor cursor = bd.rawQuery(where,null);
         if (cursor.getCount()>0){
             cursor.moveToFirst();
