@@ -18,7 +18,6 @@ public class PerguntasComidas extends AppCompatActivity {
 
     private Button RespostaButton13, RespostaButton15, RespostaButton16, RespostaButton17;
     private PerguntasRespostas perguntasTela=new PerguntasRespostas();
-    private List<String> comidaEscolhida=new ArrayList<String>();
     private String comidaSelecionada;
     private Toast mensagem;
     private int contador;
