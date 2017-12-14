@@ -14,7 +14,7 @@ import br.ufrpe.beela.gui.usuario.AlterarNome;
 import br.ufrpe.beela.gui.usuario.AlterarSenha;
 import br.ufrpe.beela.gui.usuario.ApagarConta;
 
-public class Configuracoes extends AppCompatActivity {
+public class GUIconfiguracoes extends AppCompatActivity {
     //Jesus
     private Button apagarButton7, alterarNomeButton5, alterarSenhaButton6, sairButton8;
     private TextView nomeTextView11;
@@ -56,22 +56,22 @@ public class Configuracoes extends AppCompatActivity {
 
     //----------------------------------Trocar Tela Funções -------------------------------------
     private void alterarNomeButton5() {
-        startActivity(new Intent(Configuracoes.this, AlterarNome.class));
+        startActivity(new Intent(GUIconfiguracoes.this, AlterarNome.class));
 }
 
     private void alterarSenhaButton6 () {
-        startActivity(new Intent(Configuracoes.this, AlterarSenha.class));
+        startActivity(new Intent(GUIconfiguracoes.this, AlterarSenha.class));
     }
 
     private void apagarButton7() {
-        startActivity(new Intent(Configuracoes.this, ApagarConta.class));
+        startActivity(new Intent(GUIconfiguracoes.this, ApagarConta.class));
     }
 
     private void sairButton7() {
-        startActivity(new Intent(Configuracoes.this, Login.class));
+        startActivity(new Intent(GUIconfiguracoes.this, GUILogin.class));
     }
 
     private void setarNome(){
-        nomeTextView11.setText(Login.usuario.getNome());
+        nomeTextView11.setText(GUILogin.usuario.getNome());
     }
 }

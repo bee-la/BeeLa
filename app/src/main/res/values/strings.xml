@@ -24,8 +24,7 @@
     <string name="AlterarSenha">Alterar Senha</string>
     <string name="ApagarConta">Apagar Conta</string>
     <string name="Sair">Sair</string>
-
-    <!-- Login-->
+    <!--Usuario GUI login e Criar conta-->
     <string name="Senha">Senha</string>
     <string name="Email">E-mail</string>
     <string name="Lembrar">Lembrar de mim</string>

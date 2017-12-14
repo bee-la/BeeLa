@@ -1,4 +1,4 @@
-package br.ufrpe.beela.dao.perfil;
+package br.ufrpe.beela.perfil.dao;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -7,11 +7,9 @@ import android.database.sqlite.SQLiteDatabase;
 
 import java.util.ArrayList;
 
-import br.ufrpe.beela.dao.BD;
-import br.ufrpe.beela.gui.Login;
-import br.ufrpe.beela.gui.perfil.NomePerfil;
-import br.ufrpe.beela.negociaçao.perfil.PerfilUsuario;
-import br.ufrpe.beela.negociaçao.usuario.Usuario;
+import br.ufrpe.beela.database.dao.BD;
+import br.ufrpe.beela.perfil.dominio.PerfilUsuario;
+import br.ufrpe.beela.usuario.dominio.Usuario;
 
 /**
  * Created by vidal on 05/12/2017.
@@ -38,18 +36,18 @@ public class BDcomandosPerfil {
         bd.insert("perfilUsuario", null, valores);
         bd.close();
     }
-    public void updatePerfil(Usuario usuario) {
-        String where = "id_usuario = " + usuario.getId()+" AND nome_perfil = "+ usuario.getPerfil().getNome();
+    public void updatePerfil(PerfilUsuario perfil) {
+        String where = "id_usuario = " + perfil.getId_Usuario()+" AND nome_perfil = "+ perfil.getNome();
         ContentValues valores = new ContentValues();
-        valores.put("comida", usuario.getPerfil().getComida());
-        valores.put("musica", usuario.getPerfil().getMusica());
+        valores.put("comida", perfil.getComida());
+        valores.put("musica", perfil.getMusica());
 //        valores.put("esporte", usuario.getPerfil().getEsporte());
 
         bd.update("perfilUsuario", valores, where,null);
         bd.close();
     }
-    public void deletePerfil(Usuario usuario,String NomedoPerfil) {
-        String where = "id_usuario = " + usuario.getId()+" AND nome_perfil = "+ NomedoPerfil;
+    public void deletePerfil(PerfilUsuario perfil) {
+        String where = "id_usuario = " + perfil.getId_Usuario()+" AND nome_perfil = "+ perfil.getNome();
         bd.delete("perfilUsuario", where , null);
         bd.close();}
 
@@ -62,9 +60,9 @@ public class BDcomandosPerfil {
         return false;
     }
 
-    public ArrayList<PerfilUsuario> sqlGetPerfil(){
+    public ArrayList<PerfilUsuario> sqlGetPerfil(Usuario usuario){
         ArrayList<PerfilUsuario> list = new ArrayList<PerfilUsuario>();
-        String where ="SELECT * FROM perfilUsuario WHERE id_usuario = '"+ Login.usuario.getId()+"'";
+        String where ="SELECT * FROM perfilUsuario WHERE id_usuario = '"+ usuario.getId()+"'";
         Cursor cursor = bd.rawQuery(where,null);
         if (cursor.getCount()>0){
             cursor.moveToFirst();

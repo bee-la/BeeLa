@@ -1,4 +1,4 @@
-package br.ufrpe.beela.gui.usuario;
+package br.ufrpe.beela.usuario.gui;
 
 import android.content.Intent;
 import android.graphics.Typeface;
@@ -16,11 +16,10 @@ import java.util.ArrayList;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-import br.ufrpe.beela.gui.Login;
 import br.ufrpe.beela.gui.R;
-import br.ufrpe.beela.negociaçao.usuario.Criptografia;
-import br.ufrpe.beela.dao.usuario.BDcomandosUsuario;
-import br.ufrpe.beela.negociaçao.usuario.Usuario;
+import br.ufrpe.beela.usuario.dao.Criptografia;
+import br.ufrpe.beela.usuario.dao.BDcomandosUsuario;
+import br.ufrpe.beela.usuario.dominio.Usuario;
 
 public class CriarConta extends AppCompatActivity {
 //    private TextView textViewNome, textViewCelular,  textViewEmail, textViewSenha, textViewRepetirSenha;
@@ -94,7 +93,7 @@ public class CriarConta extends AppCompatActivity {
             contaCriada = Toast.makeText(getApplicationContext(), R.string.contaCriada, Toast.LENGTH_SHORT);
             contaCriada.show();
             existeCelularEmail=true;
-            startActivity(new Intent(CriarConta.this, Login.class));
+            startActivity(new Intent(CriarConta.this, GUILogin.class));
         }
         else {
             Toast erro;

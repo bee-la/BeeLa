@@ -6,13 +6,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/preto"
-    tools:context="beela.br.ufrpe.beela.GUI.home">
+    tools:context="br.ufrpe.beela.usuario.gui.GUIhome">
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/preto"
-        tools:context="beela.br.ufrpe.beela.GUI.home">
+        tools:context="br.ufrpe.beela.usuario.gui.GUIhome">
 
         <TextView
             android:id="@+id/textView4"
@@ -92,6 +92,7 @@
 
     </android.support.constraint.ConstraintLayout>
 </ScrollView>
+
 
 
 

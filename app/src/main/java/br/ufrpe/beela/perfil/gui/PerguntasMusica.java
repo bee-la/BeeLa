@@ -1,4 +1,4 @@
-package br.ufrpe.beela.gui.perfil;
+package br.ufrpe.beela.perfil.gui;
 
 import android.content.Intent;
 import android.graphics.Typeface;
@@ -9,7 +9,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import br.ufrpe.beela.gui.Login;
+import br.ufrpe.beela.usuario.gui.GUILogin;
 import br.ufrpe.beela.gui.R;
 
 public class PerguntasMusica extends AppCompatActivity {
@@ -41,7 +41,7 @@ public class PerguntasMusica extends AppCompatActivity {
                 musicaSelecionada=forroButton18.getText().toString();
                 mensagem=Toast.makeText(getApplicationContext(), "Sua Escolha: "+musicaSelecionada, Toast.LENGTH_SHORT);
                 mensagem.show();
-               // Login.usuario.perfil.setMusica(musicaSelecionada);
+               // GUILogin.usuario.perfil.setMusica(musicaSelecionada);
                 alterarTelaPerfil();
             }
         });
@@ -52,7 +52,7 @@ public class PerguntasMusica extends AppCompatActivity {
                 musicaSelecionada=sambaButton19.getText().toString();
                 mensagem=Toast.makeText(getApplicationContext(), "Sua Escolha: "+musicaSelecionada, Toast.LENGTH_SHORT);
                 mensagem.show();
-             //   Login.usuario.perfil.setMusica(musicaSelecionada);
+             //   GUILogin.usuario.perfil.setMusica(musicaSelecionada);
                 alterarTelaPerfil();
             }
         });
@@ -63,7 +63,7 @@ public class PerguntasMusica extends AppCompatActivity {
                 musicaSelecionada=sertanejoButton20.getText().toString();
                 mensagem=Toast.makeText(getApplicationContext(), "Sua Escolha: "+musicaSelecionada, Toast.LENGTH_SHORT);
                 mensagem.show();
-           //     Login.usuario.perfil.setMusica(musicaSelecionada);
+           //     GUILogin.usuario.perfil.setMusica(musicaSelecionada);
                 alterarTelaPerfil();
             }
         });
@@ -75,17 +75,17 @@ public class PerguntasMusica extends AppCompatActivity {
                 mensagem=Toast.makeText(getApplicationContext(), "Sua Escolha: "+musicaSelecionada, Toast.LENGTH_SHORT);
                 mensagem.show();
 // TO SETANDO DIRETO OS ATRIBUTOS
-               // Login.usuario.perfil.setMusica(musicaSelecionada);
+               // GUILogin.usuario.perfil.setMusica(musicaSelecionada);
                 alterarTelaPerfil();
             }
         });
-//        Login.usuario.perfil.setNome(musicaSelecionada);
+//        GUILogin.usuario.perfil.setNome(musicaSelecionada);
 
     }
 
     public void alterarTelaPerfil(){
 //TODO      Na tela de Perfil falta aparecer o perfil que foi adicionado.
-        Login.usuario.getPerfil().setMusica(musicaSelecionada);
+        GUILogin.usuario.getPerfil().setMusica(musicaSelecionada);
         startActivity(new Intent(PerguntasMusica.this, NomePerfil.class));
 
     }

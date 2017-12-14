@@ -1,4 +1,4 @@
-package br.ufrpe.beela.gui;
+package br.ufrpe.beela.usuario.gui;
 
 import android.content.Intent;
 import android.graphics.Typeface;
@@ -9,12 +9,12 @@ import android.widget.TextView;
 import android.view.View;
 import android.widget.*;
 
-import br.ufrpe.beela.gui.usuario.CriarConta;
-import br.ufrpe.beela.negociaçao.usuario.Criptografia;
-import br.ufrpe.beela.dao.usuario.BDcomandosUsuario;
-import br.ufrpe.beela.negociaçao.usuario.Usuario;
+import br.ufrpe.beela.gui.R;
+import br.ufrpe.beela.usuario.dao.Criptografia;
+import br.ufrpe.beela.usuario.dao.BDcomandosUsuario;
+import br.ufrpe.beela.usuario.dominio.Usuario;
 
-public class Login extends AppCompatActivity {
+public class GUILogin extends AppCompatActivity {
     public static Usuario usuario = new Usuario();
     private TextView t, EsqueceuTextView3;
     private Button criarContaButton2, entrarButton;
@@ -75,11 +75,11 @@ public class Login extends AppCompatActivity {
 
 //-----------------------------------------Métodos para trocar de tela--------------------------------------------
     private void esqueceuSenha() {
-        startActivity(new Intent(Login.this, EsqueceuSenha.class));
+        startActivity(new Intent(GUILogin.this, GUIesqueceuSenha.class));
     }
 
     private void criarContaButton2() {
-        startActivity(new Intent(Login.this, CriarConta.class));
+        startActivity(new Intent(GUILogin.this, CriarConta.class));
     }
 
 
@@ -106,6 +106,7 @@ public class Login extends AppCompatActivity {
 //        }
 //        if(loga==true){
         if(bd.buscarVLogin(email, senhaCriptografada)){
+            Usuario usuario = new Usuario();
             usuario = bd.sqlRetornaObjetoUsuario(email, senhaCriptografada);
             entrarHome(); }
         else{
@@ -113,7 +114,7 @@ public class Login extends AppCompatActivity {
     }
 
     private void entrarHome() {
-        startActivity(new Intent(Login.this, home.class));}
+        startActivity(new Intent(GUILogin.this, GUIhome.class));}
 
     public boolean ehValidoLogin(){
         boolean valido=true;

@@ -1,4 +1,4 @@
-package br.ufrpe.beela.gui.perfil;
+package br.ufrpe.beela.perfil.gui;
 
 import android.content.Intent;
 import android.graphics.Typeface;
@@ -12,7 +12,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.ufrpe.beela.gui.Login;
+import br.ufrpe.beela.usuario.gui.GUILogin;
 import br.ufrpe.beela.gui.R;
 
 public class PerguntasComidas extends AppCompatActivity {
@@ -118,7 +118,7 @@ public class PerguntasComidas extends AppCompatActivity {
     }
 
     private void alterarTelaMusica(){
-        Login.usuario.getPerfil().setComida(comidaSelecionada);
+        GUILogin.usuario.getPerfil().setComida(comidaSelecionada);
         startActivity(new Intent(PerguntasComidas.this, PerguntasMusica.class));
     }
 }

@@ -1,4 +1,4 @@
-package br.ufrpe.beela.gui.perfil;
+package br.ufrpe.beela.perfil.gui;
 
 /**
  * Created by Anderson on 09/12/2017.

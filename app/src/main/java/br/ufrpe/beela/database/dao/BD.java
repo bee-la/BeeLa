@@ -1,4 +1,4 @@
-package br.ufrpe.beela.dao;
+package br.ufrpe.beela.database.dao;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;

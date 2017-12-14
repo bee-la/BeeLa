@@ -1,4 +1,4 @@
-package br.ufrpe.beela.negociaçao.usuario;
+package br.ufrpe.beela.usuario.dao;
 
 import java.math.BigInteger;
 import java.security.MessageDigest;

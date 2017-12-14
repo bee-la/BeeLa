@@ -1,4 +1,4 @@
-package br.ufrpe.beela.gui.perfil;
+package br.ufrpe.beela.perfil.gui;
 
 import android.content.Intent;
 import android.graphics.Typeface;
@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-import br.ufrpe.beela.gui.Login;
+import br.ufrpe.beela.usuario.gui.GUILogin;
 import br.ufrpe.beela.gui.R;
 
 public class Perfil extends AppCompatActivity {
@@ -39,10 +39,10 @@ public class Perfil extends AppCompatActivity {
     }
 
     private void setarNome(){
-        if (Login.usuario.getPerfil().getNome() == ""){
-        nomeTextView.setText(Login.usuario.getPerfil().getNome());}
+        if (GUILogin.usuario.getPerfil().getNome() == ""){
+        nomeTextView.setText(GUILogin.usuario.getPerfil().getNome());}
         else{
-        nomeTextView.setText(Login.usuario.getPerfil().getNome());}
+        nomeTextView.setText(GUILogin.usuario.getPerfil().getNome());}
 
     }
 }

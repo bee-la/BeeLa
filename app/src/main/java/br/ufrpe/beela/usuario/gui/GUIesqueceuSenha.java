@@ -5,7 +5,7 @@ import android.os.Bundle;
 
 import br.ufrpe.beela.gui.R;
 
-public class EsqueceuSenha extends AppCompatActivity {
+public class GUIesqueceuSenha extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

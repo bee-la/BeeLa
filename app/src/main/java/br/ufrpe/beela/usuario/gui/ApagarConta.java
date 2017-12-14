@@ -1,4 +1,4 @@
-package br.ufrpe.beela.gui.usuario;
+package br.ufrpe.beela.usuario.gui;
 
 import android.content.Intent;
 import android.graphics.Typeface;
@@ -8,10 +8,9 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import br.ufrpe.beela.dao.usuario.BDcomandosUsuario;
-import br.ufrpe.beela.gui.Login;
+import br.ufrpe.beela.usuario.dao.BDcomandosUsuario;
 import br.ufrpe.beela.gui.R;
-import br.ufrpe.beela.negociaçao.usuario.Usuario;
+import br.ufrpe.beela.usuario.dominio.Usuario;
 
 public class ApagarConta extends AppCompatActivity {
     private TextView textButton9;
@@ -34,11 +33,11 @@ public class ApagarConta extends AppCompatActivity {
 
     public void deletarConta() {
         BDcomandosUsuario bd = new BDcomandosUsuario(this,"W");
-        bd.delete(Login.usuario);
+        bd.delete(GUILogin.usuario);
         Toast Sucesso;
         Sucesso = Toast.makeText(getApplicationContext(), "Conta Deletada", Toast.LENGTH_SHORT);
         Sucesso.show();
         Usuario usuario = new Usuario();
-        startActivity(new Intent(ApagarConta.this, Login.class));
+        startActivity(new Intent(ApagarConta.this, GUILogin.class));
     }
 }

@@ -1,4 +1,4 @@
-package br.ufrpe.beela.gui.usuario;
+package br.ufrpe.beela.usuario.gui;
 
 import android.content.Intent;
 import android.graphics.Typeface;
@@ -10,10 +10,8 @@ import android.widget.TextView;
 import android.widget.Button;
 import android.widget.Toast;
 
-import br.ufrpe.beela.gui.Login;
 import br.ufrpe.beela.gui.R;
-import br.ufrpe.beela.dao.usuario.BDcomandosUsuario;
-import br.ufrpe.beela.gui.home;
+import br.ufrpe.beela.usuario.dao.BDcomandosUsuario;
 
 public class AlterarNome extends AppCompatActivity {
     private TextView alterarNomeText3;
@@ -54,12 +52,12 @@ public class AlterarNome extends AppCompatActivity {
 
     public void alterarSucessoNome(){
         BDcomandosUsuario bd = new BDcomandosUsuario(this,"W");
-        bd.updateNome(Login.usuario,alterarNome);
-        Login.usuario.setNome(alterarNome);
+        bd.updateNome(GUILogin.usuario,alterarNome);
+        GUILogin.usuario.setNome(alterarNome);
         Toast Sucesso;
         Sucesso = Toast.makeText(getApplicationContext(), "Nome Alterado", Toast.LENGTH_SHORT);
         Sucesso.show();
-        startActivity(new Intent(AlterarNome.this, home.class));
+        startActivity(new Intent(AlterarNome.this, GUIhome.class));
 
 
     }
@@ -73,7 +71,7 @@ public class AlterarNome extends AppCompatActivity {
             alterarNomeEditText3.setError(getString(R.string.campoVazio));
             valido = false;
         }
-        else if(alterarNome.equals(Login.usuario.getNome())){
+        else if(alterarNome.equals(GUILogin.usuario.getNome())){
             alterarNomeEditText3.setError("Nome Iguais");
             valido = false;
         }

@@ -1,6 +1,6 @@
-package br.ufrpe.beela.negociaçao.perfil;
+package br.ufrpe.beela.perfil.dominio;
 
-import br.ufrpe.beela.gui.Login;
+import br.ufrpe.beela.usuario.gui.GUILogin;
 
 /**
  * Created by vidal on 13/12/2017.
@@ -21,7 +21,7 @@ public class PerfilUsuario {
     public String getEsporte(){return this.esporte;}
 
     public void setId(int id){this.id = id;}
-    public void setId_usuario(int id_usuario) {this.id_usuario = Login.usuario.getId();}
+    public void setId_usuario(int id_usuario) {this.id_usuario = GUILogin.usuario.getId();}
     public void setNome(String nome){this.nome = nome;}
     public void setComida(String comida){this.comida = comida;}
     public void setMusica(String musica){this.musica = musica;}
