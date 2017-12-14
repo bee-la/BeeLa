@@ -7,15 +7,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-
-
-<<<<<<< HEAD:app/src/main/java/br/ufrpe/beela/perfil/gui/NomePerfilAct.java
-import br.ufrpe.beela.perfil.dao.BDcomandosPerfil;
 import br.ufrpe.beela.usuario.gui.LoginAct;
-=======
 import br.ufrpe.beela.perfil.dao.PerfilDAO;
-import br.ufrpe.beela.usuario.gui.GUILogin;
->>>>>>> desenvolvedor2:app/src/main/java/br/ufrpe/beela/perfil/gui/NomePerfil.java
 import br.ufrpe.beela.gui.R;
 
 public class NomePerfilAct extends AppCompatActivity {
@@ -45,17 +38,10 @@ public class NomePerfilAct extends AppCompatActivity {
     
 //TODO      NullPointExcept ao chamar essa função
     public void chamarSetarNomePerfil(String nomePerfil){
-<<<<<<< HEAD:app/src/main/java/br/ufrpe/beela/perfil/gui/NomePerfilAct.java
         LoginAct.usuario.getPerfil().setNome(nomePerfil);
-        BDcomandosPerfil bd = new BDcomandosPerfil(this,"W");
+        PerfilDAO bd = new PerfilDAO(this,"W");
         bd.inserirPerfil(LoginAct.usuario.getPerfil());
         startActivity(new Intent(NomePerfilAct.this, PerfilAct.class));
-=======
-        GUILogin.usuario.getPerfil().setNome(nomePerfil);
-        PerfilDAO bd = new PerfilDAO(this,"W");
-        bd.inserirPerfil(GUILogin.usuario.getPerfil());
-        startActivity(new Intent(NomePerfil.this, Perfil.class));
->>>>>>> desenvolvedor2:app/src/main/java/br/ufrpe/beela/perfil/gui/NomePerfil.java
     }
 
 

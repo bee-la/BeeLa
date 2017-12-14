@@ -51,15 +51,9 @@ public class AlterarNomeAct extends AppCompatActivity {
     }
 
     public void alterarSucessoNome(){
-<<<<<<< HEAD:app/src/main/java/br/ufrpe/beela/usuario/gui/AlterarNomeAct.java
-        BDcomandosUsuario bd = new BDcomandosUsuario(this,"W");
+        UsuarioDAO bd = new UsuarioDAO(this,"W");
         bd.updateNome(LoginAct.usuario,alterarNome);
         LoginAct.usuario.setNome(alterarNome);
-=======
-        UsuarioDAO bd = new UsuarioDAO(this,"W");
-        bd.updateNome(GUILogin.usuario,alterarNome);
-        GUILogin.usuario.setNome(alterarNome);
->>>>>>> desenvolvedor2:app/src/main/java/br/ufrpe/beela/usuario/gui/AlterarNome.java
         Toast Sucesso;
         Sucesso = Toast.makeText(getApplicationContext(), "Nome Alterado", Toast.LENGTH_SHORT);
         Sucesso.show();
