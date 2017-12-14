@@ -59,10 +59,8 @@ public class BDcomandosPerfil {
         String where ="SELECT * FROM perfilUsuario WHERE id_usuario = " + usuario.getId()+" AND nome_perfil = "+ NomedoPerfil;
         Cursor cursor = bd.rawQuery(where , null);
         if (cursor.getCount()>0){
-            bd.close();
             return true;
         }
-        bd.close();
         return false;
     }
 
