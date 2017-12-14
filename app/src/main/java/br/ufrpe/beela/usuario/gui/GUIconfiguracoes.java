@@ -1,4 +1,4 @@
-package br.ufrpe.beela.gui;
+package br.ufrpe.beela.usuario.gui;
 
 import android.content.Intent;
 import android.graphics.Typeface;
@@ -10,9 +10,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-import br.ufrpe.beela.gui.usuario.AlterarNome;
-import br.ufrpe.beela.gui.usuario.AlterarSenha;
-import br.ufrpe.beela.gui.usuario.ApagarConta;
+import br.ufrpe.beela.gui.R;
 
 public class GUIconfiguracoes extends AppCompatActivity {
     //Jesus

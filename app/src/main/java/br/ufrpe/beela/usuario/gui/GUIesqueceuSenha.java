@@ -1,4 +1,4 @@
-package br.ufrpe.beela.gui;
+package br.ufrpe.beela.usuario.gui;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
