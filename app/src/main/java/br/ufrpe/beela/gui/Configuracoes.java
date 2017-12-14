@@ -10,7 +10,9 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-import br.ufrpe.beela.gui.R;
+import br.ufrpe.beela.gui.usuario.AlterarNome;
+import br.ufrpe.beela.gui.usuario.AlterarSenha;
+import br.ufrpe.beela.gui.usuario.ApagarConta;
 
 public class Configuracoes extends AppCompatActivity {
     //Jesus

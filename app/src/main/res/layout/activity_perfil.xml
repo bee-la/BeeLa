@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/preto"
-    tools:context=".Perfil">
+    tools:context=".perfil.Perfil">
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
@@ -54,13 +54,13 @@
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="84dp"
-            android:textColor="@color/branco"
             android:text=""
+            android:textColor="@color/branco"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.102"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            />
+            tools:text="teste" />
 
     </android.support.constraint.ConstraintLayout>
 </ScrollView>

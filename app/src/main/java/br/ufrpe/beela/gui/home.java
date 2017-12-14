@@ -9,7 +9,11 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+<<<<<<< HEAD
 import br.ufrpe.beela.gui.R;
+=======
+import br.ufrpe.beela.gui.perfil.Perfil;
+>>>>>>> desenvolvedor2
 
 public class home extends AppCompatActivity {
     private TextView eAi;

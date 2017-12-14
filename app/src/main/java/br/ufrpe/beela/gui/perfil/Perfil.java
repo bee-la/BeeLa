@@ -1,4 +1,4 @@
-package br.ufrpe.beela.gui;
+package br.ufrpe.beela.gui.perfil;
 
 import android.content.Intent;
 import android.graphics.Typeface;
@@ -8,34 +8,13 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-import java.util.ArrayList;
-
+import br.ufrpe.beela.gui.Login;
 import br.ufrpe.beela.gui.R;
-import br.ufrpe.beela.dao.BDcomandosPerfil;
 
 public class Perfil extends AppCompatActivity {
-    private int id;
-    private int id_usuario;
-    private String nome = "";
-    private String comida;
-    private String musica;
-    private String esporte;
-
     private  TextView nomeTextView;
     private ImageButton adicionarPerfilTrocarTela;
 
-    public int getId_Usuario(){return this.id_usuario;}
-    public String getNome(){return this.nome;}
-    public String getComida(){return this.comida;}
-    public String getMusica(){return this.musica;}
-    public String getEsporte(){return this.esporte;}
-
-    public void setId(int id){this.id = id;}
-    public void setId_usuario(int id_usuario) {this.id_usuario = Login.usuario.getId();}
-    public void setNome(String nome){this.nome = nome;}
-    public void setComida(String comida){this.comida = comida;}
-    public void setMusica(String musica){this.musica = musica;}
-    public void setEsporte(String esporte){this.esporte = esporte;}
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +25,7 @@ public class Perfil extends AppCompatActivity {
         nomeTextView =(TextView)findViewById(R.id.textViewPerfil1);
         nomeTextView.setTypeface(fonte);
         adicionarPerfilTrocarTela = (ImageButton) findViewById(R.id.imageButton4);
+
         adicionarPerfilTrocarTela.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -54,16 +34,10 @@ public class Perfil extends AppCompatActivity {
         });
     }
     private void adicionarPerfilTrocarTela() {
+        setarNome();
         startActivity(new Intent(Perfil.this, PerguntasComidas.class));
-//        Login.usuario.perfil.setNome("TESTE");
-          setarNome();
     }
 
-    private ArrayList chamarPerfil(){
-        ArrayList<Perfil> listaPerfil = new ArrayList<Perfil>();
-        BDcomandosPerfil bd = new BDcomandosPerfil(this,"R");
-        return listaPerfil = bd.getPerfil();
-    }
     private void setarNome(){
         if (Login.usuario.getPerfil().getNome() == ""){
         nomeTextView.setText(Login.usuario.getPerfil().getNome());}

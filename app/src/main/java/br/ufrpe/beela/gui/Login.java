@@ -9,10 +9,10 @@ import android.widget.TextView;
 import android.view.View;
 import android.widget.*;
 
-import br.ufrpe.beela.negociaçao.Criptografia;
-import br.ufrpe.beela.gui.R;
-import br.ufrpe.beela.dao.BDcomandosUsuario;
-import br.ufrpe.beela.negociaçao.Usuario;
+import br.ufrpe.beela.gui.usuario.CriarConta;
+import br.ufrpe.beela.negociaçao.usuario.Criptografia;
+import br.ufrpe.beela.dao.usuario.BDcomandosUsuario;
+import br.ufrpe.beela.negociaçao.usuario.Usuario;
 
 public class Login extends AppCompatActivity {
     public static Usuario usuario = new Usuario();

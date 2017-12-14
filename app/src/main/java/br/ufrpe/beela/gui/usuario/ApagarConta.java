@@ -1,4 +1,4 @@
-package br.ufrpe.beela.gui;
+package br.ufrpe.beela.gui.usuario;
 
 import android.content.Intent;
 import android.graphics.Typeface;
@@ -8,9 +8,10 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import br.ufrpe.beela.dao.usuario.BDcomandosUsuario;
+import br.ufrpe.beela.gui.Login;
 import br.ufrpe.beela.gui.R;
-import br.ufrpe.beela.dao.BDcomandosUsuario;
-import br.ufrpe.beela.negociaçao.Usuario;
+import br.ufrpe.beela.negociaçao.usuario.Usuario;
 
 public class ApagarConta extends AppCompatActivity {
     private TextView textButton9;
