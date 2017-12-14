@@ -111,7 +111,7 @@ public class BDcomandosUsuario {
 
     public Usuario sqlRetornaObjetoUsuario(String email,String senha){
         Usuario usuario = new Usuario();
-        String where ="SELECT * FROM usuario WHERE email ='"+email+"'"+"AND senha = '"+senha+"'";
+        String where ="SELECT * FROM usuario WHERE email = '"+email+"'"+"AND senha = '"+senha+"'";
         Cursor cursor = bd.rawQuery(where, null);
         if(cursor.getCount()>0){
             cursor.moveToFirst();
@@ -128,20 +128,16 @@ public class BDcomandosUsuario {
         String where ="SELECT * FROM usuario WHERE email ='"+email+"'"+"OR celular = '"+celular+"'";
         Cursor cursor = bd.rawQuery(where, null);
         if(cursor.getCount()>0){
-            bd.close();
             return true;
         }
-        bd.close();
         return false;
     }
     public boolean buscarVLogin(String email,String senha){
         String where ="SELECT * FROM usuario WHERE email ='"+email+"'"+"AND senha = '"+senha+"'";
         Cursor cursor = bd.rawQuery(where, null);
         if(cursor.getCount()>0){
-            bd.close();
             return true;
         }
-        bd.close();
         return false;
     }
  //   =========================================================================================================
