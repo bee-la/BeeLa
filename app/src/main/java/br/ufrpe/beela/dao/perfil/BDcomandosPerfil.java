@@ -1,5 +1,6 @@
 package br.ufrpe.beela.dao.perfil;
 
+
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -41,7 +42,9 @@ public class BDcomandosPerfil {
 =======
     public ArrayList<PerfilUsuario> sqlGetPerfil(){
         ArrayList<PerfilUsuario> list = new ArrayList<PerfilUsuario>();
+
 >>>>>>> desenvolvedor2:app/src/main/java/br/ufrpe/beela/dao/perfil/BDcomandosPerfil.java
+
         String where ="SELECT * FROM perfilUsuario WHERE id_usuario = '"+ Login.usuario.getId()+"'";
         Cursor cursor = bd.rawQuery(where,null);
         if (cursor.getCount()>0){
