@@ -17,13 +17,12 @@ import br.ufrpe.beela.usuario.dominio.Usuario;
  * modificado por vidal 14/12
  */
 
-public class BDcomandosUsuario {
+public class UsuarioDAO {
     private SQLiteDatabase bd;
-    public BDcomandosUsuario(Context context, String tipo){
+    public UsuarioDAO(Context context, String tipo){
         BD auxBd = new BD(context);
         if(tipo.equals("R")){ bd = auxBd.getReadableDatabase();}
-        else{bd = auxBd.getWritableDatabase();}
-    }
+        else{bd = auxBd.getWritableDatabase();}}
 
     public void inserir(Usuario usuario) {
         ContentValues valores = new ContentValues();

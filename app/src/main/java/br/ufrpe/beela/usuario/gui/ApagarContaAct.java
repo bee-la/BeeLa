@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import br.ufrpe.beela.usuario.dao.BDcomandosUsuario;
+import br.ufrpe.beela.usuario.dao.UsuarioDAO;
 import br.ufrpe.beela.gui.R;
 import br.ufrpe.beela.usuario.dominio.Usuario;
 
@@ -32,8 +32,13 @@ public class ApagarContaAct extends AppCompatActivity {
     }
 
     public void deletarConta() {
+<<<<<<< HEAD:app/src/main/java/br/ufrpe/beela/usuario/gui/ApagarContaAct.java
         BDcomandosUsuario bd = new BDcomandosUsuario(this,"W");
         bd.delete(LoginAct.usuario);
+=======
+        UsuarioDAO bd = new UsuarioDAO(this,"W");
+        bd.delete(GUILogin.usuario);
+>>>>>>> desenvolvedor2:app/src/main/java/br/ufrpe/beela/usuario/gui/ApagarConta.java
         Toast Sucesso;
         Sucesso = Toast.makeText(getApplicationContext(), "Conta Deletada", Toast.LENGTH_SHORT);
         Sucesso.show();

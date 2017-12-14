@@ -18,7 +18,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import br.ufrpe.beela.gui.R;
 import br.ufrpe.beela.usuario.dao.Criptografia;
-import br.ufrpe.beela.usuario.dao.BDcomandosUsuario;
+import br.ufrpe.beela.usuario.dao.UsuarioDAO;
 import br.ufrpe.beela.usuario.dominio.Usuario;
 import br.ufrpe.beela.usuario.negocio.UsuarioService;
 
@@ -170,7 +170,7 @@ public class CriarContaAct extends AppCompatActivity {
         return u;
     }
     public void salvarBanco(){
-        BDcomandosUsuario bd = new BDcomandosUsuario(this,"W");
+        UsuarioDAO bd = new UsuarioDAO(this,"W");
         bd.inserir(criarObjetoPessoa());
     }
 
@@ -178,7 +178,7 @@ public class CriarContaAct extends AppCompatActivity {
         String email=editText6Email.getText().toString().trim();
         String celular=editText5Celular.getText().toString().trim();
 
-        BDcomandosUsuario bd = new BDcomandosUsuario(this,"R");
+        UsuarioDAO bd = new UsuarioDAO(this,"R");
         if (bd.buscarVEmail(email,celular)){
             existeCelularEmail=true;
         }

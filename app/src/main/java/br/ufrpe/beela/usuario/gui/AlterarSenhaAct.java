@@ -12,7 +12,7 @@ import android.widget.Toast;
 
 import br.ufrpe.beela.gui.R;
 import br.ufrpe.beela.usuario.dao.Criptografia;
-import br.ufrpe.beela.usuario.dao.BDcomandosUsuario;
+import br.ufrpe.beela.usuario.dao.UsuarioDAO;
 
 public class AlterarSenhaAct extends AppCompatActivity {
 
@@ -76,10 +76,17 @@ public class AlterarSenhaAct extends AppCompatActivity {
 
     public void alterarSucessoSenha(){
         senhaAlterada=Toast.makeText(getApplicationContext(), R.string.senhaAlterada, Toast.LENGTH_SHORT);
+<<<<<<< HEAD:app/src/main/java/br/ufrpe/beela/usuario/gui/AlterarSenhaAct.java
 //TODO      O código que der certo se coloca aqui(Query do banco).
         BDcomandosUsuario bd = new BDcomandosUsuario(this,"W");
         bd.updateSenha(LoginAct.usuario,Criptografia.criptografar(novaSenha));
         LoginAct.usuario.setSenha(Criptografia.criptografar(novaSenha));
+=======
+        // TODO código que der certo se coloca aqui(Query do banco).
+        UsuarioDAO bd = new UsuarioDAO(this,"W");
+        bd.updateSenha(GUILogin.usuario,Criptografia.criptografar(novaSenha));
+        GUILogin.usuario.setSenha(Criptografia.criptografar(novaSenha));
+>>>>>>> desenvolvedor2:app/src/main/java/br/ufrpe/beela/usuario/gui/AlterarSenha.java
         senhaAlterada.show();
         finish();
 //        startActivity(new Intent(AlterarSenhaAct.this, home.class));
