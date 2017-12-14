@@ -12,7 +12,7 @@ import br.ufrpe.beela.usuario.dao.BDcomandosUsuario;
 import br.ufrpe.beela.gui.R;
 import br.ufrpe.beela.usuario.dominio.Usuario;
 
-public class ApagarConta extends AppCompatActivity {
+public class ApagarContaAct extends AppCompatActivity {
     private TextView textButton9;
 
     @Override
@@ -33,11 +33,11 @@ public class ApagarConta extends AppCompatActivity {
 
     public void deletarConta() {
         BDcomandosUsuario bd = new BDcomandosUsuario(this,"W");
-        bd.delete(GUILogin.usuario);
+        bd.delete(LoginAct.usuario);
         Toast Sucesso;
         Sucesso = Toast.makeText(getApplicationContext(), "Conta Deletada", Toast.LENGTH_SHORT);
         Sucesso.show();
         Usuario usuario = new Usuario();
-        startActivity(new Intent(ApagarConta.this, GUILogin.class));
+        startActivity(new Intent(ApagarContaAct.this, LoginAct.class));
     }
 }

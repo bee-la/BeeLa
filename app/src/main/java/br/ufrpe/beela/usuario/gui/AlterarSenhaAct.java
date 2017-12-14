@@ -14,7 +14,7 @@ import br.ufrpe.beela.gui.R;
 import br.ufrpe.beela.usuario.dao.Criptografia;
 import br.ufrpe.beela.usuario.dao.BDcomandosUsuario;
 
-public class AlterarSenha extends AppCompatActivity {
+public class AlterarSenhaAct extends AppCompatActivity {
 
     private TextView senhaAtualText7,novaSenhaText8, repetirSenhaText9;
     private Button alterarSenhaButton10;
@@ -59,7 +59,7 @@ public class AlterarSenha extends AppCompatActivity {
 
     public void validarCliqueAlterarSenha() {
         senhaAtual = senhaEditText7.getText().toString().trim();
-        if (Criptografia.criptografar(senhaAtual).equals(GUILogin.usuario.getSenha())) {
+        if (Criptografia.criptografar(senhaAtual).equals(LoginAct.usuario.getSenha())) {
             novaSenha = novaSenhaEditText8.getText().toString().trim();
             repetirSenha = repetirSenhaEditText9.getText().toString().trim();
 
@@ -78,15 +78,13 @@ public class AlterarSenha extends AppCompatActivity {
         senhaAlterada=Toast.makeText(getApplicationContext(), R.string.senhaAlterada, Toast.LENGTH_SHORT);
 //TODO      O código que der certo se coloca aqui(Query do banco).
         BDcomandosUsuario bd = new BDcomandosUsuario(this,"W");
-        bd.updateSenha(GUILogin.usuario,Criptografia.criptografar(novaSenha));
-        GUILogin.usuario.setSenha(Criptografia.criptografar(novaSenha));
+        bd.updateSenha(LoginAct.usuario,Criptografia.criptografar(novaSenha));
+        LoginAct.usuario.setSenha(Criptografia.criptografar(novaSenha));
         senhaAlterada.show();
-<<<<<<< HEAD:app/src/main/java/br/ufrpe/beela/gui/usuario/AlterarSenha.java
         finish();
-//        startActivity(new Intent(AlterarSenha.this, home.class));
-=======
-        startActivity(new Intent(AlterarSenha.this, GUIhome.class));
->>>>>>> desenvolvedor2:app/src/main/java/br/ufrpe/beela/usuario/gui/AlterarSenha.java
+//        startActivity(new Intent(AlterarSenhaAct.this, home.class));
+
+        startActivity(new Intent(AlterarSenhaAct.this, HomeAct.class));
     }
 
     public boolean ehValidoAlterarSenha(){

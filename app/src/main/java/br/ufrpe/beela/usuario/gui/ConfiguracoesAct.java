@@ -12,7 +12,7 @@ import java.util.ArrayList;
 
 import br.ufrpe.beela.gui.R;
 
-public class GUIconfiguracoes extends AppCompatActivity {
+public class ConfiguracoesAct extends AppCompatActivity {
     //Jesus
     private Button apagarButton7, alterarNomeButton5, alterarSenhaButton6, sairButton8;
     private TextView nomeTextView11;
@@ -54,22 +54,22 @@ public class GUIconfiguracoes extends AppCompatActivity {
 
     //----------------------------------Trocar Tela Funções -------------------------------------
     private void alterarNomeButton5() {
-        startActivity(new Intent(GUIconfiguracoes.this, AlterarNome.class));
+        startActivity(new Intent(ConfiguracoesAct.this, AlterarNomeAct.class));
 }
 
     private void alterarSenhaButton6 () {
-        startActivity(new Intent(GUIconfiguracoes.this, AlterarSenha.class));
+        startActivity(new Intent(ConfiguracoesAct.this, AlterarSenhaAct.class));
     }
 
     private void apagarButton7() {
-        startActivity(new Intent(GUIconfiguracoes.this, ApagarConta.class));
+        startActivity(new Intent(ConfiguracoesAct.this, ApagarContaAct.class));
     }
 
     private void sairButton7() {
-        startActivity(new Intent(GUIconfiguracoes.this, GUILogin.class));
+        startActivity(new Intent(ConfiguracoesAct.this, LoginAct.class));
     }
 
     private void setarNome(){
-        nomeTextView11.setText(GUILogin.usuario.getNome());
+        nomeTextView11.setText(LoginAct.usuario.getNome());
     }
 }

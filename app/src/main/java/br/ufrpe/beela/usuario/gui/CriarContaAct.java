@@ -21,7 +21,7 @@ import br.ufrpe.beela.usuario.dao.Criptografia;
 import br.ufrpe.beela.usuario.dao.BDcomandosUsuario;
 import br.ufrpe.beela.usuario.dominio.Usuario;
 
-public class CriarConta extends AppCompatActivity {
+public class CriarContaAct extends AppCompatActivity {
 //    private TextView textViewNome, textViewCelular,  textViewEmail, textViewSenha, textViewRepetirSenha;
     private Button criarButton3;
     private Toast contaCriada;
@@ -93,7 +93,7 @@ public class CriarConta extends AppCompatActivity {
             contaCriada = Toast.makeText(getApplicationContext(), R.string.contaCriada, Toast.LENGTH_SHORT);
             contaCriada.show();
             existeCelularEmail=true;
-            startActivity(new Intent(CriarConta.this, GUILogin.class));
+            startActivity(new Intent(CriarContaAct.this, LoginAct.class));
         }
         else {
             Toast erro;

@@ -13,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme">
         <activity
-            android:name="br.ufrpe.beela.usuario.gui.GUILogin"
+            android:name="br.ufrpe.beela.usuario.gui.LoginAct"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,37 +22,37 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="br.ufrpe.beela.usuario.gui.CriarConta"
+            android:name="br.ufrpe.beela.usuario.gui.CriarContaAct"
             android:label="@string/criarConta" />
         <activity
-            android:name="br.ufrpe.beela.usuario.gui.GUIhome"
+            android:name="br.ufrpe.beela.usuario.gui.HomeAct"
             android:label="@string/BeeLa" />
         <activity
-            android:name="br.ufrpe.beela.usuario.gui.GUIconfiguracoes"
+            android:name="br.ufrpe.beela.usuario.gui.ConfiguracoesAct"
             android:label="@string/Configuracoes" />
         <activity
-            android:name="br.ufrpe.beela.usuario.gui.ApagarConta"
+            android:name="br.ufrpe.beela.usuario.gui.ApagarContaAct"
             android:label="@string/ApagarConta" />
         <activity
-            android:name="br.ufrpe.beela.usuario.gui.AlterarNome"
+            android:name="br.ufrpe.beela.usuario.gui.AlterarNomeAct"
             android:label="@string/AlterarNome" />
         <activity
-            android:name="br.ufrpe.beela.usuario.gui.AlterarSenha"
+            android:name="br.ufrpe.beela.usuario.gui.AlterarSenhaAct"
             android:label="@string/AlterarSenha" />
         <activity
-            android:name="br.ufrpe.beela.usuario.gui.GUIesqueceuSenha"
+            android:name="br.ufrpe.beela.usuario.gui.EsqueceuSenhaAct"
             android:label="@string/esqueciSenha" />
         <activity
-            android:name="br.ufrpe.beela.perfil.gui.Perfil"
+            android:name="br.ufrpe.beela.perfil.gui.PerfilAct"
             android:label="@string/perfil" />
         <activity
-            android:name="br.ufrpe.beela.perfil.gui.PerguntasComidas"
+            android:name="br.ufrpe.beela.perfil.gui.PerguntasComidasAct"
             android:label="@string/adicionarPerfil" />
         <activity
-            android:name="br.ufrpe.beela.perfil.gui.PerguntasMusica"
+            android:name="br.ufrpe.beela.perfil.gui.PerguntasMusicaAct"
             android:label="@string/adicionarPerfil" />
         <activity
-            android:name="br.ufrpe.beela.perfil.gui.NomePerfil"
+            android:name="br.ufrpe.beela.perfil.gui.NomePerfilAct"
             android:label="@string/nomePerfil"></activity>
     </application>
 

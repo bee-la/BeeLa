@@ -10,10 +10,10 @@ import android.widget.TextView;
 
 
 import br.ufrpe.beela.perfil.dao.BDcomandosPerfil;
-import br.ufrpe.beela.usuario.gui.GUILogin;
+import br.ufrpe.beela.usuario.gui.LoginAct;
 import br.ufrpe.beela.gui.R;
 
-public class NomePerfil extends AppCompatActivity {
+public class NomePerfilAct extends AppCompatActivity {
 
     private EditText nomePerfilEditText12;
     private TextView nomeTextViewPerfil1;
@@ -40,10 +40,10 @@ public class NomePerfil extends AppCompatActivity {
     
 //TODO      NullPointExcept ao chamar essa função
     public void chamarSetarNomePerfil(String nomePerfil){
-        GUILogin.usuario.getPerfil().setNome(nomePerfil);
+        LoginAct.usuario.getPerfil().setNome(nomePerfil);
         BDcomandosPerfil bd = new BDcomandosPerfil(this,"W");
-        bd.inserirPerfil(GUILogin.usuario.getPerfil());
-        startActivity(new Intent(NomePerfil.this, Perfil.class));
+        bd.inserirPerfil(LoginAct.usuario.getPerfil());
+        startActivity(new Intent(NomePerfilAct.this, PerfilAct.class));
     }
 
 

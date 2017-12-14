@@ -12,10 +12,10 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.ufrpe.beela.usuario.gui.GUILogin;
+import br.ufrpe.beela.usuario.gui.LoginAct;
 import br.ufrpe.beela.gui.R;
 
-public class PerguntasComidas extends AppCompatActivity {
+public class PerguntasComidasAct extends AppCompatActivity {
 
     private Button RespostaButton13, RespostaButton15, RespostaButton16, RespostaButton17;
     private PerguntasRespostas perguntasTela=new PerguntasRespostas();
@@ -118,7 +118,7 @@ public class PerguntasComidas extends AppCompatActivity {
     }
 
     private void alterarTelaMusica(){
-        GUILogin.usuario.getPerfil().setComida(comidaSelecionada);
-        startActivity(new Intent(PerguntasComidas.this, PerguntasMusica.class));
+        LoginAct.usuario.getPerfil().setComida(comidaSelecionada);
+        startActivity(new Intent(PerguntasComidasAct.this, PerguntasMusicaAct.class));
     }
 }

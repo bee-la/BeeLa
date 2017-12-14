@@ -14,7 +14,7 @@ import br.ufrpe.beela.usuario.dao.Criptografia;
 import br.ufrpe.beela.usuario.dao.BDcomandosUsuario;
 import br.ufrpe.beela.usuario.dominio.Usuario;
 
-public class GUILogin extends AppCompatActivity {
+public class LoginAct extends AppCompatActivity {
     public static Usuario usuario = new Usuario();
     private TextView t, EsqueceuTextView3;
     private Button criarContaButton2, entrarButton;
@@ -75,11 +75,11 @@ public class GUILogin extends AppCompatActivity {
 
 //-----------------------------------------Métodos para trocar de tela--------------------------------------------
     private void esqueceuSenha() {
-        startActivity(new Intent(GUILogin.this, GUIesqueceuSenha.class));
+        startActivity(new Intent(LoginAct.this, EsqueceuSenhaAct.class));
     }
 
     private void criarContaButton2() {
-        startActivity(new Intent(GUILogin.this, CriarConta.class));
+        startActivity(new Intent(LoginAct.this, CriarContaAct.class));
     }
 
 
@@ -114,7 +114,7 @@ public class GUILogin extends AppCompatActivity {
     }
 
     private void entrarHome() {
-        startActivity(new Intent(GUILogin.this, GUIhome.class));}
+        startActivity(new Intent(LoginAct.this, HomeAct.class));}
 
     public boolean ehValidoLogin(){
         boolean valido=true;

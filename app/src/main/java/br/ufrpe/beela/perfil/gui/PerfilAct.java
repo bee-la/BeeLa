@@ -8,10 +8,10 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-import br.ufrpe.beela.usuario.gui.GUILogin;
+import br.ufrpe.beela.usuario.gui.LoginAct;
 import br.ufrpe.beela.gui.R;
 
-public class Perfil extends AppCompatActivity {
+public class PerfilAct extends AppCompatActivity {
     private  TextView nomeTextView;
     private ImageButton adicionarPerfilTrocarTela;
 
@@ -35,14 +35,14 @@ public class Perfil extends AppCompatActivity {
     }
     private void adicionarPerfilTrocarTela() {
         setarNome();
-        startActivity(new Intent(Perfil.this, PerguntasComidas.class));
+        startActivity(new Intent(PerfilAct.this, PerguntasComidasAct.class));
     }
 
     private void setarNome(){
-        if (GUILogin.usuario.getPerfil().getNome() == ""){
-        nomeTextView.setText(GUILogin.usuario.getPerfil().getNome());}
+        if (LoginAct.usuario.getPerfil().getNome() == ""){
+        nomeTextView.setText(LoginAct.usuario.getPerfil().getNome());}
         else{
-        nomeTextView.setText(GUILogin.usuario.getPerfil().getNome());}
+        nomeTextView.setText(LoginAct.usuario.getPerfil().getNome());}
 
     }
 }

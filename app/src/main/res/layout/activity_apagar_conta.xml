@@ -6,13 +6,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/preto"
-    tools:context="br.ufrpe.beela.usuario.gui.ApagarConta">
+    tools:context="br.ufrpe.beela.usuario.gui.ApagarContaAct">
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/preto"
-        tools:context="br.ufrpe.beela.usuario.gui.ApagarConta">
+        tools:context="br.ufrpe.beela.usuario.gui.ApagarContaAct">
 
     <TextView
         android:id="@+id/textView5"

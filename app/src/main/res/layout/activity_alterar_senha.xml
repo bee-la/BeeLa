@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/preto"
-    tools:context="br.ufrpe.beela.usuario.gui.AlterarSenha">
+    tools:context="br.ufrpe.beela.usuario.gui.AlterarSenhaAct">
 
     <EditText
         android:id="@+id/editText7"
