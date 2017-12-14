@@ -20,9 +20,10 @@ import br.ufrpe.beela.gui.R;
 import br.ufrpe.beela.usuario.dao.Criptografia;
 import br.ufrpe.beela.usuario.dao.BDcomandosUsuario;
 import br.ufrpe.beela.usuario.dominio.Usuario;
+import br.ufrpe.beela.usuario.negocio.UsuarioService;
 
 public class CriarContaAct extends AppCompatActivity {
-//    private TextView textViewNome, textViewCelular,  textViewEmail, textViewSenha, textViewRepetirSenha;
+
     private Button criarButton3;
     private Toast contaCriada;
     private boolean existeCelularEmail=false;
@@ -30,6 +31,8 @@ public class CriarContaAct extends AppCompatActivity {
     private String nomeValidar, celularValidar, emailValidar, senhaValidar, repetirSenhaValidar;
     private EditText editText4Nome, editText5Celular, editText6Email, editText10Senha, editText11RepetirSenha;
     private ArrayList<TextView> textos= new ArrayList<TextView>();
+
+    private UsuarioService usuarioValido=new UsuarioService();
 
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
@@ -69,18 +72,22 @@ public class CriarContaAct extends AppCompatActivity {
         });
     }
 
-
     //----------------------------------Validacao dos campos----------------------------------------
-    public void validarCliqueCriar(){
-        nomeValidar=editText4Nome.getText().toString().trim();
-        celularValidar=editText5Celular.getText().toString().trim();
-        emailValidar=editText6Email.getText().toString().trim();
-        senhaValidar=editText10Senha.getText().toString().trim();
-        repetirSenhaValidar=editText11RepetirSenha.getText().toString().trim();
+    public void validarCliqueCriar() {
+        nomeValidar = editText4Nome.getText().toString().trim();
+        celularValidar = editText5Celular.getText().toString().trim();
+        emailValidar = editText6Email.getText().toString().trim();
+        senhaValidar = editText10Senha.getText().toString().trim();
+        repetirSenhaValidar = editText11RepetirSenha.getText().toString().trim();
 
-        if(ehValidoCriarConta()){
+        if(usuarioValido.validarCampos()){
             sucessoCriarConta();
         }
+        else{
+            Toast erro=Toast.makeText(getApplicationContext(), "Campo inválido", Toast.LENGTH_SHORT);
+            erro.show();
+        }
+
     }
 
     public void sucessoCriarConta(){
@@ -111,40 +118,40 @@ public class CriarContaAct extends AppCompatActivity {
         editText5Celular.setText("");
     }
 
-    public boolean ehValidoCriarConta(){
-        boolean valido=true;
-        if(nomeValidar.isEmpty()){
-            editText4Nome.setError(getString(R.string.campoVazio));
-            valido=false;
-        }
-
-        if(celularValidar.length()<9 || !Patterns.PHONE.matcher(celularValidar).matches()){
-            editText5Celular.setError(getString(R.string.celularInvalido));
-            valido=false;
-        }
-
-        if(emailValidar.isEmpty() || !Patterns.EMAIL_ADDRESS.matcher(emailValidar).matches()){
-            editText6Email.setError(getString(R.string.emailInvalido));
-            valido=false;
-        }
-
-        if(senhaValidar.isEmpty()){
-            editText10Senha.setError(getString(R.string.campoVazio));
-            valido=false;
-        }
-
-        if (repetirSenhaValidar.isEmpty()){
-            editText11RepetirSenha.setError(getString(R.string.campoVazio));
-            valido=false;
-        }
-
-        if (!repetirSenhaValidar.equals(senhaValidar)){
-            editText11RepetirSenha.setError(getString(R.string.senhasDiferentes));
-            valido=false;
-        }
-
-        return valido;
-    }
+//    public boolean ehValidoCriarConta(){
+//        boolean valido=true;
+//        if(nomeValidar.isEmpty()){
+//            editText4Nome.setError(getString(R.string.campoVazio));
+//            valido=false;
+//        }
+//
+//        if(celularValidar.length()<9 || !Patterns.PHONE.matcher(celularValidar).matches()){
+//            editText5Celular.setError(getString(R.string.celularInvalido));
+//            valido=false;
+//        }
+//
+//        if(emailValidar.isEmpty() || !Patterns.EMAIL_ADDRESS.matcher(emailValidar).matches()){
+//            editText6Email.setError(getString(R.string.emailInvalido));
+//            valido=false;
+//        }
+//
+//        if(senhaValidar.isEmpty()){
+//            editText10Senha.setError(getString(R.string.campoVazio));
+//            valido=false;
+//        }
+//
+//        if (repetirSenhaValidar.isEmpty()){
+//            editText11RepetirSenha.setError(getString(R.string.campoVazio));
+//            valido=false;
+//        }
+//
+//        if (!repetirSenhaValidar.equals(senhaValidar)){
+//            editText11RepetirSenha.setError(getString(R.string.senhasDiferentes));
+//            valido=false;
+//        }
+//
+//        return valido;
+//    }
 
     public Usuario criarObjetoPessoa(){
 
