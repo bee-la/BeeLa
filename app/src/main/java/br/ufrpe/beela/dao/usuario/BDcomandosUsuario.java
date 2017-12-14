@@ -16,6 +16,7 @@ import br.ufrpe.beela.negociaçao.usuario.Usuario;
 /**
  * Created by vidal on 05/12/2017.
  * modificado por vidal 07/12
+ * modificado por vidal 14/12
  */
 
 public class BDcomandosUsuario {
@@ -124,23 +125,24 @@ public class BDcomandosUsuario {
         return usuario;
     }
     public boolean buscarVEmail(String email,String celular){
-        boolean resultado=false;
         String where ="SELECT * FROM usuario WHERE email ='"+email+"'"+"OR celular = '"+celular+"'";
         Cursor cursor = bd.rawQuery(where, null);
         if(cursor.getCount()>0){
-            return resultado=true;
+            bd.close();
+            return true;
         }
-        return resultado;
+        bd.close();
+        return false;
     }
     public boolean buscarVLogin(String email,String senha){
-        boolean resultado=false;
         String where ="SELECT * FROM usuario WHERE email ='"+email+"'"+"AND senha = '"+senha+"'";
         Cursor cursor = bd.rawQuery(where, null);
         if(cursor.getCount()>0){
-            resultado=true;
-            return resultado;
+            bd.close();
+            return true;
         }
-        return resultado;
+        bd.close();
+        return false;
     }
  //   =========================================================================================================
 }
