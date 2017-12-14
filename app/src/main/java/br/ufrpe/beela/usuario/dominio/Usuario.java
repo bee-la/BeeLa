@@ -1,6 +1,6 @@
-package br.ufrpe.beela.negociaçao.usuario;
+package br.ufrpe.beela.usuario.dominio;
 
-import br.ufrpe.beela.negociaçao.perfil.PerfilUsuario;
+import br.ufrpe.beela.perfil.dominio.PerfilUsuario;
 
 /**
  * Created by max on 05/12/17.

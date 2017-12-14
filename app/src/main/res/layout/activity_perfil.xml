@@ -6,13 +6,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/preto"
-    tools:context=".perfil.Perfil">
+    tools:context="br.ufrpe.beela.perfil.gui.Perfil">
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/preto"
-        tools:context="beela.br.ufrpe.beela.NEGOCIAÇAO.Perfil">
+        tools:context="br.ufrpe.beela.perfil.gui.Perfil">
 
         <ImageButton
             android:id="@+id/imageButton4"

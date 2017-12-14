@@ -1,4 +1,4 @@
-package br.ufrpe.beela.gui.usuario;
+package br.ufrpe.beela.usuario.gui;
 
 import android.content.Intent;
 import android.graphics.Typeface;
@@ -10,11 +10,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import br.ufrpe.beela.gui.Login;
 import br.ufrpe.beela.gui.R;
-import br.ufrpe.beela.gui.home;
-import br.ufrpe.beela.negociaçao.usuario.Criptografia;
-import br.ufrpe.beela.dao.usuario.BDcomandosUsuario;
+import br.ufrpe.beela.usuario.dao.Criptografia;
+import br.ufrpe.beela.usuario.dao.BDcomandosUsuario;
 
 public class AlterarSenha extends AppCompatActivity {
 
@@ -61,7 +59,7 @@ public class AlterarSenha extends AppCompatActivity {
 
     public void validarCliqueAlterarSenha() {
         senhaAtual = senhaEditText7.getText().toString().trim();
-        if (Criptografia.criptografar(senhaAtual).equals(Login.usuario.getSenha())) {
+        if (Criptografia.criptografar(senhaAtual).equals(GUILogin.usuario.getSenha())) {
             novaSenha = novaSenhaEditText8.getText().toString().trim();
             repetirSenha = repetirSenhaEditText9.getText().toString().trim();
 
@@ -80,11 +78,15 @@ public class AlterarSenha extends AppCompatActivity {
         senhaAlterada=Toast.makeText(getApplicationContext(), R.string.senhaAlterada, Toast.LENGTH_SHORT);
 //TODO      O código que der certo se coloca aqui(Query do banco).
         BDcomandosUsuario bd = new BDcomandosUsuario(this,"W");
-        bd.updateSenha(Login.usuario,Criptografia.criptografar(novaSenha));
-        Login.usuario.setSenha(Criptografia.criptografar(novaSenha));
+        bd.updateSenha(GUILogin.usuario,Criptografia.criptografar(novaSenha));
+        GUILogin.usuario.setSenha(Criptografia.criptografar(novaSenha));
         senhaAlterada.show();
+<<<<<<< HEAD:app/src/main/java/br/ufrpe/beela/gui/usuario/AlterarSenha.java
         finish();
 //        startActivity(new Intent(AlterarSenha.this, home.class));
+=======
+        startActivity(new Intent(AlterarSenha.this, GUIhome.class));
+>>>>>>> desenvolvedor2:app/src/main/java/br/ufrpe/beela/usuario/gui/AlterarSenha.java
     }
 
     public boolean ehValidoAlterarSenha(){
