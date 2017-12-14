@@ -17,9 +17,10 @@ import br.ufrpe.beela.usuario.dominio.Usuario;
  *  modificado por vidal 07/12
  */
 
-public class BDcomandosPerfil {
+public class PerfilDAO {
     private SQLiteDatabase bd;
-    public BDcomandosPerfil(Context context, String tipo){
+
+    public PerfilDAO(Context context, String tipo){
         BD auxBd = new BD(context);
         if(tipo.equals("R")){ bd = auxBd.getReadableDatabase();}
         else{bd = auxBd.getWritableDatabase();}

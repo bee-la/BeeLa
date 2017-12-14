@@ -11,7 +11,7 @@ import android.widget.*;
 
 import br.ufrpe.beela.gui.R;
 import br.ufrpe.beela.usuario.dao.Criptografia;
-import br.ufrpe.beela.usuario.dao.BDcomandosUsuario;
+import br.ufrpe.beela.usuario.dao.UsuarioDAO;
 import br.ufrpe.beela.usuario.dominio.Usuario;
 
 public class GUILogin extends AppCompatActivity {
@@ -93,7 +93,7 @@ public class GUILogin extends AppCompatActivity {
     }
 
     public void entrarSucessoLogin(){
-        BDcomandosUsuario bd = new BDcomandosUsuario(this,"R");
+        UsuarioDAO bd = new UsuarioDAO(this,"R");
         //list = bd.buscar();
         String senhaCriptografada = Criptografia.criptografar(senha);
 

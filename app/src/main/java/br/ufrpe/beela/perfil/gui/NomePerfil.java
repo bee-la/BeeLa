@@ -9,7 +9,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 
-import br.ufrpe.beela.perfil.dao.BDcomandosPerfil;
+import br.ufrpe.beela.perfil.dao.PerfilDAO;
 import br.ufrpe.beela.usuario.gui.GUILogin;
 import br.ufrpe.beela.gui.R;
 
@@ -41,7 +41,7 @@ public class NomePerfil extends AppCompatActivity {
 //TODO      NullPointExcept ao chamar essa função
     public void chamarSetarNomePerfil(String nomePerfil){
         GUILogin.usuario.getPerfil().setNome(nomePerfil);
-        BDcomandosPerfil bd = new BDcomandosPerfil(this,"W");
+        PerfilDAO bd = new PerfilDAO(this,"W");
         bd.inserirPerfil(GUILogin.usuario.getPerfil());
         startActivity(new Intent(NomePerfil.this, Perfil.class));
     }

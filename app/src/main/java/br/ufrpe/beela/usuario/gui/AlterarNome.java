@@ -11,7 +11,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import br.ufrpe.beela.gui.R;
-import br.ufrpe.beela.usuario.dao.BDcomandosUsuario;
+import br.ufrpe.beela.usuario.dao.UsuarioDAO;
 
 public class AlterarNome extends AppCompatActivity {
     private TextView alterarNomeText3;
@@ -51,7 +51,7 @@ public class AlterarNome extends AppCompatActivity {
     }
 
     public void alterarSucessoNome(){
-        BDcomandosUsuario bd = new BDcomandosUsuario(this,"W");
+        UsuarioDAO bd = new UsuarioDAO(this,"W");
         bd.updateNome(GUILogin.usuario,alterarNome);
         GUILogin.usuario.setNome(alterarNome);
         Toast Sucesso;
