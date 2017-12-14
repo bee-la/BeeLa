@@ -39,12 +39,7 @@ public class BDcomandosPerfil {
         bd.insert("perfilUsuario", null, valores);
         bd.close();
     }
-<<<<<<< HEAD
-<<<<<<< HEAD:app/src/main/java/br/ufrpe/beela/dao/BDcomandosPerfil.java
-    public ArrayList<Perfil> getPerfil(){
-        ArrayList<Perfil> list = new ArrayList<Perfil>();
-=======
-=======
+
     public void updatePerfil(Usuario usuario) {
         String where = "id_usuario = " + usuario.getId()+" AND nome_perfil = "+ usuario.getPerfil().getNome();
         ContentValues valores = new ContentValues();
@@ -71,11 +66,8 @@ public class BDcomandosPerfil {
         return false;
     }
 
->>>>>>> desenvolvedor2
     public ArrayList<PerfilUsuario> sqlGetPerfil(){
         ArrayList<PerfilUsuario> list = new ArrayList<PerfilUsuario>();
-
->>>>>>> desenvolvedor2:app/src/main/java/br/ufrpe/beela/dao/perfil/BDcomandosPerfil.java
 
         String where ="SELECT * FROM perfilUsuario WHERE id_usuario = '"+ Login.usuario.getId()+"'";
         Cursor cursor = bd.rawQuery(where,null);
