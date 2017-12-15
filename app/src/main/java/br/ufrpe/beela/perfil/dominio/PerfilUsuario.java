@@ -9,7 +9,7 @@ import br.ufrpe.beela.usuario.gui.LoginAct;
 public class PerfilUsuario {
     private int id;
     private int id_usuario;
-    private String nome = "";
+    private String nome;
     private String comida;
     private String musica;
     private String esporte;
@@ -21,7 +21,7 @@ public class PerfilUsuario {
     public String getEsporte(){return this.esporte;}
 
     public void setId(int id){this.id = id;}
-    public void setId_usuario(int id_usuario) {this.id_usuario = LoginAct.usuario.getId();}
+    public void setId_usuario(int id_usuario) {this.id_usuario = id_usuario;}
     public void setNome(String nome){this.nome = nome;}
     public void setComida(String comida){this.comida = comida;}
     public void setMusica(String musica){this.musica = musica;}

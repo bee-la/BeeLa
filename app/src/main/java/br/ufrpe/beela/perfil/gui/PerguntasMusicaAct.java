@@ -9,10 +9,12 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import br.ufrpe.beela.perfil.dominio.PerfilUsuario;
 import br.ufrpe.beela.usuario.gui.LoginAct;
 import br.ufrpe.beela.gui.R;
 
 public class PerguntasMusicaAct extends AppCompatActivity {
+    private PerfilUsuario usuario = LoginAct.getUsuario().getPerfil();
     private TextView fonteTextView9;
     private Toast mensagem;
     private String musicaSelecionada;
@@ -44,7 +46,6 @@ public class PerguntasMusicaAct extends AppCompatActivity {
                 musicaSelecionada=forroButton18.getText().toString();
                 mensagem=Toast.makeText(getApplicationContext(), "Sua Escolha: "+musicaSelecionada, Toast.LENGTH_SHORT);
                 mensagem.show();
-               // LoginAct.usuario.perfil.setMusica(musicaSelecionada);
                 alterarTelaPerfil();
             }
         });
@@ -55,7 +56,6 @@ public class PerguntasMusicaAct extends AppCompatActivity {
                 musicaSelecionada=sambaButton19.getText().toString();
                 mensagem=Toast.makeText(getApplicationContext(), "Sua Escolha: "+musicaSelecionada, Toast.LENGTH_SHORT);
                 mensagem.show();
-             //   LoginAct.usuario.perfil.setMusica(musicaSelecionada);
                 alterarTelaPerfil();
             }
         });
@@ -66,7 +66,6 @@ public class PerguntasMusicaAct extends AppCompatActivity {
                 musicaSelecionada=sertanejoButton20.getText().toString();
                 mensagem=Toast.makeText(getApplicationContext(), "Sua Escolha: "+musicaSelecionada, Toast.LENGTH_SHORT);
                 mensagem.show();
-           //     LoginAct.usuario.perfil.setMusica(musicaSelecionada);
                 alterarTelaPerfil();
             }
         });
@@ -77,18 +76,16 @@ public class PerguntasMusicaAct extends AppCompatActivity {
                 musicaSelecionada=rockButton21.getText().toString();
                 mensagem=Toast.makeText(getApplicationContext(), "Sua Escolha: "+musicaSelecionada, Toast.LENGTH_SHORT);
                 mensagem.show();
-// TO SETANDO DIRETO OS ATRIBUTOS
-               // LoginAct.usuario.perfil.setMusica(musicaSelecionada);
                 alterarTelaPerfil();
             }
         });
-//        LoginAct.usuario.perfil.setNome(musicaSelecionada);
+
 
     }
 
     public void alterarTelaPerfil(){
 //TODO      Na tela de PerfilAct falta aparecer o perfil que foi adicionado.
-        LoginAct.usuario.getPerfil().setMusica(musicaSelecionada);
+        usuario.setMusica(musicaSelecionada);
         startActivity(new Intent(PerguntasMusicaAct.this, NomePerfilAct.class));
 
     }

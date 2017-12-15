@@ -69,6 +69,6 @@ public class ConfiguracoesAct extends AppCompatActivity {
     }
 
     private void setarNome(){
-        nomeTextView11.setText(LoginAct.usuario.getNome());
+        nomeTextView11.setText(LoginAct.getUsuario().getNome());
     }
 }

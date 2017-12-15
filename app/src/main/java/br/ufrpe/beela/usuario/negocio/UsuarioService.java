@@ -70,21 +70,21 @@ public class UsuarioService {
         }
     }
 
-    public void alterarSucessoNome(String alterarNome, Context context) {
+    public void alterarSucessoNome(Usuario usuario,String alterarNome, Context context) {
         UsuarioDAO bd = new UsuarioDAO(context, "W");
-        bd.updateNome(LoginAct.usuario, alterarNome);
-
-//TODO      Não pode chamar assim
-        LoginAct.usuario.setNome(alterarNome);
+        bd.updateNome(usuario, alterarNome);
+        usuario.setNome(alterarNome);
     }
 
-//    public boolean emailSenhaLogin(String email, String senha) {
-//        UsuarioDAO bd = new UsuarioDAO(context, "R");
-//        String senhaCriptografada = Criptografia.criptografar(senha);
-//        if (bd.buscarVLogin(email, senhaCriptografada)) {
-//            Usuario usuario = new Usuario();
-//            usuario = bd.sqlRetornaObjetoUsuario(email, senhaCriptografada);
-//            return true;
-//        }
-//    }
+    public boolean emailSenhaLogin(String email, String senha,Context context) {
+        UsuarioDAO bd = new UsuarioDAO(context, "R");
+        if (bd.buscarVLogin(email, senha)) {
+            return true;
+        }
+        else {return false;}
+    }
+    public Usuario geralUsuario(String email,String senha,Context context){
+        UsuarioDAO bd = new UsuarioDAO(context,"R");
+        return bd.sqlRetornaObjetoUsuario(email,senha);
+    }
 }

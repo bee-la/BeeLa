@@ -12,9 +12,13 @@ import android.widget.Toast;
 
 import br.ufrpe.beela.gui.R;
 import br.ufrpe.beela.usuario.dao.UsuarioDAO;
+import br.ufrpe.beela.usuario.dominio.Usuario;
 import br.ufrpe.beela.usuario.negocio.UsuarioService;
 
 public class AlterarNomeAct extends AppCompatActivity {
+    private Usuario usuario = LoginAct.getUsuario();
+    private UsuarioService usuarioValido= new UsuarioService();
+
     private TextView alterarNomeText3;
     private Button alterarNomeButton11;
 
@@ -47,7 +51,7 @@ public class AlterarNomeAct extends AppCompatActivity {
 
     public void validarCliqueAlterarNome(){
         if(ehValidoAlterarNome()) {
-            usuarioService.alterarSucessoNome(alterarNome,this);
+            usuarioService.alterarSucessoNome(usuario,alterarNome,this);
             startActivity(new Intent(AlterarNomeAct.this, HomeAct.class));
             Toast Sucesso;
             Sucesso = Toast.makeText(getApplicationContext(), "Nome Alterado", Toast.LENGTH_SHORT);
@@ -61,7 +65,7 @@ public class AlterarNomeAct extends AppCompatActivity {
         if (usuarioService.validarCamposVazio(alterarNome)) {
             alterarNomeEditText3.setError(getString(R.string.campoVazio));
             valido = false;}
-        else if(usuarioService.validarNomeIgual(alterarNome,LoginAct.usuario)){
+        else if(usuarioService.validarNomeIgual(alterarNome,usuario)){
             alterarNomeEditText3.setError("Nome Iguais");
             valido = false;}
         return valido;

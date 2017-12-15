@@ -8,10 +8,13 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import br.ufrpe.beela.perfil.dominio.PerfilUsuario;
+import br.ufrpe.beela.usuario.dominio.Usuario;
 import br.ufrpe.beela.usuario.gui.LoginAct;
 import br.ufrpe.beela.gui.R;
 
 public class PerfilAct extends AppCompatActivity {
+    private PerfilUsuario usuario = LoginAct.getUsuario().getPerfil();
     private  TextView nomeTextView;
     private ImageButton adicionarPerfilTrocarTela;
 
@@ -39,10 +42,10 @@ public class PerfilAct extends AppCompatActivity {
     }
 
     private void setarNome(){
-        if (LoginAct.usuario.getPerfil().getNome() == ""){
-        nomeTextView.setText(LoginAct.usuario.getPerfil().getNome());}
+        if (usuario.getNome() == ""){
+        nomeTextView.setText(usuario.getNome());}
         else{
-        nomeTextView.setText(LoginAct.usuario.getPerfil().getNome());}
+        nomeTextView.setText(usuario.getNome());}
 
     }
 }

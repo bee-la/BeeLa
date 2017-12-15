@@ -1,5 +1,6 @@
 package br.ufrpe.beela.usuario.gui;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
@@ -16,8 +17,9 @@ import br.ufrpe.beela.usuario.dominio.Usuario;
 import br.ufrpe.beela.usuario.negocio.UsuarioService;
 
 public class LoginAct extends AppCompatActivity {
-    public static Usuario usuario = new Usuario();
+    private static Usuario usuario = new Usuario();
     private UsuarioService usuarioValido= new UsuarioService();
+    public  static Usuario getUsuario(){return usuario;}
 
     private TextView t, EsqueceuTextView3;
     private Button criarContaButton2, entrarButton;
@@ -99,17 +101,12 @@ public class LoginAct extends AppCompatActivity {
     public void entrarSucessoLogin(){
         email=editTextEmail.getText().toString().trim();
         senha=editText2Senha.getText().toString().trim();
-        UsuarioDAO bd = new UsuarioDAO(this,"R");
-        //list = bd.buscar();
-        String senhaCriptografada = Criptografia.criptografar(senha);
+        senha = Criptografia.criptografar(senha);
         Toast Erro;
         Erro = Toast.makeText(getApplicationContext(), R.string.erroNoLoginDoBanco, Toast.LENGTH_SHORT);
 
-        if(bd.buscarVLogin(email, senhaCriptografada)){
-
-//TODO      Esse objeto não é necessário
-//            Usuario usuario = new Usuario();
-//            usuario = bd.sqlRetornaObjetoUsuario(email, senhaCriptografada);
+        if(usuarioValido.emailSenhaLogin(email, senha,this)){
+            usuario = usuarioValido.geralUsuario(email, senha,this);
             entrarHome(); }
         else{
             Erro.show(); }
@@ -122,23 +119,13 @@ public class LoginAct extends AppCompatActivity {
 //TODO      Mudança na lógica. Agora funcionando
         if (usuarioValido.validarCamposEmail(email)){
             editTextEmail.setError(getString(R.string.emailInvalido));
-//            valido=false;
         }
         if (usuarioValido.validarCamposVazio(senha)){
             editText2Senha.setError(getString(R.string.senhaInvalida));
-//            valido=false;
         }
         else{
             valido=true;
         }
-
-//        if(email.isEmpty() || !Patterns.EMAIL_ADDRESS.matcher(email).matches()){
-//            editTextEmail.setError(getString(R.string.emailInvalido));
-//            valido=false;
-//        }
-//        if(senha.isEmpty()){
-//            editText2Senha.setError(getString(R.string.senhaInvalida));
-//        }
         return valido;
     }
 //-------------------------------------------------------------------------------------------

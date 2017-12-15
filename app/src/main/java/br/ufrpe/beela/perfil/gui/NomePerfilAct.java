@@ -7,11 +7,14 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import br.ufrpe.beela.perfil.dominio.PerfilUsuario;
 import br.ufrpe.beela.usuario.gui.LoginAct;
 import br.ufrpe.beela.perfil.dao.PerfilDAO;
 import br.ufrpe.beela.gui.R;
 
 public class NomePerfilAct extends AppCompatActivity {
+    private PerfilUsuario usuario = LoginAct.getUsuario().getPerfil();
 
     private EditText nomePerfilEditText12;
     private TextView nomeTextViewPerfil1;
@@ -38,9 +41,9 @@ public class NomePerfilAct extends AppCompatActivity {
     
 //TODO      NullPointExcept ao chamar essa função
     public void chamarSetarNomePerfil(String nomePerfil){
-        LoginAct.usuario.getPerfil().setNome(nomePerfil);
+        usuario.setNome(nomePerfil);
         PerfilDAO bd = new PerfilDAO(this,"W");
-        bd.inserirPerfil(LoginAct.usuario.getPerfil());
+        bd.inserirPerfil(usuario);
         startActivity(new Intent(NomePerfilAct.this, PerfilAct.class));
     }
 

@@ -58,7 +58,7 @@ public class AlterarSenhaAct extends AppCompatActivity {
 
     public void validarCliqueAlterarSenha() {
         senhaAtual = senhaEditText7.getText().toString().trim();
-        if (Criptografia.criptografar(senhaAtual).equals(LoginAct.usuario.getSenha())) {
+        if (Criptografia.criptografar(senhaAtual).equals(LoginAct.getUsuario().getSenha())) {
             novaSenha = novaSenhaEditText8.getText().toString().trim();
             repetirSenha = repetirSenhaEditText9.getText().toString().trim();
 
@@ -75,8 +75,8 @@ public class AlterarSenhaAct extends AppCompatActivity {
         senhaAlterada=Toast.makeText(getApplicationContext(), R.string.senhaAlterada, Toast.LENGTH_SHORT);
         // TODO código que der certo se coloca aqui(Query do banco).
         UsuarioDAO bd = new UsuarioDAO(this,"W");
-        bd.updateSenha(LoginAct.usuario,Criptografia.criptografar(novaSenha));
-        LoginAct.usuario.setSenha(Criptografia.criptografar(novaSenha));
+        bd.updateSenha(LoginAct.getUsuario(),Criptografia.criptografar(novaSenha));
+        LoginAct.getUsuario().setSenha(Criptografia.criptografar(novaSenha));
         senhaAlterada.show();
         finish();
 //        startActivity(new Intent(AlterarSenhaAct.this, home.class));

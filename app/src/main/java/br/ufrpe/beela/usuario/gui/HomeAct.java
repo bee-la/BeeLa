@@ -11,8 +11,10 @@ import android.widget.TextView;
 
 import br.ufrpe.beela.gui.R;
 import br.ufrpe.beela.perfil.gui.PerfilAct;
+import br.ufrpe.beela.usuario.dominio.Usuario;
 
 public class HomeAct extends AppCompatActivity {
+    private Usuario usuario = new Usuario();
     private TextView eAi;
     private TextView oQueTuQuer;
     private Button configuracoesImageButton3;
@@ -52,7 +54,6 @@ public class HomeAct extends AppCompatActivity {
             public void onClick(View v) {
                 perfilImageButton();}
         });
-//        setNomeHome();
     }
 //-------------------------------------------Método Trocar de Tela-------------------------------
     private void configuracoesImageButton3() {
@@ -63,7 +64,5 @@ public class HomeAct extends AppCompatActivity {
 
         startActivity(new Intent(HomeAct.this, PerfilAct.class));
     }
-//    private void setNomeHome(){
-//        nomeTextView10.setText(LoginAct.usuario.getNome());
-//    }
+
 }
