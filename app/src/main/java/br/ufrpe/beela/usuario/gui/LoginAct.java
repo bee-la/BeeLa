@@ -13,11 +13,16 @@ import br.ufrpe.beela.gui.R;
 import br.ufrpe.beela.usuario.dao.Criptografia;
 import br.ufrpe.beela.usuario.dao.UsuarioDAO;
 import br.ufrpe.beela.usuario.dominio.Usuario;
+import br.ufrpe.beela.usuario.negocio.UsuarioService;
 
 public class LoginAct extends AppCompatActivity {
     public static Usuario usuario = new Usuario();
+    private UsuarioService usuarioValido= new UsuarioService();
+
     private TextView t, EsqueceuTextView3;
     private Button criarContaButton2, entrarButton;
+
+    boolean valido=false;
 
     private EditText editTextEmail, editText2Senha;
     private String email, senha;
@@ -61,7 +66,6 @@ public class LoginAct extends AppCompatActivity {
 
 
 
-
 //------------------------------Validacao do clique do botao Entrar---------------------------
         entrarButton=(Button) findViewById(R.id.button);
         entrarButton.setOnClickListener(new View.OnClickListener() {
@@ -93,21 +97,19 @@ public class LoginAct extends AppCompatActivity {
     }
 
     public void entrarSucessoLogin(){
+        email=editTextEmail.getText().toString().trim();
+        senha=editText2Senha.getText().toString().trim();
         UsuarioDAO bd = new UsuarioDAO(this,"R");
         //list = bd.buscar();
         String senhaCriptografada = Criptografia.criptografar(senha);
-
         Toast Erro;
         Erro = Toast.makeText(getApplicationContext(), R.string.erroNoLoginDoBanco, Toast.LENGTH_SHORT);
 
-//        for (int i = 0; list.size()>i; i++ ){
-//            if(email.equals(list.get(i).getEmail()) && senhaCriptografada.equals(list.get(i).getSenha()))  {
-//                loga=true; }
-//        }
-//        if(loga==true){
         if(bd.buscarVLogin(email, senhaCriptografada)){
-            Usuario usuario = new Usuario();
-            usuario = bd.sqlRetornaObjetoUsuario(email, senhaCriptografada);
+
+//TODO      Esse objeto não é necessário
+//            Usuario usuario = new Usuario();
+//            usuario = bd.sqlRetornaObjetoUsuario(email, senhaCriptografada);
             entrarHome(); }
         else{
             Erro.show(); }
@@ -117,14 +119,26 @@ public class LoginAct extends AppCompatActivity {
         startActivity(new Intent(LoginAct.this, HomeAct.class));}
 
     public boolean ehValidoLogin(){
-        boolean valido=true;
-        if(email.isEmpty() || !Patterns.EMAIL_ADDRESS.matcher(email).matches()){
+//TODO      Mudança na lógica. Agora funcionando
+        if (usuarioValido.validarCamposEmail(email)){
             editTextEmail.setError(getString(R.string.emailInvalido));
-            valido=false;
+//            valido=false;
         }
-        if(senha.isEmpty()){
+        if (usuarioValido.validarCamposVazio(senha)){
             editText2Senha.setError(getString(R.string.senhaInvalida));
+//            valido=false;
         }
+        else{
+            valido=true;
+        }
+
+//        if(email.isEmpty() || !Patterns.EMAIL_ADDRESS.matcher(email).matches()){
+//            editTextEmail.setError(getString(R.string.emailInvalido));
+//            valido=false;
+//        }
+//        if(senha.isEmpty()){
+//            editText2Senha.setError(getString(R.string.senhaInvalida));
+//        }
         return valido;
     }
 //-------------------------------------------------------------------------------------------

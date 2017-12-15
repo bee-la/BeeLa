@@ -27,6 +27,8 @@ public class CriarContaAct extends AppCompatActivity {
     private Button criarButton3;
     private Toast contaCriada;
 
+    boolean valido=false;
+
     private String nomeValidar, celularValidar, emailValidar, senhaValidar, repetirSenhaValidar;
     private EditText editText4Nome, editText5Celular, editText6Email, editText10Senha, editText11RepetirSenha;
     private ArrayList<TextView> textos= new ArrayList<TextView>();
@@ -43,12 +45,6 @@ public class CriarContaAct extends AppCompatActivity {
         editText6Email=(EditText)findViewById(R.id.editText6);
         editText10Senha=(EditText)findViewById(R.id.editText10);
         editText11RepetirSenha=(EditText)findViewById(R.id.editText11);
-        nomeValidar = editText4Nome.getText().toString().trim();
-        celularValidar = editText5Celular.getText().toString().trim();
-        emailValidar = editText6Email.getText().toString().trim();
-        senhaValidar = editText10Senha.getText().toString().trim();
-        repetirSenhaValidar = editText11RepetirSenha.getText().toString().trim();
-
 
 //-----------------------------------Alteração da fonte-------------------------------------------
         textos.add((TextView) findViewById(R.id.editText4));
@@ -73,24 +69,28 @@ public class CriarContaAct extends AppCompatActivity {
 
     //----------------------------------Validacao dos campos----------------------------------------
     public void validarCliqueCriar() {
-        if(ehValidoCriarConta()){sucessoCriarConta();}
-        else{Toast erro=Toast.makeText(getApplicationContext(), "Campo inválido", Toast.LENGTH_SHORT);
-            erro.show();}
-    }
+        nomeValidar = editText4Nome.getText().toString().trim();
+        celularValidar = editText5Celular.getText().toString().trim();
+        emailValidar = editText6Email.getText().toString().trim();
+        senhaValidar = editText10Senha.getText().toString().trim();
+        repetirSenhaValidar = editText11RepetirSenha.getText().toString().trim();
+        if(ehValidoCriarConta()) {
+            sucessoCriarConta();
+            }
+        }
 
     public void sucessoCriarConta(){
         //TODO fazer busca
         if (usuarioValido.verificarEmailCelular(emailValidar,celularValidar,this)){
+            Toast erro;
+            erro = Toast.makeText(getApplicationContext(), R.string.emailCelularExiste, Toast.LENGTH_SHORT);
+            erro.show();
+        }
+        else {
             usuarioValido.salvarBanco(usuarioValido.criarObjetoPessoa(emailValidar,nomeValidar,senhaValidar,celularValidar),this);
             limparCampos();
             contaCriada = Toast.makeText(getApplicationContext(), R.string.contaCriada, Toast.LENGTH_SHORT);
             contaCriada.show();
-            startActivity(new Intent(CriarContaAct.this, LoginAct.class));
-        }
-        else {
-            Toast erro;
-            erro = Toast.makeText(getApplicationContext(), R.string.emailCelularExiste, Toast.LENGTH_SHORT);
-            erro.show();
         }
     }
     private void limparCampos() {
@@ -103,36 +103,29 @@ public class CriarContaAct extends AppCompatActivity {
     }
 
     public boolean ehValidoCriarConta(){
-        boolean valido=true;
-        if(usuarioValido.validarCamposVazio(nomeValidar)){
+        if (usuarioValido.validarCamposVazio(nomeValidar)) {
             editText4Nome.setError(getString(R.string.campoVazio));
-            valido=false;
         }
-        if(usuarioValido.validarCamposCelular(celularValidar)){
+        if (usuarioValido.validarCamposCelular(celularValidar)) {
             editText5Celular.setError(getString(R.string.celularInvalido));
-            valido=false;
         }
-        if(usuarioValido.validarCamposEmail(emailValidar)){
+        if (usuarioValido.validarCamposEmail(emailValidar)) {
             editText6Email.setError(getString(R.string.emailInvalido));
-            valido=false;
         }
-        if(usuarioValido.validarCamposVazio(senhaValidar)){
+        if (usuarioValido.validarCamposVazio(senhaValidar)) {
             editText10Senha.setError(getString(R.string.campoVazio));
-            valido=false;
         }
-        if (usuarioValido.validarCamposVazio(repetirSenhaValidar)){
+        if (usuarioValido.validarCamposVazio(repetirSenhaValidar)) {
             editText11RepetirSenha.setError(getString(R.string.campoVazio));
-            valido=false;
         }
-        if (!repetirSenhaValidar.equals(senhaValidar)){
+        if (!repetirSenhaValidar.equals(senhaValidar)) {
             editText11RepetirSenha.setError(getString(R.string.senhasDiferentes));
-            valido=false;
         }
+        else{
+            valido=true;
+            }
         return valido;
     }
-
-
-
 }
 
 

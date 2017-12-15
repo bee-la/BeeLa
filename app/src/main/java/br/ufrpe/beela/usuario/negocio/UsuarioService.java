@@ -1,21 +1,13 @@
 package br.ufrpe.beela.usuario.negocio;
 
-import android.content.ContentValues;
 import android.content.Context;
-import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Patterns;
-import android.widget.EditText;
-import android.widget.Toast;
 
-import java.util.ArrayList;
-
-import br.ufrpe.beela.gui.R;
-import br.ufrpe.beela.database.dao.BD;
 import br.ufrpe.beela.usuario.dao.Criptografia;
 import br.ufrpe.beela.usuario.dao.UsuarioDAO;
 import br.ufrpe.beela.usuario.dominio.Usuario;
 import br.ufrpe.beela.usuario.gui.LoginAct;
+import br.ufrpe.beela.gui.R;
 
 /**
  * Created by vidal on 14/12/2017.
@@ -30,8 +22,8 @@ public class UsuarioService {
         }
     }
 
-    public boolean validarCamposVazio(String validar) {
-        if (validar.isEmpty()) {
+    public boolean validarCamposVazio(String campo) {
+        if (campo.isEmpty()) {
             return true;
         } else {
             return false;
@@ -72,15 +64,27 @@ public class UsuarioService {
     public boolean verificarEmailCelular(String email, String celular, Context context) {
         UsuarioDAO usuario = new UsuarioDAO(context, "R");
         if (usuario.buscarVEmail(email, celular)) {
-            return false;
-        } else {
             return true;
+        } else {
+            return false;
         }
     }
 
     public void alterarSucessoNome(String alterarNome, Context context) {
         UsuarioDAO bd = new UsuarioDAO(context, "W");
         bd.updateNome(LoginAct.usuario, alterarNome);
+
+//TODO      Não pode chamar assim
         LoginAct.usuario.setNome(alterarNome);
     }
+
+//    public boolean emailSenhaLogin(String email, String senha) {
+//        UsuarioDAO bd = new UsuarioDAO(context, "R");
+//        String senhaCriptografada = Criptografia.criptografar(senha);
+//        if (bd.buscarVLogin(email, senhaCriptografada)) {
+//            Usuario usuario = new Usuario();
+//            usuario = bd.sqlRetornaObjetoUsuario(email, senhaCriptografada);
+//            return true;
+//        }
+//    }
 }
