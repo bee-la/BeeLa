@@ -10,6 +10,7 @@ import java.util.List;
 
 import br.ufrpe.beela.database.dao.BD;
 import br.ufrpe.beela.usuario.dominio.Usuario;
+import br.ufrpe.beela.usuario.negocio.UsuarioService;
 
 /**
  * Created by vidal on 05/12/2017.
@@ -19,6 +20,7 @@ import br.ufrpe.beela.usuario.dominio.Usuario;
 
 public class UsuarioDAO {
     private SQLiteDatabase bd;
+
     public UsuarioDAO(Context context, String tipo){
         BD auxBd = new BD(context);
         if(tipo.equals("R")){ bd = auxBd.getReadableDatabase();}

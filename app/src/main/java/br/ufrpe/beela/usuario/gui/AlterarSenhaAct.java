@@ -43,7 +43,6 @@ public class AlterarSenhaAct extends AppCompatActivity {
         repetirSenhaText9 = (TextView) findViewById(R.id.editText9);
         repetirSenhaText9.setTypeface(fonte1);
 
-
 //----------------------------Validacao do clique do botao Alterar Senha----------------------------
         alterarSenhaButton10 = (Button) findViewById(R.id.button10);
         alterarSenhaButton10.setOnClickListener(new View.OnClickListener() {
@@ -64,9 +63,7 @@ public class AlterarSenhaAct extends AppCompatActivity {
             repetirSenha = repetirSenhaEditText9.getText().toString().trim();
 
             if (ehValidoAlterarSenha()) {
-                alterarSucessoSenha();
-            }
-        }
+                alterarSucessoSenha();}}
         else{
             Toast Erro;
             Erro = Toast.makeText(getApplicationContext(), R.string.senhaAtualDiferente, Toast.LENGTH_SHORT);

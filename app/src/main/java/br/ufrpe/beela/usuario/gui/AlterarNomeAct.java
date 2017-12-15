@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import br.ufrpe.beela.gui.R;
 import br.ufrpe.beela.usuario.dao.UsuarioDAO;
+import br.ufrpe.beela.usuario.negocio.UsuarioService;
 
 public class AlterarNomeAct extends AppCompatActivity {
     private TextView alterarNomeText3;
@@ -19,7 +20,7 @@ public class AlterarNomeAct extends AppCompatActivity {
 
     private String alterarNome;
     private EditText alterarNomeEditText3;
-
+    private UsuarioService usuarioService = new UsuarioService();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +33,7 @@ public class AlterarNomeAct extends AppCompatActivity {
         alterarNomeText3 = (TextView) findViewById(R.id.editText3);
         Typeface fonte1 = Typeface.createFromAsset(getAssets(), "fonts/Chewy.ttf");
         alterarNomeText3.setTypeface(fonte1);
+        alterarNome=alterarNomeEditText3.getText().toString().trim();
 
 //-----------------------------------Validação clique botão Alterar Nome--------------------------------
         alterarNomeButton11 = (Button) findViewById(R.id.button11);
@@ -44,37 +46,24 @@ public class AlterarNomeAct extends AppCompatActivity {
     }
 
     public void validarCliqueAlterarNome(){
-        alterarNome=alterarNomeEditText3.getText().toString().trim();
-        if(ehValidoAlterarNome()){
-            alterarSucessoNome();
-        }
-    }
-
-    public void alterarSucessoNome(){
-        UsuarioDAO bd = new UsuarioDAO(this,"W");
-        bd.updateNome(LoginAct.usuario,alterarNome);
-        LoginAct.usuario.setNome(alterarNome);
-        Toast Sucesso;
-        Sucesso = Toast.makeText(getApplicationContext(), "Nome Alterado", Toast.LENGTH_SHORT);
-        Sucesso.show();
-        startActivity(new Intent(AlterarNomeAct.this, HomeAct.class));
-
-
-    }
+        if(ehValidoAlterarNome()) {
+            usuarioService.alterarSucessoNome(alterarNome,this);
+            startActivity(new Intent(AlterarNomeAct.this, HomeAct.class));
+            Toast Sucesso;
+            Sucesso = Toast.makeText(getApplicationContext(), "Nome Alterado", Toast.LENGTH_SHORT);
+            Sucesso.show();
+        }}
 //-------------------------------------------------------------------------------------------------------
-
 
     //-----------------------------------Validação do campo Nome-----------------------------------------------
     public boolean ehValidoAlterarNome() {
         boolean valido = true;
-        if (alterarNome.isEmpty()) {
+        if (usuarioService.validarCamposVazio(alterarNome)) {
             alterarNomeEditText3.setError(getString(R.string.campoVazio));
-            valido = false;
-        }
-        else if(alterarNome.equals(LoginAct.usuario.getNome())){
+            valido = false;}
+        else if(usuarioService.validarNomeIgual(alterarNome,LoginAct.usuario)){
             alterarNomeEditText3.setError("Nome Iguais");
-            valido = false;
-        }
+            valido = false;}
         return valido;
     }
 }
