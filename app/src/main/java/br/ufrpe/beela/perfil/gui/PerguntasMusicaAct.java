@@ -16,7 +16,10 @@ public class PerguntasMusicaAct extends AppCompatActivity {
     private TextView fonteTextView9;
     private Toast mensagem;
     private String musicaSelecionada;
-    private Button forroButton18, sambaButton19, sertanejoButton20, rockButton21;
+    private Button forroButton18;
+    private Button sambaButton19;
+    private Button sertanejoButton20;
+    private Button rockButton21;
 
 
     @Override

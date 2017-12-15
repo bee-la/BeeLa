@@ -18,7 +18,7 @@ public class AlterarSenhaAct extends AppCompatActivity {
 
     private TextView senhaAtualText7,novaSenhaText8, repetirSenhaText9;
     private Button alterarSenhaButton10;
-    Toast senhaAlterada;
+    private Toast senhaAlterada;
     private String senhaAtual, novaSenha, repetirSenha;
     private EditText senhaEditText7, novaSenhaEditText8, repetirSenhaEditText9;
 

@@ -17,7 +17,7 @@ public class HomeAct extends AppCompatActivity {
     private TextView oQueTuQuer;
     private Button configuracoesImageButton3;
 //    private TextView nomeTextView10;
-    private Button oQueTuQuerButton4;
+//    private Button oQueTuQuerButton4;
     private ImageButton imageButtonPerfil, imageButton2Lugares, imageButton3Configuracoes;
 
 

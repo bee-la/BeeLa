@@ -17,8 +17,13 @@ import br.ufrpe.beela.gui.R;
 
 public class PerguntasComidasAct extends AppCompatActivity {
 
-    private Button RespostaButton13, RespostaButton15, RespostaButton16, RespostaButton17;
+    private Button RespostaButton13;
+    private Button RespostaButton15;
+    private Button RespostaButton16;
+    private Button RespostaButton17;
+
     private PerguntasRespostas perguntasTela=new PerguntasRespostas();
+
     private List<String> comidaEscolhida=new ArrayList<String>();
     private String comidaSelecionada;
     private Toast mensagem;
