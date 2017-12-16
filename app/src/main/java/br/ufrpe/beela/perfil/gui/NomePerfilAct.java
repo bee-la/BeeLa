@@ -44,7 +44,7 @@ public class NomePerfilAct extends AppCompatActivity {
         usuario.setNome(nomePerfil);
         PerfilDAO bd = new PerfilDAO(this,"W");
         bd.inserirPerfil(usuario);
-        startActivity(new Intent(NomePerfilAct.this, PerfilAct.class));
+        startActivity(new Intent(NomePerfilAct.this, PerfilPrioridadeAct.class));
     }
 
 

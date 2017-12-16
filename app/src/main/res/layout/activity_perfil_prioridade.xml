@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/preto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="br.ufrpe.beela.perfil.gui.PerfilPrioridadeAct">
+
+    <com.allyants.draggabletreeview.DraggableTreeView
+        android:textSize="20sp"
+        android:backgroundTint="@color/verdeBotao"
+        android:id="@+id/draggable"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></com.allyants.draggabletreeview.DraggableTreeView>
+
+</RelativeLayout>

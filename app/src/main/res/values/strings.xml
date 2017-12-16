@@ -82,5 +82,7 @@
     <string name="nomePerfil">Nome Perfil</string>
     <string name="nomeDoPerfil">Nome do perfil</string>
     <string name="nomear">Nomear</string>
+    <string name="perfilprioridade">perfilprioridade</string>
+    <string name="prioridadePerfil">Perfil Prioridade</string>
 
 </resources>
