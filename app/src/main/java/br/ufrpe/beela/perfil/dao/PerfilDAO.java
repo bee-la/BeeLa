@@ -26,7 +26,7 @@ public class PerfilDAO {
         if(tipo.equals("R")){ bd = auxBd.getReadableDatabase();}
         else{bd = auxBd.getWritableDatabase();}
     }
- //   =========================================================================================================
+ //TODO   =========================================================================================================
     public void inserirPerfil(PerfilUsuario perfil) {
         ContentValues valores = new ContentValues();
         valores.put("id_usuario",perfil.getId_Usuario());
@@ -39,24 +39,26 @@ public class PerfilDAO {
         inserirPerfilComida(perfil.getComida());
         inserirPerfilMusica(perfil.getMusica());
     }
-    public void inserirPerfilMusica(PerfilMusica musica){
-        ContentValues valores = new ContentValues();
-        valores.put("nome",musica.getNome());
-        valores.put("id_usuario",musica.getId_usuario());
-        valores.put("id_perfil",musica.getId_perfil());
-        bd.insert("perfilMusica",null,valores);
+    public void inserirPerfilMusica(ArrayList<PerfilMusica> musicas){
+        for (PerfilMusica musica : musicas){
+            ContentValues valores = new ContentValues();
+            valores.put("nome",musica.getNome());
+            valores.put("id_usuario",musica.getId_usuario());
+            valores.put("id_perfil",musica.getNome_perfil());
+            bd.insert("perfilMusica",null,valores);}
         bd.close();
     }
 
-    public void inserirPerfilComida(PerfilComida comida){
-        ContentValues valores = new ContentValues();
-        valores.put("nome",comida.getNome());
-        valores.put("id_usuario",comida.getId_usuario());
-        valores.put("id_perfil",comida.getId_perfil());
-        bd.insert("perfilComida",null,valores);
+    public void inserirPerfilComida(ArrayList<PerfilComida> comidas){
+        for (PerfilComida comida: comidas){
+            ContentValues valores = new ContentValues();
+            valores.put("nome",comida.getNome());
+            valores.put("id_usuario",comida.getId_usuario());
+            valores.put("nome_perfil",comida.getNome_perfil());
+            bd.insert("perfilComida",null,valores);}
         bd.close();
     }
-
+//TODO ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     public void updatePerfil(PerfilUsuario perfil) {
         String where = "id_usuario = " + perfil.getId_Usuario()+" AND nome_perfil = "+ perfil.getNome();
         ContentValues valores = new ContentValues();
@@ -82,11 +84,50 @@ public class PerfilDAO {
         }
         return false;
     }
+    public ArrayList<PerfilComida> sqlGetPerfilComida (PerfilUsuario perfilUsuario) {
+        ArrayList<PerfilComida> comidas = new ArrayList<PerfilComida>();
+        String where = "SELECT * FROM perfilComida WHERE id_usuario = '" + perfilUsuario.getId_Usuario() + "' AND nome_perfil = '" + perfilUsuario.getNome() + "'";
+        Cursor cursor = bd.rawQuery(where, null);
+        if (cursor.getCount() > 0) {
+            cursor.moveToFirst();
+            do {
+                PerfilComida comida = new PerfilComida();
+                comida.setId(cursor.getInt(0));
+                comida.setNome(cursor.getString(1));
+                comida.setId_usuario(cursor.getInt(2));
+                comida.setNome_perfil(cursor.getString(3));
+                comidas.add(comida);
+            } while (cursor.moveToNext());
+        }
+        bd.close();
+        return comidas;
+    }
+
+    public ArrayList<PerfilMusica> sqlGetPerfilMusica (PerfilUsuario perfilUsuario) {
+        ArrayList<PerfilMusica> musicas = new ArrayList<PerfilMusica>();
+        String where = "SELECT * FROM perfilMusica WHERE id_usuario = '" + perfilUsuario.getId_Usuario() + "' AND nome_perfil = '" + perfilUsuario.getNome() + "'";
+        Cursor cursor = bd.rawQuery(where, null);
+        if (cursor.getCount() > 0) {
+            cursor.moveToFirst();
+            do {
+                PerfilMusica musica = new PerfilMusica();
+                musica.setId(cursor.getInt(0));
+                musica.setNome(cursor.getString(1));
+                musica.setId_usuario(cursor.getInt(2));
+                musica.setNome_perfil(cursor.getString(3));
+                musicas.add(musica);
+            } while (cursor.moveToNext());
+        }
+        bd.close();
+        return musicas;
+    }
+
 
     public ArrayList<PerfilUsuario> sqlGetPerfil(Usuario usuario){
         ArrayList<PerfilUsuario> list = new ArrayList<PerfilUsuario>();
         String where ="SELECT * FROM perfilUsuario WHERE id_usuario = '"+ usuario.getId()+"'";
         Cursor cursor = bd.rawQuery(where,null);
+
         if (cursor.getCount()>0){
             cursor.moveToFirst();
             do {

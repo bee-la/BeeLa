@@ -125,7 +125,7 @@ public class PerguntasComidasAct extends AppCompatActivity {
     }
 
     private void alterarTelaMusica(){
-        usuario.setComida(comidaSelecionada);
+//        usuario.setComida(comidaSelecionada);
         startActivity(new Intent(PerguntasComidasAct.this, PerguntasMusicaAct.class));
     }
 }
