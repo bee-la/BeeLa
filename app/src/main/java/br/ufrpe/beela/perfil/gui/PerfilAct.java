@@ -42,7 +42,7 @@ public class PerfilAct extends AppCompatActivity {
     }
 
     private void setarNome(){
-        if (usuario.getNome() == ""){
+        if (usuario.getNome()==""){
         nomeTextView.setText(usuario.getNome());}
         else{
         nomeTextView.setText(usuario.getNome());}

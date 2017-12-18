@@ -8,6 +8,8 @@ import android.database.sqlite.SQLiteDatabase;
 import java.util.ArrayList;
 
 import br.ufrpe.beela.database.dao.BD;
+import br.ufrpe.beela.perfil.dominio.PerfilComida;
+import br.ufrpe.beela.perfil.dominio.PerfilMusica;
 import br.ufrpe.beela.perfil.dominio.PerfilUsuario;
 import br.ufrpe.beela.usuario.dominio.Usuario;
 
@@ -19,7 +21,6 @@ import br.ufrpe.beela.usuario.dominio.Usuario;
 
 public class PerfilDAO {
     private SQLiteDatabase bd;
-
     public PerfilDAO(Context context, String tipo){
         BD auxBd = new BD(context);
         if(tipo.equals("R")){ bd = auxBd.getReadableDatabase();}
@@ -30,23 +31,44 @@ public class PerfilDAO {
         ContentValues valores = new ContentValues();
         valores.put("id_usuario",perfil.getId_Usuario());
         valores.put("nome_perfil", perfil.getNome());
-        valores.put("comida", perfil.getComida());
-        valores.put("musica", perfil.getMusica());
+  //      valores.put("comida", perfil.getComida());
+ //       valores.put("musica", perfil.getMusica());
 //        valores.put("esporte", perfil.getEsporte());
-
         bd.insert("perfilUsuario", null, valores);
         bd.close();
+        inserirPerfilComida(perfil.getComida());
+        inserirPerfilMusica(perfil.getMusica());
     }
+    public void inserirPerfilMusica(PerfilMusica musica){
+        ContentValues valores = new ContentValues();
+        valores.put("nome",musica.getNome());
+        valores.put("id_usuario",musica.getId_usuario());
+        valores.put("id_perfil",musica.getId_perfil());
+        bd.insert("perfilMusica",null,valores);
+        bd.close();
+    }
+
+    public void inserirPerfilComida(PerfilComida comida){
+        ContentValues valores = new ContentValues();
+        valores.put("nome",comida.getNome());
+        valores.put("id_usuario",comida.getId_usuario());
+        valores.put("id_perfil",comida.getId_perfil());
+        bd.insert("perfilComida",null,valores);
+        bd.close();
+    }
+
     public void updatePerfil(PerfilUsuario perfil) {
         String where = "id_usuario = " + perfil.getId_Usuario()+" AND nome_perfil = "+ perfil.getNome();
         ContentValues valores = new ContentValues();
-        valores.put("comida", perfil.getComida());
-        valores.put("musica", perfil.getMusica());
+//        valores.put("comida", perfil.getComida());
+//        valores.put("musica", perfil.getMusica());
 //        valores.put("esporte", usuario.getPerfil().getEsporte());
 
         bd.update("perfilUsuario", valores, where,null);
         bd.close();
     }
+
+
     public void deletePerfil(PerfilUsuario perfil) {
         String where = "id_usuario = " + perfil.getId_Usuario()+" AND nome_perfil = "+ perfil.getNome();
         bd.delete("perfilUsuario", where , null);
@@ -72,8 +94,8 @@ public class PerfilDAO {
                 p.setId(cursor.getInt(0));
                 p.setId_usuario(cursor.getInt(1));
                 p.setNome(cursor.getString(2));
-                p.setComida(cursor.getString(3));
-                p.setMusica(cursor.getString(4));
+//                p.setComida(cursor.getString(3));
+//                p.setMusica(cursor.getString(4));
                 //p.setEsporte(cursor.getString(5));
                 list.add(p);
             } while(cursor.moveToNext());
