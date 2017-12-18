@@ -25,7 +25,7 @@ public class NomePerfilAct extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_nome_perfil);
+        setContentView( R.layout.activity_nome_perfil);
 
         nomeTextViewPerfil1=(TextView)findViewById(R.id.textViewPerfil1);
         nomePerfilEditText12=(EditText)findViewById(R.id.editText12);

@@ -87,6 +87,7 @@ public class PerguntasMusicaAct extends AppCompatActivity {
 
     public void alterarTelaPerfil(){
 //TODO      Na tela de PerfilAct falta aparecer o perfil que foi adicionado.
+
         adcmusicas();
         //usuario.setMusica(musicaSelecionada);
         startActivity(new Intent(PerguntasMusicaAct.this, PerguntasComidasAct.class));
