@@ -1,4 +1,4 @@
-package com.example.max.list;
+package br.ufrpe.beela.perfil.gui;
 
 /**
  * Created by max on 16/12/17.

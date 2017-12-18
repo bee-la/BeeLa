@@ -20,64 +20,67 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/button18"
-        android:layout_width="0dp"
-        android:layout_height="60dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="72dp"
-        android:textAllCaps="false"
-        android:text="@string/forro"
-        android:textSize="20sp"
-        android:backgroundTint="@color/verdeBotao"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView9" />
+
+    <CheckBox
+        android:id="@+id/checkBoxRock"
+        android:layout_width="387dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:buttonTint="@color/verdeBotao"
+        android:onClick="onCheckboxClicked"
+        android:text="Rock"
+        android:textColor="@color/branco"
+        app:layout_constraintTop_toBottomOf="@+id/checkBoxSamba"
+        tools:layout_editor_absoluteX="0dp" />
+
+    <CheckBox
+        android:id="@+id/checkboxReggae"
+        android:layout_width="377dp"
+        android:layout_height="29dp"
+        android:layout_marginTop="24dp"
+        android:buttonTint="@color/verdeBotao"
+        android:onClick="onCheckboxClicked"
+        android:text="Reggae"
+        android:textColor="@color/branco"
+        app:layout_constraintTop_toBottomOf="@+id/checkBoxRock"
+        tools:layout_editor_absoluteX="4dp" />
+
+    <CheckBox
+        android:id="@+id/checkBoxRap"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_marginTop="80dp"
+        android:buttonTint="@color/verdeBotao"
+        android:checked="false"
+        android:onClick="onCheckboxClicked"
+        android:text="Rap"
+        android:textColor="@color/branco"
+        android:visibility="visible"
+        app:layout_constraintTop_toBottomOf="@+id/textView9"
+        tools:layout_editor_absoluteX="0dp" />
+
+    <CheckBox
+        android:id="@+id/checkBoxSamba"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:buttonTint="@color/verdeBotao"
+        android:onClick="onCheckboxClicked"
+        android:text="Samba"
+        android:textColor="@color/branco"
+        app:layout_constraintTop_toBottomOf="@+id/checkBoxRap"
+        tools:layout_editor_absoluteX="0dp" />
+
 
     <Button
-        android:id="@+id/button19"
-        android:layout_width="0dp"
-        android:layout_height="60dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:text="@string/sambaPagode"
-        android:textAllCaps="false"
-        android:textSize="20sp"
-        android:backgroundTint="@color/verdeBotao"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button18" />
-
-    <Button
-        android:id="@+id/button20"
-        android:layout_width="0dp"
-        android:layout_height="60dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:text="@string/sertanejo"
-        android:textAllCaps="false"
-        android:textSize="20sp"
-        android:backgroundTint="@color/verdeBotao"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button19" />
-
-    <Button
-        android:id="@+id/button21"
-        android:layout_width="0dp"
-        android:layout_height="60dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:text="@string/rock"
-        android:textAllCaps="false"
-        android:textSize="20sp"
-        android:backgroundTint="@color/verdeBotao"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button20" />
+        android:id="@+id/buttonConfirmar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="68dp"
+        android:background="@color/verdeBotao"
+        android:text="Confirmar"
+        android:textColor="@color/branco"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@+id/checkboxReggae"
+        tools:layout_editor_absoluteX="0dp" />
 </android.support.constraint.ConstraintLayout>

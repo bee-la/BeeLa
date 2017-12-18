@@ -4,11 +4,11 @@ package br.ufrpe.beela.perfil.gui;
  * Created by max on 18/12/17.
  */
 
-public class filme {
+public class comida {
 
     private String nome;
 
-    public filme(String nome){
+    public comida(String nome){
 
         this.nome = nome.toString();
 

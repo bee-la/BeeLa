@@ -6,8 +6,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import br.ufrpe.beela.perfil.dominio.PerfilUsuario;
 import br.ufrpe.beela.usuario.gui.LoginAct;
@@ -16,12 +20,15 @@ import br.ufrpe.beela.gui.R;
 public class PerguntasMusicaAct extends AppCompatActivity {
     private PerfilUsuario usuario = LoginAct.getUsuario().getPerfil();
     private TextView fonteTextView9;
-    private Toast mensagem;
-    private String musicaSelecionada;
-    private Button forroButton18;
-    private Button sambaButton19;
-    private Button sertanejoButton20;
-    private Button rockButton21;
+    private Button btconfirmar;
+
+    private List<CheckBox> checkBoxesMusicas = new ArrayList<>();
+
+
+    private static ArrayList<musica> listaMusica = new ArrayList();
+
+
+    public static ArrayList getListaMusica() {  return listaMusica; }
 
 
     @Override
@@ -34,59 +41,55 @@ public class PerguntasMusicaAct extends AppCompatActivity {
         fonteTextView9 = (TextView) findViewById(R.id.textView9);
         fonteTextView9.setTypeface(fonte);
 
+        CheckBox rock = findViewById(R.id.checkBoxRock);
+        CheckBox reggae = findViewById(R.id.checkboxReggae);
+        CheckBox rap = findViewById(R.id.checkBoxRap);
+        CheckBox samba = findViewById(R.id.checkBoxSamba);
 
-        forroButton18=(Button)findViewById(R.id.button18);
-        sambaButton19=(Button)findViewById(R.id.button19);
-        sertanejoButton20=(Button)findViewById(R.id.button20);
-        rockButton21=(Button)findViewById(R.id.button21);
+        checkBoxesMusicas.add(rock);
+        checkBoxesMusicas.add(reggae);
+        checkBoxesMusicas.add(rap);
+        checkBoxesMusicas.add(samba);
 
-        forroButton18.setOnClickListener(new View.OnClickListener() {
+        btconfirmar = (Button) findViewById(R.id.buttonConfirmar);
+        btconfirmar.setOnClickListener(new View.OnClickListener() {
+
             @Override
-            public void onClick(View view) {
-                musicaSelecionada=forroButton18.getText().toString();
-                mensagem=Toast.makeText(getApplicationContext(), "Sua Escolha: "+musicaSelecionada, Toast.LENGTH_SHORT);
-                mensagem.show();
+            public void onClick(View v) {
                 alterarTelaPerfil();
             }
+
         });
-
-        sambaButton19.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                musicaSelecionada=sambaButton19.getText().toString();
-                mensagem=Toast.makeText(getApplicationContext(), "Sua Escolha: "+musicaSelecionada, Toast.LENGTH_SHORT);
-                mensagem.show();
-                alterarTelaPerfil();
-            }
-        });
-
-        sertanejoButton20.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                musicaSelecionada=sertanejoButton20.getText().toString();
-                mensagem=Toast.makeText(getApplicationContext(), "Sua Escolha: "+musicaSelecionada, Toast.LENGTH_SHORT);
-                mensagem.show();
-                alterarTelaPerfil();
-            }
-        });
-
-        rockButton21.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                musicaSelecionada=rockButton21.getText().toString();
-                mensagem=Toast.makeText(getApplicationContext(), "Sua Escolha: "+musicaSelecionada, Toast.LENGTH_SHORT);
-                mensagem.show();
-                alterarTelaPerfil();
-            }
-        });
-
-
     }
+
+
+
+
+    public void onCheckboxClicked(View view) {
+
+        boolean checked = ((CheckBox) view).isChecked();
+    }
+
+        public void adcmusicas(){
+
+            listaMusica = new ArrayList<musica>();
+            for (CheckBox x : checkBoxesMusicas) {
+                if (x.isChecked()) {
+                    musica a = new musica(x.getText().toString());
+                    listaMusica.add(a);
+                }
+            }
+        }
+
+
+
+
 
     public void alterarTelaPerfil(){
 //TODO      Na tela de PerfilAct falta aparecer o perfil que foi adicionado.
-        usuario.setMusica(musicaSelecionada);
-        startActivity(new Intent(PerguntasMusicaAct.this, NomePerfilAct.class));
+        adcmusicas();
+        //usuario.setMusica(musicaSelecionada);
+        startActivity(new Intent(PerguntasMusicaAct.this, PerguntasComidasAct.class));
 
     }
 

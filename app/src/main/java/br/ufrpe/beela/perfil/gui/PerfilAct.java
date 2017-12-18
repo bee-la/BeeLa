@@ -38,7 +38,7 @@ public class PerfilAct extends AppCompatActivity {
     }
     private void adicionarPerfilTrocarTela() {
         setarNome();
-        startActivity(new Intent(PerfilAct.this, PerguntasComidasAct.class));
+        startActivity(new Intent(PerfilAct.this, PerguntasMusicaAct.class));
     }
 
     private void setarNome(){

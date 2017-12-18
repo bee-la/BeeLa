@@ -29,65 +29,77 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/button13"
-        android:layout_width="0dp"
-        android:layout_height="60dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="72dp"
-        android:backgroundTint="@color/verdeBotao"
-        android:text="@string/massas"
-        android:textSize="20sp"
-        android:textAllCaps="false"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView7" />
+        <CheckBox
+            android:id="@+id/checkBoxLasanha"
+            android:layout_width="381dp"
+            android:layout_height="34dp"
+            android:layout_marginTop="48dp"
+            android:buttonTint="@color/verdeBotao"
+            android:onClick="onCheckboxClicked"
+            android:text="Lasanha"
+            android:textColor="@color/branco"
+            app:layout_constraintTop_toBottomOf="@+id/textView7"
+            tools:layout_editor_absoluteX="2dp" />
 
-    <Button
-        android:id="@+id/button15"
-        android:layout_width="0dp"
-        android:layout_height="60dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:backgroundTint="@color/verdeBotao"
-        android:text="@string/orientais"
-        android:textSize="20sp"
-        android:textAllCaps="false"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button13" />
+        <CheckBox
+            android:id="@+id/checkboxPizza"
+            android:layout_width="366dp"
+            android:layout_height="27dp"
+            android:layout_marginTop="8dp"
+            android:buttonTint="@color/verdeBotao"
+            android:onClick="onCheckboxClicked"
+            android:text="Pizza"
+            android:textColor="@color/branco"
+            app:layout_constraintTop_toBottomOf="@+id/checkBoxCreperia"
+            tools:layout_editor_absoluteX="2dp" />
 
-    <Button
-        android:id="@+id/button16"
-        android:layout_width="0dp"
-        android:layout_height="60dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:backgroundTint="@color/verdeBotao"
-        android:text="@string/carnes"
-        android:textSize="20sp"
-        android:textAllCaps="false"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button15" />
+        <CheckBox
+            android:id="@+id/checkBoxCreperia"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:buttonTint="@color/verdeBotao"
+            android:onClick="onCheckboxClicked"
+            android:text="Crepe"
+            android:textColor="@color/branco"
+            app:layout_constraintTop_toBottomOf="@+id/checkBoxYakisoba"
+            tools:layout_editor_absoluteX="0dp" />
 
-    <Button
-        android:id="@+id/button17"
-        android:layout_width="0dp"
-        android:layout_height="60dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:backgroundTint="@color/verdeBotao"
-        android:text="@string/vegetariano"
-        android:textAllCaps="false"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button16" />
-</android.support.constraint.ConstraintLayout>
+        <CheckBox
+            android:id="@+id/checkBoxYakisoba"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:buttonTint="@color/verdeBotao"
+            android:onClick="onCheckboxClicked"
+            android:text="Yakisoba"
+            android:textColor="@color/branco"
+            app:layout_constraintTop_toBottomOf="@+id/checkBoxFastFood"
+            tools:layout_editor_absoluteX="0dp" />
+
+        <CheckBox
+            android:id="@+id/checkBoxFastFood"
+            android:layout_width="match_parent"
+            android:layout_height="36dp"
+            android:layout_marginTop="8dp"
+            android:buttonTint="@color/verdeBotao"
+            android:onClick="onCheckboxClicked"
+            android:text="FastFood"
+            android:textColor="@color/branco"
+            app:layout_constraintTop_toBottomOf="@+id/checkBoxLasanha"
+            tools:layout_editor_absoluteX="0dp" />
+
+        <Button
+            android:id="@+id/buttonConfirmar2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="64dp"
+            android:background="@color/verdeBotao"
+            android:text="Confirmar"
+            android:textColor="@color/branco"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@+id/checkboxPizza"
+            tools:layout_editor_absoluteX="0dp" />
+
+    </android.support.constraint.ConstraintLayout>
 </ScrollView>
