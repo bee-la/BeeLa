@@ -13,6 +13,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.ufrpe.beela.perfil.dominio.PerfilMusica;
 import br.ufrpe.beela.perfil.dominio.PerfilUsuario;
 import br.ufrpe.beela.usuario.gui.LoginAct;
 import br.ufrpe.beela.gui.R;
@@ -25,10 +26,10 @@ public class PerguntasMusicaAct extends AppCompatActivity {
     private List<CheckBox> checkBoxesMusicas = new ArrayList<>();
 
 
-    private static ArrayList<musica> listaMusica = new ArrayList();
+    private static ArrayList<PerfilMusica> listaMusica = new ArrayList();
 
 
-    public static ArrayList getListaMusica() {  return listaMusica; }
+   // public static ArrayList getListaMusica() {  return listaMusica; }
 
 
     @Override
@@ -72,13 +73,17 @@ public class PerguntasMusicaAct extends AppCompatActivity {
 
         public void adcmusicas(){
 
-            listaMusica = new ArrayList<musica>();
+            ArrayList<PerfilMusica> listaMusica = new ArrayList<PerfilMusica>();
             for (CheckBox x : checkBoxesMusicas) {
                 if (x.isChecked()) {
-                    musica a = new musica(x.getText().toString());
-                    listaMusica.add(a);
+                    PerfilMusica musica = new PerfilMusica();
+                    musica.setId_usuario(usuario.getId_Usuario());
+                    musica.setNome(x.getText().toString());
+        //            musica.setNome_perfil(usuario.getNome());
+                    listaMusica.add(musica);
                 }
             }
+            usuario.setMusica(listaMusica);
         }
 
 
@@ -87,9 +92,7 @@ public class PerguntasMusicaAct extends AppCompatActivity {
 
     public void alterarTelaPerfil(){
 //TODO      Na tela de PerfilAct falta aparecer o perfil que foi adicionado.
-
         adcmusicas();
-        //usuario.setMusica(musicaSelecionada);
         startActivity(new Intent(PerguntasMusicaAct.this, PerguntasComidasAct.class));
 
     }

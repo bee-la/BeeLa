@@ -13,6 +13,8 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.ufrpe.beela.perfil.dao.PerfilDAO;
+import br.ufrpe.beela.perfil.dominio.PerfilComida;
 import br.ufrpe.beela.perfil.dominio.PerfilUsuario;
 import br.ufrpe.beela.usuario.gui.LoginAct;
 import br.ufrpe.beela.gui.R;
@@ -27,7 +29,7 @@ public class PerguntasComidasAct extends AppCompatActivity {
     private List<CheckBox> checkBoxesComidas = new ArrayList<>();
 
 
-    private static ArrayList<comida> listaComida = new ArrayList();
+    private static ArrayList<PerfilComida> listaComida = new ArrayList();
 
 
     public static ArrayList getListaComida() {  return listaComida; }
@@ -75,13 +77,17 @@ public class PerguntasComidasAct extends AppCompatActivity {
 
     public void adcComida(){
 
-        listaComida = new ArrayList<>();
+        ArrayList<PerfilComida>listaComida = new ArrayList<PerfilComida>();
         for (CheckBox x : checkBoxesComidas) {
             if (x.isChecked()) {
-                comida a = new comida(x.getText().toString());
-                listaComida.add(a);
+                PerfilComida comida = new PerfilComida();
+                comida.setNome(x.getText().toString());
+                comida.setId_usuario(usuario.getId_Usuario());
+              //  comida.setNome_perfil(usuario.getNome());
+                listaComida.add(comida);
             }
         }
+        usuario.setComida(listaComida);
     }
 
 
@@ -92,10 +98,7 @@ public class PerguntasComidasAct extends AppCompatActivity {
     public void alterarTelaPerfil(){
 //TODO      Na tela de PerfilAct falta aparecer o perfil que foi adicionado.
         adcComida();
-        //usuario.setMusica(musicaSelecionada);
         startActivity(new Intent(PerguntasComidasAct.this, NomePerfilAct.class));
-
-
     }
 
 }

@@ -37,10 +37,20 @@ public class PerfilAct extends AppCompatActivity {
         });
     }
     private void adicionarPerfilTrocarTela() {
-        setarNome();
+        //setarNome();
+        verifarNomeTextView();
         startActivity(new Intent(PerfilAct.this, PerguntasMusicaAct.class));
     }
-
+    public void verifarNomeTextView(){
+        Intent intent =getIntent();
+        if (intent!=null){
+            Bundle parametros=intent.getExtras();
+            if (parametros!=null){
+                String nomeTexto = parametros.getString("chave");
+                nomeTextView.setText(nomeTexto);
+            }
+        }
+    }
     private void setarNome(){
         if (usuario.getNome()==""){
         nomeTextView.setText(usuario.getNome());}

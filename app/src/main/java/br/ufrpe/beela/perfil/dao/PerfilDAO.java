@@ -36,28 +36,28 @@ public class PerfilDAO {
 //        valores.put("esporte", perfil.getEsporte());
         bd.insert("perfilUsuario", null, valores);
         bd.close();
-        inserirPerfilComida(perfil.getComida());
-        inserirPerfilMusica(perfil.getMusica());
+//        inserirPerfilComida(perfil);
+//        inserirPerfilMusica(perfil);
     }
-    public void inserirPerfilMusica(ArrayList<PerfilMusica> musicas){
-        for (PerfilMusica musica : musicas){
+    public void inserirPerfilMusica(PerfilMusica musica){
             ContentValues valores = new ContentValues();
             valores.put("nome",musica.getNome());
             valores.put("id_usuario",musica.getId_usuario());
-            valores.put("id_perfil",musica.getNome_perfil());
-            bd.insert("perfilMusica",null,valores);}
-        bd.close();
+            valores.put("nome_perfil",musica.getNome_perfil());
+            bd.insert("perfilMusica",null,valores);
+            bd.close();
     }
 
-    public void inserirPerfilComida(ArrayList<PerfilComida> comidas){
-        for (PerfilComida comida: comidas){
+
+    public void inserirPerfilComida(PerfilComida comida){
             ContentValues valores = new ContentValues();
             valores.put("nome",comida.getNome());
             valores.put("id_usuario",comida.getId_usuario());
             valores.put("nome_perfil",comida.getNome_perfil());
-            bd.insert("perfilComida",null,valores);}
-        bd.close();
+            bd.insert("perfilComida",null,valores);
+            bd.close();
     }
+
 //TODO ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     public void updatePerfil(PerfilUsuario perfil) {
         String where = "id_usuario = " + perfil.getId_Usuario()+" AND nome_perfil = "+ perfil.getNome();
