@@ -25,10 +25,18 @@ public class PerfilAct extends AppCompatActivity {
         setContentView(R.layout.activity_perfil);
 //-------------------------------------Trocar tela--------------------------------------------
         Typeface fonte = Typeface.createFromAsset(getAssets(), "fonts/Chewy.ttf");
-        nomeTextView =(TextView)findViewById(R.id.textViewPerfil1);
+        nomeTextView = findViewById(R.id.textViewPerfil1);
         nomeTextView.setTypeface(fonte);
         adicionarPerfilTrocarTela = (ImageButton) findViewById(R.id.imageButton4);
+        if(usuario.getNome()==null){
 
+            nomeTextView.setText("Sem Perfil");
+        }
+
+        else{
+
+            verifarNomeTextView();
+        }
         adicionarPerfilTrocarTela.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -38,7 +46,7 @@ public class PerfilAct extends AppCompatActivity {
     }
     private void adicionarPerfilTrocarTela() {
         //setarNome();
-        verifarNomeTextView();
+
         startActivity(new Intent(PerfilAct.this, PerguntasMusicaAct.class));
     }
     public void verifarNomeTextView(){

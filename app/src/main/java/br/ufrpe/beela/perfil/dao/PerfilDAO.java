@@ -123,7 +123,7 @@ public class PerfilDAO {
     }
 
 
-    public ArrayList<PerfilUsuario> sqlGetPerfil(Usuario usuario){
+    public  ArrayList<PerfilUsuario> sqlGetPerfil(Usuario usuario){
         ArrayList<PerfilUsuario> list = new ArrayList<PerfilUsuario>();
         String where ="SELECT * FROM perfilUsuario WHERE id_usuario = '"+ usuario.getId()+"'";
         Cursor cursor = bd.rawQuery(where,null);
