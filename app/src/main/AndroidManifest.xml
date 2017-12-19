@@ -54,8 +54,8 @@
             android:label="@string/nomePerfil" />
         <activity
             android:name="br.ufrpe.beela.perfil.gui.PerfilPrioridadeAct"
-            android:label="@string/prioridadePerfil"/>
-
+            android:label="@string/prioridadePerfil" />
+        <activity android:name="br.ufrpe.beela.perfil.gui.PerguntasPerfilAct" />
     </application>
 
 </manifest>
