@@ -54,10 +54,12 @@ public class ConfiguracoesAct extends AppCompatActivity {
     //----------------------------------Trocar Tela Funções -------------------------------------
     private void alterarNomeButton5() {
         startActivity(new Intent(ConfiguracoesAct.this, AlterarNomeAct.class));
+        finish();
 }
 
     private void alterarSenhaButton6 () {
         startActivity(new Intent(ConfiguracoesAct.this, AlterarSenhaAct.class));
+        finish();
     }
 
     private void apagarButton7() {
@@ -69,6 +71,6 @@ public class ConfiguracoesAct extends AppCompatActivity {
     }
 
     private void setarNome(){
-        nomeTextView11.setText(LoginAct.getUsuario().getNome());
+        nomeTextView11.setText(LoginAct.getPessoa().getNome());
     }
 }

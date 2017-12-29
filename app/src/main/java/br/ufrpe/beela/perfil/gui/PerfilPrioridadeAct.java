@@ -16,7 +16,7 @@ import br.ufrpe.beela.usuario.gui.LoginAct;
 
 public class PerfilPrioridadeAct extends AppCompatActivity {
     DraggableTreeView draggableTreeView;
-    private PerfilUsuario usuario = LoginAct.getUsuario().getPerfil();
+    private PerfilUsuario usuario = LoginAct.getPessoa().getPerfil();
     private String perfilPrioridade;
     private Context root;
 

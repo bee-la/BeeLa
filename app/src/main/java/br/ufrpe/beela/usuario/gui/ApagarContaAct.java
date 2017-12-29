@@ -32,7 +32,8 @@ public class ApagarContaAct extends AppCompatActivity {
     }
 
     public void deletarConta() {
-    UsuarioDAO bd = new UsuarioDAO(this,"W");
+        UsuarioDAO bd = new UsuarioDAO();
+        bd.getEscrever(this);
         bd.delete(LoginAct.getUsuario());
         Toast Sucesso;
         Sucesso = Toast.makeText(getApplicationContext(), "Conta Deletada", Toast.LENGTH_SHORT);
