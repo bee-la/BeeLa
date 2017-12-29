@@ -21,7 +21,7 @@ import br.ufrpe.beela.gui.R;
 
 public class PerguntasComidasAct extends AppCompatActivity {
 
-    private PerfilUsuario usuario = LoginAct.getUsuario().getPerfil();
+    private PerfilUsuario usuario = LoginAct.getPessoa().getPerfil();
 
     private TextView fonteTextView7;
     private Button btconfirmar;
@@ -83,14 +83,11 @@ public class PerguntasComidasAct extends AppCompatActivity {
                 PerfilComida comida = new PerfilComida();
                 comida.setNome(x.getText().toString());
                 comida.setId_usuario(usuario.getId_Usuario());
-              //  comida.setNome_perfil(usuario.getNome());
                 listaComida.add(comida);
             }
         }
         usuario.setComida(listaComida);
     }
-
-
 
 
 

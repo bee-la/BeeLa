@@ -14,7 +14,7 @@ import br.ufrpe.beela.usuario.gui.LoginAct;
 import br.ufrpe.beela.gui.R;
 
 public class PerfilAct extends AppCompatActivity {
-    private PerfilUsuario usuario = LoginAct.getUsuario().getPerfil();
+    private PerfilUsuario usuario = LoginAct.getPessoa().getPerfil();
     private  TextView nomeTextView;
     private ImageButton adicionarPerfilTrocarTela;
 
@@ -30,13 +30,10 @@ public class PerfilAct extends AppCompatActivity {
         adicionarPerfilTrocarTela = (ImageButton) findViewById(R.id.imageButton4);
         if(usuario.getNome()==null){
 
-            nomeTextView.setText("Sem Perfil");
-        }
-
+            nomeTextView.setText("Sem Perfil");}
         else{
+            verifarNomeTextView();}
 
-            verifarNomeTextView();
-        }
         adicionarPerfilTrocarTela.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -45,7 +42,6 @@ public class PerfilAct extends AppCompatActivity {
         });
     }
     private void adicionarPerfilTrocarTela() {
-        //setarNome();
 
         startActivity(new Intent(PerfilAct.this, PerguntasMusicaAct.class));
     }
@@ -59,7 +55,7 @@ public class PerfilAct extends AppCompatActivity {
             }
         }
     }
-    private void setarNome(){
+    private void MontarPerfis(){
         if (usuario.getNome()==""){
         nomeTextView.setText(usuario.getNome());}
         else{

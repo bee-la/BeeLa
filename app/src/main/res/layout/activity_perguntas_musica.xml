@@ -12,11 +12,13 @@
         android:id="@+id/textView9"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
         android:layout_marginStart="28dp"
         android:layout_marginTop="24dp"
         android:text="@string/tipoMusica"
         android:textColor="@color/branco"
         android:textSize="25sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -75,12 +77,15 @@
     <Button
         android:id="@+id/buttonConfirmar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="68dp"
+        android:layout_height="47dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="8dp"
         android:background="@color/verdeBotao"
         android:text="Confirmar"
         android:textColor="@color/branco"
         android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/checkboxReggae"
+        app:layout_constraintVertical_bias="0.729"
         tools:layout_editor_absoluteX="0dp" />
 </android.support.constraint.ConstraintLayout>

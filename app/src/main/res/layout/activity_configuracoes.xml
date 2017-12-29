@@ -33,16 +33,16 @@
             android:layout_width="312dp"
             android:layout_height="45dp"
             android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
             android:backgroundTint="@color/preto"
-            android:text="@string/AlterarNome"
-            android:textAlignment="textStart"
+            android:text="- Nome"
+            android:textAlignment="viewStart"
             android:textAllCaps="false"
             android:textColor="@color/branco"
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.142"
+            app:layout_constraintHorizontal_bias="0.41"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView11" />
 
@@ -53,7 +53,7 @@
             android:layout_marginEnd="8dp"
             android:layout_marginStart="16dp"
             android:background="@color/preto"
-            android:text="@string/AlterarSenha"
+            android:text="    - Senha"
             android:textAlignment="textStart"
             android:textAllCaps="false"
             android:textColor="@color/branco"
@@ -65,12 +65,12 @@
 
         <Button
             android:id="@+id/button7"
-            android:layout_width="308dp"
+            android:layout_width="339dp"
             android:layout_height="38dp"
             android:layout_marginEnd="8dp"
-            android:layout_marginStart="16dp"
+            android:layout_marginStart="8dp"
             android:background="@color/preto"
-            android:text="@string/ApagarConta"
+            android:text=". ApagarConta"
             android:textAlignment="viewStart"
             android:textAllCaps="false"
             android:textColor="@color/branco"
@@ -82,18 +82,18 @@
 
         <Button
             android:id="@+id/button8"
-            android:layout_width="308dp"
-            android:layout_height="39dp"
+            android:layout_width="338dp"
+            android:layout_height="35dp"
             android:layout_marginEnd="8dp"
-            android:layout_marginStart="16dp"
+            android:layout_marginStart="8dp"
             android:background="@color/preto"
-            android:text="@string/Sair"
+            android:text=". Sair"
             android:textAlignment="viewStart"
             android:textAllCaps="false"
             android:textColor="@color/branco"
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.309"
+            app:layout_constraintHorizontal_bias="0.3"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/button7" />
 
@@ -105,12 +105,27 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:text=""
-            android:textColor="@color/branco"
+            android:textAlignment="center"
             android:textAllCaps="false"
+            android:textColor="@color/branco"
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintHorizontal_bias="0.23"
+            app:layout_constraintStart_toEndOf="@+id/textView12"
             app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+
+        <TextView
+            android:id="@+id/textView12"
+            android:layout_width="89dp"
+            android:layout_height="27dp"
+            android:layout_marginStart="8dp"
+            android:text=". Alterar"
+            android:textAlignment="viewStart"
+            android:textColor="@color/branco"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/button5"
+            app:layout_constraintStart_toStartOf="parent" />
 
     </android.support.constraint.ConstraintLayout>
 </ScrollView>

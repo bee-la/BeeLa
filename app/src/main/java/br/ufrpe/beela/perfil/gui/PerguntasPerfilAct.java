@@ -69,7 +69,7 @@ public class PerguntasPerfilAct extends AppCompatActivity {
         esportes.add("volei");
         esportes.add("basquete");
 
-        listHash.put(listDataHeader.get(0),comidas);
+        listHash.put("Comidas",comidas);
         listHash.put(listDataHeader.get(1),musicas);
         listHash.put(listDataHeader.get(2),esportes);
 

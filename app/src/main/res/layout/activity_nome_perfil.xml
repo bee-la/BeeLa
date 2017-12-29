@@ -10,16 +10,16 @@
 
     <EditText
         android:id="@+id/editText12"
-        android:layout_width="334dp"
+        android:layout_width="322dp"
         android:layout_height="53dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:ems="10"
-        android:inputType="textPersonName"
         android:hint="@string/nomeDoPerfil"
-        android:textColorHint="@color/textoEntrada"
+        android:inputType="textPersonName"
         android:textColor="@color/branco"
+        android:textColorHint="@color/textoEntrada"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

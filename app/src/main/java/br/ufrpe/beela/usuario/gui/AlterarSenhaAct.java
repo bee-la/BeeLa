@@ -13,8 +13,12 @@ import android.widget.Toast;
 import br.ufrpe.beela.gui.R;
 import br.ufrpe.beela.usuario.dao.Criptografia;
 import br.ufrpe.beela.usuario.dao.UsuarioDAO;
+import br.ufrpe.beela.usuario.dominio.Usuario;
+import br.ufrpe.beela.usuario.negocio.UsuarioService;
 
 public class AlterarSenhaAct extends AppCompatActivity {
+
+    private UsuarioService usuarioService = new UsuarioService();
 
     private TextView senhaAtualText7,novaSenhaText8, repetirSenhaText9;
     private Button alterarSenhaButton10;
@@ -73,35 +77,33 @@ public class AlterarSenhaAct extends AppCompatActivity {
 
     public void alterarSucessoSenha(){
         senhaAlterada=Toast.makeText(getApplicationContext(), R.string.senhaAlterada, Toast.LENGTH_SHORT);
-        // TODO código que der certo se coloca aqui(Query do banco).
-        UsuarioDAO bd = new UsuarioDAO(this,"W");
+        UsuarioDAO bd = new UsuarioDAO();
+        bd.getEscrever(this);
         bd.updateSenha(LoginAct.getUsuario(),Criptografia.criptografar(novaSenha));
         LoginAct.getUsuario().setSenha(Criptografia.criptografar(novaSenha));
         senhaAlterada.show();
         finish();
-//        startActivity(new Intent(AlterarSenhaAct.this, home.class));
-
         startActivity(new Intent(AlterarSenhaAct.this, HomeAct.class));
     }
 
     public boolean ehValidoAlterarSenha(){
-        boolean valido=true;
-        if(senhaAtual.isEmpty()){
+        if(usuarioService.validarCamposVazio(senhaAtual)){
             senhaEditText7.setError(getString(R.string.campoVazio));
-            valido=false;
+            return false;
         }
 
-        if(novaSenha.isEmpty()){
+        if(usuarioService.validarCamposVazio(novaSenha)){
             novaSenhaEditText8.setError(getString(R.string.campoVazio));
-            valido=false;
+            return false;
         }
 
         if(!repetirSenha.equals(novaSenha)){
             repetirSenhaEditText9.setError(getString(R.string.senhasDiferentes));
-            valido=false;
+            return false;
         }
-
-        return valido;
+        else{
+        return true;
+        }
     }
 //---------------------------------------------------------------------------------------------
 

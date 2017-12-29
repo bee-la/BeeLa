@@ -11,20 +11,18 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import br.ufrpe.beela.gui.R;
-import br.ufrpe.beela.usuario.dao.UsuarioDAO;
-import br.ufrpe.beela.usuario.dominio.Usuario;
+import br.ufrpe.beela.usuario.dominio.Pessoa;
 import br.ufrpe.beela.usuario.negocio.UsuarioService;
 
 public class AlterarNomeAct extends AppCompatActivity {
-    private Usuario usuario = LoginAct.getUsuario();
-    private UsuarioService usuarioValido= new UsuarioService();
+    private Pessoa pessoa = LoginAct.getPessoa();
+    private UsuarioService usuarioService = new UsuarioService();
 
     private TextView alterarNomeText3;
     private Button alterarNomeButton11;
 
     private String alterarNome;
     private EditText alterarNomeEditText3;
-    private UsuarioService usuarioService = new UsuarioService();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,24 +48,28 @@ public class AlterarNomeAct extends AppCompatActivity {
     }
 
     public void validarCliqueAlterarNome(){
+        alterarNome=alterarNomeEditText3.getText().toString().trim();
         if(ehValidoAlterarNome()) {
-            usuarioService.alterarSucessoNome(usuario,alterarNome,this);
+            usuarioService.alterarSucessoNome(pessoa,alterarNome,this);
             startActivity(new Intent(AlterarNomeAct.this, HomeAct.class));
             Toast Sucesso;
             Sucesso = Toast.makeText(getApplicationContext(), "Nome Alterado", Toast.LENGTH_SHORT);
             Sucesso.show();
-        }}
+        }
+    }
 //-------------------------------------------------------------------------------------------------------
 
     //-----------------------------------Validação do campo Nome-----------------------------------------------
     public boolean ehValidoAlterarNome() {
-        boolean valido = true;
+        alterarNome=alterarNomeEditText3.getText().toString().trim();
         if (usuarioService.validarCamposVazio(alterarNome)) {
             alterarNomeEditText3.setError(getString(R.string.campoVazio));
-            valido = false;}
-        else if(usuarioService.validarNomeIgual(alterarNome,usuario)){
+            return false;}
+        if (usuarioService.validarNomeIgual(alterarNome, pessoa)) {
             alterarNomeEditText3.setError("Nome Iguais");
-            valido = false;}
-        return valido;
+            return false;}
+        else {
+            return true;
+        }
     }
 }

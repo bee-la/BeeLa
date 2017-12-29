@@ -31,13 +31,8 @@ public class PerfilDAO {
         ContentValues valores = new ContentValues();
         valores.put("id_usuario",perfil.getId_Usuario());
         valores.put("nome_perfil", perfil.getNome());
-  //      valores.put("comida", perfil.getComida());
- //       valores.put("musica", perfil.getMusica());
-//        valores.put("esporte", perfil.getEsporte());
         bd.insert("perfilUsuario", null, valores);
         bd.close();
-//        inserirPerfilComida(perfil);
-//        inserirPerfilMusica(perfil);
     }
     public void inserirPerfilMusica(PerfilMusica musica){
             ContentValues valores = new ContentValues();
@@ -71,18 +66,29 @@ public class PerfilDAO {
     }
 
 
-    public void deletePerfil(PerfilUsuario perfil) {
+    public void deletePerfilUsuario(PerfilUsuario perfil) {
         String where = "id_usuario = " + perfil.getId_Usuario()+" AND nome_perfil = "+ perfil.getNome();
         bd.delete("perfilUsuario", where , null);
+        bd.close();}
+
+    public void deletePerfilMusica(PerfilMusica musica) {
+        String where = "id_usuario = " + musica.getId_usuario()+" AND nome_perfil = "+ musica.getNome_perfil();
+        bd.delete("perfilComida", where , null);
+        bd.close();}
+
+    public void deletePerfilComida(PerfilComida comida) {
+        String where = "id_usuario = " + comida.getId_usuario()+" AND nome_perfil = "+ comida.getNome_perfil();
+        bd.delete("perfilComida", where , null);
         bd.close();}
 
     public boolean buscarPerfil(Usuario usuario, String NomedoPerfil){
         String where ="SELECT * FROM perfilUsuario WHERE id_usuario = " + usuario.getId()+" AND nome_perfil = "+ NomedoPerfil;
         Cursor cursor = bd.rawQuery(where , null);
-        if (cursor.getCount()>0){
-            return true;
-        }
-        return false;
+        try{
+        cursor.moveToNext();
+        return true;}
+        catch(Exception e ){return false;}
+        finally {bd.close();}
     }
     public ArrayList<PerfilComida> sqlGetPerfilComida (PerfilUsuario perfilUsuario) {
         ArrayList<PerfilComida> comidas = new ArrayList<PerfilComida>();

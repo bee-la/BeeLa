@@ -19,7 +19,7 @@ import br.ufrpe.beela.usuario.gui.LoginAct;
 import br.ufrpe.beela.gui.R;
 
 public class PerguntasMusicaAct extends AppCompatActivity {
-    private PerfilUsuario usuario = LoginAct.getUsuario().getPerfil();
+    private PerfilUsuario usuario = LoginAct.getPessoa().getPerfil();
     private TextView fonteTextView9;
     private Button btconfirmar;
 
