@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--suppress ALL -->
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,50 +8,56 @@
     android:background="@color/preto"
     tools:context="br.ufrpe.beela.perfil.gui.PerguntasMusicaAct">
 
-    <TextView
-        android:id="@+id/textView9"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="24dp"
-        android:text="@string/tipoMusica"
-        android:textColor="@color/branco"
-        android:textSize="25sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/preto"
+        tools:context="br.ufrpe.beela.perfil.gui.PerguntasMusicaAct">
+
+        <TextView
+            android:id="@+id/textView9"
+            android:layout_width="0dp"
+            android:layout_height="66dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="28dp"
+            android:text="@string/tipoMusica"
+            android:textColor="@color/branco"
+            android:textSize="25sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
 
-    <CheckBox
-        android:id="@+id/checkBoxRock"
-        android:layout_width="387dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:buttonTint="@color/verdeBotao"
-        android:onClick="onCheckboxClicked"
-        android:text="Rock"
-        android:textColor="@color/branco"
-        app:layout_constraintTop_toBottomOf="@+id/checkBoxSamba"
-        tools:layout_editor_absoluteX="0dp" />
+        <CheckBox
+            android:id="@+id/checkBoxRock"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:buttonTint="@color/verdeBotao"
+            android:onClick="onCheckboxClicked"
+            android:text="Rock"
+            android:textColor="@color/branco"
+            app:layout_constraintTop_toBottomOf="@+id/checkBoxSamba"
+            tools:layout_editor_absoluteX="0dp" />
 
-    <CheckBox
-        android:id="@+id/checkboxReggae"
-        android:layout_width="377dp"
-        android:layout_height="29dp"
-        android:layout_marginTop="24dp"
-        android:buttonTint="@color/verdeBotao"
-        android:onClick="onCheckboxClicked"
-        android:text="Reggae"
-        android:textColor="@color/branco"
-        app:layout_constraintTop_toBottomOf="@+id/checkBoxRock"
-        tools:layout_editor_absoluteX="4dp" />
+        <CheckBox
+            android:id="@+id/checkboxReggae"
+            android:layout_width="0dp"
+            android:layout_height="29dp"
+            android:layout_marginTop="24dp"
+            android:buttonTint="@color/verdeBotao"
+            android:onClick="onCheckboxClicked"
+            android:text="Reggae"
+            android:textColor="@color/branco"
+            app:layout_constraintTop_toBottomOf="@+id/checkBoxRock"
+            tools:layout_editor_absoluteX="4dp" />
 
     <CheckBox
         android:id="@+id/checkBoxRap"
         android:layout_width="match_parent"
         android:layout_height="30dp"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="32dp"
         android:buttonTint="@color/verdeBotao"
         android:checked="false"
         android:onClick="onCheckboxClicked"
@@ -74,18 +80,20 @@
         tools:layout_editor_absoluteX="0dp" />
 
 
-    <Button
-        android:id="@+id/buttonConfirmar"
-        android:layout_width="match_parent"
-        android:layout_height="47dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginTop="8dp"
-        android:background="@color/verdeBotao"
-        android:text="Confirmar"
-        android:textColor="@color/branco"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/checkboxReggae"
-        app:layout_constraintVertical_bias="0.729"
-        tools:layout_editor_absoluteX="0dp" />
+        <Button
+            android:id="@+id/buttonConfirmar"
+            android:layout_width="match_parent"
+            android:layout_height="47dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="24dp"
+            android:background="@color/verdeBotao"
+            android:text="Confirmar"
+            android:textAllCaps="false"
+            android:textColor="@color/preto"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/checkboxReggae"
+            app:layout_constraintVertical_bias="1.0"
+            tools:layout_editor_absoluteX="0dp" />
 </android.support.constraint.ConstraintLayout>
+</ScrollView>

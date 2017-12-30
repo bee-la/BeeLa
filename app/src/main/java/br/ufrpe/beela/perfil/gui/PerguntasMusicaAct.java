@@ -57,6 +57,7 @@ public class PerguntasMusicaAct extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
+//                adcmusicas();
                 alterarTelaPerfil();
             }
 

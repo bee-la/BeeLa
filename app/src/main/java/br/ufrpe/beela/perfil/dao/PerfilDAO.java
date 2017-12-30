@@ -9,6 +9,7 @@ import java.util.ArrayList;
 
 import br.ufrpe.beela.database.dao.BD;
 import br.ufrpe.beela.perfil.dominio.PerfilComida;
+import br.ufrpe.beela.perfil.dominio.PerfilEsporte;
 import br.ufrpe.beela.perfil.dominio.PerfilMusica;
 import br.ufrpe.beela.perfil.dominio.PerfilUsuario;
 import br.ufrpe.beela.usuario.dominio.Usuario;
@@ -53,6 +54,17 @@ public class PerfilDAO {
             bd.close();
     }
 
+    //        TODO    Isso aqui
+    public void inserirPerfilEsporte(PerfilEsporte esporte){
+        ContentValues valores = new ContentValues();
+        valores.put("nome",esporte.getNome());
+        valores.put("id_usuario",esporte.getId_usuario());
+        valores.put("nome_perfil",esporte.getNome_perfil());
+        bd.insert("perfilEsporte",null,valores);
+        bd.close();
+    }
+
+
 //TODO ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     public void updatePerfil(PerfilUsuario perfil) {
         String where = "id_usuario = " + perfil.getId_Usuario()+" AND nome_perfil = "+ perfil.getNome();
@@ -82,7 +94,7 @@ public class PerfilDAO {
         bd.close();}
 
     public boolean buscarPerfil(Usuario usuario, String NomedoPerfil){
-        String where ="SELECT * FROM perfilUsuario WHERE id_usuario = " + usuario.getId()+" AND nome_perfil = "+ NomedoPerfil;
+        String where ="SELECT * FROM perfilUsuario WHERE id_usuario = " + usuario.getId();//+" AND nome_perfil = "+ NomedoPerfil; // TODO Comentei isso aqui
         Cursor cursor = bd.rawQuery(where , null);
         try{
         cursor.moveToNext();
@@ -126,6 +138,27 @@ public class PerfilDAO {
         }
         bd.close();
         return musicas;
+    }
+
+
+  // TODO         Adicionei isso aqui sqlGetPerfilEsporte
+    public ArrayList<PerfilEsporte> sqlGetPerfilEsporte (PerfilUsuario perfilUsuario) {
+        ArrayList<PerfilEsporte> esportes = new ArrayList<PerfilEsporte>();
+        String where = "SELECT * FROM perfilEsporte WHERE id_usuario = '" + perfilUsuario.getId_Usuario() + "' AND nome_perfil = '" + perfilUsuario.getNome() + "'";
+        Cursor cursor = bd.rawQuery(where, null);
+        if (cursor.getCount() > 0) {
+            cursor.moveToFirst();
+            do {
+                PerfilEsporte esporte = new PerfilEsporte();
+                esporte.setId(cursor.getInt(0));
+                esporte.setNome(cursor.getString(1));
+                esporte.setId_usuario(cursor.getInt(2));
+                esporte.setNome_perfil(cursor.getString(3));
+                esportes.add(esporte);
+            } while (cursor.moveToNext());
+        }
+        bd.close();
+        return esportes;
     }
 
 

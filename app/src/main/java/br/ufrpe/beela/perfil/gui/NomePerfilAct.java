@@ -10,6 +10,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import br.ufrpe.beela.perfil.dominio.PerfilComida;
+import br.ufrpe.beela.perfil.dominio.PerfilEsporte;
 import br.ufrpe.beela.perfil.dominio.PerfilMusica;
 import br.ufrpe.beela.perfil.dominio.PerfilUsuario;
 import br.ufrpe.beela.usuario.dominio.Usuario;
@@ -39,6 +40,7 @@ public class NomePerfilAct extends AppCompatActivity {
         nomearButton22.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {setNomePerfil();}});}
+
     public void setNomePerfil(){
         nomePerfil=nomePerfilEditText12.getText().toString().trim();
         PerfilDAO bd = new PerfilDAO(this,"R");
@@ -51,6 +53,7 @@ public class NomePerfilAct extends AppCompatActivity {
             Toast Erro;
             Erro =Toast.makeText(getApplicationContext(), "Nome do Perfil igual", Toast.LENGTH_SHORT);
             Erro.show(); }}
+
     public void botarnominho(){
 
         for (PerfilComida comida : perfilUsuario.getComida()){
@@ -62,9 +65,19 @@ public class NomePerfilAct extends AppCompatActivity {
             PerfilDAO bd = new PerfilDAO(this,"W");
             musica.setNome_perfil(perfilUsuario.getNome());
             bd.inserirPerfilMusica(musica);}
+//        PerfilDAO bd = new PerfilDAO(this,"W");
+//        bd.inserirPerfil(perfilUsuario);
+
+//TODO    Adicionei isso aqui
+        for (PerfilEsporte esporte : perfilUsuario.getEsporte()){
+            PerfilDAO bd = new PerfilDAO(this,"W");
+            esporte.setNome_perfil(perfilUsuario.getNome());
+            bd.inserirPerfilEsporte(esporte);}
         PerfilDAO bd = new PerfilDAO(this,"W");
         bd.inserirPerfil(perfilUsuario);
     }
+
+
     public void irembora(){
         Bundle parametros = new Bundle();
         parametros.putString("chave",nomePerfilEditText12.getText().toString());
