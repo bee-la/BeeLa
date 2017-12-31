@@ -8,6 +8,9 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
+import br.ufrpe.beela.perfil.dao.PerfilDAO;
 import br.ufrpe.beela.perfil.dominio.PerfilUsuario;
 import br.ufrpe.beela.usuario.dominio.Usuario;
 import br.ufrpe.beela.usuario.gui.LoginAct;
@@ -29,8 +32,8 @@ public class PerfilAct extends AppCompatActivity {
         nomeTextView.setTypeface(fonte);
         adicionarPerfilTrocarTela = (ImageButton) findViewById(R.id.imageButton4);
         if(usuario.getNome()==null){
-
-            nomeTextView.setText("Sem Perfil");}
+            MontarPerfis();}//TODO botei agora para setar os perfis do usuario
+            //nomeTextView.setText("Sem Perfil");}
         else{
             verifarNomeTextView();}
 
@@ -56,10 +59,14 @@ public class PerfilAct extends AppCompatActivity {
         }
     }
     private void MontarPerfis(){
-        if (usuario.getNome()==""){
-        nomeTextView.setText(usuario.getNome());}
+
+        ArrayList<PerfilUsuario> perfilUsuarioArrayList = new ArrayList<PerfilUsuario>();
+        PerfilDAO bd = new PerfilDAO(this,"R");
+        perfilUsuarioArrayList=bd.sqlGetPerfil(usuario.getId_Usuario());
+        if (perfilUsuarioArrayList.size()==0){
+        nomeTextView.setText("Sem Perfil");}
         else{
-        nomeTextView.setText(usuario.getNome());}
+        nomeTextView.setText(perfilUsuarioArrayList.get(0).getNome());}
 
     }
 }

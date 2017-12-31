@@ -44,7 +44,7 @@ public class NomePerfilAct extends AppCompatActivity {
     public void setNomePerfil(){
         nomePerfil=nomePerfilEditText12.getText().toString().trim();
         PerfilDAO bd = new PerfilDAO(this,"R");
-        if(bd.buscarPerfil(usuario,nomePerfil)){
+        if(bd.buscarPerfil(usuario,nomePerfil)){//TODO ainda ta bugado mais estou com ideias futuras
             perfilUsuario.setNome(nomePerfil);
             botarnominho();
             irembora();
@@ -65,8 +65,6 @@ public class NomePerfilAct extends AppCompatActivity {
             PerfilDAO bd = new PerfilDAO(this,"W");
             musica.setNome_perfil(perfilUsuario.getNome());
             bd.inserirPerfilMusica(musica);}
-//        PerfilDAO bd = new PerfilDAO(this,"W");
-//        bd.inserirPerfil(perfilUsuario);
 
 //TODO    Adicionei isso aqui
         for (PerfilEsporte esporte : perfilUsuario.getEsporte()){

@@ -10,7 +10,7 @@ import android.database.sqlite.SQLiteOpenHelper;
  */
 
 public class BD extends SQLiteOpenHelper {
-    private static final String NOME_DO_BD = "beelaOFicial";
+    private static final String NOME_DO_BD = "beelaBeta";
     private static final int VERSAO = 1;
 
     public BD(Context ctx) {

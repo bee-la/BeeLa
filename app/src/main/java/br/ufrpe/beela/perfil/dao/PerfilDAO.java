@@ -94,20 +94,25 @@ public class PerfilDAO {
         bd.close();}
 
     public boolean buscarPerfil(Usuario usuario, String NomedoPerfil){
-        String where ="SELECT * FROM perfilUsuario WHERE id_usuario = " + usuario.getId();//+" AND nome_perfil = "+ NomedoPerfil; // TODO Comentei isso aqui
+        String where ="SELECT * FROM perfilUsuario WHERE id_usuario = " + usuario.getId();
         Cursor cursor = bd.rawQuery(where , null);
-        try{
-        cursor.moveToNext();
-        return true;}
-        catch(Exception e ){return false;}
-        finally {bd.close();}
+        if(cursor.getCount()>0){
+            cursor.moveToFirst();
+            do{
+
+                if(cursor.getString(2).equals(NomedoPerfil)){
+                    return false;
+                }
+            }while(cursor.moveToFirst());
+            return true;
+        }
+        return true;
     }
     public ArrayList<PerfilComida> sqlGetPerfilComida (PerfilUsuario perfilUsuario) {
         ArrayList<PerfilComida> comidas = new ArrayList<PerfilComida>();
         String where = "SELECT * FROM perfilComida WHERE id_usuario = '" + perfilUsuario.getId_Usuario() + "' AND nome_perfil = '" + perfilUsuario.getNome() + "'";
         Cursor cursor = bd.rawQuery(where, null);
         if (cursor.getCount() > 0) {
-            cursor.moveToFirst();
             do {
                 PerfilComida comida = new PerfilComida();
                 comida.setId(cursor.getInt(0));
@@ -162,9 +167,9 @@ public class PerfilDAO {
     }
 
 
-    public  ArrayList<PerfilUsuario> sqlGetPerfil(Usuario usuario){
+    public  ArrayList<PerfilUsuario> sqlGetPerfil(int id){
         ArrayList<PerfilUsuario> list = new ArrayList<PerfilUsuario>();
-        String where ="SELECT * FROM perfilUsuario WHERE id_usuario = '"+ usuario.getId()+"'";
+        String where ="SELECT * FROM perfilUsuario WHERE id_usuario = '"+ id+"'";
         Cursor cursor = bd.rawQuery(where,null);
 
         if (cursor.getCount()>0){
@@ -174,9 +179,6 @@ public class PerfilDAO {
                 p.setId(cursor.getInt(0));
                 p.setId_usuario(cursor.getInt(1));
                 p.setNome(cursor.getString(2));
-//                p.setComida(cursor.getString(3));
-//                p.setMusica(cursor.getString(4));
-                //p.setEsporte(cursor.getString(5));
                 list.add(p);
             } while(cursor.moveToNext());
         }
