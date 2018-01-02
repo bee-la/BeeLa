@@ -21,7 +21,7 @@ public class PerguntasEsporteAct extends AppCompatActivity {
 
     private PerfilUsuario usuario = LoginAct.getPessoa().getPerfil();
     private List<CheckBox> checkBoxesEsportes = new ArrayList<>();
-    private static ArrayList<PerfilEsporte> listaEsporte = new ArrayList();
+    private static ArrayList<PerfilEsporte> listaEsporte = new ArrayList<PerfilEsporte>();
     private TextView fonteTextView13;
     private Button button13Confirmar;
 
@@ -67,7 +67,7 @@ public class PerguntasEsporteAct extends AppCompatActivity {
 
     public void adcEsporte(){
 
-        ArrayList<PerfilEsporte>listaComida = new ArrayList<PerfilEsporte>();
+//        ArrayList<PerfilEsporte>listaComida = new ArrayList<PerfilEsporte>();
         for (CheckBox x : checkBoxesEsportes) {
             if (x.isChecked()) {
                 PerfilEsporte esporte = new PerfilEsporte();
@@ -82,7 +82,7 @@ public class PerguntasEsporteAct extends AppCompatActivity {
     public void telaNomePerfil(){
 //TODO      Na tela de PerfilAct falta aparecer o perfil que foi adicionado.
         adcEsporte();
-        startActivity(new Intent(PerguntasEsporteAct.this, NomePerfilAct.class));
+        startActivity(new Intent(PerguntasEsporteAct.this, PerfilPrioridadeAct.class));
         finish();
     }
 }

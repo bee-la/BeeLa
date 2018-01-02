@@ -10,18 +10,26 @@ import com.allyants.draggabletreeview.DraggableTreeView;
 import com.allyants.draggabletreeview.SimpleTreeViewAdapter;
 import com.allyants.draggabletreeview.TreeNode;
 
+import java.util.ArrayList;
+
 import br.ufrpe.beela.gui.R;
+import br.ufrpe.beela.perfil.dominio.PerfilComida;
+import br.ufrpe.beela.perfil.dominio.PerfilEsporte;
+import br.ufrpe.beela.perfil.dominio.PerfilMusica;
 import br.ufrpe.beela.perfil.dominio.PerfilUsuario;
 import br.ufrpe.beela.usuario.gui.LoginAct;
+import br.ufrpe.beela.perfil.dao.PerfilDAO;
 
 public class PerfilPrioridadeAct extends AppCompatActivity {
     DraggableTreeView draggableTreeView;
     private PerfilUsuario usuario = LoginAct.getPessoa().getPerfil();
-    private String perfilPrioridade;
+
+    private ArrayList<String> prioridade = new ArrayList<String>();
+    private ArrayList<PerfilComida> listaComidas=LoginAct.getPessoa().getPerfil().getComida();
+    private ArrayList<PerfilMusica> listaMusicas=LoginAct.getPessoa().getPerfil().getMusica();
+    private ArrayList<PerfilEsporte> listaEsporte=LoginAct.getPessoa().getPerfil().getEsporte();
+
     private Context root;
-
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,19 +38,23 @@ public class PerfilPrioridadeAct extends AppCompatActivity {
 
         draggableTreeView = (DraggableTreeView)findViewById(R.id.draggable);
 
+        for(int i=0; i<listaMusicas.size(); i++) {
+            prioridade.add(listaMusicas.get(i).getNome());
+        }
+
+        for(int i=0; i<listaComidas.size(); i++) {
+            prioridade.add(listaComidas.get(i).getNome());
+        }
+
+        for(int i=0; i<listaEsporte.size(); i++) {
+            prioridade.add(listaEsporte.get(i).getNome());
+        }
+
         TreeNode root = new TreeNode(this);
-        TreeNode item1 = new TreeNode("item1");
-        TreeNode item2 = new TreeNode("item2");
-        TreeNode item3 = new TreeNode("item3");
-        TreeNode item4 = new TreeNode("item4");
-        TreeNode item5 = new TreeNode("item5");
-
-        root.addChild(item1);
-        root.addChild(item2);
-        root.addChild(item3);
-        root.addChild(item4);
-        root.addChild(item5);
-
+        for(int i=0; i<prioridade.size(); i++){
+            TreeNode item=new TreeNode(prioridade.get(i));
+            root.addChild(item);
+        }
 
         SimpleTreeViewAdapter adapter = new SimpleTreeViewAdapter(this,root);
         draggableTreeView.setAdapter(adapter);

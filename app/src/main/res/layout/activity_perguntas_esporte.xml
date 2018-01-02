@@ -93,7 +93,7 @@
         <Button
             android:id="@+id/button13"
             android:layout_width="0dp"
-            android:layout_height="56sp"
+            android:layout_height="56dp"
             android:layout_marginTop="24dp"
             android:backgroundTint="@color/verdeBotao"
             android:text="Confirmar"
