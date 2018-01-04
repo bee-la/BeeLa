@@ -43,9 +43,8 @@ public class NomePerfilAct extends AppCompatActivity {
 
     public void setNomePerfil(){
         nomePerfil=nomePerfilEditText12.getText().toString().trim();
-        PerfilDAO bd = new PerfilDAO();
-        bd.getLer(this);
-        if(bd.buscarPerfil(usuario,nomePerfil)){//TODO ainda ta bugado mais estou com ideias futuras
+
+        if(validarExistencia(nomePerfil)){//TODO ainda ta bugado mais estou com ideias futuras
             perfilUsuario.setNome(nomePerfil);
             botarnominho();
             irembora();
@@ -88,6 +87,15 @@ public class NomePerfilAct extends AppCompatActivity {
 //        it.putExtras(parametros);
 //        startActivity(it);
         finish();
+    }
+    public boolean validarExistencia(String NomePerfil){
+        boolean saida = true;
+        for (PerfilUsuario perfilUsuario:PerfilAct.getLista())
+            if (perfilUsuario.getNome().equals(NomePerfil)) {
+                saida = false;
+                break;
+        }
+        return saida;
     }
 
 }

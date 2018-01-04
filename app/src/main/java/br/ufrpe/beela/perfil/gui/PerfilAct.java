@@ -20,8 +20,8 @@ public class PerfilAct extends AppCompatActivity {
     private PerfilUsuario perfilUsuario = LoginAct.getPessoa().getPerfil();
     private  TextView nomeTextView;
     private ImageButton adicionarPerfilTrocarTela;
-    private  ArrayList<PerfilUsuario> perfilUsuarioArrayList = new ArrayList<>();
-
+    private static ArrayList<PerfilUsuario> perfilUsuarioArrayList = new ArrayList<>();
+    public static ArrayList<PerfilUsuario> getLista(){return perfilUsuarioArrayList;}
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,7 +33,7 @@ public class PerfilAct extends AppCompatActivity {
         nomeTextView.setTypeface(fonte);
         adicionarPerfilTrocarTela = (ImageButton) findViewById(R.id.imageButton4);
         //if(perfilUsuario.getNome()==null){
-        //}//TODO botei agora para setar os perfis do perfilUsuario
+         //}//TODO botei agora para setar os perfis do perfilUsuario
             //nomeTextView.setText("Sem Perfil");}
         //else{
         //    verifarNomeTextView();}
