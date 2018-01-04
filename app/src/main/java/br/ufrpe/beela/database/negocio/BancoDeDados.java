@@ -6,7 +6,8 @@ import android.database.sqlite.SQLiteDatabase;
  * Created by vidal on 29/12/2017.
  */
 
-public class BandoDado {
-    private SQLiteDatabase bd;
-
+public class BancoDeDados {
+    public void Ru(){}
+    
+    public void Pessoas(){}
 }
