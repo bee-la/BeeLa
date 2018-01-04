@@ -3,6 +3,7 @@ package br.ufrpe.beela.usuario.negocio;
 import android.content.Context;
 import android.util.Patterns;
 
+import br.ufrpe.beela.perfil.dominio.PerfilUsuario;
 import br.ufrpe.beela.usuario.dao.Criptografia;
 import br.ufrpe.beela.usuario.dao.PessoaDAO;
 import br.ufrpe.beela.usuario.dao.UsuarioDAO;
@@ -109,5 +110,10 @@ public class UsuarioService {
         PessoaDAO bd = new PessoaDAO();
         bd.getLer(context);
         return bd.sqlRetornaObjetoPessoa(id_usuario);
+    }
+    public PerfilUsuario gerarPerfilUsuario(int id_usuario){
+        PerfilUsuario perfilUsuario = new PerfilUsuario();
+        perfilUsuario.setId_usuario(id_usuario);
+        return perfilUsuario;
     }
 }

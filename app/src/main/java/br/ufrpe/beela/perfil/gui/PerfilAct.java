@@ -9,21 +9,33 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
 import br.ufrpe.beela.perfil.dao.PerfilDAO;
 import br.ufrpe.beela.perfil.dominio.PerfilUsuario;
+<<<<<<< HEAD
 import br.ufrpe.beela.perfil.negocio.TextoListView;
+=======
+>>>>>>> desenvolvedor2
 import br.ufrpe.beela.usuario.gui.LoginAct;
 import br.ufrpe.beela.gui.R;
 
 public class PerfilAct extends AppCompatActivity {
+<<<<<<< HEAD
     private PerfilUsuario usuario = LoginAct.getPessoa().getPerfil();
     private ImageButton adicionarPerfil;
     private ListView listaNomes;
     private TextView TextoButton14;
 
+=======
+    private PerfilUsuario perfilUsuario = LoginAct.getPessoa().getPerfil();
+    private  TextView nomeTextView;
+    private ImageButton adicionarPerfilTrocarTela;
+    private static ArrayList<PerfilUsuario> perfilUsuarioArrayList = new ArrayList<>();
+    public static ArrayList<PerfilUsuario> getLista(){return perfilUsuarioArrayList;}
+>>>>>>> desenvolvedor2
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,6 +46,7 @@ public class PerfilAct extends AppCompatActivity {
         listaNomes.setAdapter(mudancaCor);
 
 //-------------------------------------Trocar tela--------------------------------------------
+<<<<<<< HEAD
         adicionarPerfil = (ImageButton) findViewById(R.id.imageButton4);
         fonteBotaoComecar();
 
@@ -42,19 +55,40 @@ public class PerfilAct extends AppCompatActivity {
             //nomeTextView.setText("Sem Perfil");}
 //        else{
 //            verifarNomeTextView();}
+=======
+        Typeface fonte = Typeface.createFromAsset(getAssets(), "fonts/Chewy.ttf");
+        nomeTextView = findViewById(R.id.textViewPerfil1);
+        MontarPerfis();
+        nomeTextView.setTypeface(fonte);
+        adicionarPerfilTrocarTela = (ImageButton) findViewById(R.id.imageButton4);
+        //if(perfilUsuario.getNome()==null){
+         //}//TODO botei agora para setar os perfis do perfilUsuario
+            //nomeTextView.setText("Sem Perfil");}
+        //else{
+        //    verifarNomeTextView();}
+>>>>>>> desenvolvedor2
 
         adicionarPerfil.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (verificarPerfis()){
                 adicionarPerfilTrocarTela();}
-
-        });
+                else{
+                    Toast Erro;
+                    Erro =Toast.makeText(getApplicationContext(), "Maximo é 3 Perfis", Toast.LENGTH_SHORT);
+                    Erro.show(); }
+            }});
     }
     private void adicionarPerfilTrocarTela() {
         startActivity(new Intent(PerfilAct.this, PerguntasMusicaAct.class));
+<<<<<<< HEAD
         finish();
+=======
+        MontarPerfis();
+>>>>>>> desenvolvedor2
     }
 
+<<<<<<< HEAD
 
 //    public void verifarNomeTextView(){
 //        Intent intent =getIntent();
@@ -99,5 +133,16 @@ public class PerfilAct extends AppCompatActivity {
 
     public void fecharTela(){
         finish();
+=======
+        PerfilDAO bd = new PerfilDAO();
+        bd.getLer(this);
+        perfilUsuarioArrayList=bd.sqlGetPerfil(perfilUsuario.getId_Usuario());
+        if (perfilUsuarioArrayList.size()==0){nomeTextView.setText("Sem Perfil");}
+        else{nomeTextView.setText(perfilUsuarioArrayList.get(0).getNome());}
+    }
+    private boolean verificarPerfis(){
+        if(perfilUsuarioArrayList.size()<=2){return true;}
+        else{return false;}
+>>>>>>> desenvolvedor2
     }
 }

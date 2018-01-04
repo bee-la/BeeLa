@@ -48,8 +48,8 @@ public class NomePerfilAct extends AppCompatActivity {
 
     public void setNomePerfil(){
         nomePerfil=nomePerfilEditText12.getText().toString().trim();
-        PerfilDAO bd = new PerfilDAO(this,"R");
-        if(bd.buscarPerfil(usuario,nomePerfil)){//TODO ainda ta bugado mais estou com ideias futuras
+
+        if(validarExistencia(nomePerfil)){//TODO ainda ta bugado mais estou com ideias futuras
             perfilUsuario.setNome(nomePerfil);
             nomeBanco();
 
@@ -68,20 +68,24 @@ public class NomePerfilAct extends AppCompatActivity {
     public void nomeBanco(){
 
         for (PerfilComida comida : perfilUsuario.getComida()){
-            PerfilDAO bd = new PerfilDAO(this,"W");
+            PerfilDAO bd = new PerfilDAO();
+            bd.getEscrever(this);
             comida.setNome_perfil(perfilUsuario.getNome());
             bd.inserirPerfilComida(comida);}
 
         for (PerfilMusica musica : perfilUsuario.getMusica()){
-            PerfilDAO bd = new PerfilDAO(this,"W");
+            PerfilDAO bd = new PerfilDAO();
+            bd.getEscrever(this);
             musica.setNome_perfil(perfilUsuario.getNome());
             bd.inserirPerfilMusica(musica);}
 
         for (PerfilEsporte esporte : perfilUsuario.getEsporte()){
-            PerfilDAO bd = new PerfilDAO(this,"W");
+            PerfilDAO bd = new PerfilDAO();
+            bd.getEscrever(this);
             esporte.setNome_perfil(perfilUsuario.getNome());
             bd.inserirPerfilEsporte(esporte);}
-        PerfilDAO bd = new PerfilDAO(this,"W");
+        PerfilDAO bd = new PerfilDAO();
+        bd.getEscrever(this);
         bd.inserirPerfil(perfilUsuario);
     }
 
@@ -89,10 +93,25 @@ public class NomePerfilAct extends AppCompatActivity {
     public void irembora(){
 //        Bundle parametros = new Bundle();
 //        parametros.putString("chave",nomePerfilEditText12.getText().toString());
+<<<<<<< HEAD
         Intent it = new Intent(this, PerfilAct.class);
 //        it.putExtras(parametros);
         startActivity(it);
+=======
+//        Intent it = new Intent(this, PerfilAct.class);
+//        it.putExtras(parametros);
+//        startActivity(it);
+>>>>>>> desenvolvedor2
         finish();
+    }
+    public boolean validarExistencia(String NomePerfil){
+        boolean saida = true;
+        for (PerfilUsuario perfilUsuario:PerfilAct.getLista())
+            if (perfilUsuario.getNome().equals(NomePerfil)) {
+                saida = false;
+                break;
+        }
+        return saida;
     }
 
 }
