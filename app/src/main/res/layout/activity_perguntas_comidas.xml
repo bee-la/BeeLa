@@ -36,7 +36,7 @@
             android:layout_marginTop="48dp"
             android:buttonTint="@color/verdeBotao"
             android:onClick="onCheckboxClicked"
-            android:text="Lasanha"
+            android:text="Massa"
             android:textColor="@color/branco"
             app:layout_constraintTop_toBottomOf="@+id/textView7"
             tools:layout_editor_absoluteX="2dp" />
@@ -48,7 +48,7 @@
             android:layout_marginTop="8dp"
             android:buttonTint="@color/verdeBotao"
             android:onClick="onCheckboxClicked"
-            android:text="Pizza"
+            android:text="Carne"
             android:textColor="@color/branco"
             app:layout_constraintTop_toBottomOf="@+id/checkBoxCreperia"
             tools:layout_editor_absoluteX="2dp" />
@@ -60,7 +60,7 @@
             android:layout_marginTop="8dp"
             android:buttonTint="@color/verdeBotao"
             android:onClick="onCheckboxClicked"
-            android:text="Crepe"
+            android:text="Orientais"
             android:textColor="@color/branco"
             app:layout_constraintTop_toBottomOf="@+id/checkBoxYakisoba"
             tools:layout_editor_absoluteX="0dp" />
@@ -72,7 +72,7 @@
             android:layout_marginTop="8dp"
             android:buttonTint="@color/verdeBotao"
             android:onClick="onCheckboxClicked"
-            android:text="Yakisoba"
+            android:text="Rodízios"
             android:textColor="@color/branco"
             app:layout_constraintTop_toBottomOf="@+id/checkBoxFastFood"
             tools:layout_editor_absoluteX="0dp" />

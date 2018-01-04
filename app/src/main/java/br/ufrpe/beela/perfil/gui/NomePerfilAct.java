@@ -22,8 +22,12 @@ public class NomePerfilAct extends AppCompatActivity {
     private Usuario usuario = LoginAct.getUsuario();
     private PerfilUsuario perfilUsuario = LoginAct.getPessoa().getPerfil();
     private EditText nomePerfilEditText12;
-    private TextView nomeTextViewPerfil1;
     private Button nomearButton22;
+
+    private PerguntasMusicaAct fecharTelaMusica=new PerguntasMusicaAct();
+    private PerguntasComidasAct fecharTelaComida=new PerguntasComidasAct();
+    private PerguntasEsporteAct fecharTelaEsporte=new PerguntasEsporteAct();
+    private PerfilAct fecharTelaPerfil=new PerfilAct();
 
     private String nomePerfil="";
 
@@ -32,7 +36,8 @@ public class NomePerfilAct extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView( R.layout.activity_nome_perfil);
 
-        nomeTextViewPerfil1=(TextView)findViewById(R.id.textViewPerfil1);
+//        nomeTextViewPerfil1=(TextView)findViewById(R.id.textViewPerfil1);
+
         nomePerfilEditText12=(EditText)findViewById(R.id.editText12);
         nomearButton22=(Button)findViewById(R.id.button22);
 
@@ -46,7 +51,13 @@ public class NomePerfilAct extends AppCompatActivity {
         PerfilDAO bd = new PerfilDAO(this,"R");
         if(bd.buscarPerfil(usuario,nomePerfil)){//TODO ainda ta bugado mais estou com ideias futuras
             perfilUsuario.setNome(nomePerfil);
-            botarnominho();
+            nomeBanco();
+
+//            Tentativa de Fechar as telas anteriores
+//            fecharTelaMusica.fecharTela();
+//            fecharTelaComida.fecharTela();
+//            fecharTelaEsporte.fecharTela();
+//            fecharTelaPerfil.fecharTela();
             irembora();
             }
         else{
@@ -54,7 +65,7 @@ public class NomePerfilAct extends AppCompatActivity {
             Erro =Toast.makeText(getApplicationContext(), "Nome do Perfil igual", Toast.LENGTH_SHORT);
             Erro.show(); }}
 
-    public void botarnominho(){
+    public void nomeBanco(){
 
         for (PerfilComida comida : perfilUsuario.getComida()){
             PerfilDAO bd = new PerfilDAO(this,"W");
@@ -66,7 +77,6 @@ public class NomePerfilAct extends AppCompatActivity {
             musica.setNome_perfil(perfilUsuario.getNome());
             bd.inserirPerfilMusica(musica);}
 
-//TODO    Adicionei isso aqui
         for (PerfilEsporte esporte : perfilUsuario.getEsporte()){
             PerfilDAO bd = new PerfilDAO(this,"W");
             esporte.setNome_perfil(perfilUsuario.getNome());
@@ -77,10 +87,10 @@ public class NomePerfilAct extends AppCompatActivity {
 
 
     public void irembora(){
-        Bundle parametros = new Bundle();
-        parametros.putString("chave",nomePerfilEditText12.getText().toString());
+//        Bundle parametros = new Bundle();
+//        parametros.putString("chave",nomePerfilEditText12.getText().toString());
         Intent it = new Intent(this, PerfilAct.class);
-        it.putExtras(parametros);
+//        it.putExtras(parametros);
         startActivity(it);
         finish();
     }

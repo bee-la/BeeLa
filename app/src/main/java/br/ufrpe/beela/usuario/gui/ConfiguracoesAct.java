@@ -11,10 +11,12 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import br.ufrpe.beela.gui.R;
+import br.ufrpe.beela.usuario.dominio.Pessoa;
 
 public class ConfiguracoesAct extends AppCompatActivity {
     private Button apagarButton7, alterarNomeButton5, alterarSenhaButton6, sairButton8;
     private TextView nomeTextView11;
+    private Pessoa pessoa=new LoginAct().getPessoa();
     private ArrayList<TextView> textos= new ArrayList<TextView>();
 
     @Override
@@ -71,6 +73,6 @@ public class ConfiguracoesAct extends AppCompatActivity {
     }
 
     private void setarNome(){
-        nomeTextView11.setText(LoginAct.getPessoa().getNome());
+        nomeTextView11.setText(pessoa.getNome());
     }
 }

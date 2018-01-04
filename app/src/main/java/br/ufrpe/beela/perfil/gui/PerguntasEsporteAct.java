@@ -53,7 +53,7 @@ public class PerguntasEsporteAct extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-//                adcComida();
+                adcEsporte();
                 telaNomePerfil();
             }
 
@@ -80,9 +80,12 @@ public class PerguntasEsporteAct extends AppCompatActivity {
     }
 
     public void telaNomePerfil(){
-//TODO      Na tela de PerfilAct falta aparecer o perfil que foi adicionado.
         adcEsporte();
-        startActivity(new Intent(PerguntasEsporteAct.this, PerfilPrioridadeAct.class));
+        startActivity(new Intent(PerguntasEsporteAct.this, NomePerfilAct.class));
+        finish();
+    }
+
+    public void fecharTela(){
         finish();
     }
 }

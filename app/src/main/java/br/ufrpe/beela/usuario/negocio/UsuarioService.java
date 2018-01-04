@@ -14,6 +14,7 @@ import br.ufrpe.beela.usuario.dominio.Usuario;
  */
 
 public class UsuarioService {
+
     public boolean validarNomeIgual(String nome, Pessoa pessoa) {
         if (nome.equals(pessoa.getNome()))
             return true;
