@@ -95,7 +95,7 @@ public class PerguntasMusicaAct extends AppCompatActivity {
 //TODO      Na tela de PerfilAct falta aparecer o perfil que foi adicionado.
         adcmusicas();
         startActivity(new Intent(PerguntasMusicaAct.this, PerguntasComidasAct.class));
-
+        finish();
     }
 
 }

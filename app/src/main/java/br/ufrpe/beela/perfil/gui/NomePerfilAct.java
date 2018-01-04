@@ -43,7 +43,8 @@ public class NomePerfilAct extends AppCompatActivity {
 
     public void setNomePerfil(){
         nomePerfil=nomePerfilEditText12.getText().toString().trim();
-        PerfilDAO bd = new PerfilDAO(this,"R");
+        PerfilDAO bd = new PerfilDAO();
+        bd.getLer(this);
         if(bd.buscarPerfil(usuario,nomePerfil)){//TODO ainda ta bugado mais estou com ideias futuras
             perfilUsuario.setNome(nomePerfil);
             botarnominho();
@@ -57,31 +58,35 @@ public class NomePerfilAct extends AppCompatActivity {
     public void botarnominho(){
 
         for (PerfilComida comida : perfilUsuario.getComida()){
-            PerfilDAO bd = new PerfilDAO(this,"W");
+            PerfilDAO bd = new PerfilDAO();
+            bd.getEscrever(this);
             comida.setNome_perfil(perfilUsuario.getNome());
             bd.inserirPerfilComida(comida);}
 
         for (PerfilMusica musica : perfilUsuario.getMusica()){
-            PerfilDAO bd = new PerfilDAO(this,"W");
+            PerfilDAO bd = new PerfilDAO();
+            bd.getEscrever(this);
             musica.setNome_perfil(perfilUsuario.getNome());
             bd.inserirPerfilMusica(musica);}
 
 //TODO    Adicionei isso aqui
         for (PerfilEsporte esporte : perfilUsuario.getEsporte()){
-            PerfilDAO bd = new PerfilDAO(this,"W");
+            PerfilDAO bd = new PerfilDAO();
+            bd.getEscrever(this);
             esporte.setNome_perfil(perfilUsuario.getNome());
             bd.inserirPerfilEsporte(esporte);}
-        PerfilDAO bd = new PerfilDAO(this,"W");
+        PerfilDAO bd = new PerfilDAO();
+        bd.getEscrever(this);
         bd.inserirPerfil(perfilUsuario);
     }
 
 
     public void irembora(){
-        Bundle parametros = new Bundle();
-        parametros.putString("chave",nomePerfilEditText12.getText().toString());
-        Intent it = new Intent(this, PerfilAct.class);
-        it.putExtras(parametros);
-        startActivity(it);
+//        Bundle parametros = new Bundle();
+//        parametros.putString("chave",nomePerfilEditText12.getText().toString());
+//        Intent it = new Intent(this, PerfilAct.class);
+//        it.putExtras(parametros);
+//        startActivity(it);
         finish();
     }
 

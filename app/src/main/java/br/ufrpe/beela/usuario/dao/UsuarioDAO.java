@@ -73,7 +73,6 @@ public class UsuarioDAO {
             cursor.moveToFirst();
             do {
                 Usuario u = new Usuario();
-
                 list.add(u);
             } while (cursor.moveToNext());
         }

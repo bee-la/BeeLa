@@ -8,10 +8,9 @@ import br.ufrpe.beela.perfil.dominio.PerfilUsuario;
  */
 
 public class Usuario {
-    private int Id = 0;
+    private int Id;
     private String senha;
     private String email;
-
 
     public String getEmail() {
         return email;
@@ -22,7 +21,6 @@ public class Usuario {
     public int getId() {
         return Id;
     }
-
 
     public void setId(int id) {
         Id = id;

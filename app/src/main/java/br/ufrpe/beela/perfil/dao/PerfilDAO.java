@@ -22,10 +22,16 @@ import br.ufrpe.beela.usuario.dominio.Usuario;
 
 public class PerfilDAO {
     private SQLiteDatabase bd;
-    public PerfilDAO(Context context, String tipo){
+
+    public SQLiteDatabase getLer(Context context){
         BD auxBd = new BD(context);
-        if(tipo.equals("R")){ bd = auxBd.getReadableDatabase();}
-        else{bd = auxBd.getWritableDatabase();}
+        bd = auxBd.getReadableDatabase();
+        return bd;
+    }
+    public SQLiteDatabase getEscrever(Context context){
+        BD auxBd = new BD(context);
+        bd = auxBd.getWritableDatabase();
+        return bd;
     }
  //TODO   =========================================================================================================
     public void inserirPerfil(PerfilUsuario perfil) {
@@ -94,17 +100,19 @@ public class PerfilDAO {
         bd.close();}
 
     public boolean buscarPerfil(Usuario usuario, String NomedoPerfil){
-        String where ="SELECT * FROM perfilUsuario WHERE id_usuario = " + usuario.getId();
-        Cursor cursor = bd.rawQuery(where , null);
-        if(cursor.getCount()>0){
+        ArrayList<String> list = new ArrayList<String>();
+        String where ="SELECT * FROM perfilUsuario WHERE id_usuario = '"+ usuario.getId()+"'";
+        Cursor cursor = bd.rawQuery(where,null);
+        if (cursor.getCount()>0){
             cursor.moveToFirst();
-            do{
-
-                if(cursor.getString(2).equals(NomedoPerfil)){
-                    return false;
-                }
-            }while(cursor.moveToFirst());
-            return true;
+            do {
+                list.add(cursor.getString(2));
+            } while(cursor.moveToNext());
+        }
+        bd.close();
+        for (String a:list) {
+            if (a.equals(NomedoPerfil))
+            {return false;}
         }
         return true;
     }
@@ -167,7 +175,7 @@ public class PerfilDAO {
     }
 
 
-    public  ArrayList<PerfilUsuario> sqlGetPerfil(int id){
+    public  ArrayList<PerfilUsuario>  sqlGetPerfil(int id){
         ArrayList<PerfilUsuario> list = new ArrayList<PerfilUsuario>();
         String where ="SELECT * FROM perfilUsuario WHERE id_usuario = '"+ id+"'";
         Cursor cursor = bd.rawQuery(where,null);
@@ -179,10 +187,24 @@ public class PerfilDAO {
                 p.setId(cursor.getInt(0));
                 p.setId_usuario(cursor.getInt(1));
                 p.setNome(cursor.getString(2));
-                list.add(p);
+                if(p.getId_Usuario() == id){
+                    list.add(p);}
             } while(cursor.moveToNext());
         }
         bd.close();
         return list;
     }
+    public PerfilUsuario sqlRetornaObjetoPerfilUsuario(String email,String senha){
+        PerfilUsuario perfilUsuario = new PerfilUsuario();
+        String where ="SELECT * FROM perfilUsuario WHERE email = '"+email+"'"+"AND senha = '"+senha+"'";
+        Cursor cursor = bd.rawQuery(where, null);
+        if(cursor.getCount()>0){
+            cursor.moveToFirst();
+            perfilUsuario.setId(cursor.getInt(0));
+            perfilUsuario.setId_usuario(cursor.getInt(1));
+        }
+        bd.close();
+        return perfilUsuario;
+    }
+
 }

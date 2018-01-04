@@ -13,14 +13,13 @@ public class PerfilUsuario {
     private ArrayList<PerfilComida> comida;
     private ArrayList<PerfilMusica> musica;
     private ArrayList<PerfilEsporte> esporte;
-//    private String esporte;
 
     public int getId_Usuario(){return this.id_usuario;}
     public String getNome(){return this.nome;}
     public ArrayList<PerfilComida> getComida(){return this.comida;}
     public ArrayList<PerfilMusica> getMusica(){return this.musica;}
     public ArrayList<PerfilEsporte> getEsporte(){return this.esporte;}
-//    public String getEsporte(){return this.esporte;}
+
 
     public void setId(int id){this.id = id;}
     public void setId_usuario(int id_usuario) {this.id_usuario = id_usuario;}
@@ -28,6 +27,6 @@ public class PerfilUsuario {
     public void setComida(ArrayList<PerfilComida> comida){this.comida = comida;}
     public void setMusica(ArrayList<PerfilMusica> musica){this.musica = musica;}
     public void setEsporte(ArrayList<PerfilEsporte> esporte){this.esporte = esporte;}
-//    public void setEsporte(String esporte){this.esporte = esporte;}
+
 
 }
