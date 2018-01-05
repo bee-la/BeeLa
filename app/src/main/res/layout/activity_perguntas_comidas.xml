@@ -14,20 +14,20 @@
         android:background="@color/preto"
         tools:context="br.ufrpe.beela.perfil.gui.PerguntasComidasAct">
 
-    <TextView
-        android:id="@+id/textView7"
-        android:layout_width="312dp"
-        android:layout_height="48dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="48dp"
-        android:text="Qual comida você prefere?"
-        android:textColor="#ffffff"
-        android:textSize="25sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.142"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <TextView
+            android:id="@+id/textView7"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="48dp"
+            android:text="Qual comida você prefere?"
+            android:textColor="#ffffff"
+            android:textSize="25sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.142"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <CheckBox
             android:id="@+id/checkBoxLasanha"
@@ -36,7 +36,7 @@
             android:layout_marginTop="48dp"
             android:buttonTint="@color/verdeBotao"
             android:onClick="onCheckboxClicked"
-            android:text="Lasanha"
+            android:text="Massa"
             android:textColor="@color/branco"
             app:layout_constraintTop_toBottomOf="@+id/textView7"
             tools:layout_editor_absoluteX="2dp" />
@@ -44,11 +44,11 @@
         <CheckBox
             android:id="@+id/checkboxPizza"
             android:layout_width="366dp"
-            android:layout_height="27dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:buttonTint="@color/verdeBotao"
             android:onClick="onCheckboxClicked"
-            android:text="Pizza"
+            android:text="Carne"
             android:textColor="@color/branco"
             app:layout_constraintTop_toBottomOf="@+id/checkBoxCreperia"
             tools:layout_editor_absoluteX="2dp" />
@@ -60,7 +60,7 @@
             android:layout_marginTop="8dp"
             android:buttonTint="@color/verdeBotao"
             android:onClick="onCheckboxClicked"
-            android:text="Crepe"
+            android:text="Orientais"
             android:textColor="@color/branco"
             app:layout_constraintTop_toBottomOf="@+id/checkBoxYakisoba"
             tools:layout_editor_absoluteX="0dp" />
@@ -72,7 +72,7 @@
             android:layout_marginTop="8dp"
             android:buttonTint="@color/verdeBotao"
             android:onClick="onCheckboxClicked"
-            android:text="Yakisoba"
+            android:text="Rodízios"
             android:textColor="@color/branco"
             app:layout_constraintTop_toBottomOf="@+id/checkBoxFastFood"
             tools:layout_editor_absoluteX="0dp" />
@@ -93,12 +93,16 @@
             android:id="@+id/buttonConfirmar2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="64dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="24dp"
             android:background="@color/verdeBotao"
             android:text="Confirmar"
-            android:textColor="@color/branco"
-            android:textStyle="bold"
+            android:textAllCaps="false"
+            android:textColor="@color/preto"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/checkboxPizza"
+            app:layout_constraintVertical_bias="0.0"
             tools:layout_editor_absoluteX="0dp" />
 
     </android.support.constraint.ConstraintLayout>

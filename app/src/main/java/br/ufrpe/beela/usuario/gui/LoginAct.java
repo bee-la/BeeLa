@@ -1,30 +1,29 @@
 package br.ufrpe.beela.usuario.gui;
 
-import android.content.Context;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Patterns;
 import android.widget.TextView;
 import android.view.View;
 import android.widget.*;
 
 import br.ufrpe.beela.gui.R;
 import br.ufrpe.beela.usuario.dao.Criptografia;
-import br.ufrpe.beela.usuario.dao.UsuarioDAO;
+import br.ufrpe.beela.usuario.dominio.Pessoa;
 import br.ufrpe.beela.usuario.dominio.Usuario;
 import br.ufrpe.beela.usuario.negocio.UsuarioService;
 
 public class LoginAct extends AppCompatActivity {
     private static Usuario usuario = new Usuario();
+    private static Pessoa pessoa = new Pessoa();
     private UsuarioService usuarioValido= new UsuarioService();
+
     public  static Usuario getUsuario(){return usuario;}
+    public  static Pessoa getPessoa(){return pessoa;}
 
     private TextView t, EsqueceuTextView3;
     private Button criarContaButton2, entrarButton;
-
-    boolean valido=false;
 
     private EditText editTextEmail, editText2Senha;
     private String email, senha;
@@ -106,7 +105,9 @@ public class LoginAct extends AppCompatActivity {
         Erro = Toast.makeText(getApplicationContext(), R.string.erroNoLoginDoBanco, Toast.LENGTH_SHORT);
 
         if(usuarioValido.emailSenhaLogin(email, senha,this)){
-            usuario = usuarioValido.geralUsuario(email, senha,this);
+            usuario = usuarioValido.gerarUsuario(email, senha,this);
+            pessoa = usuarioValido.gerarPessoa(usuario.getId(),this);
+            pessoa.setPerfil(usuarioValido.gerarPerfilUsuario(usuario.getId()));
             entrarHome(); }
         else{
             Erro.show(); }
@@ -124,9 +125,9 @@ public class LoginAct extends AppCompatActivity {
             editText2Senha.setError(getString(R.string.senhaInvalida));
         }
         else{
-            valido=true;
+            return true;
         }
-        return valido;
+        return false;
     }
 //-------------------------------------------------------------------------------------------
 

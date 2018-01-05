@@ -8,60 +8,71 @@
     android:background="@color/preto"
     tools:context="br.ufrpe.beela.perfil.gui.PerfilAct">
 
-    <android.support.constraint.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/preto"
-        tools:context="br.ufrpe.beela.perfil.gui.PerfilAct">
+<android.support.constraint.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/preto"
+    tools:context="br.ufrpe.beela.perfil.gui.PerfilAct">
 
-        <ImageButton
-            android:id="@+id/imageButton4"
-            android:layout_width="71dp"
-            android:layout_height="74dp"
-            android:layout_marginBottom="8dp"
-            android:layout_marginEnd="56dp"
-            android:layout_marginTop="168dp"
-            android:backgroundTint="@color/verdeBotao"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textViewPerfil1"
-            app:layout_constraintVertical_bias="1.0"
-            app:srcCompat="@drawable/adicionar" />
+    <ImageButton
+        android:id="@+id/imageButton4"
+        android:layout_width="71dp"
+        android:layout_height="74dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="56dp"
+        android:layout_marginTop="8dp"
+        android:backgroundTint="@color/verdeBotao"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/listView"
+        app:layout_constraintVertical_bias="0.952"
+        app:srcCompat="@drawable/adicionar" />
 
-        <Button
-            android:id="@+id/button14"
-            android:layout_width="158dp"
-            android:layout_height="69dp"
-            android:layout_marginBottom="8dp"
-            android:layout_marginEnd="36dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="168dp"
-            android:backgroundTint="@color/verdeBotao"
-            android:text="@string/comecar"
-            android:textAllCaps="false"
-            android:textSize="25sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/imageButton4"
-            app:layout_constraintHorizontal_bias="0.345"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textViewPerfil1"
-            app:layout_constraintVertical_bias="1.0" />
+    <Button
+        android:id="@+id/button14"
+        android:layout_width="158dp"
+        android:layout_height="69dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="36dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:backgroundTint="@color/verdeBotao"
+        android:text="@string/comecar"
+        android:textAllCaps="false"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/imageButton4"
+        app:layout_constraintHorizontal_bias="0.418"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/listView"
+        app:layout_constraintVertical_bias="0.953" />
 
-        <TextView
-            android:id="@+id/textViewPerfil1"
-            android:layout_width="349dp"
-            android:layout_height="56dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="84dp"
-            android:text=""
-            android:textColor="@color/branco"
-            android:textSize="36sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.102"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="teste" />
+    <ListView
+        android:id="@+id/listView"
+        android:layout_width="315dp"
+        android:layout_height="331dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    </android.support.constraint.ConstraintLayout>
+    <!--<TextView-->
+    <!--android:id="@+id/textViewPerfil1"-->
+    <!--android:layout_width="349dp"-->
+    <!--android:layout_height="56dp"-->
+    <!--android:layout_marginEnd="8dp"-->
+    <!--android:layout_marginStart="8dp"-->
+    <!--android:layout_marginTop="84dp"-->
+    <!--android:text=""-->
+    <!--android:textColor="@color/branco"-->
+    <!--android:textSize="36sp"-->
+    <!--app:layout_constraintEnd_toEndOf="parent"-->
+    <!--app:layout_constraintHorizontal_bias="0.102"-->
+    <!--app:layout_constraintStart_toStartOf="parent"-->
+    <!--app:layout_constraintTop_toTopOf="parent"-->
+    <!--tools:text="teste" />-->
+
+</android.support.constraint.ConstraintLayout>
 </ScrollView>

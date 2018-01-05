@@ -8,10 +8,13 @@
     tools:context="br.ufrpe.beela.perfil.gui.PerfilPrioridadeAct">
 
     <com.allyants.draggabletreeview.DraggableTreeView
-        android:textSize="20sp"
-        android:backgroundTint="@color/verdeBotao"
         android:id="@+id/draggable"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"></com.allyants.draggabletreeview.DraggableTreeView>
+        android:layout_height="match_parent"
+        android:layout_centerVertical="true"
+        android:duplicateParentState="true"
+        android:textSize="20sp">
+
+    </com.allyants.draggabletreeview.DraggableTreeView>
 
 </RelativeLayout>

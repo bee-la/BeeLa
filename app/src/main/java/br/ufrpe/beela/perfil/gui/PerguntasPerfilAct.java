@@ -13,6 +13,8 @@ import java.util.HashMap;
 import java.util.List;
 
 import br.ufrpe.beela.gui.R;
+import br.ufrpe.beela.perfil.dominio.PerfilComida;
+import br.ufrpe.beela.usuario.gui.LoginAct;
 
 public class PerguntasPerfilAct extends AppCompatActivity {
 
@@ -32,6 +34,7 @@ public class PerguntasPerfilAct extends AppCompatActivity {
         initData();
         listAdapter = new ExpandableListAdapterAct(this,listDataHeader,listHash);
         listView.setAdapter(listAdapter);
+
 
 
         button23.setOnClickListener(new View.OnClickListener() {
@@ -69,7 +72,7 @@ public class PerguntasPerfilAct extends AppCompatActivity {
         esportes.add("volei");
         esportes.add("basquete");
 
-        listHash.put(listDataHeader.get(0),comidas);
+        listHash.put("Comidas",comidas);
         listHash.put(listDataHeader.get(1),musicas);
         listHash.put(listDataHeader.get(2),esportes);
 

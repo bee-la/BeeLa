@@ -9,6 +9,7 @@ import java.util.ArrayList;
 
 import br.ufrpe.beela.database.dao.BD;
 import br.ufrpe.beela.perfil.dominio.PerfilComida;
+import br.ufrpe.beela.perfil.dominio.PerfilEsporte;
 import br.ufrpe.beela.perfil.dominio.PerfilMusica;
 import br.ufrpe.beela.perfil.dominio.PerfilUsuario;
 import br.ufrpe.beela.usuario.dominio.Usuario;
@@ -21,23 +22,24 @@ import br.ufrpe.beela.usuario.dominio.Usuario;
 
 public class PerfilDAO {
     private SQLiteDatabase bd;
-    public PerfilDAO(Context context, String tipo){
+
+    public SQLiteDatabase getLer(Context context){
         BD auxBd = new BD(context);
-        if(tipo.equals("R")){ bd = auxBd.getReadableDatabase();}
-        else{bd = auxBd.getWritableDatabase();}
+        bd = auxBd.getReadableDatabase();
+        return bd;
+    }
+    public SQLiteDatabase getEscrever(Context context){
+        BD auxBd = new BD(context);
+        bd = auxBd.getWritableDatabase();
+        return bd;
     }
  //TODO   =========================================================================================================
     public void inserirPerfil(PerfilUsuario perfil) {
         ContentValues valores = new ContentValues();
         valores.put("id_usuario",perfil.getId_Usuario());
         valores.put("nome_perfil", perfil.getNome());
-  //      valores.put("comida", perfil.getComida());
- //       valores.put("musica", perfil.getMusica());
-//        valores.put("esporte", perfil.getEsporte());
         bd.insert("perfilUsuario", null, valores);
         bd.close();
-//        inserirPerfilComida(perfil);
-//        inserirPerfilMusica(perfil);
     }
     public void inserirPerfilMusica(PerfilMusica musica){
             ContentValues valores = new ContentValues();
@@ -58,6 +60,17 @@ public class PerfilDAO {
             bd.close();
     }
 
+    //        TODO    Isso aqui
+    public void inserirPerfilEsporte(PerfilEsporte esporte){
+        ContentValues valores = new ContentValues();
+        valores.put("nome",esporte.getNome());
+        valores.put("id_usuario",esporte.getId_usuario());
+        valores.put("nome_perfil",esporte.getNome_perfil());
+        bd.insert("perfilEsporte",null,valores);
+        bd.close();
+    }
+
+
 //TODO ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     public void updatePerfil(PerfilUsuario perfil) {
         String where = "id_usuario = " + perfil.getId_Usuario()+" AND nome_perfil = "+ perfil.getNome();
@@ -71,25 +84,48 @@ public class PerfilDAO {
     }
 
 
-    public void deletePerfil(PerfilUsuario perfil) {
-        String where = "id_usuario = " + perfil.getId_Usuario()+" AND nome_perfil = "+ perfil.getNome();
+    public void deletePerfilUsuario(PerfilUsuario perfil, String nomePerfil) {
+        String where = "id_usuario = " + perfil.getId_Usuario()+" AND nome_perfil = "+ nomePerfil;//perfil.getNome();
         bd.delete("perfilUsuario", where , null);
         bd.close();}
 
+    public void deletePerfisUsuario(int id) {
+        String where = "id_usuario = " + id;
+        bd.delete("perfilUsuario", where , null);
+        bd.close();}
+
+    public void deletePerfilMusica(PerfilMusica musica) {
+        String where = "id_usuario = " + musica.getId_usuario()+" AND nome_perfil = "+ musica.getNome_perfil();
+        bd.delete("perfilComida", where , null);
+        bd.close();}
+
+    public void deletePerfilComida(PerfilComida comida) {
+        String where = "id_usuario = " + comida.getId_usuario()+" AND nome_perfil = "+ comida.getNome_perfil();
+        bd.delete("perfilComida", where , null);
+        bd.close();}
+
     public boolean buscarPerfil(Usuario usuario, String NomedoPerfil){
-        String where ="SELECT * FROM perfilUsuario WHERE id_usuario = " + usuario.getId()+" AND nome_perfil = "+ NomedoPerfil;
-        Cursor cursor = bd.rawQuery(where , null);
+        ArrayList<String> list = new ArrayList<String>();
+        String where ="SELECT * FROM perfilUsuario WHERE id_usuario = '"+ usuario.getId()+"'";
+        Cursor cursor = bd.rawQuery(where,null);
         if (cursor.getCount()>0){
-            return true;
+            cursor.moveToFirst();
+            do {
+                list.add(cursor.getString(2));
+            } while(cursor.moveToNext());
         }
-        return false;
+        bd.close();
+        for (String a:list) {
+            if (a.equals(NomedoPerfil))
+            {return false;}
+        }
+        return true;
     }
     public ArrayList<PerfilComida> sqlGetPerfilComida (PerfilUsuario perfilUsuario) {
         ArrayList<PerfilComida> comidas = new ArrayList<PerfilComida>();
         String where = "SELECT * FROM perfilComida WHERE id_usuario = '" + perfilUsuario.getId_Usuario() + "' AND nome_perfil = '" + perfilUsuario.getNome() + "'";
         Cursor cursor = bd.rawQuery(where, null);
         if (cursor.getCount() > 0) {
-            cursor.moveToFirst();
             do {
                 PerfilComida comida = new PerfilComida();
                 comida.setId(cursor.getInt(0));
@@ -123,9 +159,30 @@ public class PerfilDAO {
     }
 
 
-    public  ArrayList<PerfilUsuario> sqlGetPerfil(Usuario usuario){
+  // TODO         Adicionei isso aqui sqlGetPerfilEsporte
+    public ArrayList<PerfilEsporte> sqlGetPerfilEsporte (PerfilUsuario perfilUsuario) {
+        ArrayList<PerfilEsporte> esportes = new ArrayList<PerfilEsporte>();
+        String where = "SELECT * FROM perfilEsporte WHERE id_usuario = '" + perfilUsuario.getId_Usuario() + "' AND nome_perfil = '" + perfilUsuario.getNome() + "'";
+        Cursor cursor = bd.rawQuery(where, null);
+        if (cursor.getCount() > 0) {
+            cursor.moveToFirst();
+            do {
+                PerfilEsporte esporte = new PerfilEsporte();
+                esporte.setId(cursor.getInt(0));
+                esporte.setNome(cursor.getString(1));
+                esporte.setId_usuario(cursor.getInt(2));
+                esporte.setNome_perfil(cursor.getString(3));
+                esportes.add(esporte);
+            } while (cursor.moveToNext());
+        }
+        bd.close();
+        return esportes;
+    }
+
+
+    public  ArrayList<PerfilUsuario>  sqlGetPerfil(int id){
         ArrayList<PerfilUsuario> list = new ArrayList<PerfilUsuario>();
-        String where ="SELECT * FROM perfilUsuario WHERE id_usuario = '"+ usuario.getId()+"'";
+        String where ="SELECT * FROM perfilUsuario WHERE id_usuario = '"+ id+"'";
         Cursor cursor = bd.rawQuery(where,null);
 
         if (cursor.getCount()>0){
@@ -135,13 +192,24 @@ public class PerfilDAO {
                 p.setId(cursor.getInt(0));
                 p.setId_usuario(cursor.getInt(1));
                 p.setNome(cursor.getString(2));
-//                p.setComida(cursor.getString(3));
-//                p.setMusica(cursor.getString(4));
-                //p.setEsporte(cursor.getString(5));
-                list.add(p);
+                if(p.getId_Usuario() == id){
+                    list.add(p);}
             } while(cursor.moveToNext());
         }
         bd.close();
         return list;
     }
+    public PerfilUsuario sqlRetornaObjetoPerfilUsuario(String email,String senha){
+        PerfilUsuario perfilUsuario = new PerfilUsuario();
+        String where ="SELECT * FROM perfilUsuario WHERE email = '"+email+"'"+"AND senha = '"+senha+"'";
+        Cursor cursor = bd.rawQuery(where, null);
+        if(cursor.getCount()>0){
+            cursor.moveToFirst();
+            perfilUsuario.setId(cursor.getInt(0));
+            perfilUsuario.setId_usuario(cursor.getInt(1));
+        }
+        bd.close();
+        return perfilUsuario;
+    }
+
 }

@@ -27,8 +27,6 @@ public class CriarContaAct extends AppCompatActivity {
     private Button criarButton3;
     private Toast contaCriada;
 
-    boolean valido=false;
-
     private String nomeValidar, celularValidar, emailValidar, senhaValidar, repetirSenhaValidar;
     private EditText editText4Nome, editText5Celular, editText6Email, editText10Senha, editText11RepetirSenha;
     private ArrayList<TextView> textos= new ArrayList<TextView>();
@@ -81,16 +79,21 @@ public class CriarContaAct extends AppCompatActivity {
 
     public void sucessoCriarConta(){
         //TODO fazer busca
-        if (usuarioValido.verificarEmailCelular(emailValidar,celularValidar,this)){
+        if (usuarioValido.verificarEmail(emailValidar,this)){
             Toast erro;
-            erro = Toast.makeText(getApplicationContext(), R.string.emailCelularExiste, Toast.LENGTH_SHORT);
-            erro.show();
+            erro = Toast.makeText(getApplicationContext(),"Email já Existe", Toast.LENGTH_SHORT);
+            erro.show();}
+        else if (usuarioValido.verificarCelular(celularValidar,this)){
+            Toast erro2;
+            erro2 = Toast.makeText(getApplicationContext(),"Celular já Existe", Toast.LENGTH_SHORT);
+            erro2.show();
         }
         else {
-            usuarioValido.salvarBanco(usuarioValido.criarObjetoPessoa(emailValidar,nomeValidar,senhaValidar,celularValidar),this);
+            usuarioValido.salvarBanco(usuarioValido.criarObjetoUsuario(emailValidar,senhaValidar),usuarioValido.criarObjetoPessoa(nomeValidar,celularValidar),this);
             limparCampos();
             contaCriada = Toast.makeText(getApplicationContext(), R.string.contaCriada, Toast.LENGTH_SHORT);
             contaCriada.show();
+            finish();
         }
     }
     private void limparCampos() {
@@ -122,9 +125,9 @@ public class CriarContaAct extends AppCompatActivity {
             editText11RepetirSenha.setError(getString(R.string.senhasDiferentes));
         }
         else{
-            valido=true;
+            return true;
             }
-        return valido;
+        return false;
     }
 }
 

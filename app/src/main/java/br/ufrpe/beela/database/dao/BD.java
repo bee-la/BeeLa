@@ -10,9 +10,8 @@ import android.database.sqlite.SQLiteOpenHelper;
  */
 
 public class BD extends SQLiteOpenHelper {
-    private static final String NOME_DO_BD = "beela";
-    private static final int VERSAO = 4;
-
+    private static final String NOME_DO_BD = "beelaBeta";
+    private static final int VERSAO = 1;
 
     public BD(Context ctx) {
         super(ctx, NOME_DO_BD, null, VERSAO);
@@ -20,21 +19,37 @@ public class BD extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase bd) {
-        bd.execSQL("create table usuario(_id integer primary key  autoincrement, nome text not null, senha text not null, email text not null, celular text not null); ");
-        bd.execSQL("create table perfilMusica(_id integer primary key  autoincrement, nome text not null,id_usuario interger not null,nome_perfil text not null); ");
-        bd.execSQL("create table perfilComida(_id integer primary key  autoincrement, nome text not null,id_usuario interger not null,nome_perfil text not null); ");
-        bd.execSQL("create table perfilUsuario(_id integer primary key autoincrement, id_usuario interger not null , nome_perfil text not null);");
+        bd.execSQL("create table usuario(_id integer primary key  autoincrement,senha text not null, email text not null); ");
+        bd.execSQL("create table perfilMusica(_id integer primary key  autoincrement, nome text not null,id_usuario interger ,nome_perfil text not null,id_lugar interger); ");
+        bd.execSQL("create table perfilComida(_id integer primary key  autoincrement, nome text not null,id_usuario interger ,nome_perfil text not null,id_lugar interger); ");
 
-        //bd.execSQL("create table lugar (_id integer primary key autoincrement, nome_lugar text not null);");
-        //bd.execSQL("create table perfilLugar(_id integer primary key autoincrement, id_lugar interger not null, comida text null, musica text null);");
+// TODO    Adicionei essa tabela
+        bd.execSQL("create table perfilEsporte(_id integer primary key  autoincrement, nome text not null,id_usuario interger ,nome_perfil text not null,id_lugar interger); ");
+
+        bd.execSQL("create table perfilUsuario(_id integer primary key autoincrement, id_usuario interger not null , nome_perfil text not null);");
+        bd.execSQL("create table pessoa (_id integer primary key autoincrement, nome text not null, celular text not null,id_usuario interger not null);");
+        bd.execSQL("create table perfilLugar(_id integer primary key autoincrement, nome_lugar text not null,localizacao text not null);");
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase bd, int arg1, int arg2) {
         bd.execSQL("drop table usuario;");
-        bd.execSQL("drop table perfilUsuario;");
         bd.execSQL("drop table perfilMusica");
         bd.execSQL("drop table perfilComida");
+        bd.execSQL("drop table perfilEsporte"); // TODO    Adicionei isso aqui
+        bd.execSQL("drop table perfilUsuario;");
+        bd.execSQL("drop table pessoa;");
+        bd.execSQL("drop table perfilLugar;");
         onCreate(bd);
     }
 }
+
+
+
+
+
+
+
+
+
+

@@ -21,7 +21,7 @@ import br.ufrpe.beela.gui.R;
 
 public class PerguntasComidasAct extends AppCompatActivity {
 
-    private PerfilUsuario usuario = LoginAct.getUsuario().getPerfil();
+    private PerfilUsuario usuario = LoginAct.getPessoa().getPerfil();
 
     private TextView fonteTextView7;
     private Button btconfirmar;
@@ -63,7 +63,8 @@ public class PerguntasComidasAct extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                alterarTelaPerfil();
+                adcComida();
+                telaPerguntasEsporte();
             }
 
         });
@@ -83,7 +84,6 @@ public class PerguntasComidasAct extends AppCompatActivity {
                 PerfilComida comida = new PerfilComida();
                 comida.setNome(x.getText().toString());
                 comida.setId_usuario(usuario.getId_Usuario());
-              //  comida.setNome_perfil(usuario.getNome());
                 listaComida.add(comida);
             }
         }
@@ -93,13 +93,18 @@ public class PerguntasComidasAct extends AppCompatActivity {
 
 
 
-
-
-    public void alterarTelaPerfil(){
-//TODO      Na tela de PerfilAct falta aparecer o perfil que foi adicionado.
+    public void telaPerguntasEsporte(){
         adcComida();
-        startActivity(new Intent(PerguntasComidasAct.this, NomePerfilAct.class));
+        startActivity(new Intent(PerguntasComidasAct.this, PerguntasEsporteAct.class));
+        finish();
+//<<<<<<< HEAD
     }
+//
+//    public void fecharTela(){
+//        finish();
+//=======
+//>>>>>>> desenvolvedor2
+//    }
 
 }
 

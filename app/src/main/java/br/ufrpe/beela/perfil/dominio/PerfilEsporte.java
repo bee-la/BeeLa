@@ -1,10 +1,10 @@
 package br.ufrpe.beela.perfil.dominio;
 
 /**
- * Created by vidal on 18/12/2017.
+ * Created by Anderson on 29/12/2017.
  */
 
-public class PerfilMusica {
+public class PerfilEsporte {
     private int id;
     private String nome;
     private int id_usuario;

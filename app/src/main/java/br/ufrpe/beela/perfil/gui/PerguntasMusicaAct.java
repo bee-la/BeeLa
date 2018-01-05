@@ -19,7 +19,7 @@ import br.ufrpe.beela.usuario.gui.LoginAct;
 import br.ufrpe.beela.gui.R;
 
 public class PerguntasMusicaAct extends AppCompatActivity {
-    private PerfilUsuario usuario = LoginAct.getUsuario().getPerfil();
+    private PerfilUsuario usuario = LoginAct.getPessoa().getPerfil();
     private TextView fonteTextView9;
     private Button btconfirmar;
 
@@ -57,14 +57,12 @@ public class PerguntasMusicaAct extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
+                adcmusicas();
                 alterarTelaPerfil();
             }
 
         });
     }
-
-
-
 
     public void onCheckboxClicked(View view) {
 
@@ -91,10 +89,13 @@ public class PerguntasMusicaAct extends AppCompatActivity {
 
 
     public void alterarTelaPerfil(){
-//TODO      Na tela de PerfilAct falta aparecer o perfil que foi adicionado.
         adcmusicas();
         startActivity(new Intent(PerguntasMusicaAct.this, PerguntasComidasAct.class));
+        finish();
+    }
 
+    public void fecharTela(){
+        finish();
     }
 
 }
