@@ -8,8 +8,11 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import br.ufrpe.beela.perfil.dao.PerfilDAO;
+import br.ufrpe.beela.perfil.dominio.PerfilUsuario;
 import br.ufrpe.beela.usuario.dao.UsuarioDAO;
 import br.ufrpe.beela.gui.R;
+import br.ufrpe.beela.usuario.dominio.Pessoa;
 import br.ufrpe.beela.usuario.dominio.Usuario;
 
 public class ApagarContaAct extends AppCompatActivity {
@@ -35,10 +38,14 @@ public class ApagarContaAct extends AppCompatActivity {
         UsuarioDAO bd = new UsuarioDAO();
         bd.getEscrever(this);
         bd.delete(LoginAct.getUsuario());
+        PerfilDAO bd1 = new PerfilDAO();
+        bd1.getEscrever(this);
+        bd1.deletePerfisUsuario(LoginAct.getUsuario().getId());
         Toast Sucesso;
         Sucesso = Toast.makeText(getApplicationContext(), "Conta Deletada", Toast.LENGTH_SHORT);
         Sucesso.show();
         Usuario usuario = new Usuario();
+        Pessoa pessoa = new Pessoa();
         startActivity(new Intent(ApagarContaAct.this, LoginAct.class));
     }
 }

@@ -84,8 +84,8 @@ public class PerguntasEsporteAct extends AppCompatActivity {
         startActivity(new Intent(PerguntasEsporteAct.this, NomePerfilAct.class));
         finish();
     }
-
-    public void fecharTela(){
-        finish();
-    }
+//
+//    public void fecharTela(){
+//        finish();
+//    }
 }

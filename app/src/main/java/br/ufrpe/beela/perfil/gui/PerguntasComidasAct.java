@@ -97,14 +97,14 @@ public class PerguntasComidasAct extends AppCompatActivity {
         adcComida();
         startActivity(new Intent(PerguntasComidasAct.this, PerguntasEsporteAct.class));
         finish();
-<<<<<<< HEAD
+//<<<<<<< HEAD
     }
-
-    public void fecharTela(){
-        finish();
-=======
->>>>>>> desenvolvedor2
-    }
+//
+//    public void fecharTela(){
+//        finish();
+//=======
+//>>>>>>> desenvolvedor2
+//    }
 
 }
 

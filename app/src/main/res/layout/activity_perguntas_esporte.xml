@@ -94,24 +94,7 @@
         <Button
             android:id="@+id/button13"
             android:layout_width="0dp"
-<<<<<<< HEAD
             android:layout_height="56dp"
-            android:layout_marginTop="24dp"
-=======
-            android:layout_height="62dp"
-            android:layout_marginBottom="16dp"
-            android:layout_marginTop="64dp"
->>>>>>> desenvolvedor2
-            android:backgroundTint="@color/verdeBotao"
-            android:text="Confirmar"
-            android:textAllCaps="false"
-            android:textColor="@color/preto"
-            android:textSize="20sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/checkBox5"
-            app:layout_constraintVertical_bias="0.0" />
+            android:layout_marginTop="24dp" />
 </android.support.constraint.ConstraintLayout>
 </ScrollView>

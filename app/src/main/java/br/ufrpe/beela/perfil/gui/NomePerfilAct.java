@@ -93,15 +93,15 @@ public class NomePerfilAct extends AppCompatActivity {
     public void irembora(){
 //        Bundle parametros = new Bundle();
 //        parametros.putString("chave",nomePerfilEditText12.getText().toString());
-<<<<<<< HEAD
-        Intent it = new Intent(this, PerfilAct.class);
-//        it.putExtras(parametros);
-        startActivity(it);
-=======
+//<<<<<<< HEAD
 //        Intent it = new Intent(this, PerfilAct.class);
 //        it.putExtras(parametros);
 //        startActivity(it);
->>>>>>> desenvolvedor2
+//=======
+//        Intent it = new Intent(this, PerfilAct.class);
+//        it.putExtras(parametros);
+//        startActivity(it);
+//>>>>>>> desenvolvedor2
         finish();
     }
     public boolean validarExistencia(String NomePerfil){

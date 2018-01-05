@@ -92,14 +92,10 @@ public class PerguntasMusicaAct extends AppCompatActivity {
         adcmusicas();
         startActivity(new Intent(PerguntasMusicaAct.this, PerguntasComidasAct.class));
         finish();
-<<<<<<< HEAD
-
     }
 
     public void fecharTela(){
         finish();
-=======
->>>>>>> desenvolvedor2
     }
 
 }

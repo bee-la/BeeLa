@@ -89,6 +89,11 @@ public class PerfilDAO {
         bd.delete("perfilUsuario", where , null);
         bd.close();}
 
+    public void deletePerfisUsuario(int id) {
+        String where = "id_usuario = " + id;
+        bd.delete("perfilUsuario", where , null);
+        bd.close();}
+
     public void deletePerfilMusica(PerfilMusica musica) {
         String where = "id_usuario = " + musica.getId_usuario()+" AND nome_perfil = "+ musica.getNome_perfil();
         bd.delete("perfilComida", where , null);
