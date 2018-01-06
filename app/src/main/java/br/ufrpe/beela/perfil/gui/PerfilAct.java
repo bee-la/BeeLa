@@ -33,17 +33,16 @@ public class PerfilAct extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_perfil);
+
         MontarPerfis();
         listaNomes=(ListView)findViewById(R.id.listView);
         TextoListView mudancaCor=new TextoListView(this, perfis());
         listaNomes.setAdapter(mudancaCor);
 
-//-------------------------------------Trocar tela--------------------------------------------
         adicionarPerfil = (ImageButton) findViewById(R.id.imageButton4);
+
         fonteBotaoComecar();
-//        Typeface fonte = Typeface.createFromAsset(getAssets(), "fonts/Chewy.ttf");
-//        nomeTextView = findViewById(R.id.textViewPerfil1);
-//        nomeTextView.setTypeface(fonte);
+
         adicionarPerfilTrocarTela = (ImageButton) findViewById(R.id.imageButton4);
         adicionarPerfil.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -63,17 +62,6 @@ public class PerfilAct extends AppCompatActivity {
         TextoListView mudancaCor=new TextoListView(this, perfis());
     }
 
-
-//    public void verifarNomeTextView(){
-//        Intent intent =getIntent();
-//        if (intent!=null){
-//            Bundle parametros=intent.getExtras();
-//            if (parametros!=null){
-//                String nomeTexto = parametros.getString("chave");
-//                nomeTextView.setText(nomeTexto);
-//            }
-//        }
-//    }
     private void MontarPerfis(){
 
         PerfilDAO bd = new PerfilDAO();
@@ -95,14 +83,6 @@ public class PerfilAct extends AppCompatActivity {
         TextoButton14.setTypeface(fonte);
     }
 
-//    public void fecharTela(){
-//        finish();
-//        PerfilDAO bd = new PerfilDAO();
-//        bd.getLer(this);
-//        perfilUsuarioArrayList=bd.sqlGetPerfil(perfilUsuario.getId_Usuario());
-//        if (perfilUsuarioArrayList.size()==0){nomeTextView.setText("Sem Perfil");}
-//        else{nomeTextView.setText(perfilUsuarioArrayList.get(0).getNome());}
-//    }
     private boolean verificarPerfis(){
         if(perfilUsuarioArrayList.size()<=2){return true;}
         else{return false;}

@@ -54,7 +54,7 @@ public class PerguntasEsporteAct extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 adcEsporte();
-                telaNomePerfil();
+                telaPerfilPrioridade();
             }
 
         });
@@ -79,9 +79,9 @@ public class PerguntasEsporteAct extends AppCompatActivity {
         usuario.setEsporte(listaEsporte);
     }
 
-    public void telaNomePerfil(){
+    public void telaPerfilPrioridade(){
         adcEsporte();
-        startActivity(new Intent(PerguntasEsporteAct.this, NomePerfilAct.class));
+        startActivity(new Intent(PerguntasEsporteAct.this, PerfilPrioridadeAct.class));
         finish();
     }
 //
