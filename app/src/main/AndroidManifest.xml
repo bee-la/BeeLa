@@ -59,6 +59,12 @@
         <activity
             android:name="br.ufrpe.beela.perfil.gui.PerguntasEsporteAct"
             android:label="@string/adicionarPerfil" />
+
+        <activity
+            android:name="br.ufrpe.beela.lugar.gui.LugaresAct"
+            android:label="Lugares" />
+
+
     </application>
 
 </manifest>
