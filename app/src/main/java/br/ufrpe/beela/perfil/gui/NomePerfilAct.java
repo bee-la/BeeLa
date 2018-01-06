@@ -102,6 +102,8 @@ public class NomePerfilAct extends AppCompatActivity {
 //        it.putExtras(parametros);
 //        startActivity(it);
 //>>>>>>> desenvolvedor2
+        Intent it = new Intent(this, PerfilAct.class);
+        startActivity(it);
         finish();
     }
     public boolean validarExistencia(String NomePerfil){

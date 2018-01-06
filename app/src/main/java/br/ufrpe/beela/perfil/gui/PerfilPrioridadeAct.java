@@ -1,10 +1,12 @@
 package br.ufrpe.beela.perfil.gui;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.DragEvent;
 import android.view.View;
+import android.widget.Button;
 
 import com.allyants.draggabletreeview.DraggableTreeView;
 import com.allyants.draggabletreeview.SimpleTreeViewAdapter;
@@ -21,8 +23,9 @@ import br.ufrpe.beela.usuario.gui.LoginAct;
 import br.ufrpe.beela.perfil.dao.PerfilDAO;
 
 public class PerfilPrioridadeAct extends AppCompatActivity {
-    DraggableTreeView draggableTreeView;
+    private DraggableTreeView draggableTreeView;
     private PerfilUsuario usuario = LoginAct.getPessoa().getPerfil();
+    private Button confirmarButton16;
 
     private ArrayList<String> prioridade = new ArrayList<String>();
     private ArrayList<PerfilComida> listaComidas=LoginAct.getPessoa().getPerfil().getComida();
@@ -35,6 +38,11 @@ public class PerfilPrioridadeAct extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_perfil_prioridade);
+
+        confirmarButton16=(Button)findViewById(R.id.button16);
+        confirmarButton16.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {telaNomePerfil();}});
 
         draggableTreeView = (DraggableTreeView)findViewById(R.id.draggable);
 
@@ -65,5 +73,11 @@ public class PerfilPrioridadeAct extends AppCompatActivity {
             }
         });
 
+    }
+
+    public void telaNomePerfil() {
+//        adcEsporte();
+        startActivity(new Intent(PerfilPrioridadeAct.this, NomePerfilAct.class));
+        finish();
     }
 }

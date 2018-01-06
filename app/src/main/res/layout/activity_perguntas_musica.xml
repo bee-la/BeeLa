@@ -83,7 +83,7 @@
         <Button
             android:id="@+id/buttonConfirmar"
             android:layout_width="match_parent"
-            android:layout_height="47dp"
+            android:layout_height="50dp"
             android:layout_marginBottom="8dp"
             android:layout_marginTop="24dp"
             android:background="@color/verdeBotao"
