@@ -7,6 +7,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 import android.widget.Adapter;
 import android.widget.AdapterView;
@@ -24,6 +25,7 @@ import br.ufrpe.beela.perfil.dao.PerfilDAO;
 import br.ufrpe.beela.perfil.dominio.PerfilUsuario;
 import br.ufrpe.beela.perfil.negocio.ListViewNomePerfil;
 //import br.ufrpe.beela.perfil.negocio.TextoListView;
+import br.ufrpe.beela.usuario.dominio.Usuario;
 import br.ufrpe.beela.usuario.gui.LoginAct;
 import br.ufrpe.beela.gui.R;
 
@@ -34,6 +36,7 @@ public class PerfilAct extends AppCompatActivity {
     private ArrayList<String> perfilExcluir=new ArrayList<String>();
 
     private PerfilUsuario perfilUsuario = LoginAct.getPessoa().getPerfil();
+    private Usuario usuario=LoginAct.getUsuario();
     private ImageButton adicionarPerfilTrocarTela;
     private ImageButton apagarImageButton6;
     public static ArrayList<PerfilUsuario> perfilUsuarioArrayList = new ArrayList<>();
@@ -60,8 +63,6 @@ public class PerfilAct extends AppCompatActivity {
 
         fonteBotaoComecar();
         checkBoxSelecionado();
-//        setListView();
-//        finish();
 
         adicionarPerfilTrocarTela = (ImageButton) findViewById(R.id.imageButton4);
         adicionarPerfil.setOnClickListener(new View.OnClickListener() {
@@ -71,7 +72,7 @@ public class PerfilAct extends AppCompatActivity {
                     adicionarPerfilTrocarTela();
                 } else {
                     Toast Erro;
-                    Erro = Toast.makeText(getApplicationContext(), "Maximo é 3 Perfis", Toast.LENGTH_SHORT);
+                    Erro = Toast.makeText(getApplicationContext(), "O máximo são 3 perfis", Toast.LENGTH_SHORT);
                     Erro.show();    }   }   });
     }
 
@@ -142,8 +143,11 @@ public class PerfilAct extends AppCompatActivity {
                 String opcao=(String)escolha[i];
 
                 if (opcao.equals(getString(R.string.sim))){
+//                    perfilExcluir.add(nomePerfil);
+                    excluirDoBanco(nomePerfil);
                     Toast.makeText(getApplicationContext(), "Teste Exclusão", Toast.LENGTH_LONG).show();
-//                    excluirDoBanco(nomePerfil);
+                    setListView();
+                    finish();
                 }
                 else if(opcao.equals(getString(R.string.nao))){
                     dialogInterface.cancel();   }   }   });
@@ -154,7 +158,7 @@ public class PerfilAct extends AppCompatActivity {
 
     private void excluirDoBanco(String nomePerfil){
         PerfilDAO bd = new PerfilDAO();
-        bd.getLer(this);
-        bd.deletePerfilUsuario(perfilUsuario, nomePerfil);
+        bd.getEscrever(this);
+        bd.deletePerfilUsuario(usuario.getId(), nomePerfil);
     }
 }

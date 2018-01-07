@@ -69,21 +69,5 @@
         app:layout_constraintTop_toBottomOf="@+id/listView"
         app:srcCompat="@drawable/lixeira" />
 
-    <!--<TextView-->
-    <!--android:id="@+id/textViewPerfil1"-->
-    <!--android:layout_width="349dp"-->
-    <!--android:layout_height="56dp"-->
-    <!--android:layout_marginEnd="8dp"-->
-    <!--android:layout_marginStart="8dp"-->
-    <!--android:layout_marginTop="84dp"-->
-    <!--android:text=""-->
-    <!--android:textColor="@color/branco"-->
-    <!--android:textSize="36sp"-->
-    <!--app:layout_constraintEnd_toEndOf="parent"-->
-    <!--app:layout_constraintHorizontal_bias="0.102"-->
-    <!--app:layout_constraintStart_toStartOf="parent"-->
-    <!--app:layout_constraintTop_toTopOf="parent"-->
-    <!--tools:text="teste" />-->
-
 </android.support.constraint.ConstraintLayout>
 </ScrollView>

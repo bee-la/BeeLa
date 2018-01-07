@@ -51,7 +51,8 @@ public class AlterarNomeAct extends AppCompatActivity {
         alterarNome=alterarNomeEditText3.getText().toString().trim();
         if(ehValidoAlterarNome()) {
             usuarioService.alterarSucessoNome(pessoa,alterarNome,this);
-            startActivity(new Intent(AlterarNomeAct.this, HomeAct.class));
+//            startActivity(new Intent(AlterarNomeAct.this, HomeAct.class));
+            alterarNomeEditText3.setText("");
             Toast Sucesso;
             Sucesso = Toast.makeText(getApplicationContext(), "Nome Alterado", Toast.LENGTH_SHORT);
             Sucesso.show();

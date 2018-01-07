@@ -36,8 +36,8 @@ public class ConfiguracoesAct extends AppCompatActivity {
             txtView.setTypeface(fonte);
         }
 
-        nomeTextView11=(TextView)findViewById(R.id.textView11);
-        nomeTextView11.setTypeface(fonte);
+//        nomeTextView11=(TextView)findViewById(R.id.textView11);
+//        nomeTextView11.setTypeface(fonte);
         //---------------------------------Clique Trocar de tela------------------------------------
         alterarNomeButton5 =(Button) findViewById(R.id.button5);
         alterarNomeButton5.setOnClickListener(new View.OnClickListener() {@Override public void onClick (View v){alterarNomeButton5();}});
@@ -51,7 +51,7 @@ public class ConfiguracoesAct extends AppCompatActivity {
 
         sairButton8 = (Button) findViewById(R.id.button8);
         sairButton8.setOnClickListener(new View.OnClickListener() {@Override public void onClick(View v) {sairButton7();}});
-        setarNome();
+//        setarNome();
 
         carregarFoto = findViewById(R.id.btUpload);
         carregarFoto.setOnClickListener(new View.OnClickListener() {
@@ -68,23 +68,25 @@ public class ConfiguracoesAct extends AppCompatActivity {
     //----------------------------------Trocar Tela Funções -------------------------------------
     private void alterarNomeButton5() {
         startActivity(new Intent(ConfiguracoesAct.this, AlterarNomeAct.class));
-        finish();
+//        finish();
 }
 
     private void alterarSenhaButton6 () {
         startActivity(new Intent(ConfiguracoesAct.this, AlterarSenhaAct.class));
-        finish();
+//        finish();
     }
 
     private void apagarButton7() {
         startActivity(new Intent(ConfiguracoesAct.this, ApagarContaAct.class));
+        finish();
     }
 
     private void sairButton7() {
         startActivity(new Intent(ConfiguracoesAct.this, LoginAct.class));
+        finish();
     }
 
-    private void setarNome(){
-        nomeTextView11.setText(pessoa.getNome());
-    }
+//    private void setarNome(){
+//        nomeTextView11.setText(pessoa.getNome());
+//    }
 }

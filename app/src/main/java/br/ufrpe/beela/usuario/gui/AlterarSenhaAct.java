@@ -81,9 +81,12 @@ public class AlterarSenhaAct extends AppCompatActivity {
         bd.getEscrever(this);
         bd.updateSenha(LoginAct.getUsuario(),Criptografia.criptografar(novaSenha));
         LoginAct.getUsuario().setSenha(Criptografia.criptografar(novaSenha));
+        senhaAtualText7.setText("");
+        novaSenhaEditText8.setText("");
+        repetirSenhaText9.setText("");
         senhaAlterada.show();
-        finish();
-        startActivity(new Intent(AlterarSenhaAct.this, HomeAct.class));
+//        finish();
+//        startActivity(new Intent(AlterarSenhaAct.this, HomeAct.class));
     }
 
     public boolean ehValidoAlterarSenha(){

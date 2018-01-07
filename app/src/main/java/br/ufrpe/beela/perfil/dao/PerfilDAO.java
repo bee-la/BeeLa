@@ -84,8 +84,8 @@ public class PerfilDAO {
     }
 
 
-    public void deletePerfilUsuario(PerfilUsuario perfil, String nomePerfil) {
-        String where = "id_usuario = " + perfil.getId_Usuario()+" AND nome_perfil = "+ nomePerfil;//perfil.getNome();
+    public void deletePerfilUsuario(int idUsuario, String nomePerfil) {
+        String where = "id_usuario = " + idUsuario+" AND nome_perfil = "+ nomePerfil;//perfil.getNome();
         bd.delete("perfilUsuario", where , null);
         bd.close();}
 
