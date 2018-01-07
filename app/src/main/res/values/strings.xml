@@ -85,4 +85,10 @@
     <string name="perfilprioridade">perfilprioridade</string>
     <string name="prioridadePerfil">Perfil Prioridade</string>
 
+
+
+    <string name="sim">sim</string>
+    <string name="nao">não</string>
+    <string name="excluirPerfil">Excluir</string>
+
 </resources>

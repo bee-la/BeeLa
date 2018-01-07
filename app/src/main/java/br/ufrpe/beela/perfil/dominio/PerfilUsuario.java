@@ -13,7 +13,9 @@ public class PerfilUsuario {
     private ArrayList<PerfilComida> comida;
     private ArrayList<PerfilMusica> musica;
     private ArrayList<PerfilEsporte> esporte;
+    private boolean selecionado;
 
+    public int getId(){return this.id;}
     public int getId_Usuario(){return this.id_usuario;}
     public String getNome(){return this.nome;}
     public ArrayList<PerfilComida> getComida(){return this.comida;}
@@ -27,6 +29,15 @@ public class PerfilUsuario {
     public void setComida(ArrayList<PerfilComida> comida){this.comida = comida;}
     public void setMusica(ArrayList<PerfilMusica> musica){this.musica = musica;}
     public void setEsporte(ArrayList<PerfilEsporte> esporte){this.esporte = esporte;}
+
+
+    public boolean isSelecionado(){
+        return selecionado;
+    }
+    public void setSelecionado(boolean selecionado){
+        this.selecionado=selecionado;
+
+    }
 
 
 }
