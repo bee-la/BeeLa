@@ -11,6 +11,7 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import br.ufrpe.beela.gui.R;
+import br.ufrpe.beela.lugar.gui.LugaresAct;
 import br.ufrpe.beela.perfil.gui.PerfilAct;
 import br.ufrpe.beela.usuario.dominio.Usuario;
 
@@ -71,6 +72,15 @@ public class HomeAct extends AppCompatActivity {
             }
         });
 
+        imageButton2Lugares = findViewById(R.id.imageButton2);
+        imageButton2Lugares.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v){
+                lugares();
+
+            }
+
+        });
 
 
     }
@@ -88,6 +98,12 @@ public class HomeAct extends AppCompatActivity {
     private void oquetuquer(){
 
         oque.start();
+
+    }
+
+    private void lugares(){
+
+        startActivity(new Intent(HomeAct.this, LugaresAct.class));
 
     }
 

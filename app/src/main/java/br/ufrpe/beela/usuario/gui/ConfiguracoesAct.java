@@ -2,6 +2,7 @@ package br.ufrpe.beela.usuario.gui;
 
 import android.content.Intent;
 import android.graphics.Typeface;
+import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -14,11 +15,11 @@ import br.ufrpe.beela.gui.R;
 import br.ufrpe.beela.usuario.dominio.Pessoa;
 
 public class ConfiguracoesAct extends AppCompatActivity {
-    private Button apagarButton7, alterarNomeButton5, alterarSenhaButton6, sairButton8;
+    private Button apagarButton7, alterarNomeButton5, alterarSenhaButton6, sairButton8, carregarFoto;
     private TextView nomeTextView11;
     private Pessoa pessoa=new LoginAct().getPessoa();
     private ArrayList<TextView> textos= new ArrayList<TextView>();
-
+    private static final int RESULT_LOAD_IMAGE = 9002;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,6 +52,17 @@ public class ConfiguracoesAct extends AppCompatActivity {
         sairButton8 = (Button) findViewById(R.id.button8);
         sairButton8.setOnClickListener(new View.OnClickListener() {@Override public void onClick(View v) {sairButton7();}});
         setarNome();
+
+        carregarFoto = findViewById(R.id.btUpload);
+        carregarFoto.setOnClickListener(new View.OnClickListener() {
+
+            @Override public void onClick(View v){
+                Intent galleryIntent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                startActivityForResult(galleryIntent, RESULT_LOAD_IMAGE);
+
+            }
+
+        });
     }
 
     //----------------------------------Trocar Tela Funções -------------------------------------

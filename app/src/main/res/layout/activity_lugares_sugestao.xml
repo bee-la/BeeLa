@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/preto">
+
+    <Button
+        android:id="@+id/buttonIr"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="84dp"
+        android:layout_marginTop="44dp"
+        android:text="Ir"
+        app:layout_constraintStart_toEndOf="@+id/textView14"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="IR" />
+
+    <TextView
+        android:id="@+id/textView14"
+        android:layout_width="187dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="44dp"
+        android:text="Ru"
+        android:textColor="@color/branco"
+        android:textSize="26sp"
+        android:visibility="visible"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="6dp"
+        tools:text="RU" />
+</android.support.constraint.ConstraintLayout>
