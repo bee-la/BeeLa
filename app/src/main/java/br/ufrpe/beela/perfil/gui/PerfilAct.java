@@ -147,7 +147,7 @@ public class PerfilAct extends AppCompatActivity {
                     excluirDoBanco(nomePerfil);
                     Toast.makeText(getApplicationContext(), "Teste Exclusão", Toast.LENGTH_LONG).show();
                     setListView();
-                    finish();
+                    //finish();
                 }
                 else if(opcao.equals(getString(R.string.nao))){
                     dialogInterface.cancel();   }   }   });
@@ -159,6 +159,6 @@ public class PerfilAct extends AppCompatActivity {
     private void excluirDoBanco(String nomePerfil){
         PerfilDAO bd = new PerfilDAO();
         bd.getEscrever(this);
-        bd.deletePerfilUsuario(usuario.getId(), nomePerfil);
+        bd.deletePerfilUsuario(String.valueOf(usuario.getId()), nomePerfil);
     }
 }

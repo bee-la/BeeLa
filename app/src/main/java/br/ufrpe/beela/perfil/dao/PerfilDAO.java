@@ -60,7 +60,7 @@ public class PerfilDAO {
             bd.close();
     }
 
-    //        TODO    Isso aqui
+
     public void inserirPerfilEsporte(PerfilEsporte esporte){
         ContentValues valores = new ContentValues();
         valores.put("nome",esporte.getNome());
@@ -84,8 +84,8 @@ public class PerfilDAO {
     }
 
 
-    public void deletePerfilUsuario(int idUsuario, String nomePerfil) {
-        String where = "id_usuario = " + idUsuario+" AND nome_perfil = "+ nomePerfil;//perfil.getNome();
+    public void deletePerfilUsuario(String idUsuario, String nomePerfil) {
+        String where = "id_usuario = '" + idUsuario +"' AND nome_perfil = '"+ nomePerfil+"'";//perfil.getNome();
         bd.delete("perfilUsuario", where , null);
         bd.close();}
 
