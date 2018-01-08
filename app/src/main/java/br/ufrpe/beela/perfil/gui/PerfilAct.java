@@ -145,7 +145,7 @@ public class PerfilAct extends AppCompatActivity {
                 if (opcao.equals(getString(R.string.sim))){
 //                    perfilExcluir.add(nomePerfil);
                     excluirDoBanco(nomePerfil);
-                    Toast.makeText(getApplicationContext(), "Teste Exclusão", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), R.string.excluidoSucesso, Toast.LENGTH_LONG).show();
                     setListView();
                     //finish();
                 }

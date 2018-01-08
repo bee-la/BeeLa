@@ -84,11 +84,9 @@
     <string name="nomear">Nomear</string>
     <string name="perfilprioridade">perfilprioridade</string>
     <string name="prioridadePerfil">Perfil Prioridade</string>
-
-
-
     <string name="sim">sim</string>
     <string name="nao">não</string>
     <string name="excluirPerfil">Excluir</string>
+    <string name="excluidoSucesso">Perfil excluído</string>
 
 </resources>
