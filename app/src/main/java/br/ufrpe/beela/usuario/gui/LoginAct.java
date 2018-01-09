@@ -108,7 +108,9 @@ public class LoginAct extends AppCompatActivity {
             usuario = usuarioValido.gerarUsuario(email, senha,this);
             pessoa = usuarioValido.gerarPessoa(usuario.getId(),this);
             pessoa.setPerfil(usuarioValido.gerarPerfilUsuario(usuario.getId()));
-            entrarHome(); }
+            entrarHome();
+            finish();}
+
         else{
             Erro.show(); }
     }

@@ -65,12 +65,13 @@ public class HomeAct extends AppCompatActivity {
         });
 
         btoq = findViewById(R.id.button4);
-        btoq.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                oquetuquer();
-            }
-        });
+        
+//        btoq.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                oquetuquer();
+//            }
+//        });
 
         imageButton2Lugares = findViewById(R.id.imageButton2);
         imageButton2Lugares.setOnClickListener(new View.OnClickListener() {
@@ -95,11 +96,11 @@ public class HomeAct extends AppCompatActivity {
         startActivity(new Intent(HomeAct.this, PerfilAct.class));
     }
 
-    private void oquetuquer(){
-
-        oque.start();
-
-    }
+//    private void oquetuquer(){
+//
+//        oque.start();
+//
+//    }
 
     private void lugares(){
 
