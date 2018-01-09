@@ -15,6 +15,7 @@ public class PerfilUsuario {
     private ArrayList<PerfilEsporte> esporte;
     private boolean selecionado;
 
+
     public int getId(){return this.id;}
     public int getId_Usuario(){return this.id_usuario;}
     public String getNome(){return this.nome;}
@@ -36,7 +37,6 @@ public class PerfilUsuario {
     }
     public void setSelecionado(boolean selecionado){
         this.selecionado=selecionado;
-
     }
 
 

@@ -8,11 +8,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import br.ufrpe.beela.perfil.dominio.PerfilComida;
 import br.ufrpe.beela.perfil.dominio.PerfilMusica;
 import br.ufrpe.beela.perfil.dominio.PerfilUsuario;
 import br.ufrpe.beela.usuario.gui.LoginAct;
@@ -22,6 +22,7 @@ public class PerguntasMusicaAct extends AppCompatActivity {
     private PerfilUsuario usuario = LoginAct.getPessoa().getPerfil();
     private TextView fonteTextView9;
     private Button btconfirmar;
+    private CheckBox rock, sernanejo, forro, samba;
 
     private List<CheckBox> checkBoxesMusicas = new ArrayList<>();
 
@@ -42,16 +43,15 @@ public class PerguntasMusicaAct extends AppCompatActivity {
         fonteTextView9 = (TextView) findViewById(R.id.textView9);
         fonteTextView9.setTypeface(fonte);
 
-        CheckBox rock = findViewById(R.id.checkBoxRock);
-        CheckBox reggae = findViewById(R.id.checkboxReggae);
-        CheckBox rap = findViewById(R.id.checkBoxRap);
-        CheckBox samba = findViewById(R.id.checkBoxSamba);
+        rock = findViewById(R.id.checkBoxRock);
+        sernanejo = findViewById(R.id.checkboxSertanejo);
+        forro = findViewById(R.id.checkBoxForro);
+        samba = findViewById(R.id.checkBoxSamba);
 
         checkBoxesMusicas.add(rock);
-        checkBoxesMusicas.add(reggae);
-        checkBoxesMusicas.add(rap);
+        checkBoxesMusicas.add(sernanejo);
+        checkBoxesMusicas.add(forro);
         checkBoxesMusicas.add(samba);
-
         btconfirmar = (Button) findViewById(R.id.buttonConfirmar);
         btconfirmar.setOnClickListener(new View.OnClickListener() {
 
@@ -60,18 +60,16 @@ public class PerguntasMusicaAct extends AppCompatActivity {
                 adcmusicas();
                 alterarTelaPerfil();
             }
-
         });
     }
 
     public void onCheckboxClicked(View view) {
-
         boolean checked = ((CheckBox) view).isChecked();
     }
 
         public void adcmusicas(){
+//            ArrayList<PerfilMusica>listaMusica = new ArrayList<PerfilMusica>();
 
-            ArrayList<PerfilMusica> listaMusica = new ArrayList<PerfilMusica>();
             for (CheckBox x : checkBoxesMusicas) {
                 if (x.isChecked()) {
                     PerfilMusica musica = new PerfilMusica();
@@ -84,8 +82,9 @@ public class PerguntasMusicaAct extends AppCompatActivity {
             usuario.setMusica(listaMusica);
         }
 
-
-
+    public ArrayList<PerfilMusica> getMusica(){
+            return listaMusica;
+    }
 
 
     public void alterarTelaPerfil(){
@@ -94,8 +93,7 @@ public class PerguntasMusicaAct extends AppCompatActivity {
         finish();
     }
 
-    public void fecharTela(){
-        finish();
-    }
-
+//    public void fecharTela(){
+//        finish();
+//    }
 }

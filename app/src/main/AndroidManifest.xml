@@ -10,20 +10,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme">
-
         <activity
             android:name="br.ufrpe.beela.usuario.gui.splashAct"
             android:theme="@style/Theme.AppCompat.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name="br.ufrpe.beela.usuario.gui.LoginAct"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        </activity>
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
         <activity
             android:name="br.ufrpe.beela.usuario.gui.CriarContaAct"
             android:label="@string/criarConta" />
@@ -64,12 +62,9 @@
         <activity
             android:name="br.ufrpe.beela.perfil.gui.PerguntasEsporteAct"
             android:label="@string/adicionarPerfil" />
-
         <activity
             android:name="br.ufrpe.beela.lugar.gui.LugaresAct"
             android:label="Lugares" />
-
-
     </application>
 
 </manifest>

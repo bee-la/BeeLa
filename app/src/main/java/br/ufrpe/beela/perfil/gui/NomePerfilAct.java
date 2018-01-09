@@ -62,7 +62,7 @@ public class NomePerfilAct extends AppCompatActivity {
             }
         else{
             Toast Erro;
-            Erro =Toast.makeText(getApplicationContext(), "Nome do Perfil igual", Toast.LENGTH_SHORT);
+            Erro =Toast.makeText(getApplicationContext(), "Nome do perfil já existente", Toast.LENGTH_SHORT);
             Erro.show(); }}
 
     public void nomeBanco(){

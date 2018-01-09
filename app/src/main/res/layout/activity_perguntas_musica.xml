@@ -20,80 +20,91 @@
             android:layout_height="66dp"
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="28dp"
+            android:layout_marginTop="44dp"
             android:text="@string/tipoMusica"
             android:textColor="@color/branco"
             android:textSize="25sp"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
 
-        <CheckBox
-            android:id="@+id/checkBoxRock"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:buttonTint="@color/verdeBotao"
-            android:onClick="onCheckboxClicked"
-            android:text="Rock"
-            android:textColor="@color/branco"
-            app:layout_constraintTop_toBottomOf="@+id/checkBoxSamba"
-            tools:layout_editor_absoluteX="0dp" />
-
-        <CheckBox
-            android:id="@+id/checkboxReggae"
-            android:layout_width="0dp"
-            android:layout_height="29dp"
-            android:layout_marginTop="24dp"
-            android:buttonTint="@color/verdeBotao"
-            android:onClick="onCheckboxClicked"
-            android:text="Reggae"
-            android:textColor="@color/branco"
-            app:layout_constraintTop_toBottomOf="@+id/checkBoxRock"
-            tools:layout_editor_absoluteX="4dp" />
-
     <CheckBox
-        android:id="@+id/checkBoxRap"
+        android:id="@+id/checkBoxRock"
         android:layout_width="match_parent"
         android:layout_height="30dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:buttonTint="@color/verdeBotao"
+        android:onClick="onCheckboxClicked"
+        android:text="Rock"
+        android:textColor="@color/branco"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/checkBoxForro" />
+
+    <CheckBox
+        android:id="@+id/checkboxSertanejo"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:buttonTint="@color/verdeBotao"
+        android:onClick="onCheckboxClicked"
+        android:text="Sertanejo"
+        android:textColor="@color/branco"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/checkBoxRock" />
+
+    <CheckBox
+        android:id="@+id/checkBoxForro"
+        android:layout_width="match_parent"
+        android:layout_height="33dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:buttonTint="@color/verdeBotao"
         android:checked="false"
         android:onClick="onCheckboxClicked"
         android:text="Forró"
         android:textColor="@color/branco"
         android:visibility="visible"
-        app:layout_constraintTop_toBottomOf="@+id/textView9"
-        tools:layout_editor_absoluteX="0dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/checkBoxSamba" />
 
     <CheckBox
         android:id="@+id/checkBoxSamba"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_height="30dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="60dp"
         android:buttonTint="@color/verdeBotao"
         android:onClick="onCheckboxClicked"
         android:text="Samba/Pagode"
         android:textColor="@color/branco"
-        app:layout_constraintTop_toBottomOf="@+id/checkBoxRap"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView9" />
+
+
+    <Button
+        android:id="@+id/buttonConfirmar"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="36dp"
+        android:background="@color/verdeBotao"
+        android:text="Confirmar"
+        android:textAllCaps="false"
+        android:textColor="@color/preto"
+        android:textSize="20sp"
+        app:layout_constraintTop_toBottomOf="@+id/checkboxSertanejo"
         tools:layout_editor_absoluteX="0dp" />
-
-
-        <Button
-            android:id="@+id/buttonConfirmar"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginBottom="8dp"
-            android:layout_marginTop="24dp"
-            android:background="@color/verdeBotao"
-            android:text="Confirmar"
-            android:textAllCaps="false"
-            android:textColor="@color/preto"
-            android:textSize="20sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/checkboxReggae"
-            app:layout_constraintVertical_bias="1.0"
-            tools:layout_editor_absoluteX="0dp" />
 </android.support.constraint.ConstraintLayout>
 </ScrollView>

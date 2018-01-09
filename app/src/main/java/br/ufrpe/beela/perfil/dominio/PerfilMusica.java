@@ -10,6 +10,7 @@ public class PerfilMusica {
     private int id_usuario;
     private String nome_perfil;
     private int id_lugar;
+    private boolean selecionado;
 
     public int getId(){return id;}
     public String getNome() {return nome;}
@@ -22,4 +23,11 @@ public class PerfilMusica {
     public void setId_usuario(int id_usuario) {this.id_usuario = id_usuario;}
     public void setNome_perfil(String nome_perfil) {this.nome_perfil = nome_perfil;}
     public void setId_lugar(int id_lugar){this.id_lugar=id_lugar;}
+
+    public boolean isSelecionado(){
+        return selecionado;
+    }
+    public void setSelecionado(boolean selecionado){
+        this.selecionado=selecionado;
+    }
 }

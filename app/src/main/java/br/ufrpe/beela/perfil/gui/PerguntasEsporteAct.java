@@ -56,9 +56,7 @@ public class PerguntasEsporteAct extends AppCompatActivity {
                 adcEsporte();
                 telaPerfilPrioridade();
             }
-
         });
-
     }
 
     public void onCheckboxClicked(View view) {
@@ -66,17 +64,20 @@ public class PerguntasEsporteAct extends AppCompatActivity {
     }
 
     public void adcEsporte(){
-
-//        ArrayList<PerfilEsporte>listaComida = new ArrayList<PerfilEsporte>();
+//        ArrayList<PerfilEsporte>listaEsporte = new ArrayList<PerfilEsporte>();
         for (CheckBox x : checkBoxesEsportes) {
             if (x.isChecked()) {
                 PerfilEsporte esporte = new PerfilEsporte();
-                esporte.setNome(x.getText().toString());
+                esporte.setNome((String) x.getText());
                 esporte.setId_usuario(usuario.getId_Usuario());
                 listaEsporte.add(esporte);
             }
         }
         usuario.setEsporte(listaEsporte);
+    }
+
+    public ArrayList<PerfilEsporte> getEsporte(){
+        return listaEsporte;
     }
 
     public void telaPerfilPrioridade(){

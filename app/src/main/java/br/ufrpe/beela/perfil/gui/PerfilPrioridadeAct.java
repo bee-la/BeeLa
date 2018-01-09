@@ -27,6 +27,10 @@ public class PerfilPrioridadeAct extends AppCompatActivity {
     private PerfilUsuario usuario = LoginAct.getPessoa().getPerfil();
     private Button confirmarButton16;
 
+    private PerguntasComidasAct comida=new PerguntasComidasAct();
+    private PerguntasMusicaAct musica=new PerguntasMusicaAct();
+    private PerguntasEsporteAct esporte=new PerguntasEsporteAct();
+
     private ArrayList<String> prioridade = new ArrayList<String>();
     private ArrayList<PerfilComida> listaComidas=LoginAct.getPessoa().getPerfil().getComida();
     private ArrayList<PerfilMusica> listaMusicas=LoginAct.getPessoa().getPerfil().getMusica();
@@ -49,14 +53,20 @@ public class PerfilPrioridadeAct extends AppCompatActivity {
         for(int i=0; i<listaMusicas.size(); i++) {
             prioridade.add(listaMusicas.get(i).getNome());
         }
+        listaMusicas.clear();
+//        musica.getMusica().clear();
 
         for(int i=0; i<listaComidas.size(); i++) {
             prioridade.add(listaComidas.get(i).getNome());
         }
+        listaComidas.clear();
+//        comida.getComida().clear();
 
         for(int i=0; i<listaEsporte.size(); i++) {
             prioridade.add(listaEsporte.get(i).getNome());
         }
+        listaEsporte.clear();
+//        esporte.getEsporte().clear();
 
         TreeNode root = new TreeNode(this);
         for(int i=0; i<prioridade.size(); i++){
@@ -77,6 +87,7 @@ public class PerfilPrioridadeAct extends AppCompatActivity {
 
     public void telaNomePerfil() {
 //        adcEsporte();
+//        ArrayList<String> prioridade=new ArrayList<String>();
         startActivity(new Intent(PerfilPrioridadeAct.this, NomePerfilAct.class));
         finish();
     }

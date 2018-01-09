@@ -45,18 +45,18 @@ public class PerguntasComidasAct extends AppCompatActivity {
         fonteTextView7 = (TextView) findViewById(R.id.textView7);
         fonteTextView7.setTypeface(fonte);
 
-        CheckBox crepe = findViewById(R.id.checkBoxCreperia);
+        CheckBox massas = findViewById(R.id.checkboxMassas);
+        CheckBox carnes = findViewById(R.id.checkboxCarnes);
+        CheckBox orientais = findViewById(R.id.checkBoxOrientais);
+        CheckBox pizza = findViewById(R.id.checkBoxPizza);
         CheckBox fastFood = findViewById(R.id.checkBoxFastFood);
-        CheckBox lasanha = findViewById(R.id.checkBoxLasanha);
-        CheckBox yakisoba = findViewById(R.id.checkBoxYakisoba);
-        CheckBox pizza = findViewById(R.id.checkboxPizza);
 
 
-        checkBoxesComidas.add(crepe);
-        checkBoxesComidas.add(fastFood);
-        checkBoxesComidas.add(lasanha);
-        checkBoxesComidas.add(yakisoba);
+        checkBoxesComidas.add(massas);
+        checkBoxesComidas.add(carnes);
+        checkBoxesComidas.add(orientais);
         checkBoxesComidas.add(pizza);
+        checkBoxesComidas.add(fastFood);
 
         btconfirmar = (Button) findViewById(R.id.buttonConfirmar2);
         btconfirmar.setOnClickListener(new View.OnClickListener() {
@@ -66,23 +66,20 @@ public class PerguntasComidasAct extends AppCompatActivity {
                 adcComida();
                 telaPerguntasEsporte();
             }
-
         });
     }
 
 
     public void onCheckboxClicked(View view) {
-
         boolean checked = ((CheckBox) view).isChecked();
     }
 
     public void adcComida(){
-
-        ArrayList<PerfilComida>listaComida = new ArrayList<PerfilComida>();
+//        ArrayList<PerfilComida>listaComida = new ArrayList<PerfilComida>();
         for (CheckBox x : checkBoxesComidas) {
             if (x.isChecked()) {
                 PerfilComida comida = new PerfilComida();
-                comida.setNome(x.getText().toString());
+                comida.setNome((String) x.getText());
                 comida.setId_usuario(usuario.getId_Usuario());
                 listaComida.add(comida);
             }
@@ -90,20 +87,19 @@ public class PerguntasComidasAct extends AppCompatActivity {
         usuario.setComida(listaComida);
     }
 
+    public ArrayList<PerfilComida> getComida(){
+        return listaComida;
 
-
+    }
 
     public void telaPerguntasEsporte(){
         adcComida();
         startActivity(new Intent(PerguntasComidasAct.this, PerguntasEsporteAct.class));
         finish();
-//<<<<<<< HEAD
     }
-//
+
 //    public void fecharTela(){
 //        finish();
-//=======
-//>>>>>>> desenvolvedor2
 //    }
 
 }

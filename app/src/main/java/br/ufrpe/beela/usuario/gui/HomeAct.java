@@ -27,8 +27,6 @@ public class HomeAct extends AppCompatActivity {
     private ImageButton imageButtonPerfil, imageButton2Lugares, imageButton3Configuracoes ;
 
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,11 +36,12 @@ public class HomeAct extends AppCompatActivity {
 //      ------------------------------Mudar letra------------------------------------------
         Typeface fonte1 = Typeface.createFromAsset(getAssets(), "fonts/Chewy.ttf");
 
-        qualvai =  MediaPlayer.create(this, R.raw.qquall);
-        oque = MediaPlayer.create(this, R.raw.oqq);
+//        qualvai =  MediaPlayer.create(this, R.raw.qquall);
+//        oque = MediaPlayer.create(this, R.raw.oqq);
+
         eAi = (TextView) findViewById(R.id.textView4);
         eAi.setTypeface(fonte1);
-        qualvai.start();
+//        qualvai.start();
 //        nomeTextView10 = (TextView) findViewById(R.id.textView10);
 //        nomeTextView10.setTypeface(fonte1);
 
