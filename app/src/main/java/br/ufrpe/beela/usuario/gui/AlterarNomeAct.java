@@ -50,7 +50,7 @@ public class AlterarNomeAct extends AppCompatActivity {
     public void validarCliqueAlterarNome(){
         alterarNome=alterarNomeEditText3.getText().toString().trim();
         if(ehValidoAlterarNome()) {
-            usuarioService.alterarSucessoNome(pessoa,alterarNome,this);
+            usuarioService.alterarNome(pessoa,alterarNome,this);
 //            startActivity(new Intent(AlterarNomeAct.this, HomeAct.class));
             alterarNomeEditText3.setText("");
             Toast Sucesso;
@@ -63,10 +63,10 @@ public class AlterarNomeAct extends AppCompatActivity {
     //-----------------------------------Validação do campo Nome-----------------------------------------------
     public boolean ehValidoAlterarNome() {
         alterarNome=alterarNomeEditText3.getText().toString().trim();
-        if (usuarioService.validarCamposVazio(alterarNome)) {
+        if (usuarioService.validarCampoVazio(alterarNome)) {
             alterarNomeEditText3.setError(getString(R.string.campoVazio));
             return false;}
-        if (usuarioService.validarNomeIgual(alterarNome, pessoa)) {
+        if (usuarioService.verificarNomeIgual(alterarNome, pessoa)) {
             alterarNomeEditText3.setError("Nome Iguais");
             return false;}
         else {

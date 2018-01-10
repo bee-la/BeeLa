@@ -54,92 +54,54 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <TextView
+                android:id="@+id/textView17"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:text="Alterar:"
+                android:textAllCaps="false"
+                android:textColor="@color/branco"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textView15"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:text="       - Nome"
+                android:textAllCaps="false"
+                android:textColor="@color/branco"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/textView16"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:text="       - Senha"
+                android:textAllCaps="false"
+                android:textColor="@color/branco"
+                android:textSize="20sp" />
+
+            <TextView
                 android:id="@+id/textView12"
                 android:layout_width="match_parent"
-                android:layout_height="34dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
-                android:text="Alterar:"
-                android:textAlignment="viewStart"
-                android:textColor="@color/branco"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toTopOf="@+id/button5"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageView3"
-                app:layout_constraintVertical_bias="1.0" />
-
-            <Button
-                android:id="@+id/button5"
-                android:layout_width="match_parent"
-                android:layout_height="45dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginStart="16dp"
-                android:backgroundTint="@color/preto"
-                android:text=" - Nome"
-                android:textAlignment="viewStart"
+                android:layout_height="40dp"
+                android:text="@string/Sair"
                 android:textAllCaps="false"
                 android:textColor="@color/branco"
-                android:textSize="18sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.166"
-                app:layout_constraintStart_toStartOf="parent"
-                tools:layout_editor_absoluteY="291dp" />
+                android:textSize="20sp"
+                android:textStyle="bold" />
 
-            <Button
-                android:id="@+id/button6"
+            <TextView
+                android:id="@+id/textView18"
                 android:layout_width="match_parent"
-                android:layout_height="34dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginStart="16dp"
-                android:background="@color/preto"
-                android:text="    - Senha"
-                android:textAlignment="textStart"
+                android:layout_height="40dp"
+                android:text="@string/ApagarConta"
                 android:textAllCaps="false"
                 android:textColor="@color/branco"
-                android:textSize="18sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.166"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/button5" />
+                android:textSize="20sp"
+                android:textStyle="bold" />
 
-            <Button
-                android:id="@+id/button7"
-                android:layout_width="match_parent"
-                android:layout_height="38dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
-                android:background="@color/preto"
-                android:text="Apagar Conta"
-                android:textAlignment="viewStart"
-                android:textAllCaps="false"
-                android:textColor="@color/branco"
-                android:textSize="18sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.166"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/button6" />
 
-            <Button
-                android:id="@+id/button8"
-                android:layout_width="match_parent"
-                android:layout_height="35dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginStart="16dp"
-                android:background="@color/preto"
-                android:text="Sair"
-                android:textAlignment="viewStart"
-                android:textAllCaps="false"
-                android:textColor="@color/branco"
-                android:textSize="18sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.166"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/button7" />
         </LinearLayout>
 
 

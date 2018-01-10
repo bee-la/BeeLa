@@ -1,4 +1,4 @@
-package br.ufrpe.beela.usuario.dao;
+package br.ufrpe.beela.usuario.negocio;
 
 import java.math.BigInteger;
 import java.security.MessageDigest;
@@ -18,7 +18,9 @@ public class Criptografia {
             senhaCriptografada=hash.toString(16);
         }
 
-        catch (Exception e){}
+        catch (Exception e){
+
+        }
         return senhaCriptografada;
     }
 }

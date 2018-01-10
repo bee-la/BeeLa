@@ -15,75 +15,91 @@ import br.ufrpe.beela.gui.R;
 import br.ufrpe.beela.usuario.dominio.Pessoa;
 
 public class ConfiguracoesAct extends AppCompatActivity {
-    private Button apagarButton7, alterarNomeButton5, alterarSenhaButton6, sairButton8, carregarFoto;
+    private TextView alterar, apagarConta, alterarNome, alterarSenha, sair, carregarFoto;
     private TextView nomeTextView11;
     private Pessoa pessoa=new LoginAct().getPessoa();
-    private ArrayList<TextView> textos= new ArrayList<TextView>();
+    private ArrayList<TextView> textoCampos= new ArrayList<TextView>();
     private static final int RESULT_LOAD_IMAGE = 9002;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_configuracoes);
 
-//      ----------------------------------Alteração da fonte-------------------------------------------
-        textos.add((TextView) findViewById(R.id.button5));
-        textos.add((TextView) findViewById(R.id.button6));
-        textos.add((TextView) findViewById(R.id.button7));
-        textos.add((TextView) findViewById(R.id.button8));
+        alterar = (TextView) findViewById(R.id.textView17);
+        alterarNome =(TextView) findViewById(R.id.textView15);
+        alterarSenha = (TextView) findViewById(R.id.textView16);
+        sair = (TextView) findViewById(R.id.textView12);
+        apagarConta = (TextView) findViewById(R.id.textView18);
 
+        alterarFonte();
+        carregarFotoGaleria();
+        irAlterarNome();
+        irAlterarSenha();
+        irApagarConta();
+        sair();
+    }
+
+    private void alterarFonte(){
+        adcListaTexto();
         Typeface fonte = Typeface.createFromAsset(getAssets(), "fonts/Chewy.ttf");
-        for (TextView txtView: textos) {
+        for (TextView txtView: textoCampos) {
             txtView.setTypeface(fonte);
         }
+    }
 
-//        nomeTextView11=(TextView)findViewById(R.id.textView11);
-//        nomeTextView11.setTypeface(fonte);
-        //---------------------------------Clique Trocar de tela------------------------------------
-        alterarNomeButton5 =(Button) findViewById(R.id.button5);
-        alterarNomeButton5.setOnClickListener(new View.OnClickListener() {@Override public void onClick (View v){alterarNomeButton5();}});
+    private void adcListaTexto(){
+        textoCampos.add(alterar);
+        textoCampos.add(alterarNome);
+        textoCampos.add(alterarSenha);
+        textoCampos.add(apagarConta);
+        textoCampos.add(sair);
+    }
 
-
-        alterarSenhaButton6 = (Button) findViewById(R.id.button6);
-        alterarSenhaButton6.setOnClickListener(new View.OnClickListener() {@Override public void onClick(View v) {alterarSenhaButton6();}});
-
-        apagarButton7 = (Button) findViewById(R.id.button7);
-        apagarButton7.setOnClickListener(new View.OnClickListener() {@Override public void onClick(View v) {apagarButton7();}});
-
-        sairButton8 = (Button) findViewById(R.id.button8);
-        sairButton8.setOnClickListener(new View.OnClickListener() {@Override public void onClick(View v) {sairButton7();}});
-//        setarNome();
-
+    private void carregarFotoGaleria(){
         carregarFoto = findViewById(R.id.btUpload);
         carregarFoto.setOnClickListener(new View.OnClickListener() {
-
             @Override public void onClick(View v){
                 Intent galleryIntent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
                 startActivityForResult(galleryIntent, RESULT_LOAD_IMAGE);
-
             }
-
         });
     }
 
-    //----------------------------------Trocar Tela Funções -------------------------------------
-    private void alterarNomeButton5() {
-        startActivity(new Intent(ConfiguracoesAct.this, AlterarNomeAct.class));
-//        finish();
-}
-
-    private void alterarSenhaButton6 () {
-        startActivity(new Intent(ConfiguracoesAct.this, AlterarSenhaAct.class));
+    private void irAlterarNome(){
+        alterarNome.setOnClickListener(new View.OnClickListener() {
+            @Override public void onClick (View v){
+                startActivity(new Intent(ConfiguracoesAct.this, AlterarNomeAct.class));
+            }
+        });
 //        finish();
     }
 
-    private void apagarButton7() {
-        startActivity(new Intent(ConfiguracoesAct.this, ApagarContaAct.class));
-        finish();
+    private void irAlterarSenha() {
+        alterarSenha.setOnClickListener(new View.OnClickListener() {
+            @Override public void onClick(View v) {
+                startActivity(new Intent(ConfiguracoesAct.this, AlterarSenhaAct.class));
+            }});
+
     }
 
-    private void sairButton7() {
-        startActivity(new Intent(ConfiguracoesAct.this, LoginAct.class));
-        finish();
+    private void irApagarConta() {
+        apagarConta.setOnClickListener(new View.OnClickListener() {
+            @Override public void onClick(View v) {
+                startActivity(new Intent(ConfiguracoesAct.this, ApagarContaAct.class));
+                finish();
+            }
+        });
+
+    }
+
+    private void sair() {
+        sair.setOnClickListener(new View.OnClickListener() {
+            @Override public void onClick(View v) {
+                startActivity(new Intent(ConfiguracoesAct.this, LoginAct.class));
+                finish();
+            }
+        });
     }
 
 //    private void setarNome(){

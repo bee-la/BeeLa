@@ -24,6 +24,9 @@
     <string name="AlterarSenha">Alterar Senha</string>
     <string name="ApagarConta">Apagar Conta</string>
     <string name="Sair">Sair</string>
+    <string name="alterar">Alterar:</string>
+
+
     <!--Usuario GUI login e Criar conta-->
     <string name="Senha">Senha</string>
     <string name="Email">E-mail</string>
@@ -39,7 +42,9 @@
     <string name="senhaCriarC">Senha</string>
     <string name="repetirSenhaCriarC">Repetir Senha</string>
     <string name="criar">Criar</string>
-    <string name="emailCelularExiste">Email ou celular já existentes</string>
+    <!--<string name="emailCelularExiste">Email ou celular já existentes</string>-->
+    <string name="emailExiste">O Email já existe</string>
+    <string name="celularExiste">O Celular já existe</string>
 
     <!--Home-->
     <string name="E_ai">E ai, \nqual vai ser?</string>

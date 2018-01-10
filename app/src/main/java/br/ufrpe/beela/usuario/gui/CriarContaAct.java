@@ -1,36 +1,25 @@
 package br.ufrpe.beela.usuario.gui;
 
-import android.content.Intent;
 import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import java.util.ArrayList;
-
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-
 import br.ufrpe.beela.gui.R;
-import br.ufrpe.beela.usuario.dao.Criptografia;
-import br.ufrpe.beela.usuario.dao.UsuarioDAO;
-import br.ufrpe.beela.usuario.dominio.Usuario;
 import br.ufrpe.beela.usuario.negocio.UsuarioService;
+
 
 public class CriarContaAct extends AppCompatActivity {
 
-    private Button criarButton3;
+    private Button botaoCriar;
     private Toast contaCriada;
-
-    private String nomeValidar, celularValidar, emailValidar, senhaValidar, repetirSenhaValidar;
-    private EditText editText4Nome, editText5Celular, editText6Email, editText10Senha, editText11RepetirSenha;
-    private ArrayList<TextView> textos= new ArrayList<TextView>();
-
+    private String nome, celular, email, senha, repetirSenha;
+    private EditText campoNome, campoCelular, campoEmail, campoSenha, campoRepetirSenha;
+    private ArrayList<TextView> textoCampos= new ArrayList<TextView>();
     private UsuarioService usuarioValido = new UsuarioService();
 
     @Override
@@ -38,96 +27,106 @@ public class CriarContaAct extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_criar_conta);
 
-        editText4Nome=(EditText)findViewById(R.id.editText4);
-        editText5Celular=(EditText)findViewById(R.id.editText5);
-        editText6Email=(EditText)findViewById(R.id.editText6);
-        editText10Senha=(EditText)findViewById(R.id.editText10);
-        editText11RepetirSenha=(EditText)findViewById(R.id.editText11);
+        campoNome = (EditText) findViewById(R.id.editText4);
+        campoCelular = (EditText) findViewById(R.id.editText5);
+        campoEmail = (EditText) findViewById(R.id.editText6);
+        campoSenha = (EditText) findViewById(R.id.editText10);
+        campoRepetirSenha = (EditText) findViewById(R.id.editText11);
 
-//-----------------------------------Alteração da fonte-------------------------------------------
-        textos.add((TextView) findViewById(R.id.editText4));
-        textos.add((TextView) findViewById(R.id.editText5));
-        textos.add((TextView) findViewById(R.id.editText6));
-        textos.add((TextView) findViewById(R.id.editText10));
-        textos.add((TextView) findViewById(R.id.editText11));
+        alterarFonte();
+        clicarBotaoCriar();
 
+    }
 
-        Typeface fonte1 = Typeface.createFromAsset(getAssets(), "fonts/Chewy.ttf");
-        for (TextView txtView: textos) {
-            txtView.setTypeface(fonte1);
+    private void alterarFonte(){
+        adcListaTexto();
+        Typeface fonte = Typeface.createFromAsset(getAssets(), "fonts/Chewy.ttf");
+        for (TextView txtView: textoCampos) {
+            txtView.setTypeface(fonte);
         }
+    }
 
-//----------------------------Validacao do clique do botao Criar------------------------------------------
-        criarButton3 = (Button) findViewById(R.id.button3);
-        criarButton3.setOnClickListener(new View.OnClickListener() {
+    private void adcListaTexto(){
+        textoCampos.add((TextView) findViewById(R.id.editText4));
+        textoCampos.add((TextView) findViewById(R.id.editText5));
+        textoCampos.add((TextView) findViewById(R.id.editText6));
+        textoCampos.add((TextView) findViewById(R.id.editText10));
+        textoCampos.add((TextView) findViewById(R.id.editText11));
+    }
+
+    private void clicarBotaoCriar(){
+        botaoCriar = (Button) findViewById(R.id.button3);
+        botaoCriar.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {validarCliqueCriar();}
+            public void onClick(View v) {
+                verificarConta();
+            }
         });
     }
 
     //----------------------------------Validacao dos campos----------------------------------------
-    public void validarCliqueCriar() {
-        nomeValidar = editText4Nome.getText().toString().trim();
-        celularValidar = editText5Celular.getText().toString().trim();
-        emailValidar = editText6Email.getText().toString().trim();
-        senhaValidar = editText10Senha.getText().toString().trim();
-        repetirSenhaValidar = editText11RepetirSenha.getText().toString().trim();
-        if(ehValidoCriarConta()) {
-            sucessoCriarConta();
-            }
+    private void verificarConta() {
+        nome = campoNome.getText().toString().trim();
+        celular = campoCelular.getText().toString().trim();
+        email = campoEmail.getText().toString().trim();
+        senha = campoSenha.getText().toString().trim();
+        repetirSenha = campoRepetirSenha.getText().toString().trim();
+        if(verificarCampos()) {
+            verificarEmailCelularBD();
         }
+    }
 
-    public void sucessoCriarConta(){
-        //TODO fazer busca
-        if (usuarioValido.verificarEmail(emailValidar,this)){
+    private void verificarEmailCelularBD(){
+        if (usuarioValido.verificarEmailExiste(email,this)){
             Toast erro;
-            erro = Toast.makeText(getApplicationContext(),"Email já Existe", Toast.LENGTH_SHORT);
+            erro = Toast.makeText(getApplicationContext(), R.string.emailExiste, Toast.LENGTH_SHORT);
             erro.show();}
-        else if (usuarioValido.verificarCelular(celularValidar,this)){
+        else if (usuarioValido.verificarCelularExiste(celular,this)){
             Toast erro2;
-            erro2 = Toast.makeText(getApplicationContext(),"Celular já Existe", Toast.LENGTH_SHORT);
+            erro2 = Toast.makeText(getApplicationContext(), R.string.celularExiste, Toast.LENGTH_SHORT);
             erro2.show();
         }
         else {
-            usuarioValido.salvarBanco(usuarioValido.criarObjetoUsuario(emailValidar,senhaValidar),usuarioValido.criarObjetoPessoa(nomeValidar,celularValidar),this);
-            limparCampos();
+            usuarioValido.salvarUsuarioBancoDados(usuarioValido.criarObjetoUsuario(email,senha),usuarioValido.criarObjetoPessoa(nome,celular),this);
             contaCriada = Toast.makeText(getApplicationContext(), R.string.contaCriada, Toast.LENGTH_SHORT);
             contaCriada.show();
             finish();
         }
     }
-    private void limparCampos() {
 
-        editText6Email.setText("");
-        editText4Nome.setText("");
-        editText10Senha.setText("");
-        editText11RepetirSenha.setText("");
-        editText5Celular.setText("");
-    }
-
-    public boolean ehValidoCriarConta(){
-        if (usuarioValido.validarCamposVazio(nomeValidar)) {
-            editText4Nome.setError(getString(R.string.campoVazio));
+    private boolean verificarCampos(){
+        if (usuarioValido.validarCampoVazio(nome)) {
+            campoNome.setError(getString(R.string.campoVazio));
+            return false;
         }
-        if (usuarioValido.validarCamposCelular(celularValidar)) {
-            editText5Celular.setError(getString(R.string.celularInvalido));
+        else if (usuarioValido.validarCampoCelular(celular)) {
+            campoCelular.setError(getString(R.string.celularInvalido));
+            return false;
         }
-        if (usuarioValido.validarCamposEmail(emailValidar)) {
-            editText6Email.setError(getString(R.string.emailInvalido));
+        else if (usuarioValido.validarCampoEmail(email)) {
+            campoEmail.setError(getString(R.string.emailInvalido));
+            return false;
         }
-        if (usuarioValido.validarCamposVazio(senhaValidar)) {
-            editText10Senha.setError(getString(R.string.campoVazio));
+        else if (usuarioValido.validarCampoVazio(email)) {
+            campoEmail.setError(getString(R.string.emailInvalido));
+            return false;
         }
-        if (usuarioValido.validarCamposVazio(repetirSenhaValidar)) {
-            editText11RepetirSenha.setError(getString(R.string.campoVazio));
+        else if (usuarioValido.validarCampoVazio(senha)) {
+            campoSenha.setError(getString(R.string.campoVazio));
+            return false;
         }
-        if (!repetirSenhaValidar.equals(senhaValidar)) {
-            editText11RepetirSenha.setError(getString(R.string.senhasDiferentes));
+        else if (usuarioValido.validarCampoVazio(repetirSenha)) {
+            campoRepetirSenha.setError(getString(R.string.campoVazio));
+            return false;
+        }
+        else if (!repetirSenha.equals(senha)) {
+            campoRepetirSenha.setError(getString(R.string.senhasDiferentes));
+            return false;
         }
         else{
             return true;
-            }
-        return false;
+        }
+//        return false;
     }
 }
 

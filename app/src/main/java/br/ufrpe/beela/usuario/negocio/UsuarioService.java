@@ -4,7 +4,6 @@ import android.content.Context;
 import android.util.Patterns;
 
 import br.ufrpe.beela.perfil.dominio.PerfilUsuario;
-import br.ufrpe.beela.usuario.dao.Criptografia;
 import br.ufrpe.beela.usuario.dao.PessoaDAO;
 import br.ufrpe.beela.usuario.dao.UsuarioDAO;
 import br.ufrpe.beela.usuario.dominio.Pessoa;
@@ -16,7 +15,7 @@ import br.ufrpe.beela.usuario.dominio.Usuario;
 
 public class UsuarioService {
 
-    public boolean validarNomeIgual(String nome, Pessoa pessoa) {
+    public boolean verificarNomeIgual(String nome, Pessoa pessoa) {
         if (nome.equals(pessoa.getNome()))
             return true;
         else {
@@ -24,7 +23,7 @@ public class UsuarioService {
         }
     }
 
-    public boolean validarCamposVazio(String campo) {
+    public boolean validarCampoVazio(String campo) {
         if (campo.isEmpty()) {
             return true;
         } else {
@@ -32,7 +31,7 @@ public class UsuarioService {
         }
     }
 
-    public boolean validarCamposCelular(String validar) {
+    public boolean validarCampoCelular(String validar) {
         if (validar.length() < 9 || !Patterns.PHONE.matcher(validar).matches()) {
             return true;
         } else {
@@ -40,8 +39,8 @@ public class UsuarioService {
         }
     }
 
-    public boolean validarCamposEmail(String validar) {
-        if (validarCamposVazio(validar) || !Patterns.EMAIL_ADDRESS.matcher(validar).matches()) {
+    public boolean validarCampoEmail(String validar) {
+        if (validarCampoVazio(validar) || !Patterns.EMAIL_ADDRESS.matcher(validar).matches()) {
             return true;
         } else {
             return false;
@@ -49,9 +48,7 @@ public class UsuarioService {
     }
 
     public Pessoa criarObjetoPessoa(String nome, String celular) {
-
         Pessoa p = new Pessoa();
-
         p.setCelular(celular);
         p.setNome(nome);
         return p;
@@ -65,25 +62,25 @@ public class UsuarioService {
         return u;
     }
 
-    public boolean verificarEmail(String email, Context context) {
+    public boolean verificarEmailExiste(String email, Context context) {
         UsuarioDAO bd = new UsuarioDAO();
         bd.getLer(context);
         return bd.sqlVerificarEmail(email);
     }
-    public boolean verificarCelular(String celular, Context context) {
+    public boolean verificarCelularExiste(String celular, Context context) {
         PessoaDAO bd = new PessoaDAO();
         bd.getLer(context);
         return bd.sqlVerificarCelular(celular);
     }
 
-    public void alterarSucessoNome(Pessoa pessoa, String alterarNome, Context context) {
+    public void alterarNome(Pessoa pessoa, String alterarNome, Context context) {
         PessoaDAO bd = new PessoaDAO();
         bd.getEscrever(context);
         bd.updateNome(pessoa, alterarNome);
         pessoa.setNome(alterarNome);
     }
 
-    public void salvarBanco(Usuario usuario,Pessoa pessoa, Context context) {
+    public void salvarUsuarioBancoDados(Usuario usuario,Pessoa pessoa, Context context) {
         UsuarioDAO bd = new UsuarioDAO();
         bd.getEscrever(context);
         bd.inserir(usuario);
@@ -93,7 +90,7 @@ public class UsuarioService {
         bdp.inserir(pessoa);
     }
 
-    public boolean emailSenhaLogin(String email, String senha,Context context) {
+    public boolean verificarEmailSenhaLogar(String email, String senha,Context context) {
         UsuarioDAO bd = new UsuarioDAO();
         bd.getLer(context);
         if (bd.sqlVerificarLogin(email, senha)) {
