@@ -47,10 +47,10 @@
             android:name="br.ufrpe.beela.perfil.gui.PerfilAct"
             android:label="@string/perfil" />
         <activity
-            android:name="br.ufrpe.beela.perfil.gui.PerguntasComidasAct"
+            android:name="br.ufrpe.beela.perfil.gui.PerguntaComidaAct"
             android:label="@string/adicionarPerfil" />
         <activity
-            android:name="br.ufrpe.beela.perfil.gui.PerguntasMusicaAct"
+            android:name="br.ufrpe.beela.perfil.gui.PerguntaMusicaAct"
             android:label="@string/adicionarPerfil" />
         <activity
             android:name="br.ufrpe.beela.perfil.gui.NomePerfilAct"
@@ -60,7 +60,7 @@
             android:label="@string/prioridadePerfil" />
         <activity android:name="br.ufrpe.beela.perfil.gui.PerguntasPerfilAct" />
         <activity
-            android:name="br.ufrpe.beela.perfil.gui.PerguntasEsporteAct"
+            android:name="br.ufrpe.beela.perfil.gui.PerguntaEsporteAct"
             android:label="@string/adicionarPerfil" />
         <activity
             android:name="br.ufrpe.beela.lugar.gui.LugaresAct"

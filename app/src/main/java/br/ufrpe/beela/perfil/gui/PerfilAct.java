@@ -59,7 +59,7 @@ public class PerfilAct extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (perfilUsuarioArrayList.size()<=2) {
-                    irPerguntasMusica();
+                    irTelaPerguntasMusica();
                 }
                 else{
                     erro = Toast.makeText(getApplicationContext(), R.string.maximoPerfis, Toast.LENGTH_SHORT);
@@ -69,8 +69,8 @@ public class PerfilAct extends AppCompatActivity {
         });
     }
 
-    private void irPerguntasMusica() {
-        startActivity(new Intent(PerfilAct.this, PerguntasMusicaAct.class));
+    private void irTelaPerguntasMusica() {
+        startActivity(new Intent(PerfilAct.this, PerguntaMusicaAct.class));
         finish();
     }
 

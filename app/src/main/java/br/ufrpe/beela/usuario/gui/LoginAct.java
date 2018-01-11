@@ -27,14 +27,13 @@ public class LoginAct extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        nomeApp = (TextView) findViewById(R.id.textView);
         campoEmail=(EditText)findViewById(R.id.editText);
         campoSenha=(EditText)findViewById(R.id.editText2);
 
         alterarFonte();
         clicarBotaoEntrar();
-        telaCriarConta();
-        telaEsqueceuSenha();
+        irTelaCriarConta();
+        irTelaEsqueceuSenha();
 
 //        botaoEntrar.setOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -45,6 +44,7 @@ public class LoginAct extends AppCompatActivity {
     }
 
     private void alterarFonte(){
+        nomeApp = (TextView) findViewById(R.id.textView);
         Typeface fonte = Typeface.createFromAsset(getAssets(), "fonts/Chewy.ttf");
         nomeApp.setTypeface(fonte);
     }
@@ -59,7 +59,7 @@ public class LoginAct extends AppCompatActivity {
         });
     }
 
-    private void telaCriarConta(){
+    private void irTelaCriarConta(){
         botaoCriarConta = (Button) findViewById(R.id.button2);
         botaoCriarConta.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -69,7 +69,7 @@ public class LoginAct extends AppCompatActivity {
         });
     }
 
-    private void telaEsqueceuSenha(){
+    private void irTelaEsqueceuSenha(){
         esqueceuSenha=(TextView)findViewById(R.id.textView3);
         esqueceuSenha.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -78,11 +78,6 @@ public class LoginAct extends AppCompatActivity {
             }
         });
     }
-
-//    private void telaCriarConta() {
-//        startActivity(new Intent(LoginAct.this, CriarContaAct.class));
-//    }
-
 
     private void verificarLogin() {
         email=campoEmail.getText().toString().trim();
@@ -103,14 +98,14 @@ public class LoginAct extends AppCompatActivity {
             usuario = usuarioValido.gerarUsuario(email, senha,this);
             pessoa = usuarioValido.gerarPessoa(usuario.getId(),this);
             pessoa.setPerfil(usuarioValido.gerarPerfilUsuario(usuario.getId()));
-            entrarHome();
+            irTelaHome();
             finish();}
 
         else{
             Erro.show(); }
     }
 
-    private void entrarHome() {
+    private void irTelaHome() {
         startActivity(new Intent(LoginAct.this, HomeAct.class));}
 
     private boolean verificarCampos(){

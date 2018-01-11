@@ -8,25 +8,19 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.TextView;
-
 import java.util.ArrayList;
-import java.util.List;
-
 import br.ufrpe.beela.gui.R;
 import br.ufrpe.beela.perfil.dominio.PerfilEsporte;
 import br.ufrpe.beela.perfil.dominio.PerfilUsuario;
 import br.ufrpe.beela.usuario.gui.LoginAct;
 
-public class PerguntasEsporteAct extends AppCompatActivity {
+public class PerguntaEsporteAct extends AppCompatActivity {
 
     private PerfilUsuario usuario = LoginAct.getPessoa().getPerfil();
-    private List<CheckBox> checkBoxesEsportes = new ArrayList<>();
+    private ArrayList<CheckBox> checkBoxesEsportes = new ArrayList<>();
     private static ArrayList<PerfilEsporte> listaEsporte = new ArrayList<PerfilEsporte>();
-    private TextView legendaPrincipal;
+    private TextView pergunta;
     private Button botaoConfirmar;
-
-    public static ArrayList getListaEsporte() {  return listaEsporte; }
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,23 +29,23 @@ public class PerguntasEsporteAct extends AppCompatActivity {
 
         alterarFonte();
         adcCheckBoxEsp();
-        setBotaoConfirmar();
+        clicarBotaoConfirmar();
 
     }
+
     private void alterarFonte() {
-
         Typeface fonte = Typeface.createFromAsset(getAssets(), "fonts/Chewy.ttf");
-        legendaPrincipal = (TextView) findViewById(R.id.textView13);
-        legendaPrincipal.setTypeface(fonte);
+        pergunta = (TextView) findViewById(R.id.textView13);
+        pergunta.setTypeface(fonte);
     }
-    private void adcCheckBoxEsp() {
 
+    private void adcCheckBoxEsp() {
         checkBoxesEsportes.add((CheckBox) findViewById(R.id.checkBox2));
         checkBoxesEsportes.add((CheckBox) findViewById(R.id.checkBox3));
         checkBoxesEsportes.add((CheckBox) findViewById(R.id.checkBox4));
         checkBoxesEsportes.add((CheckBox) findViewById(R.id.checkBox5));
     }
-    private void setBotaoConfirmar(){
+    private void clicarBotaoConfirmar(){
 
         botaoConfirmar = (Button) findViewById(R.id.button13);
         botaoConfirmar.setOnClickListener(new View.OnClickListener() {
@@ -59,7 +53,7 @@ public class PerguntasEsporteAct extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 adcEsporte();
-                telaPerfilPrioridade();
+                irTelaPerfilPrioridade();
             }
         });
     }
@@ -84,8 +78,8 @@ public class PerguntasEsporteAct extends AppCompatActivity {
         return listaEsporte;
     }
 
-    public void telaPerfilPrioridade(){
-        startActivity(new Intent(PerguntasEsporteAct.this, PerfilPrioridadeAct.class));
+    public void irTelaPerfilPrioridade(){
+        startActivity(new Intent(PerguntaEsporteAct.this, PerfilPrioridadeAct.class));
         finish();
     }
 

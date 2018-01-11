@@ -5,13 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/preto"
-    tools:context="br.ufrpe.beela.perfil.gui.PerguntasEsporteAct">
+    tools:context="br.ufrpe.beela.perfil.gui.PerguntaEsporteAct">
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/preto"
-        tools:context="br.ufrpe.beela.perfil.gui.PerguntasEsporteAct">
+        tools:context="br.ufrpe.beela.perfil.gui.PerguntaEsporteAct">
 
         <TextView
             android:id="@+id/textView13"

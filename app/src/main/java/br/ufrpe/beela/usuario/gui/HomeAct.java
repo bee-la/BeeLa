@@ -19,13 +19,14 @@ public class HomeAct extends AppCompatActivity {
     private Usuario usuario = new Usuario();
     private TextView eAi;
     private TextView oQueTuQuer;
+    private ImageButton botaoPerfil, botaoLugares, botaoConfiguracoes;
+
 //    MediaPlayer qualvai;
 //    MediaPlayer oque;
 
 //    private Button btoq;
 
 //    private Button oQueTuQuerButton4;
-    private ImageButton botaoPerfil, botaoLugares, botaoConfiguracoes ;
 
 
     @Override
@@ -39,6 +40,15 @@ public class HomeAct extends AppCompatActivity {
         irLugares();
 
 //        btoq = findViewById(R.id.button4);
+    }
+
+    private void alterarFonte(){
+        Typeface fonte = Typeface.createFromAsset(getAssets(), "fonts/Chewy.ttf");
+        eAi = (TextView) findViewById(R.id.textView4);
+        eAi.setTypeface(fonte);
+
+        oQueTuQuer= (TextView) findViewById(R.id.button4);
+        oQueTuQuer.setTypeface(fonte);
     }
 
     private void irPerfil() {
@@ -70,15 +80,6 @@ public class HomeAct extends AppCompatActivity {
 //                configuracoesImageButton3();
             }
         });
-    }
-
-    private void alterarFonte(){
-        Typeface fonte = Typeface.createFromAsset(getAssets(), "fonts/Chewy.ttf");
-        eAi = (TextView) findViewById(R.id.textView4);
-        eAi.setTypeface(fonte);
-
-        oQueTuQuer= (TextView) findViewById(R.id.button4);
-        oQueTuQuer.setTypeface(fonte);
     }
 
 }

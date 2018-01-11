@@ -38,6 +38,13 @@ public class AlterarSenhaAct extends AppCompatActivity {
 
     }
 
+    private void alterarFonte(){
+        Typeface fonte = Typeface.createFromAsset(getAssets(), "fonts/Chewy.ttf");
+        campoSenha.setTypeface(fonte);
+        campoNovaSenha.setTypeface(fonte);
+        campoRepetirSenha.setTypeface(fonte);
+    }
+
     private void clicarBotaoAlterar(){
         botaoAlterarSenha = (Button) findViewById(R.id.button10);
         botaoAlterarSenha.setOnClickListener(new View.OnClickListener() {
@@ -92,13 +99,6 @@ public class AlterarSenhaAct extends AppCompatActivity {
         else{
         return true;
         }
-    }
-
-    private void alterarFonte(){
-        Typeface fonte = Typeface.createFromAsset(getAssets(), "fonts/Chewy.ttf");
-        campoSenha.setTypeface(fonte);
-        campoNovaSenha.setTypeface(fonte);
-        campoRepetirSenha.setTypeface(fonte);
     }
 
     private void limparCampos(){

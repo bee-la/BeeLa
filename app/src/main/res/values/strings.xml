@@ -21,6 +21,7 @@
     <string name="avisoApagar1">Atenção, \napagar sua conta irá:</string>
     <string name="avisoApagar2">- Excluir sua conta no Bee La; \n- Apagar seu histórico de lugares; \n- Prosseguir com a exclusão de sua conta? Será impossível reverter esta ação.</string>
     <string name="apagarMinhaConta">Apagar Minha Conta</string>
+    <string name="contaDeletada">Conta Deletada</string>
 
     <!--Configurações-->
     <string name="Configuracoes">Configurações</string>
@@ -100,6 +101,7 @@
     <string name="maximoPerfis">O máximo são 3 perfis</string>
     <string name="verificarExcluirPerfil">Excluir perfil </string>
     <string name="sinalInterrogacao">\?</string>
+    <string name="perfilExiste">Nome do perfil já existente</string>
 
 
 </resources>

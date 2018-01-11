@@ -1,6 +1,7 @@
 package br.ufrpe.beela.perfil.gui;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -21,92 +22,64 @@ import br.ufrpe.beela.gui.R;
 public class NomePerfilAct extends AppCompatActivity {
     private Usuario usuario = LoginAct.getUsuario();
     private PerfilUsuario perfilUsuario = LoginAct.getPessoa().getPerfil();
-    private EditText nomePerfilEditText12;
-    private Button nomearButton22;
-
-    private PerguntasMusicaAct fecharTelaMusica=new PerguntasMusicaAct();
-    private PerguntasComidasAct fecharTelaComida=new PerguntasComidasAct();
-    private PerguntasEsporteAct fecharTelaEsporte=new PerguntasEsporteAct();
-    private PerfilAct fecharTelaPerfil=new PerfilAct();
-
-    private String nomePerfil="";
+    private EditText campoNomePerfil;
+    private Button botaoNomear;
+    private Toast erro;
+    private String nomePerfil;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView( R.layout.activity_nome_perfil);
 
-//        nomeTextViewPerfil1=(TextView)findViewById(R.id.textViewPerfil1);
+        campoNomePerfil=(EditText)findViewById(R.id.editText12);
+        alterarFonte();
+        clicarBotaoNomear();
 
-        nomePerfilEditText12=(EditText)findViewById(R.id.editText12);
-        nomearButton22=(Button)findViewById(R.id.button22);
+    }
 
-        nomePerfil=nomePerfilEditText12.getText().toString().trim();
-        nomearButton22.setOnClickListener(new View.OnClickListener() {
+    private void alterarFonte(){
+        Typeface fonte = Typeface.createFromAsset(getAssets(), "fonts/Chewy.ttf");
+        campoNomePerfil.setTypeface(fonte);
+    }
+
+    private void clicarBotaoNomear(){
+        botaoNomear=(Button)findViewById(R.id.button22);
+        botaoNomear.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {setNomePerfil();}});}
+            public void onClick(View v) {
+                setNomePerfil();
+            }
+        });
+    }
 
     public void setNomePerfil(){
-        nomePerfil=nomePerfilEditText12.getText().toString().trim();
-
-        if(validarExistencia(nomePerfil)){//TODO ainda ta bugado mais estou com ideias futuras
+        nomePerfil=campoNomePerfil.getText().toString().trim();
+        if(verificarNomeIgual(nomePerfil)){//TODO    Falta verificar campo vazio.
             perfilUsuario.setNome(nomePerfil);
-            nomeBanco();
-
-//            Tentativa de Fechar as telas anteriores
-//            fecharTelaMusica.fecharTela();
-//            fecharTelaComida.fecharTela();
-//            fecharTelaEsporte.fecharTela();
-//            fecharTelaPerfil.fecharTela();
-            irembora();
-            }
+            nomearPerfil();
+            irTelaPerfil();
+        }
         else{
-            Toast Erro;
-            Erro =Toast.makeText(getApplicationContext(), "Nome do perfil já existente", Toast.LENGTH_SHORT);
-            Erro.show(); }}
+            erro =Toast.makeText(getApplicationContext(), R.string.perfilExiste, Toast.LENGTH_SHORT);
+            erro.show();
+        }
+    }
 
-    public void nomeBanco(){
-
-        for (PerfilComida comida : perfilUsuario.getComida()){
-            PerfilDAO bd = new PerfilDAO();
-            bd.getEscrever(this);
-            comida.setNome_perfil(perfilUsuario.getNome());
-            bd.inserirPerfilComida(comida);}
-
-        for (PerfilMusica musica : perfilUsuario.getMusica()){
-            PerfilDAO bd = new PerfilDAO();
-            bd.getEscrever(this);
-            musica.setNome_perfil(perfilUsuario.getNome());
-            bd.inserirPerfilMusica(musica);}
-
-        for (PerfilEsporte esporte : perfilUsuario.getEsporte()){
-            PerfilDAO bd = new PerfilDAO();
-            bd.getEscrever(this);
-            esporte.setNome_perfil(perfilUsuario.getNome());
-            bd.inserirPerfilEsporte(esporte);}
+    public void nomearPerfil(){
+        adcComida();
+        adcMusica();
+        adcEsporte();
         PerfilDAO bd = new PerfilDAO();
         bd.getEscrever(this);
         bd.inserirPerfil(perfilUsuario);
     }
 
-
-    public void irembora(){
-//        Bundle parametros = new Bundle();
-//        parametros.putString("chave",nomePerfilEditText12.getText().toString());
-//<<<<<<< HEAD
-//        Intent it = new Intent(this, PerfilAct.class);
-//        it.putExtras(parametros);
-//        startActivity(it);
-//=======
-//        Intent it = new Intent(this, PerfilAct.class);
-//        it.putExtras(parametros);
-//        startActivity(it);
-//>>>>>>> desenvolvedor2
-        Intent it = new Intent(this, PerfilAct.class);
-        startActivity(it);
+    public void irTelaPerfil(){
+        startActivity(new Intent(this, PerfilAct.class));
         finish();
     }
-    public boolean validarExistencia(String NomePerfil){
+    public boolean verificarNomeIgual(String NomePerfil){
         boolean saida = true;
         for (PerfilUsuario perfilUsuario:PerfilAct.getLista())
             if (perfilUsuario.getNome().equals(NomePerfil)) {
@@ -116,4 +89,29 @@ public class NomePerfilAct extends AppCompatActivity {
         return saida;
     }
 
+    private void adcComida(){
+        for (PerfilComida comida : perfilUsuario.getComida()){
+            PerfilDAO bd = new PerfilDAO();
+            bd.getEscrever(this);
+            comida.setNome_perfil(perfilUsuario.getNome());
+            bd.inserirPerfilComida(comida);
+        }
+    }
+
+    private void adcMusica(){
+        for (PerfilMusica musica : perfilUsuario.getMusica()){
+            PerfilDAO bd = new PerfilDAO();
+            bd.getEscrever(this);
+            musica.setNome_perfil(perfilUsuario.getNome());
+            bd.inserirPerfilMusica(musica);
+        }
+    }
+
+    private void adcEsporte(){
+        for (PerfilEsporte esporte : perfilUsuario.getEsporte()){
+            PerfilDAO bd = new PerfilDAO();
+            bd.getEscrever(this);
+            esporte.setNome_perfil(perfilUsuario.getNome());
+            bd.inserirPerfilEsporte(esporte);}
+    }
 }
