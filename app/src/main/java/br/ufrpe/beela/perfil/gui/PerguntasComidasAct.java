@@ -23,15 +23,10 @@ public class PerguntasComidasAct extends AppCompatActivity {
 
     private PerfilUsuario usuario = LoginAct.getPessoa().getPerfil();
 
-    private TextView fonteTextView7;
-    private Button btconfirmar;
-
+    private TextView legendaPrincipal;
+    private Button botaoConfirmar;
     private List<CheckBox> checkBoxesComidas = new ArrayList<>();
-
-
     private static ArrayList<PerfilComida> listaComida = new ArrayList();
-
-
     public static ArrayList getListaComida() {  return listaComida; }
 
 
@@ -40,26 +35,30 @@ public class PerguntasComidasAct extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_perguntas_comidas);
 
+        alterarFonte();
+        adcCheckBoxCom();
+        botaoConfirmar();
+    }
+
+        public void alterarFonte() {
         Typeface fonte = Typeface.createFromAsset(getAssets(), "fonts/Chewy.ttf");
+        legendaPrincipal = (TextView) findViewById(R.id.textView7);
+        legendaPrincipal.setTypeface(fonte);
 
-        fonteTextView7 = (TextView) findViewById(R.id.textView7);
-        fonteTextView7.setTypeface(fonte);
+        }
 
-        CheckBox massas = findViewById(R.id.checkboxMassas);
-        CheckBox carnes = findViewById(R.id.checkboxCarnes);
-        CheckBox orientais = findViewById(R.id.checkBoxOrientais);
-        CheckBox pizza = findViewById(R.id.checkBoxPizza);
-        CheckBox fastFood = findViewById(R.id.checkBoxFastFood);
+        public void adcCheckBoxCom() {
+            checkBoxesComidas.add((CheckBox) findViewById(R.id.checkboxMassas));
+            checkBoxesComidas.add((CheckBox) findViewById(R.id.checkboxCarnes));
+            checkBoxesComidas.add((CheckBox) findViewById(R.id.checkBoxFastFood));
+            checkBoxesComidas.add((CheckBox) findViewById(R.id.checkBoxPizza));
+            checkBoxesComidas.add((CheckBox) findViewById(R.id.checkBoxOrientais));
+        }
 
 
-        checkBoxesComidas.add(massas);
-        checkBoxesComidas.add(carnes);
-        checkBoxesComidas.add(orientais);
-        checkBoxesComidas.add(pizza);
-        checkBoxesComidas.add(fastFood);
-
-        btconfirmar = (Button) findViewById(R.id.buttonConfirmar2);
-        btconfirmar.setOnClickListener(new View.OnClickListener() {
+        private void botaoConfirmar(){
+        botaoConfirmar = (Button) findViewById(R.id.buttonConfirmar2);
+        botaoConfirmar.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
@@ -87,10 +86,7 @@ public class PerguntasComidasAct extends AppCompatActivity {
         usuario.setComida(listaComida);
     }
 
-    public ArrayList<PerfilComida> getComida(){
-        return listaComida;
-
-    }
+    public ArrayList<PerfilComida> getComida(){return listaComida; }
 
     public void telaPerguntasEsporte(){
         startActivity(new Intent(PerguntasComidasAct.this, PerguntasEsporteAct.class));

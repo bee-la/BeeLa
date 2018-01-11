@@ -22,8 +22,8 @@ public class PerguntasEsporteAct extends AppCompatActivity {
     private PerfilUsuario usuario = LoginAct.getPessoa().getPerfil();
     private List<CheckBox> checkBoxesEsportes = new ArrayList<>();
     private static ArrayList<PerfilEsporte> listaEsporte = new ArrayList<PerfilEsporte>();
-    private TextView fonteTextView13;
-    private Button button13Confirmar;
+    private TextView legendaPrincipal;
+    private Button botaoConfirmar;
 
     public static ArrayList getListaEsporte() {  return listaEsporte; }
 
@@ -33,23 +33,28 @@ public class PerguntasEsporteAct extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_perguntas_esporte);
 
+        alterarFonte();
+        adcCheckBoxEsp();
+        setBotaoConfirmar();
+
+    }
+    private void alterarFonte() {
+
         Typeface fonte = Typeface.createFromAsset(getAssets(), "fonts/Chewy.ttf");
+        legendaPrincipal = (TextView) findViewById(R.id.textView13);
+        legendaPrincipal.setTypeface(fonte);
+    }
+    private void adcCheckBoxEsp() {
 
-        fonteTextView13 = (TextView) findViewById(R.id.textView13);
-        fonteTextView13.setTypeface(fonte);
+        checkBoxesEsportes.add((CheckBox) findViewById(R.id.checkBox2));
+        checkBoxesEsportes.add((CheckBox) findViewById(R.id.checkBox3));
+        checkBoxesEsportes.add((CheckBox) findViewById(R.id.checkBox4));
+        checkBoxesEsportes.add((CheckBox) findViewById(R.id.checkBox5));
+    }
+    private void setBotaoConfirmar(){
 
-        CheckBox volei = findViewById(R.id.checkBox2);
-        CheckBox futebol = findViewById(R.id.checkBox3);
-        CheckBox ciclismo = findViewById(R.id.checkBox4);
-        CheckBox caminhada = findViewById(R.id.checkBox5);
-
-        checkBoxesEsportes.add(volei);
-        checkBoxesEsportes.add(futebol);
-        checkBoxesEsportes.add(ciclismo);
-        checkBoxesEsportes.add(caminhada);
-
-        button13Confirmar = (Button) findViewById(R.id.button13);
-        button13Confirmar.setOnClickListener(new View.OnClickListener() {
+        botaoConfirmar = (Button) findViewById(R.id.button13);
+        botaoConfirmar.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
