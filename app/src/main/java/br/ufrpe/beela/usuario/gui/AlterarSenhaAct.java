@@ -19,9 +19,8 @@ public class AlterarSenhaAct extends AppCompatActivity {
     private Usuario usuario=LoginAct.getUsuario();
     private UsuarioService usuarioService = new UsuarioService();
 
-    private TextView senhaAtualText7,novaSenhaText8, repetirSenhaText9;
     private Button botaoAlterarSenha;
-    private Toast senhaAlterada;
+    private Toast senhaAlterada, erro;
     private String senhaAtual, novaSenha, repetirSenha;
     private EditText campoSenha, campoNovaSenha, campoRepetirSenha;
 
@@ -60,19 +59,18 @@ public class AlterarSenhaAct extends AppCompatActivity {
             }
         }
         else{
-            Toast Erro;
-            Erro = Toast.makeText(getApplicationContext(), R.string.senhaAtualDiferente, Toast.LENGTH_SHORT);
-            Erro.show();
+            erro = Toast.makeText(getApplicationContext(), R.string.senhaAtualDiferente, Toast.LENGTH_SHORT);
+            erro.show();
         }
     }
 
     public void alterarSenha(){
-        senhaAlterada=Toast.makeText(getApplicationContext(), R.string.senhaAlterada, Toast.LENGTH_SHORT);
         UsuarioDAO bd = new UsuarioDAO();
         bd.getEscrever(this);
         bd.updateSenha(usuario,Criptografia.criptografar(novaSenha));
         usuario.setSenha(Criptografia.criptografar(novaSenha));
         limparCampos();
+        senhaAlterada=Toast.makeText(getApplicationContext(), R.string.senhaAlterada, Toast.LENGTH_SHORT);
         senhaAlterada.show();
     }
 

@@ -64,7 +64,6 @@ public class PerguntasEsporteAct extends AppCompatActivity {
     }
 
     public void adcEsporte(){
-//        ArrayList<PerfilEsporte>listaEsporte = new ArrayList<PerfilEsporte>();
         for (CheckBox x : checkBoxesEsportes) {
             if (x.isChecked()) {
                 PerfilEsporte esporte = new PerfilEsporte();
@@ -81,12 +80,8 @@ public class PerguntasEsporteAct extends AppCompatActivity {
     }
 
     public void telaPerfilPrioridade(){
-        adcEsporte();
         startActivity(new Intent(PerguntasEsporteAct.this, PerfilPrioridadeAct.class));
         finish();
     }
-//
-//    public void fecharTela(){
-//        finish();
-//    }
+
 }

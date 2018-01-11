@@ -8,11 +8,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.TextView;
-
 import java.util.ArrayList;
 import java.util.List;
-
-import br.ufrpe.beela.perfil.dominio.PerfilComida;
 import br.ufrpe.beela.perfil.dominio.PerfilMusica;
 import br.ufrpe.beela.perfil.dominio.PerfilUsuario;
 import br.ufrpe.beela.usuario.gui.LoginAct;
@@ -20,17 +17,12 @@ import br.ufrpe.beela.gui.R;
 
 public class PerguntasMusicaAct extends AppCompatActivity {
     private PerfilUsuario usuario = LoginAct.getPessoa().getPerfil();
-    private TextView fonteTextView9;
-    private Button btconfirmar;
+    private TextView fontePergunta;
+    private Button botaoConfirmar;
     private CheckBox rock, sernanejo, forro, samba;
 
     private List<CheckBox> checkBoxesMusicas = new ArrayList<>();
-
-
     private static ArrayList<PerfilMusica> listaMusica = new ArrayList();
-
-
-   // public static ArrayList getListaMusica() {  return listaMusica; }
 
 
     @Override
@@ -38,11 +30,18 @@ public class PerguntasMusicaAct extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_perguntas_musica);
 
+        alterarFonte();
+        adcCheckBox();
+        setBotaoconfirmar();
+    }
+
+    private void alterarFonte(){
         Typeface fonte = Typeface.createFromAsset(getAssets(), "fonts/Chewy.ttf");
+        fontePergunta = (TextView) findViewById(R.id.textView9);
+        fontePergunta.setTypeface(fonte);
+    }
 
-        fonteTextView9 = (TextView) findViewById(R.id.textView9);
-        fonteTextView9.setTypeface(fonte);
-
+    private void adcCheckBox(){
         rock = findViewById(R.id.checkBoxRock);
         sernanejo = findViewById(R.id.checkboxSertanejo);
         forro = findViewById(R.id.checkBoxForro);
@@ -52,12 +51,15 @@ public class PerguntasMusicaAct extends AppCompatActivity {
         checkBoxesMusicas.add(sernanejo);
         checkBoxesMusicas.add(forro);
         checkBoxesMusicas.add(samba);
-        btconfirmar = (Button) findViewById(R.id.buttonConfirmar);
-        btconfirmar.setOnClickListener(new View.OnClickListener() {
+    }
+
+    private void setBotaoconfirmar(){
+        botaoConfirmar = (Button) findViewById(R.id.buttonConfirmar);
+        botaoConfirmar.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
-                adcmusicas();
+                adcMusica();
                 alterarTelaPerfil();
             }
         });
@@ -67,15 +69,12 @@ public class PerguntasMusicaAct extends AppCompatActivity {
         boolean checked = ((CheckBox) view).isChecked();
     }
 
-        public void adcmusicas(){
-//            ArrayList<PerfilMusica>listaMusica = new ArrayList<PerfilMusica>();
-
+        public void adcMusica(){
             for (CheckBox x : checkBoxesMusicas) {
                 if (x.isChecked()) {
                     PerfilMusica musica = new PerfilMusica();
                     musica.setId_usuario(usuario.getId_Usuario());
                     musica.setNome(x.getText().toString());
-        //            musica.setNome_perfil(usuario.getNome());
                     listaMusica.add(musica);
                 }
             }
@@ -86,14 +85,9 @@ public class PerguntasMusicaAct extends AppCompatActivity {
             return listaMusica;
     }
 
-
-    public void alterarTelaPerfil(){
-        adcmusicas();
+    private void alterarTelaPerfil(){
         startActivity(new Intent(PerguntasMusicaAct.this, PerguntasComidasAct.class));
         finish();
     }
 
-//    public void fecharTela(){
-//        finish();
-//    }
 }

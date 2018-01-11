@@ -93,14 +93,9 @@ public class PerguntasComidasAct extends AppCompatActivity {
     }
 
     public void telaPerguntasEsporte(){
-        adcComida();
         startActivity(new Intent(PerguntasComidasAct.this, PerguntasEsporteAct.class));
         finish();
     }
-
-//    public void fecharTela(){
-//        finish();
-//    }
 
 }
 

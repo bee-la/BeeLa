@@ -1,15 +1,12 @@
 package br.ufrpe.beela.usuario.gui;
 
-import android.content.Intent;
 import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Button;
 import android.widget.Toast;
-
 import br.ufrpe.beela.gui.R;
 import br.ufrpe.beela.usuario.dominio.Pessoa;
 import br.ufrpe.beela.usuario.negocio.UsuarioService;
@@ -17,58 +14,59 @@ import br.ufrpe.beela.usuario.negocio.UsuarioService;
 public class AlterarNomeAct extends AppCompatActivity {
     private Pessoa pessoa = LoginAct.getPessoa();
     private UsuarioService usuarioService = new UsuarioService();
-
-    private TextView alterarNomeText3;
-    private Button alterarNomeButton11;
-
-    private String alterarNome;
-    private EditText alterarNomeEditText3;
+    private Toast nomeAlterado;
+    private Button botaoAlterarNome;
+    private String nome;
+    private EditText alterarNome;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_alterar_nome);
 
-        alterarNomeEditText3=(EditText)findViewById(R.id.editText3);
+        alterarNome=(EditText)findViewById(R.id.editText3);
 
-//------------------------------------------Mudar Fonte-------------------------------------------
-        alterarNomeText3 = (TextView) findViewById(R.id.editText3);
-        Typeface fonte1 = Typeface.createFromAsset(getAssets(), "fonts/Chewy.ttf");
-        alterarNomeText3.setTypeface(fonte1);
-        alterarNome=alterarNomeEditText3.getText().toString().trim();
+        alterarFonte();
+        clicarBotaoAlterar();
 
-//-----------------------------------Validação clique botão Alterar Nome--------------------------------
-        alterarNomeButton11 = (Button) findViewById(R.id.button11);
-        alterarNomeButton11.setOnClickListener(new View.OnClickListener() {
+     }
+
+    private void alterarFonte(){
+        Typeface fonte = Typeface.createFromAsset(getAssets(), "fonts/Chewy.ttf");
+        alterarNome.setTypeface(fonte);
+    }
+
+    private void clicarBotaoAlterar(){
+        botaoAlterarNome = (Button) findViewById(R.id.button11);
+        botaoAlterarNome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                validarCliqueAlterarNome();
+                verificarNome();
             }
         });
     }
 
-    public void validarCliqueAlterarNome(){
-        alterarNome=alterarNomeEditText3.getText().toString().trim();
-        if(ehValidoAlterarNome()) {
-            usuarioService.alterarNome(pessoa,alterarNome,this);
-//            startActivity(new Intent(AlterarNomeAct.this, HomeAct.class));
-            alterarNomeEditText3.setText("");
-            Toast Sucesso;
-            Sucesso = Toast.makeText(getApplicationContext(), "Nome Alterado", Toast.LENGTH_SHORT);
-            Sucesso.show();
+    private void verificarNome(){
+        if(validarCampo()) {
+            usuarioService.alterarNome(pessoa,nome,this);
+            alterarNome.setText("");
+            nomeAlterado = Toast.makeText(getApplicationContext(), R.string.nomeAlterado, Toast.LENGTH_SHORT);
+            nomeAlterado.show();
         }
     }
-//-------------------------------------------------------------------------------------------------------
 
-    //-----------------------------------Validação do campo Nome-----------------------------------------------
-    public boolean ehValidoAlterarNome() {
-        alterarNome=alterarNomeEditText3.getText().toString().trim();
-        if (usuarioService.validarCampoVazio(alterarNome)) {
-            alterarNomeEditText3.setError(getString(R.string.campoVazio));
-            return false;}
-        if (usuarioService.verificarNomeIgual(alterarNome, pessoa)) {
-            alterarNomeEditText3.setError("Nome Iguais");
-            return false;}
+    private boolean validarCampo() {
+        nome=alterarNome.getText().toString().trim();
+        if (usuarioService.validarCampoVazio(nome)) {
+            alterarNome.setError(getString(R.string.campoVazio));
+            return false;
+        }
+
+//TODO          Acho que não precisa desse método (Anderson)
+//        if (usuarioService.verificarNomeIgual(nome, pessoa)) {
+//            alterarNome.setError(getString(R.string.nomesIguais));
+//            return false;
+//        }
         else {
             return true;
         }

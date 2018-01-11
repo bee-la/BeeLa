@@ -6,98 +6,85 @@ import android.graphics.Typeface;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.AttributeSet;
-import android.util.Log;
 import android.view.View;
 import android.widget.Adapter;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import java.util.ArrayList;
-import java.util.List;
-
 import br.ufrpe.beela.perfil.dao.PerfilDAO;
 import br.ufrpe.beela.perfil.dominio.PerfilUsuario;
 import br.ufrpe.beela.perfil.negocio.ListViewNomePerfil;
-//import br.ufrpe.beela.perfil.negocio.TextoListView;
 import br.ufrpe.beela.usuario.dominio.Usuario;
 import br.ufrpe.beela.usuario.gui.LoginAct;
 import br.ufrpe.beela.gui.R;
 
 public class PerfilAct extends AppCompatActivity {
-    private ImageButton adicionarPerfil;
+    private ImageButton botaoAdicionarPerfil, botaoApagar;
     private ListView listViewPerfis;
-    private TextView TextoButton14;
-    private ArrayList<String> perfilExcluir=new ArrayList<String>();
+    private TextView fonteBotaoComecar;
+    private Toast erro;
 
     private PerfilUsuario perfilUsuario = LoginAct.getPessoa().getPerfil();
     private Usuario usuario=LoginAct.getUsuario();
-    private ImageButton adicionarPerfilTrocarTela;
-    private ImageButton apagarImageButton6;
     public static ArrayList<PerfilUsuario> perfilUsuarioArrayList = new ArrayList<>();
-    public static ArrayList<PerfilUsuario> getLista(){return perfilUsuarioArrayList;}
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_perfil);
 
-        MontarPerfis();
-        listViewPerfis = (ListView) findViewById(R.id.listView);
+        alterarFonte();
         setListView();
-//        valorSelecionado();
+        alterarFonte();
+        adicionarPerfil();
+        irExcluirPerfil();
+    }
 
+    public static ArrayList<PerfilUsuario> getLista(){
+        return perfilUsuarioArrayList;
+    }
 
-//        listaNomes=(ListViewNomePerfil)findViewById(R.id.listView);
-//        TextoListView mudancaCor=new TextoListView(this, perfis());
-//        listaNomes.setAdapter(mudancaCor);
-//        clickLista();
+    private void alterarFonte(){
+        Typeface fonte = Typeface.createFromAsset(getAssets(), "fonts/Chewy.ttf");
+        fonteBotaoComecar =(Button) findViewById(R.id.button14);
+        fonteBotaoComecar.setTypeface(fonte);
+    }
 
-        adicionarPerfil = (ImageButton) findViewById(R.id.imageButton4);
-        apagarImageButton6 = (ImageButton) findViewById(R.id.imageButton6);
-
-        fonteBotaoComecar();
-        checkBoxSelecionado();
-
-        adicionarPerfilTrocarTela = (ImageButton) findViewById(R.id.imageButton4);
-        adicionarPerfil.setOnClickListener(new View.OnClickListener() {
+    private void adicionarPerfil(){
+        botaoAdicionarPerfil = (ImageButton) findViewById(R.id.imageButton4);
+        botaoAdicionarPerfil.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (verificarPerfis()) {
-                    adicionarPerfilTrocarTela();
-                } else {
-                    Toast Erro;
-                    Erro = Toast.makeText(getApplicationContext(), "O máximo são 3 perfis", Toast.LENGTH_SHORT);
-                    Erro.show();    }   }   });
+                if (perfilUsuarioArrayList.size()<=2) {
+                    irPerguntasMusica();
+                }
+                else{
+                    erro = Toast.makeText(getApplicationContext(), R.string.maximoPerfis, Toast.LENGTH_SHORT);
+                    erro.show();
+                }
+            }
+        });
     }
 
-    private void checkBoxSelecionado() {
-        apagarImageButton6.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                try{
-                    if(listViewPerfis!=null){
-                        Adapter adapter= (Adapter) listViewPerfis.getAdapter();
-                        for(int i=0; i<adapter.getCount(); i++){
-                            PerfilUsuario perfil=(PerfilUsuario) adapter.getItem(i);
-                            if(perfil.isSelecionado()) {
-                                excluirPerfil(perfil.getNome());    }   }   }   }
-                catch (Exception e){
-                    e.printStackTrace();    }   }   });
-    }
-
-    private void adicionarPerfilTrocarTela() {
+    private void irPerguntasMusica() {
         startActivity(new Intent(PerfilAct.this, PerguntasMusicaAct.class));
         finish();
-        MontarPerfis();}
+    }
+
+    private void irExcluirPerfil() {
+        botaoApagar = (ImageButton) findViewById(R.id.imageButton6);
+        botaoApagar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                verificarListViewExcluir();
+            }
+        });
+    }
 
     private void MontarPerfis(){
-
         PerfilDAO bd = new PerfilDAO();
         bd.getLer(this);
         perfilUsuarioArrayList=bd.sqlGetPerfil(perfilUsuario.getId_Usuario());
@@ -111,22 +98,24 @@ public class PerfilAct extends AppCompatActivity {
         return arrayPerfis;
     }
 
-    public void fonteBotaoComecar(){
-        Typeface fonte = Typeface.createFromAsset(getAssets(), "fonts/Chewy.ttf");
-        TextoButton14 =(Button) findViewById(R.id.button14);
-        TextoButton14.setTypeface(fonte);
-    }
-
-    private boolean verificarPerfis(){
-        if(perfilUsuarioArrayList.size()<=2){return true;}
-        else{return false;}
+    private void verificarListViewExcluir(){
+        try{
+            if(listViewPerfis!=null){
+                Adapter adapter= (Adapter) listViewPerfis.getAdapter();
+                for(int i=0; i<adapter.getCount(); i++){
+                    PerfilUsuario perfil=(PerfilUsuario) adapter.getItem(i);
+                    if(perfil.isSelecionado()) {
+                        excluirPerfil(perfil.getNome());    }   }   }   }
+        catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
     private void setListView(){
         MontarPerfis();
+        listViewPerfis = (ListView) findViewById(R.id.listView);
         ListViewNomePerfil lista=new ListViewNomePerfil(PerfilAct.this);
         listViewPerfis.setAdapter(lista);
-
     }
 
     public ArrayList<PerfilUsuario> getPerfis(){
@@ -135,23 +124,19 @@ public class PerfilAct extends AppCompatActivity {
 
     private void excluirPerfil(final String nomePerfil){
         final CharSequence[] escolha={getString(R.string.sim), getString(R.string.nao)};
-
         AlertDialog.Builder alerta= new AlertDialog.Builder(PerfilAct.this);
         alerta.setItems(escolha, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 String opcao=(String)escolha[i];
-
                 if (opcao.equals(getString(R.string.sim))){
-//                    perfilExcluir.add(nomePerfil);
                     excluirDoBanco(nomePerfil);
                     Toast.makeText(getApplicationContext(), R.string.excluidoSucesso, Toast.LENGTH_LONG).show();
                     setListView();
-                    //finish();
                 }
                 else if(opcao.equals(getString(R.string.nao))){
                     dialogInterface.cancel();   }   }   });
-        alerta.setTitle("Excluir perfil "+ nomePerfil+ "?");
+        alerta.setTitle(getString(R.string.verificarExcluirPerfil)+" "+ nomePerfil+ getString(R.string.sinalInterrogacao));
         AlertDialog aviso=alerta.create();
         aviso.show();
     }

@@ -12,6 +12,10 @@
 
     <!--Anterar nome-->
     <string name="NovoNome">Novo Nome</string>
+    <string name="nomesIguais">Nomes Iguais</string>
+    <string name="nomeAlterado">Nome Alterado</string>
+
+
 
     <!--Apagar Conta-->
     <string name="avisoApagar1">Atenção, \napagar sua conta irá:</string>
@@ -42,7 +46,6 @@
     <string name="senhaCriarC">Senha</string>
     <string name="repetirSenhaCriarC">Repetir Senha</string>
     <string name="criar">Criar</string>
-    <!--<string name="emailCelularExiste">Email ou celular já existentes</string>-->
     <string name="emailExiste">O Email já existe</string>
     <string name="celularExiste">O Celular já existe</string>
 
@@ -69,11 +72,10 @@
     <string name="enviarCodigo">Enviar</string>
     <string name="title_activity_perfis">Perfis</string>
 
-    <!--Perfil-->
-    <string name="perfil">Perfil</string>
-    <string name="comecar">Começar</string>
 
     <!--Adicionar Perfil-->
+    <string name="perfil">Perfil</string>
+    <string name="comecar">Começar</string>
     <string name="adicionarPerfil">Adicionar Perfil</string>
     <string name="massas">Massas</string>
     <string name="orientais">Orientais</string>
@@ -89,9 +91,15 @@
     <string name="nomear">Nomear</string>
     <string name="perfilprioridade">perfilprioridade</string>
     <string name="prioridadePerfil">Perfil Prioridade</string>
+
+    <!--Excluir Perfil-->
     <string name="sim">sim</string>
     <string name="nao">não</string>
     <string name="excluirPerfil">Excluir</string>
     <string name="excluidoSucesso">Perfil excluído</string>
+    <string name="maximoPerfis">O máximo são 3 perfis</string>
+    <string name="verificarExcluirPerfil">Excluir perfil </string>
+    <string name="sinalInterrogacao">\?</string>
+
 
 </resources>
