@@ -12,14 +12,15 @@ import br.ufrpe.beela.perfil.dominio.PerfilComida;
 import br.ufrpe.beela.perfil.dominio.PerfilEsporte;
 import br.ufrpe.beela.perfil.dominio.PerfilMusica;
 import br.ufrpe.beela.perfil.dominio.PerfilUsuario;
+import br.ufrpe.beela.perfil.negocio.PerfilService;
 import br.ufrpe.beela.usuario.dominio.Usuario;
 import br.ufrpe.beela.usuario.gui.LoginAct;
 import br.ufrpe.beela.perfil.dao.PerfilDAO;
 import br.ufrpe.beela.gui.R;
 
 public class NomePerfilAct extends AppCompatActivity {
-    private Usuario usuario = LoginAct.getUsuario();
     private PerfilUsuario perfilUsuario = LoginAct.getPessoa().getPerfil();
+    private PerfilService perfilService = new PerfilService();
     private EditText campoNomePerfil;
     private Button botaoNomear;
     private Toast erro;
@@ -53,10 +54,16 @@ public class NomePerfilAct extends AppCompatActivity {
 
     public void verificarNomePerfil(){
         nomePerfil=campoNomePerfil.getText().toString().trim();
-        if(verificarNomeIgual(nomePerfil)){//TODO    Falta verificar campo vazio.
-            perfilUsuario.setNome(nomePerfil);
-            salvarBD();
-            irTelaPerfil();
+        if(perfilService.verificarNomeIgual(nomePerfil)){
+            if (perfilService.verificarNomeVazio(nomePerfil)) {
+                perfilUsuario.setNome(nomePerfil);
+                salvarBD();
+                irTelaPerfil();
+            }
+            else{
+                erro =Toast.makeText(getApplicationContext(),R.string.campoVazio, Toast.LENGTH_SHORT);
+                erro.show();
+            }
         }
         else{
             erro =Toast.makeText(getApplicationContext(), R.string.perfilExiste, Toast.LENGTH_SHORT);
@@ -65,51 +72,14 @@ public class NomePerfilAct extends AppCompatActivity {
     }
 
     public void salvarBD(){
-        adcComida();
-        adcMusica();
-        adcEsporte();
-        PerfilDAO bd = new PerfilDAO();
-        bd.getEscrever(this);
-        bd.inserirPerfil(perfilUsuario);
+        perfilService.adcComida(perfilUsuario,this);
+        perfilService.adcMusica(perfilUsuario,this);
+        perfilService.adcEsporte(perfilUsuario,this);
+        perfilService.adcPerfil(perfilUsuario,this);
     }
 
     public void irTelaPerfil(){
         startActivity(new Intent(this, PerfilAct.class));
         finish();
-    }
-    public boolean verificarNomeIgual(String NomePerfil){
-        boolean saida = true;
-        for (PerfilUsuario perfilUsuario:PerfilAct.getLista())
-            if (perfilUsuario.getNome().equals(NomePerfil)) {
-                saida = false;
-                break;
-        }
-        return saida;
-    }
-
-    private void adcComida(){
-        for (PerfilComida comida : perfilUsuario.getComida()){
-            PerfilDAO bd = new PerfilDAO();
-            bd.getEscrever(this);
-            comida.setNome_perfil(perfilUsuario.getNome());
-            bd.inserirPerfilComida(comida);
-        }
-    }
-
-    private void adcMusica(){
-        for (PerfilMusica musica : perfilUsuario.getMusica()){
-            PerfilDAO bd = new PerfilDAO();
-            bd.getEscrever(this);
-            musica.setNome_perfil(perfilUsuario.getNome());
-            bd.inserirPerfilMusica(musica);
-        }
-    }
-
-    private void adcEsporte(){
-        for (PerfilEsporte esporte : perfilUsuario.getEsporte()){
-            PerfilDAO bd = new PerfilDAO();
-            bd.getEscrever(this);
-            esporte.setNome_perfil(perfilUsuario.getNome());
-            bd.inserirPerfilEsporte(esporte);}
     }
 }

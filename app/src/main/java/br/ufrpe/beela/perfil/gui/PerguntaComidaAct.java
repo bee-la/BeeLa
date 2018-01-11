@@ -11,12 +11,14 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import br.ufrpe.beela.perfil.dominio.PerfilComida;
 import br.ufrpe.beela.perfil.dominio.PerfilUsuario;
+import br.ufrpe.beela.perfil.negocio.PerfilService;
 import br.ufrpe.beela.usuario.gui.LoginAct;
 import br.ufrpe.beela.gui.R;
 
 public class PerguntaComidaAct extends AppCompatActivity {
 
-    private PerfilUsuario usuario = LoginAct.getPessoa().getPerfil();
+    private PerfilUsuario perfilUsuario = LoginAct.getPessoa().getPerfil();
+    private PerfilService perfilService = new PerfilService();
     private TextView pergunta;
     private Button botaoConfirmar;
     private ArrayList<CheckBox> checkBoxesComidas = new ArrayList<>();
@@ -53,7 +55,7 @@ public class PerguntaComidaAct extends AppCompatActivity {
         botaoConfirmar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                adcComida();
+                perfilService.adcListaComida(checkBoxesComidas,listaComida,perfilUsuario);
                 irTelaPerguntaEsporte();
             }
         });
@@ -63,19 +65,6 @@ public class PerguntaComidaAct extends AppCompatActivity {
         boolean checked = ((CheckBox) view).isChecked();
     }
 
-    public void adcComida(){
-        for (CheckBox x : checkBoxesComidas) {
-            if (x.isChecked()) {
-                PerfilComida comida = new PerfilComida();
-                comida.setNome((String) x.getText());
-                comida.setId_usuario(usuario.getId_Usuario());
-                listaComida.add(comida);
-            }
-        }
-        usuario.setComida(listaComida);
-    }
-
-    public ArrayList<PerfilComida> getComida(){return listaComida; }
 
     public void irTelaPerguntaEsporte(){
         startActivity(new Intent(PerguntaComidaAct.this, PerguntaEsporteAct.class));

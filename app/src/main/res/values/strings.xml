@@ -103,5 +103,16 @@
     <string name="sinalInterrogacao">\?</string>
     <string name="perfilExiste">Nome do perfil já existente</string>
 
+    <!--Lugar-->
+    <string name="erroNaoTemGoogleMaps">Verifique se o Google Maps está instalado em seu dispositivo</string>
+    <string name="comandoAppMaps">com.google.android.apps.maps</string>
+    <string name="comandoMapsActivity">com.google.android.maps.MapsActivity</string>
+
+    <!--PerfilService-->
+    <string name="Comidas">Comidas</string>
+    <string name="Musicas">Músicas</string>
+    <string name="Esportes">Esportes</string>
+    <string name="Massas">Massas</string>
+    <string name="Vegetariano">vegetariano</string>
 
 </resources>

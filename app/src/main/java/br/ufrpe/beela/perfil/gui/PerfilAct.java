@@ -17,6 +17,7 @@ import java.util.ArrayList;
 import br.ufrpe.beela.perfil.dao.PerfilDAO;
 import br.ufrpe.beela.perfil.dominio.PerfilUsuario;
 import br.ufrpe.beela.perfil.negocio.ListViewNomePerfil;
+import br.ufrpe.beela.perfil.negocio.PerfilService;
 import br.ufrpe.beela.usuario.dominio.Usuario;
 import br.ufrpe.beela.usuario.gui.LoginAct;
 import br.ufrpe.beela.gui.R;
@@ -29,12 +30,14 @@ public class PerfilAct extends AppCompatActivity {
 
     private PerfilUsuario perfilUsuario = LoginAct.getPessoa().getPerfil();
     private Usuario usuario=LoginAct.getUsuario();
+    private PerfilService perfilService = new PerfilService();
     public static ArrayList<PerfilUsuario> perfilUsuarioArrayList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_perfil);
+        MontarPerfil();
 
         alterarFonte();
         setListView();
@@ -83,21 +86,6 @@ public class PerfilAct extends AppCompatActivity {
             }
         });
     }
-
-    private void MontarPerfis(){
-        PerfilDAO bd = new PerfilDAO();
-        bd.getLer(this);
-        perfilUsuarioArrayList=bd.sqlGetPerfil(perfilUsuario.getId_Usuario());
-    }
-
-    private ArrayList<String> perfis(){
-        ArrayList<String> arrayPerfis=new ArrayList<String>();
-        for(PerfilUsuario i: perfilUsuarioArrayList) {
-            arrayPerfis.add(i.getNome());
-        }
-        return arrayPerfis;
-    }
-
     private void verificarListViewExcluir(){
         try{
             if(listViewPerfis!=null){
@@ -112,10 +100,14 @@ public class PerfilAct extends AppCompatActivity {
     }
 
     private void setListView(){
-        MontarPerfis();
+        MontarPerfil();
         listViewPerfis = (ListView) findViewById(R.id.listView);
-        ListViewNomePerfil lista=new ListViewNomePerfil(PerfilAct.this);
+        ListViewNomePerfil lista = new ListViewNomePerfil(PerfilAct.this);
         listViewPerfis.setAdapter(lista);
+    }
+    private void MontarPerfil(){
+
+        perfilUsuarioArrayList = perfilService.MontarPerfis(perfilUsuario,PerfilAct.this);
     }
 
     public ArrayList<PerfilUsuario> getPerfis(){
@@ -130,7 +122,7 @@ public class PerfilAct extends AppCompatActivity {
             public void onClick(DialogInterface dialogInterface, int i) {
                 String opcao=(String)escolha[i];
                 if (opcao.equals(getString(R.string.sim))){
-                    excluirDoBanco(nomePerfil);
+                    perfilService.excluirDoBanco(usuario.getId(),nomePerfil,PerfilAct.this);
                     Toast.makeText(getApplicationContext(), R.string.excluidoSucesso, Toast.LENGTH_LONG).show();
                     setListView();
                 }
@@ -139,11 +131,5 @@ public class PerfilAct extends AppCompatActivity {
         alerta.setTitle(getString(R.string.verificarExcluirPerfil)+" "+ nomePerfil+ getString(R.string.sinalInterrogacao));
         AlertDialog aviso=alerta.create();
         aviso.show();
-    }
-
-    private void excluirDoBanco(String nomePerfil){
-        PerfilDAO bd = new PerfilDAO();
-        bd.getEscrever(this);
-        bd.deletePerfilUsuario(String.valueOf(usuario.getId()), nomePerfil);
     }
 }

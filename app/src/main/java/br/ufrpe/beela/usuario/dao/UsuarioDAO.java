@@ -56,7 +56,7 @@ public class UsuarioDAO {
     }
 
     public void update(Usuario usuario) {
-        String where = "_id =  '" + usuario.getId() + "'";
+        String where = "_id =  '" + String.valueOf(usuario.getId()) + "'";
         ContentValues valores = new ContentValues();
         valores.put("email", usuario.getEmail());
         valores.put("senha", usuario.getSenha());

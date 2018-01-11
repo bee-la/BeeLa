@@ -22,6 +22,7 @@ import android.widget.CompoundButton.OnCheckedChangeListener;
  */
 
 public class ListViewNomePerfil extends BaseAdapter {
+
     private Context ctx;
     private PerfilAct perfil=new PerfilAct();
     private ArrayList<PerfilUsuario> listaPerfil=perfil.getPerfis();

@@ -84,29 +84,29 @@ public class PerfilDAO {
     }
 
 
-    public void deletePerfilUsuario(String idUsuario, String nomePerfil) {
-        String where = "id_usuario = '" + idUsuario +"' AND nome_perfil = '"+ nomePerfil+"'";//perfil.getNome();
+    public void deletePerfilUsuario(int id, String nomePerfil) {
+        String where = "id_usuario = '" + String.valueOf(id) +"' AND nome_perfil = '"+ nomePerfil+"'";//perfil.getNome();
         bd.delete("perfilUsuario", where , null);
         bd.close();}
 
     public void deletePerfisUsuario(int id) {
-        String where = "id_usuario = " + id;
+        String where = "id_usuario = " + String.valueOf(id);
         bd.delete("perfilUsuario", where , null);
         bd.close();}
 
     public void deletePerfilMusica(PerfilMusica musica) {
-        String where = "id_usuario = " + musica.getId_usuario()+" AND nome_perfil = "+ musica.getNome_perfil();
+        String where = "id_usuario = " + String.valueOf(musica.getId_usuario())+" AND nome_perfil = "+ musica.getNome_perfil();
         bd.delete("perfilComida", where , null);
         bd.close();}
 
     public void deletePerfilComida(PerfilComida comida) {
-        String where = "id_usuario = " + comida.getId_usuario()+" AND nome_perfil = "+ comida.getNome_perfil();
+        String where = "id_usuario = " + String.valueOf(comida.getId_usuario())+" AND nome_perfil = "+ comida.getNome_perfil();
         bd.delete("perfilComida", where , null);
         bd.close();}
 
     public boolean buscarPerfil(Usuario usuario, String NomedoPerfil){
         ArrayList<String> list = new ArrayList<String>();
-        String where ="SELECT * FROM perfilUsuario WHERE id_usuario = '"+ usuario.getId()+"'";
+        String where ="SELECT * FROM perfilUsuario WHERE id_usuario = '"+ String.valueOf(usuario.getId())+"'";
         Cursor cursor = bd.rawQuery(where,null);
         if (cursor.getCount()>0){
             cursor.moveToFirst();
@@ -123,7 +123,7 @@ public class PerfilDAO {
     }
     public ArrayList<PerfilComida> sqlGetPerfilComida (PerfilUsuario perfilUsuario) {
         ArrayList<PerfilComida> comidas = new ArrayList<PerfilComida>();
-        String where = "SELECT * FROM perfilComida WHERE id_usuario = '" + perfilUsuario.getId_Usuario() + "' AND nome_perfil = '" + perfilUsuario.getNome() + "'";
+        String where = "SELECT * FROM perfilComida WHERE id_usuario = '" + String.valueOf(perfilUsuario.getId_Usuario()) + "' AND nome_perfil = '" + perfilUsuario.getNome() + "'";
         Cursor cursor = bd.rawQuery(where, null);
         if (cursor.getCount() > 0) {
             do {
@@ -141,7 +141,7 @@ public class PerfilDAO {
 
     public ArrayList<PerfilMusica> sqlGetPerfilMusica (PerfilUsuario perfilUsuario) {
         ArrayList<PerfilMusica> musicas = new ArrayList<PerfilMusica>();
-        String where = "SELECT * FROM perfilMusica WHERE id_usuario = '" + perfilUsuario.getId_Usuario() + "' AND nome_perfil = '" + perfilUsuario.getNome() + "'";
+        String where = "SELECT * FROM perfilMusica WHERE id_usuario = '" + String.valueOf(perfilUsuario.getId_Usuario()) + "' AND nome_perfil = '" + perfilUsuario.getNome() + "'";
         Cursor cursor = bd.rawQuery(where, null);
         if (cursor.getCount() > 0) {
             cursor.moveToFirst();
@@ -162,7 +162,7 @@ public class PerfilDAO {
   // TODO         Adicionei isso aqui sqlGetPerfilEsporte
     public ArrayList<PerfilEsporte> sqlGetPerfilEsporte (PerfilUsuario perfilUsuario) {
         ArrayList<PerfilEsporte> esportes = new ArrayList<PerfilEsporte>();
-        String where = "SELECT * FROM perfilEsporte WHERE id_usuario = '" + perfilUsuario.getId_Usuario() + "' AND nome_perfil = '" + perfilUsuario.getNome() + "'";
+        String where = "SELECT * FROM perfilEsporte WHERE id_usuario = '" + String.valueOf(perfilUsuario.getId_Usuario()) + "' AND nome_perfil = '" + perfilUsuario.getNome() + "'";
         Cursor cursor = bd.rawQuery(where, null);
         if (cursor.getCount() > 0) {
             cursor.moveToFirst();
@@ -182,7 +182,7 @@ public class PerfilDAO {
 
     public  ArrayList<PerfilUsuario>  sqlGetPerfil(int id){
         ArrayList<PerfilUsuario> list = new ArrayList<PerfilUsuario>();
-        String where ="SELECT * FROM perfilUsuario WHERE id_usuario = '"+ id+"'";
+        String where ="SELECT * FROM perfilUsuario WHERE id_usuario = '"+ String.valueOf(id)+"'";
         Cursor cursor = bd.rawQuery(where,null);
 
         if (cursor.getCount()>0){

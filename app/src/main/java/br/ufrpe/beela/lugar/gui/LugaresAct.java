@@ -19,12 +19,12 @@ import br.ufrpe.beela.lugar.negocio.lugarService;
 
 public class LugaresAct extends AppCompatActivity {
 
-//    private lugarService local = new lugarService();
+    //    private lugarService local = new lugarService();
     private Button btIr;
-    private double origemlatitude ;
-    private double origemlongitude ;
+    private double origemlatitude;
+    private double origemlongitude;
     private double destinolatitude;
-    private double destinolongitude ;
+    private double destinolongitude;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,23 +41,23 @@ public class LugaresAct extends AppCompatActivity {
         });
     }
 
-        private void chamarMapa() {
-            origemlatitude = -8.0176527;
-            origemlongitude = -34.9465626;
+    private void chamarMapa() {
+        origemlatitude = -8.0176527;
+        origemlongitude = -34.9465626;
 
-            destinolatitude = -8.014121;
-            destinolongitude = -34.951131;
+        destinolatitude = -8.014121;
+        destinolongitude = -34.951131;
 
-            try {
-                Intent intent = new Intent(android.content.Intent.ACTION_VIEW,
-                        Uri.parse("http://maps.google.com/maps?saddr=" + origemlatitude + "," + origemlongitude + "&daddr=" + destinolatitude + "," + destinolongitude));
+        try {
+            Intent intent = new Intent(android.content.Intent.ACTION_VIEW,
+                    Uri.parse("http://maps.google.com/maps?saddr=" + origemlatitude + "," + origemlongitude + "&daddr=" + destinolatitude + "," + destinolongitude));
 
 
-                intent.setComponent(new ComponentName("com.google.android.apps.maps", "com.google.android.maps.MapsActivity"));
+            intent.setComponent(new ComponentName(getString(R.string.comandoAppMaps), getString(R.string.comandoMapsActivity)));
 
-                startActivity(intent);
-            } catch (Exception ex) {
-                Toast.makeText(this, "Verifique se o Google Maps está instalado em seu dispositivo", Toast.LENGTH_SHORT).show();
-            }
+            startActivity(intent);
+        } catch (Exception ex) {
+            Toast.makeText(this, R.string.erroNaoTemGoogleMaps, Toast.LENGTH_SHORT).show();
         }
     }
+}

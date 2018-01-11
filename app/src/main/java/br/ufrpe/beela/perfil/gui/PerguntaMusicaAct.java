@@ -11,11 +11,13 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import br.ufrpe.beela.perfil.dominio.PerfilMusica;
 import br.ufrpe.beela.perfil.dominio.PerfilUsuario;
+import br.ufrpe.beela.perfil.negocio.PerfilService;
 import br.ufrpe.beela.usuario.gui.LoginAct;
 import br.ufrpe.beela.gui.R;
 
 public class PerguntaMusicaAct extends AppCompatActivity {
-    private PerfilUsuario usuario = LoginAct.getPessoa().getPerfil();
+    private PerfilUsuario perfilUsuario = LoginAct.getPessoa().getPerfil();
+    private PerfilService perfilService = new PerfilService();
     private TextView pergunta;
     private Button botaoConfirmar;
 
@@ -52,7 +54,7 @@ public class PerguntaMusicaAct extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                adcMusica();
+                perfilService.adcListaMusica(checkBoxesMusicas,listaMusica,perfilUsuario);
                 irTelaPerguntaComida();
             }
         });
@@ -60,18 +62,6 @@ public class PerguntaMusicaAct extends AppCompatActivity {
 
     public void onCheckboxClicked(View view) {
         boolean checked = ((CheckBox) view).isChecked();
-    }
-
-    public void adcMusica(){
-        for (CheckBox x : checkBoxesMusicas) {
-            if (x.isChecked()) {
-                PerfilMusica musica = new PerfilMusica();
-                musica.setId_usuario(usuario.getId_Usuario());
-                musica.setNome(x.getText().toString());
-                listaMusica.add(musica);
-            }
-        }
-        usuario.setMusica(listaMusica);
     }
 
     public ArrayList<PerfilMusica> getMusica(){

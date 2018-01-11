@@ -23,10 +23,12 @@ public class Lugar {
 
     public void setId(int id) {
         this.id = id;
+
     }
 
     public ArrayList<PerfilMusica> getPerfilMusicas() {
         return perfilMusicas;
+
     }
 
     public void setPerfilMusicas(ArrayList<PerfilMusica> perfilMusicas) {
@@ -35,6 +37,7 @@ public class Lugar {
 
     public ArrayList<PerfilComida> getPerfilComidas() {
         return perfilComidas;
+
     }
 
     public void setPerfilComidas(ArrayList<PerfilComida> perfilComidas) {
@@ -43,18 +46,22 @@ public class Lugar {
 
     public String getNome() {
         return nome;
+
     }
 
     public void setNome(String nome) {
         this.nome = nome;
+
     }
 
     public String getLocalicao() {
         return localicao;
+
     }
 
     public void setLocalicao(String localicao) {
         this.localicao = localicao;
+
     }
 
 }

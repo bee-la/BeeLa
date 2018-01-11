@@ -12,13 +12,16 @@ import java.util.ArrayList;
 import br.ufrpe.beela.gui.R;
 import br.ufrpe.beela.perfil.dominio.PerfilEsporte;
 import br.ufrpe.beela.perfil.dominio.PerfilUsuario;
+import br.ufrpe.beela.perfil.negocio.PerfilService;
 import br.ufrpe.beela.usuario.gui.LoginAct;
 
 public class PerguntaEsporteAct extends AppCompatActivity {
 
-    private PerfilUsuario usuario = LoginAct.getPessoa().getPerfil();
+    private PerfilUsuario perfilUsuario = LoginAct.getPessoa().getPerfil();
+    private PerfilService perfilService = new PerfilService();
     private ArrayList<CheckBox> checkBoxesEsportes = new ArrayList<>();
     private static ArrayList<PerfilEsporte> listaEsporte = new ArrayList<PerfilEsporte>();
+
     private TextView pergunta;
     private Button botaoConfirmar;
 
@@ -52,7 +55,7 @@ public class PerguntaEsporteAct extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                adcEsporte();
+                perfilService.adcListaEsporte(checkBoxesEsportes,listaEsporte,perfilUsuario);
                 irTelaPerfilPrioridade();
             }
         });
@@ -60,22 +63,6 @@ public class PerguntaEsporteAct extends AppCompatActivity {
 
     public void onCheckboxClicked(View view) {
         boolean checked = ((CheckBox) view).isChecked();
-    }
-
-    public void adcEsporte(){
-        for (CheckBox x : checkBoxesEsportes) {
-            if (x.isChecked()) {
-                PerfilEsporte esporte = new PerfilEsporte();
-                esporte.setNome((String) x.getText());
-                esporte.setId_usuario(usuario.getId_Usuario());
-                listaEsporte.add(esporte);
-            }
-        }
-        usuario.setEsporte(listaEsporte);
-    }
-
-    public ArrayList<PerfilEsporte> getEsporte(){
-        return listaEsporte;
     }
 
     public void irTelaPerfilPrioridade(){
