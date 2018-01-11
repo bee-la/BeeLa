@@ -7,9 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
-
 import br.ufrpe.beela.perfil.dominio.PerfilComida;
 import br.ufrpe.beela.perfil.dominio.PerfilEsporte;
 import br.ufrpe.beela.perfil.dominio.PerfilMusica;
@@ -48,16 +46,16 @@ public class NomePerfilAct extends AppCompatActivity {
         botaoNomear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setNomePerfil();
+                verificarNomePerfil();
             }
         });
     }
 
-    public void setNomePerfil(){
+    public void verificarNomePerfil(){
         nomePerfil=campoNomePerfil.getText().toString().trim();
         if(verificarNomeIgual(nomePerfil)){//TODO    Falta verificar campo vazio.
             perfilUsuario.setNome(nomePerfil);
-            nomearPerfil();
+            salvarBD();
             irTelaPerfil();
         }
         else{
@@ -66,7 +64,7 @@ public class NomePerfilAct extends AppCompatActivity {
         }
     }
 
-    public void nomearPerfil(){
+    public void salvarBD(){
         adcComida();
         adcMusica();
         adcEsporte();
