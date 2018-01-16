@@ -24,15 +24,15 @@ public class PerfilService {
 
     public boolean verificarNomeIgual(String NomePerfil){
         boolean saida = true;
-        for (PerfilUsuario perfilUsuario: PerfilAct.getLista())
+        for (PerfilUsuario perfilUsuario: PerfilAct.getListaPerfis())
             if (perfilUsuario.getNome().equals(NomePerfil)) {
                 saida = false;
                 break;
             }
         return saida;
     }
-    public boolean verificarNomeVazio(String NomePerfil){
-        if (NomePerfil.isEmpty()){
+    public boolean verificarNomeVazio(String nomePerfil){
+        if (nomePerfil.isEmpty()){
             return false;
         }
         return true;

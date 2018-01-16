@@ -62,11 +62,6 @@ public class AlterarNomeAct extends AppCompatActivity {
             return false;
         }
 
-//TODO          Acho que não precisa desse método (Anderson)
-//        if (usuarioService.verificarNomeIgual(nome, pessoa)) {
-//            alterarNome.setError(getString(R.string.nomesIguais));
-//            return false;
-//        }
         else {
             return true;
         }

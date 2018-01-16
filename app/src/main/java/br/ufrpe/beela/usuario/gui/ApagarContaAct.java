@@ -8,12 +8,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import br.ufrpe.beela.perfil.dao.PerfilDAO;
-import br.ufrpe.beela.perfil.dominio.PerfilUsuario;
 import br.ufrpe.beela.usuario.dao.UsuarioDAO;
 import br.ufrpe.beela.gui.R;
-import br.ufrpe.beela.usuario.dominio.Pessoa;
 import br.ufrpe.beela.usuario.dominio.Usuario;
 
 public class ApagarContaAct extends AppCompatActivity {
@@ -60,11 +57,6 @@ public class ApagarContaAct extends AppCompatActivity {
         bd1.deletePerfisUsuario(usuario.getId());
         mensagemApagada = Toast.makeText(getApplicationContext(), R.string.contaDeletada, Toast.LENGTH_SHORT);
         mensagemApagada.show();
-
-        //TODO    Precisa desses objetos? (By: Anderson)
-//        Usuario usuario = new Usuario();
-//        Pessoa pessoa = new Pessoa();
-
         startActivity(new Intent(ApagarContaAct.this, LoginAct.class));
     }
 }

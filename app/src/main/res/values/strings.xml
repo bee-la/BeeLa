@@ -16,7 +16,6 @@
     <string name="nomeAlterado">Nome Alterado</string>
 
 
-
     <!--Apagar Conta-->
     <string name="avisoApagar1">Atenção, \napagar sua conta irá:</string>
     <string name="avisoApagar2">- Excluir sua conta no Bee La; \n- Apagar seu histórico de lugares; \n- Prosseguir com a exclusão de sua conta? Será impossível reverter esta ação.</string>
@@ -71,6 +70,8 @@
     <string name="esqueciSenha">Esqueci minha senha</string>
     <string name="redefinirSenha">Enviaremos um link para seu email para você redefinir sua senha.</string>
     <string name="enviarCodigo">Enviar</string>
+    <string name="implementarFunc">Funcionalidade a ser implementada</string>
+
     <string name="title_activity_perfis">Perfis</string>
 
 

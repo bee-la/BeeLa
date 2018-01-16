@@ -25,7 +25,7 @@ public class ListViewNomePerfil extends BaseAdapter {
 
     private Context ctx;
     private PerfilAct perfil=new PerfilAct();
-    private ArrayList<PerfilUsuario> listaPerfil=perfil.getPerfis();
+    private ArrayList<PerfilUsuario> listaPerfil=perfil.getListaPerfis();
 
     public ListViewNomePerfil(Context ctx){
         this.ctx=ctx;
@@ -58,7 +58,6 @@ public class ListViewNomePerfil extends BaseAdapter {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
             perfil.setSelecionado(isChecked);
-//                Toast.makeText(ctx, perfil.getNome()+" "+isChecked,Toast.LENGTH_LONG).show();
             }
         });
 

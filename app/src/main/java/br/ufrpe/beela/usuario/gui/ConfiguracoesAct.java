@@ -72,7 +72,6 @@ public class ConfiguracoesAct extends AppCompatActivity {
                 startActivity(new Intent(ConfiguracoesAct.this, AlterarNomeAct.class));
             }
         });
-//        finish();
     }
 
     private void irAlterarSenha() {
@@ -80,7 +79,6 @@ public class ConfiguracoesAct extends AppCompatActivity {
             @Override public void onClick(View v) {
                 startActivity(new Intent(ConfiguracoesAct.this, AlterarSenhaAct.class));
             }});
-
     }
 
     private void irApagarConta() {
@@ -90,7 +88,6 @@ public class ConfiguracoesAct extends AppCompatActivity {
                 finish();
             }
         });
-
     }
 
     private void sair() {
@@ -102,7 +99,4 @@ public class ConfiguracoesAct extends AppCompatActivity {
         });
     }
 
-//    private void setarNome(){
-//        nomeTextView11.setText(pessoa.getNome());
-//    }
 }

@@ -15,10 +15,11 @@ import br.ufrpe.beela.usuario.dominio.Usuario;
 
 public class UsuarioService {
 
-    public boolean verificarNomeIgual(String nome, Pessoa pessoa) {
-        if (nome.equals(pessoa.getNome()))
+    public boolean verificarSenha(String senha){
+        if (senha.length() < 6 || senha.isEmpty()){
             return true;
-        else {
+        }
+        else{
             return false;
         }
     }
@@ -32,7 +33,7 @@ public class UsuarioService {
     }
 
     public boolean validarCampoCelular(String validar) {
-        if (validar.length() < 9 || !Patterns.PHONE.matcher(validar).matches()) {
+        if (validar.length() < 9 || validar.length() > 12 || !Patterns.PHONE.matcher(validar).matches()) {
             return true;
         } else {
             return false;

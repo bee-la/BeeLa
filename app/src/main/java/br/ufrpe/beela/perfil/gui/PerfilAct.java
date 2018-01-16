@@ -46,7 +46,7 @@ public class PerfilAct extends AppCompatActivity {
         irExcluirPerfil();
     }
 
-    public static ArrayList<PerfilUsuario> getLista(){
+    public static ArrayList<PerfilUsuario> getListaPerfis(){
         return perfilUsuarioArrayList;
     }
 
@@ -105,14 +105,14 @@ public class PerfilAct extends AppCompatActivity {
         ListViewNomePerfil lista = new ListViewNomePerfil(PerfilAct.this);
         listViewPerfis.setAdapter(lista);
     }
-    private void MontarPerfil(){
 
+    private void MontarPerfil(){
         perfilUsuarioArrayList = perfilService.MontarPerfis(perfilUsuario,PerfilAct.this);
     }
 
-    public ArrayList<PerfilUsuario> getPerfis(){
-        return perfilUsuarioArrayList;
-    }
+//    public ArrayList<PerfilUsuario> getPerfiss(){
+//        return perfilUsuarioArrayList;
+//    }
 
     private void excluirPerfil(final String nomePerfil){
         final CharSequence[] escolha={getString(R.string.sim), getString(R.string.nao)};

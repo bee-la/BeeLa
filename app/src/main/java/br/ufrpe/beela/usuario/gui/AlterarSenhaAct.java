@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import br.ufrpe.beela.gui.R;
@@ -87,8 +86,8 @@ public class AlterarSenhaAct extends AppCompatActivity {
             return false;
         }
 
-        if(usuarioService.validarCampoVazio(novaSenha)){
-            campoNovaSenha.setError(getString(R.string.campoVazio));
+        if(usuarioService.verificarSenha(novaSenha)){
+            campoNovaSenha.setError(getString(R.string.senhaInvalida));
             return false;
         }
 
@@ -97,7 +96,7 @@ public class AlterarSenhaAct extends AppCompatActivity {
             return false;
         }
         else{
-        return true;
+            return true;
         }
     }
 
@@ -106,6 +105,5 @@ public class AlterarSenhaAct extends AppCompatActivity {
         campoNovaSenha.setText("");
         campoRepetirSenha.setText("");
     }
-//---------------------------------------------------------------------------------------------
 
 }

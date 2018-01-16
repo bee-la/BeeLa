@@ -33,7 +33,7 @@ public class PerfilDAO {
         bd = auxBd.getWritableDatabase();
         return bd;
     }
- //TODO   =========================================================================================================
+
     public void inserirPerfil(PerfilUsuario perfil) {
         ContentValues valores = new ContentValues();
         valores.put("id_usuario",perfil.getId_Usuario());
@@ -71,7 +71,6 @@ public class PerfilDAO {
     }
 
 
-//TODO ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     public void updatePerfil(PerfilUsuario perfil) {
         String where = "id_usuario = " + perfil.getId_Usuario()+" AND nome_perfil = "+ perfil.getNome();
         ContentValues valores = new ContentValues();
@@ -159,7 +158,6 @@ public class PerfilDAO {
     }
 
 
-  // TODO         Adicionei isso aqui sqlGetPerfilEsporte
     public ArrayList<PerfilEsporte> sqlGetPerfilEsporte (PerfilUsuario perfilUsuario) {
         ArrayList<PerfilEsporte> esportes = new ArrayList<PerfilEsporte>();
         String where = "SELECT * FROM perfilEsporte WHERE id_usuario = '" + String.valueOf(perfilUsuario.getId_Usuario()) + "' AND nome_perfil = '" + perfilUsuario.getNome() + "'";
@@ -178,7 +176,6 @@ public class PerfilDAO {
         bd.close();
         return esportes;
     }
-
 
     public  ArrayList<PerfilUsuario>  sqlGetPerfil(int id){
         ArrayList<PerfilUsuario> list = new ArrayList<PerfilUsuario>();
@@ -199,6 +196,7 @@ public class PerfilDAO {
         bd.close();
         return list;
     }
+
     public PerfilUsuario sqlRetornaObjetoPerfilUsuario(String email,String senha){
         PerfilUsuario perfilUsuario = new PerfilUsuario();
         String where ="SELECT * FROM perfilUsuario WHERE email = '"+email+"'"+"AND senha = '"+senha+"'";

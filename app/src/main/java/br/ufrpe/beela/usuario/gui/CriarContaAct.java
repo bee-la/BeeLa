@@ -64,7 +64,6 @@ public class CriarContaAct extends AppCompatActivity {
         });
     }
 
-    //----------------------------------Validacao dos campos----------------------------------------
     private void verificarConta() {
         nome = campoNome.getText().toString().trim();
         celular = campoCelular.getText().toString().trim();
@@ -111,10 +110,11 @@ public class CriarContaAct extends AppCompatActivity {
             campoEmail.setError(getString(R.string.emailInvalido));
             return false;
         }
-        else if (usuarioValido.validarCampoVazio(senha)) {
-            campoSenha.setError(getString(R.string.campoVazio));
+        else if(usuarioValido.verificarSenha(senha)){
+            campoSenha.setError(getString(R.string.senhaInvalida));
             return false;
         }
+
         else if (usuarioValido.validarCampoVazio(repetirSenha)) {
             campoRepetirSenha.setError(getString(R.string.campoVazio));
             return false;

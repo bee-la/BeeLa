@@ -21,6 +21,7 @@ public class LoginAct extends AppCompatActivity {
     private Button botaoEntrar, botaoCriarConta;
     private EditText campoEmail, campoSenha;
     private String email, senha;
+    private Toast mensagemEsqSenha;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,24 +30,19 @@ public class LoginAct extends AppCompatActivity {
 
         campoEmail=(EditText)findViewById(R.id.editText);
         campoSenha=(EditText)findViewById(R.id.editText2);
+        nomeApp = (TextView) findViewById(R.id.textView);
 
         alterarFonte();
         clicarBotaoEntrar();
         irTelaCriarConta();
         irTelaEsqueceuSenha();
-
-//        botaoEntrar.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                entrarSucessoLogin();
-//            }
-//        });
     }
 
     private void alterarFonte(){
-        nomeApp = (TextView) findViewById(R.id.textView);
         Typeface fonte = Typeface.createFromAsset(getAssets(), "fonts/Chewy.ttf");
         nomeApp.setTypeface(fonte);
+        campoEmail.setTypeface(fonte);
+        campoSenha.setTypeface(fonte);
     }
 
     private void clicarBotaoEntrar(){
@@ -74,7 +70,9 @@ public class LoginAct extends AppCompatActivity {
         esqueceuSenha.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(LoginAct.this, EsqueceuSenhaAct.class));
+                mensagemEsqSenha=Toast.makeText(getApplicationContext(), R.string.implementarFunc, Toast.LENGTH_SHORT);
+                mensagemEsqSenha.show();
+//                startActivity(new Intent(LoginAct.this, EsqueceuSenhaAct.class));
             }
         });
     }
