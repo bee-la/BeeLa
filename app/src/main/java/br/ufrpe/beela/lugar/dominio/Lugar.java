@@ -3,6 +3,7 @@ package br.ufrpe.beela.lugar.dominio;
 import java.util.ArrayList;
 
 import br.ufrpe.beela.perfil.dominio.PerfilComida;
+import br.ufrpe.beela.perfil.dominio.PerfilLugar;
 import br.ufrpe.beela.perfil.dominio.PerfilMusica;
 
 /**
@@ -12,56 +13,20 @@ import br.ufrpe.beela.perfil.dominio.PerfilMusica;
 public class Lugar {
 
     private int id;
-    private ArrayList<PerfilMusica> perfilMusicas;
-    private ArrayList<PerfilComida> perfilComidas;
     private String nome;
-    private String localicao;
+    private String descricao;
+    private ArrayList<PerfilLugar> perfilLugar = new ArrayList<>();
 
     public int getId() {
         return id;
     }
+    public String getNome() {return nome;}
+    public String getDescricao() {return descricao;}
+    public ArrayList<PerfilLugar> getPerfilLugar() {return perfilLugar;}
 
-    public void setId(int id) {
-        this.id = id;
-
-    }
-
-    public ArrayList<PerfilMusica> getPerfilMusicas() {
-        return perfilMusicas;
-
-    }
-
-    public void setPerfilMusicas(ArrayList<PerfilMusica> perfilMusicas) {
-        this.perfilMusicas = perfilMusicas;
-    }
-
-    public ArrayList<PerfilComida> getPerfilComidas() {
-        return perfilComidas;
-
-    }
-
-    public void setPerfilComidas(ArrayList<PerfilComida> perfilComidas) {
-        this.perfilComidas = perfilComidas;
-    }
-
-    public String getNome() {
-        return nome;
-
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-
-    }
-
-    public String getLocalicao() {
-        return localicao;
-
-    }
-
-    public void setLocalicao(String localicao) {
-        this.localicao = localicao;
-
-    }
+    public void setId(int id) {this.id = id;}
+    public void setNome(String nome) {this.nome = nome;}
+    public void setDescriacao(String descricao) {this.descricao = descricao;}
+    public void setPerfilLugar(ArrayList<PerfilLugar> perfilLugar) {this.perfilLugar = perfilLugar;}
 
 }

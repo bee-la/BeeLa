@@ -2,11 +2,15 @@ package br.ufrpe.beela.lugar.dao;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+
+import java.util.ArrayList;
 
 import br.ufrpe.beela.database.dao.BD;
 import br.ufrpe.beela.lugar.dominio.Lugar;
 import br.ufrpe.beela.perfil.dominio.PerfilComida;
+import br.ufrpe.beela.perfil.dominio.PerfilLugar;
 import br.ufrpe.beela.perfil.dominio.PerfilMusica;
 
 /**
@@ -14,15 +18,16 @@ import br.ufrpe.beela.perfil.dominio.PerfilMusica;
  */
 
 public class LugarDAO {
+
     private SQLiteDatabase bd;
 
-    private SQLiteDatabase getLer(Context context){
+    public SQLiteDatabase getLer(Context context){
         BD auxBd = new BD(context);
         bd = auxBd.getReadableDatabase();
         return bd;
     }
 
-    private SQLiteDatabase getEscrever(Context context){
+    public SQLiteDatabase getEscrever(Context context){
         BD auxBd = new BD(context);
         bd = auxBd.getWritableDatabase();
         return bd;
@@ -30,8 +35,28 @@ public class LugarDAO {
     public void inserir(Lugar lugar) {
         ContentValues valores = new ContentValues();
         valores.put("nome_lugar", lugar.getNome());
-        valores.put("localizacao", lugar.getLocalicao());
-        bd.insert("perfilLugar", null, valores);
+        valores.put("descricao", lugar.getDescricao());
+        bd.insert("lugar", null, valores);
         bd.close();
+    }
+    public void upgrade(Lugar lugar){
+        ContentValues valores = new ContentValues();
+        String where = "id = " + String.valueOf(lugar.getId());
+        valores.put("nome_lugar", lugar.getNome());
+        valores.put("descricao", lugar.getDescricao());
+        bd.update("lugar",valores,where,null);
+        bd.close();
+    }
+    public Lugar sqlGetLugar(int id){
+        Lugar lugar = new Lugar();
+        String where ="SELECT * FROM lugar WHERE id_lugar = '"+String.valueOf(id)+"'";
+        Cursor cursor = bd.rawQuery(where, null);
+        if(cursor.moveToFirst()){
+            lugar.setId(cursor.getInt(0));
+            lugar.setNome(cursor.getString(1));
+            lugar.setDescriacao(cursor.getString(2));
+        }
+        bd.close();
+        return lugar;
     }
 }

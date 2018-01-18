@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import br.ufrpe.beela.database.dao.BD;
 import br.ufrpe.beela.perfil.dominio.PerfilComida;
 import br.ufrpe.beela.perfil.dominio.PerfilEsporte;
+import br.ufrpe.beela.perfil.dominio.PerfilLugar;
 import br.ufrpe.beela.perfil.dominio.PerfilMusica;
 import br.ufrpe.beela.perfil.dominio.PerfilUsuario;
 import br.ufrpe.beela.usuario.dominio.Usuario;
@@ -209,5 +210,44 @@ public class PerfilDAO {
         bd.close();
         return perfilUsuario;
     }
-
+    public void inserir(PerfilLugar perfilLugar){
+        ContentValues valores = new ContentValues();
+        valores.put("id_lugar", perfilLugar.getId_Lugar());
+        valores.put("localizacao", perfilLugar.getLocalicao());
+        bd.insert("perfilLugar", null, valores);
+        bd.close();
+    }
+    public ArrayList<Integer> sqlGetPerfilLugar(ArrayList<Integer> list,PerfilComida comida){
+        String where ="SELECT * FROM perfilComida WHERE nome = '"+comida.getNome()+"'";
+        Cursor cursor = bd.rawQuery(where, null);
+        if(cursor.getCount()>0){
+            cursor.moveToFirst();
+            do{
+                if (!list.contains(cursor.getInt(3))){list.add(cursor.getInt(3));}
+            }while (cursor.moveToNext());
+        }
+        return list;
+    }
+    public ArrayList<Integer> sqlGetPerfilLugar(ArrayList<Integer> list,PerfilMusica musica){
+        String where ="SELECT * FROM perfilComida WHERE nome = '"+musica.getNome()+"'";
+        Cursor cursor = bd.rawQuery(where, null);
+        if(cursor.getCount()>0){
+            cursor.moveToFirst();
+            do{
+                if (!list.contains(cursor.getInt(3))){list.add(cursor.getInt(3));}
+            }while (cursor.moveToNext());
+        }
+        return list;
+    }
+    public ArrayList<Integer> sqlGetPerfilLugar(ArrayList<Integer> list,PerfilEsporte esporte){
+        String where ="SELECT * FROM perfilComida WHERE nome = '"+esporte.getNome()+"'";
+        Cursor cursor = bd.rawQuery(where, null);
+        if(cursor.getCount()>0){
+            cursor.moveToFirst();
+            do{
+                if (!list.contains(cursor.getInt(3))){list.add(cursor.getInt(3));}
+            }while (cursor.moveToNext());
+        }
+        return list;
+    }
 }
