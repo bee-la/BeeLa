@@ -14,6 +14,7 @@ public class PerfilUsuario {
     private ArrayList<PerfilMusica> musica;
     private ArrayList<PerfilEsporte> esporte;
     private boolean selecionado;
+    private PerfilUsuario perfilAtual;
 
     public int getId(){return this.id;}
     public int getId_Usuario(){return this.id_usuario;}
@@ -37,6 +38,18 @@ public class PerfilUsuario {
     public void setSelecionado(boolean selecionado){
         this.selecionado=selecionado;
     }
+<<<<<<< HEAD
     
+=======
+
+    public PerfilUsuario getPerfilAtual(){
+        return perfilAtual;
+    }
+
+    public void setPerfilAtual(PerfilUsuario perfilAtual){
+        this.perfilAtual=perfilAtual;
+    }
+
+>>>>>>> desenvolvedor2
 
 }

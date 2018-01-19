@@ -115,5 +115,7 @@
     <string name="Esportes">Esportes</string>
     <string name="Massas">Massas</string>
     <string name="Vegetariano">vegetariano</string>
+    <string name="sozinho">Sozinho</string>
+    <string name="acompanhado">Acompanhado</string>
 
 </resources>

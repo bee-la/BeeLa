@@ -67,6 +67,8 @@
         <activity
             android:name="br.ufrpe.beela.lugar.gui.LugarAct"
             android:label="Lugares" />
+        <activity android:name="br.ufrpe.beela.lugar.gui.EscolhaProgramaAct"
+            android:label="E ai, como vai ser?"></activity>
     </application>
 
 </manifest>
