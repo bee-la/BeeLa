@@ -18,28 +18,38 @@ import br.ufrpe.beela.perfil.dominio.PerfilUsuario;
 
 public class LugarService {
 
-    public ArrayList<Lugar> sqlGetListLugar(PerfilUsuario perfilUsuario, Context context){
+    public ArrayList<Lugar> getListLugar(PerfilUsuario perfilUsuario, Context context){
         ArrayList<Lugar>listLugar = new ArrayList<Lugar>();
         ArrayList<Integer>listId = new ArrayList<>();
         for (PerfilComida comida : perfilUsuario.getComida()){
             PerfilDAO bd = new PerfilDAO();
             bd.getLer(context);
-            bd.sqlGetPerfilLugar(listId,comida);
+            bd.getPerfilLugar(listId,comida);
         }
         for (PerfilMusica musica : perfilUsuario.getMusica()){
             PerfilDAO bd = new PerfilDAO();
             bd.getLer(context);
-            bd.sqlGetPerfilLugar(listId,musica);
+            bd.getPerfilLugar(listId,musica);
         }
         for (PerfilEsporte esporte : perfilUsuario.getEsporte()){
             PerfilDAO bd = new PerfilDAO();
             bd.getLer(context);
-            bd.sqlGetPerfilLugar(listId,esporte);
+            bd.getPerfilLugar(listId,esporte);
         }
         for (int id : listId) {
             LugarDAO bd = new LugarDAO();
             bd.getLer(context);
-            listLugar.add(bd.sqlGetLugar(id));
+            Lugar lugar = bd.getLugar(id);
+            PerfilDAO bdp = new PerfilDAO();
+            bdp.getEscrever(context);
+            lugar.setComida(bdp.getPerfilComida(lugar));
+            bdp = new PerfilDAO();
+            bdp.getEscrever(context);
+            lugar.setEsporte(bdp.getPerfilEsporte(lugar));
+            bdp = new PerfilDAO();
+            bdp.getEscrever(context);
+            lugar.setMusica(bdp.getPerfilMusica(lugar));
+            listLugar.add(lugar);
         }
         return listLugar;
     }

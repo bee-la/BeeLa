@@ -36,18 +36,20 @@ public class LugarDAO {
         ContentValues valores = new ContentValues();
         valores.put("nome_lugar", lugar.getNome());
         valores.put("descricao", lugar.getDescricao());
+        valores.put("localizacao",lugar.getLocalicao());
         bd.insert("lugar", null, valores);
         bd.close();
     }
-    public void upgrade(Lugar lugar){
-        ContentValues valores = new ContentValues();
-        String where = "id = " + String.valueOf(lugar.getId());
-        valores.put("nome_lugar", lugar.getNome());
-        valores.put("descricao", lugar.getDescricao());
-        bd.update("lugar",valores,where,null);
-        bd.close();
-    }
-    public Lugar sqlGetLugar(int id){
+//    public void upgrade(Lugar lugar){
+//        ContentValues valores = new ContentValues();
+//        String where = "id = " + String.valueOf(lugar.getId());
+//        valores.put("nome", lugar.getNome());
+//        valores.put("descricao", lugar.getDescricao());
+//        valores.put("localizacao",lugar.getLocalicao());
+//        bd.update("lugar",valores,where,null);
+//        bd.close();
+//    }
+    public Lugar getLugar(int id){
         Lugar lugar = new Lugar();
         String where ="SELECT * FROM lugar WHERE id_lugar = '"+String.valueOf(id)+"'";
         Cursor cursor = bd.rawQuery(where, null);
@@ -55,6 +57,20 @@ public class LugarDAO {
             lugar.setId(cursor.getInt(0));
             lugar.setNome(cursor.getString(1));
             lugar.setDescriacao(cursor.getString(2));
+            lugar.setLocalicao(cursor.getString(3));
+        }
+        bd.close();
+        return lugar;
+    }
+    public Lugar getLugar(String nome){
+        Lugar lugar = new Lugar();
+        String where ="SELECT * FROM lugar WHERE nome_lugar = "+nome;
+        Cursor cursor = bd.rawQuery(where, null);
+        if(cursor.moveToFirst()){
+            lugar.setId(cursor.getInt(0));
+            lugar.setNome(cursor.getString(1));
+            lugar.setDescriacao(cursor.getString(2));
+            lugar.setLocalicao(cursor.getString(3));
         }
         bd.close();
         return lugar;

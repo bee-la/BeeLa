@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteDatabase;
 import java.util.ArrayList;
 
 import br.ufrpe.beela.database.dao.BD;
+import br.ufrpe.beela.lugar.dominio.Lugar;
 import br.ufrpe.beela.perfil.dominio.PerfilComida;
 import br.ufrpe.beela.perfil.dominio.PerfilEsporte;
 import br.ufrpe.beela.perfil.dominio.PerfilLugar;
@@ -121,7 +122,8 @@ public class PerfilDAO {
         }
         return true;
     }
-    public ArrayList<PerfilComida> sqlGetPerfilComida (PerfilUsuario perfilUsuario) {
+
+    public ArrayList<PerfilComida> getPerfilComida(PerfilUsuario perfilUsuario) {
         ArrayList<PerfilComida> comidas = new ArrayList<PerfilComida>();
         String where = "SELECT * FROM perfilComida WHERE id_usuario = '" + String.valueOf(perfilUsuario.getId_Usuario()) + "' AND nome_perfil = '" + perfilUsuario.getNome() + "'";
         Cursor cursor = bd.rawQuery(where, null);
@@ -139,7 +141,7 @@ public class PerfilDAO {
         return comidas;
     }
 
-    public ArrayList<PerfilMusica> sqlGetPerfilMusica (PerfilUsuario perfilUsuario) {
+    public ArrayList<PerfilMusica> getPerfilMusica(PerfilUsuario perfilUsuario) {
         ArrayList<PerfilMusica> musicas = new ArrayList<PerfilMusica>();
         String where = "SELECT * FROM perfilMusica WHERE id_usuario = '" + String.valueOf(perfilUsuario.getId_Usuario()) + "' AND nome_perfil = '" + perfilUsuario.getNome() + "'";
         Cursor cursor = bd.rawQuery(where, null);
@@ -159,7 +161,7 @@ public class PerfilDAO {
     }
 
 
-    public ArrayList<PerfilEsporte> sqlGetPerfilEsporte (PerfilUsuario perfilUsuario) {
+    public ArrayList<PerfilEsporte> getPerfilEsporte(PerfilUsuario perfilUsuario) {
         ArrayList<PerfilEsporte> esportes = new ArrayList<PerfilEsporte>();
         String where = "SELECT * FROM perfilEsporte WHERE id_usuario = '" + String.valueOf(perfilUsuario.getId_Usuario()) + "' AND nome_perfil = '" + perfilUsuario.getNome() + "'";
         Cursor cursor = bd.rawQuery(where, null);
@@ -178,7 +180,7 @@ public class PerfilDAO {
         return esportes;
     }
 
-    public  ArrayList<PerfilUsuario>  sqlGetPerfil(int id){
+    public  ArrayList<PerfilUsuario> getPerfil(int id){
         ArrayList<PerfilUsuario> list = new ArrayList<PerfilUsuario>();
         String where ="SELECT * FROM perfilUsuario WHERE id_usuario = '"+ String.valueOf(id)+"'";
         Cursor cursor = bd.rawQuery(where,null);
@@ -198,26 +200,19 @@ public class PerfilDAO {
         return list;
     }
 
-    public PerfilUsuario sqlRetornaObjetoPerfilUsuario(String email,String senha){
-        PerfilUsuario perfilUsuario = new PerfilUsuario();
-        String where ="SELECT * FROM perfilUsuario WHERE email = '"+email+"'"+"AND senha = '"+senha+"'";
-        Cursor cursor = bd.rawQuery(where, null);
-        if(cursor.getCount()>0){
-            cursor.moveToFirst();
-            perfilUsuario.setId(cursor.getInt(0));
-            perfilUsuario.setId_usuario(cursor.getInt(1));
-        }
-        bd.close();
-        return perfilUsuario;
-    }
-    public void inserir(PerfilLugar perfilLugar){
-        ContentValues valores = new ContentValues();
-        valores.put("id_lugar", perfilLugar.getId_Lugar());
-        valores.put("localizacao", perfilLugar.getLocalicao());
-        bd.insert("perfilLugar", null, valores);
-        bd.close();
-    }
-    public ArrayList<Integer> sqlGetPerfilLugar(ArrayList<Integer> list,PerfilComida comida){
+//    public PerfilUsuario sqlRetornaObjetoPerfilUsuario(String email,String senha){
+//        PerfilUsuario perfilUsuario = new PerfilUsuario();
+//        String where ="SELECT * FROM perfilUsuario WHERE email = '"+email+"'"+"AND senha = '"+senha+"'";
+//        Cursor cursor = bd.rawQuery(where, null);
+//        if(cursor.getCount()>0){
+//            cursor.moveToFirst();
+//            perfilUsuario.setId(cursor.getInt(0));
+//            perfilUsuario.setId_usuario(cursor.getInt(1));
+//        }
+//        bd.close();
+//        return perfilUsuario;
+//    }
+    public ArrayList<Integer> getPerfilLugar(ArrayList<Integer> list, PerfilComida comida){
         String where ="SELECT * FROM perfilComida WHERE nome = '"+comida.getNome()+"'";
         Cursor cursor = bd.rawQuery(where, null);
         if(cursor.getCount()>0){
@@ -228,8 +223,8 @@ public class PerfilDAO {
         }
         return list;
     }
-    public ArrayList<Integer> sqlGetPerfilLugar(ArrayList<Integer> list,PerfilMusica musica){
-        String where ="SELECT * FROM perfilComida WHERE nome = '"+musica.getNome()+"'";
+    public ArrayList<Integer> getPerfilLugar(ArrayList<Integer> list, PerfilMusica musica){
+        String where ="SELECT * FROM perfilMusica WHERE nome = '"+musica.getNome()+"'";
         Cursor cursor = bd.rawQuery(where, null);
         if(cursor.getCount()>0){
             cursor.moveToFirst();
@@ -239,8 +234,8 @@ public class PerfilDAO {
         }
         return list;
     }
-    public ArrayList<Integer> sqlGetPerfilLugar(ArrayList<Integer> list,PerfilEsporte esporte){
-        String where ="SELECT * FROM perfilComida WHERE nome = '"+esporte.getNome()+"'";
+    public ArrayList<Integer> getPerfilLugar(ArrayList<Integer> list, PerfilEsporte esporte){
+        String where ="SELECT * FROM perfilEsporte WHERE nome = '"+esporte.getNome()+"'";
         Cursor cursor = bd.rawQuery(where, null);
         if(cursor.getCount()>0){
             cursor.moveToFirst();
@@ -250,4 +245,62 @@ public class PerfilDAO {
         }
         return list;
     }
+
+    public ArrayList<PerfilComida> getPerfilComida(Lugar lugar) {
+        ArrayList<PerfilComida> comidas = new ArrayList<PerfilComida>();
+        String where = "SELECT * FROM perfilComida WHERE id_lugar = '" + String.valueOf(lugar.getId()) + "'";
+        Cursor cursor = bd.rawQuery(where, null);
+        if (cursor.getCount() > 0) {
+            do {
+                PerfilComida comida = new PerfilComida();
+                comida.setId(cursor.getInt(0));
+                comida.setNome(cursor.getString(1));
+                comida.setId_usuario(cursor.getInt(2));
+                comida.setNome_perfil(cursor.getString(3));
+                comidas.add(comida);
+            } while (cursor.moveToNext());
+        }
+        bd.close();
+        return comidas;
+    }
+
+    public ArrayList<PerfilMusica> getPerfilMusica(Lugar lugar) {
+        ArrayList<PerfilMusica> musicas = new ArrayList<PerfilMusica>();
+        String where = "SELECT * FROM perfilMusica WHERE id_lugar = '" + String.valueOf(lugar.getId()) + "'";
+        Cursor cursor = bd.rawQuery(where, null);
+        if (cursor.getCount() > 0) {
+            cursor.moveToFirst();
+            do {
+                PerfilMusica musica = new PerfilMusica();
+                musica.setId(cursor.getInt(0));
+                musica.setNome(cursor.getString(1));
+                musica.setId_usuario(cursor.getInt(2));
+                musica.setNome_perfil(cursor.getString(3));
+                musicas.add(musica);
+            } while (cursor.moveToNext());
+        }
+        bd.close();
+        return musicas;
+    }
+
+
+    public ArrayList<PerfilEsporte> getPerfilEsporte(Lugar lugar) {
+        ArrayList<PerfilEsporte> esportes = new ArrayList<PerfilEsporte>();
+        String where = "SELECT * FROM perfilEsporte WHERE id_lugar = '" + String.valueOf(lugar.getId()) + "'";
+        Cursor cursor = bd.rawQuery(where, null);
+        if (cursor.getCount() > 0) {
+            cursor.moveToFirst();
+            do {
+                PerfilEsporte esporte = new PerfilEsporte();
+                esporte.setId(cursor.getInt(0));
+                esporte.setNome(cursor.getString(1));
+                esporte.setId_usuario(cursor.getInt(2));
+                esporte.setNome_perfil(cursor.getString(3));
+                esportes.add(esporte);
+            } while (cursor.moveToNext());
+        }
+        bd.close();
+        return esportes;
+    }
+
 }

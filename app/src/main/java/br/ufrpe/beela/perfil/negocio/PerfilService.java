@@ -14,7 +14,6 @@ import br.ufrpe.beela.perfil.dominio.PerfilEsporte;
 import br.ufrpe.beela.perfil.dominio.PerfilMusica;
 import br.ufrpe.beela.perfil.dominio.PerfilUsuario;
 import br.ufrpe.beela.perfil.gui.PerfilAct;
-import br.ufrpe.beela.usuario.gui.LoginAct;
 
 /**
  * Created by vidal on 14/12/2017.
@@ -76,7 +75,7 @@ public class PerfilService {
     public ArrayList<PerfilUsuario> MontarPerfis(PerfilUsuario perfilUsuario,Context context){
         PerfilDAO bd = new PerfilDAO();
         bd.getLer(context);
-        return bd.sqlGetPerfil(perfilUsuario.getId_Usuario());
+        return bd.getPerfil(perfilUsuario.getId_Usuario());
     }
     public void adcListaComida(ArrayList<CheckBox> checkBoxesComidas,ArrayList<PerfilComida> listaComida, PerfilUsuario perfilUsuario){
         for (CheckBox x : checkBoxesComidas) {

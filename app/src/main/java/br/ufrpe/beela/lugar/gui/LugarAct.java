@@ -11,34 +11,48 @@ import android.view.View;
 import android.widget.Button;
 import android.content.ComponentName;
 import android.net.Uri;
+import android.widget.ListView;
 import android.widget.Toast;
 
 
+import java.util.ArrayList;
+
 import br.ufrpe.beela.gui.R;
+import br.ufrpe.beela.lugar.dominio.Lugar;
+import br.ufrpe.beela.perfil.dominio.PerfilUsuario;
+import br.ufrpe.beela.usuario.gui.LoginAct;
 
 /**
  * Created by max on 06/01/18.
  */
 
-public class LugaresAct extends AppCompatActivity {
+public class LugarAct extends AppCompatActivity {
 
     private Button btIr;
     private double destinolatitude;
     private double destinolongitude;
+    private PerfilUsuario perfilAtual= LoginAct.getPessoa().getPerfil().
+    private ListView listViewLugares;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_lugares_sugestao);
+        setContentView(R.layout.activity_lugares);
+//        setContentView(R.layout.activity_lugares_sugestao);
+        setListView();
         verificarGPS();
-        btIr = findViewById(R.id.buttonIr);
-//
-        btIr.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                chamarMapa();
-            }
-        });
+//        btIr = findViewById(R.id.buttonIr);
+////
+//        btIr.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                chamarMapa();
+//            }
+//        });
+    }
+
+    public ArrayList<Lugar> getLugares(){
+        return lugarService.getListaLugar(perfilAtual, this);
     }
 
     private void chamarMapa() {
@@ -47,7 +61,7 @@ public class LugaresAct extends AppCompatActivity {
 
         try {
             Intent intent = new Intent(android.content.Intent.ACTION_VIEW,
-                    Uri.parse("http://maps.google.com/maps?saddr= ''" +","+ "''&daddr=" + destinolatitude + "," + destinolongitude));
+                    Uri.parse("http://maps.google.com/maps?saddr=&daddr=" + destinolatitude + "," + destinolongitude));
 
 
             intent.setComponent(new ComponentName(getString(R.string.comandoAppMaps), getString(R.string.comandoMapsActivity)));
@@ -78,5 +92,15 @@ public class LugaresAct extends AppCompatActivity {
             erro.show();
             return;
         }
+    }
+
+    private void setListView(){
+        listViewLugares = (ListView) findViewById(R.id.listView2);
+        ListViewLugar lista = new ListViewLugar(LugarAct.this);
+        listViewLugares.setAdapter(lista);
+    }
+
+    public void irTelaDescricaoLugar(TextView texto){
+        Toast.makeText(getApplicationContext(), texto.getText().toString(), Toast.LENGTH_SHORT).show();
     }
 }

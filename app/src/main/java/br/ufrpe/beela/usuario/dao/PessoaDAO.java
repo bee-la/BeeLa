@@ -48,7 +48,7 @@ public class PessoaDAO {
         bd.update("pessoa", valores, where,null);
         bd.close();
     }
-    public Pessoa sqlRetornaObjetoPessoa(int id_usuario){
+    public Pessoa getPessoa(int id_usuario){
         Pessoa pessoa = new Pessoa();
         String where ="SELECT * FROM pessoa WHERE id_usuario = '"+id_usuario+"'";
         Cursor cursor = bd.rawQuery(where, null);
@@ -61,7 +61,7 @@ public class PessoaDAO {
         bd.close();
         return pessoa;
     }
-    public boolean sqlVerificarCelular(String celular){
+    public boolean verificarCelular(String celular){
         boolean saida = false;
         String where ="SELECT * FROM pessoa WHERE celular = '"+celular+"'";
         Cursor cursor = bd.rawQuery(where, null);

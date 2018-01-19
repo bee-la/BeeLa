@@ -86,7 +86,7 @@ public class CriarContaAct extends AppCompatActivity {
             erro2.show();
         }
         else {
-            usuarioValido.salvarUsuarioBancoDados(usuarioValido.criarObjetoUsuario(email,senha),usuarioValido.criarObjetoPessoa(nome,celular),this);
+            usuarioValido.salvarUsuarioBancoDados(usuarioValido.criarUsuario(email,senha),usuarioValido.criarPessoa(nome,celular),this);
             contaCriada = Toast.makeText(getApplicationContext(), R.string.contaCriada, Toast.LENGTH_SHORT);
             contaCriada.show();
             finish();

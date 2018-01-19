@@ -79,7 +79,7 @@ public class UsuarioDAO {
         bd.close();
         return list;}
 
-    public Usuario sqlRetornaObjetoUsuario(String email,String senha){
+    public Usuario getUsuario(String email, String senha){
         Usuario usuario = new Usuario();
         String where ="SELECT * FROM usuario WHERE email = '"+email+"'"+"AND senha = '"+senha+"'";
         Cursor cursor = bd.rawQuery(where, null);
@@ -102,7 +102,7 @@ public class UsuarioDAO {
         return false;
     }
 
-    public boolean sqlVerificarLogin(String email, String senha){
+    public boolean verificarLogin(String email, String senha){
         String where ="SELECT * FROM usuario WHERE email ='"+email+"'"+"AND senha = '"+senha+"'";
         Cursor cursor = bd.rawQuery(where, null);
         if(cursor.getCount()>0){

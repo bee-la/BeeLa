@@ -48,13 +48,13 @@ public class UsuarioService {
         }
     }
 
-    public Pessoa criarObjetoPessoa(String nome, String celular) {
+    public Pessoa criarPessoa(String nome, String celular) {
         Pessoa p = new Pessoa();
         p.setCelular(celular);
         p.setNome(nome);
         return p;
     }
-    public Usuario criarObjetoUsuario(String email, String senha) {
+    public Usuario criarUsuario(String email, String senha) {
 
         Usuario u = new Usuario();
 
@@ -71,7 +71,7 @@ public class UsuarioService {
     public boolean verificarCelularExiste(String celular, Context context) {
         PessoaDAO bd = new PessoaDAO();
         bd.getLer(context);
-        return bd.sqlVerificarCelular(celular);
+        return bd.verificarCelular(celular);
     }
 
     public void alterarNome(Pessoa pessoa, String alterarNome, Context context) {
@@ -94,7 +94,7 @@ public class UsuarioService {
     public boolean verificarEmailSenhaLogar(String email, String senha,Context context) {
         UsuarioDAO bd = new UsuarioDAO();
         bd.getLer(context);
-        if (bd.sqlVerificarLogin(email, senha)) {
+        if (bd.verificarLogin(email, senha)) {
             return true;
         }
         else {return false;}
@@ -102,12 +102,12 @@ public class UsuarioService {
     public Usuario gerarUsuario(String email, String senha, Context context){
         UsuarioDAO bd = new UsuarioDAO();
         bd.getLer(context);
-        return bd.sqlRetornaObjetoUsuario(email,senha);
+        return bd.getUsuario(email,senha);
     }
     public Pessoa gerarPessoa(int id_usuario, Context context){
         PessoaDAO bd = new PessoaDAO();
         bd.getLer(context);
-        return bd.sqlRetornaObjetoPessoa(id_usuario);
+        return bd.getPessoa(id_usuario);
     }
     public PerfilUsuario gerarPerfilUsuario(int id_usuario){
         PerfilUsuario perfilUsuario = new PerfilUsuario();
