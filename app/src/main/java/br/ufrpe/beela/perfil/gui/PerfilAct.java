@@ -14,6 +14,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 import java.util.ArrayList;
+
+import br.ufrpe.beela.lugar.gui.EscolhaProgramaAct;
 import br.ufrpe.beela.perfil.dao.PerfilDAO;
 import br.ufrpe.beela.perfil.dominio.PerfilUsuario;
 import br.ufrpe.beela.perfil.negocio.ListViewNomePerfil;
@@ -27,6 +29,8 @@ public class PerfilAct extends AppCompatActivity {
     private ListView listViewPerfis;
     private TextView fonteBotaoComecar;
     private Toast erro;
+    private Button botaoComecar;
+    private int contador;
 
     private PerfilUsuario perfilUsuario = LoginAct.getPessoa().getPerfil();
     private Usuario usuario=LoginAct.getUsuario();
@@ -44,6 +48,7 @@ public class PerfilAct extends AppCompatActivity {
         alterarFonte();
         adicionarPerfil();
         irExcluirPerfil();
+        irTelaEscolhaPrograma();
     }
 
     public static ArrayList<PerfilUsuario> getListaPerfis(){
@@ -93,7 +98,11 @@ public class PerfilAct extends AppCompatActivity {
                 for(int i=0; i<adapter.getCount(); i++){
                     PerfilUsuario perfil=(PerfilUsuario) adapter.getItem(i);
                     if(perfil.isSelecionado()) {
-                        excluirPerfil(perfil.getNome());    }   }   }   }
+                        excluirPerfil(perfil.getNome());
+                    }
+                }
+            }
+        }
         catch (Exception e){
             e.printStackTrace();
         }
@@ -109,10 +118,6 @@ public class PerfilAct extends AppCompatActivity {
     private void MontarPerfil(){
         perfilUsuarioArrayList = perfilService.MontarPerfis(perfilUsuario,PerfilAct.this);
     }
-
-//    public ArrayList<PerfilUsuario> getPerfiss(){
-//        return perfilUsuarioArrayList;
-//    }
 
     private void excluirPerfil(final String nomePerfil){
         final CharSequence[] escolha={getString(R.string.sim), getString(R.string.nao)};
@@ -131,5 +136,49 @@ public class PerfilAct extends AppCompatActivity {
         alerta.setTitle(getString(R.string.verificarExcluirPerfil)+" "+ nomePerfil+ getString(R.string.sinalInterrogacao));
         AlertDialog aviso=alerta.create();
         aviso.show();
+    }
+
+    public void irTelaEscolhaPrograma(){
+        botaoComecar=(Button)findViewById(R.id.button14);
+        botaoComecar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                 try{
+                    if(listViewPerfis!=null) {
+                        Adapter adapter = (Adapter) listViewPerfis.getAdapter();
+                        contador=0;
+                        if (!verificaSelecionados()) {
+                            Toast.makeText(getApplicationContext(), "Selecione apenas um perfil", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(getApplicationContext(), "Perfil Atual: " + perfilUsuario.getPerfilAtual().getNome(), Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(PerfilAct.this, EscolhaProgramaAct.class));
+                        }
+                    }
+                }
+                catch (Exception e){
+                    e.printStackTrace();
+                }
+            }
+        });
+    }
+
+    public boolean verificaSelecionados(){
+        Adapter adapter= (Adapter) listViewPerfis.getAdapter();
+        PerfilUsuario perfilAtual=new PerfilUsuario();
+        for(int i=0; i<adapter.getCount(); i++) {
+            PerfilUsuario perfil = (PerfilUsuario) adapter.getItem(i);
+            if (perfil.isSelecionado()) {
+                contador += 1;
+                perfilAtual=perfil;
+            }
+        }
+        if(contador==1){
+            perfilUsuario.setPerfilAtual(null);
+            perfilUsuario.setPerfilAtual(perfilAtual);
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 }
