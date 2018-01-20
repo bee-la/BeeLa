@@ -61,6 +61,7 @@ public class NomePerfilAct extends AppCompatActivity {
         if(perfilService.verificarNomeIgual(nomePerfil)){
             if (perfilService.verificarNomeVazio(nomePerfil)) {
                 perfilUsuario.setNome(nomePerfil);
+                LoginAct.getPessoa().setPerfil(perfilUsuario);
                 salvarBD();
                 irTelaPerfil();
             }
@@ -76,14 +77,15 @@ public class NomePerfilAct extends AppCompatActivity {
     }
 
     public void salvarBD() {
-        perfilService.adcComida(perfilUsuario, this);
-        perfilService.adcMusica(perfilUsuario, this);
-        perfilService.adcEsporte(perfilUsuario, this);
         perfilService.adcPerfil(perfilUsuario, this);
+        perfilService.adcPerfilFavorito(LoginAct.getPessoa().getId(),nomePerfil,this);
     }
 
     public void irTelaPerfil(){
-        startActivity(new Intent(this, PerfilAct.class));
+        Intent intent = new Intent();
+        intent.putExtra("nomePerfil",nomePerfil);
+    //    startActivity(new Intent(this, PerfilAct.class));
+        setResult(1,intent);
         finish();
     }
 }

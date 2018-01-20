@@ -44,6 +44,13 @@ public class PerfilDAO {
         bd.insert("perfilUsuario", null, valores);
         bd.close();
     }
+    public void inserirPerfilFavorito(int id, String nome) {
+        ContentValues valores = new ContentValues();
+        valores.put("id_pessoa",id);
+        valores.put("nome_perfil", nome);
+        bd.insert("perfilFavorito", null, valores);
+        bd.close();
+    }
     public void inserirPerfilMusica(PerfilMusica musica){
             ContentValues valores = new ContentValues();
             valores.put("nome",musica.getNome());
@@ -87,7 +94,7 @@ public class PerfilDAO {
 
 
     public void deletePerfilUsuario(int id, String nomePerfil) {
-        String where = "id_usuario = '" + String.valueOf(id) +"' AND nome_perfil = '"+ nomePerfil+"'";//perfil.getNome();
+        String where = "id_usuario = '" + String.valueOf(id) +"' AND nome_perfil = '"+ nomePerfil+"'";
         bd.delete("perfilUsuario", where , null);
         bd.close();}
 
@@ -96,15 +103,23 @@ public class PerfilDAO {
         bd.delete("perfilUsuario", where , null);
         bd.close();}
 
-    public void deletePerfilMusica(PerfilMusica musica) {
-        String where = "id_usuario = " + String.valueOf(musica.getId_usuario())+" AND nome_perfil = "+ musica.getNome_perfil();
-        bd.delete("perfilComida", where , null);
-        bd.close();}
+    public void deletePerfilMusica(int id, String nomePerfil) {
+        String where = "id_usuario = " + String.valueOf(id)+" AND nome_perfil = "+ nomePerfil;
+        bd.delete("perfilMusica", where , null);
+        bd.close();
+    }
 
-    public void deletePerfilComida(PerfilComida comida) {
-        String where = "id_usuario = " + String.valueOf(comida.getId_usuario())+" AND nome_perfil = "+ comida.getNome_perfil();
+    public void deletePerfilComida(int id, String nomePerfil) {
+        String where = "id_usuario = " + String.valueOf(id)+" AND nome_perfil = "+ nomePerfil;
         bd.delete("perfilComida", where , null);
-        bd.close();}
+        bd.close();
+    }
+
+    public void deletePerfilEsporte(int id, String nomePerfil) {
+        String where = "id_usuario = " + String.valueOf(id)+" AND nome_perfil = "+ nomePerfil;
+        bd.delete("perfilEsporte", where , null);
+        bd.close();
+    }
 
     public ArrayList<PerfilComida> getPerfilComida(PerfilUsuario perfilUsuario) {
         ArrayList<PerfilComida> comidas = new ArrayList<PerfilComida>();
@@ -316,5 +331,15 @@ public class PerfilDAO {
         bd.insert("perfilEsporte",null,valores);
         bd.close();
     }
-
+    public PerfilUsuario getFavorito(int id){
+        PerfilUsuario perfilUsuario= new PerfilUsuario();
+        String where = "SELECT * FROM perfilFavorito WHERE id_pessoa = '" + String.valueOf(id) + "'";
+        Cursor cursor = bd.rawQuery(where, null);
+        if(cursor.getCount()>0){
+            cursor.moveToNext();
+            perfilUsuario.setId(cursor.getInt(1));
+            perfilUsuario.setNome(cursor.getString(2));
+        }
+        return perfilUsuario;
+    }
 }

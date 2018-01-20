@@ -38,5 +38,8 @@ public class PerfilUsuario {
         this.selecionado=selecionado;
     }
 
+    private PerfilUsuario perfilAtual;
+    public PerfilUsuario getPerfilAtual(){return perfilAtual;}
+    public void setPerfilAtual(PerfilUsuario perfil){this.perfilAtual = perfil;}
 
 }

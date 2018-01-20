@@ -35,6 +35,7 @@ public class PessoaDAO {
         bd.insert("pessoa",null,valores);
         bd.close();
     }
+
     public void delete(Pessoa pessoa) {
         bd.delete("usuario", "_id = " + pessoa.getId(), null);
         bd.close();

@@ -8,7 +8,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import java.util.ArrayList;
+
+import br.ufrpe.beela.perfil.dao.PerfilDAO;
 import br.ufrpe.beela.perfil.dominio.PerfilComida;
 import br.ufrpe.beela.perfil.dominio.PerfilUsuario;
 import br.ufrpe.beela.perfil.negocio.PerfilService;
@@ -50,13 +54,15 @@ public class PerguntaComidaAct extends AppCompatActivity {
         checkBoxesComidas.add((CheckBox) findViewById(R.id.checkBoxOrientais));
     }
 
-    private void clicarBotaoConfirmar(){
+    private void clicarBotaoConfirmar() {
         botaoConfirmar = (Button) findViewById(R.id.buttonConfirmar2);
         botaoConfirmar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                perfilService.adcListaComida(checkBoxesComidas,listaComida,perfilUsuario);
+                perfilService.adcListaComida(checkBoxesComidas, listaComida, perfilUsuario);
+                LoginAct.getPessoa().setPerfil(perfilUsuario);
                 irTelaPerguntaEsporte();
+
             }
         });
     }
@@ -66,10 +72,31 @@ public class PerguntaComidaAct extends AppCompatActivity {
     }
 
 
-    public void irTelaPerguntaEsporte(){
-        startActivity(new Intent(PerguntaComidaAct.this, PerguntaEsporteAct.class));
-        finish();
+    public void irTelaPerguntaEsporte() {
+        startActivityForResult(new Intent(PerguntaComidaAct.this, PerguntaEsporteAct.class), 1);
     }
 
-}
+    public void addTesteNome() {
+        if (perfilUsuario.getNome() != null) {
+            PerfilDAO bd = new PerfilDAO();
+            bd.getLer(this);
+            perfilService.adcComida(perfilUsuario, this);
+        }
+        else{
+            Toast.makeText(getApplicationContext(), "NÂO TEM NOME", Toast.LENGTH_SHORT).show();}
+    }
 
+    protected void onActivityResult(int codigoDaTela, int quemInviou, Intent intent) {
+        if (codigoDaTela == 1) {
+            Bundle valor = intent.getExtras();
+            if (valor != null) {
+                perfilUsuario.setNome(valor.getString("nomePerfil"));
+                addTesteNome();
+                setResult(1,intent);
+                finish();
+            }
+
+
+        }
+    }
+}

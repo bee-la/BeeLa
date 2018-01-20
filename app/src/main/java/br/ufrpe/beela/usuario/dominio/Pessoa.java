@@ -11,18 +11,18 @@ public class Pessoa {
     private String nome;
     private String celular;
     private int id_usuario;
-    private PerfilUsuario perfil = new PerfilUsuario();
-
 
     public int getId(){return id;}
     public String getNome() {return nome;}
     public String getCelular() {return celular;}
-    public PerfilUsuario getPerfil(){return perfil;}
     public int getId_usuario() {return id_usuario;}
 
     public void setId(int id){this.id = id;}
     public void setNome(String nome) {this.nome = nome;}
     public void setCelular(String celular) {this.celular = celular;}
-    public void setPerfil(PerfilUsuario perfil){this.perfil = perfil;}
     public void setId_usuario(int id_usuario) {this.id_usuario = id_usuario;}
+
+    private PerfilUsuario perfil = new PerfilUsuario();
+    public PerfilUsuario getPerfil(){return perfil;}
+    public void setPerfil(PerfilUsuario perfil){this.perfil = perfil;}
 }

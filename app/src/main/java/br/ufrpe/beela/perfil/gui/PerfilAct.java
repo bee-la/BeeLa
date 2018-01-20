@@ -34,8 +34,8 @@ public class PerfilAct extends AppCompatActivity {
     private Button botaoComecar;
     private int contador;
 
-    private PerfilUsuario perfilUsuario = LoginAct.getPessoa().getPerfil();
     private Pessoa pessoa = LoginAct.getPessoa();
+    private PerfilUsuario perfilUsuario = pessoa.getPerfil();
     private Usuario usuario=LoginAct.getUsuario();
     private PerfilService perfilService = new PerfilService();
     public static ArrayList<PerfilUsuario> perfilUsuarioArrayList = new ArrayList<>();
@@ -153,7 +153,7 @@ public class PerfilAct extends AppCompatActivity {
                         if (!verificaSelecionados()) {
                             Toast.makeText(getApplicationContext(), "Selecione apenas um perfil", Toast.LENGTH_SHORT).show();
                         } else {
-                            Toast.makeText(getApplicationContext(), "Perfil Atual: " + pessoa.getPerfil().getNome(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), "Perfil Atual: " + perfilUsuario.getPerfilAtual().getNome(), Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(PerfilAct.this, EscolhaProgramaAct.class));
                         }
                     }
@@ -176,11 +176,8 @@ public class PerfilAct extends AppCompatActivity {
             }
         }
         if(contador==1){
-            PerfilDAO bd = new PerfilDAO();
-            bd.getLer(this);
-            pessoa.getPerfil().setComida(bd.getPerfilComida(perfilUsuario));
-            pessoa.setPerfil(perfilAtual);
- //           Log.d("PERFILA",pessoa.getPerfilAtual().getComida().get(0).getNome());
+            perfilUsuario.setPerfilAtual(null);
+            perfilUsuario.setPerfilAtual(perfilAtual);
             return true;
         }
         else{

@@ -36,7 +36,7 @@ public class LugarAct extends AppCompatActivity {
     private double destinolatitude;
     private double destinolongitude;
     private LugarService lugarService = new LugarService();
-    private PerfilUsuario perfilAtual= LoginAct.getPessoa().getPerfil();
+    private PerfilUsuario perfilAtual= LoginAct.getPessoa().getPerfil().getPerfilAtual();
     private ListView listViewLugares;
     private BancoDeDados bancoTeste=new BancoDeDados();
 

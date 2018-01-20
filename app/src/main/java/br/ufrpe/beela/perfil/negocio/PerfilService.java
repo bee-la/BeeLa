@@ -68,10 +68,17 @@ public class PerfilService {
         bd.getEscrever(context);
         bd.inserirPerfil(perfilUsuario);
     }
+    public void adcPerfilFavorito(int id,String nome, Context context){
+        PerfilDAO bd = new PerfilDAO();
+        bd.getEscrever(context);
+        bd.inserirPerfilFavorito(id,nome);
+    }
+
     public void excluirDoBanco(int Id,String nomePerfil,Context context){
         PerfilDAO bd = new PerfilDAO();
         bd.getEscrever(context);
         bd.deletePerfilUsuario(Id, nomePerfil);
+
     }
     public ArrayList<PerfilUsuario> MontarPerfis(PerfilUsuario perfilUsuario,Context context){
         PerfilDAO bd = new PerfilDAO();

@@ -8,10 +8,15 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import java.util.ArrayList;
+
+import br.ufrpe.beela.perfil.dao.PerfilDAO;
 import br.ufrpe.beela.perfil.dominio.PerfilMusica;
 import br.ufrpe.beela.perfil.dominio.PerfilUsuario;
 import br.ufrpe.beela.perfil.negocio.PerfilService;
+import br.ufrpe.beela.usuario.dao.PessoaDAO;
 import br.ufrpe.beela.usuario.gui.LoginAct;
 import br.ufrpe.beela.gui.R;
 
@@ -69,8 +74,26 @@ public class PerguntaMusicaAct extends AppCompatActivity {
     }
 
     private void irTelaPerguntaComida(){
-        startActivity(new Intent(PerguntaMusicaAct.this, PerguntaComidaAct.class));
-        finish();
+        startActivityForResult(new Intent(PerguntaMusicaAct.this, PerguntaComidaAct.class),1);
+    }
+    public void addTesteNome(){
+        if(perfilUsuario.getNome()!= null) {
+            PerfilDAO bd = new PerfilDAO();
+            bd.getLer(this);
+            perfilService.adcMusica(perfilUsuario, this);
+        }
+        else{
+            Toast.makeText(getApplicationContext(), "NÂO TEM NOME", Toast.LENGTH_SHORT).show();}
+    }
+    protected void onActivityResult(int codigoDaTela, int quemInviou, Intent intent ){
+        if(codigoDaTela == 1 ){
+            Bundle valor = intent.getExtras();
+            if(valor != null){
+                perfilUsuario.setNome(valor.getString("nomePerfil"));
+                addTesteNome();
+                finish();
+            }
+        }
     }
 
 }
