@@ -41,7 +41,6 @@ public class UsuarioDAO {
         bd.insert("usuario", null, valores);
         bd.close();
     }
-
     public void delete(Usuario usuario) {
         String where = "_id = '" + usuario.getId()+"' AND senha = '"+usuario.getSenha()+"' AND email = '"+usuario.getEmail()+"'";
         bd.delete("usuario", where, null);
@@ -63,22 +62,6 @@ public class UsuarioDAO {
         bd.update("usuario", valores, where,null);
         bd.close();
     }
-    public List<Usuario> sqlVerificaUsuario() {
-        List<Usuario> list = new ArrayList<Usuario>();
-        String[] colunas = new String[]{"email"};
-
-        Cursor cursor = bd.query("usuario", colunas, null, null, null, null, "nome ASC");
-
-        if (cursor.getCount() > 0) {
-            cursor.moveToFirst();
-            do {
-                Usuario u = new Usuario();
-                list.add(u);
-            } while (cursor.moveToNext());
-        }
-        bd.close();
-        return list;}
-
     public Usuario getUsuario(String email, String senha){
         Usuario usuario = new Usuario();
         String where ="SELECT * FROM usuario WHERE email = '"+email+"'"+"AND senha = '"+senha+"'";

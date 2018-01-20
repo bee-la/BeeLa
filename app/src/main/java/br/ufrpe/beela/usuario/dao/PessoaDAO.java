@@ -50,7 +50,7 @@ public class PessoaDAO {
     }
     public Pessoa getPessoa(int id_usuario){
         Pessoa pessoa = new Pessoa();
-        String where ="SELECT * FROM pessoa WHERE id_usuario = '"+id_usuario+"'";
+        String where ="SELECT * FROM pessoa WHERE id_usuario = '"+String.valueOf(id_usuario)+"'";
         Cursor cursor = bd.rawQuery(where, null);
         if(cursor.getCount()>0){
             cursor.moveToFirst();

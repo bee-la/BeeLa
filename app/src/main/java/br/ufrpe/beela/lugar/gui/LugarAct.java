@@ -12,13 +12,17 @@ import android.widget.Button;
 import android.content.ComponentName;
 import android.net.Uri;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 
 import java.util.ArrayList;
 
+import br.ufrpe.beela.database.negocio.BancoDeDados;
 import br.ufrpe.beela.gui.R;
 import br.ufrpe.beela.lugar.dominio.Lugar;
+import br.ufrpe.beela.lugar.negocio.ListViewLugar;
+import br.ufrpe.beela.lugar.negocio.LugarService;
 import br.ufrpe.beela.perfil.dominio.PerfilUsuario;
 import br.ufrpe.beela.usuario.gui.LoginAct;
 
@@ -31,8 +35,10 @@ public class LugarAct extends AppCompatActivity {
     private Button btIr;
     private double destinolatitude;
     private double destinolongitude;
-    private PerfilUsuario perfilAtual= LoginAct.getPessoa().getPerfil().
+    private LugarService lugarService = new LugarService();
+    private PerfilUsuario perfilAtual= LoginAct.getPessoa().getPerfil();
     private ListView listViewLugares;
+    private BancoDeDados bancoTeste=new BancoDeDados();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +46,7 @@ public class LugarAct extends AppCompatActivity {
         setContentView(R.layout.activity_lugares);
 //        setContentView(R.layout.activity_lugares_sugestao);
         setListView();
-        verificarGPS();
+//        verificarGPS();
 //        btIr = findViewById(R.id.buttonIr);
 ////
 //        btIr.setOnClickListener(new View.OnClickListener() {
@@ -52,7 +58,8 @@ public class LugarAct extends AppCompatActivity {
     }
 
     public ArrayList<Lugar> getLugares(){
-        return lugarService.getListaLugar(perfilAtual, this);
+       return lugarService.getListaLugar(perfilAtual, this);
+       //return bancoTeste.getLugaresPreferidos(this);
     }
 
     private void chamarMapa() {

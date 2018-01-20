@@ -1,6 +1,7 @@
 package br.ufrpe.beela.lugar.negocio;
 
 import android.content.Context;
+import android.util.Log;
 
 import java.util.ArrayList;
 
@@ -18,24 +19,30 @@ import br.ufrpe.beela.perfil.dominio.PerfilUsuario;
 
 public class LugarService {
 
-    public ArrayList<Lugar> getListLugar(PerfilUsuario perfilUsuario, Context context){
+    public ArrayList<Lugar> getListaLugar(PerfilUsuario perfilUsuario, Context context){
         ArrayList<Lugar>listLugar = new ArrayList<Lugar>();
         ArrayList<Integer>listId = new ArrayList<>();
+        try {
         for (PerfilComida comida : perfilUsuario.getComida()){
             PerfilDAO bd = new PerfilDAO();
             bd.getLer(context);
             bd.getPerfilLugar(listId,comida);
         }
+        }catch (Exception e){}
+        try {
         for (PerfilMusica musica : perfilUsuario.getMusica()){
             PerfilDAO bd = new PerfilDAO();
             bd.getLer(context);
             bd.getPerfilLugar(listId,musica);
         }
+        }catch (Exception e){}
+        try {
         for (PerfilEsporte esporte : perfilUsuario.getEsporte()){
             PerfilDAO bd = new PerfilDAO();
             bd.getLer(context);
             bd.getPerfilLugar(listId,esporte);
         }
+        }catch (Exception e){}
         for (int id : listId) {
             LugarDAO bd = new LugarDAO();
             bd.getLer(context);
@@ -51,6 +58,7 @@ public class LugarService {
             lugar.setMusica(bdp.getPerfilMusica(lugar));
             listLugar.add(lugar);
         }
+  //      Log.d("LISTALUGAR",listLugar.get(0).getNome());
         return listLugar;
     }
 

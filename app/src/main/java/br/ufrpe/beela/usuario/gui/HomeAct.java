@@ -8,17 +8,17 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import br.ufrpe.beela.database.negocio.BancoDeDados;
 import br.ufrpe.beela.gui.R;
 import br.ufrpe.beela.lugar.gui.LugarAct;
 import br.ufrpe.beela.perfil.gui.PerfilAct;
 import br.ufrpe.beela.usuario.dominio.Usuario;
 
 public class HomeAct extends AppCompatActivity {
-    private Usuario usuario = new Usuario();
     private TextView eAi;
     private TextView oQueTuQuer;
     private ImageButton botaoPerfil, botaoLugares, botaoConfiguracoes;
-
+    private BancoDeDados bancoDeDados = new BancoDeDados();
 //    MediaPlayer qualvai;
 //    MediaPlayer oque;
 
@@ -26,12 +26,11 @@ public class HomeAct extends AppCompatActivity {
 
 //    private Button oQueTuQuerButton4;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-
+        bancoDeDados.gerarLugares(this);
         alterarFonte();
         irPerfil();
         irConfiguracoes();

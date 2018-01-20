@@ -1,6 +1,7 @@
 package br.ufrpe.beela.perfil.negocio;
 
 import android.content.Context;
+import android.util.Log;
 import android.widget.CheckBox;
 
 import java.util.ArrayList;
@@ -76,6 +77,7 @@ public class PerfilService {
         PerfilDAO bd = new PerfilDAO();
         bd.getLer(context);
         return bd.getPerfil(perfilUsuario.getId_Usuario());
+
     }
     public void adcListaComida(ArrayList<CheckBox> checkBoxesComidas,ArrayList<PerfilComida> listaComida, PerfilUsuario perfilUsuario){
         for (CheckBox x : checkBoxesComidas) {

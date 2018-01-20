@@ -8,6 +8,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import br.ufrpe.beela.database.negocio.BancoDeDados;
+import br.ufrpe.beela.lugar.dao.LugarDAO;
+import br.ufrpe.beela.lugar.dominio.Lugar;
 import br.ufrpe.beela.perfil.dominio.PerfilComida;
 import br.ufrpe.beela.perfil.dominio.PerfilEsporte;
 import br.ufrpe.beela.perfil.dominio.PerfilMusica;
@@ -71,11 +75,11 @@ public class NomePerfilAct extends AppCompatActivity {
         }
     }
 
-    public void salvarBD(){
-        perfilService.adcComida(perfilUsuario,this);
-        perfilService.adcMusica(perfilUsuario,this);
-        perfilService.adcEsporte(perfilUsuario,this);
-        perfilService.adcPerfil(perfilUsuario,this);
+    public void salvarBD() {
+        perfilService.adcComida(perfilUsuario, this);
+        perfilService.adcMusica(perfilUsuario, this);
+        perfilService.adcEsporte(perfilUsuario, this);
+        perfilService.adcPerfil(perfilUsuario, this);
     }
 
     public void irTelaPerfil(){

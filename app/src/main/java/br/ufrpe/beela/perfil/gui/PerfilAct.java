@@ -6,6 +6,7 @@ import android.graphics.Typeface;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Adapter;
 import android.widget.Button;
@@ -20,6 +21,7 @@ import br.ufrpe.beela.perfil.dao.PerfilDAO;
 import br.ufrpe.beela.perfil.dominio.PerfilUsuario;
 import br.ufrpe.beela.perfil.negocio.ListViewNomePerfil;
 import br.ufrpe.beela.perfil.negocio.PerfilService;
+import br.ufrpe.beela.usuario.dominio.Pessoa;
 import br.ufrpe.beela.usuario.dominio.Usuario;
 import br.ufrpe.beela.usuario.gui.LoginAct;
 import br.ufrpe.beela.gui.R;
@@ -33,6 +35,7 @@ public class PerfilAct extends AppCompatActivity {
     private int contador;
 
     private PerfilUsuario perfilUsuario = LoginAct.getPessoa().getPerfil();
+    private Pessoa pessoa = LoginAct.getPessoa();
     private Usuario usuario=LoginAct.getUsuario();
     private PerfilService perfilService = new PerfilService();
     public static ArrayList<PerfilUsuario> perfilUsuarioArrayList = new ArrayList<>();
@@ -150,7 +153,7 @@ public class PerfilAct extends AppCompatActivity {
                         if (!verificaSelecionados()) {
                             Toast.makeText(getApplicationContext(), "Selecione apenas um perfil", Toast.LENGTH_SHORT).show();
                         } else {
-                            Toast.makeText(getApplicationContext(), "Perfil Atual: " + perfilUsuario.getPerfilAtual().getNome(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), "Perfil Atual: " + pessoa.getPerfil().getNome(), Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(PerfilAct.this, EscolhaProgramaAct.class));
                         }
                     }
@@ -173,8 +176,11 @@ public class PerfilAct extends AppCompatActivity {
             }
         }
         if(contador==1){
-            perfilUsuario.setPerfilAtual(null);
-            perfilUsuario.setPerfilAtual(perfilAtual);
+            PerfilDAO bd = new PerfilDAO();
+            bd.getLer(this);
+            pessoa.getPerfil().setComida(bd.getPerfilComida(perfilUsuario));
+            pessoa.setPerfil(perfilAtual);
+ //           Log.d("PERFILA",pessoa.getPerfilAtual().getComida().get(0).getNome());
             return true;
         }
         else{
