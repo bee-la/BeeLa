@@ -11,6 +11,7 @@ public class Pessoa {
     private String nome;
     private String celular;
     private int id_usuario;
+    private boolean selecionado;
 
     public int getId(){return id;}
     public String getNome() {return nome;}
@@ -25,4 +26,11 @@ public class Pessoa {
     private PerfilUsuario perfil = new PerfilUsuario();
     public PerfilUsuario getPerfil(){return perfil;}
     public void setPerfil(PerfilUsuario perfil){this.perfil = perfil;}
+
+    public boolean isSelecionado(){
+        return selecionado;
+    }
+    public void setSelecionado(boolean selecionado){
+        this.selecionado=selecionado;
+    }
 }

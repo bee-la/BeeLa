@@ -4,6 +4,9 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+
+import java.util.ArrayList;
+
 import br.ufrpe.beela.database.dao.BD;
 import br.ufrpe.beela.usuario.dominio.Pessoa;
 
@@ -62,6 +65,27 @@ public class PessoaDAO {
         bd.close();
         return pessoa;
     }
+
+    //TODO      Adicionei isso(by: Anderson)
+    public ArrayList<Pessoa> getListaPessoa(){
+        ArrayList<Pessoa> listaPessoa=new ArrayList<Pessoa>();
+        String where = "SELECT * FROM pessoa";
+        Cursor cursor=bd.rawQuery(where,null);
+        if(cursor.getCount()>0){
+            cursor.moveToFirst();
+            do{
+                Pessoa pessoa=new Pessoa();
+                pessoa.setId(cursor.getInt(0));
+                pessoa.setNome(cursor.getString(1));
+                pessoa.setCelular(cursor.getString(2));
+                pessoa.setId_usuario(cursor.getInt(3));
+                listaPessoa.add(pessoa);
+            }while (cursor.moveToNext());
+        }
+        bd.close();
+        return listaPessoa;
+    }
+
     public boolean verificarCelular(String celular){
         boolean saida = false;
         String where ="SELECT * FROM pessoa WHERE celular = '"+celular+"'";

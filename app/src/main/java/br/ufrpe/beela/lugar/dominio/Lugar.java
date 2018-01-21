@@ -21,7 +21,6 @@ public class Lugar {
     private ArrayList<PerfilEsporte> esporte;
     private String localicao;
 
-
     public int getId() {
         return id;
     }
@@ -40,6 +39,5 @@ public class Lugar {
     public void setMusica(ArrayList<PerfilMusica> musica){this.musica = musica;}
     public void setEsporte(ArrayList<PerfilEsporte> esporte){this.esporte = esporte;}
     public void setLocalicao(String localicao) {this.localicao = localicao;}
-
 
 }

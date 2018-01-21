@@ -118,4 +118,11 @@
     <string name="sozinho">Sozinho</string>
     <string name="acompanhado">Acompanhado</string>
 
+    <!--Lugares-->
+    <string name="lugares">Lugares</string>
+
+    <!--Contatos-->
+    <string name="contatos">Contatos</string>
+    <string name="confirmar">Confirmar</string>
+
 </resources>

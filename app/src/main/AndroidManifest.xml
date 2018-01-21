@@ -66,9 +66,12 @@
             android:label="@string/adicionarPerfil" />
         <activity
             android:name="br.ufrpe.beela.lugar.gui.LugarAct"
-            android:label="Lugares" />
+            android:label="@string/lugares" />
         <activity android:name="br.ufrpe.beela.lugar.gui.EscolhaProgramaAct"
-            android:label="E ai, como vai ser?"></activity>
+            android:label="E ai, como vai ser?"/>
+        <activity
+            android:name="br.ufrpe.beela.usuario.gui.ContatoAct"
+            android:label="@string/contatos"></activity>
     </application>
 
 </manifest>

@@ -10,6 +10,8 @@ import br.ufrpe.beela.perfil.dao.PerfilDAO;
 import br.ufrpe.beela.perfil.dominio.PerfilComida;
 import br.ufrpe.beela.perfil.dominio.PerfilMusica;
 import br.ufrpe.beela.perfil.dominio.PerfilUsuario;
+import br.ufrpe.beela.usuario.dao.PessoaDAO;
+import br.ufrpe.beela.usuario.dominio.Pessoa;
 import br.ufrpe.beela.usuario.gui.HomeAct;
 
 /**
@@ -175,6 +177,13 @@ public class BancoDeDados {
         bdp.getEscrever(context);
         bdp.inserirPerfilLugarMusica(perfilMusica);
 
+    }
+
+    public ArrayList<Pessoa> getListaContatos(Context contexto){
+        PessoaDAO bd=new PessoaDAO();
+        bd.getLer(contexto);
+        ArrayList<Pessoa> listaPessoa=bd.getListaPessoa();
+        return listaPessoa;
     }
 
 }
