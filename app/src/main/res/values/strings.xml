@@ -93,6 +93,8 @@
     <string name="nomear">Nomear</string>
     <string name="perfilprioridade">perfilprioridade</string>
     <string name="prioridadePerfil">Perfil Prioridade</string>
+    <string name="selecionarPerfil">Selecione apenas um perfil</string>
+    <string name="perfilAtual">Perfil Atual:</string>
 
     <!--Excluir Perfil-->
     <string name="sim">sim</string>

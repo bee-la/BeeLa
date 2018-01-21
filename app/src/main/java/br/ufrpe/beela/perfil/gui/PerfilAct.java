@@ -27,12 +27,14 @@ import br.ufrpe.beela.usuario.gui.LoginAct;
 import br.ufrpe.beela.gui.R;
 
 public class PerfilAct extends AppCompatActivity {
-    private ImageButton botaoAdicionarPerfil, botaoApagar;
+    private ImageButton botaoAdicionarPerfil, botaoApagar, botaoSalvar;
     private ListView listViewPerfis;
     private TextView fonteBotaoComecar;
     private Toast erro;
     private Button botaoComecar;
-    private int contador;
+    private int contadorPerfil;
+    private boolean verificador=false;
+    private String testePerfilAtual;
 
     private Pessoa pessoa = LoginAct.getPessoa();
     private PerfilUsuario perfilUsuario = pessoa.getPerfil();
@@ -52,6 +54,7 @@ public class PerfilAct extends AppCompatActivity {
         adicionarPerfil();
         irExcluirPerfil();
         irTelaEscolhaPrograma();
+        salvarPerfilAtual();
     }
 
     public static ArrayList<PerfilUsuario> getListaPerfis(){
@@ -146,21 +149,36 @@ public class PerfilAct extends AppCompatActivity {
         botaoComecar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                 try{
-                    if(listViewPerfis!=null) {
-                        Adapter adapter = (Adapter) listViewPerfis.getAdapter();
-                        contador=0;
-                        if (!verificaSelecionados()) {
-                            Toast.makeText(getApplicationContext(), "Selecione apenas um perfil", Toast.LENGTH_SHORT).show();
-                        } else {
-                            Toast.makeText(getApplicationContext(), "Perfil Atual: " + perfilUsuario.getPerfilAtual().getNome(), Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(PerfilAct.this, EscolhaProgramaAct.class));
-                        }
-                    }
+                verificador=false;
+                setPerfilAtual();
+                if (verificador) {
+                    startActivity(new Intent(PerfilAct.this, EscolhaProgramaAct.class));
                 }
-                catch (Exception e){
-                    e.printStackTrace();
-                }
+//                 try{
+//                    if(listViewPerfis!=null) {
+//                        Adapter adapter = (Adapter) listViewPerfis.getAdapter();
+//                        contadorPrograma=0;
+//                        if (!verificaSelecionados()) {
+//                            Toast.makeText(getApplicationContext(), "Selecione apenas um perfil", Toast.LENGTH_SHORT).show();
+//                        } else {
+//                            Toast.makeText(getApplicationContext(), "Perfil Atual: " + perfilUsuario.getPerfilAtual().getNome(), Toast.LENGTH_SHORT).show();
+//                            startActivity(new Intent(PerfilAct.this, EscolhaProgramaAct.class));
+//                        }
+//                    }
+//                }
+//                catch (Exception e){
+//                    e.printStackTrace();
+//                }
+            }
+        });
+    }
+
+    public void salvarPerfilAtual(){
+        botaoSalvar=(ImageButton)findViewById(R.id.imageButton9);
+        botaoSalvar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                setPerfilAtual();
             }
         });
     }
@@ -171,17 +189,36 @@ public class PerfilAct extends AppCompatActivity {
         for(int i=0; i<adapter.getCount(); i++) {
             PerfilUsuario perfil = (PerfilUsuario) adapter.getItem(i);
             if (perfil.isSelecionado()) {
-                contador += 1;
+                contadorPerfil += 1;
                 perfilAtual=perfil;
             }
         }
-        if(contador==1){
+        if(contadorPerfil==1){
             perfilUsuario.setPerfilAtual(null);
             perfilUsuario.setPerfilAtual(perfilAtual);
+//            testePerfilAtual+=perfilAtual.getComida().get(0);
             return true;
         }
         else{
             return false;
+        }
+    }
+
+    public void setPerfilAtual(){
+        try{
+            if(listViewPerfis!=null) {
+                Adapter adapter = (Adapter) listViewPerfis.getAdapter();
+                contadorPerfil=0;
+                if (!verificaSelecionados()) {
+                    Toast.makeText(getApplicationContext(), R.string.selecionarPerfil, Toast.LENGTH_SHORT).show();
+                } else {
+                    verificador=true;
+                    Toast.makeText(getApplicationContext(), getString(R.string.perfilAtual) + perfilUsuario.getPerfilAtual().getNome(), Toast.LENGTH_SHORT).show();
+                }
+            }
+        }
+        catch (Exception e){
+            e.printStackTrace();
         }
     }
 }
