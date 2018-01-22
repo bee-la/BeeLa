@@ -51,13 +51,13 @@ public class PerfilDAO {
         bd.insert("perfilFavorito", null, valores);
         bd.close();
     }
-    public void inserirPerfilMusica(PerfilMusica musica){
-            ContentValues valores = new ContentValues();
-            valores.put("nome",musica.getNome());
-            valores.put("id_usuario",musica.getId_usuario());
-            valores.put("nome_perfil",musica.getNome_perfil());
-            bd.insert("perfilMusica",null,valores);
-            bd.close();
+    public void inserirPerfilMusica(PerfilMusica musica) {
+        ContentValues valores = new ContentValues();
+        valores.put("nome", musica.getNome());
+        valores.put("id_usuario", musica.getId_usuario());
+        valores.put("nome_perfil", musica.getNome_perfil());
+        bd.insert("perfilMusica", null, valores);
+        bd.close();
     }
 
 
@@ -122,21 +122,22 @@ public class PerfilDAO {
     }
 
     public ArrayList<PerfilComida> getPerfilComida(PerfilUsuario perfilUsuario) {
-        ArrayList<PerfilComida> comidas = new ArrayList<PerfilComida>();
+        ArrayList<PerfilComida> perfilComidaArrayListcomidas = new ArrayList<PerfilComida>();
         String where = "SELECT * FROM perfilComida WHERE id_usuario = '" + String.valueOf(perfilUsuario.getId_Usuario()) + "' AND nome_perfil = '" + perfilUsuario.getNome() + "'";
         Cursor cursor = bd.rawQuery(where, null);
         if (cursor.getCount() > 0) {
+            cursor.moveToFirst();
             do {
                 PerfilComida comida = new PerfilComida();
                 comida.setId(cursor.getInt(0));
                 comida.setNome(cursor.getString(1));
                 comida.setId_usuario(cursor.getInt(2));
                 comida.setNome_perfil(cursor.getString(3));
-                comidas.add(comida);
+                perfilComidaArrayListcomidas.add(comida);
             } while (cursor.moveToNext());
         }
         bd.close();
-        return comidas;
+        return perfilComidaArrayListcomidas;
     }
 
     public ArrayList<PerfilMusica> getPerfilMusica(PerfilUsuario perfilUsuario) {
@@ -210,15 +211,18 @@ public class PerfilDAO {
 //        bd.close();
 //        return perfilUsuario;
 //    }
-    public ArrayList<Integer> getPerfilLugar(ArrayList<Integer> list, PerfilComida comida){
+    public ArrayList<Integer> getPerfilLugar(PerfilComida comida){
+        ArrayList<Integer> list = new ArrayList<Integer>();
         String where ="SELECT * FROM perfilComida WHERE nome = '"+comida.getNome()+"'";
         Cursor cursor = bd.rawQuery(where, null);
         if(cursor.getCount()>0){
             cursor.moveToFirst();
             do{
-                if (!list.contains(cursor.getInt(3))){list.add(cursor.getInt(3));}
+                if (!list.contains(cursor.getInt(3))){
+                    list.add(cursor.getInt(3));}
             }while (cursor.moveToNext());
         }
+        bd.close();
         return list;
     }
     public ArrayList<Integer> getPerfilLugar(ArrayList<Integer> list, PerfilMusica musica){
@@ -227,9 +231,11 @@ public class PerfilDAO {
         if(cursor.getCount()>0){
             cursor.moveToFirst();
             do{
-                if (!list.contains(cursor.getInt(3))){list.add(cursor.getInt(3));}
+                if (!list.contains(cursor.getInt(3))){
+                    list.add(cursor.getInt(3));}
             }while (cursor.moveToNext());
         }
+        bd.close();
         return list;
     }
     public ArrayList<Integer> getPerfilLugar(ArrayList<Integer> list, PerfilEsporte esporte){
@@ -238,9 +244,11 @@ public class PerfilDAO {
         if(cursor.getCount()>0){
             cursor.moveToFirst();
             do{
-                if (!list.contains(cursor.getInt(3))){list.add(cursor.getInt(3));}
+                if (!list.contains(cursor.getInt(3))){
+                    list.add(cursor.getInt(3));}
             }while (cursor.moveToNext());
         }
+        bd.close();
         return list;
     }
 
@@ -336,10 +344,11 @@ public class PerfilDAO {
         String where = "SELECT * FROM perfilFavorito WHERE id_pessoa = '" + String.valueOf(id) + "'";
         Cursor cursor = bd.rawQuery(where, null);
         if(cursor.getCount()>0){
-            cursor.moveToNext();
+            cursor.moveToFirst();
             perfilUsuario.setId(cursor.getInt(1));
             perfilUsuario.setNome(cursor.getString(2));
         }
+        bd.close();
         return perfilUsuario;
     }
 }

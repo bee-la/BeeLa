@@ -10,6 +10,7 @@ import java.util.ArrayList;
 
 import br.ufrpe.beela.database.negocio.BancoDeDados;
 import br.ufrpe.beela.gui.R;
+import br.ufrpe.beela.lugar.gui.EscolhaProgramaAct;
 import br.ufrpe.beela.lugar.negocio.ListViewLugar;
 import br.ufrpe.beela.usuario.dominio.Pessoa;
 import br.ufrpe.beela.usuario.negocio.ListViewContato;
@@ -21,6 +22,7 @@ import br.ufrpe.beela.usuario.negocio.ListViewContato;
 public class ContatoAct extends AppCompatActivity {
     private BancoDeDados bancoDeDados=new BancoDeDados();
     private ListView listViewContatos;
+    private ArrayList<Pessoa> pessoaArrayList = EscolhaProgramaAct.getListaPessoa();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +32,7 @@ public class ContatoAct extends AppCompatActivity {
     }
 
     public ArrayList<Pessoa> getContatos(){
-        return bancoDeDados.getListaContatos(this);
+        return pessoaArrayList;//bancoDeDados.getListaContatos(this);
     }
 
     public void setListView(){

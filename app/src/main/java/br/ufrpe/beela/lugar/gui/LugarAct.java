@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.provider.Settings;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
 import android.widget.Button;
 import android.content.ComponentName;
 import android.net.Uri;
@@ -18,13 +17,9 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
-import br.ufrpe.beela.database.negocio.BancoDeDados;
 import br.ufrpe.beela.gui.R;
 import br.ufrpe.beela.lugar.dominio.Lugar;
 import br.ufrpe.beela.lugar.negocio.ListViewLugar;
-import br.ufrpe.beela.lugar.negocio.LugarService;
-import br.ufrpe.beela.perfil.dominio.PerfilUsuario;
-import br.ufrpe.beela.usuario.gui.LoginAct;
 
 /**
  * Created by max on 06/01/18.
@@ -35,10 +30,12 @@ public class LugarAct extends AppCompatActivity {
     private Button btIr;
     private double destinolatitude;
     private double destinolongitude;
-    private LugarService lugarService = new LugarService();
-    private PerfilUsuario perfilAtual= LoginAct.getPessoa().getPerfil().getPerfilAtual();
+    private ArrayList<Lugar> ListLugar = EscolhaProgramaAct.getListaLugar();
+//    private LugarService lugarService = new LugarService();
+//    private PerfilUsuario perfilAtual= LoginAct.getPessoa().getPerfil().getPerfilAtual();
+//    private PerfilUsuario perfilUsuario = LoginAct.getPessoa().getPerfil();
     private ListView listViewLugares;
-    private BancoDeDados bancoTeste=new BancoDeDados();
+    //private BancoDeDados bancoTeste=new BancoDeDados();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,7 +55,11 @@ public class LugarAct extends AppCompatActivity {
     }
 
     public ArrayList<Lugar> getLugares(){
-       return lugarService.getListaLugar(perfilAtual, this);
+//        LugarDAO bdl = new LugarDAO();
+//        bdl.getLer(this);
+//        return bdl.gerarListaLugar();
+        return ListLugar;
+//       return lugarService.gerarListaLugar(perfilUsuario,this);
        //return bancoTeste.getLugaresPreferidos(this);
     }
 

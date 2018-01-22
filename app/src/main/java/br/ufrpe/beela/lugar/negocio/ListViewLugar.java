@@ -5,17 +5,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.CheckBox;
 import android.widget.TextView;
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
+
 import java.util.ArrayList;
 
 import br.ufrpe.beela.gui.R;
 import br.ufrpe.beela.lugar.dominio.Lugar;
+import br.ufrpe.beela.lugar.gui.EscolhaProgramaAct;
 import br.ufrpe.beela.lugar.gui.LugarAct;
-import br.ufrpe.beela.perfil.dominio.PerfilUsuario;
-import br.ufrpe.beela.perfil.gui.PerfilAct;
 
 
 /**

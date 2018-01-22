@@ -10,7 +10,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class BD extends SQLiteOpenHelper {
 
-    private static final String NOME_DO_BD = "BancoB.db";
+    private static final String NOME_DO_BD = "BancoB2.db";
     private static final int VERSAO = 1;
 
     public BD(Context ctx) {
