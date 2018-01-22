@@ -30,6 +30,11 @@ public class BancoDeDados {
             criarMirabilandia(context);
             criarShoppingRecife(context);
             criarRockRibs(context);
+            criarFulano1(context);
+            criarFulano2(context);
+            criarFulano3(context);
+            criarFulano4(context);
+            criarFulano5(context);
         }
 
     }
@@ -69,7 +74,10 @@ public class BancoDeDados {
         lugar.setDescriacao("Restaurante");
         lugar.setLocalicao("-8.0640944,-34.8714444");
         lugaresPreferidos.add(lugar);
+<<<<<<< HEAD
+=======
 
+>>>>>>> desenvolvedor2
         LugarDAO bd = new LugarDAO();
         bd.getEscrever(context);
         bd.inserir(lugar);
@@ -99,7 +107,10 @@ public class BancoDeDados {
         lugar.setDescriacao("Shopping Center");
         lugar.setLocalicao("-8.0640944,-34.8714444");
         lugaresPreferidos.add(lugar);
+<<<<<<< HEAD
+=======
 
+>>>>>>> desenvolvedor2
         LugarDAO bd = new LugarDAO();
         bd.getEscrever(context);
         bd.inserir(lugar);
@@ -184,8 +195,51 @@ public class BancoDeDados {
         bdp.inserirPerfilLugarMusica(perfilMusica);
 
     }
+<<<<<<< HEAD
+    public void criarFulano1(Context context){
+        Pessoa pessoa = new Pessoa();
+        pessoa.setCelular("987654321");
+        pessoa.setNome("Fulano1");
+        PessoaDAO bdp = new PessoaDAO();
+        bdp.getEscrever(context);
+        bdp.inserir(pessoa);
+    }
+    public void criarFulano2(Context context){
+        Pessoa pessoa = new Pessoa();
+        pessoa.setCelular("997654321");
+        pessoa.setNome("Fulano2");
+        PessoaDAO bdp = new PessoaDAO();
+        bdp.getEscrever(context);
+        bdp.inserir(pessoa);
+    }
+    public void criarFulano3(Context context){
+        Pessoa pessoa = new Pessoa();
+        pessoa.setCelular("927654321");
+        pessoa.setNome("Fulano3");
+        PessoaDAO bdp = new PessoaDAO();
+        bdp.getEscrever(context);
+        bdp.inserir(pessoa);
+    }
+    public void criarFulano4(Context context){
+        Pessoa pessoa = new Pessoa();
+        pessoa.setCelular("187654321");
+        pessoa.setNome("Fulano4");
+        PessoaDAO bdp = new PessoaDAO();
+        bdp.getEscrever(context);
+        bdp.inserir(pessoa);
+    }
+    public void criarFulano5(Context context){
+        Pessoa pessoa = new Pessoa();
+        pessoa.setCelular("687654321");
+        pessoa.setNome("Fulano5");
+        PessoaDAO bdp = new PessoaDAO();
+        bdp.getEscrever(context);
+        bdp.inserir(pessoa);
+    }
+=======
 
 //TODO    Sem Funcionar
+>>>>>>> desenvolvedor2
     public ArrayList<Pessoa> getListaContatos(Context contexto){
         PessoaDAO bd=new PessoaDAO();
         bd.getLer(contexto);

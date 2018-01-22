@@ -51,7 +51,7 @@ public class LugarDAO {
 //    }
     public Lugar getLugar(int id){
         Lugar lugar = new Lugar();
-        String where ="SELECT * FROM lugar WHERE id_lugar = '"+String.valueOf(id)+"'";
+        String where ="SELECT * FROM lugar WHERE _id = '"+String.valueOf(id)+"'";
         Cursor cursor = bd.rawQuery(where, null);
         if(cursor.getCount()>0){
             cursor.moveToFirst();
@@ -77,16 +77,33 @@ public class LugarDAO {
         bd.close();
         return lugar;
     }
-    public boolean inserirLugares(){
+    public boolean inserirLugares() {
         String where = "SELECT * FROM lugar";
         Cursor cursor = bd.rawQuery(where, null);
-        if(cursor.getCount()>0){
+        if (cursor.getCount() > 0) {
             bd.close();
             return false;
         }
-        else{
-            bd.close();
-            return true;
+        bd.close();
+        return true;
+    }
+    public ArrayList<Lugar> getListaLugar(){
+        ArrayList<Lugar> lugarArrayList = new ArrayList<Lugar>();
+        String where ="SELECT * FROM lugar";
+        Cursor cursor = bd.rawQuery(where, null);
+        if(cursor.getCount()>0){
+            do {
+                Lugar lugar = new Lugar();
+                cursor.moveToFirst();
+                lugar.setId(cursor.getInt(0));
+                lugar.setNome(cursor.getString(1));
+                lugar.setDescriacao(cursor.getString(2));
+                lugar.setLocalicao(cursor.getString(3));
+                lugarArrayList.add(lugar);
+            }while (cursor.moveToNext());
+
         }
+        bd.close();
+        return lugarArrayList;
     }
 }

@@ -1,5 +1,33 @@
 package br.ufrpe.beela.perfil.gui;
 
+<<<<<<< HEAD
+        import android.content.DialogInterface;
+        import android.content.Intent;
+        import android.graphics.Typeface;
+        import android.support.v7.app.AlertDialog;
+        import android.support.v7.app.AppCompatActivity;
+        import android.os.Bundle;
+        import android.util.Log;
+        import android.view.View;
+        import android.widget.Adapter;
+        import android.widget.Button;
+        import android.widget.ImageButton;
+        import android.widget.ListView;
+        import android.widget.TextView;
+        import android.widget.Toast;
+        import java.util.ArrayList;
+
+        import br.ufrpe.beela.lugar.gui.EscolhaProgramaAct;
+        import br.ufrpe.beela.perfil.dao.PerfilDAO;
+        import br.ufrpe.beela.perfil.dominio.PerfilComida;
+        import br.ufrpe.beela.perfil.dominio.PerfilUsuario;
+        import br.ufrpe.beela.perfil.negocio.ListViewNomePerfil;
+        import br.ufrpe.beela.perfil.negocio.PerfilService;
+        import br.ufrpe.beela.usuario.dominio.Pessoa;
+        import br.ufrpe.beela.usuario.dominio.Usuario;
+        import br.ufrpe.beela.usuario.gui.LoginAct;
+        import br.ufrpe.beela.gui.R;
+=======
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Typeface;
@@ -22,6 +50,7 @@ import br.ufrpe.beela.usuario.dominio.Pessoa;
 import br.ufrpe.beela.usuario.dominio.Usuario;
 import br.ufrpe.beela.usuario.gui.LoginAct;
 import br.ufrpe.beela.gui.R;
+>>>>>>> desenvolvedor2
 
 public class PerfilAct extends AppCompatActivity {
     private ImageButton botaoAdicionarPerfil, botaoApagar, botaoSalvar;
@@ -140,16 +169,19 @@ public class PerfilAct extends AppCompatActivity {
         aviso.show();
     }
 
-    public void irTelaEscolhaPrograma(){
-        botaoComecar=(Button)findViewById(R.id.button14);
+    public void irTelaEscolhaPrograma() {
+        botaoComecar = (Button) findViewById(R.id.button14);
         botaoComecar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                verificador=false;
+                verificador = false;
                 setPerfilAtual();
                 if (verificador) {
                     startActivity(new Intent(PerfilAct.this, EscolhaProgramaAct.class));
                 }
+            }
+        });
+    }
 //                 try{
 //                    if(listViewPerfis!=null) {
 //                        Adapter adapter = (Adapter) listViewPerfis.getAdapter();
@@ -165,9 +197,9 @@ public class PerfilAct extends AppCompatActivity {
 //                catch (Exception e){
 //                    e.printStackTrace();
 //                }
-            }
-        });
-    }
+//            }
+//        });
+//    }
 
     public void salvarPerfilAtual(){
         botaoSalvar=(ImageButton)findViewById(R.id.imageButton9);
@@ -190,8 +222,27 @@ public class PerfilAct extends AppCompatActivity {
             }
         }
         if(contadorPerfil==1){
+<<<<<<< HEAD
+            //perfilUsuario.setPerfilAtual(null);
+            //perfilUsuario.setPerfilAtual(perfilAtual);
+            PerfilDAO bdc = new PerfilDAO();
+            bdc.getLer(this);
+            perfilAtual.setComida(bdc.getPerfilComida(perfilAtual));
+            //
+            PerfilDAO bde = new PerfilDAO();
+            bde.getLer(this);
+            perfilAtual.setEsporte(bde.getPerfilEsporte(perfilAtual));
+            //
+            PerfilDAO bdm = new PerfilDAO();
+            bdm.getLer(this);
+            perfilAtual.setMusica(bdm.getPerfilMusica(perfilAtual));
+            //
+            LoginAct.getPessoa().setPerfil(perfilAtual);
+            perfilUsuario = LoginAct.getPessoa().getPerfil();
+=======
             perfilUsuario.setPerfilAtual(null);
             perfilUsuario.setPerfilAtual(perfilAtual);
+>>>>>>> desenvolvedor2
             return true;
         }
         else{
@@ -208,7 +259,11 @@ public class PerfilAct extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), R.string.selecionarPerfil, Toast.LENGTH_SHORT).show();
                 } else {
                     verificador=true;
+<<<<<<< HEAD
+                    Toast.makeText(getApplicationContext(), getString(R.string.perfilAtual) + pessoa.getPerfil().getNome(), Toast.LENGTH_SHORT).show();
+=======
                     Toast.makeText(getApplicationContext(), getString(R.string.perfilAtual)+perfilUsuario.getPerfilAtual().getNome(), Toast.LENGTH_SHORT).show();
+>>>>>>> desenvolvedor2
                 }
             }
         }
