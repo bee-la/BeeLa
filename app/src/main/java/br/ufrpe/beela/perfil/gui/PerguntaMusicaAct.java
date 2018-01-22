@@ -75,6 +75,8 @@ public class PerguntaMusicaAct extends AppCompatActivity {
 
     private void irTelaPerguntaComida(){
         startActivityForResult(new Intent(PerguntaMusicaAct.this, PerguntaComidaAct.class),1);
+        finish();
+
     }
     public void addTesteNome(){
         if(perfilUsuario.getNome()!= null) {
@@ -87,11 +89,14 @@ public class PerguntaMusicaAct extends AppCompatActivity {
     }
     protected void onActivityResult(int codigoDaTela, int quemInviou, Intent intent ){
         if(codigoDaTela == 1 ){
+            try {
             Bundle valor = intent.getExtras();
-            if(valor != null){
-                perfilUsuario.setNome(valor.getString("nomePerfil"));
-                addTesteNome();
-                finish();
+                if (valor != null) {
+                    perfilUsuario.setNome(valor.getString("nomePerfil"));
+                    addTesteNome();
+                }
+            }catch(Exception e){
+                e.printStackTrace();
             }
         }
     }

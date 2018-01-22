@@ -84,7 +84,7 @@ public class NomePerfilAct extends AppCompatActivity {
     public void irTelaPerfil(){
         Intent intent = new Intent();
         intent.putExtra("nomePerfil",nomePerfil);
-    //    startActivity(new Intent(this, PerfilAct.class));
+        startActivity(new Intent(this, PerfilAct.class));
         setResult(1,intent);
         finish();
     }

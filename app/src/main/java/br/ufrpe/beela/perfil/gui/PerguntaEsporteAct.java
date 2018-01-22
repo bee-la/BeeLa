@@ -72,6 +72,8 @@ public class PerguntaEsporteAct extends AppCompatActivity {
 
     public void irTelaPerfilPrioridade(){
         startActivityForResult(new Intent(PerguntaEsporteAct.this, NomePerfilAct.class),1);
+        finish();
+
     }
     public void addTesteNome(){
         if (perfilUsuario.getNome()!=null) {
@@ -84,16 +86,20 @@ public class PerguntaEsporteAct extends AppCompatActivity {
     }
     protected void onActivityResult(int codigoDaTela, int quemInviou, Intent intent ){
         if(codigoDaTela == 1 ){
+            try {
             Bundle valor = intent.getExtras();
-            if(valor != null){
-                perfilUsuario.setNome(valor.getString("nomePerfil"));
-                addTesteNome();
-                setResult(1,intent);
-                finish();
+                if (valor != null) {
+                    perfilUsuario.setNome(valor.getString("nomePerfil"));
+                    addTesteNome();
+                    setResult(1, intent);
+//                    finish();
+                }
+            }
+            catch(Exception e){
+                e.printStackTrace();
+            }
                 //intent.putExtra("nomePerfil",perfilUsuario.getNome());
                 //    startActivity(new Intent(this, PerfilAct.class));
-
-            }
         }
     }
 }

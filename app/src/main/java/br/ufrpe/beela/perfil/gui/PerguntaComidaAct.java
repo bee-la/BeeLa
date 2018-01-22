@@ -74,6 +74,8 @@ public class PerguntaComidaAct extends AppCompatActivity {
 
     public void irTelaPerguntaEsporte() {
         startActivityForResult(new Intent(PerguntaComidaAct.this, PerguntaEsporteAct.class), 1);
+        finish();
+
     }
 
     public void addTesteNome() {
@@ -88,13 +90,17 @@ public class PerguntaComidaAct extends AppCompatActivity {
 
     protected void onActivityResult(int codigoDaTela, int quemInviou, Intent intent) {
         if (codigoDaTela == 1) {
+            try{
             Bundle valor = intent.getExtras();
             if (valor != null) {
                 perfilUsuario.setNome(valor.getString("nomePerfil"));
                 addTesteNome();
                 setResult(1,intent);
-                finish();
+//                finish();
             }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
 
 
         }
