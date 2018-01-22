@@ -1,5 +1,6 @@
 package br.ufrpe.beela.perfil.gui;
 
+<<<<<<< HEAD
         import android.content.DialogInterface;
         import android.content.Intent;
         import android.graphics.Typeface;
@@ -26,6 +27,30 @@ package br.ufrpe.beela.perfil.gui;
         import br.ufrpe.beela.usuario.dominio.Usuario;
         import br.ufrpe.beela.usuario.gui.LoginAct;
         import br.ufrpe.beela.gui.R;
+=======
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.graphics.Typeface;
+import android.support.v7.app.AlertDialog;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Adapter;
+import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
+import java.util.ArrayList;
+import br.ufrpe.beela.lugar.gui.EscolhaProgramaAct;
+import br.ufrpe.beela.perfil.dominio.PerfilUsuario;
+import br.ufrpe.beela.perfil.negocio.ListViewNomePerfil;
+import br.ufrpe.beela.perfil.negocio.PerfilService;
+import br.ufrpe.beela.usuario.dominio.Pessoa;
+import br.ufrpe.beela.usuario.dominio.Usuario;
+import br.ufrpe.beela.usuario.gui.LoginAct;
+import br.ufrpe.beela.gui.R;
+>>>>>>> desenvolvedor2
 
 public class PerfilAct extends AppCompatActivity {
     private ImageButton botaoAdicionarPerfil, botaoApagar, botaoSalvar;
@@ -35,7 +60,6 @@ public class PerfilAct extends AppCompatActivity {
     private Button botaoComecar;
     private int contadorPerfil;
     private boolean verificador=false;
-    private String testePerfilAtual;
 
     private Pessoa pessoa = LoginAct.getPessoa();
     private PerfilUsuario perfilUsuario = pessoa.getPerfil();
@@ -198,6 +222,7 @@ public class PerfilAct extends AppCompatActivity {
             }
         }
         if(contadorPerfil==1){
+<<<<<<< HEAD
             //perfilUsuario.setPerfilAtual(null);
             //perfilUsuario.setPerfilAtual(perfilAtual);
             PerfilDAO bdc = new PerfilDAO();
@@ -214,6 +239,10 @@ public class PerfilAct extends AppCompatActivity {
             //
             LoginAct.getPessoa().setPerfil(perfilAtual);
             perfilUsuario = LoginAct.getPessoa().getPerfil();
+=======
+            perfilUsuario.setPerfilAtual(null);
+            perfilUsuario.setPerfilAtual(perfilAtual);
+>>>>>>> desenvolvedor2
             return true;
         }
         else{
@@ -230,7 +259,11 @@ public class PerfilAct extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), R.string.selecionarPerfil, Toast.LENGTH_SHORT).show();
                 } else {
                     verificador=true;
+<<<<<<< HEAD
                     Toast.makeText(getApplicationContext(), getString(R.string.perfilAtual) + pessoa.getPerfil().getNome(), Toast.LENGTH_SHORT).show();
+=======
+                    Toast.makeText(getApplicationContext(), getString(R.string.perfilAtual)+perfilUsuario.getPerfilAtual().getNome(), Toast.LENGTH_SHORT).show();
+>>>>>>> desenvolvedor2
                 }
             }
         }

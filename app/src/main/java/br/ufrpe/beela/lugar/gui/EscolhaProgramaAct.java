@@ -7,8 +7,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
 
+<<<<<<< HEAD
 import java.util.ArrayList;
 
+=======
+import br.ufrpe.beela.database.negocio.BancoDeDados;
+>>>>>>> desenvolvedor2
 import br.ufrpe.beela.gui.R;
 import br.ufrpe.beela.lugar.dao.LugarDAO;
 import br.ufrpe.beela.lugar.dominio.Lugar;
