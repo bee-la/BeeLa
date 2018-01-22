@@ -6,7 +6,6 @@ import android.graphics.Typeface;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Adapter;
 import android.widget.Button;
@@ -15,9 +14,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 import java.util.ArrayList;
-
 import br.ufrpe.beela.lugar.gui.EscolhaProgramaAct;
-import br.ufrpe.beela.perfil.dao.PerfilDAO;
 import br.ufrpe.beela.perfil.dominio.PerfilUsuario;
 import br.ufrpe.beela.perfil.negocio.ListViewNomePerfil;
 import br.ufrpe.beela.perfil.negocio.PerfilService;
@@ -34,7 +31,6 @@ public class PerfilAct extends AppCompatActivity {
     private Button botaoComecar;
     private int contadorPerfil;
     private boolean verificador=false;
-    private String testePerfilAtual;
 
     private Pessoa pessoa = LoginAct.getPessoa();
     private PerfilUsuario perfilUsuario = pessoa.getPerfil();
@@ -196,7 +192,6 @@ public class PerfilAct extends AppCompatActivity {
         if(contadorPerfil==1){
             perfilUsuario.setPerfilAtual(null);
             perfilUsuario.setPerfilAtual(perfilAtual);
-//            testePerfilAtual+=perfilAtual.getComida().get(0);
             return true;
         }
         else{
@@ -213,7 +208,7 @@ public class PerfilAct extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), R.string.selecionarPerfil, Toast.LENGTH_SHORT).show();
                 } else {
                     verificador=true;
-                    Toast.makeText(getApplicationContext(), getString(R.string.perfilAtual) + perfilUsuario.getPerfilAtual().getNome(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), getString(R.string.perfilAtual)+perfilUsuario.getPerfilAtual().getNome(), Toast.LENGTH_SHORT).show();
                 }
             }
         }
