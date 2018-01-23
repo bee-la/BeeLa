@@ -31,8 +31,7 @@ import br.ufrpe.beela.lugar.negocio.ListViewLugar;
 public class LugarAct extends AppCompatActivity {
 
     private Button btIr;
-    private double destinolatitude;
-    private double destinolongitude;
+
     private ArrayList<Lugar> ListLugar = EscolhaProgramaAct.getListaLugar();
 //    private LugarService lugarService = new LugarService();
 //    private PerfilUsuario perfilAtual= LoginAct.getPessoa().getPerfil().getPerfilAtual();
@@ -66,48 +65,6 @@ public class LugarAct extends AppCompatActivity {
        //return bancoTeste.getLugaresPreferidos(this);
     }
 //@TODO Falta tirar esse ListView desta Class e por na sua proprio !!!
-    public void chamarMapa(Lugar lugar) {
-//        verificarGPS();
-        String destino[] = lugar.getLocalicao().split(",");
-        destinolatitude = Double.parseDouble(destino[0]);
-        destinolongitude = Double.parseDouble(destino[1]);
-//        destinolatitude = -8.014121;
-//        destinolongitude = -34.951131;
-
-        try {
-            Intent intent = new Intent(android.content.Intent.ACTION_VIEW,
-                    Uri.parse("http://maps.google.com/maps?saddr=&daddr=" + destinolatitude + "," + destinolongitude));
-
-
-            intent.setComponent(new ComponentName(getString(R.string.comandoAppMaps), getString(R.string.comandoMapsActivity)));
-
-            startActivity(intent);
-        } catch (Exception ex) {
-            Toast.makeText(this, R.string.erroNaoTemGoogleMaps, Toast.LENGTH_SHORT).show();
-        }
-    }
-    private void verificarGPS() {
-        //TODO: Ligar Gps
-        String validarGPS = Settings.Secure.getString(getContentResolver(), Settings.Secure.LOCATION_PROVIDERS_ALLOWED);
-        //Se vier null ou length == 0   é por que o Gps esta desabilitado.
-        //Para abrir a tela do menu configuração e Ativar Gps!
-        if (validarGPS == null || validarGPS.length() == 0) {
-            Toast erro;
-            erro = Toast.makeText(getApplicationContext(), "ATIVE o Gps Porfavor", Toast.LENGTH_SHORT);
-            erro.show();
-            Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
-            startActivityForResult(intent, 1);
-        }
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            // TODO: Permissão do Gps
-            ActivityCompat.requestPermissions(this,
-                    new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION},1);
-            Toast erro;
-            erro = Toast.makeText(getApplicationContext(), "Permissao Desativa", Toast.LENGTH_SHORT);
-            erro.show();
-            return;
-        }
-    }
 
     private void setListView(){
         listViewLugares = (ListView) findViewById(R.id.listView2);
