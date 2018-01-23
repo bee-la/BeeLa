@@ -21,8 +21,8 @@ import br.ufrpe.beela.lugar.gui.LugarAct;
 public class ListViewLugar extends BaseAdapter {
 
     private Context ctx;
-    private LugarAct lugar = new LugarAct();
-    private ArrayList<Lugar> listaLugares = lugar.getLugares();
+    private LugarAct lugarAct = new LugarAct();
+    private ArrayList<Lugar> listaLugares = lugarAct.getLugares();
 
     public ListViewLugar(Context ctx){
         this.ctx=ctx;
@@ -62,4 +62,5 @@ public class ListViewLugar extends BaseAdapter {
         descricao.setText(lugar.getDescricao());
         return view;
     }
+
 }

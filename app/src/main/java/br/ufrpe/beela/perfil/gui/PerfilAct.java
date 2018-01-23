@@ -112,7 +112,6 @@ public class PerfilAct extends AppCompatActivity {
         startActivity(new Intent(PerfilAct.this, PerguntaMusicaAct.class));
         finish();
     }
-
     private void irExcluirPerfil() {
         botaoApagar = (ImageButton) findViewById(R.id.imageButton6);
         botaoApagar.setOnClickListener(new View.OnClickListener() {
