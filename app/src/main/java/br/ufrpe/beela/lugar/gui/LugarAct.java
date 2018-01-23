@@ -7,6 +7,9 @@ import android.os.Bundle;
 import android.provider.Settings;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.Adapter;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.content.ComponentName;
 import android.net.Uri;
@@ -62,10 +65,14 @@ public class LugarAct extends AppCompatActivity {
 //       return lugarService.gerarListaLugar(perfilUsuario,this);
        //return bancoTeste.getLugaresPreferidos(this);
     }
-
-    private void chamarMapa() {
-        destinolatitude = -8.014121;
-        destinolongitude = -34.951131;
+//@TODO Falta tirar esse ListView desta Class e por na sua proprio !!!
+    public void chamarMapa(Lugar lugar) {
+//        verificarGPS();
+        String destino[] = lugar.getLocalicao().split(",");
+        destinolatitude = Double.parseDouble(destino[0]);
+        destinolongitude = Double.parseDouble(destino[1]);
+//        destinolatitude = -8.014121;
+//        destinolongitude = -34.951131;
 
         try {
             Intent intent = new Intent(android.content.Intent.ACTION_VIEW,
@@ -104,7 +111,7 @@ public class LugarAct extends AppCompatActivity {
 
     private void setListView(){
         listViewLugares = (ListView) findViewById(R.id.listView2);
-        ListViewLugar lista = new ListViewLugar(LugarAct.this);
+        ListViewLugar lista = new ListViewLugar(LugarAct.this, listViewLugares);
 //        BancoDeDados testeProvisorio=new BancoDeDados();
 //        testeProvisorio.gerarLugares(LugarAct.this);
         listViewLugares.setAdapter(lista);
