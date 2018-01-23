@@ -15,6 +15,7 @@ import br.ufrpe.beela.perfil.dominio.PerfilEsporte;
 import br.ufrpe.beela.perfil.dominio.PerfilLugar;
 import br.ufrpe.beela.perfil.dominio.PerfilMusica;
 import br.ufrpe.beela.perfil.dominio.PerfilUsuario;
+import br.ufrpe.beela.usuario.dominio.Pessoa;
 import br.ufrpe.beela.usuario.dominio.Usuario;
 
 /**
@@ -358,5 +359,13 @@ public class PerfilDAO {
         }
         bd.close();
         return perfilUsuario;
+    }
+
+    public void inserirPerfil(Pessoa p) {
+        ContentValues valores = new ContentValues();
+        valores.put("id_usuario",p.getId());
+        valores.put("nome_perfil", p.getNome());
+        bd.insert("perfilUsuario", null, valores);
+        bd.close();
     }
 }

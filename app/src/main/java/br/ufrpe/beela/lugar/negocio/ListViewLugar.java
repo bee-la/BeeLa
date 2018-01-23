@@ -58,18 +58,18 @@ public class ListViewLugar extends BaseAdapter {
         View view = LayoutInflater.from(ctx).inflate(R.layout.activity_list_view_lugares, null);
         final TextView nome = view.findViewById(R.id.textView22);
         final TextView descricao=view.findViewById(R.id.textView23);
-        nome.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-            }
-        });
+//        nome.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//
+//            }
+//        });
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Lugar lugarzinho =(Lugar) parent.getAdapter().getItem(position);
-                lugarAct.chamarMapa(lugarzinho);
-//                Toast.makeText(ctx,lugarzinho.getLocalicao(),Toast.LENGTH_SHORT).show();
+//                lugarAct.chamarMapa(lugarzinho);
+                Toast.makeText(ctx,lugarzinho.getLocalicao(),Toast.LENGTH_SHORT).show();
             }
         });
         nome.setText(lugar.getNome());

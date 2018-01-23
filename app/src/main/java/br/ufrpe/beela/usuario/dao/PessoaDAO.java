@@ -9,6 +9,7 @@ import java.util.ArrayList;
 
 import br.ufrpe.beela.database.dao.BD;
 import br.ufrpe.beela.usuario.dominio.Pessoa;
+import br.ufrpe.beela.usuario.gui.LoginAct;
 
 
 /**
@@ -79,7 +80,10 @@ public class PessoaDAO {
                 pessoa.setNome(cursor.getString(1));
                 pessoa.setCelular(cursor.getString(2));
                 pessoa.setId_usuario(cursor.getInt(3));
-                listaPessoa.add(pessoa);
+                if (cursor.getInt(0)!= LoginAct.getPessoa().getId()){
+                    listaPessoa.add(pessoa);
+                }
+
             }while (cursor.moveToNext());
         }
         bd.close();
@@ -98,5 +102,19 @@ public class PessoaDAO {
         finally {
             return saida;
         }
+    }
+
+    public Pessoa getPessoa(Pessoa p){
+        Pessoa pessoa = new Pessoa();
+        String where ="SELECT * FROM pessoa WHERE _id = '"+String.valueOf(p.getId())+"'";
+        Cursor cursor = bd.rawQuery(where, null);
+        if(cursor.getCount()>0){
+            cursor.moveToFirst();
+            pessoa.setId(cursor.getInt(0));
+            pessoa.setNome(cursor.getString(1));
+            pessoa.setCelular(cursor.getString(2));
+            pessoa.setId_usuario(cursor.getInt(3));}
+        bd.close();
+        return pessoa;
     }
 }
