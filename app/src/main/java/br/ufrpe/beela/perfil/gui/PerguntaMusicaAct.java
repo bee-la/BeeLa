@@ -75,7 +75,7 @@ public class PerguntaMusicaAct extends AppCompatActivity {
 
     private void irTelaPerguntaComida(){
         startActivityForResult(new Intent(PerguntaMusicaAct.this, PerguntaComidaAct.class),1);
-        finish();
+       // finish();
 
     }
     public void addTesteNome(){
@@ -94,8 +94,10 @@ public class PerguntaMusicaAct extends AppCompatActivity {
                 if (valor != null) {
                     perfilUsuario.setNome(valor.getString("nomePerfil"));
                     addTesteNome();
+                    finish();
                 }
             }catch(Exception e){
+                finish();
                 e.printStackTrace();
             }
         }

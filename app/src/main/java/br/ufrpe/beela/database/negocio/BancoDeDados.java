@@ -55,14 +55,14 @@ public class BancoDeDados {
         //
         PerfilComida perfilComida = new PerfilComida();
         perfilComida.setId_lugar(lugar.getId());
-        perfilComida.setNome("Self-Service");
+        perfilComida.setNome("Orientais");
         PerfilDAO bdp = new PerfilDAO();
         bdp.getEscrever(context);
         bdp.inserirPerfilLugarComida(perfilComida);
         //
         PerfilMusica perfilMusica = new PerfilMusica();
         perfilMusica.setId_lugar(lugar.getId());
-        perfilMusica.setNome("Variadas");
+        perfilMusica.setNome("Samba");
         bdp = new PerfilDAO();
         bdp.getEscrever(context);
         bdp.inserirPerfilLugarMusica(perfilMusica);
@@ -74,10 +74,7 @@ public class BancoDeDados {
         lugar.setDescriacao("Restaurante");
         lugar.setLocalicao("-8.0640944,-34.8714444");
         lugaresPreferidos.add(lugar);
-<<<<<<< HEAD
-=======
 
->>>>>>> desenvolvedor2
         LugarDAO bd = new LugarDAO();
         bd.getEscrever(context);
         bd.inserir(lugar);
@@ -107,10 +104,6 @@ public class BancoDeDados {
         lugar.setDescriacao("Shopping Center");
         lugar.setLocalicao("-8.0640944,-34.8714444");
         lugaresPreferidos.add(lugar);
-<<<<<<< HEAD
-=======
-
->>>>>>> desenvolvedor2
         LugarDAO bd = new LugarDAO();
         bd.getEscrever(context);
         bd.inserir(lugar);
@@ -128,7 +121,7 @@ public class BancoDeDados {
         }
         //
         PerfilMusica perfilMusica = new PerfilMusica();
-        perfilMusica.setNome("NULL");
+        perfilMusica.setNome("Rock");
         perfilMusica.setId_lugar(lugar.getId());
         PerfilDAO bdp = new PerfilDAO();
         bdp.getEscrever(context);
@@ -195,7 +188,6 @@ public class BancoDeDados {
         bdp.inserirPerfilLugarMusica(perfilMusica);
 
     }
-<<<<<<< HEAD
     public void criarFulano1(Context context){
         Pessoa pessoa = new Pessoa();
         pessoa.setCelular("987654321");
@@ -236,10 +228,10 @@ public class BancoDeDados {
         bdp.getEscrever(context);
         bdp.inserir(pessoa);
     }
-=======
+
 
 //TODO    Sem Funcionar
->>>>>>> desenvolvedor2
+
     public ArrayList<Pessoa> getListaContatos(Context contexto){
         PessoaDAO bd=new PessoaDAO();
         bd.getLer(contexto);

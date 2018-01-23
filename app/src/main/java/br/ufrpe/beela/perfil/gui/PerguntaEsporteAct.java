@@ -72,7 +72,7 @@ public class PerguntaEsporteAct extends AppCompatActivity {
 
     public void irTelaPerfilPrioridade(){
         startActivityForResult(new Intent(PerguntaEsporteAct.this, NomePerfilAct.class),1);
-        finish();
+        //finish();
 
     }
     public void addTesteNome(){
@@ -92,10 +92,11 @@ public class PerguntaEsporteAct extends AppCompatActivity {
                     perfilUsuario.setNome(valor.getString("nomePerfil"));
                     addTesteNome();
                     setResult(1, intent);
-//                    finish();
+                    finish();
                 }
             }
             catch(Exception e){
+                finish();
                 e.printStackTrace();
             }
                 //intent.putExtra("nomePerfil",perfilUsuario.getNome());

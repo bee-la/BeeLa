@@ -105,8 +105,8 @@ public class LugarAct extends AppCompatActivity {
     private void setListView(){
         listViewLugares = (ListView) findViewById(R.id.listView2);
         ListViewLugar lista = new ListViewLugar(LugarAct.this);
-        BancoDeDados testeProvisorio=new BancoDeDados();
-        testeProvisorio.gerarLugares(LugarAct.this);
+//        BancoDeDados testeProvisorio=new BancoDeDados();
+//        testeProvisorio.gerarLugares(LugarAct.this);
         listViewLugares.setAdapter(lista);
     }
 

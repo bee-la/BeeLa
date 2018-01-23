@@ -6,13 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
-
-<<<<<<< HEAD
 import java.util.ArrayList;
-
-=======
-import br.ufrpe.beela.database.negocio.BancoDeDados;
->>>>>>> desenvolvedor2
 import br.ufrpe.beela.gui.R;
 import br.ufrpe.beela.lugar.dao.LugarDAO;
 import br.ufrpe.beela.lugar.dominio.Lugar;
@@ -90,18 +84,7 @@ public class EscolhaProgramaAct extends AppCompatActivity {
         for (int id : listId) {
             LugarDAO bd = new LugarDAO();
             bd.getLer(context);
-        //    Lugar lugar =  new Lugar();
             Lugar lugar = bd.getLugar(id);
-            //bd.getLugar(id);
-//            PerfilDAO bdp = new PerfilDAO();
-//            bdp.getEscrever(context);
-//            lugar.setComida(bdp.getPerfilComida(lugar));
-//            bdp = new PerfilDAO();
-//            bdp.getEscrever(context);
-//            lugar.setEsporte(bdp.getPerfilEsporte(lugar));
-//            bdp = new PerfilDAO();
-//            bdp.getEscrever(context);
-//            lugar.setMusica(bdp.getPerfilMusica(lugar));
             listLugar.add(lugar);
         }
         return listLugar;
