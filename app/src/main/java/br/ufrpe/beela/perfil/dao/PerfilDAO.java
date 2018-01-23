@@ -218,9 +218,11 @@ public class PerfilDAO {
         if(cursor.getCount()>0){
             cursor.moveToFirst();
             do{
-                if (!list.contains(cursor.getInt(3))){
-                    list.add(cursor.getInt(3));}
-            }while (cursor.moveToNext());
+                if(cursor.getInt(4)>0) {
+                    if (!list.contains(cursor.getInt(4))) {
+                        list.add(cursor.getInt(4));
+                    }
+                }}while (cursor.moveToNext());
         }
         bd.close();
         return list;
@@ -231,8 +233,11 @@ public class PerfilDAO {
         if(cursor.getCount()>0){
             cursor.moveToFirst();
             do{
-                if (!list.contains(cursor.getInt(3))){
-                    list.add(cursor.getInt(3));}
+                if(cursor.getInt(4)>0) {
+                    if (!list.contains(cursor.getInt(4))) {
+                        list.add(cursor.getInt(4));
+                    }
+                }
             }while (cursor.moveToNext());
         }
         bd.close();
@@ -244,8 +249,11 @@ public class PerfilDAO {
         if(cursor.getCount()>0){
             cursor.moveToFirst();
             do{
-                if (!list.contains(cursor.getInt(3))){
-                    list.add(cursor.getInt(3));}
+                if(cursor.getInt(4)>0) {
+                    if (!list.contains(cursor.getInt(4))) {
+                        list.add(cursor.getInt(4));
+                    }
+                }
             }while (cursor.moveToNext());
         }
         bd.close();
