@@ -29,7 +29,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <CheckBox
-            android:id="@+id/checkboxMassas"
+            android:id="@+id/checkboxSelfieService"
             android:layout_width="match_parent"
             android:layout_height="30dp"
             android:layout_marginEnd="8dp"
@@ -37,7 +37,7 @@
             android:layout_marginTop="76dp"
             android:buttonTint="@color/verdeBotao"
             android:onClick="onCheckboxClicked"
-            android:text="Massas"
+            android:text="Self-Service"
             android:textColor="@color/branco"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -57,7 +57,7 @@
             android:textColor="@color/branco"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/checkboxMassas" />
+            app:layout_constraintTop_toBottomOf="@+id/checkboxSelfieService" />
 
         <CheckBox
             android:id="@+id/checkBoxOrientais"

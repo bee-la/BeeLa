@@ -47,7 +47,7 @@ public class PerguntaComidaAct extends AppCompatActivity {
     }
 
     public void adcCheckBoxCom() {
-        checkBoxesComidas.add((CheckBox) findViewById(R.id.checkboxMassas));
+        checkBoxesComidas.add((CheckBox) findViewById(R.id.checkboxSelfieService));
         checkBoxesComidas.add((CheckBox) findViewById(R.id.checkboxCarnes));
         checkBoxesComidas.add((CheckBox) findViewById(R.id.checkBoxFastFood));
         checkBoxesComidas.add((CheckBox) findViewById(R.id.checkBoxPizza));

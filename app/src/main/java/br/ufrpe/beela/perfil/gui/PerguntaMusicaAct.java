@@ -50,6 +50,7 @@ public class PerguntaMusicaAct extends AppCompatActivity {
         checkBoxesMusicas.add((CheckBox) findViewById(R.id.checkboxSertanejo));
         checkBoxesMusicas.add((CheckBox) findViewById(R.id.checkBoxForro));
         checkBoxesMusicas.add((CheckBox) findViewById(R.id.checkBoxSamba));
+        checkBoxesMusicas.add((CheckBox) findViewById(R.id.checkBox9));
 
     }
 

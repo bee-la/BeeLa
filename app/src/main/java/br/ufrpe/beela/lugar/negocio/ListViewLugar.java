@@ -69,7 +69,7 @@ public class ListViewLugar extends BaseAdapter {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Lugar lugarzinho =(Lugar) parent.getAdapter().getItem(position);
                 lugarAct.chamarMapa(lugarzinho);
-                Toast.makeText(ctx,"Teste Lista",Toast.LENGTH_SHORT).show();
+//                Toast.makeText(ctx,lugarzinho.getLocalicao(),Toast.LENGTH_SHORT).show();
             }
         });
         nome.setText(lugar.getNome());

@@ -41,7 +41,7 @@ public class BancoDeDados {
 
     public void criarRu(Context context) {
         Lugar lugar = new Lugar();
-        lugar.setNome("Restaurante Universitário");
+        lugar.setNome("RU - UFRPE");
         lugar.setDescriacao("Self-Service");
         lugar.setLocalicao("-8.014121,-34.951131");
         lugaresPreferidos.add(lugar);
@@ -55,14 +55,14 @@ public class BancoDeDados {
         //
         PerfilComida perfilComida = new PerfilComida();
         perfilComida.setId_lugar(lugar.getId());
-        perfilComida.setNome("Orientais");
+        perfilComida.setNome("Self-Service");
         PerfilDAO bdp = new PerfilDAO();
         bdp.getEscrever(context);
         bdp.inserirPerfilLugarComida(perfilComida);
         //
         PerfilMusica perfilMusica = new PerfilMusica();
         perfilMusica.setId_lugar(lugar.getId());
-        perfilMusica.setNome("Samba");
+        perfilMusica.setNome("Variadas");
         bdp = new PerfilDAO();
         bdp.getEscrever(context);
         bdp.inserirPerfilLugarMusica(perfilMusica);
@@ -110,7 +110,7 @@ public class BancoDeDados {
         bd = new LugarDAO();
         bd.getLer(context);
         lugar = bd.getLugar(lugar.getNome());
-        String[] list = {"FastFood", "Orientais", "Massas"};
+        String[] list = {"FastFood", "Orientais", "Pizza"};
         for (String x : list) {
             PerfilComida perfilComida = new PerfilComida();
             perfilComida.setId_lugar(lugar.getId());
