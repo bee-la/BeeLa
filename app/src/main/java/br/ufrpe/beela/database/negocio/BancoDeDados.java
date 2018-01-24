@@ -8,6 +8,7 @@ import br.ufrpe.beela.lugar.dominio.Lugar;
 import br.ufrpe.beela.lugar.gui.LugarAct;
 import br.ufrpe.beela.perfil.dao.PerfilDAO;
 import br.ufrpe.beela.perfil.dominio.PerfilComida;
+import br.ufrpe.beela.perfil.dominio.PerfilEsporte;
 import br.ufrpe.beela.perfil.dominio.PerfilMusica;
 import br.ufrpe.beela.perfil.dominio.PerfilUsuario;
 import br.ufrpe.beela.usuario.dao.PessoaDAO;
@@ -30,11 +31,12 @@ public class BancoDeDados {
             criarMirabilandia(context);
             criarShoppingRecife(context);
             criarRockRibs(context);
-            criarFulano1(context);
-            criarFulano2(context);
-            criarFulano3(context);
-            criarFulano4(context);
-            criarFulano5(context);
+            criaParqueJaqueira(context);
+//            criarFulano1(context);
+//            criarFulano2(context);
+//            criarFulano3(context);
+//            criarFulano4(context);
+//            criarFulano5(context);
         }
 
     }
@@ -186,8 +188,33 @@ public class BancoDeDados {
         bdp = new PerfilDAO();
         bdp.getEscrever(context);
         bdp.inserirPerfilLugarMusica(perfilMusica);
-
     }
+
+    public void criaParqueJaqueira(Context context){
+        Lugar lugar = new Lugar();
+        lugar.setNome("Parque Jaqueira");
+        lugar.setDescriacao("Parque");
+        lugar.setLocalicao("-8.0374702,-34.9746089");
+        lugaresPreferidos.add(lugar);
+        //
+        LugarDAO bd = new LugarDAO();
+        bd.getEscrever(context);
+        bd.inserir(lugar);
+        bd = new LugarDAO();
+        bd.getLer(context);
+        lugar = bd.getLugar(lugar.getNome());
+
+        String[] list = {"Caminhada", "Corrida", "Ciclismo"};
+        for (String x : list) {
+            PerfilEsporte perfilEsporte = new PerfilEsporte();
+            perfilEsporte.setId_lugar(lugar.getId());
+            perfilEsporte.setNome(x);
+            PerfilDAO bdp=new PerfilDAO();
+            bdp.getEscrever(context);
+            bdp.inserirPerfilLugarEsporte(perfilEsporte);
+        }
+    }
+
     public void criarFulano1(Context context){
         Pessoa pessoa = new Pessoa();
         pessoa.setCelular("987654321");

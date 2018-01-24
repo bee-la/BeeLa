@@ -33,10 +33,10 @@ import br.ufrpe.beela.lugar.negocio.LugarService;
  */
 
 public class LugarAct extends AppCompatActivity {
-
-    private Button btIr;
     private double destinolatitude;
     private double destinolongitude;
+    private Button btIr;
+
     private ArrayList<Lugar> ListLugar = EscolhaProgramaAct.getListaLugar();
 //    private LugarService lugarService = new LugarService();
 //    private PerfilUsuario perfilAtual= LoginAct.getPessoa().getPerfil().getPerfilAtual();
@@ -68,6 +68,7 @@ public class LugarAct extends AppCompatActivity {
        //return bancoTeste.getLugaresPreferidos(this);
     }
 //@TODO Falta tirar esse ListView desta Class e por na sua proprio !!!
+
     public Intent chamarMapa(Lugar lugar) {
 
 
