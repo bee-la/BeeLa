@@ -19,6 +19,7 @@ import br.ufrpe.beela.perfil.dominio.PerfilComida;
 import br.ufrpe.beela.perfil.dominio.PerfilEsporte;
 import br.ufrpe.beela.perfil.dominio.PerfilMusica;
 import br.ufrpe.beela.perfil.dominio.PerfilUsuario;
+import br.ufrpe.beela.perfil.dominio.PerfilLugar;
 
 /**
  * Created by vidal on 18/01/2018.
@@ -46,6 +47,11 @@ public class LugarService {
                 PerfilDAO bd = new PerfilDAO();
                 bd.getLer(context);
                 listId = bd.getPerfilLugar(listId, esporte);
+            }
+            for (PerfilLugar lugar : perfilUsuario.getLugar()){
+                PerfilDAO bd = new PerfilDAO();
+                bd.getLer(context);
+                listId = bd.getPerfilLugar(listId, lugar);
             }
         }
         catch (Exception e){}

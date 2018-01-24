@@ -14,6 +14,7 @@ import br.ufrpe.beela.perfil.dominio.PerfilComida;
 import br.ufrpe.beela.perfil.dominio.PerfilEsporte;
 import br.ufrpe.beela.perfil.dominio.PerfilMusica;
 import br.ufrpe.beela.perfil.dominio.PerfilUsuario;
+import br.ufrpe.beela.perfil.dominio.PerfilLugar;
 import br.ufrpe.beela.perfil.gui.PerfilAct;
 
 /**
@@ -55,7 +56,14 @@ public class PerfilService {
             bd.inserirPerfilMusica(musica);
         }
     }
-
+    public void adcLugar(PerfilUsuario perfilUsuario, Context context){
+        for (PerfilLugar lugar : perfilUsuario.getLugar()){
+            PerfilDAO bd = new PerfilDAO();
+            bd.getEscrever(context);
+            lugar.setNome_perfil(perfilUsuario.getNome());
+            bd.inserirPerfilLugar(lugar);
+        }
+    }
     public void adcEsporte(PerfilUsuario perfilUsuario, Context context){
         for (PerfilEsporte esporte : perfilUsuario.getEsporte()){
             PerfilDAO bd = new PerfilDAO();
@@ -118,6 +126,17 @@ public class PerfilService {
             }
         }
         perfilUsuario.setMusica(listaMusica);
+    }
+    public void adcListaLugares(ArrayList<CheckBox> checkBoxesLugares,ArrayList<PerfilLugar> listaLugar, PerfilUsuario perfilUsuario){
+        for (CheckBox x : checkBoxesLugares) {
+            if (x.isChecked()) {
+                PerfilLugar lugar = new PerfilLugar();
+                lugar.setId_usuario(perfilUsuario.getId_Usuario());
+                lugar.setNome(x.getText().toString());
+                listaLugar.add(lugar);
+            }
+        }
+        perfilUsuario.setLugar(listaLugar);
     }
     public void initData(List listDataHeader,HashMap listHash) {
         listDataHeader = new ArrayList<>();
