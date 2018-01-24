@@ -1,6 +1,7 @@
 package br.ufrpe.beela.lugar.negocio;
 
 import android.content.Context;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,12 +18,15 @@ import br.ufrpe.beela.lugar.dominio.Lugar;
 import br.ufrpe.beela.lugar.gui.EscolhaProgramaAct;
 import br.ufrpe.beela.lugar.gui.LugarAct;
 
+import static android.support.v4.content.ContextCompat.startActivity;
+
 
 /**
  * Created by Anderson on 19/01/2018.
  */
 
 public class ListViewLugar extends BaseAdapter {
+
 
     private Context ctx;
     private ListView listView;
@@ -58,20 +62,7 @@ public class ListViewLugar extends BaseAdapter {
         View view = LayoutInflater.from(ctx).inflate(R.layout.activity_list_view_lugares, null);
         final TextView nome = view.findViewById(R.id.textView22);
         final TextView descricao=view.findViewById(R.id.textView23);
-        nome.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
 
-            }
-        });
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Lugar lugarzinho =(Lugar) parent.getAdapter().getItem(position);
-                lugarAct.chamarMapa(lugarzinho);
-//                Toast.makeText(ctx,lugarzinho.getLocalicao(),Toast.LENGTH_SHORT).show();
-            }
-        });
         nome.setText(lugar.getNome());
         descricao.setText(lugar.getDescricao());
         return view;
