@@ -222,8 +222,6 @@ public class PerfilAct extends AppCompatActivity {
         }
         if(contadorPerfil==1){
 
-            //perfilUsuario.setPerfilAtual(null);
-            //perfilUsuario.setPerfilAtual(perfilAtual);
             PerfilDAO bdc = new PerfilDAO();
             bdc.getLer(this);
             perfilAtual.setComida(bdc.getPerfilComida(perfilAtual));
@@ -255,6 +253,7 @@ public class PerfilAct extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), R.string.selecionarPerfil, Toast.LENGTH_SHORT).show();
                 } else {
                     verificador=true;
+                    perfilService.adcPerfilFavorito(LoginAct.getPessoa().getId(),pessoa.getPerfil().getNome(),this);
                     Toast.makeText(getApplicationContext(), getString(R.string.perfilAtual) + pessoa.getPerfil().getNome(), Toast.LENGTH_SHORT).show();
 //=======
 //                    Toast.makeText(getApplicationContext(), getString(R.string.perfilAtual)+perfilUsuario.getPerfilAtual().getNome(), Toast.LENGTH_SHORT).show();

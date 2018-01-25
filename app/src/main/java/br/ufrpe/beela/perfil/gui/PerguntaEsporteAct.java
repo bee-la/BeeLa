@@ -60,7 +60,7 @@ public class PerguntaEsporteAct extends AppCompatActivity {
             public void onClick(View v) {
                 perfilService.adcListaEsporte(checkBoxesEsportes,listaEsporte,perfilUsuario);
                 LoginAct.getPessoa().setPerfil(perfilUsuario);
-                irTelaPerfilPrioridade();
+                irTelaPerguntaLugarAct();
 
             }
         });
@@ -70,12 +70,12 @@ public class PerguntaEsporteAct extends AppCompatActivity {
         boolean checked = ((CheckBox) view).isChecked();
     }
 
-    public void irTelaPerfilPrioridade(){
+    public void irTelaPerguntaLugarAct(){
         startActivityForResult(new Intent(PerguntaEsporteAct.this, PerguntaLugarAct.class),1);
         //finish();
 
     }
-    public void addTesteNome(){
+    public void salvarEsporte(){
         if (perfilUsuario.getNome()!=null) {
             PerfilDAO bd = new PerfilDAO();
             bd.getLer(this);
@@ -90,7 +90,7 @@ public class PerguntaEsporteAct extends AppCompatActivity {
             Bundle valor = intent.getExtras();
                 if (valor != null) {
                     perfilUsuario.setNome(valor.getString("nomePerfil"));
-                    addTesteNome();
+                    salvarEsporte();
                     setResult(1, intent);
                     finish();
                 }

@@ -59,7 +59,7 @@ public class PerguntaLugarAct extends AppCompatActivity {
             public void onClick(View v) {
                 perfilService.adcListaLugares(checkBoxesLugares, listaLugar, perfilUsuario);
                 LoginAct.getPessoa().setPerfil(perfilUsuario);
-                irTelaPerguntaEsporte();
+                irTelaNomePerfilAct();
 
             }
         });
@@ -69,12 +69,12 @@ public class PerguntaLugarAct extends AppCompatActivity {
     }
 
 
-    public void irTelaPerguntaEsporte() {
+    public void irTelaNomePerfilAct() {
         startActivityForResult(new Intent(PerguntaLugarAct.this, NomePerfilAct.class), 1);
         // finish();
 
     }
-    public void addTesteNome() {
+    public void salvarLugar() {
         if (perfilUsuario.getNome() != null) {
             PerfilDAO bd = new PerfilDAO();
             bd.getLer(this);
@@ -89,7 +89,8 @@ public class PerguntaLugarAct extends AppCompatActivity {
                 Bundle valor = intent.getExtras();
                 if (valor != null) {
                     perfilUsuario.setNome(valor.getString("nomePerfil"));
-                    addTesteNome();
+                    salvarLugar();
+                    setResult(1, intent);
                     finish();
                 }
             }catch(Exception e){

@@ -38,14 +38,15 @@ public class LugarAct extends AppCompatActivity {
     private Button btIr;
 
     private ArrayList<Lugar> ListLugar = EscolhaProgramaAct.getListaLugar();
+    //private BancoDeDados bancoTeste=new BancoDeDados();
 //    private LugarService lugarService = new LugarService();
 //    private PerfilUsuario perfilAtual= LoginAct.getPessoa().getPerfil().getPerfilAtual();
 //    private PerfilUsuario perfilUsuario = LoginAct.getPessoa().getPerfil();
     private ListView listViewLugares;
 
-    //private BancoDeDados bancoTeste=new BancoDeDados();
     Toast Erro;
     LugarService mapa = new LugarService();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

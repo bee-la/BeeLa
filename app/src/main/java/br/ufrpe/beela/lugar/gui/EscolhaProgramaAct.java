@@ -80,11 +80,11 @@ public class EscolhaProgramaAct extends AppCompatActivity {
                 bd.getLer(context);
                 listId = bd.getPerfilLugar(listId, esporte);
             }
-            for (PerfilLugar lugar : perfilUsuario.getLugar()){
-                PerfilDAO bd = new PerfilDAO();
-                bd.getLer(context);
-                listId = bd.getPerfilLugar(listId, lugar);
-            }
+//            for (PerfilLugar lugar : perfilUsuario.getLugar()){
+//                PerfilDAO bd = new PerfilDAO();
+//                bd.getLer(context);
+//                listId = bd.getPerfilLugar(listId, lugar);
+//            }
         }
         catch (Exception e){}
         for (int id : listId) {

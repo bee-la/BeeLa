@@ -63,7 +63,7 @@ public class NomePerfilAct extends AppCompatActivity {
                 perfilUsuario.setNome(nomePerfil);
                 LoginAct.getPessoa().setPerfil(perfilUsuario);
                 salvarBD();
-                irTelaPerfil();
+                finalizar();
             }
             else{
                 erro =Toast.makeText(getApplicationContext(),R.string.campoVazio, Toast.LENGTH_SHORT);
@@ -78,13 +78,11 @@ public class NomePerfilAct extends AppCompatActivity {
 
     public void salvarBD() {
         perfilService.adcPerfil(perfilUsuario, this);
-        perfilService.adcPerfilFavorito(LoginAct.getPessoa().getId(),nomePerfil,this);
     }
 
-    public void irTelaPerfil(){
+    public void finalizar(){
         Intent intent = new Intent();
         intent.putExtra("nomePerfil",nomePerfil);
-   //     startActivity(new Intent(this, PerfilAct.class));
         setResult(1,intent);
         finish();
     }

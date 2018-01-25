@@ -78,7 +78,7 @@ public class PerguntaComidaAct extends AppCompatActivity {
 
     }
 
-    public void addTesteNome() {
+    public void salvarComida() {
         if (perfilUsuario.getNome() != null) {
             PerfilDAO bd = new PerfilDAO();
             bd.getLer(this);
@@ -94,7 +94,7 @@ public class PerguntaComidaAct extends AppCompatActivity {
             Bundle valor = intent.getExtras();
             if (valor != null) {
                 perfilUsuario.setNome(valor.getString("nomePerfil"));
-                addTesteNome();
+                salvarComida();
                 setResult(1,intent);
                 finish();
             }

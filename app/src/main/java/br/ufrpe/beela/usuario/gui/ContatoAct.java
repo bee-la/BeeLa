@@ -20,7 +20,6 @@ import br.ufrpe.beela.usuario.negocio.ListViewContato;
  */
 
 public class ContatoAct extends AppCompatActivity {
-    //private BancoDeDados bancoDeDados=new BancoDeDados();
     private ListView listViewContatos;
     private ArrayList<Pessoa> pessoaArrayList = EscolhaProgramaAct.getListaPessoa();
 
@@ -32,7 +31,7 @@ public class ContatoAct extends AppCompatActivity {
     }
 
     public ArrayList<Pessoa> getContatos(){
-        return pessoaArrayList;//bancoDeDados.getListaContatos(this);
+        return pessoaArrayList;
     }
 
     public void setListView(){

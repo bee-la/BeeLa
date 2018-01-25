@@ -9,6 +9,7 @@ import br.ufrpe.beela.lugar.gui.LugarAct;
 import br.ufrpe.beela.perfil.dao.PerfilDAO;
 import br.ufrpe.beela.perfil.dominio.PerfilComida;
 import br.ufrpe.beela.perfil.dominio.PerfilEsporte;
+import br.ufrpe.beela.perfil.dominio.PerfilLugar;
 import br.ufrpe.beela.perfil.dominio.PerfilMusica;
 import br.ufrpe.beela.perfil.dominio.PerfilUsuario;
 import br.ufrpe.beela.usuario.dao.PessoaDAO;
@@ -32,6 +33,7 @@ public class BancoDeDados {
             criarShoppingRecife(context);
             criarRockRibs(context);
             criaParqueJaqueira(context);
+            criarIgrejaDoCarmmo(context);
 //            criarFulano1(context);
 //            criarFulano2(context);
 //            criarFulano3(context);
@@ -68,6 +70,42 @@ public class BancoDeDados {
         bdp = new PerfilDAO();
         bdp.getEscrever(context);
         bdp.inserirPerfilLugarMusica(perfilMusica);
+    }
+
+    public void criarIgrejaDoCarmmo(Context context) {
+        Lugar lugar = new Lugar();
+        lugar.setNome("Igreja Do Carmmo");
+        lugar.setDescriacao("Igreja");
+        lugar.setLocalicao("-8.0168458,-34.849372");
+        lugaresPreferidos.add(lugar);
+        //
+        LugarDAO bd = new LugarDAO();
+        bd.getEscrever(context);
+        bd.inserir(lugar);
+        bd = new LugarDAO();
+        bd.getLer(context);
+        lugar = bd.getLugar(lugar.getNome());
+        //
+        PerfilComida perfilComida = new PerfilComida();
+        perfilComida.setId_lugar(lugar.getId());
+        perfilComida.setNome("Null");
+        PerfilDAO bdp = new PerfilDAO();
+        bdp.getEscrever(context);
+        bdp.inserirPerfilLugarComida(perfilComida);
+        //
+        PerfilMusica perfilMusica = new PerfilMusica();
+        perfilMusica.setId_lugar(lugar.getId());
+        perfilMusica.setNome("Padre Marcelo Rossi");
+        bdp = new PerfilDAO();
+        bdp.getEscrever(context);
+        bdp.inserirPerfilLugarMusica(perfilMusica);
+        //
+        PerfilLugar perfilLugar = new PerfilLugar();
+        perfilLugar.setId_lugar(lugar.getId());
+        perfilLugar.setNome("Igreja");
+        bdp = new PerfilDAO();
+        bdp.getEscrever(context);
+        bdp.inserirPerfilLugarLugares(perfilLugar);
     }
 
     public void criarRockRibs(Context context) {

@@ -16,7 +16,6 @@ import br.ufrpe.beela.perfil.dao.PerfilDAO;
 import br.ufrpe.beela.perfil.dominio.PerfilMusica;
 import br.ufrpe.beela.perfil.dominio.PerfilUsuario;
 import br.ufrpe.beela.perfil.negocio.PerfilService;
-import br.ufrpe.beela.usuario.dao.PessoaDAO;
 import br.ufrpe.beela.usuario.gui.LoginAct;
 import br.ufrpe.beela.gui.R;
 
@@ -79,7 +78,7 @@ public class PerguntaMusicaAct extends AppCompatActivity {
        // finish();
 
     }
-    public void addTesteNome(){
+    public void salvarMusica(){
         if(perfilUsuario.getNome()!= null) {
             PerfilDAO bd = new PerfilDAO();
             bd.getLer(this);
@@ -94,7 +93,7 @@ public class PerguntaMusicaAct extends AppCompatActivity {
             Bundle valor = intent.getExtras();
                 if (valor != null) {
                     perfilUsuario.setNome(valor.getString("nomePerfil"));
-                    addTesteNome();
+                    salvarMusica();
                     finish();
                 }
             }catch(Exception e){
