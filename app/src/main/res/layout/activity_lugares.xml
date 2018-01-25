@@ -10,7 +10,7 @@
 
     <ListView
         android:id="@+id/listView2"
-        android:background="@color/branco"
+        android:background="@color/preto"
         android:layout_width="0dp"
         android:layout_height="331dp"
         android:layout_marginEnd="8dp"
