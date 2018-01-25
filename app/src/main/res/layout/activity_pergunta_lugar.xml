@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/preto"
+    tools:context="br.ufrpe.beela.perfil.gui.PerguntaComidaAct">
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/preto"
+        tools:context="br.ufrpe.beela.perfil.gui.PerguntaComidaAct">
+
+        <TextView
+            android:id="@+id/textView8"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="48dp"
+            android:text="Qual lugar você prefere?"
+            android:textColor="#ffffff"
+            android:textSize="25sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.142"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginLeft="8dp" />
+
+        <CheckBox
+            android:id="@+id/checkboxPraia"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="76dp"
+            android:buttonTint="@color/verdeBotao"
+            android:onClick="onCheckboxClicked"
+            android:text="Praia"
+            android:textColor="@color/branco"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView8" />
+
+        <CheckBox
+            android:id="@+id/checkboxShopping"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:buttonTint="@color/verdeBotao"
+            android:onClick="onCheckboxClicked"
+            android:text="Shopping"
+            android:textColor="@color/branco"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/checkboxPraia" />
+
+        <CheckBox
+            android:id="@+id/checkBoxBarzinho"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:buttonTint="@color/verdeBotao"
+            android:onClick="onCheckboxClicked"
+            android:text="Barzinho"
+            android:textColor="@color/branco"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/checkboxShopping" />
+
+        <CheckBox
+            android:id="@+id/checkBoxIgreja"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:buttonTint="@color/verdeBotao"
+            android:onClick="onCheckboxClicked"
+            android:text="Igreja"
+            android:textColor="@color/branco"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/checkBoxBarzinho" />
+
+        <CheckBox
+            android:id="@+id/checkBoxZoologico"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:buttonTint="@color/verdeBotao"
+            android:onClick="onCheckboxClicked"
+            android:text="Zoologico"
+            android:textColor="@color/branco"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/checkBoxIgreja" />
+        <CheckBox
+            android:id="@+id/checkBoxParqueDiv"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:buttonTint="@color/verdeBotao"
+            android:onClick="onCheckboxClicked"
+            android:text="Parque diversão"
+            android:textColor="@color/branco"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/checkBoxZoologico" />
+
+
+        <Button
+            android:id="@+id/buttonConfirmarlugar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="24dp"
+            android:background="@color/verdeBotao"
+            android:text="@string/confirmar"
+            android:textAllCaps="false"
+            android:textColor="@color/preto"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/checkBoxParqueDiv"
+            app:layout_constraintVertical_bias="0.0"
+            tools:layout_editor_absoluteX="0dp" />
+
+    </android.support.constraint.ConstraintLayout>
+</ScrollView>

@@ -60,6 +60,14 @@ public class PerfilDAO {
         bd.insert("perfilMusica", null, valores);
         bd.close();
     }
+    public void inserirPerfilLugar(PerfilLugar lugar) {
+        ContentValues valores = new ContentValues();
+        valores.put("nome", lugar.getNome());
+        valores.put("id_usuario", lugar.getId_usuario());
+        valores.put("nome_perfil", lugar.getNome_perfil());
+        bd.insert("perfilLugar", null, valores);
+        bd.close();
+    }
 
 
     public void inserirPerfilComida(PerfilComida comida){
@@ -113,6 +121,11 @@ public class PerfilDAO {
     public void deletePerfilComida(int id, String nomePerfil) {
         String where = "id_usuario = " + String.valueOf(id)+" AND nome_perfil = "+ nomePerfil;
         bd.delete("perfilComida", where , null);
+        bd.close();
+    }
+    public void deletePerfilLugar(int id, String nomePerfil) {
+        String where = "id_usuario = " + String.valueOf(id)+" AND nome_perfil = "+ nomePerfil;
+        bd.delete("perfilLugar", where , null);
         bd.close();
     }
 
@@ -178,6 +191,24 @@ public class PerfilDAO {
         }
         bd.close();
         return esportes;
+    }
+    public ArrayList<PerfilLugar> getPerfilLugar(PerfilUsuario perfilUsuario) {
+        ArrayList<PerfilLugar> lugares = new ArrayList<PerfilLugar>();
+        String where = "SELECT * FROM perfilLugar WHERE id_usuario = '" + String.valueOf(perfilUsuario.getId_Usuario()) + "' AND nome_perfil = '" + perfilUsuario.getNome() + "'";
+        Cursor cursor = bd.rawQuery(where, null);
+        if (cursor.getCount() > 0) {
+            cursor.moveToFirst();
+            do {
+                PerfilLugar lugar = new PerfilLugar();
+                lugar.setId(cursor.getInt(0));
+                lugar.setNome(cursor.getString(1));
+                lugar.setId_usuario(cursor.getInt(2));
+                lugar.setNome_perfil(cursor.getString(3));
+                lugares.add(lugar);
+            } while (cursor.moveToNext());
+        }
+        bd.close();
+        return lugares;
     }
 
     public  ArrayList<PerfilUsuario> getPerfil(int id){
@@ -260,7 +291,22 @@ public class PerfilDAO {
         bd.close();
         return list;
     }
-
+    public ArrayList<Integer> getPerfilLugar(ArrayList<Integer> list, PerfilLugar lugar){
+        String where ="SELECT * FROM perfilLugar WHERE nome = '"+lugar.getNome()+"'";
+        Cursor cursor = bd.rawQuery(where, null);
+        if(cursor.getCount()>0){
+            cursor.moveToFirst();
+            do{
+                if(cursor.getInt(4)>0) {
+                    if (!list.contains(cursor.getInt(4))) {
+                        list.add(cursor.getInt(4));
+                    }
+                }
+            }while (cursor.moveToNext());
+        }
+        bd.close();
+        return list;
+    }
     public ArrayList<PerfilComida> getPerfilComida(Lugar lugar) {
         ArrayList<PerfilComida> comidas = new ArrayList<PerfilComida>();
         String where = "SELECT * FROM perfilComida WHERE id_lugar = '" + String.valueOf(lugar.getId()) + "'";
@@ -320,6 +366,25 @@ public class PerfilDAO {
         bd.close();
         return esportes;
     }
+    public ArrayList<PerfilLugar> getPerfilLugar(Lugar lugar) {
+        ArrayList<PerfilLugar> lugares = new ArrayList<PerfilLugar>();
+        String where = "SELECT * FROM perfilLugar WHERE id_lugar = '" + String.valueOf(lugar.getId()) + "'";
+        Cursor cursor = bd.rawQuery(where, null);
+        if (cursor.getCount() > 0) {
+            cursor.moveToFirst();
+            do {
+                PerfilLugar lugar1 = new PerfilLugar();
+                lugar1.setId(cursor.getInt(0));
+                lugar1.setNome(cursor.getString(1));
+                lugar1.setId_usuario(cursor.getInt(2));
+                lugar1.setNome_perfil(cursor.getString(3));
+                lugar1.setId_lugar(cursor.getInt(4));
+                lugares.add(lugar1);
+            } while (cursor.moveToNext());
+        }
+        bd.close();
+        return lugares;
+    }
     public void inserirPerfilLugarMusica(PerfilMusica musica){
         ContentValues valores = new ContentValues();
         valores.put("nome",musica.getNome());
@@ -336,6 +401,15 @@ public class PerfilDAO {
         valores.put("id_lugar",comida.getId_lugar());
         valores.put("nome_perfil","Lugar");
         bd.insert("perfilComida",null,valores);
+        bd.close();
+    }
+
+    public void inserirPerfilLugarLugares(PerfilLugar lugar){
+        ContentValues valores = new ContentValues();
+        valores.put("nome",lugar.getNome());
+        valores.put("id_lugar",lugar.getId_lugar());
+        valores.put("nome_perfil","Lugar");
+        bd.insert("perfilLugar",null,valores);
         bd.close();
     }
 

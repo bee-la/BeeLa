@@ -15,6 +15,7 @@ import br.ufrpe.beela.perfil.dominio.PerfilComida;
 import br.ufrpe.beela.perfil.dominio.PerfilEsporte;
 import br.ufrpe.beela.perfil.dominio.PerfilMusica;
 import br.ufrpe.beela.perfil.dominio.PerfilUsuario;
+import br.ufrpe.beela.perfil.dominio.PerfilLugar;
 import br.ufrpe.beela.usuario.dao.PessoaDAO;
 import br.ufrpe.beela.usuario.dominio.Pessoa;
 import br.ufrpe.beela.usuario.gui.ContatoAct;
@@ -78,6 +79,11 @@ public class EscolhaProgramaAct extends AppCompatActivity {
                 PerfilDAO bd = new PerfilDAO();
                 bd.getLer(context);
                 listId = bd.getPerfilLugar(listId, esporte);
+            }
+            for (PerfilLugar lugar : perfilUsuario.getLugar()){
+                PerfilDAO bd = new PerfilDAO();
+                bd.getLer(context);
+                listId = bd.getPerfilLugar(listId, lugar);
             }
         }
         catch (Exception e){}

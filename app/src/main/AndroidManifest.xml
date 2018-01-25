@@ -21,12 +21,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-
         <activity
             android:name="br.ufrpe.beela.lugar.gui.teste"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-
         <activity
             android:name="br.ufrpe.beela.usuario.gui.LoginAct"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
@@ -73,11 +70,14 @@
         <activity
             android:name="br.ufrpe.beela.lugar.gui.LugarAct"
             android:label="@string/lugares" />
-        <activity android:name="br.ufrpe.beela.lugar.gui.EscolhaProgramaAct"
-            android:label="E ai, como vai ser?"/>
+        <activity
+            android:name="br.ufrpe.beela.lugar.gui.EscolhaProgramaAct"
+            android:label="E ai, como vai ser?" />
         <activity
             android:name="br.ufrpe.beela.usuario.gui.ContatoAct"
-            android:label="@string/contatos"></activity>
+            android:label="@string/contatos" />
+        <activity android:name="br.ufrpe.beela.perfil.gui.PerguntasLugares" />
+        <activity android:name="br.ufrpe.beela.perfil.gui.PerguntaLugarAct"></activity>
     </application>
 
 </manifest>

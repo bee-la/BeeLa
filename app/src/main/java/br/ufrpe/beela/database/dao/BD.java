@@ -25,6 +25,7 @@ public class BD extends SQLiteOpenHelper {
         bd.execSQL("create table lugar (_id integer primary key autoincrement, nome text not null , descricao text not null,localizacao text not null);");
 
         bd.execSQL("create table perfilMusica(_id integer primary key  autoincrement, nome text not null,id_usuario interger ,nome_perfil text ,id_lugar interger); ");
+        bd.execSQL("create table perfilLugar(_id integer primary key  autoincrement, nome text not null,id_usuario interger ,nome_perfil text ,id_lugar interger); ");
         bd.execSQL("create table perfilComida(_id integer primary key  autoincrement, nome text not null,id_usuario interger ,nome_perfil text ,id_lugar interger); ");
         bd.execSQL("create table perfilEsporte(_id integer primary key  autoincrement, nome text not null,id_usuario interger ,nome_perfil text,id_lugar interger); ");
         bd.execSQL("create table perfilUsuario(_id integer primary key autoincrement, id_usuario interger not null , nome_perfil text not null);");
@@ -38,6 +39,7 @@ public class BD extends SQLiteOpenHelper {
         bd.execSQL("drop table lugar;");
 
         bd.execSQL("drop table perfilMusica;");
+        bd.execSQL("drop table perfilLugar;");
         bd.execSQL("drop table perfilComida;");
         bd.execSQL("drop table perfilEsporte;");
         bd.execSQL("drop table perfilUsuario;");
