@@ -10,7 +10,7 @@
     <color name="esqueceuSenha">#6b87ec</color>
     <color name="textoEntrada">#b1afaf</color>
     <color name="preto">#000000</color>
-
+    <color name="transp">#00000000</color>"
 
     <color name="branco">#ffffff</color>
 </resources>

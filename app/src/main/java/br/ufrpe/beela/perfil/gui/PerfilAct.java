@@ -7,7 +7,6 @@ package br.ufrpe.beela.perfil.gui;
         import android.support.v7.app.AlertDialog;
         import android.support.v7.app.AppCompatActivity;
         import android.os.Bundle;
-        import android.util.Log;
         import android.view.View;
         import android.widget.Adapter;
         import android.widget.Button;
@@ -19,7 +18,6 @@ package br.ufrpe.beela.perfil.gui;
 
         import br.ufrpe.beela.lugar.gui.EscolhaProgramaAct;
         import br.ufrpe.beela.perfil.dao.PerfilDAO;
-        import br.ufrpe.beela.perfil.dominio.PerfilComida;
         import br.ufrpe.beela.perfil.dominio.PerfilUsuario;
         import br.ufrpe.beela.perfil.negocio.ListViewNomePerfil;
         import br.ufrpe.beela.perfil.negocio.PerfilService;
@@ -71,7 +69,7 @@ public class PerfilAct extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_perfil);
-        MontarPerfil();
+        montarPerfil();
 
         alterarFonte();
         setListView();
@@ -139,13 +137,13 @@ public class PerfilAct extends AppCompatActivity {
     }
 
     private void setListView(){
-        MontarPerfil();
+        montarPerfil();
         listViewPerfis = (ListView) findViewById(R.id.listView);
         ListViewNomePerfil lista = new ListViewNomePerfil(PerfilAct.this);
         listViewPerfis.setAdapter(lista);
     }
 
-    private void MontarPerfil(){
+    private void montarPerfil(){
         perfilUsuarioArrayList = perfilService.MontarPerfis(perfilUsuario,PerfilAct.this);
     }
 

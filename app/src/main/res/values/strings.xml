@@ -126,5 +126,7 @@
     <!--Contatos-->
     <string name="contatos">Contatos</string>
     <string name="confirmar">Confirmar</string>
+    <string name="naoConta">Não tem Conta ?</string>
+    <string name="crieAqui">Crie Aqui</string>
 
 </resources>

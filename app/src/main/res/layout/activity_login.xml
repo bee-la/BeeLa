@@ -4,12 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/preto">
+    android:background="@color/preto"
+    >
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/preto"
+        android:background="@drawable/back_login"
         tools:context="br.ufrpe.beela.usuario.gui.LoginAct"
         tools:layout_editor_absoluteY="25dp">
 
@@ -40,7 +41,7 @@
             android:layout_width="0dp"
             android:layout_height="47dp"
             android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="32dp"
             android:ems="10"
             android:hint="@string/Email"
             android:inputType="textEmailAddress"
@@ -55,7 +56,7 @@
             android:layout_width="0dp"
             android:layout_height="42dp"
             android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="32dp"
             android:ems="10"
             android:hint="@string/Senha"
             android:inputType="textPassword"
@@ -70,7 +71,7 @@
             android:layout_width="105dp"
             android:layout_height="21dp"
             android:layout_marginBottom="8dp"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="32dp"
             android:layout_marginTop="12dp"
             android:text="@string/Lembrar"
             android:textColor="@color/branco"
@@ -97,47 +98,87 @@
             android:layout_width="166dp"
             android:layout_height="56dp"
             android:layout_marginTop="44dp"
+            android:background="@drawable/botao_redondo"
             android:backgroundTint="@color/verdeBotao"
             android:text="@string/Entrar"
             android:textAllCaps="false"
-            android:textColor="@color/preto"
+            android:textColor="@color/branco"
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/editText2" />
 
-        <Button
-            android:id="@+id/button2"
-            android:layout_width="166dp"
-            android:layout_height="56dp"
-            android:layout_marginBottom="92dp"
+
+        <TextView
+            android:id="@+id/textViewEsqueceuSenha"
+            android:layout_width="215dp"
+            android:layout_height="27dp"
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            android:backgroundTint="@color/criarConta"
-            android:text="@string/criarConta"
-            android:textAllCaps="false"
-            android:textColor="@color/branco"
-            android:textSize="20sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/button" />
-
-        <TextView
-            android:id="@+id/textView3"
-            android:layout_width="215dp"
-            android:layout_height="27dp"
-            android:layout_marginBottom="52dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
             android:text="@string/Esqueceu"
             android:textAlignment="center"
             android:textColor="@color/esqueceuSenha"
             android:textSize="15sp"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/button" />
+
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="134dp"
+            android:layout_height="23dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="32dp"
+            android:text="@string/naoConta"
+            android:textAlignment="center"
+            android:textColor="@color/branco"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.329"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewEsqueceuSenha" />
+
+
+        <TextView
+            android:id="@+id/textViewCriarConta"
+            android:layout_width="wrap_content"
+            android:layout_height="23dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginTop="32dp"
+            android:text="@string/crieAqui"
+            android:textAlignment="center"
+            android:textColor="@color/esqueceuSenha"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.06"
+            app:layout_constraintStart_toEndOf="@+id/textView4"
+            app:layout_constraintTop_toBottomOf="@+id/textViewEsqueceuSenha" />
+
+        <ImageView
+            android:id="@+id/imageView4"
+            android:layout_width="22dp"
+            android:layout_height="31dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="188dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/email" />
+
+        <ImageView
+            android:id="@+id/imageView6"
+            android:layout_width="25dp"
+            android:layout_height="27dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="12dp"
+            app:layout_constraintEnd_toStartOf="@+id/editText2"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView4"
+            app:srcCompat="@drawable/chave2" />
 
 
     </android.support.constraint.ConstraintLayout>

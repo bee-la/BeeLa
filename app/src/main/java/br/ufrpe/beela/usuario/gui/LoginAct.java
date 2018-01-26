@@ -17,7 +17,7 @@ public class LoginAct extends AppCompatActivity {
     private static Usuario usuario = new Usuario();
     private static Pessoa pessoa = new Pessoa();
     private UsuarioService usuarioValido= new UsuarioService();
-    private TextView nomeApp, esqueceuSenha;
+    private TextView nomeApp, esqueceuSenha, criarConta;
     private Button botaoEntrar, botaoCriarConta;
     private EditText campoEmail, campoSenha;
     private String email, senha;
@@ -56,8 +56,8 @@ public class LoginAct extends AppCompatActivity {
     }
 
     private void irTelaCriarConta(){
-        botaoCriarConta = (Button) findViewById(R.id.button2);
-        botaoCriarConta.setOnClickListener(new View.OnClickListener() {
+        criarConta = (TextView) findViewById(R.id.textViewCriarConta);
+        criarConta.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(LoginAct.this, CriarContaAct.class));
@@ -66,7 +66,7 @@ public class LoginAct extends AppCompatActivity {
     }
 
     private void irTelaEsqueceuSenha(){
-        esqueceuSenha=(TextView)findViewById(R.id.textView3);
+        esqueceuSenha=(TextView)findViewById(R.id.textViewEsqueceuSenha);
         esqueceuSenha.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -129,3 +129,7 @@ public class LoginAct extends AppCompatActivity {
 //-------------------------------------------------------------------------------------------
 
 }
+
+//-------------------------------------------------------------------------------------------
+
+
