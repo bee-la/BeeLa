@@ -1,32 +1,30 @@
 package br.ufrpe.beela.database.negocio;
+
 import android.content.Context;
 
 import java.util.ArrayList;
 
 import br.ufrpe.beela.lugar.dao.LugarDAO;
 import br.ufrpe.beela.lugar.dominio.Lugar;
-import br.ufrpe.beela.lugar.gui.LugarAct;
 import br.ufrpe.beela.perfil.dao.PerfilDAO;
 import br.ufrpe.beela.perfil.dominio.PerfilComida;
 import br.ufrpe.beela.perfil.dominio.PerfilEsporte;
 import br.ufrpe.beela.perfil.dominio.PerfilLugar;
 import br.ufrpe.beela.perfil.dominio.PerfilMusica;
-import br.ufrpe.beela.perfil.dominio.PerfilUsuario;
 import br.ufrpe.beela.usuario.dao.PessoaDAO;
 import br.ufrpe.beela.usuario.dominio.Pessoa;
-import br.ufrpe.beela.usuario.gui.HomeAct;
 
 /**
  * Created by vidal on 29/12/2017.
  */
 
 public class BancoDeDados {
-    private ArrayList<Lugar> lugaresPreferidos=new ArrayList<Lugar>();
+    private ArrayList<Lugar> lugaresPreferidos = new ArrayList<Lugar>();
 
-    public void gerarLugares(Context context){
+    public void gerarLugares(Context context) {
         LugarDAO bd = new LugarDAO();
         bd.getLer(context);
-        if(bd.inserirLugares()){
+        if (bd.inserirLugares()) {
             criarRu(context);
             criarBailePerfumado(context);
             criarMirabilandia(context);
@@ -34,11 +32,6 @@ public class BancoDeDados {
             criarRockRibs(context);
             criaParqueJaqueira(context);
             criarIgrejaDoCarmmo(context);
-//            criarFulano1(context);
-//            criarFulano2(context);
-//            criarFulano3(context);
-//            criarFulano4(context);
-//            criarFulano5(context);
         }
 
     }
@@ -105,7 +98,7 @@ public class BancoDeDados {
         perfilLugar.setNome("Igreja");
         bdp = new PerfilDAO();
         bdp.getEscrever(context);
-        bdp.inserirPerfilLugarLugares(perfilLugar);
+        bdp.inserirPerfilLugarParaLugares(perfilLugar);
     }
 
     public void criarRockRibs(Context context) {
@@ -134,7 +127,7 @@ public class BancoDeDados {
         perfilMusica.setId_lugar(lugar.getId());
         bdp = new PerfilDAO();
         bdp.getEscrever(context);
-        bdp.inserirPerfilMusica(perfilMusica);
+        bdp.inserirPerfilLugarMusica(perfilMusica);
 
     }
 
@@ -228,7 +221,7 @@ public class BancoDeDados {
         bdp.inserirPerfilLugarMusica(perfilMusica);
     }
 
-    public void criaParqueJaqueira(Context context){
+    public void criaParqueJaqueira(Context context) {
         Lugar lugar = new Lugar();
         lugar.setNome("Parque Jaqueira");
         lugar.setDescriacao("Parque");
@@ -247,13 +240,13 @@ public class BancoDeDados {
             PerfilEsporte perfilEsporte = new PerfilEsporte();
             perfilEsporte.setId_lugar(lugar.getId());
             perfilEsporte.setNome(x);
-            PerfilDAO bdp=new PerfilDAO();
+            PerfilDAO bdp = new PerfilDAO();
             bdp.getEscrever(context);
             bdp.inserirPerfilLugarEsporte(perfilEsporte);
         }
     }
 
-    public void criarFulano1(Context context){
+    public void criarFulano1(Context context) {
         Pessoa pessoa = new Pessoa();
         pessoa.setCelular("987654321");
         pessoa.setNome("Fulano1");
@@ -261,7 +254,8 @@ public class BancoDeDados {
         bdp.getEscrever(context);
         bdp.inserir(pessoa);
     }
-    public void criarFulano2(Context context){
+
+    public void criarFulano2(Context context) {
         Pessoa pessoa = new Pessoa();
         pessoa.setCelular("997654321");
         pessoa.setNome("Fulano2");
@@ -269,7 +263,8 @@ public class BancoDeDados {
         bdp.getEscrever(context);
         bdp.inserir(pessoa);
     }
-    public void criarFulano3(Context context){
+
+    public void criarFulano3(Context context) {
         Pessoa pessoa = new Pessoa();
         pessoa.setCelular("927654321");
         pessoa.setNome("Fulano3");
@@ -277,7 +272,8 @@ public class BancoDeDados {
         bdp.getEscrever(context);
         bdp.inserir(pessoa);
     }
-    public void criarFulano4(Context context){
+
+    public void criarFulano4(Context context) {
         Pessoa pessoa = new Pessoa();
         pessoa.setCelular("187654321");
         pessoa.setNome("Fulano4");
@@ -285,7 +281,8 @@ public class BancoDeDados {
         bdp.getEscrever(context);
         bdp.inserir(pessoa);
     }
-    public void criarFulano5(Context context){
+
+    public void criarFulano5(Context context) {
         Pessoa pessoa = new Pessoa();
         pessoa.setCelular("687654321");
         pessoa.setNome("Fulano5");
@@ -296,15 +293,4 @@ public class BancoDeDados {
 
 
 //TODO    Sem Funcionar
-
-    public ArrayList<Pessoa> getListaContatos(Context contexto){
-        PessoaDAO bd=new PessoaDAO();
-        bd.getLer(contexto);
-        ArrayList<Pessoa> listaPessoa=bd.getListaPessoa();
-        return listaPessoa;
-    }
-
-    public ArrayList<Lugar> getLugares(){
-        return lugaresPreferidos;
-    }
 }

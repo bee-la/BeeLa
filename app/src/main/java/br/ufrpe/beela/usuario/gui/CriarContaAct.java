@@ -8,7 +8,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import java.util.ArrayList;
+
 import br.ufrpe.beela.gui.R;
 import br.ufrpe.beela.usuario.negocio.UsuarioService;
 
@@ -19,7 +21,7 @@ public class CriarContaAct extends AppCompatActivity {
     private Toast contaCriada;
     private String nome, celular, email, senha, repetirSenha;
     private EditText campoNome, campoCelular, campoEmail, campoSenha, campoRepetirSenha;
-    private ArrayList<TextView> textoCampos= new ArrayList<TextView>();
+    private ArrayList<TextView> textoCampos = new ArrayList<TextView>();
     private UsuarioService usuarioValido = new UsuarioService();
 
     @Override
@@ -38,15 +40,15 @@ public class CriarContaAct extends AppCompatActivity {
 
     }
 
-    private void alterarFonte(){
+    private void alterarFonte() {
         adcListaTexto();
         Typeface fonte = Typeface.createFromAsset(getAssets(), "fonts/Chewy.ttf");
-        for (TextView txtView: textoCampos) {
+        for (TextView txtView : textoCampos) {
             txtView.setTypeface(fonte);
         }
     }
 
-    private void adcListaTexto(){
+    private void adcListaTexto() {
         textoCampos.add((TextView) findViewById(R.id.editText4));
         textoCampos.add((TextView) findViewById(R.id.editText5));
         textoCampos.add((TextView) findViewById(R.id.editText6));
@@ -54,7 +56,7 @@ public class CriarContaAct extends AppCompatActivity {
         textoCampos.add((TextView) findViewById(R.id.editText11));
     }
 
-    private void clicarBotaoCriar(){
+    private void clicarBotaoCriar() {
         botaoCriar = (Button) findViewById(R.id.button3);
         botaoCriar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -70,63 +72,53 @@ public class CriarContaAct extends AppCompatActivity {
         email = campoEmail.getText().toString().trim();
         senha = campoSenha.getText().toString().trim();
         repetirSenha = campoRepetirSenha.getText().toString().trim();
-        if(verificarCampos()) {
+        if (verificarCampos()) {
             verificarEmailCelularBD();
         }
     }
 
-    private void verificarEmailCelularBD(){
-        if (usuarioValido.verificarEmailExiste(email,this)){
+    private void verificarEmailCelularBD() {
+        if (usuarioValido.verificarEmailExiste(email, this)) {
             Toast erro;
             erro = Toast.makeText(getApplicationContext(), R.string.emailExiste, Toast.LENGTH_SHORT);
-            erro.show();}
-        else if (usuarioValido.verificarCelularExiste(celular,this)){
+            erro.show();
+        } else if (usuarioValido.verificarCelularExiste(celular, this)) {
             Toast erro2;
             erro2 = Toast.makeText(getApplicationContext(), R.string.celularExiste, Toast.LENGTH_SHORT);
             erro2.show();
-        }
-        else {
-            usuarioValido.salvarUsuarioBancoDados(usuarioValido.criarUsuario(email,senha),usuarioValido.criarPessoa(nome,celular),this);
+        } else {
+            usuarioValido.salvarUsuarioBancoDados(usuarioValido.criarUsuario(email, senha), usuarioValido.criarPessoa(nome, celular), this);
             contaCriada = Toast.makeText(getApplicationContext(), R.string.contaCriada, Toast.LENGTH_SHORT);
             contaCriada.show();
             finish();
         }
     }
 
-    private boolean verificarCampos(){
+    private boolean verificarCampos() {
         if (usuarioValido.validarCampoVazio(nome)) {
             campoNome.setError(getString(R.string.campoVazio));
             return false;
-        }
-        else if (usuarioValido.validarCampoCelular(celular)) {
+        } else if (usuarioValido.validarCampoCelular(celular)) {
             campoCelular.setError(getString(R.string.celularInvalido));
             return false;
-        }
-        else if (usuarioValido.validarCampoEmail(email)) {
+        } else if (usuarioValido.validarCampoEmail(email)) {
             campoEmail.setError(getString(R.string.emailInvalido));
             return false;
-        }
-        else if (usuarioValido.validarCampoVazio(email)) {
+        } else if (usuarioValido.validarCampoVazio(email)) {
             campoEmail.setError(getString(R.string.emailInvalido));
             return false;
-        }
-        else if(usuarioValido.verificarSenha(senha)){
+        } else if (usuarioValido.verificarSenha(senha)) {
             campoSenha.setError(getString(R.string.senhaInvalida));
             return false;
-        }
-
-        else if (usuarioValido.validarCampoVazio(repetirSenha)) {
+        } else if (usuarioValido.validarCampoVazio(repetirSenha)) {
             campoRepetirSenha.setError(getString(R.string.campoVazio));
             return false;
-        }
-        else if (!repetirSenha.equals(senha)) {
+        } else if (!repetirSenha.equals(senha)) {
             campoRepetirSenha.setError(getString(R.string.senhasDiferentes));
             return false;
-        }
-        else{
+        } else {
             return true;
         }
-//        return false;
     }
 }
 

@@ -7,10 +7,13 @@ import android.os.Bundle;
 import android.view.DragEvent;
 import android.view.View;
 import android.widget.Button;
+
 import com.allyants.draggabletreeview.DraggableTreeView;
 import com.allyants.draggabletreeview.SimpleTreeViewAdapter;
 import com.allyants.draggabletreeview.TreeNode;
+
 import java.util.ArrayList;
+
 import br.ufrpe.beela.gui.R;
 import br.ufrpe.beela.perfil.dominio.PerfilComida;
 import br.ufrpe.beela.perfil.dominio.PerfilEsporte;
@@ -22,9 +25,9 @@ public class PerfilPrioridadeAct extends AppCompatActivity {
     private Button confirmarButton16;
 
     private ArrayList<String> prioridade = new ArrayList<String>();
-    private ArrayList<PerfilComida> listaComidas=LoginAct.getPessoa().getPerfil().getComida();
-    private ArrayList<PerfilMusica> listaMusicas=LoginAct.getPessoa().getPerfil().getMusica();
-    private ArrayList<PerfilEsporte> listaEsporte=LoginAct.getPessoa().getPerfil().getEsporte();
+    private ArrayList<PerfilComida> listaComidas = LoginAct.getPessoa().getPerfilAtual().getComida();
+    private ArrayList<PerfilMusica> listaMusicas = LoginAct.getPessoa().getPerfilAtual().getMusica();
+    private ArrayList<PerfilEsporte> listaEsporte = LoginAct.getPessoa().getPerfilAtual().getEsporte();
 
     private Context root;
 
@@ -39,32 +42,32 @@ public class PerfilPrioridadeAct extends AppCompatActivity {
 
     }
 
-    private void preencherListaPrioridade(){
-        for(int i=0; i<listaMusicas.size(); i++) {
+    private void preencherListaPrioridade() {
+        for (int i = 0; i < listaMusicas.size(); i++) {
             prioridade.add(listaMusicas.get(i).getNome());
         }
         listaMusicas.clear();
 
-        for(int i=0; i<listaComidas.size(); i++) {
+        for (int i = 0; i < listaComidas.size(); i++) {
             prioridade.add(listaComidas.get(i).getNome());
         }
         listaComidas.clear();
 
-        for(int i=0; i<listaEsporte.size(); i++) {
+        for (int i = 0; i < listaEsporte.size(); i++) {
             prioridade.add(listaEsporte.get(i).getNome());
         }
         listaEsporte.clear();
     }
 
-    private void montarPrioridade(){
+    private void montarPrioridade() {
         TreeNode root = new TreeNode(this);
-        for(int i=0; i<prioridade.size(); i++){
-            TreeNode item=new TreeNode(prioridade.get(i));
+        for (int i = 0; i < prioridade.size(); i++) {
+            TreeNode item = new TreeNode(prioridade.get(i));
             root.addChild(item);
         }
 
-        SimpleTreeViewAdapter adapter = new SimpleTreeViewAdapter(this,root);
-        draggableTreeView = (DraggableTreeView)findViewById(R.id.draggable);
+        SimpleTreeViewAdapter adapter = new SimpleTreeViewAdapter(this, root);
+        draggableTreeView = (DraggableTreeView) findViewById(R.id.draggable);
         draggableTreeView.setAdapter(adapter);
         draggableTreeView.setOnDragListener(new View.OnDragListener() {
             @Override
@@ -74,8 +77,8 @@ public class PerfilPrioridadeAct extends AppCompatActivity {
         });
     }
 
-    private void clicarBotaoConfirmar(){
-        confirmarButton16=(Button)findViewById(R.id.button16);
+    private void clicarBotaoConfirmar() {
+        confirmarButton16 = (Button) findViewById(R.id.button16);
         confirmarButton16.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

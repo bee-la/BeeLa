@@ -21,8 +21,8 @@ public class PerguntasPerfilAct extends AppCompatActivity {
     private PerfilService perfilService = new PerfilService();
     private ExpandableListView listView;
     private ExpandableListAdapterAct listAdapter;
-    private List<String>  listDataHeader;
-    private HashMap<String,List<String>> listHash;
+    private List<String> listDataHeader;
+    private HashMap<String, List<String>> listHash;
     private Button button23;
 
     @Override
@@ -31,18 +31,20 @@ public class PerguntasPerfilAct extends AppCompatActivity {
         setContentView(R.layout.activity_perguntas_perfil);
 
         button23 = (Button) findViewById(R.id.button23);
-        listView = (ExpandableListView)findViewById(R.id.lvExp);
-        perfilService.initData(listDataHeader,listHash);
-        listAdapter = new ExpandableListAdapterAct(this,listDataHeader,listHash);
+        listView = (ExpandableListView) findViewById(R.id.lvExp);
+        perfilService.initData(listDataHeader, listHash);
+        listAdapter = new ExpandableListAdapterAct(this, listDataHeader, listHash);
         listView.setAdapter(listAdapter);
 
         button23.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Button23();}
+                Button23();
+            }
 
         });
     }
+
     private void Button23() {
         startActivity(new Intent(PerguntasPerfilAct.this, NomePerfilAct.class));
     }

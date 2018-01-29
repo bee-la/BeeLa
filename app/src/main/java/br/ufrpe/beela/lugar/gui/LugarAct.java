@@ -3,6 +3,7 @@ package br.ufrpe.beela.lugar.gui;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.content.Intent;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.support.v4.app.ActivityCompat;
@@ -38,10 +39,6 @@ public class LugarAct extends AppCompatActivity {
     private Button btIr;
 
     private ArrayList<Lugar> ListLugar = EscolhaProgramaAct.getListaLugar();
-    //private BancoDeDados bancoTeste=new BancoDeDados();
-//    private LugarService lugarService = new LugarService();
-//    private PerfilUsuario perfilAtual= LoginAct.getPessoa().getPerfil().getPerfilAtual();
-//    private PerfilUsuario perfilUsuario = LoginAct.getPessoa().getPerfil();
     private ListView listViewLugares;
 
     Toast Erro;
@@ -53,25 +50,17 @@ public class LugarAct extends AppCompatActivity {
 
         setContentView(R.layout.activity_lugares);
         LugarService mapa = new LugarService();
-//        setContentView(R.layout.activity_lugares_sugestao);
-         setListView();
-
+        setListView();
 
 
     }
 
-    public ArrayList<Lugar> getLugares(){
-//        LugarDAO bdl = new LugarDAO();
-//        bdl.getLer(this);
-//        return bdl.gerarListaLugar();
+    public ArrayList<Lugar> getLugares() {
         return ListLugar;
-//       return lugarService.gerarListaLugar(perfilUsuario,this);
-       //return bancoTeste.getLugaresPreferidos(this);
     }
 //@TODO Falta tirar esse ListView desta Class e por na sua proprio !!!
 
     public Intent chamarMapa(Lugar lugar) {
-
 
 
         String destino[] = lugar.getLocalicao().split(",");
@@ -79,44 +68,31 @@ public class LugarAct extends AppCompatActivity {
         destinolongitude = Double.parseDouble(destino[1]);
 
         try {
-            startActivity(new Intent (mapa.getMapa(destinolatitude,destinolongitude)));
-        } catch (Exception ex){
+            startActivity(new Intent(mapa.getMapa(destinolatitude, destinolongitude)));
+        } catch (Exception ex) {
 
-            Toast.makeText(this ,"Cu",Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "", Toast.LENGTH_SHORT).show();
         }
 
-        return mapa.getMapa(destinolatitude,destinolongitude);
+        return mapa.getMapa(destinolatitude, destinolongitude);
     }
 
 
-    private void setListView(){
+    private void setListView() {
         listViewLugares = (ListView) findViewById(R.id.listView2);
 
-        //ListViewLugar lista = new ListViewLugar(LugarAct.this, listViewLugares);
-
-        AdapterCustomizado Max = new AdapterCustomizado(getApplicationContext(),getLugares());
+        AdapterCustomizado Max = new AdapterCustomizado(getApplicationContext(), getLugares());
 
         listViewLugares.setAdapter(Max);
 
         listViewLugares.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Lugar lugarzinho =(Lugar) parent.getAdapter().getItem(position);
+                Lugar LugarSelecionado = (Lugar) parent.getAdapter().getItem(position);
+                chamarMapa(LugarSelecionado);
 
-
-                chamarMapa(lugarzinho);
-                //startActivity(lugarAct, lugarAct.chamarMapa(lugarzinho),null );
-
-                //Toast.makeText(ctx,lugarzinho.getLocalicao(),Toast.LENGTH_SHORT).show();
             }
         });
 
-
-
-
-    }
-
-    public void irTelaDescricaoLugar(TextView texto){
-        Toast.makeText(getApplicationContext(), texto.getText().toString(), Toast.LENGTH_SHORT).show();
     }
 }

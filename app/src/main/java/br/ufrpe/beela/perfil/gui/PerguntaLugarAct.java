@@ -22,7 +22,7 @@ import br.ufrpe.beela.usuario.gui.LoginAct;
 public class PerguntaLugarAct extends AppCompatActivity {
 
 
-    private PerfilUsuario perfilUsuario = LoginAct.getPessoa().getPerfil();
+    private PerfilUsuario perfilUsuario = LoginAct.getPessoa().getPerfilAtual();
     private PerfilService perfilService = new PerfilService();
     private TextView pergunta;
     private Button botaoConfirmar;
@@ -38,12 +38,14 @@ public class PerguntaLugarAct extends AppCompatActivity {
         adcCheckBoxCom();
         clicarBotaoConfirmar();
     }
+
     public void alterarFonte() {
         Typeface fonte = Typeface.createFromAsset(getAssets(), "fonts/Chewy.ttf");
         pergunta = (TextView) findViewById(R.id.textView8);
         pergunta.setTypeface(fonte);
 
     }
+
     public void adcCheckBoxCom() {
         checkBoxesLugares.add((CheckBox) findViewById(R.id.checkboxPraia));
         checkBoxesLugares.add((CheckBox) findViewById(R.id.checkboxShopping));
@@ -52,18 +54,20 @@ public class PerguntaLugarAct extends AppCompatActivity {
         checkBoxesLugares.add((CheckBox) findViewById(R.id.checkBoxZoologico));
         checkBoxesLugares.add((CheckBox) findViewById(R.id.checkBoxParqueDiv));
     }
+
     private void clicarBotaoConfirmar() {
         botaoConfirmar = (Button) findViewById(R.id.buttonConfirmarlugar);
         botaoConfirmar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 perfilService.adcListaLugares(checkBoxesLugares, listaLugar, perfilUsuario);
-                LoginAct.getPessoa().setPerfil(perfilUsuario);
+                LoginAct.getPessoa().setPerfilAtual(perfilUsuario);
                 irTelaNomePerfilAct();
 
             }
         });
     }
+
     public void onCheckboxClicked(View view) {
         boolean checked = ((CheckBox) view).isChecked();
     }
@@ -74,17 +78,19 @@ public class PerguntaLugarAct extends AppCompatActivity {
         // finish();
 
     }
+
     public void salvarLugar() {
         if (perfilUsuario.getNome() != null) {
             PerfilDAO bd = new PerfilDAO();
             bd.getLer(this);
             perfilService.adcLugar(perfilUsuario, this);
+        } else {
+            Toast.makeText(getApplicationContext(), "NÂO TEM NOME", Toast.LENGTH_SHORT).show();
         }
-        else{
-            Toast.makeText(getApplicationContext(), "NÂO TEM NOME", Toast.LENGTH_SHORT).show();}
     }
-    protected void onActivityResult(int codigoDaTela, int quemInviou, Intent intent ){
-        if(codigoDaTela == 1 ){
+
+    protected void onActivityResult(int codigoDaTela, int quemInviou, Intent intent) {
+        if (codigoDaTela == 1) {
             try {
                 Bundle valor = intent.getExtras();
                 if (valor != null) {
@@ -93,7 +99,7 @@ public class PerguntaLugarAct extends AppCompatActivity {
                     setResult(1, intent);
                     finish();
                 }
-            }catch(Exception e){
+            } catch (Exception e) {
                 finish();
                 e.printStackTrace();
             }

@@ -13,6 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+
 import br.ufrpe.beela.gui.R;
 import br.ufrpe.beela.lugar.dominio.Lugar;
 import br.ufrpe.beela.lugar.gui.EscolhaProgramaAct;
@@ -31,27 +32,27 @@ public class ListViewLugar extends BaseAdapter {
     private Context ctx;
     private ListView listView;
     private LugarAct lugarAct = new LugarAct();
-    private GoogleMaps mapa=new GoogleMaps();
+    private GoogleMaps mapa = new GoogleMaps();
     private ArrayList<Lugar> listaLugares = lugarAct.getLugares();
 
-    public ListViewLugar(Context ctx,ListView listView){
+    public ListViewLugar(Context ctx, ListView listView) {
 
-        this.ctx=ctx;
-        this.listView=listView;
+        this.ctx = ctx;
+        this.listView = listView;
     }
 
     @Override
-    public int getCount(){
+    public int getCount() {
         return listaLugares.size();
     }
 
     @Override
-    public Object getItem(int posicao){
+    public Object getItem(int posicao) {
         return listaLugares.get(posicao);
     }
 
     @Override
-    public long getItemId(int posicao){
+    public long getItemId(int posicao) {
         return listaLugares.get(posicao).getId();
     }
 
@@ -62,12 +63,12 @@ public class ListViewLugar extends BaseAdapter {
 
         View view = LayoutInflater.from(ctx).inflate(R.layout.activity_list_view_lugares, null);
         final TextView nome = view.findViewById(R.id.textView22);
-        final TextView descricao=view.findViewById(R.id.textView23);
+        final TextView descricao = view.findViewById(R.id.textView23);
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Lugar lugarzinho =(Lugar) parent.getAdapter().getItem(position);
+                Lugar lugarzinho = (Lugar) parent.getAdapter().getItem(position);
                 mapa.chamarMapa(lugarzinho);
 //                Toast.makeText(ctx,lugarzinho.getLocalicao(),Toast.LENGTH_SHORT).show();
             }

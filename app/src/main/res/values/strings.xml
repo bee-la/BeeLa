@@ -76,7 +76,6 @@
 
 
     <!--Adicionar Perfil-->
-    <string name="perfil">Perfil</string>
     <string name="comecar">Começar</string>
     <string name="adicionarPerfil">Adicionar Perfil</string>
     <string name="massas">Massas</string>
@@ -89,11 +88,11 @@
     <string name="sertanejo">Sertanejo</string>
     <string name="rock">Rock</string>
     <string name="nomePerfil">Nome Perfil</string>
-    <string name="nomeDoPerfil">Nome do perfil</string>
+    <string name="nomeDoPerfil">Nome do perfilAtual</string>
     <string name="nomear">Nomear</string>
     <string name="perfilprioridade">perfilprioridade</string>
     <string name="prioridadePerfil">Perfil Prioridade</string>
-    <string name="selecionarPerfil">Selecione apenas um perfil</string>
+    <string name="selecionarPerfil">Selecione apenas um perfilAtual</string>
     <string name="perfilAtual">Perfil Atual:</string>
 
     <!--Excluir Perfil-->
@@ -102,9 +101,9 @@
     <string name="excluirPerfil">Excluir</string>
     <string name="excluidoSucesso">Perfil excluído</string>
     <string name="maximoPerfis">O máximo são 3 perfis</string>
-    <string name="verificarExcluirPerfil">Excluir perfil </string>
+    <string name="verificarExcluirPerfil">Excluir perfilAtual </string>
     <string name="sinalInterrogacao">\?</string>
-    <string name="perfilExiste">Nome do perfil já existente</string>
+    <string name="perfilExiste">Nome do perfilAtual já existente</string>
 
     <!--Lugar-->
     <string name="erroNaoTemGoogleMaps">Verifique se o Google Maps está instalado em seu dispositivo</string>

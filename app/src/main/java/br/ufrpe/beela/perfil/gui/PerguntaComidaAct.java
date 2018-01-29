@@ -21,7 +21,7 @@ import br.ufrpe.beela.gui.R;
 
 public class PerguntaComidaAct extends AppCompatActivity {
 
-    private PerfilUsuario perfilUsuario = LoginAct.getPessoa().getPerfil();
+    private PerfilUsuario perfilUsuario = LoginAct.getPessoa().getPerfilAtual();
     private PerfilService perfilService = new PerfilService();
     private TextView pergunta;
     private Button botaoConfirmar;
@@ -60,7 +60,7 @@ public class PerguntaComidaAct extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 perfilService.adcListaComida(checkBoxesComidas, listaComida, perfilUsuario);
-                LoginAct.getPessoa().setPerfil(perfilUsuario);
+                LoginAct.getPessoa().setPerfilAtual(perfilUsuario);
                 irTelaPerguntaEsporte();
 
             }
@@ -74,7 +74,7 @@ public class PerguntaComidaAct extends AppCompatActivity {
 
     public void irTelaPerguntaEsporte() {
         startActivityForResult(new Intent(PerguntaComidaAct.this, PerguntaEsporteAct.class), 1);
-       // finish();
+        // finish();
 
     }
 
@@ -83,25 +83,25 @@ public class PerguntaComidaAct extends AppCompatActivity {
             PerfilDAO bd = new PerfilDAO();
             bd.getLer(this);
             perfilService.adcComida(perfilUsuario, this);
+        } else {
+            Toast.makeText(getApplicationContext(), "NÂO TEM NOME", Toast.LENGTH_SHORT).show();
         }
-        else{
-            Toast.makeText(getApplicationContext(), "NÂO TEM NOME", Toast.LENGTH_SHORT).show();}
     }
 
     protected void onActivityResult(int codigoDaTela, int quemInviou, Intent intent) {
         if (codigoDaTela == 1) {
-            try{
-            Bundle valor = intent.getExtras();
-            if (valor != null) {
-                perfilUsuario.setNome(valor.getString("nomePerfil"));
-                salvarComida();
-                setResult(1,intent);
+            try {
+                Bundle valor = intent.getExtras();
+                if (valor != null) {
+                    perfilUsuario.setNome(valor.getString("nomePerfil"));
+                    salvarComida();
+                    setResult(1, intent);
+                    finish();
+                }
+            } catch (Exception e) {
                 finish();
+                e.printStackTrace();
             }
-        }catch(Exception e){
-                finish();
-            e.printStackTrace();
-        }
 
 
         }

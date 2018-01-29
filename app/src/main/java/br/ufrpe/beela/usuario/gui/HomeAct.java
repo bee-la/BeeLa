@@ -10,10 +10,8 @@ import android.widget.TextView;
 
 import br.ufrpe.beela.database.negocio.BancoDeDados;
 import br.ufrpe.beela.gui.R;
-import br.ufrpe.beela.lugar.gui.LugarAct;
-import br.ufrpe.beela.lugar.gui.teste;
+import br.ufrpe.beela.lugar.gui.LugarAcompanhadoAct;
 import br.ufrpe.beela.perfil.gui.PerfilAct;
-import br.ufrpe.beela.usuario.dominio.Usuario;
 
 public class HomeAct extends AppCompatActivity {
     private TextView eAi;
@@ -40,12 +38,12 @@ public class HomeAct extends AppCompatActivity {
 //        btoq = findViewById(R.id.button4);
     }
 
-    private void alterarFonte(){
+    private void alterarFonte() {
         Typeface fonte = Typeface.createFromAsset(getAssets(), "fonts/Chewy.ttf");
         eAi = (TextView) findViewById(R.id.textView4);
         eAi.setTypeface(fonte);
 
-        oQueTuQuer= (TextView) findViewById(R.id.button4);
+        oQueTuQuer = (TextView) findViewById(R.id.button4);
         oQueTuQuer.setTypeface(fonte);
     }
 
@@ -59,12 +57,12 @@ public class HomeAct extends AppCompatActivity {
         });
     }
 
-    private void irLugares(){
+    private void irLugares() {
         botaoLugares = findViewById(R.id.imageButton2);
         botaoLugares.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v){
-                startActivity(new Intent(HomeAct.this, teste.class));
+            public void onClick(View v) {
+                startActivity(new Intent(HomeAct.this, LugarAcompanhadoAct.class));
             }
         });
     }

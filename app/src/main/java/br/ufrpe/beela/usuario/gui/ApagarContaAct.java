@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import br.ufrpe.beela.perfil.dao.PerfilDAO;
 import br.ufrpe.beela.usuario.dao.UsuarioDAO;
 import br.ufrpe.beela.gui.R;
@@ -17,7 +18,7 @@ public class ApagarContaAct extends AppCompatActivity {
     private Button botaoApagar;
     private TextView aviso1, aviso2;
     private Toast mensagemApagada;
-    private Usuario usuario= LoginAct.getUsuario();
+    private Usuario usuario = LoginAct.getPessoa().getUsuario();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +31,7 @@ public class ApagarContaAct extends AppCompatActivity {
 
     }
 
-    private void alterarFonte(){
+    private void alterarFonte() {
         aviso1 = (TextView) findViewById(R.id.textView5);
         aviso2 = (TextView) findViewById(R.id.textView6);
         Typeface fonte = Typeface.createFromAsset(getAssets(), "fonts/Chewy.ttf");
@@ -39,7 +40,7 @@ public class ApagarContaAct extends AppCompatActivity {
         aviso2.setTypeface(fonte);
     }
 
-    private void clicarBotaoApagar(){
+    private void clicarBotaoApagar() {
         botaoApagar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

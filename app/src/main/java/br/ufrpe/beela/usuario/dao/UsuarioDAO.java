@@ -23,12 +23,13 @@ import br.ufrpe.beela.usuario.negocio.UsuarioService;
 public class UsuarioDAO {
     private SQLiteDatabase bd;
 
-    public SQLiteDatabase getLer(Context context){
+    public SQLiteDatabase getLer(Context context) {
         BD auxBd = new BD(context);
         bd = auxBd.getReadableDatabase();
         return bd;
     }
-    public SQLiteDatabase getEscrever(Context context){
+
+    public SQLiteDatabase getEscrever(Context context) {
         BD auxBd = new BD(context);
         bd = auxBd.getWritableDatabase();
         return bd;
@@ -41,16 +42,19 @@ public class UsuarioDAO {
         bd.insert("usuario", null, valores);
         bd.close();
     }
+
     public void delete(Usuario usuario) {
-        String where = "_id = '" + usuario.getId()+"' AND senha = '"+usuario.getSenha()+"' AND email = '"+usuario.getEmail()+"'";
+        String where = "_id = '" + usuario.getId() + "' AND senha = '" + usuario.getSenha() + "' AND email = '" + usuario.getEmail() + "'";
         bd.delete("usuario", where, null);
-        bd.close();}
-    public void updateSenha(Usuario usuario,String senha) {
+        bd.close();
+    }
+
+    public void updateSenha(Usuario usuario, String senha) {
         String where = "_id =  '" + usuario.getId() + "'";
         ContentValues valores = new ContentValues();
         valores.put("email", usuario.getEmail());
         valores.put("senha", senha);
-        bd.update("usuario", valores, where,null);
+        bd.update("usuario", valores, where, null);
         bd.close();
     }
 
@@ -59,14 +63,15 @@ public class UsuarioDAO {
         ContentValues valores = new ContentValues();
         valores.put("email", usuario.getEmail());
         valores.put("senha", usuario.getSenha());
-        bd.update("usuario", valores, where,null);
+        bd.update("usuario", valores, where, null);
         bd.close();
     }
-    public Usuario getUsuario(String email, String senha){
+
+    public Usuario getUsuario(String email, String senha) {
         Usuario usuario = new Usuario();
-        String where ="SELECT * FROM usuario WHERE email = '"+email+"'"+"AND senha = '"+senha+"'";
+        String where = "SELECT * FROM usuario WHERE email = '" + email + "'" + "AND senha = '" + senha + "'";
         Cursor cursor = bd.rawQuery(where, null);
-        if(cursor.getCount()>0){
+        if (cursor.getCount() > 0) {
             cursor.moveToFirst();
             usuario.setId(cursor.getInt(0));
             usuario.setSenha(cursor.getString(1));
@@ -76,22 +81,22 @@ public class UsuarioDAO {
         return usuario;
     }
 
-    public boolean sqlVerificarEmail(String email){
-        String where ="SELECT * FROM usuario WHERE email = '"+email+"'";
+    public boolean sqlVerificarEmail(String email) {
+        String where = "SELECT * FROM usuario WHERE email = '" + email + "'";
         Cursor cursor = bd.rawQuery(where, null);
-        if(cursor.getCount()>0){
+        if (cursor.getCount() > 0) {
             return true;
         }
         return false;
     }
 
-    public boolean verificarLogin(String email, String senha){
-        String where ="SELECT * FROM usuario WHERE email ='"+email+"'"+"AND senha = '"+senha+"'";
+    public boolean verificarLogin(String email, String senha) {
+        String where = "SELECT * FROM usuario WHERE email ='" + email + "'" + "AND senha = '" + senha + "'";
         Cursor cursor = bd.rawQuery(where, null);
-        if(cursor.getCount()>0){
+        if (cursor.getCount() > 0) {
             return true;
         }
         return false;
     }
- //   =========================================================================================================
+    //   =========================================================================================================
 }

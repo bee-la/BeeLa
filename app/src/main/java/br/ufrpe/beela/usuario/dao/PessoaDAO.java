@@ -19,102 +19,106 @@ import br.ufrpe.beela.usuario.gui.LoginAct;
 public class PessoaDAO {
     private SQLiteDatabase bd;
 
-    public SQLiteDatabase getLer(Context context){
+    public SQLiteDatabase getLer(Context context) {
         BD auxBd = new BD(context);
         bd = auxBd.getReadableDatabase();
         return bd;
     }
-    public SQLiteDatabase getEscrever(Context context){
+
+    public SQLiteDatabase getEscrever(Context context) {
         BD auxBd = new BD(context);
         bd = auxBd.getWritableDatabase();
         return bd;
     }
 
 
-    public void inserir(Pessoa pessoa){
+    public void inserir(Pessoa pessoa) {
         ContentValues valores = new ContentValues();
         valores.put("nome", pessoa.getNome());
         valores.put("celular", pessoa.getCelular());
-        valores.put("id_usuario",pessoa.getId_usuario());
-        bd.insert("pessoa",null,valores);
+        valores.put("id_usuario", pessoa.getUsuario().getId());
+        bd.insert("pessoa", null, valores);
         bd.close();
     }
 
     public void delete(Pessoa pessoa) {
-        bd.delete("usuario", "_id = " + pessoa.getId(), null);
+        bd.delete("usuario", "_id = " + pessoa.getUsuario().getId(), null);
         bd.close();
     }
-    public void updateNome(Pessoa pessoa,String nome) {
+
+    public void updateNome(Pessoa pessoa, String nome) {
         String where = "_id =  '" + pessoa.getId() + "'";
         ContentValues valores = new ContentValues();
         valores.put("nome", nome);
         valores.put("celular", pessoa.getCelular());
-        valores.put("id_usuario", pessoa.getId_usuario());
-        bd.update("pessoa", valores, where,null);
+        valores.put("id_usuario", pessoa.getUsuario().getId());
+        bd.update("pessoa", valores, where, null);
         bd.close();
     }
-    public Pessoa getPessoa(int id_usuario){
+
+    public Pessoa getPessoa(int id_usuario) {
         Pessoa pessoa = new Pessoa();
-        String where ="SELECT * FROM pessoa WHERE id_usuario = '"+String.valueOf(id_usuario)+"'";
+        String where = "SELECT * FROM pessoa WHERE id_usuario = '" + String.valueOf(id_usuario) + "'";
         Cursor cursor = bd.rawQuery(where, null);
-        if(cursor.getCount()>0){
+        if (cursor.getCount() > 0) {
             cursor.moveToFirst();
             pessoa.setId(cursor.getInt(0));
             pessoa.setNome(cursor.getString(1));
             pessoa.setCelular(cursor.getString(2));
-            pessoa.setId_usuario(cursor.getInt(3));}
-        bd.close();
+            bd.close();
+            return pessoa;
+        }
         return pessoa;
     }
 
     //TODO      Adicionei isso(by: Anderson)
-    public ArrayList<Pessoa> getListaPessoa(){
-        ArrayList<Pessoa> listaPessoa=new ArrayList<Pessoa>();
+    public ArrayList<Pessoa> getListaPessoa() {
+        ArrayList<Pessoa> listaPessoa = new ArrayList<Pessoa>();
         String where = "SELECT * FROM pessoa";
-        Cursor cursor=bd.rawQuery(where,null);
-        if(cursor.getCount()>0){
+        Cursor cursor = bd.rawQuery(where, null);
+        if (cursor.getCount() > 0) {
             cursor.moveToFirst();
-            do{
-                Pessoa pessoa=new Pessoa();
+            do {
+                Pessoa pessoa = new Pessoa();
                 pessoa.setId(cursor.getInt(0));
                 pessoa.setNome(cursor.getString(1));
                 pessoa.setCelular(cursor.getString(2));
-                pessoa.setId_usuario(cursor.getInt(3));
-                if (cursor.getInt(0)!= LoginAct.getPessoa().getId()){
+                if (cursor.getInt(0) != LoginAct.getPessoa().getId()) {
                     listaPessoa.add(pessoa);
                 }
-
-            }while (cursor.moveToNext());
+            } while (cursor.moveToNext());
         }
         bd.close();
         return listaPessoa;
     }
 
-    public boolean verificarCelular(String celular){
+    public boolean verificarCelular(String celular) {
         boolean saida = false;
-        String where ="SELECT * FROM pessoa WHERE celular = '"+celular+"'";
+        String where = "SELECT * FROM pessoa WHERE celular = '" + celular + "'";
         Cursor cursor = bd.rawQuery(where, null);
-        try{
-            if(cursor.getCount()>0){
+        try {
+            if (cursor.getCount() > 0) {
                 saida = true;
-            }}
-        catch (Exception e){saida = false;}
-        finally {
+            }
+        } catch (Exception e) {
+            saida = false;
+        } finally {
             return saida;
         }
     }
 
-    public Pessoa getPessoa(Pessoa p){
+    public Pessoa getPessoa(Pessoa pessoa1) {
         Pessoa pessoa = new Pessoa();
-        String where ="SELECT * FROM pessoa WHERE _id = '"+String.valueOf(p.getId())+"'";
+        String where = "SELECT * FROM pessoa WHERE _id = '" + String.valueOf(pessoa1.getId()) + "'";
         Cursor cursor = bd.rawQuery(where, null);
-        if(cursor.getCount()>0){
+        if (cursor.getCount() > 0) {
             cursor.moveToFirst();
             pessoa.setId(cursor.getInt(0));
             pessoa.setNome(cursor.getString(1));
             pessoa.setCelular(cursor.getString(2));
-            pessoa.setId_usuario(cursor.getInt(3));}
-        bd.close();
+            bd.close();
+            return pessoa;
+        }
         return pessoa;
     }
 }
