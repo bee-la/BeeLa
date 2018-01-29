@@ -46,6 +46,7 @@ public class NomePerfilAct extends AppCompatActivity {
         campoNomePerfil.setTypeface(fonte);
     }
 
+
     private void clicarBotaoNomear(){
         botaoNomear=(Button)findViewById(R.id.button22);
         botaoNomear.setOnClickListener(new View.OnClickListener() {
@@ -58,8 +59,8 @@ public class NomePerfilAct extends AppCompatActivity {
 
     public void verificarNomePerfil(){
         nomePerfil=campoNomePerfil.getText().toString().trim();
-        if(perfilService.verificarNomeIgual(nomePerfil)){
-            if (perfilService.verificarNomeVazio(nomePerfil)) {
+        if(verificarNomeIgual(nomePerfil)){
+            if (!nomePerfil.isEmpty()){
                 perfilUsuario.setNome(nomePerfil);
                 LoginAct.getPessoa().setPerfil(perfilUsuario);
                 salvarBD();
@@ -78,6 +79,16 @@ public class NomePerfilAct extends AppCompatActivity {
 
     public void salvarBD() {
         perfilService.adcPerfil(perfilUsuario, this);
+    }
+
+    public boolean verificarNomeIgual(String NomePerfil){
+        boolean saida = true;
+        for (PerfilUsuario perfilUsuario: PerfilAct.getListaPerfis())
+            if (perfilUsuario.getNome().equals(NomePerfil)) {
+                saida = false;
+                break;
+            }
+        return saida;
     }
 
     public void finalizar(){

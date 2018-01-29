@@ -15,38 +15,6 @@ import br.ufrpe.beela.usuario.dominio.Usuario;
 
 public class UsuarioService {
 
-    public boolean verificarSenha(String senha){
-        if (senha.length() < 6 || senha.isEmpty()){
-            return true;
-        }
-        else{
-            return false;
-        }
-    }
-
-    public boolean validarCampoVazio(String campo) {
-        if (campo.isEmpty()) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    public boolean validarCampoCelular(String validar) {
-        if (validar.length() < 9 || validar.length() > 12 || !Patterns.PHONE.matcher(validar).matches()) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    public boolean validarCampoEmail(String validar) {
-        if (validarCampoVazio(validar) || !Patterns.EMAIL_ADDRESS.matcher(validar).matches()) {
-            return true;
-        } else {
-            return false;
-        }
-    }
 
     public Pessoa criarPessoa(String nome, String celular) {
         Pessoa p = new Pessoa();
@@ -55,9 +23,7 @@ public class UsuarioService {
         return p;
     }
     public Usuario criarUsuario(String email, String senha) {
-
         Usuario u = new Usuario();
-
         u.setEmail(email);
         u.setSenha(Criptografia.criptografar(senha));
         return u;

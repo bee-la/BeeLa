@@ -59,25 +59,43 @@ public class PerguntaMusicaAct extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                perfilService.adcListaMusica(checkBoxesMusicas,listaMusica,perfilUsuario);
+                adcListaMusica(checkBoxesMusicas,listaMusica,perfilUsuario);
                 irTelaPerguntaComida();
             }
         });
     }
 
+
+    public void adcListaMusica(ArrayList<CheckBox> checkBoxesMusicas,ArrayList<PerfilMusica> listaMusica, PerfilUsuario perfilUsuario){
+        for (CheckBox x : checkBoxesMusicas) {
+            if (x.isChecked()) {
+                PerfilMusica musica = new PerfilMusica();
+                musica.setId_usuario(perfilUsuario.getId_Usuario());
+                musica.setNome(x.getText().toString());
+                listaMusica.add(musica);
+            }
+        }
+        perfilUsuario.setMusica(listaMusica);
+    }
+
+
     public void onCheckboxClicked(View view) {
         boolean checked = ((CheckBox) view).isChecked();
     }
 
+
     public ArrayList<PerfilMusica> getMusica(){
             return listaMusica;
     }
+
 
     private void irTelaPerguntaComida(){
         startActivityForResult(new Intent(PerguntaMusicaAct.this, PerguntaComidaAct.class),1);
        // finish();
 
     }
+
+
     public void salvarMusica(){
         if(perfilUsuario.getNome()!= null) {
             PerfilDAO bd = new PerfilDAO();
@@ -87,6 +105,8 @@ public class PerguntaMusicaAct extends AppCompatActivity {
         else{
             Toast.makeText(getApplicationContext(), "NÂO TEM NOME", Toast.LENGTH_SHORT).show();}
     }
+
+
     protected void onActivityResult(int codigoDaTela, int quemInviou, Intent intent ){
         if(codigoDaTela == 1 ){
             try {

@@ -3,6 +3,7 @@ package br.ufrpe.beela.usuario.gui;
 import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -38,6 +39,8 @@ public class CriarContaAct extends AppCompatActivity {
 
     }
 
+
+
     private void alterarFonte(){
         adcListaTexto();
         Typeface fonte = Typeface.createFromAsset(getAssets(), "fonts/Chewy.ttf");
@@ -46,6 +49,8 @@ public class CriarContaAct extends AppCompatActivity {
         }
     }
 
+
+
     private void adcListaTexto(){
         textoCampos.add((TextView) findViewById(R.id.editText4));
         textoCampos.add((TextView) findViewById(R.id.editText5));
@@ -53,6 +58,8 @@ public class CriarContaAct extends AppCompatActivity {
         textoCampos.add((TextView) findViewById(R.id.editText10));
         textoCampos.add((TextView) findViewById(R.id.editText11));
     }
+
+
 
     private void clicarBotaoCriar(){
         botaoCriar = (Button) findViewById(R.id.button3);
@@ -64,6 +71,8 @@ public class CriarContaAct extends AppCompatActivity {
         });
     }
 
+
+
     private void verificarConta() {
         nome = campoNome.getText().toString().trim();
         celular = campoCelular.getText().toString().trim();
@@ -74,6 +83,8 @@ public class CriarContaAct extends AppCompatActivity {
             verificarEmailCelularBD();
         }
     }
+
+
 
     private void verificarEmailCelularBD(){
         if (usuarioValido.verificarEmailExiste(email,this)){
@@ -93,29 +104,31 @@ public class CriarContaAct extends AppCompatActivity {
         }
     }
 
+
+
     private boolean verificarCampos(){
-        if (usuarioValido.validarCampoVazio(nome)) {
+        if (validarCampoVazio(nome)) {
             campoNome.setError(getString(R.string.campoVazio));
             return false;
         }
-        else if (usuarioValido.validarCampoCelular(celular)) {
+        else if (celular.length() < 9 || celular.length() > 12 || !Patterns.PHONE.matcher(celular).matches()) {
             campoCelular.setError(getString(R.string.celularInvalido));
             return false;
         }
-        else if (usuarioValido.validarCampoEmail(email)) {
+        else if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
             campoEmail.setError(getString(R.string.emailInvalido));
             return false;
         }
-        else if (usuarioValido.validarCampoVazio(email)) {
-            campoEmail.setError(getString(R.string.emailInvalido));
+        else if (validarCampoVazio(email)) {
+            campoEmail.setError(getString(R.string.campoVazio));
             return false;
         }
-        else if(usuarioValido.verificarSenha(senha)){
+        else if (senha.length() < 6 || senha.isEmpty()){
             campoSenha.setError(getString(R.string.senhaInvalida));
             return false;
         }
 
-        else if (usuarioValido.validarCampoVazio(repetirSenha)) {
+        else if (validarCampoVazio(repetirSenha)) {
             campoRepetirSenha.setError(getString(R.string.campoVazio));
             return false;
         }
@@ -128,6 +141,18 @@ public class CriarContaAct extends AppCompatActivity {
         }
 //        return false;
     }
+
+
+
+    public boolean validarCampoVazio(String campo) {
+        if (campo.isEmpty()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+
 }
 
 

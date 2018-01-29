@@ -17,11 +17,11 @@ import br.ufrpe.beela.usuario.negocio.UsuarioService;
 public class AlterarSenhaAct extends AppCompatActivity {
     private Usuario usuario=LoginAct.getUsuario();
     private UsuarioService usuarioService = new UsuarioService();
-
     private Button botaoAlterarSenha;
     private Toast senhaAlterada, erro;
     private String senhaAtual, novaSenha, repetirSenha;
     private EditText campoSenha, campoNovaSenha, campoRepetirSenha;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,12 +37,14 @@ public class AlterarSenhaAct extends AppCompatActivity {
 
     }
 
+
     private void alterarFonte(){
         Typeface fonte = Typeface.createFromAsset(getAssets(), "fonts/Chewy.ttf");
         campoSenha.setTypeface(fonte);
         campoNovaSenha.setTypeface(fonte);
         campoRepetirSenha.setTypeface(fonte);
     }
+
 
     private void clicarBotaoAlterar(){
         botaoAlterarSenha = (Button) findViewById(R.id.button10);
@@ -53,6 +55,8 @@ public class AlterarSenhaAct extends AppCompatActivity {
             }
         });
     }
+
+
 
     public void verificarSenhaAtual() {
         senhaAtual = campoSenha.getText().toString().trim();
@@ -70,6 +74,8 @@ public class AlterarSenhaAct extends AppCompatActivity {
         }
     }
 
+
+
     public void alterarSenha(){
         UsuarioDAO bd = new UsuarioDAO();
         bd.getEscrever(this);
@@ -80,17 +86,17 @@ public class AlterarSenhaAct extends AppCompatActivity {
         senhaAlterada.show();
     }
 
+
+
     public boolean validarCampos(){
-        if(usuarioService.validarCampoVazio(senhaAtual)){
+        if (senhaAtual.isEmpty()) {
             campoSenha.setError(getString(R.string.campoVazio));
             return false;
         }
-
-        if(usuarioService.verificarSenha(novaSenha)){
+        if (novaSenha.length() < 6 || novaSenha.isEmpty()){
             campoNovaSenha.setError(getString(R.string.senhaInvalida));
             return false;
         }
-
         if(!repetirSenha.equals(novaSenha)){
             campoRepetirSenha.setError(getString(R.string.senhasDiferentes));
             return false;
@@ -99,6 +105,7 @@ public class AlterarSenhaAct extends AppCompatActivity {
             return true;
         }
     }
+
 
     private void limparCampos(){
         campoSenha.setText("");

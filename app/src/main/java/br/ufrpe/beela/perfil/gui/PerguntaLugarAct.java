@@ -38,12 +38,16 @@ public class PerguntaLugarAct extends AppCompatActivity {
         adcCheckBoxCom();
         clicarBotaoConfirmar();
     }
+
+
     public void alterarFonte() {
         Typeface fonte = Typeface.createFromAsset(getAssets(), "fonts/Chewy.ttf");
         pergunta = (TextView) findViewById(R.id.textView8);
         pergunta.setTypeface(fonte);
 
     }
+
+
     public void adcCheckBoxCom() {
         checkBoxesLugares.add((CheckBox) findViewById(R.id.checkboxPraia));
         checkBoxesLugares.add((CheckBox) findViewById(R.id.checkboxShopping));
@@ -52,18 +56,34 @@ public class PerguntaLugarAct extends AppCompatActivity {
         checkBoxesLugares.add((CheckBox) findViewById(R.id.checkBoxZoologico));
         checkBoxesLugares.add((CheckBox) findViewById(R.id.checkBoxParqueDiv));
     }
+
+
     private void clicarBotaoConfirmar() {
         botaoConfirmar = (Button) findViewById(R.id.buttonConfirmarlugar);
         botaoConfirmar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                perfilService.adcListaLugares(checkBoxesLugares, listaLugar, perfilUsuario);
+                adcListaLugares(checkBoxesLugares, listaLugar, perfilUsuario);
                 LoginAct.getPessoa().setPerfil(perfilUsuario);
                 irTelaNomePerfilAct();
 
             }
         });
     }
+
+
+    public void adcListaLugares(ArrayList<CheckBox> checkBoxesLugares,ArrayList<PerfilLugar> listaLugar, PerfilUsuario perfilUsuario){
+        for (CheckBox x : checkBoxesLugares) {
+            if (x.isChecked()) {
+                PerfilLugar lugar = new PerfilLugar();
+                lugar.setId_usuario(perfilUsuario.getId_Usuario());
+                lugar.setNome(x.getText().toString());
+                listaLugar.add(lugar);
+            }
+        }
+        perfilUsuario.setLugar(listaLugar);
+    }
+
     public void onCheckboxClicked(View view) {
         boolean checked = ((CheckBox) view).isChecked();
     }
@@ -83,6 +103,8 @@ public class PerguntaLugarAct extends AppCompatActivity {
         else{
             Toast.makeText(getApplicationContext(), "NÂO TEM NOME", Toast.LENGTH_SHORT).show();}
     }
+
+
     protected void onActivityResult(int codigoDaTela, int quemInviou, Intent intent ){
         if(codigoDaTela == 1 ){
             try {

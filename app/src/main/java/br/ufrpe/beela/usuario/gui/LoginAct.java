@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.*;
 import br.ufrpe.beela.gui.R;
@@ -107,10 +108,10 @@ public class LoginAct extends AppCompatActivity {
         startActivity(new Intent(LoginAct.this, HomeAct.class));}
 
     private boolean verificarCampos(){
-        if (usuarioValido.validarCampoEmail(email)){
+        if (validarCampoVazio(email) || !Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
             campoEmail.setError(getString(R.string.emailInvalido));
         }
-        if (usuarioValido.validarCampoVazio(senha)){
+        if (validarCampoVazio(senha)){
             campoSenha.setError(getString(R.string.senhaInvalida));
         }
         else{
@@ -118,6 +119,16 @@ public class LoginAct extends AppCompatActivity {
         }
         return false;
     }
+
+
+    public boolean validarCampoVazio(String campo) {
+        if (campo.isEmpty()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
 
     public  static Usuario getUsuario(){
         return usuario;

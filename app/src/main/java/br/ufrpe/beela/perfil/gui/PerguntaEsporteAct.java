@@ -24,7 +24,6 @@ public class PerguntaEsporteAct extends AppCompatActivity {
     private PerfilService perfilService = new PerfilService();
     private ArrayList<CheckBox> checkBoxesEsportes = new ArrayList<>();
     private static ArrayList<PerfilEsporte> listaEsporte = new ArrayList<PerfilEsporte>();
-
     private TextView pergunta;
     private Button botaoConfirmar;
 
@@ -39,11 +38,14 @@ public class PerguntaEsporteAct extends AppCompatActivity {
 
     }
 
+
     private void alterarFonte() {
         Typeface fonte = Typeface.createFromAsset(getAssets(), "fonts/Chewy.ttf");
         pergunta = (TextView) findViewById(R.id.textView13);
         pergunta.setTypeface(fonte);
     }
+
+
 
     private void adcCheckBoxEsp() {
         checkBoxesEsportes.add((CheckBox) findViewById(R.id.checkBox2));
@@ -51,6 +53,8 @@ public class PerguntaEsporteAct extends AppCompatActivity {
         checkBoxesEsportes.add((CheckBox) findViewById(R.id.checkBox4));
         checkBoxesEsportes.add((CheckBox) findViewById(R.id.checkBox5));
     }
+
+
     private void clicarBotaoConfirmar(){
 
         botaoConfirmar = (Button) findViewById(R.id.button13);
@@ -58,7 +62,7 @@ public class PerguntaEsporteAct extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                perfilService.adcListaEsporte(checkBoxesEsportes,listaEsporte,perfilUsuario);
+                adcListaEsporte(checkBoxesEsportes,listaEsporte,perfilUsuario);
                 LoginAct.getPessoa().setPerfil(perfilUsuario);
                 irTelaPerguntaLugarAct();
 
@@ -66,15 +70,32 @@ public class PerguntaEsporteAct extends AppCompatActivity {
         });
     }
 
+    public void adcListaEsporte(ArrayList<CheckBox> checkBoxesEsportes,ArrayList<PerfilEsporte> listaEsporte, PerfilUsuario perfilUsuario){
+        for (CheckBox x : checkBoxesEsportes) {
+            if (x.isChecked()) {
+                PerfilEsporte esporte = new PerfilEsporte();
+                esporte.setNome((String) x.getText());
+                esporte.setId_usuario(perfilUsuario.getId_Usuario());
+                listaEsporte.add(esporte);
+            }
+        }
+        perfilUsuario.setEsporte(listaEsporte);
+    }
+
+
     public void onCheckboxClicked(View view) {
         boolean checked = ((CheckBox) view).isChecked();
     }
+
+
 
     public void irTelaPerguntaLugarAct(){
         startActivityForResult(new Intent(PerguntaEsporteAct.this, PerguntaLugarAct.class),1);
         //finish();
 
     }
+
+
     public void salvarEsporte(){
         if (perfilUsuario.getNome()!=null) {
             PerfilDAO bd = new PerfilDAO();
@@ -84,6 +105,9 @@ public class PerguntaEsporteAct extends AppCompatActivity {
         else{
             Toast.makeText(getApplicationContext(), "NÂO TEM NOME", Toast.LENGTH_SHORT).show();}
     }
+
+
+
     protected void onActivityResult(int codigoDaTela, int quemInviou, Intent intent ){
         if(codigoDaTela == 1 ){
             try {
@@ -103,4 +127,6 @@ public class PerguntaEsporteAct extends AppCompatActivity {
                 //    startActivity(new Intent(this, PerfilAct.class));
         }
     }
+
+
 }
