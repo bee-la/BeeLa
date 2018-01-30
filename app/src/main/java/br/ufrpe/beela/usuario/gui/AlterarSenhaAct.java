@@ -15,7 +15,7 @@ import br.ufrpe.beela.usuario.dao.UsuarioDAO;
 import br.ufrpe.beela.usuario.negocio.UsuarioService;
 
 public class AlterarSenhaAct extends AppCompatActivity {
-    private Usuario usuario=LoginAct.getUsuario();
+    private Usuario usuario = LoginAct.getPessoa().getUsuario();
     private UsuarioService usuarioService = new UsuarioService();
 
     private Button botaoAlterarSenha;
@@ -37,14 +37,14 @@ public class AlterarSenhaAct extends AppCompatActivity {
 
     }
 
-    private void alterarFonte(){
+    private void alterarFonte() {
         Typeface fonte = Typeface.createFromAsset(getAssets(), "fonts/Chewy.ttf");
         campoSenha.setTypeface(fonte);
         campoNovaSenha.setTypeface(fonte);
         campoRepetirSenha.setTypeface(fonte);
     }
 
-    private void clicarBotaoAlterar(){
+    private void clicarBotaoAlterar() {
         botaoAlterarSenha = (Button) findViewById(R.id.button10);
         botaoAlterarSenha.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -63,44 +63,42 @@ public class AlterarSenhaAct extends AppCompatActivity {
             if (validarCampos()) {
                 alterarSenha();
             }
-        }
-        else{
+        } else {
             erro = Toast.makeText(getApplicationContext(), R.string.senhaAtualDiferente, Toast.LENGTH_SHORT);
             erro.show();
         }
     }
 
-    public void alterarSenha(){
+    public void alterarSenha() {
         UsuarioDAO bd = new UsuarioDAO();
         bd.getEscrever(this);
-        bd.updateSenha(usuario,Criptografia.criptografar(novaSenha));
+        bd.updateSenha(usuario, Criptografia.criptografar(novaSenha));
         usuario.setSenha(Criptografia.criptografar(novaSenha));
         limparCampos();
-        senhaAlterada=Toast.makeText(getApplicationContext(), R.string.senhaAlterada, Toast.LENGTH_SHORT);
+        senhaAlterada = Toast.makeText(getApplicationContext(), R.string.senhaAlterada, Toast.LENGTH_SHORT);
         senhaAlterada.show();
     }
 
-    public boolean validarCampos(){
-        if(usuarioService.validarCampoVazio(senhaAtual)){
+    public boolean validarCampos() {
+        if (usuarioService.validarCampoVazio(senhaAtual)) {
             campoSenha.setError(getString(R.string.campoVazio));
             return false;
         }
 
-        if(usuarioService.verificarSenha(novaSenha)){
+        if (usuarioService.verificarSenha(novaSenha)) {
             campoNovaSenha.setError(getString(R.string.senhaInvalida));
             return false;
         }
 
-        if(!repetirSenha.equals(novaSenha)){
+        if (!repetirSenha.equals(novaSenha)) {
             campoRepetirSenha.setError(getString(R.string.senhasDiferentes));
             return false;
-        }
-        else{
+        } else {
             return true;
         }
     }
 
-    private void limparCampos(){
+    private void limparCampos() {
         campoSenha.setText("");
         campoNovaSenha.setText("");
         campoRepetirSenha.setText("");

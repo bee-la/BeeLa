@@ -16,11 +16,9 @@ import br.ufrpe.beela.usuario.gui.LoginAct;
  */
 
 
+public class LugarAcompanhadoAct extends AppCompatActivity {
 
-
-public class teste extends AppCompatActivity {
-
-    Button a ;
+    Button a;
     LugarService b;
     Toast Erro;
 
@@ -36,24 +34,16 @@ public class teste extends AppCompatActivity {
         a.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                try {
-//                    startActivity((b.getMapa(0, 1)));
-//                }catch (Exception ex){
-//                    Erro = Toast.makeText(getApplicationContext(), "CU", Toast.LENGTH_SHORT);
-//                    Erro.show();
-//
-//                }
-//
-            Erro = Toast.makeText(getApplicationContext(), LoginAct.getPessoa().getPerfil().getNome(), Toast.LENGTH_SHORT);
-            Erro.show();
+                Erro = Toast.makeText(getApplicationContext(), LoginAct.getPessoa().getPerfilAtual().getNome(), Toast.LENGTH_SHORT);
+                Erro.show();
             }
         });
     }
 
-    public void gerarLugar(){
-        PerfilDAO bd =  new PerfilDAO();
+    public void gerarLugar() {
+        PerfilDAO bd = new PerfilDAO();
         bd.getLer(this);
-        LoginAct.getPessoa().setPerfil(bd.getFavorito(LoginAct.getPessoa().getId()));
+        LoginAct.getPessoa().setPerfilAtual(bd.getFavorito(LoginAct.getPessoa().getId()));
     }
 
 

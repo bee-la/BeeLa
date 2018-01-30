@@ -15,9 +15,11 @@ public class Usuario {
     public String getEmail() {
         return email;
     }
+
     public String getSenha() {
         return senha;
     }
+
     public int getId() {
         return Id;
     }
@@ -25,9 +27,11 @@ public class Usuario {
     public void setId(int id) {
         Id = id;
     }
+
     public void setSenha(String senha) {
         this.senha = senha;
     }
+
     public void setEmail(String email) {
         this.email = email;
     }

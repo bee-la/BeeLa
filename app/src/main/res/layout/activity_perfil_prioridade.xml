@@ -5,7 +5,7 @@
     android:background="@color/preto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="br.ufrpe.beela.perfil.gui.PerfilPrioridadeAct">
+    tools:context="br.ufrpe.beela.perfilAtual.gui.PerfilPrioridadeAct">
 
     <com.allyants.draggabletreeview.DraggableTreeView
         android:id="@+id/draggable"

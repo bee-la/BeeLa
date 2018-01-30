@@ -13,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme">
         <activity
-            android:name="br.ufrpe.beela.usuario.gui.splashAct"
+            android:name="br.ufrpe.beela.usuario.gui.SplashAct"
             android:theme="@style/Theme.AppCompat.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,7 +22,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="br.ufrpe.beela.lugar.gui.teste"
+            android:name="br.ufrpe.beela.lugar.gui.LugarAcompanhadoAct"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name="br.ufrpe.beela.usuario.gui.LoginAct"
@@ -50,7 +50,7 @@
             android:label="@string/esqueciSenha" />
         <activity
             android:name="br.ufrpe.beela.perfil.gui.PerfilAct"
-            android:label="@string/perfil" />
+            android:label="@string/perfilAtual" />
         <activity
             android:name="br.ufrpe.beela.perfil.gui.PerguntaComidaAct"
             android:label="@string/adicionarPerfil" />
@@ -76,7 +76,6 @@
         <activity
             android:name="br.ufrpe.beela.usuario.gui.ContatoAct"
             android:label="@string/contatos" />
-        <activity android:name="br.ufrpe.beela.perfil.gui.PerguntasLugares" />
         <activity android:name="br.ufrpe.beela.perfil.gui.PerguntaLugarAct"></activity>
     </application>
 

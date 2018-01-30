@@ -17,8 +17,8 @@ import br.ufrpe.beela.usuario.dominio.Pessoa;
 public class ConfiguracoesAct extends AppCompatActivity {
     private TextView alterar, apagarConta, alterarNome, alterarSenha, sair, carregarFoto;
     private TextView nomeTextView11;
-    private Pessoa pessoa=new LoginAct().getPessoa();
-    private ArrayList<TextView> textoCampos= new ArrayList<TextView>();
+    private Pessoa pessoa = new LoginAct().getPessoa();
+    private ArrayList<TextView> textoCampos = new ArrayList<TextView>();
     private static final int RESULT_LOAD_IMAGE = 9002;
 
     @Override
@@ -27,7 +27,7 @@ public class ConfiguracoesAct extends AppCompatActivity {
         setContentView(R.layout.activity_configuracoes);
 
         alterar = (TextView) findViewById(R.id.textView17);
-        alterarNome =(TextView) findViewById(R.id.textView15);
+        alterarNome = (TextView) findViewById(R.id.textView15);
         alterarSenha = (TextView) findViewById(R.id.textView16);
         sair = (TextView) findViewById(R.id.textView12);
         apagarConta = (TextView) findViewById(R.id.textView18);
@@ -40,15 +40,15 @@ public class ConfiguracoesAct extends AppCompatActivity {
         sair();
     }
 
-    private void alterarFonte(){
+    private void alterarFonte() {
         adcListaTexto();
         Typeface fonte = Typeface.createFromAsset(getAssets(), "fonts/Chewy.ttf");
-        for (TextView txtView: textoCampos) {
+        for (TextView txtView : textoCampos) {
             txtView.setTypeface(fonte);
         }
     }
 
-    private void adcListaTexto(){
+    private void adcListaTexto() {
         textoCampos.add(alterar);
         textoCampos.add(alterarNome);
         textoCampos.add(alterarSenha);
@@ -56,19 +56,21 @@ public class ConfiguracoesAct extends AppCompatActivity {
         textoCampos.add(sair);
     }
 
-    private void carregarFotoGaleria(){
+    private void carregarFotoGaleria() {
         carregarFoto = findViewById(R.id.btUpload);
         carregarFoto.setOnClickListener(new View.OnClickListener() {
-            @Override public void onClick(View v){
+            @Override
+            public void onClick(View v) {
                 Intent galleryIntent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
                 startActivityForResult(galleryIntent, RESULT_LOAD_IMAGE);
             }
         });
     }
 
-    private void irAlterarNome(){
+    private void irAlterarNome() {
         alterarNome.setOnClickListener(new View.OnClickListener() {
-            @Override public void onClick (View v){
+            @Override
+            public void onClick(View v) {
                 startActivity(new Intent(ConfiguracoesAct.this, AlterarNomeAct.class));
             }
         });
@@ -76,14 +78,17 @@ public class ConfiguracoesAct extends AppCompatActivity {
 
     private void irAlterarSenha() {
         alterarSenha.setOnClickListener(new View.OnClickListener() {
-            @Override public void onClick(View v) {
+            @Override
+            public void onClick(View v) {
                 startActivity(new Intent(ConfiguracoesAct.this, AlterarSenhaAct.class));
-            }});
+            }
+        });
     }
 
     private void irApagarConta() {
         apagarConta.setOnClickListener(new View.OnClickListener() {
-            @Override public void onClick(View v) {
+            @Override
+            public void onClick(View v) {
                 startActivity(new Intent(ConfiguracoesAct.this, ApagarContaAct.class));
                 finish();
             }
@@ -92,7 +97,8 @@ public class ConfiguracoesAct extends AppCompatActivity {
 
     private void sair() {
         sair.setOnClickListener(new View.OnClickListener() {
-            @Override public void onClick(View v) {
+            @Override
+            public void onClick(View v) {
                 startActivity(new Intent(ConfiguracoesAct.this, LoginAct.class));
                 finish();
             }

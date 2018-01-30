@@ -20,7 +20,7 @@ import br.ufrpe.beela.usuario.gui.LoginAct;
 import br.ufrpe.beela.gui.R;
 
 public class PerguntaMusicaAct extends AppCompatActivity {
-    private PerfilUsuario perfilUsuario = LoginAct.getPessoa().getPerfil();
+    private PerfilUsuario perfilUsuario = new PerfilUsuario();
     private PerfilService perfilService = new PerfilService();
     private TextView pergunta;
     private Button botaoConfirmar;
@@ -38,13 +38,13 @@ public class PerguntaMusicaAct extends AppCompatActivity {
         clicarBotaoConfirmar();
     }
 
-    private void alterarFonte(){
+    private void alterarFonte() {
         Typeface fonte = Typeface.createFromAsset(getAssets(), "fonts/Chewy.ttf");
         pergunta = (TextView) findViewById(R.id.textView9);
         pergunta.setTypeface(fonte);
     }
 
-    private void adcCheckBoxMus(){
+    private void adcCheckBoxMus() {
         checkBoxesMusicas.add((CheckBox) findViewById(R.id.checkBoxRock));
         checkBoxesMusicas.add((CheckBox) findViewById(R.id.checkboxSertanejo));
         checkBoxesMusicas.add((CheckBox) findViewById(R.id.checkBoxForro));
@@ -53,13 +53,13 @@ public class PerguntaMusicaAct extends AppCompatActivity {
 
     }
 
-    private void clicarBotaoConfirmar(){
+    private void clicarBotaoConfirmar() {
         botaoConfirmar = (Button) findViewById(R.id.buttonConfirmar);
         botaoConfirmar.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
-                perfilService.adcListaMusica(checkBoxesMusicas,listaMusica,perfilUsuario);
+                perfilService.adcListaMusica(checkBoxesMusicas, listaMusica, perfilUsuario);
                 irTelaPerguntaComida();
             }
         });
@@ -69,34 +69,36 @@ public class PerguntaMusicaAct extends AppCompatActivity {
         boolean checked = ((CheckBox) view).isChecked();
     }
 
-    public ArrayList<PerfilMusica> getMusica(){
-            return listaMusica;
+    public ArrayList<PerfilMusica> getMusica() {
+        return listaMusica;
     }
 
-    private void irTelaPerguntaComida(){
-        startActivityForResult(new Intent(PerguntaMusicaAct.this, PerguntaComidaAct.class),1);
-       // finish();
+    private void irTelaPerguntaComida() {
+        startActivityForResult(new Intent(PerguntaMusicaAct.this, PerguntaComidaAct.class), 1);
+        // finish();
 
     }
-    public void salvarMusica(){
-        if(perfilUsuario.getNome()!= null) {
+
+    public void salvarMusica() {
+        if (perfilUsuario.getNome() != null) {
             PerfilDAO bd = new PerfilDAO();
             bd.getLer(this);
             perfilService.adcMusica(perfilUsuario, this);
+        } else {
+            Toast.makeText(getApplicationContext(), "NÂO TEM NOME", Toast.LENGTH_SHORT).show();
         }
-        else{
-            Toast.makeText(getApplicationContext(), "NÂO TEM NOME", Toast.LENGTH_SHORT).show();}
     }
-    protected void onActivityResult(int codigoDaTela, int quemInviou, Intent intent ){
-        if(codigoDaTela == 1 ){
+
+    protected void onActivityResult(int codigoDaTela, int quemInviou, Intent intent) {
+        if (codigoDaTela == 1) {
             try {
-            Bundle valor = intent.getExtras();
+                Bundle valor = intent.getExtras();
                 if (valor != null) {
                     perfilUsuario.setNome(valor.getString("nomePerfil"));
                     salvarMusica();
                     finish();
                 }
-            }catch(Exception e){
+            } catch (Exception e) {
                 finish();
                 e.printStackTrace();
             }

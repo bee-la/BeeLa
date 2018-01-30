@@ -5,13 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/preto"
-    tools:context="br.ufrpe.beela.perfil.gui.PerguntaComidaAct">
+    tools:context="br.ufrpe.beela.perfilAtual.gui.PerguntaComidaAct">
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/preto"
-        tools:context="br.ufrpe.beela.perfil.gui.PerguntaComidaAct">
+        tools:context="br.ufrpe.beela.perfilAtual.gui.PerguntaComidaAct">
 
         <TextView
             android:id="@+id/textView8"
@@ -103,6 +103,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/checkBoxIgreja" />
+
         <CheckBox
             android:id="@+id/checkBoxParqueDiv"
             android:layout_width="match_parent"
