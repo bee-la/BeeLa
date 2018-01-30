@@ -76,7 +76,11 @@ public class PerfilService {
             bd.inserirPerfilEsporte(esporte,pessoa.getId());
         }
     }
-
+    public Boolean verificarPerfilAtualExiste(int id,Context context){
+        PerfilDAO bd = new PerfilDAO();
+        bd.getLer(context);
+        return bd.verificarPerfilFavorito(id);
+    }
     public void adcPerfil(PerfilUsuario perfilUsuario, Context context) {
         PerfilDAO bd = new PerfilDAO();
         bd.getEscrever(context);
@@ -105,6 +109,12 @@ public class PerfilService {
         PerfilDAO bd = new PerfilDAO();
         bd.getLer(context);
         return bd.getPerfil(pessoa.getId());
+
+    }
+    public PerfilUsuario montarPerfilFavorito(Pessoa pessoa, Context context) {
+        PerfilDAO bd = new PerfilDAO();
+        bd.getLer(context);
+        return bd.getFavorito(pessoa.getId());
 
     }
 

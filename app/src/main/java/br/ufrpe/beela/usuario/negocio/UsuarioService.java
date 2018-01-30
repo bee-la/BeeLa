@@ -85,15 +85,22 @@ public class UsuarioService {
         pessoa.setNome(alterarNome);
     }
 
-    public void salvarUsuarioBancoDados(Usuario usuario, Pessoa pessoa, Context context) {
+    public void salvarUsuarioBancoDados(Usuario usuario, Context context) {
         UsuarioDAO bd = new UsuarioDAO();
         bd.getEscrever(context);
         bd.inserir(usuario);
 
+    }
+
+    public void salvarPessoaBancoDados(Usuario usuario,Pessoa pessoa, Context context) {
+        pessoa.setUsuario(usuario);
         PessoaDAO bdp = new PessoaDAO();
         bdp.getEscrever(context);
         bdp.inserir(pessoa);
+
+
     }
+
 
     public boolean verificarEmailSenhaLogar(String email, String senha, Context context) {
         UsuarioDAO bd = new UsuarioDAO();

@@ -17,7 +17,7 @@ import br.ufrpe.beela.usuario.gui.LoginAct;
 import br.ufrpe.beela.gui.R;
 
 public class NomePerfilAct extends AppCompatActivity {
-    private PerfilUsuario perfilUsuario = LoginAct.getPessoa().getPerfilAtual();
+    private PerfilUsuario perfilUsuario = new PerfilUsuario();
     private PerfilService perfilService = new PerfilService();
     private EditText campoNomePerfil;
     private Button botaoNomear;
@@ -68,12 +68,15 @@ public class NomePerfilAct extends AppCompatActivity {
     }
 
     public void salvarBD() {
-        ArrayList<PerfilUsuario> perfilUsuarioArrayList = LoginAct.getPessoa().getPerfilUsuarioArrayList();
-        if (perfilUsuarioArrayList.size()==0) {
-            LoginAct.getPessoa().setPerfilAtual(perfilUsuario);
+
+        if (perfilService.verificarPerfilAtualExiste(LoginAct.getPessoa().getId(),this)) {
+            //LoginAct.getPessoa().setPerfilAtual(perfilUsuario);
             perfilService.adcPerfil(perfilUsuario, this);
             perfilService.adcPerfilFavorito(LoginAct.getPessoa().getId(),nomePerfil,this);
-        }else{perfilService.adcPerfil(perfilUsuario, this);}
+        }
+        else{
+            perfilService.adcPerfil(perfilUsuario, this);
+        }
     }
 
     public void finalizar() {

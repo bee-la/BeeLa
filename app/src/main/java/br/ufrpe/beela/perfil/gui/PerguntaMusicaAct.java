@@ -20,7 +20,7 @@ import br.ufrpe.beela.usuario.gui.LoginAct;
 import br.ufrpe.beela.gui.R;
 
 public class PerguntaMusicaAct extends AppCompatActivity {
-    private PerfilUsuario perfilUsuario = LoginAct.getPessoa().getPerfilAtual();
+    private PerfilUsuario perfilUsuario = new PerfilUsuario();
     private PerfilService perfilService = new PerfilService();
     private TextView pergunta;
     private Button botaoConfirmar;

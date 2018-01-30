@@ -430,8 +430,21 @@ public class PerfilDAO {
     public void updatePerfilAtual(String nome,int id) {
         String where = "id_pessoa = '" + String.valueOf(id) + "'";
         ContentValues valores = new ContentValues();
-        valores.put("Nome", nome);
+        valores.put("nome_perfil", nome);
         bd.update("perfilFavorito", valores, where, null);
         bd.close();
+    }
+    public Boolean verificarPerfilFavorito(int id) {
+        Boolean saida = true;
+        String where = "SELECT * FROM perfilFavorito WHERE id_pessoa = '" + String.valueOf(id) + "'";
+        Cursor cursor = bd.rawQuery(where, null);
+        try{
+            if (cursor.getCount() > 0) {
+                cursor.moveToFirst();
+                saida = false;
+            }
+        }catch (Exception e){}
+        bd.close();
+        return saida;
     }
 }

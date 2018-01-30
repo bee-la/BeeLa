@@ -77,7 +77,6 @@ public class EscolhaProgramaAct extends AppCompatActivity {
                 bd.getLer(context);
                 listId = bd.getPerfilParaLugar(listId, musica);
             }
-
             for (PerfilEsporte esporte : perfilUsuario.getEsporte()) {
                 PerfilDAO bd = new PerfilDAO();
                 bd.getLer(context);
@@ -88,8 +87,7 @@ public class EscolhaProgramaAct extends AppCompatActivity {
                 bd.getLer(context);
                 listId = bd.getPerfilParaLugar(listId, lugar);
             }
-        } catch (Exception e) {
-        }
+        } catch (Exception e) {}
         for (int id : listId) {
             LugarDAO bd = new LugarDAO();
             bd.getLer(context);

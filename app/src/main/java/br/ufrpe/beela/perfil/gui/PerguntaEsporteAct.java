@@ -21,7 +21,7 @@ import br.ufrpe.beela.usuario.gui.LoginAct;
 
 public class PerguntaEsporteAct extends AppCompatActivity {
 
-    private PerfilUsuario perfilUsuario = LoginAct.getPessoa().getPerfilAtual();
+    private PerfilUsuario perfilUsuario = new PerfilUsuario();
     private PerfilService perfilService = new PerfilService();
     private ArrayList<CheckBox> checkBoxesEsportes = new ArrayList<>();
     private static ArrayList<PerfilEsporte> listaEsporte = new ArrayList<PerfilEsporte>();
@@ -61,7 +61,7 @@ public class PerguntaEsporteAct extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 perfilService.adcListaEsporte(checkBoxesEsportes, listaEsporte, perfilUsuario);
-                LoginAct.getPessoa().setPerfilAtual(perfilUsuario);
+                //LoginAct.getPessoa().setPerfilAtual(perfilUsuario);
                 irTelaPerguntaLugarAct();
 
             }

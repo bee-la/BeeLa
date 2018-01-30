@@ -17,13 +17,10 @@ import br.ufrpe.beela.lugar.dao.LugarDAO;
 import br.ufrpe.beela.lugar.dominio.Lugar;
 import br.ufrpe.beela.lugar.gui.EscolhaProgramaAct;
 import br.ufrpe.beela.lugar.gui.LugarAct;
-import br.ufrpe.beela.lugar.negocio.ListViewLugar;
 import br.ufrpe.beela.perfil.dao.PerfilDAO;
 import br.ufrpe.beela.perfil.dominio.PerfilComida;
 import br.ufrpe.beela.perfil.dominio.PerfilEsporte;
-import br.ufrpe.beela.perfil.dominio.PerfilLugar;
 import br.ufrpe.beela.perfil.dominio.PerfilMusica;
-import br.ufrpe.beela.perfil.dominio.PerfilUsuario;
 import br.ufrpe.beela.usuario.dominio.Pessoa;
 import br.ufrpe.beela.usuario.negocio.ListViewContato;
 

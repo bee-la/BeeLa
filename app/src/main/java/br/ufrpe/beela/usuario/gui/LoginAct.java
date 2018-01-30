@@ -17,6 +17,7 @@ import br.ufrpe.beela.usuario.negocio.UsuarioService;
 
 public class LoginAct extends AppCompatActivity {
     private static Pessoa pessoa = new Pessoa();
+    private Usuario usuario = new Usuario();
     private UsuarioService usuarioValido = new UsuarioService();
     private TextView nomeApp, esqueceuSenha;
     private Button botaoEntrar, botaoCriarConta;
@@ -103,7 +104,7 @@ public class LoginAct extends AppCompatActivity {
     }
 
     private void iniciarSessão() {
-        Usuario usuario = usuarioValido.gerarUsuario(email, senha, this);
+        usuario = usuarioValido.gerarUsuario(email, senha, this);
         pessoa = usuarioValido.gerarPessoa(usuario.getId(), this);
         PerfilUsuario perfilAtual = usuarioValido.gerarPerfilAtual(pessoa.getId(),this);
         pessoa.setPerfilUsuarioArrayList(usuarioValido.gerarPerfilUsuario(pessoa.getId(),this));

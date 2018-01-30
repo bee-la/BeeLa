@@ -34,7 +34,7 @@ public class PerfilAct extends AppCompatActivity {
     private boolean verificador = false;
 
     private Pessoa pessoa = LoginAct.getPessoa();
-    private PerfilUsuario perfilUsuario = pessoa.getPerfilAtual();
+    private PerfilUsuario perfilUsuario = LoginAct.getPessoa().getPerfilAtual();
     private PerfilService perfilService = new PerfilService();
     public static ArrayList<PerfilUsuario> perfilUsuarioArrayList = LoginAct.getPessoa().getPerfilUsuarioArrayList();
 
@@ -67,15 +67,7 @@ public class PerfilAct extends AppCompatActivity {
         botaoAdicionarPerfil = (ImageButton) findViewById(R.id.imageButton4);
         botaoAdicionarPerfil.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                if (perfilUsuarioArrayList.size() <= 2) {
-                    irTelaPerguntasMusica();
-                } else {
-                    erro = Toast.makeText(getApplicationContext(), R.string.maximoPerfis, Toast.LENGTH_SHORT);
-                    erro.show();
-                }
-            }
-        });
+            public void onClick(View v) {irTelaPerguntasMusica();}});
     }
 
     private void irTelaPerguntasMusica() {
@@ -119,6 +111,7 @@ public class PerfilAct extends AppCompatActivity {
     private void montarPerfil() {
         pessoa.setPerfilUsuarioArrayList(perfilService.montarPerfis(pessoa, PerfilAct.this));
         perfilUsuarioArrayList = pessoa.getPerfilUsuarioArrayList();
+        pessoa.setPerfilAtual(perfilService.montarPerfilFavorito(pessoa,this));
     }
 
     private void excluirPerfil(final String nomePerfil) {
@@ -190,6 +183,10 @@ public class PerfilAct extends AppCompatActivity {
             bdm.getLer(this);
             perfilAtual.setMusica(bdm.getPerfilMusica(perfilAtual,LoginAct.getPessoa().getId()));
             //
+            PerfilDAO bdl = new PerfilDAO();
+            bdl.getLer(this);
+            perfilAtual.setLugar(bdl.getPerfilParaLugar(perfilAtual,LoginAct.getPessoa().getId()));
+            //
             LoginAct.getPessoa().setPerfilAtual(perfilAtual);
             perfilUsuario = LoginAct.getPessoa().getPerfilAtual();
 //
@@ -209,7 +206,7 @@ public class PerfilAct extends AppCompatActivity {
                 } else {
                     verificador = true;
                     perfilService.adcPerfilFavoritoAtual(LoginAct.getPessoa().getId(), pessoa.getPerfilAtual().getNome(), this);
-                    Toast.makeText(getApplicationContext(), getString(R.string.perfilAtual) + pessoa.getPerfilAtual().getNome(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(),getString(R.string.perfilAtual)+" "+pessoa.getPerfilAtual().getNome(), Toast.LENGTH_SHORT).show();
                 }
             }
         } catch (Exception e) {

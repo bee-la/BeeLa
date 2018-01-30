@@ -12,6 +12,8 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 import br.ufrpe.beela.gui.R;
+import br.ufrpe.beela.usuario.dominio.Usuario;
+import br.ufrpe.beela.usuario.negocio.Criptografia;
 import br.ufrpe.beela.usuario.negocio.UsuarioService;
 
 
@@ -87,9 +89,11 @@ public class CriarContaAct extends AppCompatActivity {
             erro2 = Toast.makeText(getApplicationContext(), R.string.celularExiste, Toast.LENGTH_SHORT);
             erro2.show();
         } else {
-            usuarioValido.salvarUsuarioBancoDados(usuarioValido.criarUsuario(email, senha), usuarioValido.criarPessoa(nome, celular), this);
+            usuarioValido.salvarUsuarioBancoDados(usuarioValido.criarUsuario(email, senha),  this);
             contaCriada = Toast.makeText(getApplicationContext(), R.string.contaCriada, Toast.LENGTH_SHORT);
             contaCriada.show();
+
+            usuarioValido.salvarPessoaBancoDados(usuarioValido.gerarUsuario(email,Criptografia.criptografar(senha),this),usuarioValido.criarPessoa(nome, celular),this);
             finish();
         }
     }

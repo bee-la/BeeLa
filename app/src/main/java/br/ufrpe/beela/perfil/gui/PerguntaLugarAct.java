@@ -22,7 +22,7 @@ import br.ufrpe.beela.usuario.gui.LoginAct;
 public class PerguntaLugarAct extends AppCompatActivity {
 
 
-    private PerfilUsuario perfilUsuario = LoginAct.getPessoa().getPerfilAtual();
+    private PerfilUsuario perfilUsuario = new PerfilUsuario();
     private PerfilService perfilService = new PerfilService();
     private TextView pergunta;
     private Button botaoConfirmar;
@@ -61,7 +61,7 @@ public class PerguntaLugarAct extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 perfilService.adcListaLugares(checkBoxesLugares, listaLugar, perfilUsuario);
-                LoginAct.getPessoa().setPerfilAtual(perfilUsuario);
+                //LoginAct.getPessoa().setPerfilAtual(perfilUsuario);
                 irTelaNomePerfilAct();
 
             }
