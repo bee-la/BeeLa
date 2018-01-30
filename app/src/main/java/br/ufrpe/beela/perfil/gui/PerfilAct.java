@@ -1,56 +1,5 @@
 package br.ufrpe.beela.perfil.gui;
 
-<<<<<<< HEAD
-//
-        import android.content.DialogInterface;
-        import android.content.Intent;
-        import android.graphics.Typeface;
-        import android.support.v7.app.AlertDialog;
-        import android.support.v7.app.AppCompatActivity;
-        import android.os.Bundle;
-        import android.view.View;
-        import android.widget.Adapter;
-        import android.widget.Button;
-        import android.widget.ImageButton;
-        import android.widget.ListView;
-        import android.widget.TextView;
-        import android.widget.Toast;
-        import java.util.ArrayList;
-
-        import br.ufrpe.beela.lugar.gui.EscolhaProgramaAct;
-        import br.ufrpe.beela.perfil.dao.PerfilDAO;
-        import br.ufrpe.beela.perfil.dominio.PerfilUsuario;
-        import br.ufrpe.beela.perfil.negocio.ListViewNomePerfil;
-        import br.ufrpe.beela.perfil.negocio.PerfilService;
-        import br.ufrpe.beela.usuario.dominio.Pessoa;
-        import br.ufrpe.beela.usuario.dominio.Usuario;
-        import br.ufrpe.beela.usuario.gui.LoginAct;
-        import br.ufrpe.beela.gui.R;
-//=======
-//import android.content.DialogInterface;
-//import android.content.Intent;
-//import android.graphics.Typeface;
-//import android.support.v7.app.AlertDialog;
-//import android.support.v7.app.AppCompatActivity;
-//import android.os.Bundle;
-//import android.view.View;
-//import android.widget.Adapter;
-//import android.widget.Button;
-//import android.widget.ImageButton;
-//import android.widget.ListView;
-//import android.widget.TextView;
-//import android.widget.Toast;
-//import java.util.ArrayList;
-//import br.ufrpe.beela.lugar.gui.EscolhaProgramaAct;
-//import br.ufrpe.beela.perfil.dominio.PerfilUsuario;
-//import br.ufrpe.beela.perfil.negocio.ListViewNomePerfil;
-//import br.ufrpe.beela.perfil.negocio.PerfilService;
-//import br.ufrpe.beela.usuario.dominio.Pessoa;
-//import br.ufrpe.beela.usuario.dominio.Usuario;
-//import br.ufrpe.beela.usuario.gui.LoginAct;
-//import br.ufrpe.beela.gui.R;
-//>>>>>>> desenvolvedor2
-=======
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Typeface;
@@ -74,7 +23,7 @@ import br.ufrpe.beela.perfil.negocio.ListViewNomePerfil;
 import br.ufrpe.beela.perfil.negocio.PerfilService;
 import br.ufrpe.beela.usuario.dominio.Pessoa;
 import br.ufrpe.beela.usuario.gui.LoginAct;
->>>>>>> desenvolvedor2
+
 
 public class PerfilAct extends AppCompatActivity {
     private ImageButton botaoAdicionarPerfil, botaoApagar, botaoSalvar;
@@ -153,26 +102,17 @@ public class PerfilAct extends AppCompatActivity {
         }
     }
 
-<<<<<<< HEAD
     private void setListView(){
-=======
-    private void setListView() {
->>>>>>> desenvolvedor2
         montarPerfil();
         listViewPerfis = (ListView) findViewById(R.id.listView);
         ListViewNomePerfil lista = new ListViewNomePerfil(PerfilAct.this);
         listViewPerfis.setAdapter(lista);
     }
 
-<<<<<<< HEAD
-    private void montarPerfil(){
-        perfilUsuarioArrayList = perfilService.MontarPerfis(perfilUsuario,PerfilAct.this);
-=======
     private void montarPerfil() {
         pessoa.setPerfilUsuarioArrayList(perfilService.montarPerfis(pessoa, PerfilAct.this));
         perfilUsuarioArrayList = pessoa.getPerfilUsuarioArrayList();
         pessoa.setPerfilAtual(perfilService.montarPerfilFavorito(pessoa,this));
->>>>>>> desenvolvedor2
     }
 
     private void excluirPerfil(final String nomePerfil) {

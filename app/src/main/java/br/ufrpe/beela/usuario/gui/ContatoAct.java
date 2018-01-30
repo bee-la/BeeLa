@@ -16,7 +16,7 @@ import br.ufrpe.beela.gui.R;
 import br.ufrpe.beela.lugar.dao.LugarDAO;
 import br.ufrpe.beela.lugar.dominio.Lugar;
 import br.ufrpe.beela.lugar.gui.EscolhaProgramaAct;
-import br.ufrpe.beela.lugar.gui.LugarAct;
+import br.ufrpe.beela.lugar.gui.LugarAcompAct;
 import br.ufrpe.beela.perfil.dao.PerfilDAO;
 import br.ufrpe.beela.perfil.dominio.PerfilComida;
 import br.ufrpe.beela.perfil.dominio.PerfilEsporte;
@@ -30,7 +30,9 @@ import br.ufrpe.beela.usuario.negocio.ListViewContato;
 
 public class ContatoAct extends AppCompatActivity {
     private ListView listViewContatos;
+    private Pessoa pessoa = LoginAct.getPessoa();
     private ArrayList<Pessoa> pessoaArrayList = EscolhaProgramaAct.getListaPessoa();
+    private static ArrayList<Lugar> lugarArrayList = new ArrayList<Lugar>();
     private Button botaoConfirmar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,7 +70,7 @@ public class ContatoAct extends AppCompatActivity {
         Toast.makeText(getApplicationContext(), texto.getText().toString(), Toast.LENGTH_SHORT).show();
     }
     public void irTelaLugarAct(){
-        startActivity(new Intent(ContatoAct.this, LugarAct.class));
+        startActivity(new Intent(ContatoAct.this, LugarAcompAct.class));
     }
     private void verificaSelecionados() {
         ArrayList<Pessoa> pessoaArrayList = new ArrayList<Pessoa>();
@@ -82,7 +84,8 @@ public class ContatoAct extends AppCompatActivity {
                     }
                 }
             }
-            EscolhaProgramaAct.setListaLugar(gerarLugarAcompanhado(pessoaArrayList));
+            pessoaArrayList.add(pessoa);
+            ContatoAct.setListaLugar(gerarLugarAcompanhado(pessoaArrayList));
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -92,18 +95,39 @@ public class ContatoAct extends AppCompatActivity {
         ArrayList<Lugar> listLugar = new ArrayList<Lugar>();
         ArrayList<Integer> listId = new ArrayList<Integer>();
         try {
-            for (Pessoa pessoa : pessoaArrayList) {
-                for (PerfilComida perfilComida : pessoa.getPerfilAtual().getComida()) {
+            for (Pessoa pessoaAcompanhada : pessoaArrayList) {
+                PerfilDAO bdp = new PerfilDAO();
+                bdp.getLer(this);
+                pessoaAcompanhada.setPerfilAtual(bdp.getFavorito(pessoaAcompanhada.getId()));
+                //////////
+                PerfilDAO bdc = new PerfilDAO();
+                bdc.getLer(this);
+                pessoaAcompanhada.getPerfilAtual().setComida(bdc.getPerfilComida(pessoaAcompanhada.getPerfilAtual(),pessoaAcompanhada.getId()));
+                //
+                PerfilDAO bde = new PerfilDAO();
+                bde.getLer(this);
+                pessoaAcompanhada.getPerfilAtual().setEsporte(bde.getPerfilEsporte(pessoaAcompanhada.getPerfilAtual(),LoginAct.getPessoa().getId()));
+                //
+                PerfilDAO bdm = new PerfilDAO();
+                bdm.getLer(this);
+                pessoaAcompanhada.getPerfilAtual().setMusica(bdm.getPerfilMusica(pessoaAcompanhada.getPerfilAtual(),LoginAct.getPessoa().getId()));
+                //
+                PerfilDAO bdl = new PerfilDAO();
+                bdl.getLer(this);
+                pessoaAcompanhada.getPerfilAtual().setLugar(bdl.getPerfilParaLugar(pessoaAcompanhada.getPerfilAtual(),LoginAct.getPessoa().getId()));
+
+                ///////////////
+                for (PerfilComida perfilComida : pessoaAcompanhada.getPerfilAtual().getComida()) {
                     PerfilDAO bd = new PerfilDAO();
                     bd.getLer(this);
                     listId = bd.getPerfilParaLugar(perfilComida);
                 }
-                for (PerfilMusica perfilMusica : pessoa.getPerfilAtual().getMusica()) {
+                for (PerfilMusica perfilMusica : pessoaAcompanhada.getPerfilAtual().getMusica()) {
                     PerfilDAO bd = new PerfilDAO();
                     bd.getLer(this);
                     listId = bd.getPerfilParaLugar(listId, perfilMusica);
                 }
-                for (PerfilEsporte perfilEsporte : pessoa.getPerfilAtual().getEsporte()) {
+                for (PerfilEsporte perfilEsporte : pessoaAcompanhada.getPerfilAtual().getEsporte()) {
                     PerfilDAO bd = new PerfilDAO();
                     bd.getLer(this);
                     listId = bd.getPerfilParaLugar(listId, perfilEsporte);
@@ -119,7 +143,8 @@ public class ContatoAct extends AppCompatActivity {
         }
         return listLugar;
 
-
         //TODO     Função que encontra os lugares dos contatos selecionados
     }
+    public static void setListaLugar(ArrayList<Lugar> listaLugar){lugarArrayList = listaLugar;}
+    public static ArrayList<Lugar> getListaLugar(){return lugarArrayList;}
 }

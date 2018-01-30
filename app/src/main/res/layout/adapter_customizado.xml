@@ -15,6 +15,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
 
+        android:textColor="@color/branco"
         android:textSize="24sp"
         android:textStyle="bold"
         tools:layout_editor_absoluteX="86dp"
@@ -26,7 +27,8 @@
         android:layout_height="wrap_content"
         android:layout_alignStart="@+id/titulo"
         android:layout_below="@+id/titulo"
-        android:layout_margin="5dp" />
+        android:layout_margin="5dp"
+        android:textColor="@color/verdeBotao" />
 
 
 </LinearLayout>

@@ -14,18 +14,16 @@ import br.ufrpe.beela.usuario.dominio.Pessoa;
 import br.ufrpe.beela.usuario.dominio.Usuario;
 import br.ufrpe.beela.usuario.negocio.UsuarioService;
 
+import static br.ufrpe.beela.gui.R.id.textViewCriarConta;
+
 
 public class LoginAct extends AppCompatActivity {
     private static Pessoa pessoa = new Pessoa();
-<<<<<<< HEAD
-    private UsuarioService usuarioValido= new UsuarioService();
-    private TextView nomeApp, esqueceuSenha, criarConta;
-=======
+
     private Usuario usuario = new Usuario();
     private UsuarioService usuarioValido = new UsuarioService();
-    private TextView nomeApp, esqueceuSenha;
->>>>>>> desenvolvedor2
-    private Button botaoEntrar, botaoCriarConta;
+    private TextView nomeApp, esqueceuSenha, botaoCriarConta;
+    private Button botaoEntrar;
     private EditText campoEmail, campoSenha;
     private String email, senha;
     private Toast mensagemEsqSenha;
@@ -62,15 +60,10 @@ public class LoginAct extends AppCompatActivity {
         });
     }
 
-<<<<<<< HEAD
     private void irTelaCriarConta(){
-        criarConta = (TextView) findViewById(R.id.textViewCriarConta);
-        criarConta.setOnClickListener(new View.OnClickListener() {
-=======
-    private void irTelaCriarConta() {
-        botaoCriarConta = (Button) findViewById(R.id.button2);
+
+        botaoCriarConta = (TextView) findViewById(textViewCriarConta);
         botaoCriarConta.setOnClickListener(new View.OnClickListener() {
->>>>>>> desenvolvedor2
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(LoginAct.this, CriarContaAct.class));
@@ -78,13 +71,9 @@ public class LoginAct extends AppCompatActivity {
         });
     }
 
-<<<<<<< HEAD
-    private void irTelaEsqueceuSenha(){
-        esqueceuSenha=(TextView)findViewById(R.id.textViewEsqueceuSenha);
-=======
     private void irTelaEsqueceuSenha() {
-        esqueceuSenha = (TextView) findViewById(R.id.textView3);
->>>>>>> desenvolvedor2
+        esqueceuSenha = (TextView) findViewById(R.id.textViewEsqueceuSenha);
+
         esqueceuSenha.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
