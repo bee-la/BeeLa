@@ -10,7 +10,6 @@ import android.widget.TextView;
 
 import br.ufrpe.beela.database.negocio.BancoDeDados;
 import br.ufrpe.beela.gui.R;
-import br.ufrpe.beela.lugar.gui.LugarAcompanhadoAct;
 import br.ufrpe.beela.perfil.gui.PerfilAct;
 
 public class HomeAct extends AppCompatActivity {

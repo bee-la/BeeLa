@@ -22,54 +22,9 @@ import br.ufrpe.beela.perfil.dominio.PerfilLugar;
  */
 
 public class LugarService {
-    Toast Erro;
 
-    public ArrayList<Lugar> getListaLugar(PerfilUsuario perfilUsuario, Context context) {
-        ArrayList<Lugar> listLugar = new ArrayList<Lugar>();
-        ArrayList<Integer> listId = new ArrayList<Integer>();
 
-        try {
-            for (PerfilComida comida : perfilUsuario.getComida()) {
-                PerfilDAO bd = new PerfilDAO();
-                bd.getLer(context);
-                listId = bd.getPerfilParaLugar(comida);
-            }
-            for (PerfilMusica musica : perfilUsuario.getMusica()) {
-                PerfilDAO bd = new PerfilDAO();
-                bd.getLer(context);
-                listId = bd.getPerfilParaLugar(listId, musica);
-            }
 
-            for (PerfilEsporte esporte : perfilUsuario.getEsporte()) {
-                PerfilDAO bd = new PerfilDAO();
-                bd.getLer(context);
-                listId = bd.getPerfilParaLugar(listId, esporte);
-            }
-            for (PerfilLugar lugar : perfilUsuario.getLugar()) {
-                PerfilDAO bd = new PerfilDAO();
-                bd.getLer(context);
-                listId = bd.getPerfilParaLugar(listId, lugar);
-            }
-        } catch (Exception e) {
-        }
-        for (int id : listId) {
-            LugarDAO bd = new LugarDAO();
-            bd.getLer(context);
-            Lugar lugar = new Lugar();
-            lugar = bd.getLugar(id);
-//            PerfilDAO bdp = new PerfilDAO();
-//            bdp.getEscrever(context);
-//            lugar.setComida(bdp.getPerfilComida(lugar));
-//            bdp = new PerfilDAO();
-//            bdp.getEscrever(context);
-//            lugar.setEsporte(bdp.getPerfilEsporte(lugar));
-//            bdp = new PerfilDAO();
-//            bdp.getEscrever(context);
-//            lugar.setMusica(bdp.getPerfilMusica(lugar));
-            listLugar.add(lugar);
-        }
-        return listLugar;
-    }
 
 
     private Intent mapa(double destinolatitude, double destinolongitude) {

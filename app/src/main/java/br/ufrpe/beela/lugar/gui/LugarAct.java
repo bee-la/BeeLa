@@ -1,23 +1,12 @@
 package br.ufrpe.beela.lugar.gui;
 
-import android.Manifest;
-import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.content.Intent;
 import android.os.Bundle;
-import android.provider.Settings;
-import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.Adapter;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.content.ComponentName;
-import android.net.Uri;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 
@@ -26,7 +15,6 @@ import java.util.ArrayList;
 import br.ufrpe.beela.gui.R;
 import br.ufrpe.beela.lugar.dominio.Lugar;
 import br.ufrpe.beela.lugar.negocio.AdapterCustomizado;
-import br.ufrpe.beela.lugar.negocio.ListViewLugar;
 import br.ufrpe.beela.lugar.negocio.LugarService;
 
 /**
@@ -34,14 +22,14 @@ import br.ufrpe.beela.lugar.negocio.LugarService;
  */
 
 public class LugarAct extends AppCompatActivity {
-    private double destinolatitude;
-    private double destinolongitude;
+    private double destinoLatitide;
+    private double destinoLongitude;
     private Button btIr;
 
     private ArrayList<Lugar> ListLugar = EscolhaProgramaAct.getListaLugar();
     private ListView listViewLugares;
 
-    Toast Erro;
+
     LugarService mapa = new LugarService();
 
     @Override
@@ -49,7 +37,6 @@ public class LugarAct extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_lugares);
-        LugarService mapa = new LugarService();
         setListView();
 
 
@@ -64,26 +51,26 @@ public class LugarAct extends AppCompatActivity {
 
 
         String destino[] = lugar.getLocalicao().split(",");
-        destinolatitude = Double.parseDouble(destino[0]);
-        destinolongitude = Double.parseDouble(destino[1]);
+        destinoLatitide = Double.parseDouble(destino[0]);
+        destinoLongitude = Double.parseDouble(destino[1]);
 
         try {
-            startActivity(new Intent(mapa.getMapa(destinolatitude, destinolongitude)));
+            startActivity(new Intent(mapa.getMapa(destinoLatitide, destinoLongitude)));
         } catch (Exception ex) {
 
             Toast.makeText(this, "", Toast.LENGTH_SHORT).show();
         }
 
-        return mapa.getMapa(destinolatitude, destinolongitude);
+        return mapa.getMapa(destinoLatitide, destinoLongitude);
     }
 
 
     private void setListView() {
         listViewLugares = (ListView) findViewById(R.id.listView2);
 
-        AdapterCustomizado Max = new AdapterCustomizado(getApplicationContext(), getLugares());
+        AdapterCustomizado adapter = new AdapterCustomizado(getApplicationContext(), getLugares());
 
-        listViewLugares.setAdapter(Max);
+        listViewLugares.setAdapter(adapter);
 
         listViewLugares.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

@@ -18,15 +18,15 @@ import br.ufrpe.beela.perfil.dominio.PerfilEsporte;
 import br.ufrpe.beela.perfil.dominio.PerfilLugar;
 import br.ufrpe.beela.perfil.dominio.PerfilMusica;
 import br.ufrpe.beela.perfil.dominio.PerfilUsuario;
-import br.ufrpe.beela.usuario.dao.PessoaDAO;
+
 import br.ufrpe.beela.usuario.dominio.Pessoa;
-import br.ufrpe.beela.usuario.gui.ContatoAct;
+
 import br.ufrpe.beela.usuario.gui.LoginAct;
 
 public class EscolhaProgramaAct extends AppCompatActivity {
     private PerfilUsuario perfilUsuario = LoginAct.getPessoa().getPerfilAtual();
     private ImageButton botaoSozinho;
-    private ImageButton botaoAcompanhado;
+
 
 
     private static ArrayList<Lugar> ListaLugar = new ArrayList<Lugar>();
@@ -37,7 +37,7 @@ public class EscolhaProgramaAct extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_escolha_programa);
         encontrarLugarSozinho();
-        encontratLugarAcompanhado();
+
     }
 
     private void encontrarLugarSozinho() {
@@ -51,16 +51,6 @@ public class EscolhaProgramaAct extends AppCompatActivity {
         });
     }
 
-    private void encontratLugarAcompanhado() {
-        botaoAcompanhado = (ImageButton) findViewById(R.id.imageButton7);
-        botaoAcompanhado.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                gerarListaDePessoa();
-                startActivity(new Intent(EscolhaProgramaAct.this, ContatoAct.class));
-            }
-        });
-    }
 
     public ArrayList<Lugar> gerarListaLugar(PerfilUsuario perfilUsuario, Context context) {
         ArrayList<Lugar> listLugar = new ArrayList<Lugar>();
@@ -102,12 +92,7 @@ public class EscolhaProgramaAct extends AppCompatActivity {
         EscolhaProgramaAct.setListaLugar(lugarArrayList);
     }
 
-    //@TODO FALTA IR EM database/BancoDeDados e escrever todas as PEssoas Fake!
-    public void gerarListaDePessoa() {
-        PessoaDAO bd = new PessoaDAO();
-        bd.getLer(this);
-        setListaPessoa(bd.getListaPessoa());
-    }
+
 
     public static void setListaLugar(ArrayList<Lugar> listaLugar) {
         ListaLugar = listaLugar;
@@ -117,11 +102,7 @@ public class EscolhaProgramaAct extends AppCompatActivity {
         return ListaLugar;
     }
 
-    public static ArrayList<Pessoa> getListaPessoa() {
-        return ListaPessoa;
-    }
 
-    public static void setListaPessoa(ArrayList<Pessoa> listaPessoa) {
-        ListaPessoa = listaPessoa;
-    }
+
+
 }

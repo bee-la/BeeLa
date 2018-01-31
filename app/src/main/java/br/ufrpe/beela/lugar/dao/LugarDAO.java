@@ -42,15 +42,7 @@ public class LugarDAO {
         bd.close();
     }
 
-    //    public void upgrade(Lugar lugar){
-//        ContentValues valores = new ContentValues();
-//        String where = "id = " + String.valueOf(lugar.getId());
-//        valores.put("nome", lugar.getNome());
-//        valores.put("descricao", lugar.getDescricao());
-//        valores.put("localizacao",lugar.getLocalicao());
-//        bd.update("lugar",valores,where,null);
-//        bd.close();
-//    }
+
     public Lugar getLugar(int id) {
         Lugar lugar = new Lugar();
         String where = "SELECT * FROM lugar WHERE _id = '" + String.valueOf(id) + "'";
