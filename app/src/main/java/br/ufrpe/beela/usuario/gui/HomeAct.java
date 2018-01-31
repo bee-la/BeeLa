@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import br.ufrpe.beela.database.negocio.BancoDeDados;
 import br.ufrpe.beela.gui.R;
+import br.ufrpe.beela.lugar.gui.EscolhaProgramaAct;
 import br.ufrpe.beela.perfil.gui.PerfilAct;
 
 public class HomeAct extends AppCompatActivity {
@@ -61,7 +62,7 @@ public class HomeAct extends AppCompatActivity {
         botaoLugares.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(HomeAct.this, LugarAcompanhadoAct.class));
+                startActivity(new Intent(HomeAct.this, EscolhaProgramaAct.class));
             }
         });
     }

@@ -6,9 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
-
 import java.util.ArrayList;
-
 import br.ufrpe.beela.gui.R;
 import br.ufrpe.beela.lugar.dao.LugarDAO;
 import br.ufrpe.beela.lugar.dominio.Lugar;
@@ -18,19 +16,13 @@ import br.ufrpe.beela.perfil.dominio.PerfilEsporte;
 import br.ufrpe.beela.perfil.dominio.PerfilLugar;
 import br.ufrpe.beela.perfil.dominio.PerfilMusica;
 import br.ufrpe.beela.perfil.dominio.PerfilUsuario;
-
-import br.ufrpe.beela.usuario.dominio.Pessoa;
-
 import br.ufrpe.beela.usuario.gui.LoginAct;
+
 
 public class EscolhaProgramaAct extends AppCompatActivity {
     private PerfilUsuario perfilUsuario = LoginAct.getPessoa().getPerfilAtual();
     private ImageButton botaoSozinho;
-
-
-
     private static ArrayList<Lugar> ListaLugar = new ArrayList<Lugar>();
-    private static ArrayList<Pessoa> ListaPessoa = new ArrayList<Pessoa>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -92,8 +84,6 @@ public class EscolhaProgramaAct extends AppCompatActivity {
         EscolhaProgramaAct.setListaLugar(lugarArrayList);
     }
 
-
-
     public static void setListaLugar(ArrayList<Lugar> listaLugar) {
         ListaLugar = listaLugar;
     }
@@ -101,8 +91,6 @@ public class EscolhaProgramaAct extends AppCompatActivity {
     public static ArrayList<Lugar> getListaLugar() {
         return ListaLugar;
     }
-
-
 
 
 }

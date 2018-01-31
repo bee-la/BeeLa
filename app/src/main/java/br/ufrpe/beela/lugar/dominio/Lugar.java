@@ -16,10 +16,6 @@ public class Lugar {
     private int id;
     private String nome;
     private String descricao;
-    private ArrayList<PerfilComida> comida;
-    private ArrayList<PerfilMusica> musica;
-    private ArrayList<PerfilEsporte> esporte;
-    private ArrayList<PerfilLugar> lugar;
     private String localicao;
 
     public int getId() {
@@ -34,26 +30,9 @@ public class Lugar {
         return descricao;
     }
 
-    public ArrayList<PerfilComida> getComida() {
-        return this.comida;
-    }
-
-    public ArrayList<PerfilMusica> getMusica() {
-        return this.musica;
-    }
-
-    public ArrayList<PerfilEsporte> getEsporte() {
-        return this.esporte;
-    }
-
-    public ArrayList<PerfilLugar> getPergLugar() {
-        return this.lugar;
-    }
-
     public String getLocalicao() {
         return localicao;
     }
-
 
     public void setId(int id) {
         this.id = id;
@@ -63,24 +42,8 @@ public class Lugar {
         this.nome = nome;
     }
 
-    public void setDescriacao(String descricao) {
+    public void setDescricao(String descricao) {
         this.descricao = descricao;
-    }
-
-    public void setComida(ArrayList<PerfilComida> comida) {
-        this.comida = comida;
-    }
-
-    public void setMusica(ArrayList<PerfilMusica> musica) {
-        this.musica = musica;
-    }
-
-    public void setEsporte(ArrayList<PerfilEsporte> esporte) {
-        this.esporte = esporte;
-    }
-
-    public void setPergLugar(ArrayList<PerfilLugar> lugar) {
-        this.lugar = lugar;
     }
 
     public void setLocalicao(String localicao) {

@@ -22,30 +22,14 @@ import br.ufrpe.beela.perfil.dominio.PerfilLugar;
  */
 
 public class LugarService {
-
-
-
-
-
     private Intent mapa(double destinolatitude, double destinolongitude) {
-
-
-        Intent googleMaps = new Intent(android.content.Intent.ACTION_VIEW,
-                Uri.parse("http://maps.google.com/maps?saddr=" + "" + "&daddr=" + destinolatitude + "," + destinolongitude));
-
+        Intent googleMaps = new Intent(android.content.Intent.ACTION_VIEW, Uri.parse("http://maps.google.com/maps?saddr=" + "" + "&daddr=" + destinolatitude + "," + destinolongitude));
         googleMaps.setComponent(new ComponentName("com.google.android.apps.maps", "com.google.android.maps.MapsActivity"));
         return (googleMaps);
-
-
     }
-
 
     public Intent getMapa(double l, double lg) {
-
-
         return mapa(l, lg);
     }
-
-
 }
 

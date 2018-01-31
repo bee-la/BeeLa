@@ -39,7 +39,7 @@ public class BancoDeDados {
     public void criarRu(Context context) {
         Lugar lugar = new Lugar();
         lugar.setNome("RU - UFRPE");
-        lugar.setDescriacao("Self-Service");
+        lugar.setDescricao("Self-Service");
         lugar.setLocalicao("-8.014121,-34.951131");
         lugaresPreferidos.add(lugar);
         //
@@ -68,7 +68,7 @@ public class BancoDeDados {
     public void criarIgrejaDoCarmmo(Context context) {
         Lugar lugar = new Lugar();
         lugar.setNome("Igreja Do Carmmo");
-        lugar.setDescriacao("Igreja");
+        lugar.setDescricao("Igreja");
         lugar.setLocalicao("-8.0168458,-34.849372");
         lugaresPreferidos.add(lugar);
         //
@@ -104,7 +104,7 @@ public class BancoDeDados {
     public void criarRockRibs(Context context) {
         Lugar lugar = new Lugar();
         lugar.setNome("RockRibs");
-        lugar.setDescriacao("Restaurante");
+        lugar.setDescricao("Restaurante");
         lugar.setLocalicao("-8.0640944,-34.8714444");
         lugaresPreferidos.add(lugar);
 
@@ -134,7 +134,7 @@ public class BancoDeDados {
     public void criarShoppingRecife(Context context) {
         Lugar lugar = new Lugar();
         lugar.setNome("Shopping Recife");
-        lugar.setDescriacao("Shopping Center");
+        lugar.setDescricao("Shopping Center");
         lugar.setLocalicao("-8.0640944,-34.8714444");
         lugaresPreferidos.add(lugar);
         LugarDAO bd = new LugarDAO();
@@ -164,7 +164,7 @@ public class BancoDeDados {
     public void criarMirabilandia(Context context) {
         Lugar lugar = new Lugar();
         lugar.setNome("Mirabilandia");
-        lugar.setDescriacao("Parque de Diversões");
+        lugar.setDescricao("Parque de Diversões");
         lugar.setLocalicao("-8.0326104,-34.875884");
         lugaresPreferidos.add(lugar);
 
@@ -195,7 +195,7 @@ public class BancoDeDados {
     public void criarBailePerfumado(Context context) {
         Lugar lugar = new Lugar();
         lugar.setNome("Baile Perfumado");
-        lugar.setDescriacao("Casa de Show");
+        lugar.setDescricao("Casa de Show");
         lugar.setLocalicao("-8.0592289,-34.9145652");
         lugaresPreferidos.add(lugar);
         //
@@ -224,7 +224,7 @@ public class BancoDeDados {
     public void criaParqueJaqueira(Context context) {
         Lugar lugar = new Lugar();
         lugar.setNome("Parque Jaqueira");
-        lugar.setDescriacao("Parque");
+        lugar.setDescricao("Parque");
         lugar.setLocalicao("-8.0374702,-34.9746089");
         lugaresPreferidos.add(lugar);
         //
