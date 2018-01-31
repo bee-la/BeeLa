@@ -13,7 +13,7 @@ import br.ufrpe.beela.gui.R;
 import br.ufrpe.beela.usuario.negocio.UsuarioService;
 
 
-public class CriarContaAct extends AppCompatActivity {
+public class CriarContaAct extends AppCompatActivity implements View.OnClickListener {
 
     private Button botaoCriar;
     private Toast contaCriada;
@@ -34,7 +34,22 @@ public class CriarContaAct extends AppCompatActivity {
         campoRepetirSenha = (EditText) findViewById(R.id.editText11);
 
         alterarFonte();
-        clicarBotaoCriar();
+        botaoCriar = (Button) findViewById(R.id.button3);
+        botaoCriar.setOnClickListener(this);
+
+    }
+
+
+    @Override
+    public void onClick(View view) {
+
+        switch (view.getId()){
+
+            case R.id.button3:
+                verificarConta();
+
+
+        }
 
     }
 
@@ -53,16 +68,16 @@ public class CriarContaAct extends AppCompatActivity {
         textoCampos.add((TextView) findViewById(R.id.editText10));
         textoCampos.add((TextView) findViewById(R.id.editText11));
     }
-
-    private void clicarBotaoCriar(){
-        botaoCriar = (Button) findViewById(R.id.button3);
-        botaoCriar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                verificarConta();
-            }
-        });
-    }
+//switchCase
+//    private void clicarBotaoCriar(){
+//        botaoCriar = (Button) findViewById(R.id.button3);
+//        botaoCriar.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                verificarConta();
+//            }
+//        });
+//    }
 
     private void verificarConta() {
         nome = campoNome.getText().toString().trim();
@@ -128,6 +143,8 @@ public class CriarContaAct extends AppCompatActivity {
         }
 //        return false;
     }
+
+
 }
 
 

@@ -13,7 +13,7 @@ import br.ufrpe.beela.usuario.dominio.Usuario;
 import br.ufrpe.beela.usuario.negocio.UsuarioService;
 
 
-public class LoginAct extends AppCompatActivity {
+public class LoginAct extends AppCompatActivity implements View.OnClickListener {
     private static Usuario usuario = new Usuario();
     private static Pessoa pessoa = new Pessoa();
     private UsuarioService usuarioValido= new UsuarioService();
@@ -33,10 +33,42 @@ public class LoginAct extends AppCompatActivity {
         nomeApp = (TextView) findViewById(R.id.textView);
 
         alterarFonte();
-        clicarBotaoEntrar();
-        irTelaCriarConta();
-        irTelaEsqueceuSenha();
+        criarBotoesTela();
     }
+
+    private void criarBotoesTela() {
+        botaoEntrar = (Button) findViewById(R.id.button);
+        botaoEntrar.setOnClickListener(this);
+        criarConta = (TextView) findViewById(R.id.textViewCriarConta);
+        criarConta.setOnClickListener(this);
+        esqueceuSenha=(TextView)findViewById(R.id.textViewEsqueceuSenha);
+        esqueceuSenha.setOnClickListener(this);
+    }
+
+
+    public void onClick(View v){
+
+        switch ((v.getId())){
+
+            case R.id.button:
+                verificarLogin();
+
+                break;
+            case R.id.textViewCriarConta:
+                startActivity(new Intent(LoginAct.this, CriarContaAct.class));
+
+                break;
+
+            case R.id.textViewEsqueceuSenha:
+                mensagemEsqSenha=Toast.makeText(getApplicationContext(), R.string.implementarFunc, Toast.LENGTH_SHORT);
+                mensagemEsqSenha.show();
+
+
+
+
+        }
+    }
+
 
     private void alterarFonte(){
         Typeface fonte = Typeface.createFromAsset(getAssets(), "fonts/Chewy.ttf");
@@ -44,38 +76,38 @@ public class LoginAct extends AppCompatActivity {
         campoEmail.setTypeface(fonte);
         campoSenha.setTypeface(fonte);
     }
-
-    private void clicarBotaoEntrar(){
-        botaoEntrar = (Button) findViewById(R.id.button);
-        botaoEntrar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                verificarLogin();
-            }
-        });
-    }
-
-    private void irTelaCriarConta(){
-        criarConta = (TextView) findViewById(R.id.textViewCriarConta);
-        criarConta.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(LoginAct.this, CriarContaAct.class));
-            }
-        });
-    }
-
-    private void irTelaEsqueceuSenha(){
-        esqueceuSenha=(TextView)findViewById(R.id.textViewEsqueceuSenha);
-        esqueceuSenha.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mensagemEsqSenha=Toast.makeText(getApplicationContext(), R.string.implementarFunc, Toast.LENGTH_SHORT);
-                mensagemEsqSenha.show();
-//                startActivity(new Intent(LoginAct.this, EsqueceuSenhaAct.class));
-            }
-        });
-    }
+//  Remover - Substituido pelo Switch Case
+//    private void clicarBotaoEntrar(){
+//        botaoEntrar = (Button) findViewById(R.id.button);
+//        botaoEntrar.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                verificarLogin();
+//            }
+//        });
+//    }
+//
+//    private void irTelaCriarConta(){
+//        criarConta = (TextView) findViewById(R.id.textViewCriarConta);
+//        criarConta.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                startActivity(new Intent(LoginAct.this, CriarContaAct.class));
+//            }
+//        });
+//    }
+//
+//    private void irTelaEsqueceuSenha(){
+//        esqueceuSenha=(TextView)findViewById(R.id.textViewEsqueceuSenha);
+//        esqueceuSenha.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                mensagemEsqSenha=Toast.makeText(getApplicationContext(), R.string.implementarFunc, Toast.LENGTH_SHORT);
+//                mensagemEsqSenha.show();
+////                startActivity(new Intent(LoginAct.this, EsqueceuSenhaAct.class));
+//            }
+//        });
+//    }
 
     private void verificarLogin() {
         email=campoEmail.getText().toString().trim();

@@ -29,7 +29,7 @@ public class EscolhaProgramaAct extends AppCompatActivity {
 
     private static ArrayList<Lugar> ListaLugar = new ArrayList<Lugar>();
     private static ArrayList<Pessoa> ListaPessoa = new ArrayList<Pessoa>();
-
+    ArrayList<Lugar> lugarArrayList = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -96,7 +96,8 @@ public class EscolhaProgramaAct extends AppCompatActivity {
         return listLugar;
     }
     public void gerarSozinho(){
-        ArrayList<Lugar> lugarArrayList = gerarListaLugar(perfilUsuario,this);
+
+        lugarArrayList = gerarListaLugar(perfilUsuario,this);
         EscolhaProgramaAct.setListaLugar(lugarArrayList);
     }
     //@TODO FALTA IR EM database/BancoDeDados e escrever todas as PEssoas Fake!

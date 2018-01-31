@@ -13,7 +13,7 @@ import br.ufrpe.beela.usuario.dao.UsuarioDAO;
 import br.ufrpe.beela.gui.R;
 import br.ufrpe.beela.usuario.dominio.Usuario;
 
-public class ApagarContaAct extends AppCompatActivity {
+public class ApagarContaAct extends AppCompatActivity implements View.OnClickListener {
     private Button botaoApagar;
     private TextView aviso1, aviso2;
     private Toast mensagemApagada;
@@ -24,9 +24,28 @@ public class ApagarContaAct extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_apagar_conta);
 
-        botaoApagar = (Button) findViewById(R.id.button9);
+        criarBotoesTela();
         alterarFonte();
-        clicarBotaoApagar();
+
+    }
+
+    private void criarBotoesTela() {
+        botaoApagar = (Button) findViewById(R.id.button9);
+        botaoApagar.setOnClickListener(this);
+    }
+
+    @Override
+    public void onClick(View view){
+
+        switch (view.getId()){
+
+            case R.id.button9:
+                deletarConta();
+
+        }
+
+
+
 
     }
 
@@ -38,15 +57,15 @@ public class ApagarContaAct extends AppCompatActivity {
         aviso1.setTypeface(fonte);
         aviso2.setTypeface(fonte);
     }
-
-    private void clicarBotaoApagar(){
-        botaoApagar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                deletarConta();
-            }
-        });
-    }
+// SwitchCase
+//    private void clicarBotaoApagar(){
+//        botaoApagar.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                deletarConta();
+//            }
+//        });
+//    }
 
     public void deletarConta() {
         UsuarioDAO bd = new UsuarioDAO();
@@ -59,4 +78,6 @@ public class ApagarContaAct extends AppCompatActivity {
         mensagemApagada.show();
         startActivity(new Intent(ApagarContaAct.this, LoginAct.class));
     }
+
+
 }

@@ -8,10 +8,14 @@ import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.widget.Toast;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 
 import br.ufrpe.beela.gui.R;
 import br.ufrpe.beela.lugar.dao.LugarDAO;
+import br.ufrpe.beela.lugar.dominio.Endereco;
 import br.ufrpe.beela.lugar.dominio.Lugar;
 import br.ufrpe.beela.lugar.gui.LugarAct;
 import br.ufrpe.beela.perfil.dao.PerfilDAO;
@@ -94,6 +98,25 @@ public class LugarService {
 
 
         return mapa(l, lg);
+    }
+
+    public Endereco cepEndereco(int cep) throws JSONException {
+
+        String a = "http://api.postmon.com.br/v1/cep/" + cep;
+
+        JSONObject contact = null;
+        JsonCep json = new JsonCep();
+        contact = json.getJSONFromUrl(a);
+
+
+        String bairro = contact.getString("bairro");
+        String cidade = contact.getString("cidade");
+        String rua = contact.getString("logradouro");
+        String estado = contact.getString("estado");
+
+        Endereco endereco = new Endereco(bairro,cidade,rua,estado);
+
+        return endereco;
     }
 
 

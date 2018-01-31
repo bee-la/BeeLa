@@ -1,12 +1,16 @@
 package br.ufrpe.beela.usuario.gui;
 
 import android.content.Intent;
+import android.database.Cursor;
+import android.graphics.BitmapFactory;
 import android.graphics.Typeface;
+import android.net.Uri;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -14,7 +18,7 @@ import java.util.ArrayList;
 import br.ufrpe.beela.gui.R;
 import br.ufrpe.beela.usuario.dominio.Pessoa;
 
-public class ConfiguracoesAct extends AppCompatActivity {
+public class    ConfiguracoesAct extends AppCompatActivity {
     private TextView alterar, apagarConta, alterarNome, alterarSenha, sair, carregarFoto;
     private TextView nomeTextView11;
     private Pessoa pessoa=new LoginAct().getPessoa();
@@ -32,12 +36,15 @@ public class ConfiguracoesAct extends AppCompatActivity {
         sair = (TextView) findViewById(R.id.textView12);
         apagarConta = (TextView) findViewById(R.id.textView18);
 
+
         alterarFonte();
         carregarFotoGaleria();
         irAlterarNome();
         irAlterarSenha();
         irApagarConta();
         sair();
+
+
     }
 
     private void alterarFonte(){
@@ -62,6 +69,8 @@ public class ConfiguracoesAct extends AppCompatActivity {
             @Override public void onClick(View v){
                 Intent galleryIntent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
                 startActivityForResult(galleryIntent, RESULT_LOAD_IMAGE);
+
+
             }
         });
     }
@@ -97,6 +106,22 @@ public class ConfiguracoesAct extends AppCompatActivity {
                 finish();
             }
         });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == RESULT_LOAD_IMAGE && resultCode == RESULT_OK && null != data) {
+            Uri selectedImage = data.getData();
+            String[] filePathColumn = { MediaStore.Images.Media.DATA };
+            Cursor cursor = getContentResolver().query(selectedImage,filePathColumn, null, null, null);
+            cursor.moveToFirst();
+            int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
+            String picturePath = cursor.getString(columnIndex);
+            cursor.close();
+            ImageView imageView = (ImageView) findViewById(R.id.imageView3);
+            imageView.setImageBitmap(BitmapFactory.decodeFile(picturePath));
+        }
     }
 
 }

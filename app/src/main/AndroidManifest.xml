@@ -5,7 +5,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <application
         android:allowBackup="true"
         android:icon="@drawable/botao"
@@ -76,7 +76,13 @@
         <activity
             android:name="br.ufrpe.beela.usuario.gui.ContatoAct"
             android:label="@string/contatos" />
-        <activity android:name="br.ufrpe.beela.perfil.gui.PerguntasLugares" />
+
+        <activity
+            android:name="br.ufrpe.beela.lugar.gui.LugarDetalhes"
+            android:label="Detalhes" />
+
+
+        <activity android:name="br.ufrpe.beela.perfil.gui.PerguntaLugarAct" />
         <activity android:name="br.ufrpe.beela.perfil.gui.PerguntaLugarAct"></activity>
     </application>
 

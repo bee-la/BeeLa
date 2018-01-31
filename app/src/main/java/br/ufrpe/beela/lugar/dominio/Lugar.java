@@ -1,5 +1,10 @@
 package br.ufrpe.beela.lugar.dominio;
 
+import android.content.Context;
+
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import br.ufrpe.beela.perfil.dominio.PerfilComida;
@@ -11,7 +16,7 @@ import br.ufrpe.beela.perfil.dominio.PerfilMusica;
  * Created by vidal on 20/12/2017.
  */
 
-public class Lugar {
+public class Lugar implements Serializable {
 
     private int id;
     private String nome;
@@ -21,7 +26,7 @@ public class Lugar {
     private ArrayList<PerfilEsporte> esporte;
     private ArrayList<PerfilLugar> lugar;
     private String localicao;
-
+    private Context context ;
     public int getId() {
         return id;
     }
@@ -42,5 +47,14 @@ public class Lugar {
     public void setEsporte(ArrayList<PerfilEsporte> esporte){this.esporte = esporte;}
     public void setPergLugar(ArrayList<PerfilLugar> lugar) {this.lugar = lugar;}
     public void setLocalicao(String localicao) {this.localicao = localicao;}
+
+
+    private void readObject(ObjectInputStream in)
+            throws IOException, ClassNotFoundException {
+        in.defaultReadObject();
+        this.context = context.getApplicationContext();
+    }
+
+
 
 }
