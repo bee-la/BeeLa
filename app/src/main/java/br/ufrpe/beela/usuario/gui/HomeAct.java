@@ -12,10 +12,16 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+
 import br.ufrpe.beela.database.negocio.BancoDeDados;
 import br.ufrpe.beela.gui.R;
+import br.ufrpe.beela.lugar.dominio.Lugar;
 import br.ufrpe.beela.lugar.gui.LugarAct;
 import br.ufrpe.beela.lugar.gui.teste;
+import br.ufrpe.beela.lugar.negocio.GoogleMaps;
 import br.ufrpe.beela.perfil.gui.PerfilAct;
 import br.ufrpe.beela.usuario.dominio.Usuario;
 
@@ -66,16 +72,12 @@ public class HomeAct extends AppCompatActivity implements View.OnClickListener {
 
             case R.id.imageButton3:
                 startActivity(new Intent(HomeAct.this, ConfiguracoesAct.class));
+                break;
 
             case R.id.imageButton2:
                 startActivity(new Intent(HomeAct.this, teste.class));
-
-
-
-
+                break;
         }
-
-
     }
 
 

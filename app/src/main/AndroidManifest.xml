@@ -13,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme">
         <activity
-            android:name="br.ufrpe.beela.usuario.gui.splashAct"
+            android:name="br.ufrpe.beela.usuario.gui.SplashAct"
             android:theme="@style/Theme.AppCompat.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -11,7 +11,7 @@ import br.ufrpe.beela.gui.R;
  * Created by max on 06/01/18.
  */
 
-public class splashAct extends AppCompatActivity {
+public class SplashAct extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,7 +28,7 @@ public class splashAct extends AppCompatActivity {
     }
 
     private void mostrarLogin() {
-        Intent intent = new Intent(splashAct.this,
+        Intent intent = new Intent(SplashAct.this,
                 LoginAct.class);
         startActivity(intent);
         finish();
