@@ -59,7 +59,8 @@ public class GoogleMaps extends AppCompatActivity {
 
             startActivity(intent);
         } catch (Exception ex) {
-            Toast.makeText(this, R.string.erroNaoTemGoogleMaps, Toast.LENGTH_SHORT).show();
+            ex.printStackTrace();
+//            Toast.makeText(this, R.string.erroNaoTemGoogleMaps, Toast.LENGTH_SHORT).show();
         }
     }
 
