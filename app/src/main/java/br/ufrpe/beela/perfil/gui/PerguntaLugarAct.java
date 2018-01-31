@@ -60,13 +60,25 @@ public class PerguntaLugarAct extends AppCompatActivity {
         botaoConfirmar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                perfilService.adcListaLugares(checkBoxesLugares, listaLugar, perfilUsuario);
+                adcListaLugares(checkBoxesLugares, listaLugar, perfilUsuario);
                 //LoginAct.getPessoa().setPerfilAtual(perfilUsuario);
                 irTelaNomePerfilAct();
 
             }
         });
     }
+
+    public void adcListaLugares(ArrayList<CheckBox> checkBoxesLugares, ArrayList<PerfilLugar> listaLugar, PerfilUsuario perfilUsuario) {
+        for (CheckBox x : checkBoxesLugares) {
+            if (x.isChecked()) {
+                PerfilLugar lugar = new PerfilLugar();
+                lugar.setNome(x.getText().toString());
+                listaLugar.add(lugar);
+            }
+        }
+        perfilUsuario.setLugar(listaLugar);
+    }
+
 
     public void onCheckboxClicked(View view) {
         boolean checked = ((CheckBox) view).isChecked();

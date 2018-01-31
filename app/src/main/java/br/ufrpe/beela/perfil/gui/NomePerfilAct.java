@@ -52,8 +52,8 @@ public class NomePerfilAct extends AppCompatActivity {
 
     public void verificarNomePerfil() {
         nomePerfil = campoNomePerfil.getText().toString().trim();
-        if (perfilService.verificarNomeIgual(nomePerfil)) {
-            if (perfilService.verificarNomeVazio(nomePerfil)) {
+        if(verificarNomeIgual(nomePerfil)){
+            if (!nomePerfil.isEmpty()){
                 perfilUsuario.setNome(nomePerfil);
                 salvarBD();
                 finalizar();
@@ -65,6 +65,17 @@ public class NomePerfilAct extends AppCompatActivity {
             erro = Toast.makeText(getApplicationContext(), R.string.perfilExiste, Toast.LENGTH_SHORT);
             erro.show();
         }
+    }
+
+
+    public boolean verificarNomeIgual(String NomePerfil) {
+        boolean saida = true;
+        for (PerfilUsuario perfilUsuario : PerfilAct.getListaPerfis())
+            if (perfilUsuario.getNome().equals(NomePerfil)) {
+                saida = false;
+                break;
+            }
+        return saida;
     }
 
     public void salvarBD() {

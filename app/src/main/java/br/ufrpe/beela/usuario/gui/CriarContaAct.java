@@ -3,6 +3,7 @@ package br.ufrpe.beela.usuario.gui;
 import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -98,30 +99,48 @@ public class CriarContaAct extends AppCompatActivity {
         }
     }
 
-    private boolean verificarCampos() {
-        if (usuarioValido.validarCampoVazio(nome)) {
+    private boolean verificarCampos(){
+        if (validarCampoVazio(nome)) {
             campoNome.setError(getString(R.string.campoVazio));
             return false;
-        } else if (usuarioValido.validarCampoCelular(celular)) {
+        }
+        else if (celular.length() < 9 || celular.length() > 12 || !Patterns.PHONE.matcher(celular).matches()) {
             campoCelular.setError(getString(R.string.celularInvalido));
             return false;
-        } else if (usuarioValido.validarCampoEmail(email)) {
+        }
+        else if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
             campoEmail.setError(getString(R.string.emailInvalido));
             return false;
-        } else if (usuarioValido.validarCampoVazio(email)) {
-            campoEmail.setError(getString(R.string.emailInvalido));
+        }
+        else if (validarCampoVazio(email)) {
+            campoEmail.setError(getString(R.string.campoVazio));
             return false;
-        } else if (usuarioValido.verificarSenha(senha)) {
+        }
+        else if (senha.length() < 6 || senha.isEmpty()){
             campoSenha.setError(getString(R.string.senhaInvalida));
             return false;
-        } else if (usuarioValido.validarCampoVazio(repetirSenha)) {
+        }
+
+        else if (validarCampoVazio(repetirSenha)) {
             campoRepetirSenha.setError(getString(R.string.campoVazio));
             return false;
-        } else if (!repetirSenha.equals(senha)) {
+        }
+        else if (!repetirSenha.equals(senha)) {
             campoRepetirSenha.setError(getString(R.string.senhasDiferentes));
             return false;
-        } else {
+        }
+        else{
             return true;
+        }
+//        return false;
+    }
+
+
+    public boolean validarCampoVazio(String campo) {
+        if (campo.isEmpty()) {
+            return true;
+        } else {
+            return false;
         }
     }
 }

@@ -59,13 +59,25 @@ public class PerguntaComidaAct extends AppCompatActivity {
         botaoConfirmar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                perfilService.adcListaComida(checkBoxesComidas, listaComida, perfilUsuario);
+                adcListaComida(checkBoxesComidas, listaComida, perfilUsuario);
                // LoginAct.getPessoa().setPerfilAtual(perfilUsuario);
                 irTelaPerguntaEsporte();
 
             }
         });
     }
+
+    public void adcListaComida(ArrayList<CheckBox> checkBoxesComidas, ArrayList<PerfilComida> listaComida, PerfilUsuario perfilUsuario) {
+        for (CheckBox x : checkBoxesComidas) {
+            if (x.isChecked()) {
+                PerfilComida comida = new PerfilComida();
+                comida.setNome((String) x.getText());
+                listaComida.add(comida);
+            }
+        }
+        perfilUsuario.setComida(listaComida);
+    }
+
 
     public void onCheckboxClicked(View view) {
         boolean checked = ((CheckBox) view).isChecked();

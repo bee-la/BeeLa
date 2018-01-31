@@ -58,7 +58,7 @@ public class AlterarNomeAct extends AppCompatActivity {
 
     private boolean validarCampo() {
         nome = alterarNome.getText().toString().trim();
-        if (usuarioService.validarCampoVazio(nome)) {
+        if (nome.isEmpty()) {
             alterarNome.setError(getString(R.string.campoVazio));
             return false;
         } else {

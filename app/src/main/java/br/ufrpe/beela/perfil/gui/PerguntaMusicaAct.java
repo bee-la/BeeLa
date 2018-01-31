@@ -59,10 +59,21 @@ public class PerguntaMusicaAct extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                perfilService.adcListaMusica(checkBoxesMusicas, listaMusica, perfilUsuario);
+                adcListaMusica(checkBoxesMusicas, listaMusica, perfilUsuario);
                 irTelaPerguntaComida();
             }
         });
+    }
+
+    public void adcListaMusica(ArrayList<CheckBox> checkBoxesMusicas, ArrayList<PerfilMusica> listaMusica, PerfilUsuario perfilUsuario) {
+        for (CheckBox x : checkBoxesMusicas) {
+            if (x.isChecked()) {
+                PerfilMusica musica = new PerfilMusica();
+                musica.setNome(x.getText().toString());
+                listaMusica.add(musica);
+            }
+        }
+        perfilUsuario.setMusica(listaMusica);
     }
 
     public void onCheckboxClicked(View view) {

@@ -63,7 +63,6 @@
         <activity
             android:name="br.ufrpe.beela.perfil.gui.PerfilPrioridadeAct"
             android:label="@string/prioridadePerfil" />
-        <activity android:name="br.ufrpe.beela.perfil.gui.PerguntasPerfilAct" />
         <activity
             android:name="br.ufrpe.beela.perfil.gui.PerguntaEsporteAct"
             android:label="@string/adicionarPerfil" />

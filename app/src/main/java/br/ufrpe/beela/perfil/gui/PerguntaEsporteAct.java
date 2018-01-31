@@ -60,13 +60,25 @@ public class PerguntaEsporteAct extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                perfilService.adcListaEsporte(checkBoxesEsportes, listaEsporte, perfilUsuario);
+                adcListaEsporte(checkBoxesEsportes, listaEsporte, perfilUsuario);
                 //LoginAct.getPessoa().setPerfilAtual(perfilUsuario);
                 irTelaPerguntaLugarAct();
 
             }
         });
     }
+
+    public void adcListaEsporte(ArrayList<CheckBox> checkBoxesEsportes, ArrayList<PerfilEsporte> listaEsporte, PerfilUsuario perfilUsuario) {
+        for (CheckBox x : checkBoxesEsportes) {
+            if (x.isChecked()) {
+                PerfilEsporte esporte = new PerfilEsporte();
+                esporte.setNome((String) x.getText());
+                listaEsporte.add(esporte);
+            }
+        }
+        perfilUsuario.setEsporte(listaEsporte);
+    }
+
 
     public void onCheckboxClicked(View view) {
         boolean checked = ((CheckBox) view).isChecked();

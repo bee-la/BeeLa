@@ -80,12 +80,12 @@ public class AlterarSenhaAct extends AppCompatActivity {
     }
 
     public boolean validarCampos() {
-        if (usuarioService.validarCampoVazio(senhaAtual)) {
+        if (senhaAtual.isEmpty()) {
             campoSenha.setError(getString(R.string.campoVazio));
             return false;
         }
 
-        if (usuarioService.verificarSenha(novaSenha)) {
+        if (novaSenha.length() < 6 || novaSenha.isEmpty()) {
             campoNovaSenha.setError(getString(R.string.senhaInvalida));
             return false;
         }
