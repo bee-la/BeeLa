@@ -48,6 +48,7 @@ public class BancoDeDados {
         lugar.setNome("RU - UFRPE");
         lugar.setDescriacao("Self-Service");
         lugar.setLocalicao("-8.014121,-34.951131");
+        lugar.setCaminho("ru");
         lugaresPreferidos.add(lugar);
         //
         LugarDAO bd = new LugarDAO();
@@ -77,6 +78,7 @@ public class BancoDeDados {
         lugar.setNome("Igreja Do Carmmo");
         lugar.setDescriacao("Igreja");
         lugar.setLocalicao("-8.0168458,-34.849372");
+        lugar.setCaminho("igreja_carmo");
         lugaresPreferidos.add(lugar);
         //
         LugarDAO bd = new LugarDAO();
@@ -113,6 +115,7 @@ public class BancoDeDados {
         lugar.setNome("RockRibs");
         lugar.setDescriacao("Restaurante");
         lugar.setLocalicao("-8.0640944,-34.8714444");
+        lugar.setCaminho("rock_ribs");
         lugaresPreferidos.add(lugar);
 
         LugarDAO bd = new LugarDAO();
@@ -143,6 +146,7 @@ public class BancoDeDados {
         lugar.setNome("Shopping Recife");
         lugar.setDescriacao("Shopping Center");
         lugar.setLocalicao("-8.0640944,-34.8714444");
+        lugar.setCaminho("shopping_recife");
         lugaresPreferidos.add(lugar);
         LugarDAO bd = new LugarDAO();
         bd.getEscrever(context);
@@ -173,6 +177,7 @@ public class BancoDeDados {
         lugar.setNome("Mirabilandia");
         lugar.setDescriacao("Parque de Diversões");
         lugar.setLocalicao("-8.0326104,-34.875884");
+        lugar.setCaminho("mirabilandia");
         lugaresPreferidos.add(lugar);
 
         LugarDAO bd = new LugarDAO();
@@ -204,6 +209,8 @@ public class BancoDeDados {
         lugar.setNome("Baile Perfumado");
         lugar.setDescriacao("Casa de Show");
         lugar.setLocalicao("-8.0592289,-34.9145652");
+
+        lugar.setCaminho("baile_perfumado");
         lugaresPreferidos.add(lugar);
         //
         LugarDAO bd = new LugarDAO();
@@ -233,6 +240,7 @@ public class BancoDeDados {
         lugar.setNome("Parque Jaqueira");
         lugar.setDescriacao("Parque");
         lugar.setLocalicao("-8.0374702,-34.9746089");
+        lugar.setCaminho("jaqueira");
         lugaresPreferidos.add(lugar);
         //
         LugarDAO bd = new LugarDAO();

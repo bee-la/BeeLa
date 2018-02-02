@@ -25,6 +25,17 @@ public class Lugar implements Serializable {
     private ArrayList<PerfilMusica> musica;
     private ArrayList<PerfilEsporte> esporte;
     private ArrayList<PerfilLugar> lugar;
+
+    private String caminho;
+
+    public String getCaminho() {
+        return caminho;
+    }
+
+    public void setCaminho(String caminho) {
+        this.caminho = caminho;
+    }
+
     private String localicao;
     private Context context ;
     public int getId() {

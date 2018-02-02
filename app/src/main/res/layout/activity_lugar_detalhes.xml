@@ -9,8 +9,8 @@
 
 
     <ImageView
-        android:id="@+id/imgView"
-        android:background="@drawable/back_login"
+        android:id="@+id/imgViewLugarFoto"
+        android:background="@color/preto"
         android:layout_width="341dp"
         android:layout_height="140dp"
         android:layout_marginEnd="8dp"
