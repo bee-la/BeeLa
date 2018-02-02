@@ -40,12 +40,6 @@
             android:name="br.ufrpe.beela.usuario.gui.ApagarContaAct"
             android:label="@string/ApagarConta" />
         <activity
-            android:name="br.ufrpe.beela.usuario.gui.AlterarNomeAct"
-            android:label="@string/AlterarNome" />
-        <activity
-            android:name="br.ufrpe.beela.usuario.gui.AlterarSenhaAct"
-            android:label="@string/AlterarSenha" />
-        <activity
             android:name="br.ufrpe.beela.usuario.gui.EsqueceuSenhaAct"
             android:label="@string/esqueciSenha" />
         <activity

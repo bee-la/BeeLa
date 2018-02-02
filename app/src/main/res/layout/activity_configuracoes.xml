@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--suppress ALL -->
+<?xml version="1.0" encoding="utf-8"?><!--suppress ALL -->
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -23,6 +22,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="16dp"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.888"
             app:layout_constraintStart_toEndOf="@+id/btUpload"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/logo" />
@@ -31,8 +31,8 @@
             android:id="@+id/btUpload"
             android:layout_width="162dp"
             android:layout_height="70dp"
-            android:layout_marginStart="4dp"
-            android:layout_marginTop="44dp"
+            android:layout_marginStart="212dp"
+            android:layout_marginTop="124dp"
             android:backgroundTint="@color/preto"
             android:text="Carregar Foto"
             android:textAlignment="viewStart"
@@ -103,6 +103,23 @@
 
 
         </LinearLayout>
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="158dp"
+            android:layout_marginStart="28dp"
+            android:layout_marginTop="8dp"
+            android:textColor="@color/branco"
+            android:textSize="25sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.325"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.141" />
 
 
     </android.support.constraint.ConstraintLayout>
