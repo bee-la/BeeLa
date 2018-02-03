@@ -61,7 +61,6 @@ public class PerguntaEsporteAct extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 adcListaEsporte(checkBoxesEsportes, listaEsporte, perfilUsuario);
-                //LoginAct.getPessoa().setPerfilAtual(perfilUsuario);
                 irTelaPerguntaLugarAct();
 
             }
@@ -92,11 +91,7 @@ public class PerguntaEsporteAct extends AppCompatActivity {
 
     public void salvarEsporte() {
         if (perfilUsuario.getNome() != null) {
-            PerfilDAO bd = new PerfilDAO();
-            bd.getLer(this);
             perfilService.adcEsporte(perfilUsuario, this);
-        } else {
-            Toast.makeText(getApplicationContext(), "NÂO TEM NOME", Toast.LENGTH_SHORT).show();
         }
     }
 

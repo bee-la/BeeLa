@@ -9,6 +9,7 @@ import android.widget.Toast;
 import br.ufrpe.beela.gui.R;
 import br.ufrpe.beela.lugar.negocio.LugarService;
 import br.ufrpe.beela.perfil.dao.PerfilDAO;
+import br.ufrpe.beela.perfil.dominio.PerfilUsuario;
 import br.ufrpe.beela.usuario.gui.LoginAct;
 
 /**
@@ -17,7 +18,7 @@ import br.ufrpe.beela.usuario.gui.LoginAct;
 
 
 public class LugarAcompanhadoAct extends AppCompatActivity {
-
+    private LugarService lugarService = new LugarService();
     Button a;
     LugarService b;
     Toast Erro;
@@ -26,7 +27,7 @@ public class LugarAcompanhadoAct extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.teste);
-        gerarLugar();
+        LoginAct.getPessoa().setPerfilAtual(lugarService.gerarLugar(this));
         b = new LugarService();
 
         a = findViewById(R.id.button24);
@@ -39,13 +40,6 @@ public class LugarAcompanhadoAct extends AppCompatActivity {
             }
         });
     }
-
-    public void gerarLugar() {
-        PerfilDAO bd = new PerfilDAO();
-        bd.getLer(this);
-        LoginAct.getPessoa().setPerfilAtual(bd.getFavorito(LoginAct.getPessoa().getId()));
-    }
-
 
 }
 

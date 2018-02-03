@@ -18,7 +18,7 @@ import br.ufrpe.beela.usuario.dominio.Pessoa;
  * Created by vidal on 29/12/2017.
  */
 
-public class BancoDeDados {
+public class AlimentarBancoDeDados {
     private ArrayList<Lugar> lugaresPreferidos = new ArrayList<Lugar>();
 
     public void gerarLugares(Context context) {
@@ -51,18 +51,16 @@ public class BancoDeDados {
         lugar = bd.getLugar(lugar.getNome());
         //
         PerfilComida perfilComida = new PerfilComida();
-        perfilComida.setId_lugar(lugar.getId());
         perfilComida.setNome("Self-Service");
         PerfilDAO bdp = new PerfilDAO();
         bdp.getEscrever(context);
-        bdp.inserirPerfilLugarComida(perfilComida);
+        bdp.inserirPerfilLugarComida(lugar.getId(),perfilComida);
         //
         PerfilMusica perfilMusica = new PerfilMusica();
-        perfilMusica.setId_lugar(lugar.getId());
         perfilMusica.setNome("Variadas");
         bdp = new PerfilDAO();
         bdp.getEscrever(context);
-        bdp.inserirPerfilLugarMusica(perfilMusica);
+        bdp.inserirPerfilLugarMusica(lugar.getId(),perfilMusica);
     }
 
     public void criarIgrejaDoCarmmo(Context context) {
@@ -80,25 +78,22 @@ public class BancoDeDados {
         lugar = bd.getLugar(lugar.getNome());
         //
         PerfilComida perfilComida = new PerfilComida();
-        perfilComida.setId_lugar(lugar.getId());
         perfilComida.setNome("Null");
         PerfilDAO bdp = new PerfilDAO();
         bdp.getEscrever(context);
-        bdp.inserirPerfilLugarComida(perfilComida);
+        bdp.inserirPerfilLugarComida(lugar.getId(),perfilComida);
         //
         PerfilMusica perfilMusica = new PerfilMusica();
-        perfilMusica.setId_lugar(lugar.getId());
         perfilMusica.setNome("Padre Marcelo Rossi");
         bdp = new PerfilDAO();
         bdp.getEscrever(context);
-        bdp.inserirPerfilLugarMusica(perfilMusica);
+        bdp.inserirPerfilLugarMusica(lugar.getId(),perfilMusica);
         //
         PerfilLugar perfilLugar = new PerfilLugar();
-        perfilLugar.setId_lugar(lugar.getId());
         perfilLugar.setNome("Igreja");
         bdp = new PerfilDAO();
         bdp.getEscrever(context);
-        bdp.inserirPerfilLugarParaLugares(perfilLugar);
+        bdp.inserirPerfilLugarParaLugares(lugar.getId(),perfilLugar);
     }
 
     public void criarRockRibs(Context context) {
@@ -116,18 +111,16 @@ public class BancoDeDados {
         lugar = bd.getLugar(lugar.getNome());
         //
         PerfilComida perfilComida = new PerfilComida();
-        perfilComida.setId_lugar(lugar.getId());
         perfilComida.setNome("Carnes");
         PerfilDAO bdp = new PerfilDAO();
         bdp.getEscrever(context);
-        bdp.inserirPerfilLugarComida(perfilComida);
+        bdp.inserirPerfilLugarComida(lugar.getId(),perfilComida);
         //
         PerfilMusica perfilMusica = new PerfilMusica();
         perfilMusica.setNome("Rock");
-        perfilMusica.setId_lugar(lugar.getId());
         bdp = new PerfilDAO();
         bdp.getEscrever(context);
-        bdp.inserirPerfilLugarMusica(perfilMusica);
+        bdp.inserirPerfilLugarMusica(lugar.getId(),perfilMusica);
 
     }
 
@@ -146,19 +139,17 @@ public class BancoDeDados {
         String[] list = {"FastFood", "Orientais", "Pizza"};
         for (String x : list) {
             PerfilComida perfilComida = new PerfilComida();
-            perfilComida.setId_lugar(lugar.getId());
             perfilComida.setNome(x);
             PerfilDAO bdp = new PerfilDAO();
             bdp.getEscrever(context);
-            bdp.inserirPerfilLugarComida(perfilComida);
+            bdp.inserirPerfilLugarComida(lugar.getId(),perfilComida);
         }
         //
         PerfilMusica perfilMusica = new PerfilMusica();
         perfilMusica.setNome("Rock");
-        perfilMusica.setId_lugar(lugar.getId());
         PerfilDAO bdp = new PerfilDAO();
         bdp.getEscrever(context);
-        bdp.inserirPerfilLugarMusica(perfilMusica);
+        bdp.inserirPerfilLugarMusica(lugar.getId(),perfilMusica);
     }
 
     public void criarMirabilandia(Context context) {
@@ -177,18 +168,16 @@ public class BancoDeDados {
         String[] list = {"FastFood", "Pizza"};
         for (String x : list) {
             PerfilComida perfilComida = new PerfilComida();
-            perfilComida.setId_lugar(lugar.getId());
             perfilComida.setNome(x);
             PerfilDAO bdp = new PerfilDAO();
             bdp.getEscrever(context);
-            bdp.inserirPerfilLugarComida(perfilComida);
+            bdp.inserirPerfilLugarComida(lugar.getId(),perfilComida);
         }
         PerfilMusica perfilMusica = new PerfilMusica();
-        perfilMusica.setId_lugar(lugar.getId());
         perfilMusica.setNome("Forró");
         PerfilDAO bdp = new PerfilDAO();
         bdp.getEscrever(context);
-        bdp.inserirPerfilLugarMusica(perfilMusica);
+        bdp.inserirPerfilLugarMusica(lugar.getId(),perfilMusica);
 
     }
 
@@ -207,18 +196,16 @@ public class BancoDeDados {
         lugar = bd.getLugar(lugar.getNome());
 
         PerfilComida perfilComida = new PerfilComida();
-        perfilComida.setId_lugar(lugar.getId());
         perfilComida.setNome("Carnes");
         PerfilDAO bdp = new PerfilDAO();
         bdp.getEscrever(context);
-        bdp.inserirPerfilLugarComida(perfilComida);
+        bdp.inserirPerfilLugarComida(lugar.getId(),perfilComida);
         //
         PerfilMusica perfilMusica = new PerfilMusica();
-        perfilMusica.setId_lugar(lugar.getId());
         perfilMusica.setNome("Sertanejo");
         bdp = new PerfilDAO();
         bdp.getEscrever(context);
-        bdp.inserirPerfilLugarMusica(perfilMusica);
+        bdp.inserirPerfilLugarMusica(lugar.getId(),perfilMusica);
     }
 
     public void criaParqueJaqueira(Context context) {
@@ -237,60 +224,13 @@ public class BancoDeDados {
 
         String[] list = {"Caminhada", "Corrida", "Ciclismo"};
         for (String x : list) {
-            PerfilEsporte perfilEsporte = new PerfilEsporte();
-            perfilEsporte.setId_lugar(lugar.getId());
+            PerfilEsporte perfilEsporte = new PerfilEsporte();;
             perfilEsporte.setNome(x);
             PerfilDAO bdp = new PerfilDAO();
             bdp.getEscrever(context);
-            bdp.inserirPerfilLugarEsporte(perfilEsporte);
+            bdp.inserirPerfilLugarEsporte(lugar.getId(),perfilEsporte);
         }
     }
-
-    public void criarFulano1(Context context) {
-        Pessoa pessoa = new Pessoa();
-        pessoa.setCelular("987654321");
-        pessoa.setNome("Fulano1");
-        PessoaDAO bdp = new PessoaDAO();
-        bdp.getEscrever(context);
-        bdp.inserir(pessoa);
-    }
-
-    public void criarFulano2(Context context) {
-        Pessoa pessoa = new Pessoa();
-        pessoa.setCelular("997654321");
-        pessoa.setNome("Fulano2");
-        PessoaDAO bdp = new PessoaDAO();
-        bdp.getEscrever(context);
-        bdp.inserir(pessoa);
-    }
-
-    public void criarFulano3(Context context) {
-        Pessoa pessoa = new Pessoa();
-        pessoa.setCelular("927654321");
-        pessoa.setNome("Fulano3");
-        PessoaDAO bdp = new PessoaDAO();
-        bdp.getEscrever(context);
-        bdp.inserir(pessoa);
-    }
-
-    public void criarFulano4(Context context) {
-        Pessoa pessoa = new Pessoa();
-        pessoa.setCelular("187654321");
-        pessoa.setNome("Fulano4");
-        PessoaDAO bdp = new PessoaDAO();
-        bdp.getEscrever(context);
-        bdp.inserir(pessoa);
-    }
-
-    public void criarFulano5(Context context) {
-        Pessoa pessoa = new Pessoa();
-        pessoa.setCelular("687654321");
-        pessoa.setNome("Fulano5");
-        PessoaDAO bdp = new PessoaDAO();
-        bdp.getEscrever(context);
-        bdp.inserir(pessoa);
-    }
-
 
 //TODO    Sem Funcionar
 }

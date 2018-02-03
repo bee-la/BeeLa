@@ -42,18 +42,9 @@ public class LugarDAO {
         bd.close();
     }
 
-    //    public void upgrade(Lugar lugar){
-//        ContentValues valores = new ContentValues();
-//        String where = "id = " + String.valueOf(lugar.getId());
-//        valores.put("nome", lugar.getNome());
-//        valores.put("descricao", lugar.getDescricao());
-//        valores.put("localizacao",lugar.getLocalicao());
-//        bd.update("lugar",valores,where,null);
-//        bd.close();
-//    }
     public Lugar getLugar(int id) {
         Lugar lugar = new Lugar();
-        String where = "SELECT * FROM lugar WHERE _id = '" + String.valueOf(id) + "'";
+        String where = "SELECT * FROM lugar WHERE id = '" + String.valueOf(id) + "'";
         Cursor cursor = bd.rawQuery(where, null);
         if (cursor.getCount() > 0) {
             cursor.moveToFirst();

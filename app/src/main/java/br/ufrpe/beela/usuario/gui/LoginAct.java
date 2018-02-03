@@ -8,6 +8,8 @@ import android.util.Patterns;
 import android.view.View;
 import android.widget.*;
 
+import java.util.ArrayList;
+
 import br.ufrpe.beela.gui.R;
 import br.ufrpe.beela.perfil.dominio.PerfilUsuario;
 import br.ufrpe.beela.usuario.negocio.Criptografia;
@@ -26,7 +28,7 @@ public class LoginAct extends AppCompatActivity {
     private TextView nomeApp, esqueceuSenha, botaoCriarConta;
     private Button botaoEntrar;
     private EditText campoEmail, campoSenha;
-    private String email, senha;
+    private String email, senha, senha2;
     private Toast mensagemEsqSenha;
 
     @Override
@@ -38,6 +40,7 @@ public class LoginAct extends AppCompatActivity {
         campoSenha = (EditText) findViewById(R.id.editText2);
         nomeApp = (TextView) findViewById(R.id.textView);
 
+        verificarLembrarMim();
         alterarFonte();
         clicarBotaoEntrar();
         irTelaCriarConta();
@@ -68,6 +71,7 @@ public class LoginAct extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(LoginAct.this, CriarContaAct.class));
+                verificarLembrarMim();
             }
         });
     }
@@ -96,6 +100,7 @@ public class LoginAct extends AppCompatActivity {
     private void verificarEmailSenhaBD() {
         email = campoEmail.getText().toString().trim();
         senha = campoSenha.getText().toString().trim();
+        senha2 = campoSenha.getText().toString().trim();
         senha = Criptografia.criptografar(senha);
         Toast Erro;
         Erro = Toast.makeText(getApplicationContext(), R.string.erroNoLoginDoBanco, Toast.LENGTH_SHORT);
@@ -116,9 +121,11 @@ public class LoginAct extends AppCompatActivity {
         pessoa.setPerfilUsuarioArrayList(usuarioValido.gerarPerfilUsuario(pessoa.getId(),this));
         pessoa.setPerfilAtual(perfilAtual);
         pessoa.setUsuario(usuario);
+        if(usuarioValido.verificarLembrarLogin(this)){usuarioValido.salvarLembrarMim(email,senha2,this);}
     }
 
     private void irTelaHome() {
+        usuarioValido.alterarLembrarMim(email,senha2,this);
         startActivity(new Intent(LoginAct.this, HomeAct.class));
     }
 
@@ -141,15 +148,20 @@ public class LoginAct extends AppCompatActivity {
             return false;
         }
     }
-
+    public void verificarLembrarMim(){
+        if(!usuarioValido.verificarLembrarLogin(this)) {
+            ArrayList<String> campos = usuarioValido.getLembrarMim(this);
+            if (campos.size() > 0) {
+                campoEmail.setText(campos.get(0));
+                campoSenha.setText(campos.get(1));
+            }
+        }
+    }
     public static Pessoa getPessoa() {
         return pessoa;
     }
 
-//-------------------------------------------------------------------------------------------
 
 }
-
-//-------------------------------------------------------------------------------------------
 
 

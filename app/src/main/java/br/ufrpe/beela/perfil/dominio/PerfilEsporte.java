@@ -8,7 +8,6 @@ public class PerfilEsporte {
     private int id;
     private String nome;
     private String nome_perfil;
-    private int id_lugar;
 
     public int getId() {
         return id;
@@ -22,9 +21,6 @@ public class PerfilEsporte {
         return nome_perfil;
     }
 
-    public int getId_lugar() {
-        return id_lugar;
-    }
 
     public void setId(int id) {
         this.id = id;
@@ -38,7 +34,4 @@ public class PerfilEsporte {
         this.nome_perfil = nome_perfil;
     }
 
-    public void setId_lugar(int id_lugar) {
-        this.id_lugar = id_lugar;
-    }
 }

@@ -68,9 +68,8 @@ public class ListViewLugar extends BaseAdapter {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Lugar lugarzinho = (Lugar) parent.getAdapter().getItem(position);
-                mapa.chamarMapa(lugarzinho);
-//                Toast.makeText(ctx,lugarzinho.getLocalicao(),Toast.LENGTH_SHORT).show();
+                Lugar lugar = (Lugar) parent.getAdapter().getItem(position);
+                mapa.chamarMapa(lugar);
             }
         });
 

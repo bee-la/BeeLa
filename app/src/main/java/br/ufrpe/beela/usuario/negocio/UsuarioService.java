@@ -11,6 +11,7 @@ import br.ufrpe.beela.usuario.dao.PessoaDAO;
 import br.ufrpe.beela.usuario.dao.UsuarioDAO;
 import br.ufrpe.beela.usuario.dominio.Pessoa;
 import br.ufrpe.beela.usuario.dominio.Usuario;
+import br.ufrpe.beela.usuario.gui.ContatoAct;
 
 /**
  * Created by vidal on 14/12/2017.
@@ -27,9 +28,7 @@ public class UsuarioService {
     }
 
     public Usuario criarUsuario(String email, String senha) {
-
         Usuario u = new Usuario();
-
         u.setEmail(email);
         u.setSenha(Criptografia.criptografar(senha));
         return u;
@@ -66,19 +65,13 @@ public class UsuarioService {
         PessoaDAO bdp = new PessoaDAO();
         bdp.getEscrever(context);
         bdp.inserir(pessoa);
-
-
     }
 
 
     public boolean verificarEmailSenhaLogar(String email, String senha, Context context) {
         UsuarioDAO bd = new UsuarioDAO();
         bd.getLer(context);
-        if (bd.verificarLogin(email, senha)) {
-            return true;
-        } else {
-            return false;
-        }
+        return bd.verificarLogin(email, senha);
     }
 
     public Usuario gerarUsuario(String email, String senha, Context context) {
@@ -102,5 +95,26 @@ public class UsuarioService {
         PerfilDAO bd = new PerfilDAO();
         bd.getLer(context);
         return bd.getPerfil(id);
+    }
+    public void salvarLembrarMim(String email,String senha, Context context){
+        UsuarioDAO bd = new UsuarioDAO();
+        bd.getEscrever(context);
+        bd.salvarlembrarLogin(email, senha);
+
+    }
+    public void alterarLembrarMim(String email,String senha, Context context){
+        UsuarioDAO bd = new UsuarioDAO();
+        bd.getEscrever(context);
+        bd.alterarLembrarLogin(email, senha);
+    }
+    public boolean verificarLembrarLogin(Context context){
+        UsuarioDAO bd = new UsuarioDAO();
+        bd.getLer(context);
+        return bd.verificarLembrarLogin();
+    }
+    public ArrayList<String> getLembrarMim(Context context){
+        UsuarioDAO bd = new UsuarioDAO();
+        bd.getLer(context);
+        return bd.getLembrarLogin();
     }
 }

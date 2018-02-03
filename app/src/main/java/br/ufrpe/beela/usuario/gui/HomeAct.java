@@ -9,28 +9,21 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-import java.util.ArrayList;
-import java.util.Collections;
-
-import br.ufrpe.beela.database.negocio.BancoDeDados;
+import br.ufrpe.beela.database.negocio.AlimentarBancoDeDados;
 import br.ufrpe.beela.gui.R;
-import br.ufrpe.beela.lugar.dao.LugarDAO;
-import br.ufrpe.beela.lugar.dominio.Lugar;
 import br.ufrpe.beela.lugar.gui.LugarAcompanhadoAct;
-import br.ufrpe.beela.lugar.gui.LugarAct;
-import br.ufrpe.beela.lugar.negocio.GoogleMaps;
 import br.ufrpe.beela.perfil.gui.PerfilAct;
 
 public class HomeAct extends AppCompatActivity {
     private TextView eAi;
     private TextView oQueTuQuer;
     private ImageButton botaoPerfil, botaoLugares, botaoConfiguracoes;
-    private BancoDeDados bancoDeDados = new BancoDeDados();
+    private AlimentarBancoDeDados alimentarBancoDeDados = new AlimentarBancoDeDados();
 
     private Button oqTuQuer;
-    private LugarDAO lugarDAO = new LugarDAO();
-    private GoogleMaps mapa=new GoogleMaps();
-    private ArrayList<Lugar> lugaresPreferidos = new ArrayList<Lugar>();
+//    private LugarDAO lugarDAO = new LugarDAO();
+//    private GoogleMaps mapa=new GoogleMaps();
+//    private ArrayList<Lugar> lugaresPreferidos = new ArrayList<Lugar>();
 
 //    MediaPlayer qualvai;
 //    MediaPlayer oque;
@@ -43,7 +36,7 @@ public class HomeAct extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-        bancoDeDados.gerarLugares(this);
+        alimentarBancoDeDados.gerarLugares(this);
         alterarFonte();
         irPerfil();
         irConfiguracoes();
@@ -98,34 +91,10 @@ public class HomeAct extends AppCompatActivity {
         oqTuQuer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                criarLugares();
-                Collections.shuffle(lugaresPreferidos);
-                Lugar lugarAleatorio=lugaresPreferidos.get(0);
-                mapa.chamarMapa(lugarAleatorio);
+
             }
         });
     }
 
-
-//TODO    Função teste porque não está retornando os lugares do banco
-    public void criarLugares() {
-        Lugar ru = new Lugar();
-        ru.setNome("RU - UFRPE");
-        ru.setDescriacao("Self-Service");
-        ru.setLocalicao("-8.014121,-34.951131");
-        lugaresPreferidos.add(ru);
-
-        Lugar igreja = new Lugar();
-        igreja.setNome("Igreja Do Carmmo");
-        igreja.setDescriacao("Igreja");
-        igreja.setLocalicao("-8.0168458,-34.849372");
-        lugaresPreferidos.add(igreja);
-
-        Lugar rock = new Lugar();
-        rock.setNome("RockRibs");
-        rock.setDescriacao("Restaurante");
-        rock.setLocalicao("-8.0640944,-34.8714444");
-        lugaresPreferidos.add(rock);
-    }
 
 }

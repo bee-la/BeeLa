@@ -8,7 +8,6 @@ public class PerfilComida {
     private int id;
     private String nome;
     private String nome_perfil;
-    private int id_lugar;
 
     public int getId() {
         return id;
@@ -20,10 +19,6 @@ public class PerfilComida {
 
     public String getNome_perfil() {
         return nome_perfil;
-    }
-
-    public int getId_lugar() {
-        return id_lugar;
     }
 
     public void setId(int id) {
@@ -38,7 +33,4 @@ public class PerfilComida {
         this.nome_perfil = nome_perfil;
     }
 
-    public void setId_lugar(int id_lugar) {
-        this.id_lugar = id_lugar;
-    }
 }

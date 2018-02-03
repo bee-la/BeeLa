@@ -17,6 +17,7 @@ import br.ufrpe.beela.lugar.dao.LugarDAO;
 import br.ufrpe.beela.lugar.dominio.Lugar;
 import br.ufrpe.beela.lugar.gui.EscolhaProgramaAct;
 import br.ufrpe.beela.lugar.gui.LugarAcompAct;
+import br.ufrpe.beela.lugar.negocio.LugarService;
 import br.ufrpe.beela.perfil.dao.PerfilDAO;
 import br.ufrpe.beela.perfil.dominio.PerfilComida;
 import br.ufrpe.beela.perfil.dominio.PerfilEsporte;
@@ -33,6 +34,7 @@ public class ContatoAct extends AppCompatActivity {
     private Pessoa pessoa = LoginAct.getPessoa();
     private ArrayList<Pessoa> pessoaArrayList = EscolhaProgramaAct.getListaPessoa();
     private static ArrayList<Lugar> lugarArrayList = new ArrayList<Lugar>();
+    private LugarService lugarService = new LugarService();
     private Button botaoConfirmar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,64 +87,10 @@ public class ContatoAct extends AppCompatActivity {
                 }
             }
             pessoaArrayList.add(pessoa);
-            ContatoAct.setListaLugar(gerarLugarAcompanhado(pessoaArrayList));
+            ContatoAct.setListaLugar(lugarService.gerarLugarAcompanhado(pessoaArrayList,this));
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
-
-    public ArrayList<Lugar> gerarLugarAcompanhado(ArrayList<Pessoa> pessoaArrayList) {
-        ArrayList<Lugar> listLugar = new ArrayList<Lugar>();
-        ArrayList<Integer> listId = new ArrayList<Integer>();
-        try {
-            for (Pessoa pessoaAcompanhada : pessoaArrayList) {
-                PerfilDAO bdp = new PerfilDAO();
-                bdp.getLer(this);
-                pessoaAcompanhada.setPerfilAtual(bdp.getFavorito(pessoaAcompanhada.getId()));
-                //////////
-                PerfilDAO bdc = new PerfilDAO();
-                bdc.getLer(this);
-                pessoaAcompanhada.getPerfilAtual().setComida(bdc.getPerfilComida(pessoaAcompanhada.getPerfilAtual(),pessoaAcompanhada.getId()));
-                //
-                PerfilDAO bde = new PerfilDAO();
-                bde.getLer(this);
-                pessoaAcompanhada.getPerfilAtual().setEsporte(bde.getPerfilEsporte(pessoaAcompanhada.getPerfilAtual(),LoginAct.getPessoa().getId()));
-                //
-                PerfilDAO bdm = new PerfilDAO();
-                bdm.getLer(this);
-                pessoaAcompanhada.getPerfilAtual().setMusica(bdm.getPerfilMusica(pessoaAcompanhada.getPerfilAtual(),LoginAct.getPessoa().getId()));
-                //
-                PerfilDAO bdl = new PerfilDAO();
-                bdl.getLer(this);
-                pessoaAcompanhada.getPerfilAtual().setLugar(bdl.getPerfilParaLugar(pessoaAcompanhada.getPerfilAtual(),LoginAct.getPessoa().getId()));
-
-                ///////////////
-                for (PerfilComida perfilComida : pessoaAcompanhada.getPerfilAtual().getComida()) {
-                    PerfilDAO bd = new PerfilDAO();
-                    bd.getLer(this);
-                    listId = bd.getPerfilParaLugar(perfilComida);
-                }
-                for (PerfilMusica perfilMusica : pessoaAcompanhada.getPerfilAtual().getMusica()) {
-                    PerfilDAO bd = new PerfilDAO();
-                    bd.getLer(this);
-                    listId = bd.getPerfilParaLugar(listId, perfilMusica);
-                }
-                for (PerfilEsporte perfilEsporte : pessoaAcompanhada.getPerfilAtual().getEsporte()) {
-                    PerfilDAO bd = new PerfilDAO();
-                    bd.getLer(this);
-                    listId = bd.getPerfilParaLugar(listId, perfilEsporte);
-                }
-            }
-        } catch (Exception e) {}
-
-        for (int id : listId) {
-            LugarDAO bd = new LugarDAO();
-            bd.getLer(this);
-            Lugar lugar = bd.getLugar(id);
-            listLugar.add(lugar);
-        }
-        return listLugar;
-
         //TODO     Função que encontra os lugares dos contatos selecionados
     }
     public static void setListaLugar(ArrayList<Lugar> listaLugar){lugarArrayList = listaLugar;}

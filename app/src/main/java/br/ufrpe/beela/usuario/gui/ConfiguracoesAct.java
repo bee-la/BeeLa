@@ -46,8 +46,8 @@ public class ConfiguracoesAct extends AppCompatActivity {
         alterarSenha = (TextView) findViewById(R.id.textView16);
         sair = (TextView) findViewById(R.id.textView12);
         apagarConta = (TextView) findViewById(R.id.textView18);
-        /*nomeUser = (TextView) findViewById(R.id.textView3);
-        nomeUser.setText(nomeUsuario);*/
+        nomeUser = (TextView) findViewById(R.id.textView3);
+        nomeUser.setText(nomeUsuario);
 
         alterarFonte();
         carregarFotoGaleria();
@@ -105,6 +105,7 @@ public class ConfiguracoesAct extends AppCompatActivity {
                 AlertDialog dialog2 = alertaNome.create();
                 dialog2.show();
 
+
             }
         });
     }
@@ -115,6 +116,7 @@ public class ConfiguracoesAct extends AppCompatActivity {
         if (!nome.isEmpty()) {
             usuarioService.alterarNome(pessoa, nome, this);
             campoAlterarNome.setText("");
+            nomeUser.setText(nome);
             nomeAlterado = Toast.makeText(getApplicationContext(), R.string.nomeAlterado, Toast.LENGTH_SHORT);
             nomeAlterado.show();
         }

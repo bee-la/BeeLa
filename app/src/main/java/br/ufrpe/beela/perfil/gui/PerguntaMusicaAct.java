@@ -9,14 +9,10 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import java.util.ArrayList;
-
-import br.ufrpe.beela.perfil.dao.PerfilDAO;
 import br.ufrpe.beela.perfil.dominio.PerfilMusica;
 import br.ufrpe.beela.perfil.dominio.PerfilUsuario;
 import br.ufrpe.beela.perfil.negocio.PerfilService;
-import br.ufrpe.beela.usuario.gui.LoginAct;
 import br.ufrpe.beela.gui.R;
 
 public class PerguntaMusicaAct extends AppCompatActivity {
@@ -59,13 +55,13 @@ public class PerguntaMusicaAct extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                adcListaMusica(checkBoxesMusicas, listaMusica, perfilUsuario);
+                adcListaMusica(checkBoxesMusicas, listaMusica);
                 irTelaPerguntaComida();
             }
         });
     }
 
-    public void adcListaMusica(ArrayList<CheckBox> checkBoxesMusicas, ArrayList<PerfilMusica> listaMusica, PerfilUsuario perfilUsuario) {
+    public void adcListaMusica(ArrayList<CheckBox> checkBoxesMusicas, ArrayList<PerfilMusica> listaMusica) {
         for (CheckBox x : checkBoxesMusicas) {
             if (x.isChecked()) {
                 PerfilMusica musica = new PerfilMusica();
@@ -80,21 +76,16 @@ public class PerguntaMusicaAct extends AppCompatActivity {
         boolean checked = ((CheckBox) view).isChecked();
     }
 
-    public ArrayList<PerfilMusica> getMusica() {
-        return listaMusica;
-    }
-
     private void irTelaPerguntaComida() {
+
         startActivityForResult(new Intent(PerguntaMusicaAct.this, PerguntaComidaAct.class), 1);
         // finish();
 
     }
 
-    public void salvarMusica() {
-        if (perfilUsuario.getNome() != null) {
-            PerfilDAO bd = new PerfilDAO();
-            bd.getLer(this);
-            perfilService.adcMusica(perfilUsuario, this);
+    public void salvarMusica(String nome) {
+        if (nome != null) {
+            perfilService.adcMusica(perfilUsuario,nome, this);
         } else {
             Toast.makeText(getApplicationContext(), "NÂO TEM NOME", Toast.LENGTH_SHORT).show();
         }
@@ -105,8 +96,8 @@ public class PerguntaMusicaAct extends AppCompatActivity {
             try {
                 Bundle valor = intent.getExtras();
                 if (valor != null) {
-                    perfilUsuario.setNome(valor.getString("nomePerfil"));
-                    salvarMusica();
+                    String Nome = valor.getString("nomePerfil");
+                    salvarMusica(Nome);
                     finish();
                 }
             } catch (Exception e) {

@@ -36,29 +36,29 @@ public class PessoaDAO {
         ContentValues valores = new ContentValues();
         valores.put("nome", pessoa.getNome());
         valores.put("celular", pessoa.getCelular());
-        valores.put("id_usuario", pessoa.getUsuario().getId());
+        valores.put("idUsuario", pessoa.getUsuario().getId());
         bd.insert("pessoa", null, valores);
         bd.close();
     }
 
     public void delete(Pessoa pessoa) {
-        bd.delete("usuario", "_id = " + pessoa.getUsuario().getId(), null);
+        bd.delete("pessoa", "id = " + pessoa.getUsuario().getId(), null);
         bd.close();
     }
 
     public void updateNome(Pessoa pessoa, String nome) {
-        String where = "_id =  '" + pessoa.getId() + "'";
+        String where = "id =  '" + pessoa.getId() + "'";
         ContentValues valores = new ContentValues();
         valores.put("nome", nome);
         valores.put("celular", pessoa.getCelular());
-        valores.put("id_usuario", pessoa.getUsuario().getId());
+        valores.put("idUsuario", pessoa.getUsuario().getId());
         bd.update("pessoa", valores, where, null);
         bd.close();
     }
 
     public Pessoa getPessoa(int id_usuario) {
         Pessoa pessoa = new Pessoa();
-        String where = "SELECT * FROM pessoa WHERE id_usuario = '" + String.valueOf(id_usuario) + "'";
+        String where = "SELECT * FROM pessoa WHERE idUsuario = '" + String.valueOf(id_usuario) + "'";
         Cursor cursor = bd.rawQuery(where, null);
         if (cursor.getCount() > 0) {
             cursor.moveToFirst();
@@ -70,8 +70,6 @@ public class PessoaDAO {
         }
         return pessoa;
     }
-
-    //TODO      Adicionei isso(by: Anderson)
     public ArrayList<Pessoa> getListaPessoa() {
         ArrayList<Pessoa> listaPessoa = new ArrayList<Pessoa>();
         String where = "SELECT * FROM pessoa";
@@ -109,7 +107,7 @@ public class PessoaDAO {
 
     public Pessoa getPessoa(Pessoa pessoa1) {
         Pessoa pessoa = new Pessoa();
-        String where = "SELECT * FROM pessoa WHERE _id = '" + String.valueOf(pessoa1.getId()) + "'";
+        String where = "SELECT * FROM pessoa WHERE id = '" + String.valueOf(pessoa1.getId()) + "'";
         Cursor cursor = bd.rawQuery(where, null);
         if (cursor.getCount() > 0) {
             cursor.moveToFirst();

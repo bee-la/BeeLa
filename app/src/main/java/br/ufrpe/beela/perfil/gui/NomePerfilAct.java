@@ -81,7 +81,6 @@ public class NomePerfilAct extends AppCompatActivity {
     public void salvarBD() {
 
         if (perfilService.verificarPerfilAtualExiste(LoginAct.getPessoa().getId(),this)) {
-            //LoginAct.getPessoa().setPerfilAtual(perfilUsuario);
             perfilService.adcPerfil(perfilUsuario, this);
             perfilService.adcPerfilFavorito(LoginAct.getPessoa().getId(),nomePerfil,this);
         }

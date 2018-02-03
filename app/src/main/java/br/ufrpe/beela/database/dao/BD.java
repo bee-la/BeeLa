@@ -10,7 +10,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class BD extends SQLiteOpenHelper {
 
-    private static final String NOME_DO_BD = "BancoB2.db";
+    private static final String NOME_DO_BD = "BeelaOP.db";
     private static final int VERSAO = 1;
 
     public BD(Context ctx) {
@@ -20,16 +20,32 @@ public class BD extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase bd) {
 
-        bd.execSQL("create table usuario(_id integer primary key  autoincrement,senha text not null, email text not null); ");
-        bd.execSQL("create table pessoa (_id integer primary key autoincrement, nome text not null, celular text not null,id_usuario interger not null);");
-        bd.execSQL("create table lugar (_id integer primary key autoincrement, nome text not null , descricao text not null,localizacao text not null);");
+        bd.execSQL("create table usuario(" +
+                "id integer primary key  autoincrement,senha text not null, email text not null);");
+        bd.execSQL("create table pessoa (" +
+                "id integer primary key autoincrement, nome text not null, celular text not null,idUsuario interger not null);");
+        bd.execSQL("create table lugar (" +
+                "id integer primary key autoincrement, nome text not null , descricao text not null,localizacao text not null);");
 
-        bd.execSQL("create table perfilMusica(_id integer primary key  autoincrement, nome text not null,id_pessoa interger ,nome_perfil text ,id_lugar interger); ");
-        bd.execSQL("create table perfilLugar(_id integer primary key  autoincrement, nome text not null,id_pessoa interger ,nome_perfil text ,id_lugar interger); ");
-        bd.execSQL("create table perfilComida(_id integer primary key  autoincrement, nome text not null,id_pessoa interger ,nome_perfil text ,id_lugar interger); ");
-        bd.execSQL("create table perfilEsporte(_id integer primary key  autoincrement, nome text not null,id_pessoa interger ,nome_perfil text,id_lugar interger); ");
-        bd.execSQL("create table perfilUsuario(_id integer primary key autoincrement, id_pessoa interger not null , nome_perfil text not null);");
-        bd.execSQL("create table perfilFavorito(_id integer primary key autoincrement, id_pessoa integet not null, nome_perfil text not null);");
+        bd.execSQL("create table perfilMusica(" +
+                "id integer primary key  autoincrement, nome text not null,idPessoa interger ,nomePerfil text ,idLugar interger); ");
+        bd.execSQL("create table perfilLugar(" +
+                "id integer primary key  autoincrement, nome text not null,idPessoa interger ,nomePerfil text ,idLugar interger); ");
+        bd.execSQL("create table perfilComida(" +
+                "id integer primary key  autoincrement, nome text not null,idPessoa interger ,nomePerfil text ,idLugar interger); ");
+        bd.execSQL("create table perfilEsporte(" +
+                "id integer primary key  autoincrement, nome text not null,idPessoa interger ,nomePerfil text,idLugar interger); ");
+        bd.execSQL("create table perfilUsuario(" +
+                "id integer primary key autoincrement, idPessoa interger not null , nomePerfil text not null);");
+        bd.execSQL("create table perfilFavorito(" +
+                "id integer primary key autoincrement, idPessoa interger not null, nomePerfil text not null);");
+
+        bd.execSQL("create table avalicao(" +
+                "id integer primary key autoincrement, idPessoa interger not null,idLugar interger not null, nota interger);");
+        bd.execSQL("create table foto(" +
+                "id integer primary key autoincrement, idPessoa interger,idLugar integer, caminho text not null);");
+        bd.execSQL("create table lembrarDeMim(" +
+                "id integer primary key autoincrement,email text,senha text);");
     }
 
     @Override
@@ -44,16 +60,10 @@ public class BD extends SQLiteOpenHelper {
         bd.execSQL("drop table perfilEsporte;");
         bd.execSQL("drop table perfilUsuario;");
         bd.execSQL("drop table perfilFavorito;");
+
+        bd.execSQL("drop table avalicao;");
+        bd.execSQL("drop table foto;");
+        bd.execSQL("drop table lembrarDeMim;");
         onCreate(bd);
     }
 }
-
-
-
-
-
-
-
-
-
-

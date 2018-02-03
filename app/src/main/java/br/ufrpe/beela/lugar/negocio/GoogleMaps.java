@@ -46,9 +46,7 @@ public class GoogleMaps extends AppCompatActivity {
 //        verificarGPS();
         String destino[] = lugar.getLocalicao().split(",");
         destinolatitude = Double.parseDouble(destino[0]);
-        destinolongitude = Double.parseDouble(destino[1]);
-//        destinolatitude = -8.014121;
-//        destinolongitude = -34.951131;
+        destinolongitude = Double.parseDouble(destino[1]);;
 
         try {
             Intent intent = new Intent(android.content.Intent.ACTION_VIEW,
@@ -60,7 +58,7 @@ public class GoogleMaps extends AppCompatActivity {
             startActivity(intent);
         } catch (Exception ex) {
             ex.printStackTrace();
-//            Toast.makeText(this, R.string.erroNaoTemGoogleMaps, Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.erroNaoTemGoogleMaps, Toast.LENGTH_SHORT).show();
         }
     }
 

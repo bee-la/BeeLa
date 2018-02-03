@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import br.ufrpe.beela.gui.R;
 import br.ufrpe.beela.lugar.dao.LugarDAO;
 import br.ufrpe.beela.lugar.dominio.Lugar;
+import br.ufrpe.beela.lugar.negocio.LugarService;
 import br.ufrpe.beela.perfil.dao.PerfilDAO;
 import br.ufrpe.beela.perfil.dominio.PerfilComida;
 import br.ufrpe.beela.perfil.dominio.PerfilEsporte;
@@ -24,6 +25,7 @@ import br.ufrpe.beela.usuario.gui.ContatoAct;
 import br.ufrpe.beela.usuario.gui.LoginAct;
 
 public class EscolhaProgramaAct extends AppCompatActivity {
+    private LugarService lugarService = new LugarService();
     private PerfilUsuario perfilUsuario = LoginAct.getPessoa().getPerfilAtual();
     private ImageButton botaoSozinho;
     private ImageButton botaoAcompanhado;
@@ -56,57 +58,16 @@ public class EscolhaProgramaAct extends AppCompatActivity {
         botaoAcompanhado.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                gerarListaDePessoa();
+                setListaPessoa(lugarService.gerarListaDePessoa(EscolhaProgramaAct.this));
                 startActivity(new Intent(EscolhaProgramaAct.this, ContatoAct.class));
             }
         });
     }
 
-    public ArrayList<Lugar> gerarListaLugar(PerfilUsuario perfilUsuario, Context context) {
-        ArrayList<Lugar> listLugar = new ArrayList<Lugar>();
-        ArrayList<Integer> listId = new ArrayList<Integer>();
-
-        try {
-            for (PerfilComida comida : perfilUsuario.getComida()) {
-                PerfilDAO bd = new PerfilDAO();
-                bd.getLer(context);
-                listId = bd.getPerfilParaLugar(comida);
-            }
-            for (PerfilMusica musica : perfilUsuario.getMusica()) {
-                PerfilDAO bd = new PerfilDAO();
-                bd.getLer(context);
-                listId = bd.getPerfilParaLugar(listId, musica);
-            }
-            for (PerfilEsporte esporte : perfilUsuario.getEsporte()) {
-                PerfilDAO bd = new PerfilDAO();
-                bd.getLer(context);
-                listId = bd.getPerfilParaLugar(listId, esporte);
-            }
-            for (PerfilLugar lugar : perfilUsuario.getLugar()) {
-                PerfilDAO bd = new PerfilDAO();
-                bd.getLer(context);
-                listId = bd.getPerfilParaLugar(listId, lugar);
-            }
-        } catch (Exception e) {}
-        for (int id : listId) {
-            LugarDAO bd = new LugarDAO();
-            bd.getLer(context);
-            Lugar lugar = bd.getLugar(id);
-            listLugar.add(lugar);
-        }
-        return listLugar;
-    }
 
     public void gerarSozinho() {
-        ArrayList<Lugar> lugarArrayList = gerarListaLugar(perfilUsuario, this);
+        ArrayList<Lugar> lugarArrayList = lugarService.gerarListaLugar(perfilUsuario, this);
         EscolhaProgramaAct.setListaLugar(lugarArrayList);
-    }
-
-    //@TODO FALTA IR EM database/BancoDeDados e escrever todas as PEssoas Fake!
-    public void gerarListaDePessoa() {
-        PessoaDAO bd = new PessoaDAO();
-        bd.getLer(this);
-        setListaPessoa(bd.getListaPessoa());
     }
 
     public static void setListaLugar(ArrayList<Lugar> listaLugar) {

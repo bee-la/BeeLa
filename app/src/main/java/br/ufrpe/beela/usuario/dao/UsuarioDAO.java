@@ -6,12 +6,10 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import br.ufrpe.beela.database.dao.BD;
-import br.ufrpe.beela.usuario.dominio.Pessoa;
 import br.ufrpe.beela.usuario.dominio.Usuario;
-import br.ufrpe.beela.usuario.negocio.UsuarioService;
+
 
 /**
  * Created by vidal on 05/12/2017.
@@ -44,13 +42,13 @@ public class UsuarioDAO {
     }
 
     public void delete(Usuario usuario) {
-        String where = "_id = '" + usuario.getId() + "' AND senha = '" + usuario.getSenha() + "' AND email = '" + usuario.getEmail() + "'";
+        String where = "id = '" + usuario.getId() + "' AND senha = '" + usuario.getSenha() + "' AND email = '" + usuario.getEmail() + "'";
         bd.delete("usuario", where, null);
         bd.close();
     }
 
     public void updateSenha(Usuario usuario, String senha) {
-        String where = "_id =  '" + usuario.getId() + "'";
+        String where = "id =  '" + usuario.getId() + "'";
         ContentValues valores = new ContentValues();
         valores.put("email", usuario.getEmail());
         valores.put("senha", senha);
@@ -59,7 +57,7 @@ public class UsuarioDAO {
     }
 
     public void update(Usuario usuario) {
-        String where = "_id =  '" + String.valueOf(usuario.getId()) + "'";
+        String where = "id =  '" + String.valueOf(usuario.getId()) + "'";
         ContentValues valores = new ContentValues();
         valores.put("email", usuario.getEmail());
         valores.put("senha", usuario.getSenha());
@@ -98,5 +96,43 @@ public class UsuarioDAO {
         }
         return false;
     }
-    //   =========================================================================================================
+    public void salvarlembrarLogin(String email,String senha){
+        ContentValues valores = new ContentValues();
+        valores.put("email", email);
+        valores.put("senha", senha);
+        bd.insert("lembrarDeMim", null, valores);
+        bd.close();
+    }
+    public void alterarLembrarLogin(String email,String senha) {
+        String where = "id = '1'";
+        ContentValues valores = new ContentValues();
+        valores.put("email", email);
+        valores.put("senha", senha);
+        bd.update("lembrarDeMim", valores, where, null);
+        bd.close();
+    }
+    public ArrayList<String> getLembrarLogin(){
+        ArrayList<String> saida= new ArrayList<String>();
+        String where = "SELECT * FROM lembrarDeMim";
+        Cursor cursor = bd.rawQuery(where, null);
+        if (cursor.getCount() > 0) {
+            cursor.moveToFirst();
+            saida.add(cursor.getString(1));
+            saida.add(cursor.getString(2));
+        }
+        bd.close();
+        return saida;
+    }
+    public boolean verificarLembrarLogin(){
+        String where = "SELECT * FROM lembrarDeMim";
+        Cursor cursor = bd.rawQuery(where, null);
+        try {
+            if (cursor.getCount() > 0) {
+                bd.close();
+                return false;}
+        }
+        catch (Exception e){}
+        bd.close();
+        return true;
+    }
 }

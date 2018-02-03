@@ -35,11 +35,11 @@ public class PerfilService {
         }
     }
 
-    public void adcMusica(PerfilUsuario perfilUsuario, Context context) {
+    public void adcMusica(PerfilUsuario perfilUsuario,String nome ,Context context) {
         for (PerfilMusica musica : perfilUsuario.getMusica()) {
             PerfilDAO bd = new PerfilDAO();
             bd.getEscrever(context);
-            musica.setNome_perfil(perfilUsuario.getNome());
+            musica.setNome_perfil(nome);
             bd.inserirPerfilMusica(musica,pessoa.getId());
         }
     }
@@ -87,6 +87,18 @@ public class PerfilService {
         PerfilDAO bd = new PerfilDAO();
         bd.getEscrever(context);
         bd.deletePerfilUsuario(Id, nomePerfil);
+        bd = new PerfilDAO();
+        bd.getEscrever(context);
+        bd.deletePerfilMusica(Id,nomePerfil);
+        bd = new PerfilDAO();
+        bd.getEscrever(context);
+        bd.deletePerfilComida(Id,nomePerfil);
+        bd = new PerfilDAO();
+        bd.getEscrever(context);
+        bd.deletePerfilEsporte(Id,nomePerfil);
+        bd = new PerfilDAO();
+        bd.getEscrever(context);
+        bd.deletePerfilLugar(Id,nomePerfil);
 
     }
 

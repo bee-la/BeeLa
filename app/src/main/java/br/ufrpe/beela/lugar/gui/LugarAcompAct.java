@@ -46,7 +46,6 @@ public class LugarAcompAct extends AppCompatActivity {
     public ArrayList<Lugar> getLugares() {
         return ListLugar;
     }
-//@TODO Falta tirar esse ListView desta Class e por na sua proprio !!!
 
     public Intent chamarMapa(Lugar lugar) {
 
@@ -59,7 +58,7 @@ public class LugarAcompAct extends AppCompatActivity {
             startActivity(new Intent(mapa.getMapa(destinolatitude, destinolongitude)));
         } catch (Exception ex) {
 
-            Toast.makeText(this, "", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "ERRO MAPA", Toast.LENGTH_SHORT).show();
         }
 
         return mapa.getMapa(destinolatitude, destinolongitude);

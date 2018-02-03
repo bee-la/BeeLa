@@ -1,7 +1,5 @@
 package br.ufrpe.beela.usuario.dominio;
 
-import br.ufrpe.beela.perfil.dominio.PerfilUsuario;
-
 /**
  * Created by max on 05/12/17.
  * Modificado em 29/12/2017.
