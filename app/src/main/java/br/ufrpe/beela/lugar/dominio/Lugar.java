@@ -21,6 +21,7 @@ public class Lugar {
     private ArrayList<PerfilEsporte> esporte;
     private ArrayList<PerfilLugar> lugar;
     private String localicao;
+    private String caminho;
 
     public int getId() {
         return id;
@@ -54,6 +55,7 @@ public class Lugar {
         return localicao;
     }
 
+    public String getCaminho() {return caminho;}
 
     public void setId(int id) {
         this.id = id;
@@ -87,4 +89,5 @@ public class Lugar {
         this.localicao = localicao;
     }
 
+    public void setCaminho(String caminho) {this.caminho = caminho;}
 }

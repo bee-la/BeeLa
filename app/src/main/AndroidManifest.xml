@@ -73,6 +73,9 @@
             android:name="br.ufrpe.beela.usuario.gui.ContatoAct"
             android:label="@string/contatos" />
         <activity android:name="br.ufrpe.beela.perfil.gui.PerguntaLugarAct"></activity>
+        <activity
+            android:name="br.ufrpe.beela.lugar.gui.LugarDetalhes"
+            android:label="Detalhes" />
     </application>
 
 </manifest>

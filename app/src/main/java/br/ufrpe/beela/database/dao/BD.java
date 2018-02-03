@@ -10,7 +10,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class BD extends SQLiteOpenHelper {
 
-    private static final String NOME_DO_BD = "BeelaOP.db";
+    private static final String NOME_DO_BD = "BeelaOPEN.db";
     private static final int VERSAO = 1;
 
     public BD(Context ctx) {
@@ -25,7 +25,7 @@ public class BD extends SQLiteOpenHelper {
         bd.execSQL("create table pessoa (" +
                 "id integer primary key autoincrement, nome text not null, celular text not null,idUsuario interger not null);");
         bd.execSQL("create table lugar (" +
-                "id integer primary key autoincrement, nome text not null , descricao text not null,localizacao text not null);");
+                "id integer primary key autoincrement, nome text not null , descricao text not null,localizacao text not null,caminho text);");
 
         bd.execSQL("create table perfilMusica(" +
                 "id integer primary key  autoincrement, nome text not null,idPessoa interger ,nomePerfil text ,idLugar interger); ");
@@ -42,8 +42,6 @@ public class BD extends SQLiteOpenHelper {
 
         bd.execSQL("create table avalicao(" +
                 "id integer primary key autoincrement, idPessoa interger not null,idLugar interger not null, nota interger);");
-        bd.execSQL("create table foto(" +
-                "id integer primary key autoincrement, idPessoa interger,idLugar integer, caminho text not null);");
         bd.execSQL("create table lembrarDeMim(" +
                 "id integer primary key autoincrement,email text,senha text);");
     }
@@ -62,7 +60,6 @@ public class BD extends SQLiteOpenHelper {
         bd.execSQL("drop table perfilFavorito;");
 
         bd.execSQL("drop table avalicao;");
-        bd.execSQL("drop table foto;");
         bd.execSQL("drop table lembrarDeMim;");
         onCreate(bd);
     }

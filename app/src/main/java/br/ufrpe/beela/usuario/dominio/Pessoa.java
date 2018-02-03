@@ -34,9 +34,7 @@ public class Pessoa {
         return usuario;
     }
 
-    public PerfilUsuario getPerfilAtual() {
-        return perfilAtual;
-    }
+    public PerfilUsuario getPerfilAtual() {return perfilAtual;}
 
     public ArrayList<PerfilUsuario> getPerfilUsuarioArrayList() {return perfilUsuarioArrayList;}
 

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@color/preto"
+    android:layout_height="match_parent">
+
+
+    <ImageView
+        android:id="@+id/imgViewLugarFoto"
+        android:background="@color/preto"
+android:layout_width="341dp"
+    android:layout_height="140dp"
+    android:layout_marginEnd="8dp"
+    android:layout_marginStart="8dp"
+    android:layout_marginTop="8dp"
+    android:layout_weight="1"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"></ImageView>
+
+<TextView
+    android:id="@+id/nomeDoLugar"
+    android:layout_width="363dp"
+    android:layout_height="48dp"
+    android:layout_marginEnd="8dp"
+    android:layout_marginStart="8dp"
+    android:layout_marginTop="160dp"
+    android:textColor="@color/branco"
+    android:textSize="24sp"
+    app:layout_constraintEnd_toEndOf="parent"
+app:layout_constraintHorizontal_bias="0.094"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent" />
+
+<TextView
+    android:id="@+id/decriçãoLugar"
+    android:layout_width="330dp"
+    android:layout_height="130dp"
+    android:layout_marginEnd="8dp"
+    android:layout_marginStart="8dp"
+    android:layout_marginTop="224dp"
+    android:textAlignment="center"
+    android:textColor="@color/branco"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent" />
+
+<ImageButton
+android:id="@+id/imageButtonLocalizacao"
+    android:layout_width="72dp"
+
+    android:layout_height="76dp"
+    android:layout_marginBottom="8dp"
+    android:layout_marginEnd="8dp"
+    android:layout_marginStart="8dp"
+    android:layout_marginTop="8dp"
+    android:background="@color/verdeBotao"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintHorizontal_bias="0.729"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintVertical_bias="0.878"
+    app:srcCompat="@drawable/marcador" />
+
+
+<ImageButton
+    android:id="@+id/imageButtonSite"
+    android:layout_width="72dp"
+    android:layout_height="74dp"
+    android:layout_marginBottom="8dp"
+    android:layout_marginEnd="8dp"
+    android:layout_marginStart="8dp"
+    android:layout_marginTop="8dp"
+    android:background="@color/verdeBotao"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintHorizontal_bias="0.26"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintVertical_bias="0.874"
+    app:srcCompat="@drawable/web" />
+
+    </android.support.constraint.ConstraintLayout>

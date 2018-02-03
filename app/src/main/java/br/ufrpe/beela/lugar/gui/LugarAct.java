@@ -34,6 +34,7 @@ import br.ufrpe.beela.lugar.negocio.LugarService;
  */
 
 public class LugarAct extends AppCompatActivity {
+    private static Lugar lugarSelecionado;
     private double destinolatitude;
     private double destinolongitude;
     private Button btIr;
@@ -89,10 +90,17 @@ public class LugarAct extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Lugar LugarSelecionado = (Lugar) parent.getAdapter().getItem(position);
-                chamarMapa(LugarSelecionado);
+                irTelaDescricaoLugar(LugarSelecionado);
+                //chamarMapa();
 
             }
         });
 
     }
+    public void irTelaDescricaoLugar(Lugar lugarzinho) {
+        lugarSelecionado = lugarzinho;
+        Intent intent = new Intent(LugarAct.this,LugarDetalhes.class);
+        startActivity(intent);
+    }
+    public Lugar getLugarSelecionado(){return lugarSelecionado;}
 }
