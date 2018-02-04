@@ -21,6 +21,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import br.ufrpe.beela.gui.R;
@@ -33,16 +34,13 @@ import br.ufrpe.beela.lugar.negocio.LugarService;
  * Created by max on 06/01/18.
  */
 
-public class LugarAct extends AppCompatActivity {
-    private static Lugar lugarSelecionado;
-    private double destinolatitude;
-    private double destinolongitude;
-    private Button btIr;
+public class LugarAct extends AppCompatActivity  {
+
 
     private ArrayList<Lugar> ListLugar = EscolhaProgramaAct.getListaLugar();
     private ListView listViewLugares;
 
-    Toast Erro;
+
     LugarService mapa = new LugarService();
 
     @Override
@@ -61,46 +59,32 @@ public class LugarAct extends AppCompatActivity {
     }
 //@TODO Falta tirar esse ListView desta Class e por na sua proprio !!!
 
-    public Intent chamarMapa(Lugar lugar) {
 
-
-        String destino[] = lugar.getLocalicao().split(",");
-        destinolatitude = Double.parseDouble(destino[0]);
-        destinolongitude = Double.parseDouble(destino[1]);
-
-        try {
-            startActivity(new Intent(mapa.getMapa(destinolatitude, destinolongitude)));
-        } catch (Exception ex) {
-
-            Toast.makeText(this, "", Toast.LENGTH_SHORT).show();
-        }
-
-        return mapa.getMapa(destinolatitude, destinolongitude);
-    }
 
 
     private void setListView() {
         listViewLugares = (ListView) findViewById(R.id.listView2);
 
-        AdapterCustomizado Max = new AdapterCustomizado(getApplicationContext(), getLugares());
+        AdapterCustomizado adapter = new AdapterCustomizado(getApplicationContext(), getLugares());
 
-        listViewLugares.setAdapter(Max);
+        listViewLugares.setAdapter(adapter);
 
         listViewLugares.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Lugar LugarSelecionado = (Lugar) parent.getAdapter().getItem(position);
                 irTelaDescricaoLugar(LugarSelecionado);
-                //chamarMapa();
+
 
             }
         });
 
     }
     public void irTelaDescricaoLugar(Lugar lugarzinho) {
-        lugarSelecionado = lugarzinho;
+
         Intent intent = new Intent(LugarAct.this,LugarDetalhes.class);
+        intent.putExtra("lugar", (Serializable) lugarzinho);
         startActivity(intent);
     }
-    public Lugar getLugarSelecionado(){return lugarSelecionado;}
+
 }

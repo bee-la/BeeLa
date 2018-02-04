@@ -1,5 +1,6 @@
 package br.ufrpe.beela.lugar.dominio;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import br.ufrpe.beela.perfil.dominio.PerfilComida;
@@ -11,7 +12,7 @@ import br.ufrpe.beela.perfil.dominio.PerfilMusica;
  * Created by vidal on 20/12/2017.
  */
 
-public class Lugar {
+public class Lugar implements Serializable {
 
     private int id;
     private String nome;

@@ -22,15 +22,17 @@ import br.ufrpe.beela.lugar.negocio.LugarService;
 
 public class LugarDetalhes extends AppCompatActivity  implements Serializable, View.OnClickListener {
 
-    LugarAct a = new LugarAct();
-    ImageButton localizacaoBt, siteBt;
 
-    TextView nome,descricao;
-    Lugar recuperado;
-    ImageView foto;
+    private ImageButton localizacaoBt, siteBt;
+
+    private TextView nome,descricao;
+
+    private ImageView foto;
 
     private double destinolatitude;
     private double destinolongitude;
+    private Lugar recuperado;
+    private Bundle bundle;
 
     LugarService mapa = new LugarService();
     @Override
@@ -38,12 +40,27 @@ public class LugarDetalhes extends AppCompatActivity  implements Serializable, V
 
         super.onCreate(saveInstanceState);
         setContentView(R.layout.activity_lugar_detalhes);
-        recuperado = a.getLugarSelecionado();
+
+
+        bundle = getIntent().getExtras();
+        recuperado = (Lugar) bundle.getSerializable("lugar");
+
         setarDetalhes();
+
+
+
+
 
     }
 
     private void setarDetalhes() {
+
+
+
+
+
+
+
         nome = (TextView)findViewById(R.id.nomeDoLugar);
         nome.setText(recuperado.getNome().toString());
         descricao = findViewById(R.id.decriçãoLugar);
@@ -61,12 +78,20 @@ public class LugarDetalhes extends AppCompatActivity  implements Serializable, V
         int id = getResources().getIdentifier(a,"drawable",getPackageName());
 
         foto.setImageResource(id);
+
+
+
     }
 
     public void onClick(View view){
 
+
+
         switch (view.getId()){
+
+
             case R.id.imageButtonLocalizacao:
+
                 chamarMapa(recuperado);
                 break;
 

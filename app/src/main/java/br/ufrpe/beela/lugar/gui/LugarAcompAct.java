@@ -2,6 +2,7 @@ package br.ufrpe.beela.lugar.gui;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
@@ -9,6 +10,7 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import br.ufrpe.beela.gui.R;
@@ -25,7 +27,7 @@ public class LugarAcompAct extends AppCompatActivity {
     private double destinolatitude;
     private double destinolongitude;
     private Button btIr;
-
+    private static Lugar lugarSelecionado;
     private ArrayList<Lugar> ListLugar = ContatoAct.getListaLugar();
     private ListView listViewLugares;
 
@@ -76,10 +78,34 @@ public class LugarAcompAct extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Lugar LugarSelecionado = (Lugar) parent.getAdapter().getItem(position);
-                chamarMapa(LugarSelecionado);
+                irTelaDescricaoLugar(LugarSelecionado);
 
             }
         });
 
+
     }
+
+    public void irTelaDescricaoLugar(Lugar lugarzinho) {
+        lugarSelecionado = lugarzinho;
+        Intent intent = new Intent(LugarAcompAct.this, LugarDetalhes.class);
+
+        intent.putExtra("lugar", (Serializable) lugarzinho);
+        startActivity(intent);
+
+    }
+
+
+
+
 }
+
+
+
+//
+//    Intent intent= new Intent(this, ActivityTelaPessoal.class);
+//intent.putExtra("usuario", usuarioUsado);
+//        startActivity(intent);
+//
+//        e na activity ActivityTelaPessoal você recupera seu objeto;
+
