@@ -91,9 +91,10 @@ public class LugarDAO {
         String where = "SELECT * FROM lugar";
         Cursor cursor = bd.rawQuery(where, null);
         if (cursor.getCount() > 0) {
+            cursor.moveToFirst();
             do {
                 Lugar lugar = new Lugar();
-                cursor.moveToFirst();
+
                 lugar.setId(cursor.getInt(0));
                 lugar.setNome(cursor.getString(1));
                 lugar.setDescriacao(cursor.getString(2));
