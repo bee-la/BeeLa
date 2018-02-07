@@ -39,7 +39,7 @@ public class LugarAct extends AppCompatActivity  {
 
     private ArrayList<Lugar> ListLugar = EscolhaProgramaAct.getListaLugar();
     private ListView listViewLugares;
-
+    Button maps;
 
     LugarService mapa = new LugarService();
 
@@ -49,6 +49,24 @@ public class LugarAct extends AppCompatActivity  {
 
         setContentView(R.layout.activity_lugares);
         LugarService mapa = new LugarService();
+
+
+        Button maps = (Button)findViewById(R.id.buttonIrMaps);
+
+
+
+
+        maps.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+
+                Intent intent = new Intent(LugarAct.this,GoogleMapsActivity.class);
+                intent.putExtra("lugarmaps", (Serializable) ListLugar);
+                startActivity(intent);
+            }
+        });
+
         setListView();
 
 

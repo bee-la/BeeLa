@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -24,7 +25,7 @@ public class LugarDetalhes extends AppCompatActivity  implements Serializable, V
 
 
     private ImageButton localizacaoBt, siteBt;
-
+    private Button classi;
     private TextView nome,descricao;
 
     private ImageView foto;
@@ -56,10 +57,8 @@ public class LugarDetalhes extends AppCompatActivity  implements Serializable, V
     private void setarDetalhes() {
 
 
-
-
-
-
+        classi = (Button)findViewById(R.id.buttonClass);
+        classi.setOnClickListener(this);
 
         nome = (TextView)findViewById(R.id.nomeDoLugar);
         nome.setText(recuperado.getNome().toString());
@@ -104,6 +103,8 @@ public class LugarDetalhes extends AppCompatActivity  implements Serializable, V
                     startActivity(intent);
                 }
                 break;
+            case R.id.buttonClass:
+                startActivity(new Intent(LugarDetalhes.this, AvaliacaoAct.class));
         }
 
     }

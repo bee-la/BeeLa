@@ -127,5 +127,6 @@
     <string name="confirmar">Confirmar</string>
     <string name="naoConta">Não tem Conta ?</string>
     <string name="crieAqui">Crie Aqui</string>
+    <string name="title_activity_google_maps">Map</string>
 
 </resources>

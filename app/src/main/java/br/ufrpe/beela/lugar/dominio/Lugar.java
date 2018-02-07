@@ -1,5 +1,7 @@
 package br.ufrpe.beela.lugar.dominio;
 
+import com.google.android.gms.maps.model.LatLng;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -91,4 +93,16 @@ public class Lugar implements Serializable {
     }
 
     public void setCaminho(String caminho) {this.caminho = caminho;}
+
+    public LatLng getLatLng() {
+
+        String destino[] = localicao.split(",");
+        Double a  = Double.parseDouble(destino[0]);
+        Double b = Double.parseDouble(destino[1]);
+        LatLng c = new LatLng(a,b);
+
+        return c;
+
+
+    }
 }
