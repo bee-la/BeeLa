@@ -29,9 +29,7 @@ public class LugarAcompanhadoAct extends AppCompatActivity {
         setContentView(R.layout.teste);
         LoginAct.getPessoa().setPerfilAtual(lugarService.gerarLugar(this));
         b = new LugarService();
-
         a = findViewById(R.id.button24);
-
         a.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

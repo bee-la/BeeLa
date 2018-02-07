@@ -9,15 +9,12 @@ import android.location.LocationManager;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.ActivityCompat;
-import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
-import android.support.v4.view.GravityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -25,16 +22,13 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
-
 import java.io.Serializable;
-import java.lang.reflect.Type;
 import java.util.ArrayList;
-
 import br.ufrpe.beela.gui.R;
 import br.ufrpe.beela.lugar.dominio.Lugar;
 
-public class GoogleMapsActivity extends AppCompatActivity implements OnMapReadyCallback, NavigationView.OnNavigationItemSelectedListener,
-        GoogleMap.OnMarkerClickListener, GoogleMap.OnInfoWindowClickListener  {
+public class GoogleMapsActivity extends AppCompatActivity implements OnMapReadyCallback,
+        NavigationView.OnNavigationItemSelectedListener, GoogleMap.OnMarkerClickListener, GoogleMap.OnInfoWindowClickListener {
     private Bundle bundle;
     private LocationManager locationManager;
     private static final int REQUEST_FINE_LOCATION = 1;
@@ -47,27 +41,13 @@ public class GoogleMapsActivity extends AppCompatActivity implements OnMapReadyC
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_google_maps);
-        // Obtain the SupportMapFragment and get notified when the map is ready to be used.
-        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
-                .findFragmentById(R.id.map);
+
+        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
-
         bundle = getIntent().getExtras();
-        recuperado = (ArrayList<Lugar>) bundle.getSerializable("lugarmaps");
-
-
+        recuperado = (ArrayList<Lugar>) bundle.getSerializable(getString(R.string.lugarMaps));
     }
 
-
-    /**
-     * Manipulates the map once available.
-     * This callback is triggered when the map is ready to be used.
-     * This is where we can add markers or lines, add listeners or move the camera. In this case,
-     * we just add a marker near Sydney, Australia.
-     * If Google Play services is not installed on the device, the user will be prompted to install
-     * it inside the SupportMapFragment. This method will only be triggered once the user has
-     * installed Google Play services and returned to the app.
-     */
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
@@ -75,18 +55,15 @@ public class GoogleMapsActivity extends AppCompatActivity implements OnMapReadyC
         mMap.setOnMarkerClickListener(this);
         mMap.setOnInfoWindowClickListener(this);
         updateLocation();
-
         infoWindowPerso();
         createMarkers();
-
     }
 
-    //-----------------------------------
     private void checkPermission() {
-        boolean permissionFineLocation = ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
-                != PackageManager.PERMISSION_GRANTED;
-        boolean permissionCoarseLocation = ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION)
-                != PackageManager.PERMISSION_GRANTED;
+        boolean permissionFineLocation = ActivityCompat.checkSelfPermission(this,
+                Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED;
+        boolean permissionCoarseLocation = ActivityCompat.checkSelfPermission(this,
+                Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED;
 
         if (permissionFineLocation && permissionCoarseLocation) {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
@@ -158,25 +135,11 @@ public class GoogleMapsActivity extends AppCompatActivity implements OnMapReadyC
         }
     }
 
-
-
-
     public void goToCurrentLocation(Location location){
         double latitude = location.getLatitude();
         double longitude = location.getLongitude();
         LatLng latLng = new LatLng(latitude, longitude);
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 14.0f));}
-
-
-
-
-
-    //----------------------------------
-
-
-
-
-
 
     public void infoWindowPerso() {
         mMap.setInfoWindowAdapter(new GoogleMap.InfoWindowAdapter() {
@@ -204,8 +167,6 @@ public class GoogleMapsActivity extends AppCompatActivity implements OnMapReadyC
         });
     }
 
-
-
     public void createMarkers() {
         ArrayList<Lugar> listaLugares = recuperado;
         for (int i = 0; i < listaLugares.size(); i++) {
@@ -214,10 +175,7 @@ public class GoogleMapsActivity extends AppCompatActivity implements OnMapReadyC
                     .position(lugar.getLatLng())
                     .title(lugar.getNome())
                     .snippet(lugar.getDescricao()));
-            // separationMarkers(marker,lugar);
             marker.setTag(lugar);
-
-
         }
     }
 
@@ -231,21 +189,10 @@ public class GoogleMapsActivity extends AppCompatActivity implements OnMapReadyC
     @Override
     public void onInfoWindowClick (Marker marker){
         Lugar lugar = (Lugar) marker.getTag();
-        //restaurantBusiness.selectRestaurant(restaurant);
-        Intent intent = new Intent(this, LugarDetalhes.class);
-        intent.putExtra("lugar", (Serializable) lugar);
-
+        Intent intent = new Intent(this, LugarDetalhesAct.class);
+        intent.putExtra(getString(R.string.lugar), (Serializable) lugar);
         startActivity(intent);
         finish();
-
-        }
-
-
-
-
-
-
-    private void separationMarkers(Marker marker, Lugar lugar) {
     }
 
     @Override

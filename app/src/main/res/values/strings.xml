@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">Bee La</string>
     <string name="BeeLa">Bee La</string>
 
@@ -119,14 +119,64 @@
     <string name="sozinho">Sozinho</string>
     <string name="acompanhado">Acompanhado</string>
 
-    <!--Lugares-->
-    <string name="lugares">Lugares</string>
-
     <!--Contatos-->
     <string name="contatos">Contatos</string>
     <string name="confirmar">Confirmar</string>
     <string name="naoConta">Não tem Conta ?</string>
     <string name="crieAqui">Crie Aqui</string>
+
+    <!--Lugares-->
+    <string name="lugares">Lugares</string>
+    <string name="lugarMaps">lugarmaps</string>
     <string name="title_activity_google_maps">Map</string>
+    <string name="lugar">lugar</string>
+    <string name="erro">Erro</string>
+    <string name="drawable">drawable</string>
+
+    <!--Alimenta Banco de Dados-->
+    <string name="ru">RU - UFRPE</string>
+    <string name="selfService">Self-Service</string>
+    <string name="localRU">-8.014121,-34.951131</string>
+    <string name="caminhoRu">ru</string>
+    <string name="musicaVariada">Variadas</string>
+
+    <string name="igrejaCarmo">Igreja Do Carmmo</string>
+    <string name="igrejaDesc">Igreja</string>
+    <string name="igLocal">-8.0168458,-34.849372</string>
+    <string name="igCaminho">igreja_carmo</string>
+    <string name="strNull">Null</string>
+    <string name="igMusica">Padre Marcelo Rossi</string>
+    <string name="igNome">Igreja</string>
+
+    <string name="rockRibs">RockRibs</string>
+    <string name="ribsDesc">Restaurante</string>
+    <string name="ribsLocal">-8.0640944,-34.8714444</string>
+    <string name="ribsCaminho">rock_ribs</string>
+
+    <string name="shopRec">Shopping Recife</string>
+    <string name="shopDesc">Shopping Center</string>
+    <string name="shopLocal">-8.0640944,-34.8714444</string>
+    <string name="shopCaminho">shopping_recife</string>
+    <string name="fastFood">FastFood</string>
+    <string name="pizza">pizza</string>
+
+    <string name="mirabi">Mirabilandia</string>
+    <string name="mirabiDesc">Parque de Diversões</string>
+    <string name="mirabiLocal">-8.0326104,-34.875884</string>
+    <string name="mirabiCaminho">mirabilandia</string>
+
+    <string name="bailePerf">Baile Perfumado</string>
+    <string name="casaShow">Casa de Show</string>
+    <string name="baileLocal">-8.0592289,-34.9145652</string>
+    <string name="baileCaminho">baile_perfumado</string>
+
+    <string name="jaqueira">Parque Jaqueira</string>
+    <string name="parque">Parque</string>
+    <string name="jaqueiraLocal">-8.0374702,-34.9746089</string>
+    <string name="jaqueiraCaminho">jaqueira</string>
+    <string name="caminhada">Caminhada</string>
+    <string name="corrida">Corrida</string>
+    <string name="ciclismo">Ciclismo</string>
+    <string name="erroMapa">ERRO MAPA</string>
 
 </resources>

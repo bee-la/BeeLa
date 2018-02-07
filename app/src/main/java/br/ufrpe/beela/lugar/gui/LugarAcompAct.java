@@ -2,7 +2,6 @@ package br.ufrpe.beela.lugar.gui;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
@@ -60,37 +59,30 @@ public class LugarAcompAct extends AppCompatActivity {
             startActivity(new Intent(mapa.getMapa(destinolatitude, destinolongitude)));
         } catch (Exception ex) {
 
-            Toast.makeText(this, "ERRO MAPA", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.erroMapa, Toast.LENGTH_SHORT).show();
         }
 
         return mapa.getMapa(destinolatitude, destinolongitude);
     }
 
-
     private void setListView() {
         listViewLugares = (ListView) findViewById(R.id.listView2);
 
-        AdapterCustomizado Max = new AdapterCustomizado(getApplicationContext(), getLugares());
-
-        listViewLugares.setAdapter(Max);
-
+        AdapterCustomizado max = new AdapterCustomizado(getApplicationContext(), getLugares());
+        listViewLugares.setAdapter(max);
         listViewLugares.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Lugar LugarSelecionado = (Lugar) parent.getAdapter().getItem(position);
                 irTelaDescricaoLugar(LugarSelecionado);
-
             }
         });
-
-
     }
 
     public void irTelaDescricaoLugar(Lugar lugarzinho) {
         lugarSelecionado = lugarzinho;
-        Intent intent = new Intent(LugarAcompAct.this, LugarDetalhes.class);
-
-        intent.putExtra("lugar", (Serializable) lugarzinho);
+        Intent intent = new Intent(LugarAcompAct.this, LugarDetalhesAct.class);
+        intent.putExtra(getString(R.string.lugar), (Serializable) lugarzinho);
         startActivity(intent);
 
     }

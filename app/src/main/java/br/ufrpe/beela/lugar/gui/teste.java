@@ -15,9 +15,6 @@ import br.ufrpe.beela.usuario.gui.LoginAct;
  * Created by max on 23/01/18.
  */
 
-
-
-
 public class teste extends AppCompatActivity {
 
     Button a ;

@@ -19,8 +19,7 @@ import br.ufrpe.beela.gui.R;
 import br.ufrpe.beela.lugar.dao.LugarDAO;
 import br.ufrpe.beela.lugar.dominio.Lugar;
 import br.ufrpe.beela.lugar.gui.EscolhaProgramaAct;
-import br.ufrpe.beela.lugar.gui.LugarAcompanhadoAct;
-import br.ufrpe.beela.lugar.gui.LugarDetalhes;
+import br.ufrpe.beela.lugar.gui.LugarDetalhesAct;
 import br.ufrpe.beela.perfil.gui.PerfilAct;
 
 public class HomeAct extends AppCompatActivity {
@@ -120,7 +119,7 @@ public class HomeAct extends AppCompatActivity {
         lugarzinho = lista.get(x);
 
 
-        Intent intent = new Intent(HomeAct.this, LugarDetalhes.class);
+        Intent intent = new Intent(HomeAct.this, LugarDetalhesAct.class);
         intent.putExtra("lugar", (Serializable) lugarzinho);
         startActivity(intent);
 

@@ -1,25 +1,15 @@
 package br.ufrpe.beela.lugar.gui;
 
-import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
-
 import java.util.ArrayList;
-
 import br.ufrpe.beela.gui.R;
-import br.ufrpe.beela.lugar.dao.LugarDAO;
 import br.ufrpe.beela.lugar.dominio.Lugar;
 import br.ufrpe.beela.lugar.negocio.LugarService;
-import br.ufrpe.beela.perfil.dao.PerfilDAO;
-import br.ufrpe.beela.perfil.dominio.PerfilComida;
-import br.ufrpe.beela.perfil.dominio.PerfilEsporte;
-import br.ufrpe.beela.perfil.dominio.PerfilLugar;
-import br.ufrpe.beela.perfil.dominio.PerfilMusica;
 import br.ufrpe.beela.perfil.dominio.PerfilUsuario;
-import br.ufrpe.beela.usuario.dao.PessoaDAO;
 import br.ufrpe.beela.usuario.dominio.Pessoa;
 import br.ufrpe.beela.usuario.gui.ContatoAct;
 import br.ufrpe.beela.usuario.gui.LoginAct;

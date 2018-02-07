@@ -19,84 +19,56 @@ import br.ufrpe.beela.lugar.negocio.LugarService;
  * Created by max on 30/01/18.
  */
 
-
-
-public class LugarDetalhes extends AppCompatActivity  implements Serializable, View.OnClickListener {
-
+public class LugarDetalhesAct extends AppCompatActivity  implements Serializable, View.OnClickListener {
 
     private ImageButton localizacaoBt, siteBt;
-    private Button classi;
+    private Button classificacao;
     private TextView nome,descricao;
-
     private ImageView foto;
-
     private double destinolatitude;
     private double destinolongitude;
     private Lugar recuperado;
     private Bundle bundle;
-
     LugarService mapa = new LugarService();
+
     @Override
     protected void onCreate(Bundle saveInstanceState){
 
         super.onCreate(saveInstanceState);
         setContentView(R.layout.activity_lugar_detalhes);
-
-
         bundle = getIntent().getExtras();
-        recuperado = (Lugar) bundle.getSerializable("lugar");
-
+        recuperado = (Lugar) bundle.getSerializable(getString(R.string.lugar));
         setarDetalhes();
-
-
-
-
-
     }
 
     private void setarDetalhes() {
-
-
-        classi = (Button)findViewById(R.id.buttonClass);
-        classi.setOnClickListener(this);
+        classificacao = (Button)findViewById(R.id.buttonClass);
+        classificacao.setOnClickListener(this);
 
         nome = (TextView)findViewById(R.id.nomeDoLugar);
         nome.setText(recuperado.getNome().toString());
+
         descricao = findViewById(R.id.decriçãoLugar);
         descricao.setText(recuperado.getDescricao().toString());
 
         localizacaoBt = (ImageButton) findViewById(R.id.imageButtonLocalizacao);
         localizacaoBt.setOnClickListener(this);
+
         siteBt = (ImageButton) findViewById(R.id.imageButtonSite);
         siteBt.setOnClickListener(this);
 
         foto = (ImageView)findViewById(R.id.imgViewLugarFoto);
-
-        String a =  recuperado.getCaminho();
-
-        int id = getResources().getIdentifier(a,"drawable",getPackageName());
-
+        String recuperar =  recuperado.getCaminho();
+        int id = getResources().getIdentifier(recuperar,getString(R.string.drawable),getPackageName());
         foto.setImageResource(id);
-
-
-
     }
 
     public void onClick(View view){
-
-
-
         switch (view.getId()){
-
-
             case R.id.imageButtonLocalizacao:
-
                 chamarMapa(recuperado);
                 break;
-
             case R.id.imageButtonSite:
-                //Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://google.com"));
-
                 Intent intent = new Intent(Intent.ACTION_SEARCH);
                 intent.putExtra(SearchManager.QUERY , recuperado.getNome().toString());
                 if (intent.resolveActivity(getPackageManager()) != null){
@@ -104,13 +76,11 @@ public class LugarDetalhes extends AppCompatActivity  implements Serializable, V
                 }
                 break;
             case R.id.buttonClass:
-                startActivity(new Intent(LugarDetalhes.this, AvaliacaoAct.class));
+                startActivity(new Intent(LugarDetalhesAct.this, AvaliacaoAct.class));
         }
-
     }
 
     public Intent chamarMapa(Lugar lugar) {
-
         String destino[] = lugar.getLocalicao().split(",");
         destinolatitude = Double.parseDouble(destino[0]);
         destinolongitude = Double.parseDouble(destino[1]);
@@ -119,7 +89,7 @@ public class LugarDetalhes extends AppCompatActivity  implements Serializable, V
             startActivity(new Intent (mapa.getMapa(destinolatitude,destinolongitude)));
         } catch (Exception ex){
 
-            Toast.makeText(this ,"Erro",Toast.LENGTH_SHORT).show();
+            Toast.makeText(this , R.string.erro,Toast.LENGTH_SHORT).show();
         }
         return mapa.getMapa(destinolatitude,destinolongitude);
     }

@@ -77,7 +77,7 @@
             android:label="@string/contatos" />
         <activity android:name="br.ufrpe.beela.perfil.gui.PerguntaLugarAct" />
         <activity
-            android:name="br.ufrpe.beela.lugar.gui.LugarDetalhes"
+            android:name="br.ufrpe.beela.lugar.gui.LugarDetalhesAct"
             android:label="Detalhes" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.

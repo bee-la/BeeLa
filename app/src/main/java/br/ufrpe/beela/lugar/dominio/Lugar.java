@@ -19,10 +19,6 @@ public class Lugar implements Serializable {
     private int id;
     private String nome;
     private String descricao;
-    private ArrayList<PerfilComida> comida;
-    private ArrayList<PerfilMusica> musica;
-    private ArrayList<PerfilEsporte> esporte;
-    private ArrayList<PerfilLugar> lugar;
     private String localicao;
     private String caminho;
 
@@ -36,22 +32,6 @@ public class Lugar implements Serializable {
 
     public String getDescricao() {
         return descricao;
-    }
-
-    public ArrayList<PerfilComida> getComida() {
-        return this.comida;
-    }
-
-    public ArrayList<PerfilMusica> getMusica() {
-        return this.musica;
-    }
-
-    public ArrayList<PerfilEsporte> getEsporte() {
-        return this.esporte;
-    }
-
-    public ArrayList<PerfilLugar> getPergLugar() {
-        return this.lugar;
     }
 
     public String getLocalicao() {
@@ -72,22 +52,6 @@ public class Lugar implements Serializable {
         this.descricao = descricao;
     }
 
-    public void setComida(ArrayList<PerfilComida> comida) {
-        this.comida = comida;
-    }
-
-    public void setMusica(ArrayList<PerfilMusica> musica) {
-        this.musica = musica;
-    }
-
-    public void setEsporte(ArrayList<PerfilEsporte> esporte) {
-        this.esporte = esporte;
-    }
-
-    public void setPergLugar(ArrayList<PerfilLugar> lugar) {
-        this.lugar = lugar;
-    }
-
     public void setLocalicao(String localicao) {
         this.localicao = localicao;
     }
@@ -95,7 +59,6 @@ public class Lugar implements Serializable {
     public void setCaminho(String caminho) {this.caminho = caminho;}
 
     public LatLng getLatLng() {
-
         String destino[] = localicao.split(",");
         Double a  = Double.parseDouble(destino[0]);
         Double b = Double.parseDouble(destino[1]);
