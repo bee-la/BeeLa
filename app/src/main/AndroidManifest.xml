@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--suppress ALL -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="br.ufrpe.beela.GUI">
+    package="br.ufrpe.beela.gui">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
     <application
         android:allowBackup="true"
-        android:icon="@drawable/logo"
-        android:label="@string/BeeLa"
+        android:icon="@drawable/botao"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme">
         <activity
-            android:name="br.ufrpe.beela.GUI.Login"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+            android:name="br.ufrpe.beela.usuario.gui.SplashAct"
+            android:theme="@style/Theme.AppCompat.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -22,38 +22,60 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="br.ufrpe.beela.GUI.CriarConta"
+            android:name="br.ufrpe.beela.lugar.gui.LugarAcompanhadoAct"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity
+            android:name="br.ufrpe.beela.usuario.gui.LoginAct"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity
+            android:name="br.ufrpe.beela.usuario.gui.CriarContaAct"
             android:label="@string/criarConta" />
         <activity
-            android:name="br.ufrpe.beela.GUI.home"
+            android:name="br.ufrpe.beela.usuario.gui.HomeAct"
             android:label="@string/BeeLa" />
         <activity
-            android:name="br.ufrpe.beela.GUI.Configuracoes"
+            android:name="br.ufrpe.beela.usuario.gui.ConfiguracoesAct"
             android:label="@string/Configuracoes" />
         <activity
-            android:name="br.ufrpe.beela.GUI.ApagarConta"
+            android:name="br.ufrpe.beela.usuario.gui.ApagarContaAct"
             android:label="@string/ApagarConta" />
         <activity
-            android:name="br.ufrpe.beela.GUI.AlterarNome"
-            android:label="@string/AlterarNome" />
-        <activity
-            android:name="br.ufrpe.beela.GUI.AlterarSenha"
-            android:label="@string/AlterarSenha" />
-        <activity
-            android:name="br.ufrpe.beela.GUI.EsqueceuSenha"
+            android:name="br.ufrpe.beela.usuario.gui.EsqueceuSenhaAct"
             android:label="@string/esqueciSenha" />
         <activity
-            android:name=".Perfil"
-            android:label="@string/perfil" />
+            android:name="br.ufrpe.beela.perfil.gui.PerfilAct"
+            android:label="@string/perfilAtual" />
         <activity
-            android:name="br.ufrpe.beela.GUI.PerguntasComidas"
+            android:name="br.ufrpe.beela.perfil.gui.PerguntaComidaAct"
             android:label="@string/adicionarPerfil" />
         <activity
-            android:name="br.ufrpe.beela.GUI.PerguntasMusica"
+            android:name="br.ufrpe.beela.perfil.gui.PerguntaMusicaAct"
             android:label="@string/adicionarPerfil" />
         <activity
-            android:name="br.ufrpe.beela.GUI.NomePerfil"
-            android:label="@string/nomePerfil"></activity>
+            android:name="br.ufrpe.beela.perfil.gui.NomePerfilAct"
+            android:label="@string/nomePerfil" />
+        <activity
+            android:name="br.ufrpe.beela.perfil.gui.PerfilPrioridadeAct"
+            android:label="@string/prioridadePerfil" />
+        <activity
+            android:name="br.ufrpe.beela.perfil.gui.PerguntaEsporteAct"
+            android:label="@string/adicionarPerfil" />
+        <activity
+            android:name="br.ufrpe.beela.lugar.gui.LugarAct"
+            android:label="@string/lugares" />
+        <activity
+            android:name="br.ufrpe.beela.lugar.gui.LugarAcompAct"
+            android:label="@string/lugares" />
+        <activity
+            android:name="br.ufrpe.beela.lugar.gui.EscolhaProgramaAct"
+            android:label="E ai, como vai ser?" />
+        <activity
+            android:name="br.ufrpe.beela.usuario.gui.ContatoAct"
+            android:label="@string/contatos" />
+        <activity android:name="br.ufrpe.beela.perfil.gui.PerguntaLugarAct"></activity>
+        <activity
+            android:name="br.ufrpe.beela.lugar.gui.LugarDetalhes"
+            android:label="Detalhes" />
     </application>
 
 </manifest>

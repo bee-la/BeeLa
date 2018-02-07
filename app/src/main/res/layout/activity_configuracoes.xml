@@ -1,116 +1,125 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--suppress ALL -->
+<?xml version="1.0" encoding="utf-8"?><!--suppress ALL -->
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/preto"
-    tools:context="br.ufrpe.beela.GUI.Configuracoes">
+    tools:context="br.ufrpe.beela.usuario.gui.ConfiguracoesAct">
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/preto"
-        tools:context="br.ufrpe.beela.GUI.Configuracoes">
+        tools:context="ufrpe.beela.usuario.gui.GUIconfiguracoes">
+
 
         <ImageView
             android:id="@+id/imageView3"
             android:layout_width="137dp"
             android:layout_height="125dp"
-            android:layout_marginEnd="8dp"
+            android:layout_marginEnd="36dp"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="4dp"
+            android:layout_marginTop="16dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.502"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/btUpload"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/logo" />
 
-
         <Button
-            android:id="@+id/button5"
-            android:layout_width="312dp"
-            android:layout_height="45dp"
+            android:id="@+id/btUpload"
+            android:layout_width="162dp"
+            android:layout_height="70dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="68dp"
+            android:backgroundTint="@color/preto"
+            android:text="Carregar Foto"
+            android:textAlignment="viewStart"
+            android:textAllCaps="false"
+            android:textColor="@color/branco"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="250dp"
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:backgroundTint="@color/preto"
-            android:text="@string/AlterarNome"
-            android:textAlignment="textStart"
-            android:textAllCaps="false"
-            android:textColor="@color/branco"
-            android:textSize="18sp"
+            android:layout_marginTop="196dp"
+            android:orientation="vertical"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.142"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView11" />
+            app:layout_constraintTop_toTopOf="parent">
 
-        <Button
-            android:id="@+id/button6"
-            android:layout_width="312dp"
-            android:layout_height="37dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="16dp"
-            android:background="@color/preto"
-            android:text="@string/AlterarSenha"
-            android:textAlignment="textStart"
-            android:textAllCaps="false"
-            android:textColor="@color/branco"
-            android:textSize="18sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.309"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/button5" />
+            <TextView
+                android:id="@+id/textView17"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:text="Alterar:"
+                android:textAllCaps="false"
+                android:textColor="@color/branco"
+                android:textSize="20sp"
+                android:textStyle="bold" />
 
-        <Button
-            android:id="@+id/button7"
-            android:layout_width="308dp"
-            android:layout_height="38dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="16dp"
-            android:background="@color/preto"
-            android:text="@string/ApagarConta"
-            android:textAlignment="viewStart"
-            android:textAllCaps="false"
-            android:textColor="@color/branco"
-            android:textSize="18sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.309"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/button6" />
+            <TextView
+                android:id="@+id/textView15"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:text="       - Nome"
+                android:textAllCaps="false"
+                android:textColor="@color/branco"
+                android:textSize="20sp" />
 
-        <Button
-            android:id="@+id/button8"
-            android:layout_width="308dp"
-            android:layout_height="39dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="16dp"
-            android:background="@color/preto"
-            android:text="@string/Sair"
-            android:textAlignment="viewStart"
-            android:textAllCaps="false"
-            android:textColor="@color/branco"
-            android:textSize="18sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.309"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/button7" />
+            <TextView
+                android:id="@+id/textView16"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:text="       - Senha"
+                android:textAllCaps="false"
+                android:textColor="@color/branco"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/textView12"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:text="@string/Sair"
+                android:textAllCaps="false"
+                android:textColor="@color/branco"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textView18"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:text="@string/ApagarConta"
+                android:textAllCaps="false"
+                android:textColor="@color/branco"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+
+        </LinearLayout>
 
         <TextView
-            android:id="@+id/textView11"
+            android:id="@+id/textView3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:text=""
+            android:layout_marginTop="16dp"
             android:textColor="@color/branco"
-            android:textAllCaps="false"
-            android:textSize="20sp"
+            android:textSize="30sp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.14"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.019" />
+
 
     </android.support.constraint.ConstraintLayout>
 </ScrollView>
