@@ -38,6 +38,7 @@ public class AlimentarBancoDeDados {
         Lugar lugar = new Lugar();
         lugar.setNome(context.getString(R.string.ru));
         lugar.setDescriacao(context.getString(R.string.selfService));
+        lugar.setTexto(context.getString(R.string.loremIpsum));
         lugar.setLocalicao(context.getString(R.string.localRU));
         lugar.setCaminho(context.getString(R.string.caminhoRu));
 
@@ -65,6 +66,7 @@ public class AlimentarBancoDeDados {
         Lugar lugar = new Lugar();
         lugar.setNome(context.getString(R.string.igrejaCarmo));
         lugar.setDescriacao(context.getString(R.string.igrejaDesc));
+        lugar.setTexto(context.getString(R.string.loremIpsum));
         lugar.setLocalicao(context.getString(R.string.igLocal));
         lugar.setCaminho(context.getString(R.string.igCaminho));
 
@@ -86,6 +88,7 @@ public class AlimentarBancoDeDados {
         Lugar lugar = new Lugar();
         lugar.setNome(context.getString(R.string.rockRibs));
         lugar.setDescriacao(context.getString(R.string.ribsDesc));
+        lugar.setTexto(context.getString(R.string.loremIpsum));
         lugar.setLocalicao(context.getString(R.string.ribsLocal));
         lugar.setCaminho(context.getString(R.string.ribsCaminho));
 
@@ -108,6 +111,7 @@ public class AlimentarBancoDeDados {
         Lugar lugar = new Lugar();
         lugar.setNome(context.getString(R.string.shopRec));
         lugar.setDescriacao(context.getString(R.string.shopDesc));
+        lugar.setTexto(context.getString(R.string.loremIpsum));
         lugar.setLocalicao(context.getString(R.string.shopLocal));
         lugar.setCaminho(context.getString(R.string.shopCaminho));
 
@@ -132,6 +136,7 @@ public class AlimentarBancoDeDados {
         Lugar lugar = new Lugar();
         lugar.setNome(context.getString(R.string.mirabi));
         lugar.setDescriacao(context.getString(R.string.mirabiDesc));
+        lugar.setTexto(context.getString(R.string.loremIpsum));
         lugar.setLocalicao(context.getString(R.string.mirabiLocal));
         lugar.setCaminho(context.getString(R.string.mirabiCaminho));
 
@@ -156,6 +161,7 @@ public class AlimentarBancoDeDados {
         Lugar lugar = new Lugar();
         lugar.setNome(context.getString(R.string.bailePerf));
         lugar.setDescriacao(context.getString(R.string.casaShow));
+        lugar.setTexto(context.getString(R.string.loremIpsum));
         lugar.setLocalicao(context.getString(R.string.baileLocal));
         lugar.setCaminho(context.getString(R.string.baileCaminho));
         //
@@ -374,6 +380,7 @@ public class AlimentarBancoDeDados {
         Lugar lugar = new Lugar();
         lugar.setNome(context.getString(R.string.jaqueira));
         lugar.setDescriacao(context.getString(R.string.parque));
+        lugar.setTexto(context.getString(R.string.loremIpsum));
         lugar.setLocalicao(context.getString(R.string.jaqueiraLocal));
         lugar.setCaminho(context.getString(R.string.jaqueiraCaminho));
 

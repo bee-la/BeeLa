@@ -25,7 +25,7 @@ public class BD extends SQLiteOpenHelper {
         bd.execSQL("create table pessoa (" +
                 "id integer primary key autoincrement, nome text not null, celular text not null,idUsuario interger not null);");
         bd.execSQL("create table lugar (" +
-                "id integer primary key autoincrement, nome text not null , descricao text not null,localizacao text not null,caminho text);");
+                "id integer primary key autoincrement, nome text not null , descricao text not null,localizacao text not null,caminho text, texto text not null);");
 
         bd.execSQL("create table perfilMusica(" +
                 "id integer primary key  autoincrement, nome text not null,idPessoa interger ,nomePerfil text ,idLugar interger); ");

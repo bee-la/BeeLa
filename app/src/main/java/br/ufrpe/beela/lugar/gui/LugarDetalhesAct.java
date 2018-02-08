@@ -49,13 +49,15 @@ public class LugarDetalhesAct extends AppCompatActivity  implements Serializable
         nome.setText(recuperado.getNome().toString());
 
         descricao = findViewById(R.id.decriçãoLugar);
-        descricao.setText(recuperado.getDescricao().toString());
+        descricao.setText("Lorem ipsum dolor sit amet, consectetur adipiscing elit. " +
+                "Quisque maximus feugiat porttitor. Sed scelerisque erat eu diam sollicitudin " +
+                "tristique id quis tellus. Aliquam eget suscipit eros.");
 
         localizacaoBt = (ImageButton) findViewById(R.id.imageButtonLocalizacao);
         localizacaoBt.setOnClickListener(this);
 
-        siteBt = (ImageButton) findViewById(R.id.imageButtonSite);
-        siteBt.setOnClickListener(this);
+//        siteBt = (ImageButton) findViewById(R.id.imageButtonSite);
+//        siteBt.setOnClickListener(this);
 
         foto = (ImageView)findViewById(R.id.imgViewLugarFoto);
         String recuperar =  recuperado.getCaminho();
@@ -68,13 +70,13 @@ public class LugarDetalhesAct extends AppCompatActivity  implements Serializable
             case R.id.imageButtonLocalizacao:
                 chamarMapa(recuperado);
                 break;
-            case R.id.imageButtonSite:
-                Intent intent = new Intent(Intent.ACTION_SEARCH);
-                intent.putExtra(SearchManager.QUERY , recuperado.getNome().toString());
-                if (intent.resolveActivity(getPackageManager()) != null){
-                    startActivity(intent);
-                }
-                break;
+//            case R.id.imageButtonSite:
+//                Intent intent = new Intent(Intent.ACTION_SEARCH);
+//                intent.putExtra(SearchManager.QUERY , recuperado.getNome().toString());
+//                if (intent.resolveActivity(getPackageManager()) != null){
+//                    startActivity(intent);
+//                }
+//                break;
             case R.id.buttonClass:
                 startActivity(new Intent(LugarDetalhesAct.this, AvaliacaoAct.class));
         }

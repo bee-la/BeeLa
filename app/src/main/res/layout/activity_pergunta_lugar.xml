@@ -127,7 +127,7 @@
             android:layout_marginBottom="8dp"
             android:layout_marginTop="24dp"
             android:background="@color/verdeBotao"
-            android:text="@string/confirmar"
+            android:text="@string/avancar"
             android:textAllCaps="false"
             android:textColor="@color/preto"
             android:textSize="20sp"

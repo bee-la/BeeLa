@@ -88,7 +88,7 @@
     <string name="sertanejo">Sertanejo</string>
     <string name="rock">Rock</string>
     <string name="nomePerfil">Nome Perfil</string>
-    <string name="nomeDoPerfil">Nome do perfilAtual</string>
+    <string name="nomeDoPerfil">Nome do Perfil</string>
     <string name="nomear">Nomear</string>
     <string name="perfilprioridade">perfilprioridade</string>
     <string name="prioridadePerfil">Perfil Prioridade</string>
@@ -132,6 +132,7 @@
     <string name="lugar">lugar</string>
     <string name="erro">Erro</string>
     <string name="drawable">drawable</string>
+    <string name="loremIpsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque maximus feugiat porttitor. Sed scelerisque erat eu diam sollicitudin tristique id quis tellus. Aliquam eget suscipit eros. Integer auctor sagittis lectus, ut commodo erat blandit id. Nulla sit amet neque a tortor fringilla volutpat. Mauris sed arcu est. Mauris ultricies augue non tristique molestie.</string>
 
     <!--Alimenta Banco de Dados-->
     <string name="ru">RU - UFRPE</string>
@@ -178,6 +179,7 @@
     <string name="corrida">Corrida</string>
     <string name="ciclismo">Ciclismo</string>
     <string name="erroMapa">ERRO MAPA</string>
+<<<<<<< Updated upstream
     <string name="beboRockRibs">Bebo Rock Bar</string>
     <string name="containerRockBar">ContainerRockBar</string>
     <string name="camaleaoBar">Camaleão Bar</string>
@@ -191,5 +193,9 @@
     <string name="praiaX">praiax</string>
     <string name="futebol">Futebol</string>
     <string name="volei">Volei</string>
+=======
+    <string name="visualizarTodos">Visualizar todos</string>
+    <string name="avancar">Avançar</string>
+>>>>>>> Stashed changes
 
 </resources>

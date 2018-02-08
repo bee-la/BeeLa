@@ -21,6 +21,7 @@ public class Lugar implements Serializable {
     private String descricao;
     private String localicao;
     private String caminho;
+    private String texto;
 
     public int getId() {
         return id;
@@ -40,6 +41,10 @@ public class Lugar implements Serializable {
 
     public String getCaminho() {return caminho;}
 
+    public String getTexto(){
+        return this.texto;
+    }
+
     public void setId(int id) {
         this.id = id;
     }
@@ -57,6 +62,10 @@ public class Lugar implements Serializable {
     }
 
     public void setCaminho(String caminho) {this.caminho = caminho;}
+
+    public void setTexto(String texto){
+        this.texto=texto;
+    }
 
     public LatLng getLatLng() {
         String destino[] = localicao.split(",");

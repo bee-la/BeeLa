@@ -43,7 +43,7 @@ public class AvaliacaoAct extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                     Toast.makeText(AvaliacaoAct.this,
-                            String.valueOf(ratingBar.getRating()),
+                            String.valueOf("Voto computado: "+ratingBar.getRating()),
                             Toast.LENGTH_SHORT).show();
                 }
             });

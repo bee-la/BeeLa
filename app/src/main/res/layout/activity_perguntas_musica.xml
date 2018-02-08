@@ -99,7 +99,7 @@
             android:layout_height="50dp"
             android:layout_marginTop="40dp"
             android:background="@color/verdeBotao"
-            android:text="Confirmar"
+            android:text="@string/avancar"
             android:textAllCaps="false"
             android:textColor="@color/preto"
             android:textSize="20sp"

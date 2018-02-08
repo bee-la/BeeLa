@@ -99,7 +99,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="36dp"
             android:backgroundTint="@color/verdeBotao"
-            android:text="Confirmar"
+            android:text="@string/avancar"
             android:textAllCaps="false"
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
