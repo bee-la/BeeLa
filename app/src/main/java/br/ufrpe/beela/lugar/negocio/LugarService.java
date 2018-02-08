@@ -139,7 +139,6 @@ public class LugarService {
             listLugar.add(lugar);
         }
         return listLugar;
-
     }
 }
 

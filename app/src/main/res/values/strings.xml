@@ -178,5 +178,18 @@
     <string name="corrida">Corrida</string>
     <string name="ciclismo">Ciclismo</string>
     <string name="erroMapa">ERRO MAPA</string>
+    <string name="beboRockRibs">Bebo Rock Bar</string>
+    <string name="containerRockBar">ContainerRockBar</string>
+    <string name="camaleaoBar">Camaleão Bar</string>
+    <string name="bar">Bar</string>
+    <string name="downtownPub">Downtown Pub</string>
+    <string name="saladeReboco">Salade Reboco</string>
+    <string name="boyzinhoBar">Boyzinho Bar</string>
+    <string name="casadeSamba">Casa de Samba</string>
+    <string name="emporioSertanejo">Emporio Sertanejo</string>
+    <string name="praiaBoaViagem">Praia Boa Viagem</string>
+    <string name="praiaX">praiax</string>
+    <string name="futebol">Futebol</string>
+    <string name="volei">Volei</string>
 
 </resources>

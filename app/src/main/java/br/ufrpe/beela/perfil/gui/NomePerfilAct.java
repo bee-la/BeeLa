@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import br.ufrpe.beela.perfil.dominio.PerfilUsuario;
@@ -28,6 +29,9 @@ public class NomePerfilAct extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_nome_perfil);
+
+        Bundle bundle = getIntent().getExtras();
+        perfilUsuario = (PerfilUsuario) bundle.getSerializable("perfilUsuario");
 
         campoNomePerfil = (EditText) findViewById(R.id.editText12);
         alterarFonte();
@@ -56,7 +60,8 @@ public class NomePerfilAct extends AppCompatActivity {
             if (!nomePerfil.isEmpty()){
                 perfilUsuario.setNome(nomePerfil);
                 salvarBD();
-                finalizar();
+                finish();
+                //finalizar();
             } else {
                 erro = Toast.makeText(getApplicationContext(), R.string.campoVazio, Toast.LENGTH_SHORT);
                 erro.show();
@@ -82,10 +87,18 @@ public class NomePerfilAct extends AppCompatActivity {
 
         if (perfilService.verificarPerfilAtualExiste(LoginAct.getPessoa().getId(),this)) {
             perfilService.adcPerfil(perfilUsuario, this);
+            perfilService.adcComida(perfilUsuario,this);
+            perfilService.adcMusica(perfilUsuario,this);
+            perfilService.adcEsporte(perfilUsuario,this);
+            perfilService.adcLugar(perfilUsuario,this);
             perfilService.adcPerfilFavorito(LoginAct.getPessoa().getId(),nomePerfil,this);
         }
         else{
             perfilService.adcPerfil(perfilUsuario, this);
+            perfilService.adcComida(perfilUsuario,this);
+            perfilService.adcMusica(perfilUsuario,this);
+            perfilService.adcEsporte(perfilUsuario,this);
+            perfilService.adcLugar(perfilUsuario,this);
         }
     }
 

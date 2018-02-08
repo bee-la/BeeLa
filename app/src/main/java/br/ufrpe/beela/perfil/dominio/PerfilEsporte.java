@@ -1,10 +1,12 @@
 package br.ufrpe.beela.perfil.dominio;
 
+import java.io.Serializable;
+
 /**
  * Created by Anderson on 29/12/2017.
  */
 
-public class PerfilEsporte {
+public class PerfilEsporte implements Serializable {
     private int id;
     private String nome;
     private String nome_perfil;

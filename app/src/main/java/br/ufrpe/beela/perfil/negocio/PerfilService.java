@@ -35,11 +35,11 @@ public class PerfilService {
         }
     }
 
-    public void adcMusica(PerfilUsuario perfilUsuario,String nome ,Context context) {
+    public void adcMusica(PerfilUsuario perfilUsuario,Context context) {
         for (PerfilMusica musica : perfilUsuario.getMusica()) {
             PerfilDAO bd = new PerfilDAO();
             bd.getEscrever(context);
-            musica.setNome_perfil(nome);
+            musica.setNome_perfil(perfilUsuario.getNome());
             bd.inserirPerfilMusica(musica,pessoa.getId());
         }
     }

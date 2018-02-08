@@ -1,12 +1,13 @@
 package br.ufrpe.beela.perfil.dominio;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  * Created by vidal on 13/12/2017.
  */
 
-public class PerfilUsuario {
+public class PerfilUsuario implements Serializable {
     private int id;
     private String nome;
     private ArrayList<PerfilComida> comida;

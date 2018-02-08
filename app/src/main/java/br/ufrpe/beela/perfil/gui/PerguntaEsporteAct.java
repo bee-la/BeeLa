@@ -10,6 +10,7 @@ import android.widget.CheckBox;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import br.ufrpe.beela.gui.R;
@@ -19,12 +20,12 @@ import br.ufrpe.beela.perfil.dominio.PerfilUsuario;
 import br.ufrpe.beela.perfil.negocio.PerfilService;
 import br.ufrpe.beela.usuario.gui.LoginAct;
 
-public class PerguntaEsporteAct extends AppCompatActivity {
+public class PerguntaEsporteAct extends AppCompatActivity implements Serializable{
 
     private PerfilUsuario perfilUsuario = new PerfilUsuario();
     private PerfilService perfilService = new PerfilService();
     private ArrayList<CheckBox> checkBoxesEsportes = new ArrayList<>();
-    private static ArrayList<PerfilEsporte> listaEsporte = new ArrayList<PerfilEsporte>();
+    private ArrayList<PerfilEsporte> listaEsporte = new ArrayList<PerfilEsporte>();
 
     private TextView pergunta;
     private Button botaoConfirmar;
@@ -33,6 +34,8 @@ public class PerguntaEsporteAct extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_perguntas_esporte);
+        Bundle bundle = getIntent().getExtras();
+        perfilUsuario = (PerfilUsuario) bundle.getSerializable("perfilUsuario");
 
         alterarFonte();
         adcCheckBoxEsp();
@@ -84,33 +87,36 @@ public class PerguntaEsporteAct extends AppCompatActivity {
     }
 
     public void irTelaPerguntaLugarAct() {
-        startActivityForResult(new Intent(PerguntaEsporteAct.this, PerguntaLugarAct.class), 1);
-        //finish();
+        Intent intent = new Intent(PerguntaEsporteAct.this, PerguntaLugarAct.class);
+        intent.putExtra("perfilUsuario", (Serializable) perfilUsuario);
+        startActivity(intent);
+        //startActivityForResult(new Intent(PerguntaEsporteAct.this, PerguntaLugarAct.class), 1);
+        finish();
 
     }
 
-    public void salvarEsporte() {
-        if (perfilUsuario.getNome() != null) {
-            perfilService.adcEsporte(perfilUsuario, this);
-        }
-    }
-
-    protected void onActivityResult(int codigoDaTela, int quemInviou, Intent intent) {
-        if (codigoDaTela == 1) {
-            try {
-                Bundle valor = intent.getExtras();
-                if (valor != null) {
-                    perfilUsuario.setNome(valor.getString("nomePerfil"));
-                    salvarEsporte();
-                    setResult(1, intent);
-                    finish();
-                }
-            } catch (Exception e) {
-                finish();
-                e.printStackTrace();
-            }
-            //intent.putExtra("nomePerfil",perfilUsuario.getNome());
-            //    startActivity(new Intent(this, PerfilAct.class));
-        }
-    }
+//    public void salvarEsporte() {
+//        if (perfilUsuario.getNome() != null) {
+//            perfilService.adcEsporte(perfilUsuario, this);
+//        }
+//    }
+//
+//    protected void onActivityResult(int codigoDaTela, int quemInviou, Intent intent) {
+//        if (codigoDaTela == 1) {
+//            try {
+//                Bundle valor = intent.getExtras();
+//                if (valor != null) {
+//                    perfilUsuario.setNome(valor.getString("nomePerfil"));
+//                    salvarEsporte();
+//                    setResult(1, intent);
+//                    finish();
+//                }
+//            } catch (Exception e) {
+//                finish();
+//                e.printStackTrace();
+//            }
+//            //intent.putExtra("nomePerfil",perfilUsuario.getNome());
+//            //    startActivity(new Intent(this, PerfilAct.class));
+//        }
+//    }
 }

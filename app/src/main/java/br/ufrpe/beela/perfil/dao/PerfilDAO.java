@@ -104,25 +104,25 @@ public class PerfilDAO {
     }
 
     public void deletePerfilMusica(int id, String nomePerfil) {
-        String where = "idPessoa = " + String.valueOf(id) + " AND nomePerfil = " + nomePerfil;
+        String where = "idPessoa = '" + String.valueOf(id) + "' AND nomePerfil = '" + nomePerfil+"'";
         bd.delete("perfilMusica", where, null);
         bd.close();
     }
 
     public void deletePerfilComida(int id, String nomePerfil) {
-        String where = "idPessoa = " + String.valueOf(id) + " AND nomePerfil = " + nomePerfil;
+        String where = "idPessoa = '" + String.valueOf(id) + "' AND nomePerfil = '" + nomePerfil+"'";
         bd.delete("perfilComida", where, null);
         bd.close();
     }
 
     public void deletePerfilLugar(int id, String nomePerfil) {
-        String where = "idPessoa = " + String.valueOf(id) + " AND nomePerfil = " + nomePerfil;
+        String where = "idPessoa = '" + String.valueOf(id) + "' AND nomePerfil = '" + nomePerfil+"'";
         bd.delete("perfilLugar", where, null);
         bd.close();
     }
 
     public void deletePerfilEsporte(int id, String nomePerfil) {
-        String where = "idPessoa = " + String.valueOf(id) + " AND nomePerfil = " + nomePerfil;
+        String where = "idPessoa = '" + String.valueOf(id) + "' AND nomePerfil = '" + nomePerfil+"'";
         bd.delete("perfilEsporte", where, null);
         bd.close();
     }

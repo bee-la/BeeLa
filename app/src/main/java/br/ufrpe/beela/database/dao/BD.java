@@ -41,7 +41,7 @@ public class BD extends SQLiteOpenHelper {
                 "id integer primary key autoincrement, idPessoa interger not null, nomePerfil text not null);");
 
         bd.execSQL("create table avalicao(" +
-                "id integer primary key autoincrement, idPessoa interger not null,idLugar interger not null, nota interger);");
+                "id integer primary key autoincrement, idPessoa interger not null,idLugar interger not null, nota float);");
         bd.execSQL("create table lembrarDeMim(" +
                 "id integer primary key autoincrement,email text,senha text);");
     }
