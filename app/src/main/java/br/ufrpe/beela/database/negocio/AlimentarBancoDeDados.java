@@ -21,16 +21,27 @@ public class AlimentarBancoDeDados {
         LugarDAO bd = new LugarDAO();
         bd.getLer(context);
         if (bd.inserirLugares()) {
-            criarRu(context);    criarBailePerfumado(context);
-            criarMirabilandia(context);     criarShoppingRecife(context);criarRockRibs(context);
-
-            criaParqueJaqueira(context);    criaPraiaBoaViagem(context); criaPraiadoPina(context);
-            criarIgrejaDoCarmmo(context);   criarBeboRockRibs(context);  criarBurburinhoBar(context);
+            criarRu(context);
+            criarBailePerfumado(context);
+            criarMirabilandia(context);
+            criarShoppingRecife(context);
+            criarRockRibs(context);
+            criaParqueJaqueira(context);
+            criaPraiaBoaViagem(context);
+            criaPraiadoPina(context);
+            criarIgrejaDoCarmmo(context);
+            criarBeboRockRibs(context);
+            criarBurburinhoBar(context);
             criarContainerRockBar(context);
-
-            criarCamaleaoBar(context);      criarDowntownPub(context);   criarSaladeReboco(context);
-            criarBoyzinhoBar(context);      criarCasadeSamba(context);   criarEmporioSertanejo(context);
-            criarPizzaHut(context);         criarSubway(context);        criarMcDonalds(context);
+            criarCamaleaoBar(context);
+            criarDowntownPub(context);
+            criarSaladeReboco(context);
+            criarBoyzinhoBar(context);
+            criarCasadeSamba(context);
+            criarEmporioSertanejo(context);
+            criarPizzaHut(context);
+            criarSubway(context);
+            criarMcDonalds(context);
         }
     }
 
