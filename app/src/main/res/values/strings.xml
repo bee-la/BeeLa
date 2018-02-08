@@ -179,7 +179,6 @@
     <string name="corrida">Corrida</string>
     <string name="ciclismo">Ciclismo</string>
     <string name="erroMapa">ERRO MAPA</string>
-<<<<<<< Updated upstream
     <string name="beboRockRibs">Bebo Rock Bar</string>
     <string name="containerRockBar">ContainerRockBar</string>
     <string name="camaleaoBar">Camaleão Bar</string>
@@ -193,9 +192,7 @@
     <string name="praiaX">praiax</string>
     <string name="futebol">Futebol</string>
     <string name="volei">Volei</string>
-=======
     <string name="visualizarTodos">Visualizar todos</string>
     <string name="avancar">Avançar</string>
->>>>>>> Stashed changes
 
 </resources>
