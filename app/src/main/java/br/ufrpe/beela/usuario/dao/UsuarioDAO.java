@@ -135,4 +135,30 @@ public class UsuarioDAO {
         bd.close();
         return true;
     }
+
+
+    public void setNota(int idPessoa,int idLugar,int nota){
+        ContentValues valores = new ContentValues();
+        valores.put("idPessoa", idPessoa);
+        valores.put("idLugar", idLugar);
+        valores.put("nota", nota);
+        bd.insert("avaliacao", null, valores);
+        bd.close();
+    }
+
+    public void deleteNota(int idPessoa) {
+        String where = "idPessoa = '" + idPessoa + "'";
+        bd.delete("avaliacao", where, null);
+        bd.close();
+    }
+
+    public void updateNota(int idPessoa,int idLugar,int nota) {
+        String where = "idPessoa =  '" + String.valueOf(idPessoa) + "' AND idLugar = '"+String.valueOf(idLugar)+"'";
+        ContentValues valores = new ContentValues();
+        valores.put("idPessoa", idPessoa);
+        valores.put("idLugar", idLugar);
+        valores.put("nota", nota);
+        bd.update("avaliacao", valores, where, null);
+        bd.close();
+    }
 }

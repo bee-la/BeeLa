@@ -39,6 +39,7 @@ public class LugarDAO {
         valores.put("descricao", lugar.getDescricao());
         valores.put("localizacao", lugar.getLocalicao());
         valores.put("caminho",lugar.getCaminho());
+        valores.put("texto",lugar.getTexto());
         bd.insert("lugar", null, valores);
         bd.close();
     }
@@ -70,6 +71,7 @@ public class LugarDAO {
             lugar.setDescriacao(cursor.getString(2));
             lugar.setLocalicao(cursor.getString(3));
             lugar.setCaminho(cursor.getString(4));
+            lugar.setTexto(cursor.getString(5));
         }
         bd.close();
         return lugar;
@@ -100,6 +102,7 @@ public class LugarDAO {
                 lugar.setDescriacao(cursor.getString(2));
                 lugar.setLocalicao(cursor.getString(3));
                 lugar.setCaminho(cursor.getString(4));
+                lugar.setTexto(cursor.getString(5));
                 lugarArrayList.add(lugar);
             } while (cursor.moveToNext());
 

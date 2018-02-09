@@ -200,6 +200,7 @@ public class AlimentarBancoDeDados {
     public void criarBeboRockRibs(Context context) {
         Lugar lugar = new Lugar();
         lugar.setNome(context.getString(R.string.beboRockRibs));
+        lugar.setTexto(context.getString(R.string.loremIpsum));
         lugar.setDescriacao(context.getString(R.string.bar));
         lugar.setLocalicao("-8.0391429,-34.8943923");
         lugar.setCaminho("barx");
@@ -221,6 +222,7 @@ public class AlimentarBancoDeDados {
     public void criarBurburinhoBar(Context context) {
         Lugar lugar = new Lugar();
         lugar.setNome("Burburinho Bar");
+        lugar.setTexto(context.getString(R.string.loremIpsum));
         lugar.setDescriacao("Bar e Resturante");
         lugar.setLocalicao("-8.064217,-34.8753367");
         lugar.setCaminho("barx");
@@ -248,6 +250,7 @@ public class AlimentarBancoDeDados {
     public void criarContainerRockBar(Context context) {
         Lugar lugar = new Lugar();
         lugar.setNome(context.getString(R.string.containerRockBar));
+        lugar.setTexto(context.getString(R.string.loremIpsum));
         lugar.setDescriacao(context.getString(R.string.bar));
         lugar.setLocalicao("-8.032956,-34.9175807");
         lugar.setCaminho("barx");
@@ -269,6 +272,7 @@ public class AlimentarBancoDeDados {
     public void criarCamaleaoBar(Context context) {
         Lugar lugar = new Lugar();
         lugar.setNome(context.getString(R.string.camaleaoBar));
+        lugar.setTexto(context.getString(R.string.loremIpsum));
         lugar.setDescriacao(context.getString(R.string.bar));
         lugar.setLocalicao("-8.051227,-34.8999917");
         lugar.setCaminho("barx");
@@ -289,6 +293,7 @@ public class AlimentarBancoDeDados {
     public void criarDowntownPub(Context context) {
         Lugar lugar = new Lugar();
         lugar.setNome(context.getString(R.string.downtownPub));
+        lugar.setTexto(context.getString(R.string.loremIpsum));
         lugar.setDescriacao(context.getString(R.string.bar));
         lugar.setLocalicao("-8.0640389,-34.8746559");
         lugar.setCaminho("barx");
@@ -309,6 +314,7 @@ public class AlimentarBancoDeDados {
     public void criarSaladeReboco(Context context) {
         Lugar lugar = new Lugar();
         lugar.setNome(context.getString(R.string.saladeReboco));
+        lugar.setTexto(context.getString(R.string.loremIpsum));
         lugar.setDescriacao(context.getString(R.string.bar));
         lugar.setLocalicao("-8.0537027,-34.9222478");
         lugar.setCaminho("barx");
@@ -329,6 +335,7 @@ public class AlimentarBancoDeDados {
     public void criarBoyzinhoBar(Context context) {
         Lugar lugar = new Lugar();
         lugar.setNome(context.getString(R.string.boyzinhoBar));
+        lugar.setTexto(context.getString(R.string.loremIpsum));
         lugar.setDescriacao(context.getString(R.string.bar));
         lugar.setLocalicao("-8.06026,-34.9303302");
         lugar.setCaminho("barx");
@@ -349,6 +356,7 @@ public class AlimentarBancoDeDados {
     public void criarCasadeSamba(Context context) {
         Lugar lugar = new Lugar();
         lugar.setNome(context.getString(R.string.casadeSamba));
+        lugar.setTexto(context.getString(R.string.loremIpsum));
         lugar.setDescriacao(context.getString(R.string.bar));
         lugar.setLocalicao("-8.0247618,-34.8958559");
         lugar.setCaminho("barx");
@@ -369,6 +377,7 @@ public class AlimentarBancoDeDados {
     public void criarEmporioSertanejo(Context context) {
         Lugar lugar = new Lugar();
         lugar.setNome(context.getString(R.string.emporioSertanejo));
+        lugar.setTexto(context.getString(R.string.loremIpsum));
         lugar.setDescriacao(context.getString(R.string.bar));
         lugar.setLocalicao("-8.042149,-34.8935926");
         lugar.setCaminho("barx");
@@ -415,6 +424,7 @@ public class AlimentarBancoDeDados {
     public void criaPraiaBoaViagem(Context context) {
         Lugar lugar = new Lugar();
         lugar.setNome(context.getString(R.string.praiaBoaViagem));
+        lugar.setTexto(context.getString(R.string.loremIpsum));
         lugar.setDescriacao("Praia");
         lugar.setLocalicao("-8.1309239,-34.9155127");
         lugar.setCaminho(context.getString(R.string.praiaX));
@@ -438,6 +448,7 @@ public class AlimentarBancoDeDados {
     public void criaPraiadoPina(Context context) {
         Lugar lugar = new Lugar();
         lugar.setNome(context.getString(R.string.praiaBoaViagem));
+        lugar.setTexto(context.getString(R.string.loremIpsum));
         lugar.setDescriacao("Praia");
         lugar.setLocalicao("-8.1049151,-34.9214614");
         lugar.setCaminho(context.getString(R.string.praiaX));
@@ -461,6 +472,7 @@ public class AlimentarBancoDeDados {
     public void criarMcDonalds(Context context) {
         Lugar lugar = new Lugar();
         lugar.setNome("Mc Donalds");
+        lugar.setTexto(context.getString(R.string.loremIpsum));
         lugar.setDescriacao("Fast Food");
         lugar.setLocalicao("-8.0507299,-34.9305708");
         lugar.setCaminho("mcdonald");
@@ -481,6 +493,7 @@ public class AlimentarBancoDeDados {
     public void criarSubway(Context context) {
         Lugar lugar = new Lugar();
         lugar.setNome("Subway");
+        lugar.setTexto(context.getString(R.string.loremIpsum));
         lugar.setDescriacao("Fast Food");
         lugar.setLocalicao("-8.0206476,-35.0181816");
         lugar.setCaminho("subway");
@@ -501,6 +514,7 @@ public class AlimentarBancoDeDados {
     public void criarPizzaHut(Context context) {
         Lugar lugar = new Lugar();
         lugar.setNome("PizzaHut");
+        lugar.setTexto(context.getString(R.string.loremIpsum));
         lugar.setDescriacao("Pizzaria");
         lugar.setLocalicao("-8.0206225,-35.1232507");
         lugar.setCaminho("pizzahut");

@@ -40,7 +40,7 @@ public class BD extends SQLiteOpenHelper {
         bd.execSQL("create table perfilFavorito(" +
                 "id integer primary key autoincrement, idPessoa interger not null, nomePerfil text not null);");
 
-        bd.execSQL("create table avalicao(" +
+        bd.execSQL("create table avaliacao(" +
                 "id integer primary key autoincrement, idPessoa interger not null,idLugar interger not null, nota float);");
         bd.execSQL("create table lembrarDeMim(" +
                 "id integer primary key autoincrement,email text,senha text);");
@@ -59,7 +59,7 @@ public class BD extends SQLiteOpenHelper {
         bd.execSQL("drop table perfilUsuario;");
         bd.execSQL("drop table perfilFavorito;");
 
-        bd.execSQL("drop table avalicao;");
+        bd.execSQL("drop table avaliacao;");
         bd.execSQL("drop table lembrarDeMim;");
         onCreate(bd);
     }
