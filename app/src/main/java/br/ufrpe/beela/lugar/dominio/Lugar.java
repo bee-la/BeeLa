@@ -22,6 +22,7 @@ public class Lugar implements Serializable {
     private String localicao;
     private String caminho;
     private String texto;
+    private Double notaGeral = 0.0;
 
     public int getId() {
         return id;
@@ -44,6 +45,8 @@ public class Lugar implements Serializable {
     public String getTexto(){
         return this.texto;
     }
+
+    public Double getNotaGeral() {return notaGeral;}
 
     public void setId(int id) {
         this.id = id;
@@ -74,7 +77,8 @@ public class Lugar implements Serializable {
         LatLng c = new LatLng(a,b);
 
         return c;
-
-
     }
+
+    public void setNotaGeral(Double notaGeral) {this.notaGeral = notaGeral;}
+
 }

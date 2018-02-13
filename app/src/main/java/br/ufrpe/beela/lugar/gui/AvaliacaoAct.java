@@ -3,6 +3,10 @@ package br.ufrpe.beela.lugar.gui;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import br.ufrpe.beela.gui.R;
+import br.ufrpe.beela.usuario.dao.UsuarioDAO;
+import br.ufrpe.beela.usuario.dominio.Pessoa;
+import br.ufrpe.beela.usuario.gui.LoginAct;
+
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -13,6 +17,7 @@ import android.widget.Toast;
 
 public class AvaliacaoAct extends AppCompatActivity {
 
+    private Pessoa pessoa = LoginAct.getPessoa();
     private RatingBar ratingBar;
     private TextView txtValorAvaliacao;
     private Button btnSubmit;
@@ -45,11 +50,26 @@ public class AvaliacaoAct extends AppCompatActivity {
                 Toast.makeText(AvaliacaoAct.this,
                         String.valueOf("Voto computado: " + ratingBar.getRating()),
                         Toast.LENGTH_SHORT).show();
+                //TODO falta passar o lugar para essa tela
+                //addVoto(pessoa.getId(),lugar.getId(),regraDeTres(ratingBar.getRating()));
             }
         });
     }
-    public void addVoto(int idPeessoa,int idLugar,int nota){
-
+    public void addVoto(int idPessoa,int idLugar,int nota){
+        UsuarioDAO bd = new UsuarioDAO();
+        bd.getLer(this);
+        if(bd.verificarVoto(idPessoa,idLugar)){
+            bd = new UsuarioDAO();
+            bd.getEscrever(this);
+            bd.setNota(idPessoa,idLugar,nota);
+        }
+        else{
+            bd = new UsuarioDAO();
+            bd.getEscrever(this);
+            bd.updateNota(idPessoa,idLugar,nota);}
+    }
+    public Double regraDeTres(RatingBar ratingBar){
+        return Double.valueOf(ratingBar.getRating());
     }
 }
 

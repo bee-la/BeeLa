@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import br.ufrpe.beela.database.dao.BD;
 import br.ufrpe.beela.usuario.dominio.Usuario;
@@ -135,8 +136,20 @@ public class UsuarioDAO {
         bd.close();
         return true;
     }
-
-
+    public boolean verificarVoto(int idPessoa,int idLugar){
+        String where = "SELECT * FROM avaliacao WHERE idPessoa = '"
+                +String.valueOf(idPessoa)+"' AND idLugar = '" +String.valueOf(idLugar)+"'";
+        Cursor cursor = bd.rawQuery(where, null);
+        try {
+            if (cursor.getCount() > 0) {
+                bd.close();
+                return false;}
+        }
+        catch (Exception e){}
+        bd.close();
+        return true;
+    }
+    //TODO é a função de avaliação
     public void setNota(int idPessoa,int idLugar,int nota){
         ContentValues valores = new ContentValues();
         valores.put("idPessoa", idPessoa);
@@ -160,5 +173,31 @@ public class UsuarioDAO {
         valores.put("nota", nota);
         bd.update("avaliacao", valores, where, null);
         bd.close();
+    }
+    public HashMap<Integer,Double> getNotasPorPessoa(int idPessoa){
+        HashMap<Integer,Double> saidaHashMap = new HashMap<>();
+        String where = "SELECT * FROM avaliacao WHERE idPessoa = '"+String.valueOf(idPessoa)+"'";
+        Cursor cursor = bd.rawQuery(where, null);
+        if (cursor.getCount() > 0) {
+            cursor.moveToFirst();
+            do {
+                saidaHashMap.put(cursor.getInt(2),cursor.getDouble(3));
+            } while (cursor.moveToNext());
+        }
+        bd.close();
+        return saidaHashMap;
+    }
+    public HashMap<Integer,Double> getNotasPorLugar(int idLugar){
+        HashMap<Integer,Double> saidaHashMap = new HashMap<>();
+        String where = "SELECT * FROM avaliacao WHERE idLugar = '"+String.valueOf(idLugar)+"'";
+        Cursor cursor = bd.rawQuery(where, null);
+        if (cursor.getCount() > 0) {
+            cursor.moveToFirst();
+            do {
+                saidaHashMap.put(cursor.getInt(1),cursor.getDouble(3));
+            } while (cursor.moveToNext());
+        }
+        bd.close();
+        return saidaHashMap;
     }
 }

@@ -9,6 +9,8 @@ import br.ufrpe.beela.perfil.dominio.PerfilComida;
 import br.ufrpe.beela.perfil.dominio.PerfilEsporte;
 import br.ufrpe.beela.perfil.dominio.PerfilLugar;
 import br.ufrpe.beela.perfil.dominio.PerfilMusica;
+import br.ufrpe.beela.usuario.dominio.Pessoa;
+import br.ufrpe.beela.usuario.dominio.Usuario;
 
 
 /**
@@ -532,5 +534,11 @@ public class AlimentarBancoDeDados {
         bdp.getEscrever(context);
         bdp.inserirPerfilLugarComida(lugar.getId(),perfilComida);
     }
-
+    public void criarPessoas(){
+        //Pessoa
+        Usuario usuario = new Usuario();
+        Pessoa pessoa = new Pessoa();
+        pessoa.setNome("");
+        pessoa.setCelular("");
+    }
 }
