@@ -21,7 +21,7 @@ import br.ufrpe.beela.lugar.negocio.LugarService;
 
 public class LugarDetalhesAct extends AppCompatActivity  implements Serializable, View.OnClickListener {
 
-    private ImageButton localizacaoBt, siteBt;
+    private ImageButton localizacaoBt;
     private Button classificacao;
     private TextView nome,descricao;
     private ImageView foto;
@@ -79,7 +79,7 @@ public class LugarDetalhesAct extends AppCompatActivity  implements Serializable
             case R.id.buttonClass:
                 Intent intent = new Intent(LugarDetalhesAct.this, AvaliacaoAct.class);
                 intent.putExtra(getString(R.string.lugar), getLugarRecuperado());
-                startActivity(new Intent(LugarDetalhesAct.this, AvaliacaoAct.class));
+                startActivity(intent);
         }
     }
 

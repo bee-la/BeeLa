@@ -22,16 +22,14 @@ public class AvaliacaoAct extends AppCompatActivity {
     private RatingBar ratingBar;
     private TextView txtValorAvaliacao;
     private Button btnSubmit;
-    private Lugar recuperado;
+    private Lugar lugarRecuperado;
     private Bundle bundle;
+    private double nota;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_avaliacao);
-
-        bundle = getIntent().getExtras();
-        recuperado = (Lugar) bundle.getSerializable(getString(R.string.lugar));
 
         addListenerOnRatingBar();
         addListenerOnButton();
@@ -43,6 +41,7 @@ public class AvaliacaoAct extends AppCompatActivity {
         ratingBar.setOnRatingBarChangeListener(new OnRatingBarChangeListener() {
             public void onRatingChanged(RatingBar ratingBar, float avaliacao, boolean fromUser) {
                 txtValorAvaliacao.setText(String.valueOf(avaliacao));
+                nota=Double.valueOf(avaliacao);
             }
         });
     }
@@ -53,14 +52,10 @@ public class AvaliacaoAct extends AppCompatActivity {
         btnSubmit.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-
-//TODO falta passar o lugar para essa tela
-                pessoa.setVotou();
-                addVoto(pessoa.getId(),recuperado.getId(),regraDeTres(ratingBar));
+                addVoto(pessoa.getId(), getLugarRecuperado().getId(),regraDeTres(nota));
                 Toast.makeText(AvaliacaoAct.this,
-                        String.valueOf("Voto computado: " + ratingBar.getRating()),
+                        String.valueOf("Voto computado: " + nota),
                         Toast.LENGTH_SHORT).show();
-
             }
         });
     }
@@ -77,22 +72,19 @@ public class AvaliacaoAct extends AppCompatActivity {
             bd.getEscrever(this);
             bd.updateNota(idPessoa,idLugar,nota);}
     }
-    public Double regraDeTres(RatingBar ratingBar){
-        return (Double.valueOf(ratingBar.getRating()))/5;
 
-//        int notaDadaRating=(int) ratingBar.getRating();
-//        double notaFinal=notaDadaRating/5;
-//        return (notaFinal);
+    public Double regraDeTres(double notinha){
+        double notaFinal=((int) notinha)/5;
+        return (notaFinal);
     }
-
-
 
     public Lugar getLugarRecuperado(){
         bundle = getIntent().getExtras();
-        recuperado = (Lugar) bundle.getSerializable(getString(R.string.lugar));
-        return recuperado;
+        lugarRecuperado = (Lugar) bundle.getSerializable(getString(R.string.lugar));
+        return lugarRecuperado;
     }
 }
+
 
 
 
