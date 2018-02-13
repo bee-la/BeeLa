@@ -6,10 +6,16 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+
 import br.ufrpe.beela.gui.R;
 import br.ufrpe.beela.lugar.dominio.Lugar;
 import br.ufrpe.beela.lugar.negocio.LugarService;
+import br.ufrpe.beela.lugar.negocio.SlopeOne;
 import br.ufrpe.beela.perfil.dominio.PerfilUsuario;
+import br.ufrpe.beela.usuario.dao.PessoaDAO;
+import br.ufrpe.beela.usuario.dao.UsuarioDAO;
 import br.ufrpe.beela.usuario.dominio.Pessoa;
 import br.ufrpe.beela.usuario.gui.ContatoAct;
 import br.ufrpe.beela.usuario.gui.LoginAct;
@@ -37,6 +43,8 @@ public class EscolhaProgramaAct extends AppCompatActivity {
         botaoSozinho.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+//                iniciarMatriz();
                 gerarSozinho();
                 startActivity(new Intent(EscolhaProgramaAct.this, LugarAct.class));
             }
@@ -74,5 +82,26 @@ public class EscolhaProgramaAct extends AppCompatActivity {
 
     public static void setListaPessoa(ArrayList<Pessoa> listaPessoa) {
         ListaPessoa = listaPessoa;
+    }
+
+
+
+//TODO      Método que inicia o SlopeOne
+    public void iniciarMatriz(){
+        Map<Pessoa, HashMap<Integer, Double>> matrizTotal = new HashMap<>();
+
+        ArrayList<Pessoa> listaPessoas = new ArrayList<Pessoa>();
+        PessoaDAO pessoaDAO = new PessoaDAO();
+        pessoaDAO.getLer(EscolhaProgramaAct.this);
+        listaPessoas=pessoaDAO.getListaPessoasSistema();
+
+        for (int i=0; i<listaPessoas.size(); i++){
+            UsuarioDAO userDao = new UsuarioDAO();
+            matrizTotal.put(listaPessoas.get(i) ,userDao.getNotasPorPessoa(listaPessoas.get(i).getId()));
+        }
+
+        SlopeOne slope=new SlopeOne(matrizTotal);
+        slope.slopeOne();
+
     }
 }

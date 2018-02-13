@@ -90,6 +90,27 @@ public class PessoaDAO {
         return listaPessoa;
     }
 
+
+    public ArrayList<Pessoa> getListaPessoasSistema() {
+        ArrayList<Pessoa> listaPessoa = new ArrayList<Pessoa>();
+        String where = "SELECT * FROM pessoa";
+        Cursor cursor = bd.rawQuery(where, null);
+        if (cursor.getCount() > 0) {
+            cursor.moveToFirst();
+            do {
+                Pessoa pessoa = new Pessoa();
+                pessoa.setId(cursor.getInt(0));
+                pessoa.setNome(cursor.getString(1));
+                pessoa.setCelular(cursor.getString(2));
+                listaPessoa.add(pessoa);
+            } while (cursor.moveToNext());
+        }
+        bd.close();
+        return listaPessoa;
+    }
+
+
+
     public boolean verificarCelular(String celular) {
         boolean saida = false;
         String where = "SELECT * FROM pessoa WHERE celular = '" + celular + "'";

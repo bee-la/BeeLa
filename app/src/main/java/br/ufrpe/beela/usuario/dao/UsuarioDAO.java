@@ -149,6 +149,8 @@ public class UsuarioDAO {
         bd.close();
         return true;
     }
+
+
     //TODO é a função de avaliação
     public void setNota(int idPessoa,int idLugar,int nota){
         ContentValues valores = new ContentValues();
@@ -175,17 +177,17 @@ public class UsuarioDAO {
         bd.close();
     }
     public HashMap<Integer,Double> getNotasPorPessoa(int idPessoa){
-        HashMap<Integer,Double> saidaHashMap = new HashMap<>();
+        HashMap<Integer,Double> hashMapUsuario = new HashMap<>();
         String where = "SELECT * FROM avaliacao WHERE idPessoa = '"+String.valueOf(idPessoa)+"'";
         Cursor cursor = bd.rawQuery(where, null);
         if (cursor.getCount() > 0) {
             cursor.moveToFirst();
             do {
-                saidaHashMap.put(cursor.getInt(2),cursor.getDouble(3));
+                hashMapUsuario.put(cursor.getInt(2),cursor.getDouble(3));
             } while (cursor.moveToNext());
         }
         bd.close();
-        return saidaHashMap;
+        return hashMapUsuario;
     }
     public HashMap<Integer,Double> getNotasPorLugar(int idLugar){
         HashMap<Integer,Double> saidaHashMap = new HashMap<>();

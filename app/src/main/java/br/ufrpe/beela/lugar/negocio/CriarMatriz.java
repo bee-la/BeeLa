@@ -17,6 +17,8 @@ public class CriarMatriz {
     private static ArrayList<Lugar> listaLugares= new ArrayList<Lugar>();
    // private static ArrayList<Lugar> listaLugares=lugar.getListaLugares();
 
+
+//TODO                               id do lugar
     private static Map<Pessoa, HashMap<Lugar, Double>> matrizTotal = new HashMap<>();
 
     private static Pessoa pessoa;
@@ -35,20 +37,20 @@ public class CriarMatriz {
         HashMap<Lugar, Double> luiz = new HashMap<>();
 
 
-        //lugar			   //nota que Joao deu a esse lugar
+                 //lugar			 //nota que Joao deu a esse lugar
         joao.put(listaLugares.get(0), 0.86);
         joao.put(listaLugares.get(1), 0.7);
         joao.put(listaLugares.get(2), 0.7);
         joao.put(listaLugares.get(3), 0.7);
 
 
-        //lugar		     //nota que Pedro deu a esse lugar
+                    //lugar		     //nota que Pedro deu a esse lugar
         pedro.put(listaLugares.get(1), 0.5);
         pedro.put(listaLugares.get(2), 0.87);
         pedro.put(listaLugares.get(3), 0.5);
 
 
-        //lugar		   //nota que Ana deu a esse lugar
+                    //lugar		   //nota que Ana deu a esse lugar
         ana.put(listaLugares.get(4), 0.8);
         ana.put(listaLugares.get(5), 0.46);
         ana.put(listaLugares.get(6), 0.7);
@@ -56,27 +58,27 @@ public class CriarMatriz {
         ana.put(listaLugares.get(8), 0.1);
 
 
-        //lugar		     //nota que Maria deu a esse lugar
+                    //lugar		     //nota que Maria deu a esse lugar
         maria.put(listaLugares.get(3), 0.3);
         maria.put(listaLugares.get(4), 0.4);
         maria.put(listaLugares.get(5), 0.5);
         maria.put(listaLugares.get(6), 0.6);
 
 
-        //lugar		     //nota que Jose deu a esse lugar
+                    //lugar		     //nota que Jose deu a esse lugar
         jose.put(listaLugares.get(7), 0.1);
         jose.put(listaLugares.get(8), 0.1);
         jose.put(listaLugares.get(9), 0.1);
         jose.put(listaLugares.get(5), 0.1);
 
 
-        //lugar		    //nota que Luiz deu a esse lugar
+                    //lugar		    //nota que Luiz deu a esse lugar
         luiz.put(listaLugares.get(7), 0.7);
         luiz.put(listaLugares.get(8), 0.8);
         luiz.put(listaLugares.get(9), 0.9);
 
 
-        //Usuario         //Matriz(Lugar, nota)
+                        //Usuario         //Matriz(Lugar, nota)
         matrizTotal.put(listaUsuario.get(0), 		joao		);
         matrizTotal.put(listaUsuario.get(1), 		pedro		);
         matrizTotal.put(listaUsuario.get(2), 		ana			);
@@ -85,7 +87,6 @@ public class CriarMatriz {
         matrizTotal.put(listaUsuario.get(5), 		luiz		);
     }
 
-    //	Map<Usuario, HashMap<Lugar, Double>>
     public static Map<Pessoa, HashMap<Lugar, Double>> getMatriz(){
         criaMatriz();
         return matrizTotal;

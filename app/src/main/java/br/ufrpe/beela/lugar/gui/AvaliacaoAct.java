@@ -3,6 +3,7 @@ package br.ufrpe.beela.lugar.gui;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import br.ufrpe.beela.gui.R;
+import br.ufrpe.beela.lugar.dominio.Lugar;
 import br.ufrpe.beela.usuario.dao.UsuarioDAO;
 import br.ufrpe.beela.usuario.dominio.Pessoa;
 import br.ufrpe.beela.usuario.gui.LoginAct;
@@ -21,11 +22,14 @@ public class AvaliacaoAct extends AppCompatActivity {
     private RatingBar ratingBar;
     private TextView txtValorAvaliacao;
     private Button btnSubmit;
+    private Lugar recuperado;
+    private Bundle bundle;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_avaliacao);
+
         addListenerOnRatingBar();
         addListenerOnButton();
     }
@@ -43,15 +47,17 @@ public class AvaliacaoAct extends AppCompatActivity {
     public void addListenerOnButton() {
         ratingBar = (RatingBar) findViewById(R.id.ratingBar);
         btnSubmit = (Button) findViewById(R.id.btnSubmit);
-
         btnSubmit.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
+
+//TODO falta passar o lugar para essa tela
+                //addVoto(pessoa.getId(),lugar.getId(),regraDeTres(ratingBar.getRating()));
+                pessoa.setVotou();
                 Toast.makeText(AvaliacaoAct.this,
                         String.valueOf("Voto computado: " + ratingBar.getRating()),
                         Toast.LENGTH_SHORT).show();
-                //TODO falta passar o lugar para essa tela
-                //addVoto(pessoa.getId(),lugar.getId(),regraDeTres(ratingBar.getRating()));
+
             }
         });
     }
@@ -70,6 +76,18 @@ public class AvaliacaoAct extends AppCompatActivity {
     }
     public Double regraDeTres(RatingBar ratingBar){
         return Double.valueOf(ratingBar.getRating());
+
+//        int notaDadaRating=(int) ratingBar.getRating();
+//        double notaFinal=notaDadaRating/5;
+//        return (notaFinal);
+    }
+
+
+
+    public Lugar getLugarRecuperado(){
+        bundle = getIntent().getExtras();
+        recuperado = (Lugar) bundle.getSerializable(getString(R.string.lugar));
+        return recuperado;
     }
 }
 

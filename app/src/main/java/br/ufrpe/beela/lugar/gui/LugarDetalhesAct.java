@@ -33,11 +33,10 @@ public class LugarDetalhesAct extends AppCompatActivity  implements Serializable
 
     @Override
     protected void onCreate(Bundle saveInstanceState){
-
         super.onCreate(saveInstanceState);
         setContentView(R.layout.activity_lugar_detalhes);
-        bundle = getIntent().getExtras();
-        recuperado = (Lugar) bundle.getSerializable(getString(R.string.lugar));
+
+
         setarDetalhes();
     }
 
@@ -46,7 +45,7 @@ public class LugarDetalhesAct extends AppCompatActivity  implements Serializable
         classificacao.setOnClickListener(this);
 
         nome = (TextView)findViewById(R.id.nomeDoLugar);
-        nome.setText(recuperado.getNome().toString());
+        nome.setText(getLugarRecuperado().getNome().toString());
 
         descricao = findViewById(R.id.decriçãoLugar);
         descricao.setText("Lorem ipsum dolor sit amet, consectetur adipiscing elit. " +
@@ -60,7 +59,7 @@ public class LugarDetalhesAct extends AppCompatActivity  implements Serializable
 //        siteBt.setOnClickListener(this);
 
         foto = (ImageView)findViewById(R.id.imgViewLugarFoto);
-        String recuperar =  recuperado.getCaminho();
+        String recuperar =  getLugarRecuperado().getCaminho();
         int id = getResources().getIdentifier(recuperar,getString(R.string.drawable),getPackageName());
         foto.setImageResource(id);
     }
@@ -68,7 +67,7 @@ public class LugarDetalhesAct extends AppCompatActivity  implements Serializable
     public void onClick(View view){
         switch (view.getId()){
             case R.id.imageButtonLocalizacao:
-                chamarMapa(recuperado);
+                chamarMapa(getLugarRecuperado());
                 break;
 //            case R.id.imageButtonSite:
 //                Intent intent = new Intent(Intent.ACTION_SEARCH);
@@ -78,6 +77,8 @@ public class LugarDetalhesAct extends AppCompatActivity  implements Serializable
 //                }
 //                break;
             case R.id.buttonClass:
+                Intent intent = new Intent(LugarDetalhesAct.this, AvaliacaoAct.class);
+                intent.putExtra(getString(R.string.lugar), getLugarRecuperado());
                 startActivity(new Intent(LugarDetalhesAct.this, AvaliacaoAct.class));
         }
     }
@@ -96,6 +97,11 @@ public class LugarDetalhesAct extends AppCompatActivity  implements Serializable
         return mapa.getMapa(destinolatitude,destinolongitude);
     }
 
+    public Lugar getLugarRecuperado(){
+        bundle = getIntent().getExtras();
+        recuperado = (Lugar) bundle.getSerializable(getString(R.string.lugar));
+        return recuperado;
+    }
 
 
 }
