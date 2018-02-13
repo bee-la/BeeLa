@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import br.ufrpe.beela.database.dao.BD;
+import br.ufrpe.beela.lugar.dominio.Lugar;
 import br.ufrpe.beela.usuario.dominio.Usuario;
 
 
@@ -152,7 +153,7 @@ public class UsuarioDAO {
 
 
     //TODO é a função de avaliação
-    public void setNota(int idPessoa,int idLugar,int nota){
+    public void setNota(int idPessoa,int idLugar,double nota){
         ContentValues valores = new ContentValues();
         valores.put("idPessoa", idPessoa);
         valores.put("idLugar", idLugar);
@@ -167,7 +168,7 @@ public class UsuarioDAO {
         bd.close();
     }
 
-    public void updateNota(int idPessoa,int idLugar,int nota) {
+    public void updateNota(int idPessoa,int idLugar,double nota) {
         String where = "idPessoa =  '" + String.valueOf(idPessoa) + "' AND idLugar = '"+String.valueOf(idLugar)+"'";
         ContentValues valores = new ContentValues();
         valores.put("idPessoa", idPessoa);
@@ -176,14 +177,26 @@ public class UsuarioDAO {
         bd.update("avaliacao", valores, where, null);
         bd.close();
     }
-    public HashMap<Integer,Double> getNotasPorPessoa(int idPessoa){
-        HashMap<Integer,Double> hashMapUsuario = new HashMap<>();
+    //TODO botei para recuperar o Objeto Lugar!!
+    public HashMap<Lugar,Double> getNotasPorPessoa(int idPessoa){
+        HashMap<Lugar,Double> hashMapUsuario = new HashMap<>();
         String where = "SELECT * FROM avaliacao WHERE idPessoa = '"+String.valueOf(idPessoa)+"'";
         Cursor cursor = bd.rawQuery(where, null);
         if (cursor.getCount() > 0) {
             cursor.moveToFirst();
             do {
-                hashMapUsuario.put(cursor.getInt(2),cursor.getDouble(3));
+                Lugar lugar = new Lugar();
+                String where2 = "SELECT * FROM lugar WHERE id = '" + String.valueOf(cursor.getInt(2)) + "'";
+                Cursor cursor2 = bd.rawQuery(where2, null);
+                if (cursor2.getCount() > 0) {
+                    cursor2.moveToFirst();
+                    lugar.setId(cursor2.getInt(0));
+                    lugar.setNome(cursor2.getString(1));
+                    lugar.setDescriacao(cursor2.getString(2));
+                    lugar.setLocalicao(cursor2.getString(3));
+                    lugar.setCaminho(cursor2.getString(4));
+                }
+                hashMapUsuario.put(lugar,cursor.getDouble(3));
             } while (cursor.moveToNext());
         }
         bd.close();

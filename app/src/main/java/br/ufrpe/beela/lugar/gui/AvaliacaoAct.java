@@ -30,6 +30,9 @@ public class AvaliacaoAct extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_avaliacao);
 
+        bundle = getIntent().getExtras();
+        recuperado = (Lugar) bundle.getSerializable(getString(R.string.lugar));
+
         addListenerOnRatingBar();
         addListenerOnButton();
     }
@@ -52,8 +55,8 @@ public class AvaliacaoAct extends AppCompatActivity {
             public void onClick(View v) {
 
 //TODO falta passar o lugar para essa tela
-                //addVoto(pessoa.getId(),lugar.getId(),regraDeTres(ratingBar.getRating()));
                 pessoa.setVotou();
+                addVoto(pessoa.getId(),recuperado.getId(),regraDeTres(ratingBar));
                 Toast.makeText(AvaliacaoAct.this,
                         String.valueOf("Voto computado: " + ratingBar.getRating()),
                         Toast.LENGTH_SHORT).show();
@@ -61,7 +64,7 @@ public class AvaliacaoAct extends AppCompatActivity {
             }
         });
     }
-    public void addVoto(int idPessoa,int idLugar,int nota){
+    public void addVoto(int idPessoa,int idLugar,double nota){
         UsuarioDAO bd = new UsuarioDAO();
         bd.getLer(this);
         if(bd.verificarVoto(idPessoa,idLugar)){
@@ -75,7 +78,7 @@ public class AvaliacaoAct extends AppCompatActivity {
             bd.updateNota(idPessoa,idLugar,nota);}
     }
     public Double regraDeTres(RatingBar ratingBar){
-        return Double.valueOf(ratingBar.getRating());
+        return (Double.valueOf(ratingBar.getRating()))/5;
 
 //        int notaDadaRating=(int) ratingBar.getRating();
 //        double notaFinal=notaDadaRating/5;

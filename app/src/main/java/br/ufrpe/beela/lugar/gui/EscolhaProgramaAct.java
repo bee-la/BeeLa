@@ -44,7 +44,7 @@ public class EscolhaProgramaAct extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-//                iniciarMatriz();
+                iniciarMatriz();
                 gerarSozinho();
                 startActivity(new Intent(EscolhaProgramaAct.this, LugarAct.class));
             }
@@ -88,7 +88,7 @@ public class EscolhaProgramaAct extends AppCompatActivity {
 
 //TODO      Método que inicia o SlopeOne
     public void iniciarMatriz(){
-        Map<Pessoa, HashMap<Integer, Double>> matrizTotal = new HashMap<>();
+        Map<Pessoa, HashMap<Lugar, Double>> matrizTotal = new HashMap<>();
 
         ArrayList<Pessoa> listaPessoas = new ArrayList<Pessoa>();
         PessoaDAO pessoaDAO = new PessoaDAO();
@@ -97,6 +97,7 @@ public class EscolhaProgramaAct extends AppCompatActivity {
 
         for (int i=0; i<listaPessoas.size(); i++){
             UsuarioDAO userDao = new UsuarioDAO();
+            userDao.getLer(this);
             matrizTotal.put(listaPessoas.get(i) ,userDao.getNotasPorPessoa(listaPessoas.get(i).getId()));
         }
 
