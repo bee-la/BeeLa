@@ -1,10 +1,12 @@
 package br.ufrpe.beela.lugar.gui;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import br.ufrpe.beela.gui.R;
 import br.ufrpe.beela.lugar.dao.LugarDAO;
 import br.ufrpe.beela.lugar.dominio.Lugar;
+import br.ufrpe.beela.lugar.negocio.LugarService;
 import br.ufrpe.beela.usuario.dao.UsuarioDAO;
 import br.ufrpe.beela.usuario.dominio.Pessoa;
 import br.ufrpe.beela.usuario.gui.LoginAct;
@@ -25,6 +27,7 @@ public class AvaliacaoAct extends AppCompatActivity {
     private Button btnSubmit;
     private Lugar lugarRecuperado;
     private Bundle bundle;
+    private LugarService lugarService= new LugarService();
     private double nota;
 
     @Override
@@ -53,7 +56,7 @@ public class AvaliacaoAct extends AppCompatActivity {
         btnSubmit.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                addVoto(pessoa.getId(), getLugarRecuperado().getId(),regraDeTres(nota));
+                addVoto(pessoa.getId(),regraDeTres(nota));
                 Toast.makeText(AvaliacaoAct.this,
                         String.valueOf("Voto computado: " + nota),
                         Toast.LENGTH_SHORT).show();
@@ -62,25 +65,8 @@ public class AvaliacaoAct extends AppCompatActivity {
             }
         });
     }
-    public void addVoto(int idPessoa,int idLugar,double nota){
-        UsuarioDAO bd = new UsuarioDAO();
-        bd.getLer(this);
-        if(bd.verificarJaVotouNoLugar(idPessoa,idLugar)){
-            bd = new UsuarioDAO();
-            bd.getEscrever(this);
-            bd.setNota(idPessoa,idLugar,nota);
-
-        }
-        else{
-            bd = new UsuarioDAO();
-            bd.getEscrever(this);
-            bd.updateNota(idPessoa,idLugar,nota);
-        }
-        //TODO atualizando a Media após votar.
-        LugarDAO bdl = new LugarDAO();
-        bdl.getEscrever(this);
-        bdl.update(getLugarRecuperado());
-
+    public void addVoto(int idPessoa,double nota){
+        lugarService.addVoto(idPessoa,getLugarRecuperado(),nota,this);
     }
 
     public Double regraDeTres(double notinha){
@@ -93,6 +79,7 @@ public class AvaliacaoAct extends AppCompatActivity {
         lugarRecuperado = (Lugar) bundle.getSerializable(getString(R.string.lugar));
         return lugarRecuperado;
     }
+
 }
 
 

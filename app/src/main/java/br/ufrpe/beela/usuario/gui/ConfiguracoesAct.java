@@ -163,9 +163,7 @@ public class ConfiguracoesAct extends AppCompatActivity {
     }
 
     public void alterarSenha() {
-        UsuarioDAO bd = new UsuarioDAO();
-        bd.getEscrever(this);
-        bd.updateSenha(usuario, Criptografia.criptografar(novaSenha));
+        usuarioService.alterarSenha(usuario,Criptografia.criptografar(novaSenha),this);
         usuario.setSenha(Criptografia.criptografar(novaSenha));
         limparCampos();
         senhaAlterada = Toast.makeText(getApplicationContext(), R.string.senhaAlterada, Toast.LENGTH_SHORT);

@@ -1,6 +1,5 @@
 package br.ufrpe.beela.lugar.gui;
 
-import android.app.SearchManager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -29,7 +28,7 @@ public class LugarDetalhesAct extends AppCompatActivity  implements Serializable
     private double destinolongitude;
     private Lugar recuperado;
     private Bundle bundle;
-    LugarService mapa = new LugarService();
+    LugarService lugarService = new LugarService();
 
     @Override
     protected void onCreate(Bundle saveInstanceState){
@@ -51,9 +50,7 @@ public class LugarDetalhesAct extends AppCompatActivity  implements Serializable
         nota.setText(String.valueOf(getLugarRecuperado().getNotaGeral()));
 
         descricao = findViewById(R.id.decriçãoLugar);
-        descricao.setText("Lorem ipsum dolor sit amet, consectetur adipiscing elit. " +
-                "Quisque maximus feugiat porttitor. Sed scelerisque erat eu diam sollicitudin " +
-                "tristique id quis tellus. Aliquam eget suscipit eros.");
+        descricao.setText(getLugarRecuperado().getDescricao());
 
         localizacaoBt = (ImageButton) findViewById(R.id.imageButtonLocalizacao);
         localizacaoBt.setOnClickListener(this);
@@ -83,6 +80,7 @@ public class LugarDetalhesAct extends AppCompatActivity  implements Serializable
                 Intent intent = new Intent(LugarDetalhesAct.this, AvaliacaoAct.class);
                 intent.putExtra(getString(R.string.lugar), getLugarRecuperado());
                 startActivity(intent);
+                lugarService.getLugar(recuperado.getId(),this);
         }
     }
 
@@ -92,19 +90,17 @@ public class LugarDetalhesAct extends AppCompatActivity  implements Serializable
         destinolongitude = Double.parseDouble(destino[1]);
 
         try {
-            startActivity(new Intent (mapa.getMapa(destinolatitude,destinolongitude)));
+            startActivity(new Intent (lugarService.getMapa(destinolatitude,destinolongitude)));
         } catch (Exception ex){
 
             Toast.makeText(this , R.string.erro,Toast.LENGTH_SHORT).show();
         }
-        return mapa.getMapa(destinolatitude,destinolongitude);
+        return lugarService.getMapa(destinolatitude,destinolongitude);
     }
 
-    public Lugar getLugarRecuperado(){
+    public Lugar getLugarRecuperado() {
         bundle = getIntent().getExtras();
         recuperado = (Lugar) bundle.getSerializable(getString(R.string.lugar));
         return recuperado;
     }
-
-
 }

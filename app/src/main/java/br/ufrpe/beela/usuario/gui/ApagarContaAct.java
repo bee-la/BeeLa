@@ -12,6 +12,7 @@ import android.widget.Toast;
 import br.ufrpe.beela.perfil.dao.PerfilDAO;
 import br.ufrpe.beela.usuario.dao.UsuarioDAO;
 import br.ufrpe.beela.gui.R;
+import br.ufrpe.beela.usuario.dominio.Pessoa;
 import br.ufrpe.beela.usuario.dominio.Usuario;
 import br.ufrpe.beela.usuario.negocio.UsuarioService;
 
@@ -20,6 +21,7 @@ public class ApagarContaAct extends AppCompatActivity {
     private TextView aviso1, aviso2;
     private Toast mensagemApagada;
     private UsuarioService usuarioService = new UsuarioService();
+    private Pessoa pessoa = LoginAct.getPessoa();
     private Usuario usuario = LoginAct.getPessoa().getUsuario();
 
     @Override
@@ -52,7 +54,7 @@ public class ApagarContaAct extends AppCompatActivity {
     }
 
     public void deletarConta() {
-        usuarioService.deletarUsuario(usuario, this);
+        usuarioService.deletarUsuario(pessoa,usuario, this);
         mensagemApagada = Toast.makeText(getApplicationContext(), R.string.contaDeletada, Toast.LENGTH_SHORT);
         mensagemApagada.show();
         startActivity(new Intent(ApagarContaAct.this, LoginAct.class));

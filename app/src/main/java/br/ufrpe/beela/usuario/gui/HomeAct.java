@@ -115,14 +115,8 @@ public class HomeAct extends AppCompatActivity {
 
     private void oQueTuQuerEuQuero() {
 
-        ArrayList<Lugar> lista;
         Lugar lugarzinho;
-        LugarDAO bd = new LugarDAO();
-        bd.getLer(this);
-        lista = bd.getListaLugar();
-        Random random = new Random();
-        int x = random.nextInt(lista.size());
-        lugarzinho = lista.get(x);
+        lugarzinho = usuarioService.getLugar(this);
 
 
         Intent intent = new Intent(HomeAct.this, LugarDetalhesAct.class);

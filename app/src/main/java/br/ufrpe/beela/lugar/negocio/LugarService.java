@@ -4,7 +4,11 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.widget.ListView;
+
 import java.util.ArrayList;
+import java.util.HashMap;
+
 import br.ufrpe.beela.lugar.dao.LugarDAO;
 import br.ufrpe.beela.lugar.dominio.Lugar;
 import br.ufrpe.beela.perfil.dao.PerfilDAO;
@@ -14,6 +18,7 @@ import br.ufrpe.beela.perfil.dominio.PerfilMusica;
 import br.ufrpe.beela.perfil.dominio.PerfilUsuario;
 import br.ufrpe.beela.perfil.dominio.PerfilLugar;
 import br.ufrpe.beela.usuario.dao.PessoaDAO;
+import br.ufrpe.beela.usuario.dao.UsuarioDAO;
 import br.ufrpe.beela.usuario.dominio.Pessoa;
 import br.ufrpe.beela.usuario.gui.LoginAct;
 
@@ -62,6 +67,11 @@ public class LugarService {
         PessoaDAO bd = new PessoaDAO();
         bd.getLer(context);
         return bd.getListaPessoa();
+    }
+    public ArrayList<Pessoa> gerarListaPessoaSistema(Context context) {
+        PessoaDAO bd = new PessoaDAO();
+        bd.getLer(context);
+        return bd.getListaPessoasSistema();
     }
 
     private Intent mapa(double destinolatitude, double destinolongitude) {
@@ -139,6 +149,42 @@ public class LugarService {
             listLugar.add(lugar);
         }
         return listLugar;
+    }
+    public Lugar getLugar(int id,Context context){
+        LugarDAO bd = new LugarDAO();
+        bd.getLer(context);
+        return bd.getLugar(id);
+    }
+    public void addVoto(int idPessoa,Lugar lugar,double nota,Context context){
+        int idLugar = lugar.getId();
+        UsuarioDAO bd = new UsuarioDAO();
+        bd.getLer(context);
+        if(bd.verificarJaVotouNoLugar(idPessoa,idLugar)){
+            bd = new UsuarioDAO();
+            bd.getEscrever(context);
+            bd.setNota(idPessoa,idLugar,nota);
+
+        }
+        else{
+            bd = new UsuarioDAO();
+            bd.getEscrever(context);
+            bd.updateNota(idPessoa,idLugar,nota);
+        }
+        //TODO atualizando a Media após votar.
+        LugarDAO bdl = new LugarDAO();
+        bdl.getEscrever(context);
+        bdl.update(lugar);
+
+    }
+    public HashMap<Lugar,Double> getNotasPorPessoa(int id,Context context) {
+        UsuarioDAO userDao = new UsuarioDAO();
+        userDao.getLer(context);
+        return userDao.getNotasPorPessoa(id);
+    }
+    public Boolean verificarJaVotou(int id,Context context) {
+        UsuarioDAO bd = new UsuarioDAO();
+        bd.getLer(context);
+        return bd.verificarJaVotou(id);
     }
 }
 

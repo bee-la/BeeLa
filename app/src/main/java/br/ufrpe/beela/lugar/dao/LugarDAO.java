@@ -84,7 +84,6 @@ public class LugarDAO {
             lugar.setCaminho(cursor.getString(4));
             lugar.setTexto(cursor.getString(5));
             lugar.setNotaGeral(cursor.getDouble(6));
-
 //TODO              Adicionado
             lugar.setTipo(cursor.getString(7));
 

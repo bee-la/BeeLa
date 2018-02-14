@@ -101,11 +101,4 @@ public class NomePerfilAct extends AppCompatActivity {
             perfilService.adcLugar(perfilUsuario,this);
         }
     }
-
-    public void finalizar() {
-        Intent intent = new Intent();
-        intent.putExtra("nomePerfil", nomePerfil);
-        setResult(1, intent);
-        finish();
-    }
 }

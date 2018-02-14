@@ -31,7 +31,7 @@ public class EscolhaProgramaAct extends AppCompatActivity {
     private static ArrayList<Lugar> ListaLugar = new ArrayList<Lugar>();
     private static ArrayList<Pessoa> ListaPessoa = new ArrayList<Pessoa>();
 
-    private static ArrayList<Lugar> lugaresComMaioresNotas = new ArrayList<Lugar>();
+    private ArrayList<Lugar> lugaresComMaioresNotas = new ArrayList<Lugar>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,7 +47,6 @@ public class EscolhaProgramaAct extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                iniciarMatriz();
                 gerarSozinho();
                 startActivity(new Intent(EscolhaProgramaAct.this, LugarAct.class));
             }
@@ -69,8 +68,8 @@ public class EscolhaProgramaAct extends AppCompatActivity {
     public void gerarSozinho() {
         ArrayList<Lugar> lugarArrayList = lugarService.gerarListaLugar(perfilUsuario, this);
         EscolhaProgramaAct.setListaLugar(lugarArrayList);
-
         getLugaresComMaiorNota();
+        iniciarMatriz();
     }
 
     public static void setListaLugar(ArrayList<Lugar> listaLugar) {
@@ -79,8 +78,8 @@ public class EscolhaProgramaAct extends AppCompatActivity {
 
     public static ArrayList<Lugar> getListaLugar() {
 
-        return lugaresComMaioresNotas;
-//        return ListaLugar;
+ //       return lugaresComMaioresNotas;
+        return ListaLugar;
     }
 
     public static ArrayList<Pessoa> getListaPessoa() {
@@ -98,21 +97,17 @@ public class EscolhaProgramaAct extends AppCompatActivity {
         HashMap<Pessoa, HashMap<Lugar, Double>> matrizTotal = new HashMap<>();
 
         ArrayList<Pessoa> listaPessoas = new ArrayList<Pessoa>();
-        PessoaDAO pessoaDAO = new PessoaDAO();
-        pessoaDAO.getLer(EscolhaProgramaAct.this);
-        listaPessoas=pessoaDAO.getListaPessoasSistema();
+        listaPessoas=lugarService.gerarListaPessoaSistema(this);
 
         for (int i=0; i<listaPessoas.size(); i++){
-            UsuarioDAO userDao = new UsuarioDAO();
-            userDao.getLer(this);
-            matrizTotal.put(listaPessoas.get(i) ,userDao.getNotasPorPessoa(listaPessoas.get(i).getId()));
+            matrizTotal.put(listaPessoas.get(i) ,lugarService.getNotasPorPessoa(listaPessoas.get(i).getId(),this));
         }
 
 //TODO      Deve haver uma condição verificando se o usuário não votou em nenhum lugar antes de fazer isso!! => Vidal fez.
-        UsuarioDAO bd = new UsuarioDAO();
-        bd.getLer(this);
+
         //TODO botei a Verificação
-        if(bd.verificarJaVotou(LoginAct.getPessoa().getId())) {
+
+        if(!lugarService.verificarJaVotou(LoginAct.getPessoa().getId(),this)) {
             for (Lugar lugar : lugaresComMaioresNotas) {
                 HashMap<Lugar, Double> hashMap = new HashMap<>();
                 hashMap.put(lugar, lugar.getNotaGeral());
@@ -127,12 +122,13 @@ public class EscolhaProgramaAct extends AppCompatActivity {
 
 
 
-    public static void getLugaresComMaiorNota() {
+    public void getLugaresComMaiorNota() {
         for (Lugar lugar : ListaLugar) {
-            if (lugar.getNotaGeral() >= 3.0) {
+            if (lugar.getNotaGeral() >= 4.0) {
                 lugaresComMaioresNotas.add(lugar);
             }
         }
+        EscolhaProgramaAct.setListaLugar(lugaresComMaioresNotas);
     }
 
 
@@ -142,100 +138,100 @@ public class EscolhaProgramaAct extends AppCompatActivity {
 
 //TODO      Se for usar este método, precisa adicionar um atributo "tipo" em Lugar, na tabela do lugar, etc.!!! Vidal viu e liberou
 //TODO        para verificar o tipo do lugar (comida, musica, esporte, variado)... falta testa
-    public ArrayList<Lugar> getLugaresComMaiorNotaOpcao() {
-        ArrayList<Lugar> listaLugaresMusica = new ArrayList<Lugar>();
-        ArrayList<Lugar> listaLugaresEsporte = new ArrayList<Lugar>();
-        ArrayList<Lugar> listaLugaresComida = new ArrayList<Lugar>();
-        ArrayList<Lugar> listaLugaresVariado = new ArrayList<Lugar>();
-
-        for (Lugar lugar : ListaLugar) {
-
-            if (lugar.getTipo().equals("comida")) {
-                listaLugaresComida.add(lugar);
-            } else if (lugar.getTipo().equals("esporte")) {
-                listaLugaresEsporte.add(lugar);
-            } else if (lugar.getTipo().equals("musica")) {
-                listaLugaresMusica.add(lugar);
-            } else if (lugar.getTipo().equals("variado")) {
-                listaLugaresVariado.add(lugar);
-            }
-        }
-
-        return maioresNotas(listaLugaresMusica, listaLugaresEsporte, listaLugaresComida, listaLugaresVariado);
-
-    }
-
-
-
-    public ArrayList<Lugar> maioresNotas(ArrayList<Lugar> listaLugaresMusica, ArrayList<Lugar> listaLugaresEsporte,
-    ArrayList<Lugar> listaLugaresComida, ArrayList<Lugar> listaLugaresVariado){
-
-        ArrayList<Lugar> listaLugaresComMaiorNota = new ArrayList<Lugar>();
-
-        if (listaLugaresComida.size()>0){
-            listaLugaresComMaiorNota.add(maioresNotasComidaAux(listaLugaresComida));
-        }
-
-        if (listaLugaresMusica.size()>0){
-            listaLugaresComMaiorNota.add(maioresNotasMusicaAux(listaLugaresMusica));
-        }
-
-        if (listaLugaresEsporte.size()>0){
-            listaLugaresComMaiorNota.add(maioresNotasEsporteAux(listaLugaresEsporte));
-        }
-
-        if (listaLugaresVariado.size()>0) {
-            listaLugaresComMaiorNota.add(maioresNotasVariadoAux(listaLugaresVariado));
-        }
-
-        return listaLugaresComMaiorNota;
-    }
-
-//TODO          retorna um lugar comida com maior nota
-    public Lugar maioresNotasComidaAux(ArrayList<Lugar> listaLugaresComida){
-        Lugar lugarComidaComMaiorNota = new Lugar();
-        for(Lugar lugar : listaLugaresComida){
-            if (lugar.getNotaGeral()>lugarComidaComMaiorNota.getNotaGeral()){
-                lugarComidaComMaiorNota=lugar;
-            }
-        }
-        return lugarComidaComMaiorNota;
-    }
-
-
-//TODO          retorna lugares musica com maior nota
-    public Lugar maioresNotasMusicaAux(ArrayList<Lugar> listaLugaresMusica){
-        Lugar  lugarMusicaComMaiorNota = new Lugar();
-        for (Lugar lugar: listaLugaresMusica){
-            if (lugar.getNotaGeral()>lugarMusicaComMaiorNota.getNotaGeral()){
-                lugarMusicaComMaiorNota=lugar;
-            }
-        }
-        return lugarMusicaComMaiorNota;
-    }
-
-
-//TODO          retorna um lugar esporte com maior nota
-    public Lugar maioresNotasEsporteAux(ArrayList<Lugar> listaLugaresEsporte){
-        Lugar lugarEspoteComMaiorNota = new Lugar();
-        for (Lugar lugar: listaLugaresEsporte){
-            if (lugar.getNotaGeral()>lugarEspoteComMaiorNota.getNotaGeral()){
-                lugarEspoteComMaiorNota=lugar;
-            }
-        }
-        return lugarEspoteComMaiorNota;
-    }
-
-
-//TODO          retorna um lugar variado com maior nota
-    public Lugar maioresNotasVariadoAux(ArrayList<Lugar> listaLugaresVariado){
-        Lugar lugarVariadoComMaiorNota = new Lugar();
-        for (Lugar lugar: listaLugaresVariado){
-            if (lugar.getNotaGeral()>lugarVariadoComMaiorNota.getNotaGeral()){
-                lugarVariadoComMaiorNota=lugar;
-            }
-        }
-        return lugarVariadoComMaiorNota;
-    }
+//    public ArrayList<Lugar> getLugaresComMaiorNotaOpcao() {
+//        ArrayList<Lugar> listaLugaresMusica = new ArrayList<Lugar>();
+//        ArrayList<Lugar> listaLugaresEsporte = new ArrayList<Lugar>();
+//        ArrayList<Lugar> listaLugaresComida = new ArrayList<Lugar>();
+//        ArrayList<Lugar> listaLugaresVariado = new ArrayList<Lugar>();
+//
+//        for (Lugar lugar : ListaLugar) {
+//
+//            if (lugar.getTipo().equals("comida")) {
+//                listaLugaresComida.add(lugar);
+//            } else if (lugar.getTipo().equals("esporte")) {
+//                listaLugaresEsporte.add(lugar);
+//            } else if (lugar.getTipo().equals("musica")) {
+//                listaLugaresMusica.add(lugar);
+//            } else if (lugar.getTipo().equals("variado")) {
+//                listaLugaresVariado.add(lugar);
+//            }
+//        }
+//
+//        return maioresNotas(listaLugaresMusica, listaLugaresEsporte, listaLugaresComida, listaLugaresVariado);
+//
+//    }
+//
+//
+//
+//    public ArrayList<Lugar> maioresNotas(ArrayList<Lugar> listaLugaresMusica, ArrayList<Lugar> listaLugaresEsporte,
+//    ArrayList<Lugar> listaLugaresComida, ArrayList<Lugar> listaLugaresVariado){
+//
+//        ArrayList<Lugar> listaLugaresComMaiorNota = new ArrayList<Lugar>();
+//
+//        if (listaLugaresComida.size()>0){
+//            listaLugaresComMaiorNota.add(maioresNotasComidaAux(listaLugaresComida));
+//        }
+//
+//        if (listaLugaresMusica.size()>0){
+//            listaLugaresComMaiorNota.add(maioresNotasMusicaAux(listaLugaresMusica));
+//        }
+//
+//        if (listaLugaresEsporte.size()>0){
+//            listaLugaresComMaiorNota.add(maioresNotasEsporteAux(listaLugaresEsporte));
+//        }
+//
+//        if (listaLugaresVariado.size()>0) {
+//            listaLugaresComMaiorNota.add(maioresNotasVariadoAux(listaLugaresVariado));
+//        }
+//
+//        return listaLugaresComMaiorNota;
+//    }
+//
+////TODO          retorna um lugar comida com maior nota
+//    public Lugar maioresNotasComidaAux(ArrayList<Lugar> listaLugaresComida){
+//        Lugar lugarComidaComMaiorNota = new Lugar();
+//        for(Lugar lugar : listaLugaresComida){
+//            if (lugar.getNotaGeral()>lugarComidaComMaiorNota.getNotaGeral()){
+//                lugarComidaComMaiorNota=lugar;
+//            }
+//        }
+//        return lugarComidaComMaiorNota;
+//    }
+//
+//
+////TODO          retorna lugares musica com maior nota
+//    public Lugar maioresNotasMusicaAux(ArrayList<Lugar> listaLugaresMusica){
+//        Lugar  lugarMusicaComMaiorNota = new Lugar();
+//        for (Lugar lugar: listaLugaresMusica){
+//            if (lugar.getNotaGeral()>lugarMusicaComMaiorNota.getNotaGeral()){
+//                lugarMusicaComMaiorNota=lugar;
+//            }
+//        }
+//        return lugarMusicaComMaiorNota;
+//    }
+//
+//
+////TODO          retorna um lugar esporte com maior nota
+//    public Lugar maioresNotasEsporteAux(ArrayList<Lugar> listaLugaresEsporte){
+//        Lugar lugarEspoteComMaiorNota = new Lugar();
+//        for (Lugar lugar: listaLugaresEsporte){
+//            if (lugar.getNotaGeral()>lugarEspoteComMaiorNota.getNotaGeral()){
+//                lugarEspoteComMaiorNota=lugar;
+//            }
+//        }
+//        return lugarEspoteComMaiorNota;
+//    }
+//
+//
+////TODO          retorna um lugar variado com maior nota
+//    public Lugar maioresNotasVariadoAux(ArrayList<Lugar> listaLugaresVariado){
+//        Lugar lugarVariadoComMaiorNota = new Lugar();
+//        for (Lugar lugar: listaLugaresVariado){
+//            if (lugar.getNotaGeral()>lugarVariadoComMaiorNota.getNotaGeral()){
+//                lugarVariadoComMaiorNota=lugar;
+//            }
+//        }
+//        return lugarVariadoComMaiorNota;
+//    }
 
 }

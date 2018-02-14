@@ -4,7 +4,10 @@ import android.content.Context;
 import android.util.Patterns;
 
 import java.util.ArrayList;
+import java.util.Random;
 
+import br.ufrpe.beela.lugar.dao.LugarDAO;
+import br.ufrpe.beela.lugar.dominio.Lugar;
 import br.ufrpe.beela.perfil.dao.PerfilDAO;
 import br.ufrpe.beela.perfil.dominio.PerfilUsuario;
 import br.ufrpe.beela.usuario.dao.PessoaDAO;
@@ -122,12 +125,30 @@ public class UsuarioService {
         bd.getLer(context);
         return bd.verificarPerfilFavorito(id);
     }
-    public void deletarUsuario(Usuario usuario, Context context){
+    public void deletarUsuario(Pessoa pessoa, Usuario usuario, Context context){
         UsuarioDAO bd = new UsuarioDAO();
         bd.getEscrever(context);
         bd.delete(usuario);
+        PessoaDAO bdp = new PessoaDAO();
+        bdp.getEscrever(context);
+        bdp.delete(pessoa);
         PerfilDAO bd1 = new PerfilDAO();
         bd1.getEscrever(context);
         bd1.deletePerfisUsuario(usuario.getId());
     }
+    public Lugar getLugar(Context context) {
+        ArrayList<Lugar> lista;
+        LugarDAO bd = new LugarDAO();
+        bd.getLer(context);
+        lista = bd.getListaLugar();
+        Random random = new Random();
+        int x = random.nextInt(lista.size());
+        return lista.get(x);
+    }
+    public void alterarSenha(Usuario usuario,String senha,Context context){
+        UsuarioDAO bd = new UsuarioDAO();
+        bd.getEscrever(context);
+        bd.updateSenha(usuario, senha);
+    }
+
 }
