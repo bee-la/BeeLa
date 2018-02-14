@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -21,13 +22,14 @@ import br.ufrpe.beela.lugar.dominio.Lugar;
 import br.ufrpe.beela.lugar.gui.EscolhaProgramaAct;
 import br.ufrpe.beela.lugar.gui.LugarDetalhesAct;
 import br.ufrpe.beela.perfil.gui.PerfilAct;
+import br.ufrpe.beela.usuario.negocio.UsuarioService;
 
 public class HomeAct extends AppCompatActivity {
     private TextView eAi;
     private TextView oQueTuQuer;
     private ImageButton botaoPerfil, botaoLugares, botaoConfiguracoes;
     private AlimentarBancoDeDados alimentarBancoDeDados = new AlimentarBancoDeDados();
-
+    private UsuarioService usuarioService = new UsuarioService();
     private Button oqTuQuer;
     //private LugarDAO lugarDAO = new LugarDAO();
 
@@ -80,7 +82,11 @@ public class HomeAct extends AppCompatActivity {
         botaoLugares.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(HomeAct.this, EscolhaProgramaAct.class));
+                if(!usuarioService.verificarPerfilAtual(LoginAct.getPessoa().getId(),HomeAct.this)){
+                    startActivity(new Intent(HomeAct.this, EscolhaProgramaAct.class));
+                }
+                else{
+                    Toast.makeText(getApplicationContext(), "Você ainda não tem Perfil", Toast.LENGTH_SHORT).show();}
             }
         });
     }

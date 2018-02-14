@@ -3,6 +3,7 @@ package br.ufrpe.beela.lugar.gui;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import br.ufrpe.beela.gui.R;
+import br.ufrpe.beela.lugar.dao.LugarDAO;
 import br.ufrpe.beela.lugar.dominio.Lugar;
 import br.ufrpe.beela.usuario.dao.UsuarioDAO;
 import br.ufrpe.beela.usuario.dominio.Pessoa;
@@ -56,21 +57,30 @@ public class AvaliacaoAct extends AppCompatActivity {
                 Toast.makeText(AvaliacaoAct.this,
                         String.valueOf("Voto computado: " + nota),
                         Toast.LENGTH_SHORT).show();
+                //TODO agora fechar depois que confirma a nota
+                finish();
             }
         });
     }
     public void addVoto(int idPessoa,int idLugar,double nota){
         UsuarioDAO bd = new UsuarioDAO();
         bd.getLer(this);
-        if(bd.verificarVoto(idPessoa,idLugar)){
+        if(bd.verificarJaVotouNoLugar(idPessoa,idLugar)){
             bd = new UsuarioDAO();
             bd.getEscrever(this);
             bd.setNota(idPessoa,idLugar,nota);
+
         }
         else{
             bd = new UsuarioDAO();
             bd.getEscrever(this);
-            bd.updateNota(idPessoa,idLugar,nota);}
+            bd.updateNota(idPessoa,idLugar,nota);
+        }
+        //TODO atualizando a Media após votar.
+        LugarDAO bdl = new LugarDAO();
+        bdl.getEscrever(this);
+        bdl.update(getLugarRecuperado());
+
     }
 
     public Double regraDeTres(double notinha){

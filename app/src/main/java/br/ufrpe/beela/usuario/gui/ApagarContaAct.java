@@ -13,11 +13,13 @@ import br.ufrpe.beela.perfil.dao.PerfilDAO;
 import br.ufrpe.beela.usuario.dao.UsuarioDAO;
 import br.ufrpe.beela.gui.R;
 import br.ufrpe.beela.usuario.dominio.Usuario;
+import br.ufrpe.beela.usuario.negocio.UsuarioService;
 
 public class ApagarContaAct extends AppCompatActivity {
     private Button botaoApagar;
     private TextView aviso1, aviso2;
     private Toast mensagemApagada;
+    private UsuarioService usuarioService = new UsuarioService();
     private Usuario usuario = LoginAct.getPessoa().getUsuario();
 
     @Override
@@ -50,12 +52,7 @@ public class ApagarContaAct extends AppCompatActivity {
     }
 
     public void deletarConta() {
-        UsuarioDAO bd = new UsuarioDAO();
-        bd.getEscrever(this);
-        bd.delete(usuario);
-        PerfilDAO bd1 = new PerfilDAO();
-        bd1.getEscrever(this);
-        bd1.deletePerfisUsuario(usuario.getId());
+        usuarioService.deletarUsuario(usuario, this);
         mensagemApagada = Toast.makeText(getApplicationContext(), R.string.contaDeletada, Toast.LENGTH_SHORT);
         mensagemApagada.show();
         startActivity(new Intent(ApagarContaAct.this, LoginAct.class));

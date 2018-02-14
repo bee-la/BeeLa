@@ -117,4 +117,17 @@ public class UsuarioService {
         bd.getLer(context);
         return bd.getLembrarLogin();
     }
+    public boolean verificarPerfilAtual(int id,Context context){
+        PerfilDAO bd = new PerfilDAO();
+        bd.getLer(context);
+        return bd.verificarPerfilFavorito(id);
+    }
+    public void deletarUsuario(Usuario usuario, Context context){
+        UsuarioDAO bd = new UsuarioDAO();
+        bd.getEscrever(context);
+        bd.delete(usuario);
+        PerfilDAO bd1 = new PerfilDAO();
+        bd1.getEscrever(context);
+        bd1.deletePerfisUsuario(usuario.getId());
+    }
 }

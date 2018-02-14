@@ -132,7 +132,7 @@
     <string name="lugar">lugar</string>
     <string name="erro">Erro</string>
     <string name="drawable">drawable</string>
-    <string name="loremIpsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque maximus feugiat porttitor. Sed scelerisque erat eu diam sollicitudin tristique id quis tellus. Aliquam eget suscipit eros. Integer auctor sagittis lectus, ut commodo erat blandit id. Nulla sit amet neque a tortor fringilla volutpat. Mauris sed arcu est. Mauris ultricies augue non tristique molestie.</string>
+    <string name="loremIpsum">Uma Descrição Maior.</string>
 
     <!--Alimenta Banco de Dados-->
     <string name="ru">RU - UFRPE</string>
@@ -194,5 +194,6 @@
     <string name="volei">Volei</string>
     <string name="visualizarTodos">Visualizar todos</string>
     <string name="avancar">Avançar</string>
+    <string name="praiadoPina">Praia do Pina</string>
 
 </resources>

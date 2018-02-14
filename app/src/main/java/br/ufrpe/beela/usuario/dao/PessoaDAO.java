@@ -81,7 +81,7 @@ public class PessoaDAO {
                 pessoa.setId(cursor.getInt(0));
                 pessoa.setNome(cursor.getString(1));
                 pessoa.setCelular(cursor.getString(2));
-                if (cursor.getInt(0) != LoginAct.getPessoa().getId()) {
+                if (cursor.getInt(3) > 1 & cursor.getInt(0) != LoginAct.getPessoa().getId()) {
                     listaPessoa.add(pessoa);
                 }
             } while (cursor.moveToNext());

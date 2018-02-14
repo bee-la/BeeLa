@@ -5,6 +5,8 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -137,7 +139,7 @@ public class UsuarioDAO {
         bd.close();
         return true;
     }
-    public boolean verificarVoto(int idPessoa,int idLugar){
+    public boolean verificarJaVotouNoLugar(int idPessoa, int idLugar){
         String where = "SELECT * FROM avaliacao WHERE idPessoa = '"
                 +String.valueOf(idPessoa)+"' AND idLugar = '" +String.valueOf(idLugar)+"'";
         Cursor cursor = bd.rawQuery(where, null);
@@ -150,9 +152,22 @@ public class UsuarioDAO {
         bd.close();
         return true;
     }
+    public boolean verificarJaVotou(int idPessoa){
+        String where = "SELECT * FROM avaliacao WHERE idPessoa = '"
+                +String.valueOf(idPessoa)+"'";
+        Cursor cursor = bd.rawQuery(where, null);
+        try {
+            if (cursor.getCount() > 0) {
+                bd.close();
+                return true;}
+        }
+        catch (Exception e){}
+        bd.close();
+        return false;
+    }
 
 
-    //TODO é a função de avaliação
+    //TODO é a função de avaliação "da nota"
     public void setNota(int idPessoa,int idLugar,double nota){
         ContentValues valores = new ContentValues();
         valores.put("idPessoa", idPessoa);
@@ -177,7 +192,7 @@ public class UsuarioDAO {
         bd.update("avaliacao", valores, where, null);
         bd.close();
     }
-    //TODO botei para recuperar o Objeto Lugar!!
+    //TODO é a função de pegar as notas por pessoa
     public HashMap<Lugar,Double> getNotasPorPessoa(int idPessoa){
         HashMap<Lugar,Double> hashMapUsuario = new HashMap<>();
         String where = "SELECT * FROM avaliacao WHERE idPessoa = '"+String.valueOf(idPessoa)+"'";
@@ -195,6 +210,7 @@ public class UsuarioDAO {
                     lugar.setDescriacao(cursor2.getString(2));
                     lugar.setLocalicao(cursor2.getString(3));
                     lugar.setCaminho(cursor2.getString(4));
+                    lugar.setNotaGeral(cursor2.getDouble(5));
                 }
                 hashMapUsuario.put(lugar,cursor.getDouble(3));
             } while (cursor.moveToNext());

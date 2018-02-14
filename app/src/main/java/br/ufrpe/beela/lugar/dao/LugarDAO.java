@@ -5,6 +5,8 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.ArrayList;
 
 import br.ufrpe.beela.database.dao.BD;
@@ -41,11 +43,31 @@ public class LugarDAO {
         valores.put("caminho",lugar.getCaminho());
         valores.put("texto",lugar.getTexto());
 
-//TODO          Adicionado
+//TODO          Adicionado !!! =>Vidal fez
         valores.put("notaGeral", lugar.getNotaGeral());
-//        valores.put("tipo", lugar.getTipo()); TODO --> Se for usar falta adicionar na tabela
+        valores.put("tipo", lugar.getTipo());// TODO --> Se for usar falta adicionar na tabela
 
         bd.insert("lugar", null, valores);
+        bd.close();
+    }
+    public void update(Lugar lugar) {
+        String where3 = "SELECT AVG(nota) FROM avaliacao WHERE idLugar = '"+ String.valueOf(lugar.getId()) + "'";
+        Cursor cursor3 = bd.rawQuery(where3, null);
+        cursor3.moveToFirst();
+        NumberFormat formatter = new DecimalFormat("#0.00");
+        Double notaG = cursor3.getDouble(0)*5;
+        lugar.setNotaGeral(Double.valueOf(formatter.format(notaG)));
+
+        String where = "id = '" + String.valueOf(lugar.getId()) + "'";
+        ContentValues valores = new ContentValues();
+        valores.put("nome", lugar.getNome());
+        valores.put("descricao", lugar.getDescricao());
+        valores.put("localizacao", lugar.getLocalicao());
+        valores.put("caminho",lugar.getCaminho());
+        valores.put("texto",lugar.getTexto());
+        valores.put("notaGeral", lugar.getNotaGeral());
+        valores.put("tipo", lugar.getTipo());
+        bd.update("lugar",valores, where,null);
         bd.close();
     }
 
@@ -60,12 +82,11 @@ public class LugarDAO {
             lugar.setDescriacao(cursor.getString(2));
             lugar.setLocalicao(cursor.getString(3));
             lugar.setCaminho(cursor.getString(4));
-
             lugar.setTexto(cursor.getString(5));
             lugar.setNotaGeral(cursor.getDouble(6));
 
 //TODO              Adicionado
-//            lugar.setTipo(cursor.getString(7));
+            lugar.setTipo(cursor.getString(7));
 
         }
         bd.close();
@@ -87,7 +108,7 @@ public class LugarDAO {
 
  //TODO              Adicionado
             lugar.setNotaGeral(cursor.getDouble(6));
-            //            lugar.setTipo(cursor.getString(7));
+            lugar.setTipo(cursor.getString(7));
 
         }
         bd.close();
@@ -123,7 +144,7 @@ public class LugarDAO {
 
 //TODO              Adicionado
                 lugar.setNotaGeral(cursor.getDouble(6));
-//            lugar.setTipo(cursor.getString(7));
+                lugar.setTipo(cursor.getString(7));
 
                 lugarArrayList.add(lugar);
             } while (cursor.moveToNext());

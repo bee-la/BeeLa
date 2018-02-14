@@ -26,7 +26,7 @@ public class BD extends SQLiteOpenHelper {
                 "id integer primary key autoincrement, nome text not null, celular text not null,idUsuario interger not null);");
         bd.execSQL("create table lugar (" +
                 "id integer primary key autoincrement, nome text not null , descricao text not null,localizacao text not null" +
-                ",caminho text, texto text not null, notaGeral double);");
+                ",caminho text, texto text not null, notaGeral double, tipo text);");
 
         bd.execSQL("create table perfilMusica(" +
                 "id integer primary key  autoincrement, nome text not null,idPessoa interger ,nomePerfil text ,idLugar interger); ");
@@ -107,7 +107,7 @@ public class BD extends SQLiteOpenHelper {
         bd.execSQL(addvoto+"('4','11','0.8');");
         bd.execSQL(addvoto+"('4','13','0.7');");
         bd.execSQL(addvoto+"('4','21','0.6');");
-        bd.execSQL(addvoto+"('4','1','0.5');");
+        bd.execSQL(addvoto+"('4','8','0.5');");
         bd.execSQL(addvoto+"('4','2','0.4');");
         bd.execSQL(addvoto+"('4','3','0.9');");
         bd.execSQL(addvoto+"('4','4','0.9');");
@@ -117,7 +117,7 @@ public class BD extends SQLiteOpenHelper {
         bd.execSQL(addvoto+"('5','6','0.4');");
         bd.execSQL(addvoto+"('5','7','0.9');");
         bd.execSQL(addvoto+"('5','8','0.8');");
-        bd.execSQL(addvoto+"('5','8','0.7');");
+        bd.execSQL(addvoto+"('5','9','0.7');");
         bd.execSQL(addvoto+"('5','10','0.6');");
         bd.execSQL(addvoto+"('5','12','0.5');");
         bd.execSQL(addvoto+"('5','19','0.4');");
@@ -131,9 +131,9 @@ public class BD extends SQLiteOpenHelper {
         bd.execSQL(addvoto+"('6','12','0.8');");
         bd.execSQL(addvoto+"('6','13','0.7');");
         bd.execSQL(addvoto+"('6','14','0.6');");
-        bd.execSQL(addvoto+"('6','15','0.5');");
+        bd.execSQL(addvoto+"('6','9','0.5');");
         bd.execSQL(addvoto+"('6','16','0.4');");
-        bd.execSQL(addvoto+"('6','1','0.9');");
+        bd.execSQL(addvoto+"('6','8','0.9');");
         bd.execSQL(addvoto+"('6','10','0.9');");
 
         //idPessoa = 7
@@ -155,8 +155,8 @@ public class BD extends SQLiteOpenHelper {
         bd.execSQL(addvoto+"('8','2','0.8');");
         bd.execSQL(addvoto+"('8','3','0.7');");
         bd.execSQL(addvoto+"('8','4','0.6');");
-        bd.execSQL(addvoto+"('8','5','0.5');");
-        bd.execSQL(addvoto+"('8','6','0.4');");
+        bd.execSQL(addvoto+"('8','7','0.5');");
+        bd.execSQL(addvoto+"('8','8','0.4');");
         bd.execSQL(addvoto+"('8','14','0.9');");
         bd.execSQL(addvoto+"('8','15','0.9');");
 

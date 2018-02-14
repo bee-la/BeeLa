@@ -23,7 +23,6 @@ public class Lugar implements Serializable {
     private String caminho;
     private String texto;
     private Double notaGeral = 0.0;
-
     private String tipo;
 
     public int getId() {

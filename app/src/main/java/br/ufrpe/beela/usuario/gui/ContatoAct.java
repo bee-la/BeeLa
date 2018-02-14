@@ -91,7 +91,6 @@ public class ContatoAct extends AppCompatActivity {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        //TODO     Função que encontra os lugares dos contatos selecionados
     }
     public static void setListaLugar(ArrayList<Lugar> listaLugar){lugarArrayList = listaLugar;}
     public static ArrayList<Lugar> getListaLugar(){return lugarArrayList;}
