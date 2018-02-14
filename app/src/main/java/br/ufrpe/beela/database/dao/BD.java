@@ -61,6 +61,16 @@ public class BD extends SQLiteOpenHelper {
         bd.execSQL(addpessoa + "('Gleyce Rodriguez','123','1');");
         bd.execSQL(addpessoa + "('Henrique Rodriguez','123','1');");
         bd.execSQL(addpessoa + "('Igor Rodriguez','123','1');");
+
+        bd.execSQL(addpessoa + "('Joana Negreiros','123','1');");
+        bd.execSQL(addpessoa + "('Leandro Negreiros','123','1');");
+        bd.execSQL(addpessoa + "('Maria Negreiros','123','1');");
+        bd.execSQL(addpessoa + "('Neilton Negreiros','123','1');");
+        bd.execSQL(addpessoa + "('Otavio Negreiros','123','1');");
+        bd.execSQL(addpessoa + "('Paulo Negreiros','123','1');");
+        bd.execSQL(addpessoa + "('Queiroz Negreiros','123','1');");
+        bd.execSQL(addpessoa + "('Roberta Negreiros','123','1');");
+        bd.execSQL(addpessoa + "('Saulo Negreiros','123','1');");
     }
     public void setVotos (SQLiteDatabase bd) {
         String addvoto = "INSERT INTO avaliacao (idPessoa, idLugar, nota) values";
@@ -171,6 +181,115 @@ public class BD extends SQLiteOpenHelper {
         bd.execSQL(addvoto+"('9','11','0.8');");
         bd.execSQL(addvoto+"('9','13','0.9');");
         bd.execSQL(addvoto+"('9','15','0.9');");
+
+
+        //idPessoa = 10
+        bd.execSQL(addvoto+"('10','1','0.6');");
+        bd.execSQL(addvoto+"('10','2','0.7');");
+        bd.execSQL(addvoto+"('10','3','0.7');");
+        bd.execSQL(addvoto+"('10','4','0.7');");
+        bd.execSQL(addvoto+"('10','5','0.6');");
+        bd.execSQL(addvoto+"('10','6','0.8');");
+        bd.execSQL(addvoto+"('10','7','0.7');");
+        bd.execSQL(addvoto+"('10','8','0.8');");
+        bd.execSQL(addvoto+"('10','9','0.8');");
+        bd.execSQL(addvoto+"('10','10','0.9');");
+
+        //idPessoa = 11
+        bd.execSQL(addvoto+"('11','5','0.5');");
+        bd.execSQL(addvoto+"('11','6','0.4');");
+        bd.execSQL(addvoto+"('11','7','0.3');");
+        bd.execSQL(addvoto+"('11','8','0.7');");
+        bd.execSQL(addvoto+"('11','9','0.6');");
+        bd.execSQL(addvoto+"('11','10','0.5');");
+        bd.execSQL(addvoto+"('11','11','0.8');");
+        bd.execSQL(addvoto+"('11','12','0.8');");
+        bd.execSQL(addvoto+"('11','13','0.8');");
+        bd.execSQL(addvoto+"('11','14','0.8');");
+
+        //idPessoa = 12
+        bd.execSQL(addvoto+"('12','6','0.6');");
+        bd.execSQL(addvoto+"('12','7','0.7');");
+        bd.execSQL(addvoto+"('12','8','0.8');");
+        bd.execSQL(addvoto+"('12','9','0.9');");
+        bd.execSQL(addvoto+"('12','10','0.6');");
+        bd.execSQL(addvoto+"('12','11','0.7');");
+        bd.execSQL(addvoto+"('12','12','0.8');");
+        bd.execSQL(addvoto+"('12','13','0.9');");
+        bd.execSQL(addvoto+"('12','14','0.6');");
+        bd.execSQL(addvoto+"('12','15','0.7');");
+
+        //idPessoa = 13
+        bd.execSQL(addvoto+"('13','8','0.6');");
+        bd.execSQL(addvoto+"('13','9','0.7');");
+        bd.execSQL(addvoto+"('13','10','0.8');");
+        bd.execSQL(addvoto+"('13','11','0.6');");
+        bd.execSQL(addvoto+"('13','12','0.7');");
+        bd.execSQL(addvoto+"('13','13','0.8');");
+        bd.execSQL(addvoto+"('13','14','0.6');");
+        bd.execSQL(addvoto+"('13','15','0.7');");
+        bd.execSQL(addvoto+"('13','16','0.8');");
+        bd.execSQL(addvoto+"('13','17','0.6');");
+
+        //idPessoa = 14
+        bd.execSQL(addvoto+"('14','20','0.6');");
+        bd.execSQL(addvoto+"('14','19','0.5');");
+        bd.execSQL(addvoto+"('14','18','0.8');");
+        bd.execSQL(addvoto+"('14','17','0.8');");
+        bd.execSQL(addvoto+"('14','16','0.8');");
+        bd.execSQL(addvoto+"('14','15','0.6');");
+        bd.execSQL(addvoto+"('14','14','0.7');");
+        bd.execSQL(addvoto+"('14','13','0.8');");
+        bd.execSQL(addvoto+"('14','12','0.9');");
+        bd.execSQL(addvoto+"('14','11','0.7');");
+
+        //idPessoa = 15
+        bd.execSQL(addvoto+"('15','1','0.7');");
+        bd.execSQL(addvoto+"('15','2','0.7');");
+        bd.execSQL(addvoto+"('15','3','0.7');");
+        bd.execSQL(addvoto+"('15','4','0.7');");
+        bd.execSQL(addvoto+"('15','5','0.7');");
+        bd.execSQL(addvoto+"('15','6','0.7');");
+        bd.execSQL(addvoto+"('15','7','0.7');");
+        bd.execSQL(addvoto+"('15','8','0.7');");
+        bd.execSQL(addvoto+"('15','9','0.7');");
+        bd.execSQL(addvoto+"('15','10','0.7');");
+
+        //idPessoa = 16
+        bd.execSQL(addvoto+"('16','11','0.8');");
+        bd.execSQL(addvoto+"('16','12','0.8');");
+        bd.execSQL(addvoto+"('16','13','0.8');");
+        bd.execSQL(addvoto+"('16','14','0.8');");
+        bd.execSQL(addvoto+"('16','15','0.8');");
+        bd.execSQL(addvoto+"('16','16','0.8');");
+        bd.execSQL(addvoto+"('16','17','0.8');");
+        bd.execSQL(addvoto+"('16','18','0.8');");
+        bd.execSQL(addvoto+"('16','19','0.8');");
+        bd.execSQL(addvoto+"('16','20','0.8');");
+
+        //idPessoa = 17
+        bd.execSQL(addvoto+"('17','11','0.6');");
+        bd.execSQL(addvoto+"('17','12','0.6');");
+        bd.execSQL(addvoto+"('17','13','0.6');");
+        bd.execSQL(addvoto+"('17','14','0.6');");
+        bd.execSQL(addvoto+"('17','15','0.6');");
+        bd.execSQL(addvoto+"('17','16','0.6');");
+        bd.execSQL(addvoto+"('17','17','0.6');");
+        bd.execSQL(addvoto+"('17','18','0.6');");
+        bd.execSQL(addvoto+"('17','19','0.6');");
+        bd.execSQL(addvoto+"('17','21','0.8');");
+
+        //idPessoa = 18
+        bd.execSQL(addvoto+"('18','1','0.6');");
+        bd.execSQL(addvoto+"('18','2','0.6');");
+        bd.execSQL(addvoto+"('18','3','0.6');");
+        bd.execSQL(addvoto+"('18','4','0.6');");
+        bd.execSQL(addvoto+"('18','5','0.6');");
+        bd.execSQL(addvoto+"('18','6','0.6');");
+        bd.execSQL(addvoto+"('18','7','0.6');");
+        bd.execSQL(addvoto+"('18','8','0.6');");
+        bd.execSQL(addvoto+"('18','9','0.6');");
+        bd.execSQL(addvoto+"('18','21','0.6');");
 
     }
     @Override
