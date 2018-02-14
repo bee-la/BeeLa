@@ -24,6 +24,8 @@ public class Lugar implements Serializable {
     private String texto;
     private Double notaGeral = 0.0;
 
+    private String tipo;
+
     public int getId() {
         return id;
     }
@@ -47,6 +49,16 @@ public class Lugar implements Serializable {
     }
 
     public Double getNotaGeral() {return notaGeral;}
+
+
+    public String getTipo(){
+        return this.tipo;
+    }
+
+    public void setTipo(String tipo){
+        this.tipo=tipo;
+    }
+
 
     public void setId(int id) {
         this.id = id;

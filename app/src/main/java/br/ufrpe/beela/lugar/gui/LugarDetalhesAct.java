@@ -23,7 +23,7 @@ public class LugarDetalhesAct extends AppCompatActivity  implements Serializable
 
     private ImageButton localizacaoBt;
     private Button classificacao;
-    private TextView nome,descricao;
+    private TextView nome,descricao, nota;
     private ImageView foto;
     private double destinolatitude;
     private double destinolongitude;
@@ -46,6 +46,9 @@ public class LugarDetalhesAct extends AppCompatActivity  implements Serializable
 
         nome = (TextView)findViewById(R.id.nomeDoLugar);
         nome.setText(getLugarRecuperado().getNome().toString());
+
+        nota= (TextView) findViewById(R.id.textView10);
+        nota.setText(String.valueOf(getLugarRecuperado().getNotaGeral()));
 
         descricao = findViewById(R.id.decriçãoLugar);
         descricao.setText("Lorem ipsum dolor sit amet, consectetur adipiscing elit. " +
