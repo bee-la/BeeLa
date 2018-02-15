@@ -23,7 +23,6 @@ import br.ufrpe.beela.usuario.gui.LoginAct;
 public class PerguntaEsporteAct extends AppCompatActivity implements Serializable{
 
     private PerfilUsuario perfilUsuario = new PerfilUsuario();
-    private PerfilService perfilService = new PerfilService();
     private ArrayList<CheckBox> checkBoxesEsportes = new ArrayList<>();
     private ArrayList<PerfilEsporte> listaEsporte = new ArrayList<PerfilEsporte>();
 

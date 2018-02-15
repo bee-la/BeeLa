@@ -24,7 +24,6 @@ public class PerguntaLugarAct extends AppCompatActivity implements Serializable{
 
 
     private PerfilUsuario perfilUsuario = new PerfilUsuario();
-    private PerfilService perfilService = new PerfilService();
     private TextView pergunta;
     private Button botaoConfirmar;
     private ArrayList<CheckBox> checkBoxesLugares = new ArrayList<>();
@@ -65,7 +64,6 @@ public class PerguntaLugarAct extends AppCompatActivity implements Serializable{
             @Override
             public void onClick(View v) {
                 adcListaLugares(checkBoxesLugares, listaLugar, perfilUsuario);
-                //LoginAct.getPessoa().setPerfilAtual(perfilUsuario);
                 irTelaNomePerfilAct();
 
             }

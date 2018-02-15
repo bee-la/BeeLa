@@ -8,6 +8,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 import br.ufrpe.beela.lugar.dominio.Lugar;
+import br.ufrpe.beela.lugar.gui.EscolhaProgramaAct;
 import br.ufrpe.beela.usuario.dominio.Pessoa;
 
 
@@ -16,16 +17,19 @@ public class SlopeOne {
     private static Map<Lugar, Map<Lugar, Double>> matrizDeDiferenca = new HashMap<>();
     private static Map<Lugar, Map<Lugar, Integer>> matrizDeFrequencia = new HashMap<>();
     private static Map<Pessoa, HashMap<Lugar, Double>> dadosDeSaida = new HashMap<>();
-
+    private static Map<Pessoa, HashMap<Lugar, Double>> matrizFinal = new HashMap<>();
 //    private static CriarMatriz cria;
 //    private static Map<Pessoa, HashMap<Lugar, Double>> matrizInicial =cria.getMatriz();
 
     private static Map<Pessoa, HashMap<Lugar, Double>> matrizInicial;
 
     private static ArrayList<Lugar> listaLugares= new ArrayList<Lugar>();
+    private  ArrayList<Lugar> listaRecomendados= new ArrayList<Lugar>();
+    private LugarService lugarService = new LugarService();
 
-    public SlopeOne(Map<Pessoa, HashMap<Lugar, Double>> matriz){
+    public SlopeOne(Map<Pessoa, HashMap<Lugar, Double>> matriz,ArrayList<Lugar> listaLugares){
         this.matrizInicial=matriz;
+        this.listaLugares=listaLugares;
     }
 
     public static void slopeOne() {
@@ -128,6 +132,7 @@ public class SlopeOne {
             dadosDeSaida.put(e.getKey(), clean);
         }
 //        printData(dadosDeSaida);
+        matrizFinal = dadosDeSaida;
     }
 
     private static void printData(Map<Pessoa, HashMap<Lugar, Double>> data) {
@@ -145,4 +150,13 @@ public class SlopeOne {
         }
     }
 
+    public ArrayList<Lugar> getListaRecomendados(Pessoa pessoa) {
+        getRecomendadosAux(matrizFinal.get(pessoa));
+        return listaRecomendados;
+    }
+    public void getRecomendadosAux(HashMap<Lugar,Double>matrizFinal){
+        for(Lugar lugar:matrizFinal.keySet()){
+            listaRecomendados.add(lugar);
+        }
+    }
 }

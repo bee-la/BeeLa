@@ -186,5 +186,28 @@ public class LugarService {
         bd.getLer(context);
         return bd.verificarJaVotou(id);
     }
+    public ArrayList<Pessoa> gerarListaTodasPessoa(Context context) {
+        PessoaDAO bd = new PessoaDAO();
+        bd.getLer(context);
+        return bd.getListaPessoasSistema();
+    }
+    public ArrayList<Lugar> getListaLugares(Context context){
+        LugarDAO bd = new LugarDAO();
+        bd.getLer(context);
+        return bd.getListaLugar();
+    }
+    public ArrayList<Lugar> atualizarNotaSlope(ArrayList<Lugar> lugarArrayList,Context context){
+        ArrayList<Lugar> listLugar = new ArrayList<Lugar>();
+        for (Lugar lugar : lugarArrayList) {
+            LugarDAO bd = new LugarDAO();
+            bd.getLer(context);
+            lugar = bd.getLugar(lugar.getId());
+            if (lugar.getNotaGeral() >=4.0) {
+                listLugar.add(lugar);
+            }
+        }
+        return listLugar;
+
+    }
 }
 

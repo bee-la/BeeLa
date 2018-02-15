@@ -26,16 +26,17 @@ import br.ufrpe.beela.lugar.negocio.AdapterCustomizado;
 public class LugarAct extends AppCompatActivity  {
 
 
-    private ArrayList<Lugar> ListLugar = EscolhaProgramaAct.getListaLugar();
+    private ArrayList<Lugar> ListLugar = new ArrayList<Lugar>();
     private ListView listViewLugares;
     Button maps;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        getLugarRecuperado();
         setContentView(R.layout.activity_lugares);
         verificarGPS();
+
         maps = (Button)findViewById(R.id.buttonIrMaps);
         maps.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -94,5 +95,8 @@ public class LugarAct extends AppCompatActivity  {
             return;
         }
     }
-
+    public void getLugarRecuperado(){
+        Bundle bundle = getIntent().getExtras();
+        ListLugar = (ArrayList<Lugar>) bundle.getSerializable(getString(R.string.lugar));
+    }
 }

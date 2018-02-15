@@ -80,8 +80,10 @@ public class LugarDetalhesAct extends AppCompatActivity  implements Serializable
                 Intent intent = new Intent(LugarDetalhesAct.this, AvaliacaoAct.class);
                 intent.putExtra(getString(R.string.lugar), getLugarRecuperado());
                 startActivity(intent);
-                lugarService.getLugar(recuperado.getId(),this);
+                recuperado = lugarService.getLugar(recuperado.getId(),this);
+
         }
+        nota.setText(String.valueOf(recuperado.getNotaGeral()));
     }
 
     public Intent chamarMapa(Lugar lugar) {

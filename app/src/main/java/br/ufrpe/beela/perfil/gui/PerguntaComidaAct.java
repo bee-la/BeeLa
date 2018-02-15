@@ -20,7 +20,6 @@ import br.ufrpe.beela.gui.R;
 public class PerguntaComidaAct extends AppCompatActivity implements Serializable {
 
     private PerfilUsuario perfilUsuario = new PerfilUsuario();
-    private PerfilService perfilService = new PerfilService();
     private TextView pergunta;
     private Button botaoConfirmar;
     private ArrayList<CheckBox> checkBoxesComidas = new ArrayList<>();
