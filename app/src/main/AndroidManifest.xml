@@ -73,6 +73,9 @@
             android:name="br.ufrpe.beela.lugar.gui.EscolhaProgramaAct"
             android:label="E ai, como vai ser?" />
         <activity
+            android:name="br.ufrpe.beela.lugar.gui.ProgramaSozinhoAct"
+            android:label="E ai, como vai ser?" />
+        <activity
             android:name="br.ufrpe.beela.usuario.gui.ContatoAct"
             android:label="@string/contatos" />
         <activity android:name="br.ufrpe.beela.perfil.gui.PerguntaLugarAct" />

@@ -69,6 +69,7 @@ public class LugarService {
         return bd.getListaPessoa();
     }
     public ArrayList<Pessoa> gerarListaPessoaSistema(Context context) {
+        // lista de pessoa sem Usuario logado
         PessoaDAO bd = new PessoaDAO();
         bd.getLer(context);
         return bd.getListaPessoasSistema();
@@ -189,7 +190,7 @@ public class LugarService {
     public ArrayList<Pessoa> gerarListaTodasPessoa(Context context) {
         PessoaDAO bd = new PessoaDAO();
         bd.getLer(context);
-        return bd.getListaPessoasSistema();
+        return bd.getListaTodasPesssoas();
     }
     public ArrayList<Lugar> getListaLugares(Context context){
         LugarDAO bd = new LugarDAO();
@@ -202,7 +203,8 @@ public class LugarService {
             LugarDAO bd = new LugarDAO();
             bd.getLer(context);
             lugar = bd.getLugar(lugar.getId());
-            if (lugar.getNotaGeral() >=4.0) {
+            //todo tem que tirar esse IF daqui.
+            if (lugar.getNotaGeral() >=3.8 & listLugar.size() <= 5) {
                 listLugar.add(lugar);
             }
         }

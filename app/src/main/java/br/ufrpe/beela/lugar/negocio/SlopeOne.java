@@ -14,29 +14,24 @@ import br.ufrpe.beela.usuario.dominio.Pessoa;
 
 public class SlopeOne {
 
-    private static Map<Lugar, Map<Lugar, Double>> matrizDeDiferenca = new HashMap<>();
-    private static Map<Lugar, Map<Lugar, Integer>> matrizDeFrequencia = new HashMap<>();
-    private static Map<Pessoa, HashMap<Lugar, Double>> dadosDeSaida = new HashMap<>();
-    private static Map<Pessoa, HashMap<Lugar, Double>> matrizFinal = new HashMap<>();
-//    private static CriarMatriz cria;
-//    private static Map<Pessoa, HashMap<Lugar, Double>> matrizInicial =cria.getMatriz();
+    private  Map<Lugar, Map<Lugar, Double>> matrizDeDiferenca = new HashMap<>();
+    private  Map<Lugar, Map<Lugar, Integer>> matrizDeFrequencia = new HashMap<>();
+    private  Map<Pessoa, HashMap<Lugar, Double>> dadosDeSaida = new HashMap<>();
 
-    private static Map<Pessoa, HashMap<Lugar, Double>> matrizInicial;
+    private  Map<Pessoa, HashMap<Lugar, Double>> matrizFinal = new HashMap<>();
+    private  Map<Pessoa, HashMap<Lugar, Double>> matrizInicial= new HashMap<>();
 
-    private static ArrayList<Lugar> listaLugares= new ArrayList<Lugar>();
+    private  ArrayList<Lugar> listaLugares= new ArrayList<Lugar>();
     private  ArrayList<Lugar> listaRecomendados= new ArrayList<Lugar>();
-    private LugarService lugarService = new LugarService();
 
-    public SlopeOne(Map<Pessoa, HashMap<Lugar, Double>> matriz,ArrayList<Lugar> listaLugares){
-        this.matrizInicial=matriz;
-        this.listaLugares=listaLugares;
+
+    public SlopeOne(Map<Pessoa, HashMap<Lugar, Double>> matriz,ArrayList<Lugar> listaLugar){
+        matrizInicial=matriz;
+        listaLugares=listaLugar;
     }
 
-    public static void slopeOne() {
+    public  void slopeOne() {
         buildDifferencesMatrix(matrizInicial);
-
-//        System.out.println("");
-//        System.out.println("\nSlope One - com Previsões:\n");
         predict(matrizInicial);
 
     }
@@ -47,7 +42,7 @@ public class SlopeOne {
           * usuários e número de ocorrências dos lugares
      */
 
-    private static void buildDifferencesMatrix(Map<Pessoa, HashMap<Lugar, Double>> data) {
+    private void buildDifferencesMatrix(Map<Pessoa, HashMap<Lugar, Double>> data) {
         for (HashMap<Lugar, Double> user : data.values()) {
             for (Entry<Lugar, Double> e : user.entrySet()) {
                 if (!matrizDeDiferenca.containsKey(e.getKey())) {
@@ -78,7 +73,6 @@ public class SlopeOne {
                 matrizDeDiferenca.get(j).put(i, oldValue / count);
             }
         }
-//        printData(data);
     }
 
 
@@ -88,9 +82,10 @@ public class SlopeOne {
           * São dados de usuários existentes e classificações de seus lugares.
      */
 
-    private static void predict(Map<Pessoa, HashMap<Lugar, Double>> data) {
+    private  void predict(Map<Pessoa, HashMap<Lugar, Double>> data) {
         HashMap<Lugar, Double> uPred = new HashMap<Lugar, Double>();
         HashMap<Lugar, Integer> uFreq = new HashMap<Lugar, Integer>();
+
         for (Lugar j : matrizDeDiferenca.keySet()) {
             uFreq.put(j, 0);
             uPred.put(j, 0.0);
@@ -112,51 +107,33 @@ public class SlopeOne {
 
             HashMap<Lugar, Double> clean = new HashMap<Lugar, Double>();
             for (Lugar j : uPred.keySet()) {
-                if (uFreq.get(j) > 0) {
+                Boolean v = clean.containsKey(j);
+                if (uFreq.get(j) > 0 & !v) {
                     clean.put(j, uPred.get(j).doubleValue() / uFreq.get(j).intValue());
                 }
             }
             for (Lugar j : listaLugares) {
-                if (e.getValue().containsKey(j)) {
-                    clean.put(j, e.getValue().get(j));
-                }
-
-
-// 				 Estava sempre caindo nesse else e retornando -1
-//                else {
-//                    clean.put(j, -1.0);
-//                }
-
-
+                Boolean v = clean.containsKey(j);
+                if (e.getValue().containsKey(j) & !v) {
+                       clean.put(j, e.getValue().get(j));
+                    }
             }
             dadosDeSaida.put(e.getKey(), clean);
         }
-//        printData(dadosDeSaida);
         matrizFinal = dadosDeSaida;
     }
-
-    private static void printData(Map<Pessoa, HashMap<Lugar, Double>> data) {
-        for (Pessoa pessoa : data.keySet()) {
-            System.out.println(pessoa.getNome() + ":");
-//            print(data.get(pessoa));
-            System.out.println("");
-        }
-    }
-
-    private static void print(HashMap<Lugar, Double> hashMap) {
-        NumberFormat formatter = new DecimalFormat("#0.00");
-        for (Lugar j : hashMap.keySet()) {
-            System.out.println(" " + j.getNome() + " --> " + formatter.format(hashMap.get(j).doubleValue()));
-        }
-    }
-
     public ArrayList<Lugar> getListaRecomendados(Pessoa pessoa) {
         getRecomendadosAux(matrizFinal.get(pessoa));
         return listaRecomendados;
     }
     public void getRecomendadosAux(HashMap<Lugar,Double>matrizFinal){
+        ArrayList<Integer> l = new ArrayList<Integer>();
         for(Lugar lugar:matrizFinal.keySet()){
-            listaRecomendados.add(lugar);
+            int x = lugar.getId();
+            if(!l.contains(x)){
+                l.add(lugar.getId());
+                listaRecomendados.add(lugar);
+            }
         }
     }
 }

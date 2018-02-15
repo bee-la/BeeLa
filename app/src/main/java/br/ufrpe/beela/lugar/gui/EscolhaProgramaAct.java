@@ -51,8 +51,7 @@ public class EscolhaProgramaAct extends AppCompatActivity {
             public void onClick(View v) {
 
                 gerarSozinho();
-                enviarListaDeRecomendados();
-                //startActivity(new Intent(EscolhaProgramaAct.this, LugarAct.class));
+                //enviarListaDeRecomendados();
             }
         });
     }
@@ -70,13 +69,15 @@ public class EscolhaProgramaAct extends AppCompatActivity {
 
 
     public void gerarSozinho() {
-        if(!lugarService.verificarJaVotou(pessoa.getId(),this)) {
-            ArrayList<Lugar> lugarArrayList = lugarService.gerarListaLugar(perfilUsuario, this);
-            EscolhaProgramaAct.setListaLugar(lugarArrayList);
-            getLugaresComMaiorNota(EscolhaProgramaAct.getListaLugar());
-        }
-        listaLugaresRecomendados = lugarService.atualizarNotaSlope(getRecomendacao(),this);
-  //      iniciarMatriz();
+        startActivity(new Intent(EscolhaProgramaAct.this,ProgramaSozinhoAct.class));
+        finish();
+//        if(!lugarService.verificarJaVotou(pessoa.getId(),this)) {
+//            ArrayList<Lugar> lugarArrayList = lugarService.gerarListaLugar(perfilUsuario, this);
+//            EscolhaProgramaAct.setListaLugar(lugarArrayList);
+//            getLugaresComMaiorNota(EscolhaProgramaAct.getListaLugar());
+//        }
+//        listaLugaresRecomendados = lugarService.atualizarNotaSlope(getRecomendacao(),this);
+//  //      iniciarMatriz();
     }
 
     public static void setListaLugar(ArrayList<Lugar> listaLugar) {
@@ -115,7 +116,7 @@ public class EscolhaProgramaAct extends AppCompatActivity {
 
     public ArrayList<Lugar> getListaLugaresQuandoNaoVotou(){
         HashMap<Pessoa, HashMap<Lugar, Double>> matrizTotal = new HashMap<>();
-
+// aqui retorna todos exceto quem está logado
         ArrayList<Pessoa> listaPessoas = new ArrayList<Pessoa>();
         listaPessoas=lugarService.gerarListaPessoaSistema(this);
 
@@ -128,7 +129,7 @@ public class EscolhaProgramaAct extends AppCompatActivity {
             hashMap.put(lugar, lugar.getNotaGeral());
             matrizTotal.put(pessoa, hashMap);
         }
-
+// até aqui ok pegou todos e quem esta logado 19 matriztotal
         ArrayList<Lugar> listaLugares = lugarService.getListaLugares(this);
         SlopeOne slope=new SlopeOne(matrizTotal, listaLugares);
         slope.slopeOne();
@@ -156,11 +157,11 @@ public class EscolhaProgramaAct extends AppCompatActivity {
     }
 
 
-
+//ok 6 de 7 com as nota igual ou maior que a media
     public void getLugaresComMaiorNota(ArrayList<Lugar> listaLugar) {
         ArrayList<Lugar> lugarArrayList = new ArrayList<Lugar>();
         for (Lugar lugar : listaLugar) {
-            if (lugar.getNotaGeral() >4.0) {
+            if (lugar.getNotaGeral()>= 3.8) {
                 lugarArrayList.add(lugar);
             }
         }
@@ -170,5 +171,6 @@ public class EscolhaProgramaAct extends AppCompatActivity {
         Intent intent = new Intent(EscolhaProgramaAct.this, LugarAct.class);
         intent.putExtra(getString(R.string.lugar), listaLugaresRecomendados);
         startActivity(intent);
+        finish();
     }
 }
