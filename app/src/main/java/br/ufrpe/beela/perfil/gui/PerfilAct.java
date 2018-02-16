@@ -14,7 +14,6 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 import java.util.ArrayList;
-
 import br.ufrpe.beela.gui.R;
 import br.ufrpe.beela.lugar.gui.EscolhaProgramaAct;
 import br.ufrpe.beela.perfil.dao.PerfilDAO;
@@ -29,7 +28,6 @@ public class PerfilAct extends AppCompatActivity {
     private ImageButton botaoAdicionarPerfil, botaoApagar, botaoSalvar;
     private ListView listViewPerfis;
     private TextView fonteBotaoComecar;
-    private Toast erro;
     private Button botaoComecar;
     private int contadorPerfil;
     private boolean verificador = false;
@@ -37,7 +35,7 @@ public class PerfilAct extends AppCompatActivity {
     private Pessoa pessoa = LoginAct.getPessoa();
     private PerfilUsuario perfilUsuario = LoginAct.getPessoa().getPerfilAtual();
     private PerfilService perfilService = new PerfilService();
-    public static ArrayList<PerfilUsuario> perfilUsuarioArrayList = LoginAct.getPessoa().getPerfilUsuarioArrayList();
+    private static ArrayList<PerfilUsuario> perfilUsuarioArrayList = LoginAct.getPessoa().getPerfilUsuarioArrayList();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -190,9 +188,10 @@ public class PerfilAct extends AppCompatActivity {
             //
             LoginAct.getPessoa().setPerfilAtual(perfilAtual);
             perfilUsuario = LoginAct.getPessoa().getPerfilAtual();
-//
+
             return true;
-        } else {
+        }
+        else {
             return false;
         }
     }

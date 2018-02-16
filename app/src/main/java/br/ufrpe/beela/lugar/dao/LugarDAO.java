@@ -42,10 +42,8 @@ public class LugarDAO {
         valores.put("localizacao", lugar.getLocalicao());
         valores.put("caminho",lugar.getCaminho());
         valores.put("texto",lugar.getTexto());
-
-//TODO          Adicionado !!! =>Vidal fez
         valores.put("notaGeral", lugar.getNotaGeral());
-        valores.put("tipo", lugar.getTipo());// TODO --> Se for usar falta adicionar na tabela
+        valores.put("tipo", lugar.getTipo());
 
         bd.insert("lugar", null, valores);
         bd.close();
@@ -85,7 +83,6 @@ public class LugarDAO {
             lugar.setCaminho(cursor.getString(4));
             lugar.setTexto(cursor.getString(5));
             lugar.setNotaGeral(cursor.getDouble(6));
-//TODO              Adicionado
             lugar.setTipo(cursor.getString(7));
 
         }
@@ -105,8 +102,6 @@ public class LugarDAO {
             lugar.setLocalicao(cursor.getString(3));
             lugar.setCaminho(cursor.getString(4));
             lugar.setTexto(cursor.getString(5));
-
- //TODO              Adicionado
             lugar.setNotaGeral(cursor.getDouble(6));
             lugar.setTipo(cursor.getString(7));
 
@@ -134,15 +129,12 @@ public class LugarDAO {
             cursor.moveToFirst();
             do {
                 Lugar lugar = new Lugar();
-
                 lugar.setId(cursor.getInt(0));
                 lugar.setNome(cursor.getString(1));
                 lugar.setDescriacao(cursor.getString(2));
                 lugar.setLocalicao(cursor.getString(3));
                 lugar.setCaminho(cursor.getString(4));
                 lugar.setTexto(cursor.getString(5));
-
-//TODO              Adicionado
                 lugar.setNotaGeral(cursor.getDouble(6));
                 lugar.setTipo(cursor.getString(7));
 

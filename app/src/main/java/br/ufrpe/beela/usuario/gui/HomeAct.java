@@ -31,31 +31,17 @@ public class HomeAct extends AppCompatActivity {
     private AlimentarBancoDeDados alimentarBancoDeDados = new AlimentarBancoDeDados();
     private UsuarioService usuarioService = new UsuarioService();
     private Button oqTuQuer;
-    //private LugarDAO lugarDAO = new LugarDAO();
-
-//    private GoogleMaps mapa=new GoogleMaps();
-//    private ArrayList<Lugar> lugaresPreferidos = new ArrayList<Lugar>();
-
-//    MediaPlayer qualvai;
-      MediaPlayer oque;
-
-//    private Button btoq;
-
-//    private Button oQueTuQuerButton4;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-
         alimentarBancoDeDados.gerarLugares(this);
         alterarFonte();
         irPerfil();
         irConfiguracoes();
         irLugares();
         irOqTuQuer();
-
-//        btoq = findViewById(R.id.button4);
     }
 
     private void alterarFonte() {
@@ -97,7 +83,6 @@ public class HomeAct extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(HomeAct.this, ConfiguracoesAct.class));
-//                configuracoesImageButton3();
             }
         });
     }
@@ -112,13 +97,9 @@ public class HomeAct extends AppCompatActivity {
         });
     }
 
-
     private void oQueTuQuerEuQuero() {
-
         Lugar lugarzinho;
         lugarzinho = usuarioService.getLugar(this);
-
-
         Intent intent = new Intent(HomeAct.this, LugarDetalhesAct.class);
         intent.putExtra("lugar", (Serializable) lugarzinho);
         startActivity(intent);

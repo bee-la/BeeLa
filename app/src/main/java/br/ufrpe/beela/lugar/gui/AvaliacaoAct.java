@@ -57,10 +57,7 @@ public class AvaliacaoAct extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 addVoto(pessoa.getId(),regraDeTres(nota));
-                Toast.makeText(AvaliacaoAct.this,
-                        String.valueOf("Voto computado: " + nota),
-                        Toast.LENGTH_SHORT).show();
-                //TODO agora fechar depois que confirma a nota
+                Toast.makeText(AvaliacaoAct.this, String.valueOf(getString(R.string.votoComputado) + nota), Toast.LENGTH_SHORT).show();
                 finish();
             }
         });
@@ -69,8 +66,8 @@ public class AvaliacaoAct extends AppCompatActivity {
         lugarService.addVoto(idPessoa,getLugarRecuperado(),nota,this);
     }
 
-    public Double regraDeTres(double notinha){
-        double notaFinal=((int) notinha)/5;
+    public Double regraDeTres(double notaParaFormatar){
+        double notaFinal=((int) notaParaFormatar)/5;
         return (notaFinal);
     }
 

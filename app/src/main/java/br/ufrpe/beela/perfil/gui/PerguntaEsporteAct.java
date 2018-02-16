@@ -8,17 +8,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import java.io.Serializable;
 import java.util.ArrayList;
-
 import br.ufrpe.beela.gui.R;
-import br.ufrpe.beela.perfil.dao.PerfilDAO;
 import br.ufrpe.beela.perfil.dominio.PerfilEsporte;
 import br.ufrpe.beela.perfil.dominio.PerfilUsuario;
-import br.ufrpe.beela.perfil.negocio.PerfilService;
-import br.ufrpe.beela.usuario.gui.LoginAct;
 
 public class PerguntaEsporteAct extends AppCompatActivity implements Serializable{
 
@@ -86,36 +80,9 @@ public class PerguntaEsporteAct extends AppCompatActivity implements Serializabl
     }
 
     public void irTelaPerguntaLugarAct() {
-        Intent intent = new Intent(PerguntaEsporteAct.this, PerguntaLugarAct.class);
+        Intent intent = new Intent(PerguntaEsporteAct.this, PerguntaLugarVariadoAct.class);
         intent.putExtra("perfilUsuario", (Serializable) perfilUsuario);
         startActivity(intent);
-        //startActivityForResult(new Intent(PerguntaEsporteAct.this, PerguntaLugarAct.class), 1);
         finish();
-
     }
-
-//    public void salvarEsporte() {
-//        if (perfilUsuario.getNome() != null) {
-//            perfilService.adcEsporte(perfilUsuario, this);
-//        }
-//    }
-//
-//    protected void onActivityResult(int codigoDaTela, int quemInviou, Intent intent) {
-//        if (codigoDaTela == 1) {
-//            try {
-//                Bundle valor = intent.getExtras();
-//                if (valor != null) {
-//                    perfilUsuario.setNome(valor.getString("nomePerfil"));
-//                    salvarEsporte();
-//                    setResult(1, intent);
-//                    finish();
-//                }
-//            } catch (Exception e) {
-//                finish();
-//                e.printStackTrace();
-//            }
-//            //intent.putExtra("nomePerfil",perfilUsuario.getNome());
-//            //    startActivity(new Intent(this, PerfilAct.class));
-//        }
-//    }
 }

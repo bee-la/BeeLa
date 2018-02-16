@@ -8,13 +8,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.TextView;
-
 import java.io.Serializable;
 import java.util.ArrayList;
-
 import br.ufrpe.beela.perfil.dominio.PerfilComida;
 import br.ufrpe.beela.perfil.dominio.PerfilUsuario;
-import br.ufrpe.beela.perfil.negocio.PerfilService;
 import br.ufrpe.beela.gui.R;
 
 public class PerguntaComidaAct extends AppCompatActivity implements Serializable {
@@ -87,37 +84,7 @@ public class PerguntaComidaAct extends AppCompatActivity implements Serializable
         Intent intent = new Intent(PerguntaComidaAct.this, PerguntaEsporteAct.class);
         intent.putExtra("perfilUsuario", (Serializable) perfilUsuario);
         startActivity(intent);
-        //startActivityForResult(new Intent(PerguntaComidaAct.this, PerguntaEsporteAct.class), 1);
          finish();
 
     }
-
-//    public void salvarComida() {
-//        if (perfilUsuario.getNome() != null) {
-//            PerfilDAO bd = new PerfilDAO();
-//            bd.getLer(this);
-//            perfilService.adcComida(perfilUsuario, this);
-//        } else {
-//            Toast.makeText(getApplicationContext(), "NÂO TEM NOME", Toast.LENGTH_SHORT).show();
-//        }
-//    }
-//
-//    protected void onActivityResult(int codigoDaTela, int quemInviou, Intent intent) {
-//        if (codigoDaTela == 1) {
-//            try {
-//                Bundle valor = intent.getExtras();
-//                if (valor != null) {
-//                    perfilUsuario.setNome(valor.getString("nomePerfil"));
-//                    salvarComida();
-//                    setResult(1, intent);
-//                    finish();
-//                }
-//            } catch (Exception e) {
-//                finish();
-//                e.printStackTrace();
-//            }
-//
-//
-//        }
-//    }
 }

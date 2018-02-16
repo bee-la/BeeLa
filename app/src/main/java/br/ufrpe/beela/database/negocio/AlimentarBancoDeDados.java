@@ -9,9 +9,6 @@ import br.ufrpe.beela.perfil.dominio.PerfilComida;
 import br.ufrpe.beela.perfil.dominio.PerfilEsporte;
 import br.ufrpe.beela.perfil.dominio.PerfilLugar;
 import br.ufrpe.beela.perfil.dominio.PerfilMusica;
-import br.ufrpe.beela.usuario.dominio.Pessoa;
-import br.ufrpe.beela.usuario.dominio.Usuario;
-
 
 /**
  * Created by vidal on 29/12/2017.
@@ -54,10 +51,7 @@ public class AlimentarBancoDeDados {
         lugar.setTexto(context.getString(R.string.loremIpsum));
         lugar.setLocalicao(context.getString(R.string.localRU));
         lugar.setCaminho(context.getString(R.string.caminhoRu));
-
-//TODO      Adicionei esses dois em todos, mas deixei o tipo comentado caso tu nao use!! =>Vidal fez.
-//        lugar.setNotaGeral(4.5);
-        lugar.setTipo("comida"); //caso precise usar
+        lugar.setTipo("comida");
 
         LugarDAO bd = new LugarDAO();
         bd.getEscrever(context);
@@ -89,8 +83,6 @@ public class AlimentarBancoDeDados {
         lugar.setTexto(context.getString(R.string.loremIpsum));
         lugar.setLocalicao(context.getString(R.string.igLocal));
         lugar.setCaminho(context.getString(R.string.igCaminho));
-
-//        lugar.setNotaGeral(4.3);
         lugar.setTipo("variado");
 
 
@@ -119,8 +111,6 @@ public class AlimentarBancoDeDados {
         lugar.setTexto(context.getString(R.string.loremIpsum));
         lugar.setLocalicao(context.getString(R.string.ribsLocal));
         lugar.setCaminho(context.getString(R.string.ribsCaminho));
-
-//        lugar.setNotaGeral(4.2);
         lugar.setTipo("comida");
 
 
@@ -150,8 +140,6 @@ public class AlimentarBancoDeDados {
         lugar.setTexto(context.getString(R.string.loremIpsum));
         lugar.setLocalicao(context.getString(R.string.shopLocal));
         lugar.setCaminho(context.getString(R.string.shopCaminho));
-
-//        lugar.setNotaGeral(4.0);
         lugar.setTipo("variado");
 
 
@@ -183,10 +171,7 @@ public class AlimentarBancoDeDados {
         lugar.setTexto(context.getString(R.string.loremIpsum));
         lugar.setLocalicao(context.getString(R.string.mirabiLocal));
         lugar.setCaminho(context.getString(R.string.mirabiCaminho));
-
-//        lugar.setNotaGeral(4.4);
         lugar.setTipo("variado");
-
 
         LugarDAO bd = new LugarDAO();
         bd.getEscrever(context);
@@ -216,8 +201,6 @@ public class AlimentarBancoDeDados {
         lugar.setTexto(context.getString(R.string.loremIpsum));
         lugar.setLocalicao(context.getString(R.string.baileLocal));
         lugar.setCaminho(context.getString(R.string.baileCaminho));
-
-//        lugar.setNotaGeral(4.0);
         lugar.setTipo("musica");
 
 
@@ -253,10 +236,7 @@ public class AlimentarBancoDeDados {
         lugar.setDescriacao(context.getString(R.string.bar));
         lugar.setLocalicao("-8.0391429,-34.8943923");
         lugar.setCaminho("barx");
-
- //       lugar.setNotaGeral(4.0);
         lugar.setTipo("comida");
-
 
         LugarDAO bd = new LugarDAO();
         bd.getEscrever(context);
@@ -282,10 +262,7 @@ public class AlimentarBancoDeDados {
         lugar.setDescriacao("Bar e Restaurante");
         lugar.setLocalicao("-8.064217,-34.8753367");
         lugar.setCaminho("barx");
-
-//        lugar.setNotaGeral(4.0);
         lugar.setTipo("musica");
-
 
         LugarDAO bd = new LugarDAO();
         bd.getEscrever(context);
@@ -317,9 +294,7 @@ public class AlimentarBancoDeDados {
         lugar.setDescriacao(context.getString(R.string.bar));
         lugar.setLocalicao("-8.032956,-34.9175807");
         lugar.setCaminho("barx");
-
         lugar.setTipo("musica");
-
 
         LugarDAO bd = new LugarDAO();
         bd.getEscrever(context);
@@ -345,8 +320,6 @@ public class AlimentarBancoDeDados {
         lugar.setDescriacao(context.getString(R.string.bar));
         lugar.setLocalicao("-8.051227,-34.8999917");
         lugar.setCaminho("barx");
-
-//        lugar.setNotaGeral(4.1);
         lugar.setTipo("musica");
 
 
@@ -373,8 +346,6 @@ public class AlimentarBancoDeDados {
         lugar.setDescriacao(context.getString(R.string.bar));
         lugar.setLocalicao("-8.0640389,-34.8746559");
         lugar.setCaminho("barx");
-
-//        lugar.setNotaGeral(4.6);
         lugar.setTipo("musica");
 
 
@@ -401,8 +372,6 @@ public class AlimentarBancoDeDados {
         lugar.setDescriacao(context.getString(R.string.bar));
         lugar.setLocalicao("-8.0537027,-34.9222478");
         lugar.setCaminho("barx");
-
-//        lugar.setNotaGeral(4.2);
         lugar.setTipo("musica");
 
 
@@ -429,10 +398,7 @@ public class AlimentarBancoDeDados {
         lugar.setDescriacao(context.getString(R.string.bar));
         lugar.setLocalicao("-8.06026,-34.9303302");
         lugar.setCaminho("barx");
-
-//        lugar.setNotaGeral(4.3);
         lugar.setTipo("musica");
-
 
         LugarDAO bd = new LugarDAO();
         bd.getEscrever(context);
@@ -457,10 +423,7 @@ public class AlimentarBancoDeDados {
         lugar.setDescriacao(context.getString(R.string.bar));
         lugar.setLocalicao("-8.0247618,-34.8958559");
         lugar.setCaminho("barx");
-
-//        lugar.setNotaGeral(4.0);
         lugar.setTipo("musica");
-
 
         LugarDAO bd = new LugarDAO();
         bd.getEscrever(context);
@@ -485,9 +448,7 @@ public class AlimentarBancoDeDados {
         lugar.setDescriacao(context.getString(R.string.bar));
         lugar.setLocalicao("-8.042149,-34.8935926");
         lugar.setCaminho("barx");
-
         lugar.setTipo("musica");
-
 
         LugarDAO bd = new LugarDAO();
         bd.getEscrever(context);
@@ -505,7 +466,7 @@ public class AlimentarBancoDeDados {
         bdp.getEscrever(context);
         bdp.inserirPerfilLugarMusica(lugar.getId(),perfilMusica);
     }
-    //TODO lugares Esportes
+
     public void criaParqueJaqueira(Context context) {
         Lugar lugar = new Lugar();
         lugar.setNome(context.getString(R.string.jaqueira));
@@ -513,8 +474,6 @@ public class AlimentarBancoDeDados {
         lugar.setTexto(context.getString(R.string.loremIpsum));
         lugar.setLocalicao(context.getString(R.string.jaqueiraLocal));
         lugar.setCaminho(context.getString(R.string.jaqueiraCaminho));
-
-
         lugar.setTipo("variado");
 
         LugarDAO bd = new LugarDAO();
@@ -544,9 +503,7 @@ public class AlimentarBancoDeDados {
         lugar.setDescriacao("Praia");
         lugar.setLocalicao("-8.1309239,-34.9155127");
         lugar.setCaminho(context.getString(R.string.praiaX));
-
         lugar.setTipo("variado");
-
 
         LugarDAO bd = new LugarDAO();
         bd.getEscrever(context);
@@ -574,10 +531,7 @@ public class AlimentarBancoDeDados {
         lugar.setDescriacao("Praia");
         lugar.setLocalicao("-8.1049151,-34.9214614");
         lugar.setCaminho(context.getString(R.string.praiaX));
-
-//        lugar.setNotaGeral(4.2);
         lugar.setTipo("variado");
-
 
         LugarDAO bd = new LugarDAO();
         bd.getEscrever(context);
@@ -605,10 +559,7 @@ public class AlimentarBancoDeDados {
         lugar.setDescriacao("Fast Food");
         lugar.setLocalicao("-8.0507299,-34.9305708");
         lugar.setCaminho("mcdonald");
-
-//        lugar.setNotaGeral(4.8);
         lugar.setTipo("comida");
-
 
         LugarDAO bd = new LugarDAO();
         bd.getEscrever(context);
@@ -633,10 +584,7 @@ public class AlimentarBancoDeDados {
         lugar.setDescriacao("Fast Food");
         lugar.setLocalicao("-8.0206476,-35.0181816");
         lugar.setCaminho("subway");
-
-//        lugar.setNotaGeral(4.6);
         lugar.setTipo("comida");
-
 
         LugarDAO bd = new LugarDAO();
         bd.getEscrever(context);
@@ -661,8 +609,6 @@ public class AlimentarBancoDeDados {
         lugar.setDescriacao("Pizzaria");
         lugar.setLocalicao("-8.0206225,-35.1232507");
         lugar.setCaminho("pizzahut");
-
-//        lugar.setNotaGeral(4.4);
         lugar.setTipo("comida");
 
 

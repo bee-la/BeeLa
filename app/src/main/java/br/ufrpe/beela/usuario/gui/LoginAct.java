@@ -84,7 +84,6 @@ public class LoginAct extends AppCompatActivity {
             public void onClick(View v) {
                 mensagemEsqSenha = Toast.makeText(getApplicationContext(), R.string.implementarFunc, Toast.LENGTH_SHORT);
                 mensagemEsqSenha.show();
-//                startActivity(new Intent(LoginAct.this, EsqueceuSenhaAct.class));
             }
         });
     }

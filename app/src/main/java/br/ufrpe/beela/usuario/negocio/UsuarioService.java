@@ -1,11 +1,8 @@
 package br.ufrpe.beela.usuario.negocio;
 
 import android.content.Context;
-import android.util.Patterns;
-
 import java.util.ArrayList;
 import java.util.Random;
-
 import br.ufrpe.beela.lugar.dao.LugarDAO;
 import br.ufrpe.beela.lugar.dominio.Lugar;
 import br.ufrpe.beela.perfil.dao.PerfilDAO;
@@ -14,7 +11,6 @@ import br.ufrpe.beela.usuario.dao.PessoaDAO;
 import br.ufrpe.beela.usuario.dao.UsuarioDAO;
 import br.ufrpe.beela.usuario.dominio.Pessoa;
 import br.ufrpe.beela.usuario.dominio.Usuario;
-import br.ufrpe.beela.usuario.gui.ContatoAct;
 
 /**
  * Created by vidal on 14/12/2017.

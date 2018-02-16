@@ -4,12 +4,8 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-
-import java.text.DecimalFormat;
-import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
-
 import br.ufrpe.beela.database.dao.BD;
 import br.ufrpe.beela.lugar.dominio.Lugar;
 import br.ufrpe.beela.usuario.dominio.Usuario;
@@ -17,9 +13,6 @@ import br.ufrpe.beela.usuario.dominio.Usuario;
 
 /**
  * Created by vidal on 05/12/2017.
- * modificado por vidal 07/12
- * modificado por vidal 14/12
- * modificado por vidal 29/12/2017
  */
 
 public class UsuarioDAO {

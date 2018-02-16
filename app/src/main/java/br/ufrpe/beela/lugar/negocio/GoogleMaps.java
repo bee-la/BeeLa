@@ -8,23 +8,11 @@ import android.net.Uri;
 import android.provider.Settings;
 import android.support.v4.app.ActivityCompat;
 import android.widget.Toast;
-
 import br.ufrpe.beela.gui.R;
 import br.ufrpe.beela.lugar.dominio.Lugar;
-
-import android.Manifest;
-import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.os.Bundle;
-import android.provider.Settings;
-import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
-import android.widget.Adapter;
-import android.widget.AdapterView;
-import android.widget.Button;
-import android.content.ComponentName;
-import android.net.Uri;
+
 
 /**
  * Created by Anderson on 23/01/2018.
@@ -43,7 +31,6 @@ public class GoogleMaps extends AppCompatActivity {
     }
 
     public void chamarMapa(Lugar lugar) {
-//        verificarGPS();
         String destino[] = lugar.getLocalicao().split(",");
         destinolatitude = Double.parseDouble(destino[0]);
         destinolongitude = Double.parseDouble(destino[1]);;
@@ -51,7 +38,6 @@ public class GoogleMaps extends AppCompatActivity {
         try {
             Intent intent = new Intent(android.content.Intent.ACTION_VIEW,
                     Uri.parse("http://maps.google.com/maps?saddr=&daddr=" + destinolatitude + "," + destinolongitude));
-
 
             intent.setComponent(new ComponentName(getString(R.string.comandoAppMaps), getString(R.string.comandoMapsActivity)));
 
@@ -65,8 +51,6 @@ public class GoogleMaps extends AppCompatActivity {
     private void verificarGPS() {
         //TODO: Ligar Gps
         String validarGPS = Settings.Secure.getString(getContentResolver(), Settings.Secure.LOCATION_PROVIDERS_ALLOWED);
-        //Se vier null ou length == 0   é por que o Gps esta desabilitado.
-        //Para abrir a tela do menu configuração e Ativar Gps!
         if (validarGPS == null || validarGPS.length() == 0) {
             Toast erro;
             erro = Toast.makeText(getApplicationContext(), "ATIVE o Gps Porfavor", Toast.LENGTH_SHORT);

@@ -1,15 +1,18 @@
 package br.ufrpe.beela.lugar.negocio;
 
-import java.text.DecimalFormat;
-import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
-
 import br.ufrpe.beela.lugar.dominio.Lugar;
-import br.ufrpe.beela.lugar.gui.EscolhaProgramaAct;
 import br.ufrpe.beela.usuario.dominio.Pessoa;
+
+
+/**
+ * Crédito por este algoritmo:
+ *      Site: http://www.baeldung.com/java-collaborative-filtering-recommendations
+ *      GitHub: https://github.com/eugenp/tutorials/tree/master/algorithms/src/main/java/com/baeldung/algorithms/slope_one
+ */
 
 
 public class SlopeOne {
@@ -36,10 +39,9 @@ public class SlopeOne {
 
     }
 
-
     /**
-     * Com base nos dados disponíveis, é calculado as relações entre os
-          * usuários e número de ocorrências dos lugares
+     *  Com base nos dados disponíveis, é calculado as relações entre os
+     *  usuários e número de ocorrências dos lugares
      */
 
     private void buildDifferencesMatrix(Map<Pessoa, HashMap<Lugar, Double>> data) {
@@ -75,11 +77,9 @@ public class SlopeOne {
         }
     }
 
-
-
     /**
-     * Com base nos dados existentes, prevê todas as classificações faltantes.
-          * São dados de usuários existentes e classificações de seus lugares.
+     *  Com base nos dados existentes, prevê todas as classificações faltantes.
+     *  São dados de usuários existentes e classificações de seus lugares.
      */
 
     private  void predict(Map<Pessoa, HashMap<Lugar, Double>> data) {
@@ -108,13 +108,13 @@ public class SlopeOne {
             HashMap<Lugar, Double> clean = new HashMap<Lugar, Double>();
             for (Lugar j : uPred.keySet()) {
                 Boolean v = clean.containsKey(j);
-                if (uFreq.get(j) > 0 & !v) {
+                if (uFreq.get(j) > 0 && !v) {
                     clean.put(j, uPred.get(j).doubleValue() / uFreq.get(j).intValue());
                 }
             }
             for (Lugar j : listaLugares) {
                 Boolean v = clean.containsKey(j);
-                if (e.getValue().containsKey(j) & !v) {
+                if (e.getValue().containsKey(j) && !v) {
                        clean.put(j, e.getValue().get(j));
                     }
             }
@@ -129,12 +129,16 @@ public class SlopeOne {
     }
     public void getRecomendadosAux(HashMap<Lugar,Double>matrizFinal){
         ArrayList<Integer> l = new ArrayList<Integer>();
-        for(Lugar lugar:matrizFinal.keySet()){
-            int x = lugar.getId();
-            if(!l.contains(x)){
-                l.add(lugar.getId());
+        try {
+            for (Lugar lugar : matrizFinal.keySet()) {
+                int x = lugar.getId();
+                if (!l.contains(x)) {
+                    l.add(lugar.getId());
                     listaRecomendados.add(lugar);
+                }
             }
+        } catch (Exception e){
+            e.printStackTrace();
         }
     }
 }

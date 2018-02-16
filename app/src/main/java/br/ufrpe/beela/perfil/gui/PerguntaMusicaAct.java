@@ -9,13 +9,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.TextView;
-
 import java.io.Serializable;
-
 import java.util.ArrayList;
 import br.ufrpe.beela.perfil.dominio.PerfilMusica;
 import br.ufrpe.beela.perfil.dominio.PerfilUsuario;
-import br.ufrpe.beela.perfil.negocio.PerfilService;
 import br.ufrpe.beela.gui.R;
 
 public class PerguntaMusicaAct extends AppCompatActivity implements Serializable{
@@ -83,33 +80,8 @@ public class PerguntaMusicaAct extends AppCompatActivity implements Serializable
         Intent intent = new Intent(context, PerguntaComidaAct.class);
         intent.putExtra("perfil", (Serializable) perfilUsuario);
         startActivity(intent);
-        //startActivityForResult(new Intent(PerguntaMusicaAct.this, PerguntaComidaAct.class), 1);
-         finish();
+        finish();
 
     }
-
-//    public void salvarMusica(String nome) {
-//        if (nome != null) {
-//            perfilService.adcMusica(perfilUsuario,nome, this);
-//        } else {
-//            Toast.makeText(getApplicationContext(), "NÂO TEM NOME", Toast.LENGTH_SHORT).show();
-//        }
-//    }
-//
-//    protected void onActivityResult(int codigoDaTela, int quemInviou, Intent intent) {
-//        if (codigoDaTela == 1) {
-//            try {
-//                Bundle valor = intent.getExtras();
-//                if (valor != null) {
-//                    String Nome = valor.getString("nomePerfil");
-//                    salvarMusica(Nome);
-//                    finish();
-//                }
-//            } catch (Exception e) {
-//                finish();
-//                e.printStackTrace();
-//            }
-//        }
-//    }
 
 }

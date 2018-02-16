@@ -132,7 +132,6 @@ public class CriarContaAct extends AppCompatActivity {
         else{
             return true;
         }
-//        return false;
     }
 
 

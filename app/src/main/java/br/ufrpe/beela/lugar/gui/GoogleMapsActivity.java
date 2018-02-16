@@ -29,14 +29,15 @@ import br.ufrpe.beela.lugar.dominio.Lugar;
 
 public class GoogleMapsActivity extends AppCompatActivity implements OnMapReadyCallback,
         NavigationView.OnNavigationItemSelectedListener, GoogleMap.OnMarkerClickListener, GoogleMap.OnInfoWindowClickListener {
+
     private Bundle bundle;
     private LocationManager locationManager;
     private static final int REQUEST_FINE_LOCATION = 1;
-
     private GoogleMap mMap;
     private ArrayList<Lugar> recuperado;
     private View popup = null;
-    String TYPE;
+    private String TYPE;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

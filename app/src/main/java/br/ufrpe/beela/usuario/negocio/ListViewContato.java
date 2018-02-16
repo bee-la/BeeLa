@@ -1,7 +1,6 @@
 package br.ufrpe.beela.usuario.negocio;
 
 import android.content.Context;
-import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,12 +8,8 @@ import android.widget.BaseAdapter;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.TextView;
-
 import java.util.ArrayList;
-
 import br.ufrpe.beela.gui.R;
-import br.ufrpe.beela.perfil.dominio.PerfilUsuario;
-import br.ufrpe.beela.perfil.gui.PerfilAct;
 import br.ufrpe.beela.usuario.dominio.Pessoa;
 import br.ufrpe.beela.usuario.gui.ContatoAct;
 

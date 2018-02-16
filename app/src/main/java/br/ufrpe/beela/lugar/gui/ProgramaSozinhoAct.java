@@ -3,19 +3,14 @@ package br.ufrpe.beela.lugar.gui;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
-import android.widget.ImageButton;
-
 import java.util.ArrayList;
 import java.util.HashMap;
-
 import br.ufrpe.beela.gui.R;
 import br.ufrpe.beela.lugar.dominio.Lugar;
 import br.ufrpe.beela.lugar.negocio.LugarService;
 import br.ufrpe.beela.lugar.negocio.SlopeOne;
 import br.ufrpe.beela.perfil.dominio.PerfilUsuario;
 import br.ufrpe.beela.usuario.dominio.Pessoa;
-import br.ufrpe.beela.usuario.gui.ContatoAct;
 import br.ufrpe.beela.usuario.gui.LoginAct;
 
 public class ProgramaSozinhoAct extends AppCompatActivity {
@@ -37,10 +32,8 @@ public class ProgramaSozinhoAct extends AppCompatActivity {
     }
     public void gerarSozinho() {
         if(!lugarService.verificarJaVotou(pessoa.getId(),this)) {
-            // Pelo perfil retorna os lugares de forma bruta
             ArrayList<Lugar> lugarArrayList = lugarService.gerarListaLugar(perfilUsuario, this);
             listaLugar = lugarArrayList;
-            // FOI FILTRADA
             setFiltraPorNota(listaLugar);
         }
 
@@ -69,7 +62,6 @@ public class ProgramaSozinhoAct extends AppCompatActivity {
                 listaFiltrada.add(lugar);
             }
         }
-        // Após verificação
         listaLugar = listaFiltrada;
     }
     public ArrayList<Lugar> getListaLugaresQuandoNaoVotou(){

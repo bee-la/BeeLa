@@ -1,30 +1,18 @@
 package br.ufrpe.beela.lugar.gui;
 
-import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-
 import br.ufrpe.beela.gui.R;
-import br.ufrpe.beela.lugar.dominio.Lugar;
 import br.ufrpe.beela.lugar.negocio.LugarService;
-import br.ufrpe.beela.lugar.negocio.SlopeOne;
-import br.ufrpe.beela.perfil.dominio.PerfilUsuario;
-import br.ufrpe.beela.usuario.dao.PessoaDAO;
-import br.ufrpe.beela.usuario.dao.UsuarioDAO;
 import br.ufrpe.beela.usuario.dominio.Pessoa;
-import br.ufrpe.beela.usuario.dominio.Usuario;
 import br.ufrpe.beela.usuario.gui.ContatoAct;
-import br.ufrpe.beela.usuario.gui.LoginAct;
 
 public class EscolhaProgramaAct extends AppCompatActivity {
 
-    private ArrayList<Lugar> listaLugaresRecomendados = new ArrayList<Lugar>();
     private ImageButton botaoSozinho;
     private ImageButton botaoAcompanhado;
 
@@ -60,7 +48,6 @@ public class EscolhaProgramaAct extends AppCompatActivity {
         });
     }
 
-
     public void gerarSozinho() {
         startActivity(new Intent(EscolhaProgramaAct.this,ProgramaSozinhoAct.class));
         finish();
@@ -69,15 +56,6 @@ public class EscolhaProgramaAct extends AppCompatActivity {
         startActivity(new Intent(EscolhaProgramaAct.this, ContatoAct.class));
         finish();
     }
-
-
-//    public static void setListaLugar(ArrayList<Lugar> listaLugar) {
-//        ListaLugar = listaLugar;
-//    }
-//
-//    public static ArrayList<Lugar> getListaLugar() {
-//        return ListaLugar;
-//    }
 
     public static ArrayList<Pessoa> getListaPessoa() {
         return listaPessoa;

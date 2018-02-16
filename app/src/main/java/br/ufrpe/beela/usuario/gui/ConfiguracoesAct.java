@@ -15,7 +15,6 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 import br.ufrpe.beela.gui.R;
-import br.ufrpe.beela.usuario.dao.UsuarioDAO;
 import br.ufrpe.beela.usuario.dominio.Pessoa;
 import br.ufrpe.beela.usuario.dominio.Usuario;
 import br.ufrpe.beela.usuario.negocio.Criptografia;
@@ -23,7 +22,6 @@ import br.ufrpe.beela.usuario.negocio.UsuarioService;
 
 public class ConfiguracoesAct extends AppCompatActivity {
     private TextView alterar, apagarConta, alterarNome, alterarSenha, sair, carregarFoto, nomeUser;
-    private TextView nomeTextView11;
     private Pessoa pessoa = new LoginAct().getPessoa();
     private ArrayList<TextView> textoCampos = new ArrayList<TextView>();
     private static final int RESULT_LOAD_IMAGE = 9002;
@@ -33,8 +31,6 @@ public class ConfiguracoesAct extends AppCompatActivity {
     private Usuario usuario = LoginAct.getPessoa().getUsuario();
     private UsuarioService usuarioService = new UsuarioService();
     private String nomeUsuario = LoginAct.getPessoa().getNome();
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,8 +47,8 @@ public class ConfiguracoesAct extends AppCompatActivity {
 
         alterarFonte();
         carregarFotoGaleria();
-        AlterarNome();
-        AlterarSenha();
+        setAlterarNome();
+        setAlterarSenha();
         irApagarConta();
         sair();
     }
@@ -85,7 +81,7 @@ public class ConfiguracoesAct extends AppCompatActivity {
         });
     }
 
-    private void AlterarNome() {
+    private void setAlterarNome() {
         alterarNome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -104,8 +100,6 @@ public class ConfiguracoesAct extends AppCompatActivity {
                 alertaNome.setView(ViewAltrNome);
                 AlertDialog dialog2 = alertaNome.create();
                 dialog2.show();
-
-
             }
         });
     }
@@ -122,7 +116,7 @@ public class ConfiguracoesAct extends AppCompatActivity {
         }
     }
 
-    private void AlterarSenha() {
+    private void setAlterarSenha() {
         alterarSenha.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -1,13 +1,7 @@
 package br.ufrpe.beela.perfil.negocio;
 
 import android.content.Context;
-import android.widget.CheckBox;
-
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-
-import br.ufrpe.beela.gui.R;
 import br.ufrpe.beela.perfil.dao.PerfilDAO;
 import br.ufrpe.beela.perfil.dominio.PerfilComida;
 import br.ufrpe.beela.perfil.dominio.PerfilEsporte;

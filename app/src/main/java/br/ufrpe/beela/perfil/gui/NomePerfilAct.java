@@ -1,6 +1,5 @@
 package br.ufrpe.beela.perfil.gui;
 
-import android.content.Intent;
 import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -8,10 +7,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
-import java.io.Serializable;
-import java.util.ArrayList;
-
 import br.ufrpe.beela.perfil.dominio.PerfilUsuario;
 import br.ufrpe.beela.perfil.negocio.PerfilService;
 import br.ufrpe.beela.usuario.gui.LoginAct;
@@ -61,8 +56,8 @@ public class NomePerfilAct extends AppCompatActivity {
                 perfilUsuario.setNome(nomePerfil);
                 salvarBD();
                 finish();
-                //finalizar();
-            } else {
+            }
+            else {
                 erro = Toast.makeText(getApplicationContext(), R.string.campoVazio, Toast.LENGTH_SHORT);
                 erro.show();
             }

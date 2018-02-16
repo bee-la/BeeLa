@@ -34,8 +34,6 @@ public class LugarDetalhesAct extends AppCompatActivity  implements Serializable
     protected void onCreate(Bundle saveInstanceState){
         super.onCreate(saveInstanceState);
         setContentView(R.layout.activity_lugar_detalhes);
-
-
         setarDetalhes();
     }
 
@@ -55,9 +53,6 @@ public class LugarDetalhesAct extends AppCompatActivity  implements Serializable
         localizacaoBt = (ImageButton) findViewById(R.id.imageButtonLocalizacao);
         localizacaoBt.setOnClickListener(this);
 
-//        siteBt = (ImageButton) findViewById(R.id.imageButtonSite);
-//        siteBt.setOnClickListener(this);
-
         foto = (ImageView)findViewById(R.id.imgViewLugarFoto);
         String recuperar =  getLugarRecuperado().getCaminho();
         int id = getResources().getIdentifier(recuperar,getString(R.string.drawable),getPackageName());
@@ -69,13 +64,7 @@ public class LugarDetalhesAct extends AppCompatActivity  implements Serializable
             case R.id.imageButtonLocalizacao:
                 chamarMapa(getLugarRecuperado());
                 break;
-//            case R.id.imageButtonSite:
-//                Intent intent = new Intent(Intent.ACTION_SEARCH);
-//                intent.putExtra(SearchManager.QUERY , recuperado.getNome().toString());
-//                if (intent.resolveActivity(getPackageManager()) != null){
-//                    startActivity(intent);
-//                }
-//                break;
+
             case R.id.buttonClass:
                 Intent intent = new Intent(LugarDetalhesAct.this, AvaliacaoAct.class);
                 intent.putExtra(getString(R.string.lugar), getLugarRecuperado());

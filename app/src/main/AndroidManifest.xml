@@ -25,9 +25,6 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="br.ufrpe.beela.lugar.gui.LugarAcompanhadoAct"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-        <activity
             android:name="br.ufrpe.beela.usuario.gui.LoginAct"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
@@ -58,9 +55,6 @@
             android:name="br.ufrpe.beela.perfil.gui.NomePerfilAct"
             android:label="@string/nomePerfil" />
         <activity
-            android:name="br.ufrpe.beela.perfil.gui.PerfilPrioridadeAct"
-            android:label="@string/prioridadePerfil" />
-        <activity
             android:name="br.ufrpe.beela.perfil.gui.PerguntaEsporteAct"
             android:label="@string/adicionarPerfil" />
         <activity
@@ -78,7 +72,7 @@
         <activity
             android:name="br.ufrpe.beela.usuario.gui.ContatoAct"
             android:label="@string/contatos" />
-        <activity android:name="br.ufrpe.beela.perfil.gui.PerguntaLugarAct" />
+        <activity android:name="br.ufrpe.beela.perfil.gui.PerguntaLugarVariadoAct" />
         <activity
             android:name="br.ufrpe.beela.lugar.gui.LugarDetalhesAct"
             android:label="Detalhes" />

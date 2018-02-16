@@ -4,7 +4,6 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
-import android.widget.ListView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -71,7 +70,6 @@ public class LugarService {
         return bd.getListaPessoa();
     }
     public ArrayList<Pessoa> gerarListaPessoaSistema(Context context) {
-        // lista de pessoa sem Usuario logado
         PessoaDAO bd = new PessoaDAO();
         bd.getLer(context);
         return bd.getListaPessoasSistema();

@@ -17,8 +17,6 @@ import br.ufrpe.beela.perfil.dominio.PerfilUsuario;
 
 /**
  * Created by vidal on 05/12/2017.
- * modificado por vidal 14/12
- * modificado por vidal 07/12
  */
 
 public class PerfilDAO {
