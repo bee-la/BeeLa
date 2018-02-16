@@ -28,7 +28,8 @@ public class EscolhaProgramaAct extends AppCompatActivity {
     private ImageButton botaoSozinho;
     private ImageButton botaoAcompanhado;
 
-    private  ArrayList<Pessoa> ListaPessoa = new ArrayList<Pessoa>();
+    private static ArrayList<Pessoa> listaPessoa = new ArrayList<Pessoa>();
+    private LugarService lugarService = new LugarService();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +54,7 @@ public class EscolhaProgramaAct extends AppCompatActivity {
         botaoAcompanhado.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                setListaPessoa(lugarService.gerarListaDePessoa(EscolhaProgramaAct.this));
                 gerarAcompanhado();
             }
         });
@@ -66,5 +68,22 @@ public class EscolhaProgramaAct extends AppCompatActivity {
     public void gerarAcompanhado() {
         startActivity(new Intent(EscolhaProgramaAct.this, ContatoAct.class));
         finish();
+    }
+
+
+//    public static void setListaLugar(ArrayList<Lugar> listaLugar) {
+//        ListaLugar = listaLugar;
+//    }
+//
+//    public static ArrayList<Lugar> getListaLugar() {
+//        return ListaLugar;
+//    }
+
+    public static ArrayList<Pessoa> getListaPessoa() {
+        return listaPessoa;
+    }
+
+    public static void setListaPessoa(ArrayList<Pessoa> lista) {
+        listaPessoa = lista;
     }
 }

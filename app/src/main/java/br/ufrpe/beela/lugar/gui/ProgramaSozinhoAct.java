@@ -102,8 +102,11 @@ public class ProgramaSozinhoAct extends AppCompatActivity {
         listaTodasPessoas=lugarService.gerarListaTodasPessoa(this);
 
         for (int i=0; i<listaTodasPessoas.size(); i++){
-            if(listaTodasPessoas.get(i).getId() == pessoa.getId()){matrizTotal.put(pessoa, lugarService.getNotasPorPessoa(pessoa.getId(), this));}
-            else{matrizTotal.put(listaTodasPessoas.get(i), lugarService.getNotasPorPessoa(listaTodasPessoas.get(i).getId(), this));}
+            if(listaTodasPessoas.get(i).getId() == pessoa.getId()){
+                matrizTotal.put(pessoa, lugarService.getNotasPorPessoa(pessoa.getId(), this));
+            }
+            else{
+                matrizTotal.put(listaTodasPessoas.get(i), lugarService.getNotasPorPessoa(listaTodasPessoas.get(i).getId(), this));}
         }
         ArrayList<Lugar> listaLugares = lugarService.getListaLugares(this);
         SlopeOne slope=new SlopeOne(matrizTotal, listaLugares);

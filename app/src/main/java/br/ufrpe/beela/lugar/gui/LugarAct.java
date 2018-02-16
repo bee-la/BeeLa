@@ -35,17 +35,17 @@ public class LugarAct extends AppCompatActivity  {
         super.onCreate(savedInstanceState);
         getLugarRecuperado();
         setContentView(R.layout.activity_lugares);
-        verificarGPS();
-
-        maps = (Button)findViewById(R.id.buttonIrMaps);
-        maps.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(LugarAct.this,GoogleMapsActivity.class);
-                intent.putExtra(getString(R.string.lugarMaps), (Serializable) ListLugar);
-                startActivity(intent);
-            }
-        });
+//        verificarGPS();
+//
+//        maps = (Button)findViewById(R.id.buttonIrMaps);
+//        maps.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent = new Intent(LugarAct.this,GoogleMapsActivity.class);
+//                intent.putExtra(getString(R.string.lugarMaps), (Serializable) ListLugar);
+//                startActivity(intent);
+//            }
+//        });
         setListView();
     }
 

@@ -195,5 +195,6 @@
     <string name="visualizarTodos">Visualizar todos</string>
     <string name="avancar">Avançar</string>
     <string name="praiadoPina">Praia do Pina</string>
+    <string name="erroBuscarLugares">Erro ao buscar lugares</string>
 
 </resources>

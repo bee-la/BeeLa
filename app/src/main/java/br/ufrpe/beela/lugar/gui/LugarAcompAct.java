@@ -23,14 +23,15 @@ import br.ufrpe.beela.usuario.gui.ContatoAct;
  */
 
 public class LugarAcompAct extends AppCompatActivity {
-
     private double destinolatitude;
     private double destinolongitude;
     private Button btIr;
     private static Lugar lugarSelecionado;
-//    private ArrayList<Lugar> ListLugar = ContatoAct.getListaLugar();
+    //    private ArrayList<Lugar> ListLugar = ContatoAct.getListaLugar();
+    private ArrayList<Lugar> ListLugar = new ArrayList<Lugar>();
 
-    private ArrayList<Lugar> listaLugares = new ArrayList<Lugar>();
+//    private ArrayList<Lugar> listaLugares = new ArrayList<Lugar>();
+
     private ListView listViewLugares;
 
     Toast Erro;
@@ -49,7 +50,8 @@ public class LugarAcompAct extends AppCompatActivity {
     }
 
     public ArrayList<Lugar> getLugares() {
-        return listaLugares;
+        return ListLugar;
+//        return listaLugares;
     }
 
     public Intent chamarMapa(Lugar lugar) {
@@ -93,7 +95,7 @@ public class LugarAcompAct extends AppCompatActivity {
 
     public void setLugaresRecuperados(){
         Bundle bundle = getIntent().getExtras();
-        listaLugares = (ArrayList<Lugar>) bundle.getSerializable(getString(R.string.lugar));
+        ListLugar = (ArrayList<Lugar>) bundle.getSerializable(getString(R.string.lugar));
     }
 }
 

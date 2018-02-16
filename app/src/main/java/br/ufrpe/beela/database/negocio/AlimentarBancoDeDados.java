@@ -279,7 +279,7 @@ public class AlimentarBancoDeDados {
         Lugar lugar = new Lugar();
         lugar.setNome("Burburinho Bar");
         lugar.setTexto(context.getString(R.string.loremIpsum));
-        lugar.setDescriacao("Bar e Resturante");
+        lugar.setDescriacao("Bar e Restaurante");
         lugar.setLocalicao("-8.064217,-34.8753367");
         lugar.setCaminho("barx");
 
