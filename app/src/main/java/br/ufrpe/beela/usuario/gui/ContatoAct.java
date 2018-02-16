@@ -79,7 +79,10 @@ public class ContatoAct extends AppCompatActivity {
                 }
             }
             pessoaArrayList.add(pessoa);
-            setListaLugar(lugarService.gerarLugarAcompanhado(pessoaArrayList,this));
+
+            ArrayList<Pessoa> listaPessoaObj=lugarService.gerarPerfisPessoasAcompanhado(pessoaArrayList, this);
+
+            setListaLugar(lugarService.gerarLugarAcompanhado(listaPessoaObj,this));
         } catch (Exception e) {
             e.printStackTrace();
             Toast.makeText(getApplicationContext(), getString(R.string.erro), Toast.LENGTH_SHORT).show();
