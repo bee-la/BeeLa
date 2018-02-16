@@ -11,17 +11,21 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import br.ufrpe.beela.gui.R;
 import br.ufrpe.beela.lugar.dao.LugarDAO;
 import br.ufrpe.beela.lugar.dominio.Lugar;
 import br.ufrpe.beela.lugar.gui.EscolhaProgramaAct;
 import br.ufrpe.beela.lugar.gui.LugarAcompAct;
+import br.ufrpe.beela.lugar.gui.LugarAct;
 import br.ufrpe.beela.lugar.negocio.LugarService;
+import br.ufrpe.beela.lugar.negocio.SlopeOne;
 import br.ufrpe.beela.perfil.dao.PerfilDAO;
 import br.ufrpe.beela.perfil.dominio.PerfilComida;
 import br.ufrpe.beela.perfil.dominio.PerfilEsporte;
 import br.ufrpe.beela.perfil.dominio.PerfilMusica;
+import br.ufrpe.beela.perfil.dominio.PerfilUsuario;
 import br.ufrpe.beela.usuario.dominio.Pessoa;
 import br.ufrpe.beela.usuario.negocio.ListViewContato;
 
@@ -35,6 +39,13 @@ public class ContatoAct extends AppCompatActivity {
     private ArrayList<Pessoa> pessoaArrayList = EscolhaProgramaAct.getListaPessoa();
     private static ArrayList<Lugar> lugarArrayList = new ArrayList<Lugar>();
     private LugarService lugarService = new LugarService();
+
+
+    private ArrayList<Pessoa> listaPessoas = new ArrayList<Pessoa>();
+    private PerfilUsuario perfilUsuario = LoginAct.getPessoa().getPerfilAtual();
+
+    private ArrayList<Lugar> listaLugaresGrupo = new ArrayList<Lugar>();
+
     private Button botaoConfirmar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,36 +73,95 @@ public class ContatoAct extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 verificaSelecionados();
-                irTelaLugarAct();
+                enviarLugaresLugarAcompAct(listaLugaresGrupo);
+//                irTelaLugarAct();
 
             }
         });
     }
 
-    public void exibirToast(TextView texto) {
-        Toast.makeText(getApplicationContext(), texto.getText().toString(), Toast.LENGTH_SHORT).show();
-    }
-    public void irTelaLugarAct(){
-        startActivity(new Intent(ContatoAct.this, LugarAcompAct.class));
-    }
+//    public void exibirToast(TextView texto) {
+//        Toast.makeText(getApplicationContext(), texto.getText().toString(), Toast.LENGTH_SHORT).show();
+//    }
+//    public void irTelaLugarAct(){
+//        startActivity(new Intent(ContatoAct.this, LugarAcompAct.class));
+//    }
+
+
     private void verificaSelecionados() {
         ArrayList<Pessoa> pessoaArrayList = new ArrayList<Pessoa>();
         try {
             if (listViewContatos != null) {
                 Adapter adapter = (Adapter) listViewContatos.getAdapter();
                 for (int i = 0; i < adapter.getCount(); i++) {
-                    Pessoa pessoa = (Pessoa) adapter.getItem(i);
-                    if (pessoa.isSelecionado()) {
-                        pessoaArrayList.add(pessoa);
+                    Pessoa pessoaLista = (Pessoa) adapter.getItem(i);
+                    if (pessoaLista.isSelecionado()) {
+//                        pessoaArrayList.add(pessoa);
+                        listaPessoas.add(pessoaLista);
                     }
                 }
             }
-            pessoaArrayList.add(pessoa);
-            ContatoAct.setListaLugar(lugarService.gerarLugarAcompanhado(pessoaArrayList,this));
+//            pessoaArrayList.add(pessoa);
+            listaPessoas.add(pessoa);
+            setLugaresEmGrupo();
+
+//            ContatoAct.setListaLugar(lugarService.gerarLugarAcompanhado(pessoaArrayList,this));
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
+
+    public void setLugaresEmGrupo(){
+        HashMap<Pessoa, HashMap<Lugar, Double>> matriz = new HashMap<>();
+        matriz=getMatrizTotal();
+        ArrayList<Lugar> lugares = new ArrayList<Lugar>();
+        lugares=getLugaresEmGrupo(matriz);
+        listaLugaresGrupo=lugarService.atualizarNotaSlope(lugares, this);
+    }
+
     public static void setListaLugar(ArrayList<Lugar> listaLugar){lugarArrayList = listaLugar;}
     public static ArrayList<Lugar> getListaLugar(){return lugarArrayList;}
+
+    public HashMap<Pessoa, HashMap<Lugar, Double>> getMatrizTotal(){
+        HashMap<Pessoa, HashMap<Lugar, Double>> matrizTotal = new HashMap<>();
+
+        for (Pessoa pessoaLista : listaPessoas){
+            //Se não votou
+            if(!lugarService.verificarJaVotou(pessoa.getId(),this)) {
+                ArrayList<Lugar> listaLugarBruto = new ArrayList<Lugar>();
+                listaLugarBruto = lugarService.gerarListaLugar(perfilUsuario, this);
+
+                for (Lugar lugar : listaLugarBruto){
+                    HashMap<Lugar, Double> hashMap = new HashMap<>();
+                    //Verifica se o lugar tem nota mínima e já adiciona no hashMap
+                    if (lugar.getNotaGeral() >= 3.8){
+                        hashMap.put(lugar, lugar.getNotaGeral());
+                        matrizTotal.put(pessoaLista, hashMap);
+                    }
+                }
+            }
+
+            //Se já votou
+            else{
+                matrizTotal.put(pessoaLista, lugarService.getNotasPorPessoa(pessoaLista.getId(), this));
+            }
+        }
+
+        return matrizTotal;
+    }
+
+    public ArrayList<Lugar> getLugaresEmGrupo(HashMap<Pessoa, HashMap<Lugar, Double>> matriz){
+        ArrayList<Lugar> listaLugares = lugarService.getListaLugares(this);
+        SlopeOne slope = new SlopeOne(matriz, listaLugares);
+        slope.slopeOne();
+        return slope.getListaRecomendados(pessoa);
+    }
+
+    public void enviarLugaresLugarAcompAct(ArrayList<Lugar> lugares){
+        Intent intent = new Intent(ContatoAct.this, LugarAcompAct.class);
+        intent.putExtra(getString(R.string.lugar), lugares);
+        startActivity(intent);
+        finish();
+
+    }
 }
