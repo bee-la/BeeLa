@@ -99,9 +99,8 @@ public class LugarService {
         return bd.getFavorito(LoginAct.getPessoa().getId());
     }
 
-    public ArrayList<Lugar> gerarLugarAcompanhado(ArrayList<Pessoa> pessoaArrayList, Context context) {
-        ArrayList<Lugar> listLugar = new ArrayList<Lugar>();
-        ArrayList<Integer> listId = new ArrayList<Integer>();
+    public ArrayList<Pessoa> gerarPerfisPessoasAcompanhado(ArrayList<Pessoa> pessoaArrayList, Context context) {
+        ArrayList<Pessoa> pessoaArrayList1 = new ArrayList<Pessoa>();
         try {
             for (Pessoa pessoaAcompanhada : pessoaArrayList) {
                 PerfilDAO bdp = new PerfilDAO();
@@ -125,31 +124,11 @@ public class LugarService {
                 pessoaAcompanhada.getPerfilAtual().setLugar(bdl.getPerfilParaLugar(pessoaAcompanhada.getPerfilAtual(), LoginAct.getPessoa().getId()));
 
                 ///////////////
-                for (PerfilComida perfilComida : pessoaAcompanhada.getPerfilAtual().getComida()) {
-                    PerfilDAO bd = new PerfilDAO();
-                    bd.getLer(context);
-                    listId = bd.getPerfilParaLugar(perfilComida);
-                }
-                for (PerfilMusica perfilMusica : pessoaAcompanhada.getPerfilAtual().getMusica()) {
-                    PerfilDAO bd = new PerfilDAO();
-                    bd.getLer(context);
-                    listId = bd.getPerfilParaLugar(listId, perfilMusica);
-                }
-                for (PerfilEsporte perfilEsporte : pessoaAcompanhada.getPerfilAtual().getEsporte()) {
-                    PerfilDAO bd = new PerfilDAO();
-                    bd.getLer(context);
-                    listId = bd.getPerfilParaLugar(listId, perfilEsporte);
-                }
+                pessoaArrayList1.add(pessoaAcompanhada);
             }
         } catch (Exception e) {}
 
-        for (int id : listId) {
-            LugarDAO bd = new LugarDAO();
-            bd.getLer(context);
-            Lugar lugar = bd.getLugar(id);
-            listLugar.add(lugar);
-        }
-        return listLugar;
+        return pessoaArrayList1;
     }
     public Lugar getLugar(int id,Context context){
         LugarDAO bd = new LugarDAO();
@@ -204,7 +183,7 @@ public class LugarService {
             bd.getLer(context);
             lugar = bd.getLugar(lugar.getId());
             //todo tem que tirar esse IF daqui.
-            if (lugar.getNotaGeral() >=3.8 & listLugar.size() <= 5) {
+            if (lugar.getNotaGeral() >=3.8 & listLugar.size() <= 4) {
                 listLugar.add(lugar);
             }
         }

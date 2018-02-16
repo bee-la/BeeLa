@@ -34,10 +34,11 @@ import br.ufrpe.beela.usuario.negocio.ListViewContato;
  */
 
 public class ContatoAct extends AppCompatActivity {
+
     private ListView listViewContatos;
     private Pessoa pessoa = LoginAct.getPessoa();
-    private ArrayList<Pessoa> pessoaArrayList = EscolhaProgramaAct.getListaPessoa();
-    private static ArrayList<Lugar> lugarArrayList = new ArrayList<Lugar>();
+    private static ArrayList<Pessoa> pessoaArrayList = new ArrayList<Pessoa>();
+    private ArrayList<Lugar> lugarArrayList = new ArrayList<Lugar>();
     private LugarService lugarService = new LugarService();
 
 
@@ -51,11 +52,12 @@ public class ContatoAct extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contatos);
+        getPessoas();
         setListView();
         clicarBotaoConfirmar();
     }
 
-    public ArrayList<Pessoa> getContatos() {
+    public static ArrayList<Pessoa> getContatos() {
         return pessoaArrayList;
     }
 
@@ -80,16 +82,7 @@ public class ContatoAct extends AppCompatActivity {
         });
     }
 
-//    public void exibirToast(TextView texto) {
-//        Toast.makeText(getApplicationContext(), texto.getText().toString(), Toast.LENGTH_SHORT).show();
-//    }
-//    public void irTelaLugarAct(){
-//        startActivity(new Intent(ContatoAct.this, LugarAcompAct.class));
-//    }
-
-
     private void verificaSelecionados() {
-        ArrayList<Pessoa> pessoaArrayList = new ArrayList<Pessoa>();
         try {
             if (listViewContatos != null) {
                 Adapter adapter = (Adapter) listViewContatos.getAdapter();
@@ -112,24 +105,21 @@ public class ContatoAct extends AppCompatActivity {
     }
 
     public void setLugaresEmGrupo(){
+
         HashMap<Pessoa, HashMap<Lugar, Double>> matriz = new HashMap<>();
         matriz=getMatrizTotal();
         ArrayList<Lugar> lugares = new ArrayList<Lugar>();
         lugares=getLugaresEmGrupo(matriz);
         listaLugaresGrupo=lugarService.atualizarNotaSlope(lugares, this);
     }
-
-    public static void setListaLugar(ArrayList<Lugar> listaLugar){lugarArrayList = listaLugar;}
-    public static ArrayList<Lugar> getListaLugar(){return lugarArrayList;}
-
     public HashMap<Pessoa, HashMap<Lugar, Double>> getMatrizTotal(){
         HashMap<Pessoa, HashMap<Lugar, Double>> matrizTotal = new HashMap<>();
 
         for (Pessoa pessoaLista : listaPessoas){
             //Se não votou
-            if(!lugarService.verificarJaVotou(pessoa.getId(),this)) {
+            if(!lugarService.verificarJaVotou(pessoaLista.getId(),this)) {
                 ArrayList<Lugar> listaLugarBruto = new ArrayList<Lugar>();
-                listaLugarBruto = lugarService.gerarListaLugar(perfilUsuario, this);
+                listaLugarBruto = lugarService.gerarListaLugar(pessoaLista.getPerfilAtual(), this);
 
                 for (Lugar lugar : listaLugarBruto){
                     HashMap<Lugar, Double> hashMap = new HashMap<>();
@@ -154,7 +144,8 @@ public class ContatoAct extends AppCompatActivity {
         ArrayList<Lugar> listaLugares = lugarService.getListaLugares(this);
         SlopeOne slope = new SlopeOne(matriz, listaLugares);
         slope.slopeOne();
-        return slope.getListaRecomendados(pessoa);
+        //TODO ta errado deveria buscar para cada pessoa
+        return slope.getListaRecomendados(listaPessoas.get(0));
     }
 
     public void enviarLugaresLugarAcompAct(ArrayList<Lugar> lugares){
@@ -163,5 +154,9 @@ public class ContatoAct extends AppCompatActivity {
         startActivity(intent);
         finish();
 
+    }
+    public void getPessoas(){
+        ArrayList<Pessoa> pessoaArrayListAcomp = lugarService.gerarListaDePessoa(this);
+        pessoaArrayList = lugarService.gerarPerfisPessoasAcompanhado(pessoaArrayListAcomp,this);
     }
 }

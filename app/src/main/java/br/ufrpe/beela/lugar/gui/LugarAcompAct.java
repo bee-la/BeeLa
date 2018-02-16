@@ -23,6 +23,7 @@ import br.ufrpe.beela.usuario.gui.ContatoAct;
  */
 
 public class LugarAcompAct extends AppCompatActivity {
+
     private double destinolatitude;
     private double destinolongitude;
     private Button btIr;

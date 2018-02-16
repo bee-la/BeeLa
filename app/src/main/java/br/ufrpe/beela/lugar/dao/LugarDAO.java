@@ -55,8 +55,9 @@ public class LugarDAO {
         Cursor cursor3 = bd.rawQuery(where3, null);
         cursor3.moveToFirst();
         NumberFormat formatter = new DecimalFormat("#0.00");
+        formatter.format(cursor3.getDouble(0));
         Double notaG = cursor3.getDouble(0)*5;
-        lugar.setNotaGeral(Double.valueOf(formatter.format(notaG)));
+        lugar.setNotaGeral(notaG);
 
         String where = "id = '" + String.valueOf(lugar.getId()) + "'";
         ContentValues valores = new ContentValues();

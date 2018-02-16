@@ -123,7 +123,8 @@ public class SlopeOne {
         matrizFinal = dadosDeSaida;
     }
     public ArrayList<Lugar> getListaRecomendados(Pessoa pessoa) {
-        getRecomendadosAux(matrizFinal.get(pessoa));
+        HashMap<Lugar,Double> matrizF = matrizFinal.get(pessoa);
+        getRecomendadosAux(matrizF);
         return listaRecomendados;
     }
     public void getRecomendadosAux(HashMap<Lugar,Double>matrizFinal){
@@ -132,7 +133,7 @@ public class SlopeOne {
             int x = lugar.getId();
             if(!l.contains(x)){
                 l.add(lugar.getId());
-                listaRecomendados.add(lugar);
+                    listaRecomendados.add(lugar);
             }
         }
     }

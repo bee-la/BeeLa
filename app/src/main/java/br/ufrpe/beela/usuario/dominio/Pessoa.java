@@ -1,5 +1,6 @@
 package br.ufrpe.beela.usuario.dominio;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import br.ufrpe.beela.lugar.dominio.Lugar;
@@ -9,7 +10,7 @@ import br.ufrpe.beela.perfil.dominio.PerfilUsuario;
  * Created by vidal on 29/12/2017.
  */
 
-public class Pessoa {
+public class Pessoa implements Serializable{
 
     private int id;
     private String nome;

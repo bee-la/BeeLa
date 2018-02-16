@@ -34,7 +34,6 @@ public class ProgramaSozinhoAct extends AppCompatActivity {
         setContentView(R.layout.activity_escolha_programa);
 
     gerarSozinho();
-    enviarListaDeRecomendados();
     }
     public void gerarSozinho() {
         if(!lugarService.verificarJaVotou(pessoa.getId(),this)) {
@@ -46,14 +45,15 @@ public class ProgramaSozinhoAct extends AppCompatActivity {
         }
 
         listaLugaresRecomendados = lugarService.atualizarNotaSlope(getRecomendacao(),this);
+        enviarListaDeRecomendados();
     }
     public ArrayList<Lugar> getRecomendacao(){
- //       if(!lugarService.verificarJaVotou(pessoa.getId(),this)) {
-            return getListaLugaresQuandoNaoVotou();
-   //     }
-//        else{
-//            return getListaLugaresQuandoVotou();
-//        }
+       if(!lugarService.verificarJaVotou(pessoa.getId(),this)) {
+           return getListaLugaresQuandoNaoVotou();
+       }
+        else{
+            return getListaLugaresQuandoVotou();
+        }
     }
 
     public void enviarListaDeRecomendados(){
@@ -93,5 +93,23 @@ public class ProgramaSozinhoAct extends AppCompatActivity {
         SlopeOne slope=new SlopeOne(matrizTotal, listaLugares);
         slope.slopeOne();
         return slope.getListaRecomendados(pessoa);
+    }
+
+    public ArrayList<Lugar> getListaLugaresQuandoVotou(){
+        HashMap<Pessoa, HashMap<Lugar, Double>> matrizTotal = new HashMap<>();
+
+        ArrayList<Pessoa> listaTodasPessoas = new ArrayList<Pessoa>();
+        listaTodasPessoas=lugarService.gerarListaTodasPessoa(this);
+
+        for (int i=0; i<listaTodasPessoas.size(); i++){
+            if(listaTodasPessoas.get(i).getId() == pessoa.getId()){matrizTotal.put(pessoa, lugarService.getNotasPorPessoa(pessoa.getId(), this));}
+            else{matrizTotal.put(listaTodasPessoas.get(i), lugarService.getNotasPorPessoa(listaTodasPessoas.get(i).getId(), this));}
+        }
+        ArrayList<Lugar> listaLugares = lugarService.getListaLugares(this);
+        SlopeOne slope=new SlopeOne(matrizTotal, listaLugares);
+        slope.slopeOne();
+
+        return slope.getListaRecomendados(pessoa);
+
     }
 }
