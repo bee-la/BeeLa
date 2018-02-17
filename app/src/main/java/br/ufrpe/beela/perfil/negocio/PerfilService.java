@@ -8,8 +8,7 @@ import br.ufrpe.beela.perfil.dominio.PerfilEsporte;
 import br.ufrpe.beela.perfil.dominio.PerfilMusica;
 import br.ufrpe.beela.perfil.dominio.PerfilUsuario;
 import br.ufrpe.beela.perfil.dominio.PerfilLugar;
-import br.ufrpe.beela.perfil.gui.PerfilAct;
-import br.ufrpe.beela.usuario.dominio.Pessoa;
+import br.ufrpe.beela.pessoa.dominio.Pessoa;
 import br.ufrpe.beela.usuario.gui.LoginAct;
 
 /**

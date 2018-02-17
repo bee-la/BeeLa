@@ -8,7 +8,7 @@ import android.widget.ImageButton;
 import java.util.ArrayList;
 import br.ufrpe.beela.gui.R;
 import br.ufrpe.beela.lugar.negocio.LugarService;
-import br.ufrpe.beela.usuario.dominio.Pessoa;
+import br.ufrpe.beela.pessoa.dominio.Pessoa;
 import br.ufrpe.beela.usuario.gui.ContatoAct;
 
 public class EscolhaProgramaAct extends AppCompatActivity {

@@ -1,16 +1,13 @@
-package br.ufrpe.beela.lugar.gui;
+package br.ufrpe.beela.avaliacao.gui;
 
-import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import br.ufrpe.beela.avaliacao.negocio.AvaliacaoService;
 import br.ufrpe.beela.gui.R;
-import br.ufrpe.beela.lugar.dao.LugarDAO;
 import br.ufrpe.beela.lugar.dominio.Lugar;
 import br.ufrpe.beela.lugar.negocio.LugarService;
-import br.ufrpe.beela.usuario.dao.UsuarioDAO;
-import br.ufrpe.beela.usuario.dominio.Pessoa;
+import br.ufrpe.beela.pessoa.dominio.Pessoa;
 import br.ufrpe.beela.usuario.gui.LoginAct;
-
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -28,6 +25,9 @@ public class AvaliacaoAct extends AppCompatActivity {
     private Lugar lugarRecuperado;
     private Bundle bundle;
     private LugarService lugarService= new LugarService();
+
+    private AvaliacaoService avaliacaoService = new AvaliacaoService();
+
     private double nota;
 
     @Override
@@ -62,8 +62,9 @@ public class AvaliacaoAct extends AppCompatActivity {
             }
         });
     }
+
     public void addVoto(int idPessoa,double nota){
-        lugarService.addVoto(idPessoa,getLugarRecuperado(),nota,this);
+        avaliacaoService.addVoto(idPessoa,getLugarRecuperado(),nota,this);
     }
 
     public Double regraDeTres(double notaParaFormatar){

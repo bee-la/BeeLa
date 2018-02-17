@@ -10,13 +10,15 @@ import android.widget.ListView;
 import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.HashMap;
+
+import br.ufrpe.beela.avaliacao.negocio.AvaliacaoService;
 import br.ufrpe.beela.gui.R;
 import br.ufrpe.beela.lugar.dominio.Lugar;
 import br.ufrpe.beela.lugar.gui.EscolhaProgramaAct;
 import br.ufrpe.beela.lugar.gui.LugarAct;
 import br.ufrpe.beela.lugar.negocio.LugarService;
 import br.ufrpe.beela.lugar.negocio.SlopeOne;
-import br.ufrpe.beela.usuario.dominio.Pessoa;
+import br.ufrpe.beela.pessoa.dominio.Pessoa;
 import br.ufrpe.beela.usuario.negocio.ListViewContato;
 
 /**
@@ -31,6 +33,8 @@ public class ContatoAct extends AppCompatActivity {
     private LugarService lugarService = new LugarService();
     private ArrayList<Lugar> listaFiltradaPorNota = new ArrayList<>();
     private ArrayList<Lugar> listaLugaresGrupo = new ArrayList<Lugar>();
+
+    private AvaliacaoService avaliacaoService = new AvaliacaoService();
 
     private Button botaoConfirmar;
     @Override
@@ -109,7 +113,7 @@ public class ContatoAct extends AppCompatActivity {
 
         for (int i=0; i<listaPessoas.size(); i++){
             matrizTotal.put(listaPessoas.get(i) ,
-                    lugarService.getNotasPorPessoa(listaPessoas.get(i).getId(),this));
+                    avaliacaoService.getNotasPorPessoa(listaPessoas.get(i).getId(),this));
         }
 
         for (Lugar lugar : listaFiltradaPorNota) {

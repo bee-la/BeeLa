@@ -2,15 +2,18 @@ package br.ufrpe.beela.lugar.gui;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import java.util.ArrayList;
 import java.util.HashMap;
+
+import br.ufrpe.beela.avaliacao.negocio.AvaliacaoService;
 import br.ufrpe.beela.gui.R;
 import br.ufrpe.beela.lugar.dominio.Lugar;
 import br.ufrpe.beela.lugar.negocio.LugarService;
 import br.ufrpe.beela.lugar.negocio.SlopeOne;
 import br.ufrpe.beela.perfil.dominio.PerfilUsuario;
-import br.ufrpe.beela.usuario.dominio.Pessoa;
+import br.ufrpe.beela.pessoa.dominio.Pessoa;
 import br.ufrpe.beela.usuario.gui.LoginAct;
 
 public class ProgramaSozinhoAct extends AppCompatActivity {
@@ -21,6 +24,7 @@ public class ProgramaSozinhoAct extends AppCompatActivity {
     private ArrayList<Lugar> listaLugaresRecomendados = new ArrayList<Lugar>();
 
     private  ArrayList<Lugar> listaLugar = new ArrayList<Lugar>();
+    private AvaliacaoService avaliacaoService = new AvaliacaoService();
 
 
     @Override
@@ -31,17 +35,20 @@ public class ProgramaSozinhoAct extends AppCompatActivity {
     gerarSozinho();
     }
     public void gerarSozinho() {
-        if(!lugarService.verificarJaVotou(pessoa.getId(),this)) {
+        if(!avaliacaoService.verificarJaVotou(pessoa.getId(),this)) {
             ArrayList<Lugar> lugarArrayList = lugarService.gerarListaLugar(perfilUsuario, this);
             listaLugar = lugarArrayList;
             setFiltraPorNota(listaLugar);
         }
 
-        listaLugaresRecomendados = lugarService.atualizarNotaSlope(getRecomendacao(),this);
+//        listaLugaresRecomendados = lugarService.atualizarNotaSlope(getRecomendacao(),this);
+        listaLugaresRecomendados = getRecomendacao();
+
+
         enviarListaDeRecomendados();
     }
     public ArrayList<Lugar> getRecomendacao(){
-       if(!lugarService.verificarJaVotou(pessoa.getId(),this)) {
+       if(!avaliacaoService.verificarJaVotou(pessoa.getId(),this)) {
            return getListaLugaresQuandoNaoVotou();
        }
         else{
@@ -72,7 +79,7 @@ public class ProgramaSozinhoAct extends AppCompatActivity {
 
         for (int i=0; i<listaPessoas.size(); i++){
             matrizTotal.put(listaPessoas.get(i) ,
-                    lugarService.getNotasPorPessoa(listaPessoas.get(i).getId(),this));
+                    avaliacaoService.getNotasPorPessoa(listaPessoas.get(i).getId(),this));
         }
 
         for (Lugar lugar : listaLugar) {
@@ -95,10 +102,10 @@ public class ProgramaSozinhoAct extends AppCompatActivity {
 
         for (int i=0; i<listaTodasPessoas.size(); i++){
             if(listaTodasPessoas.get(i).getId() == pessoa.getId()){
-                matrizTotal.put(pessoa, lugarService.getNotasPorPessoa(pessoa.getId(), this));
+                matrizTotal.put(pessoa, avaliacaoService.getNotasPorPessoa(pessoa.getId(), this));
             }
             else{
-                matrizTotal.put(listaTodasPessoas.get(i), lugarService.getNotasPorPessoa(listaTodasPessoas.get(i).getId(), this));}
+                matrizTotal.put(listaTodasPessoas.get(i), avaliacaoService.getNotasPorPessoa(listaTodasPessoas.get(i).getId(), this));}
         }
         ArrayList<Lugar> listaLugares = lugarService.getListaLugares(this);
         SlopeOne slope=new SlopeOne(matrizTotal, listaLugares);
@@ -107,4 +114,5 @@ public class ProgramaSozinhoAct extends AppCompatActivity {
         return slope.getListaRecomendados(pessoa);
 
     }
+
 }

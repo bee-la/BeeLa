@@ -15,7 +15,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 import br.ufrpe.beela.gui.R;
-import br.ufrpe.beela.usuario.dominio.Pessoa;
+import br.ufrpe.beela.pessoa.dominio.Pessoa;
 import br.ufrpe.beela.usuario.dominio.Usuario;
 import br.ufrpe.beela.usuario.negocio.Criptografia;
 import br.ufrpe.beela.usuario.negocio.UsuarioService;

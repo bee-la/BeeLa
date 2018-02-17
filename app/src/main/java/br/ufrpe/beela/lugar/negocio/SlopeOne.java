@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 import br.ufrpe.beela.lugar.dominio.Lugar;
-import br.ufrpe.beela.usuario.dominio.Pessoa;
+import br.ufrpe.beela.pessoa.dominio.Pessoa;
 
 
 /**
@@ -127,13 +127,17 @@ public class SlopeOne {
         getRecomendadosAux(matrizF);
         return listaRecomendados;
     }
-    public void getRecomendadosAux(HashMap<Lugar,Double>matrizFinal){
+    public void getRecomendadosAux(HashMap<Lugar,Double> matrizFinal){
+        HashMap<Lugar,Double> m = new HashMap<Lugar,Double>();
+
         ArrayList<Integer> l = new ArrayList<Integer>();
         try {
             for (Lugar lugar : matrizFinal.keySet()) {
                 int x = lugar.getId();
                 if (!l.contains(x)) {
                     l.add(lugar.getId());
+                    m.put(lugar, matrizFinal.get(lugar).doubleValue());
+                    lugar.setNotaProvisoria(matrizFinal.get(lugar).doubleValue());
                     listaRecomendados.add(lugar);
                 }
             }

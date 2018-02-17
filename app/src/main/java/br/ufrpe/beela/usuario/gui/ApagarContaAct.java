@@ -9,10 +9,8 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import br.ufrpe.beela.perfil.dao.PerfilDAO;
-import br.ufrpe.beela.usuario.dao.UsuarioDAO;
 import br.ufrpe.beela.gui.R;
-import br.ufrpe.beela.usuario.dominio.Pessoa;
+import br.ufrpe.beela.pessoa.dominio.Pessoa;
 import br.ufrpe.beela.usuario.dominio.Usuario;
 import br.ufrpe.beela.usuario.negocio.UsuarioService;
 

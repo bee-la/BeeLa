@@ -14,7 +14,7 @@ import br.ufrpe.beela.perfil.dominio.PerfilMusica;
  * Created by vidal on 20/12/2017.
  */
 
-public class Lugar implements Serializable {
+public class Lugar implements Serializable, Comparable<Lugar> {
 
     private int id;
     private String nome;
@@ -23,6 +23,7 @@ public class Lugar implements Serializable {
     private String caminho;
     private String texto;
     private Double notaGeral = 0.0;
+    private Double notaProvisoria = 0.0;
     private String tipo;
 
     public int getId() {
@@ -49,6 +50,9 @@ public class Lugar implements Serializable {
 
     public Double getNotaGeral() {return notaGeral;}
 
+    public Double getNotaProvisoria(){
+        return notaProvisoria;
+    }
 
     public String getTipo(){
         return this.tipo;
@@ -81,6 +85,10 @@ public class Lugar implements Serializable {
         this.texto=texto;
     }
 
+    public void setNotaProvisoria(Double nota){
+        this.notaProvisoria=nota;
+    }
+
     public LatLng getLatLng() {
         String destino[] = localicao.split(",");
         Double a  = Double.parseDouble(destino[0]);
@@ -90,6 +98,22 @@ public class Lugar implements Serializable {
         return c;
     }
 
-    public void setNotaGeral(Double notaGeral) {this.notaGeral = notaGeral;}
+    public void setNotaGeral(Double notaGeral) {
+        this.notaGeral = notaGeral;
+    }
+
+    @Override
+    public int compareTo(Lugar lugar) {
+        if (this.notaProvisoria < lugar.getNotaProvisoria()){
+            return -1;
+        }
+        else if(this.notaProvisoria > lugar.getNotaProvisoria()){
+            return +1;
+        }
+        else{
+            return 0;
+        }
+
+    }
 
 }

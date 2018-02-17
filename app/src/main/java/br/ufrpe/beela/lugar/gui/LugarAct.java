@@ -15,9 +15,13 @@ import android.widget.Toast;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Collections;
+
+import br.ufrpe.beela.avaliacao.negocio.AvaliacaoService;
 import br.ufrpe.beela.gui.R;
 import br.ufrpe.beela.lugar.dominio.Lugar;
 import br.ufrpe.beela.lugar.negocio.AdapterCustomizado;
+import br.ufrpe.beela.lugar.negocio.LugarService;
 
 /**
  * Created by max on 06/01/18.
@@ -26,8 +30,9 @@ import br.ufrpe.beela.lugar.negocio.AdapterCustomizado;
 public class LugarAct extends AppCompatActivity  {
 
 
-    private ArrayList<Lugar> ListLugar = new ArrayList<Lugar>();
+    private ArrayList<Lugar> listLugar = new ArrayList<Lugar>();
     private ListView listViewLugares;
+    private LugarService lugarService = new LugarService();
     Button maps;
 
     @Override
@@ -42,7 +47,7 @@ public class LugarAct extends AppCompatActivity  {
 //            @Override
 //            public void onClick(View view) {
 //                Intent intent = new Intent(LugarAct.this,GoogleMapsActivity.class);
-//                intent.putExtra(getString(R.string.lugarMaps), (Serializable) ListLugar);
+//                intent.putExtra(getString(R.string.lugarMaps), (Serializable) listLugar);
 //                startActivity(intent);
 //            }
 //        });
@@ -50,7 +55,7 @@ public class LugarAct extends AppCompatActivity  {
     }
 
     public ArrayList<Lugar> getLugares() {
-        return ListLugar;
+        return listLugar;
     }
 
     private void setListView() {
@@ -96,7 +101,14 @@ public class LugarAct extends AppCompatActivity  {
         }
     }
     public void getLugarRecuperado(){
+        ArrayList<Lugar> listaOrdenada = new ArrayList<Lugar>();
         Bundle bundle = getIntent().getExtras();
-        ListLugar = (ArrayList<Lugar>) bundle.getSerializable(getString(R.string.lugar));
+        listaOrdenada= (ArrayList<Lugar>) bundle.getSerializable(getString(R.string.lugar));
+        Collections.sort(listaOrdenada);
+        Collections.reverse(listaOrdenada);
+        for (int i=0; i<5; i++){
+            listLugar.add(listaOrdenada.get(i));
+        }
+        listLugar=lugarService.atualizarNotaSlope(listLugar,this);
     }
 }

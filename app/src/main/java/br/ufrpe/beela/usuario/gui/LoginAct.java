@@ -12,8 +12,9 @@ import java.util.ArrayList;
 
 import br.ufrpe.beela.gui.R;
 import br.ufrpe.beela.perfil.dominio.PerfilUsuario;
+import br.ufrpe.beela.pessoa.negocio.PessoaService;
 import br.ufrpe.beela.usuario.negocio.Criptografia;
-import br.ufrpe.beela.usuario.dominio.Pessoa;
+import br.ufrpe.beela.pessoa.dominio.Pessoa;
 import br.ufrpe.beela.usuario.dominio.Usuario;
 import br.ufrpe.beela.usuario.negocio.UsuarioService;
 
@@ -30,6 +31,7 @@ public class LoginAct extends AppCompatActivity {
     private EditText campoEmail, campoSenha;
     private String email, senha, senha2;
     private Toast mensagemEsqSenha;
+    private PessoaService pessoaService = new PessoaService();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -115,7 +117,7 @@ public class LoginAct extends AppCompatActivity {
 
     private void iniciarSessão() {
         usuario = usuarioValido.gerarUsuario(email, senha, this);
-        pessoa = usuarioValido.gerarPessoa(usuario.getId(), this);
+        pessoa = pessoaService.gerarPessoa(usuario.getId(), this);
         PerfilUsuario perfilAtual = usuarioValido.gerarPerfilAtual(pessoa.getId(),this);
         pessoa.setPerfilUsuarioArrayList(usuarioValido.gerarPerfilUsuario(pessoa.getId(),this));
         pessoa.setPerfilAtual(perfilAtual);

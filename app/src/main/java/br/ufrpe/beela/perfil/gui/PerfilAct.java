@@ -20,7 +20,7 @@ import br.ufrpe.beela.perfil.dao.PerfilDAO;
 import br.ufrpe.beela.perfil.dominio.PerfilUsuario;
 import br.ufrpe.beela.perfil.negocio.ListViewNomePerfil;
 import br.ufrpe.beela.perfil.negocio.PerfilService;
-import br.ufrpe.beela.usuario.dominio.Pessoa;
+import br.ufrpe.beela.pessoa.dominio.Pessoa;
 import br.ufrpe.beela.usuario.gui.LoginAct;
 
 

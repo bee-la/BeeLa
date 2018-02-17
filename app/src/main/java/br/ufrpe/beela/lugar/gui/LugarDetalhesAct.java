@@ -10,6 +10,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 import java.io.Serializable;
+
+import br.ufrpe.beela.avaliacao.gui.AvaliacaoAct;
 import br.ufrpe.beela.gui.R;
 import br.ufrpe.beela.lugar.dominio.Lugar;
 import br.ufrpe.beela.lugar.negocio.LugarService;

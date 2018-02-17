@@ -13,6 +13,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 import br.ufrpe.beela.gui.R;
+import br.ufrpe.beela.pessoa.negocio.PessoaService;
 import br.ufrpe.beela.usuario.dominio.Usuario;
 import br.ufrpe.beela.usuario.negocio.Criptografia;
 import br.ufrpe.beela.usuario.negocio.UsuarioService;
@@ -26,6 +27,7 @@ public class CriarContaAct extends AppCompatActivity {
     private EditText campoNome, campoCelular, campoEmail, campoSenha, campoRepetirSenha;
     private ArrayList<TextView> textoCampos = new ArrayList<TextView>();
     private UsuarioService usuarioValido = new UsuarioService();
+    private PessoaService pessoaService = new PessoaService();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -94,7 +96,7 @@ public class CriarContaAct extends AppCompatActivity {
             contaCriada = Toast.makeText(getApplicationContext(), R.string.contaCriada, Toast.LENGTH_SHORT);
             contaCriada.show();
 
-            usuarioValido.salvarPessoaBancoDados(usuarioValido.gerarUsuario(email,Criptografia.criptografar(senha),this),usuarioValido.criarPessoa(nome, celular),this);
+            pessoaService.salvarPessoaBancoDados(usuarioValido.gerarUsuario(email,Criptografia.criptografar(senha),this),usuarioValido.criarPessoa(nome, celular),this);
             finish();
         }
     }

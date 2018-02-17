@@ -1,8 +1,9 @@
-package br.ufrpe.beela.usuario.dominio;
+package br.ufrpe.beela.pessoa.dominio;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import br.ufrpe.beela.perfil.dominio.PerfilUsuario;
+import br.ufrpe.beela.usuario.dominio.Usuario;
 
 /**
  * Created by vidal on 29/12/2017.

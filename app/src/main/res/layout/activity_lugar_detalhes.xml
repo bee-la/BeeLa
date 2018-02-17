@@ -94,7 +94,7 @@
 
     <TextView
         android:id="@+id/textView10"
-        android:layout_width="43dp"
+        android:layout_width="35dp"
         android:layout_height="35dp"
         android:layout_marginEnd="56dp"
         android:layout_marginTop="160dp"
@@ -105,9 +105,10 @@
 
     <ImageView
         android:id="@+id/imageView5"
-        android:layout_width="73dp"
-        android:layout_height="77dp"
-        android:layout_marginTop="136dp"
+        android:layout_width="44dp"
+        android:layout_height="35dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginTop="160dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/estrela" />

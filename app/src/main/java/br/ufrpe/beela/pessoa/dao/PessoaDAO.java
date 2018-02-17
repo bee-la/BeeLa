@@ -1,4 +1,4 @@
-package br.ufrpe.beela.usuario.dao;
+package br.ufrpe.beela.pessoa.dao;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -8,7 +8,7 @@ import android.database.sqlite.SQLiteDatabase;
 import java.util.ArrayList;
 
 import br.ufrpe.beela.database.dao.BD;
-import br.ufrpe.beela.usuario.dominio.Pessoa;
+import br.ufrpe.beela.pessoa.dominio.Pessoa;
 import br.ufrpe.beela.usuario.gui.LoginAct;
 
 

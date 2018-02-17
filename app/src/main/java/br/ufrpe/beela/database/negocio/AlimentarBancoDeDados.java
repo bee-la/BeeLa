@@ -1,6 +1,8 @@
 package br.ufrpe.beela.database.negocio;
 
 import android.content.Context;
+
+import br.ufrpe.beela.avaliacao.dao.AvaliacaoDAO;
 import br.ufrpe.beela.gui.R;
 import br.ufrpe.beela.lugar.dao.LugarDAO;
 import br.ufrpe.beela.lugar.dominio.Lugar;
@@ -59,9 +61,10 @@ public class AlimentarBancoDeDados {
         bd = new LugarDAO();
         bd.getLer(context);
         lugar = bd.getLugar(lugar.getNome());
-        bd = new LugarDAO();
-        bd.getEscrever(context);
-        bd.update(lugar);
+
+        AvaliacaoDAO bd1 = new AvaliacaoDAO();
+        bd1.getEscrever(context);
+        bd1.updateNotaLugar(lugar);
 
         PerfilComida perfilComida = new PerfilComida();
         perfilComida.setNome(context.getString(R.string.selfService));
@@ -93,9 +96,9 @@ public class AlimentarBancoDeDados {
         bd.getLer(context);
         lugar = bd.getLugar(lugar.getNome());
 
-        bd = new LugarDAO();
-        bd.getEscrever(context);
-        bd.update(lugar);
+        AvaliacaoDAO bd1 = new AvaliacaoDAO();
+        bd1.getEscrever(context);
+        bd1.updateNotaLugar(lugar);
         //
         PerfilLugar perfilLugar = new PerfilLugar();
         perfilLugar.setNome(context.getString(R.string.igNome));
@@ -121,9 +124,9 @@ public class AlimentarBancoDeDados {
         bd.getLer(context);
         lugar = bd.getLugar(lugar.getNome());
 
-        bd = new LugarDAO();
-        bd.getEscrever(context);
-        bd.update(lugar);
+        AvaliacaoDAO bd1 = new AvaliacaoDAO();
+        bd1.getEscrever(context);
+        bd1.updateNotaLugar(lugar);
 
         PerfilMusica perfilMusica = new PerfilMusica();
         perfilMusica.setNome(context.getString(R.string.rock));
@@ -149,9 +152,9 @@ public class AlimentarBancoDeDados {
         bd = new LugarDAO();
         bd.getLer(context);
         lugar = bd.getLugar(lugar.getNome());
-        bd = new LugarDAO();
-        bd.getEscrever(context);
-        bd.update(lugar);
+        AvaliacaoDAO bd1 = new AvaliacaoDAO();
+        bd1.getEscrever(context);
+        bd1.updateNotaLugar(lugar);
 
         String[] list = {context.getString(R.string.fastFood), context.getString(R.string.orientais),
                 context.getString(R.string.pizza)};
@@ -179,9 +182,9 @@ public class AlimentarBancoDeDados {
         bd = new LugarDAO();
         bd.getLer(context);
         lugar = bd.getLugar(lugar.getNome());
-        bd = new LugarDAO();
-        bd.getEscrever(context);
-        bd.update(lugar);
+        AvaliacaoDAO bd1 = new AvaliacaoDAO();
+        bd1.getEscrever(context);
+        bd1.updateNotaLugar(lugar);
 
         String[] list = {context.getString(R.string.fastFood), context.getString(R.string.pizza)};
         for (String x : list) {
@@ -211,9 +214,9 @@ public class AlimentarBancoDeDados {
         bd = new LugarDAO();
         bd.getLer(context);
         lugar = bd.getLugar(lugar.getNome());
-        bd = new LugarDAO();
-        bd.getEscrever(context);
-        bd.update(lugar);
+        AvaliacaoDAO bd1 = new AvaliacaoDAO();
+        bd1.getEscrever(context);
+        bd1.updateNotaLugar(lugar);
 
         PerfilComida perfilComida = new PerfilComida();
         perfilComida.setNome(context.getString(R.string.carnes));
@@ -244,9 +247,9 @@ public class AlimentarBancoDeDados {
         bd = new LugarDAO();
         bd.getLer(context);
         lugar = bd.getLugar(lugar.getNome());
-        bd = new LugarDAO();
-        bd.getEscrever(context);
-        bd.update(lugar);
+        AvaliacaoDAO bd1 = new AvaliacaoDAO();
+        bd1.getEscrever(context);
+        bd1.updateNotaLugar(lugar);
 
         PerfilMusica perfilMusica = new PerfilMusica();
         perfilMusica.setNome(context.getString(R.string.rock));
@@ -270,9 +273,9 @@ public class AlimentarBancoDeDados {
         bd = new LugarDAO();
         bd.getLer(context);
         lugar = bd.getLugar(lugar.getNome());
-        bd = new LugarDAO();
-        bd.getEscrever(context);
-        bd.update(lugar);
+        AvaliacaoDAO bd1 = new AvaliacaoDAO();
+        bd1.getEscrever(context);
+        bd1.updateNotaLugar(lugar);
 
         PerfilComida perfilComida = new PerfilComida();
         perfilComida.setNome(context.getString(R.string.pizza));
@@ -302,9 +305,9 @@ public class AlimentarBancoDeDados {
         bd = new LugarDAO();
         bd.getLer(context);
         lugar = bd.getLugar(lugar.getNome());
-        bd = new LugarDAO();
-        bd.getEscrever(context);
-        bd.update(lugar);
+        AvaliacaoDAO bd1 = new AvaliacaoDAO();
+        bd1.getEscrever(context);
+        bd1.updateNotaLugar(lugar);
 
         PerfilMusica perfilMusica = new PerfilMusica();
         perfilMusica.setNome(context.getString(R.string.rock));
@@ -329,9 +332,9 @@ public class AlimentarBancoDeDados {
         bd = new LugarDAO();
         bd.getLer(context);
         lugar = bd.getLugar(lugar.getNome());
-        bd = new LugarDAO();
-        bd.getEscrever(context);
-        bd.update(lugar);
+        AvaliacaoDAO bd1 = new AvaliacaoDAO();
+        bd1.getEscrever(context);
+        bd1.updateNotaLugar(lugar);
 
         PerfilMusica perfilMusica = new PerfilMusica();
         perfilMusica.setNome(context.getString(R.string.rock));
@@ -355,9 +358,9 @@ public class AlimentarBancoDeDados {
         bd = new LugarDAO();
         bd.getLer(context);
         lugar = bd.getLugar(lugar.getNome());
-        bd = new LugarDAO();
-        bd.getEscrever(context);
-        bd.update(lugar);
+        AvaliacaoDAO bd1 = new AvaliacaoDAO();
+        bd1.getEscrever(context);
+        bd1.updateNotaLugar(lugar);
 
         PerfilMusica perfilMusica = new PerfilMusica();
         perfilMusica.setNome(context.getString(R.string.rock));
@@ -381,9 +384,9 @@ public class AlimentarBancoDeDados {
         bd = new LugarDAO();
         bd.getLer(context);
         lugar = bd.getLugar(lugar.getNome());
-        bd = new LugarDAO();
-        bd.getEscrever(context);
-        bd.update(lugar);
+        AvaliacaoDAO bd1 = new AvaliacaoDAO();
+        bd1.getEscrever(context);
+        bd1.updateNotaLugar(lugar);
 
         PerfilMusica perfilMusica = new PerfilMusica();
         perfilMusica.setNome(context.getString(R.string.forro));
@@ -406,9 +409,9 @@ public class AlimentarBancoDeDados {
         bd = new LugarDAO();
         bd.getLer(context);
         lugar = bd.getLugar(lugar.getNome());
-        bd = new LugarDAO();
-        bd.getEscrever(context);
-        bd.update(lugar);
+        AvaliacaoDAO bd1 = new AvaliacaoDAO();
+        bd1.getEscrever(context);
+        bd1.updateNotaLugar(lugar);
 
         PerfilMusica perfilMusica = new PerfilMusica();
         perfilMusica.setNome(context.getString(R.string.forro));
@@ -431,9 +434,9 @@ public class AlimentarBancoDeDados {
         bd = new LugarDAO();
         bd.getLer(context);
         lugar = bd.getLugar(lugar.getNome());
-        bd = new LugarDAO();
-        bd.getEscrever(context);
-        bd.update(lugar);
+        AvaliacaoDAO bd1 = new AvaliacaoDAO();
+        bd1.getEscrever(context);
+        bd1.updateNotaLugar(lugar);
 
         PerfilMusica perfilMusica = new PerfilMusica();
         perfilMusica.setNome(context.getString(R.string.sambaPagode));
@@ -456,9 +459,9 @@ public class AlimentarBancoDeDados {
         bd = new LugarDAO();
         bd.getLer(context);
         lugar = bd.getLugar(lugar.getNome());
-        bd = new LugarDAO();
-        bd.getEscrever(context);
-        bd.update(lugar);
+        AvaliacaoDAO bd1 = new AvaliacaoDAO();
+        bd1.getEscrever(context);
+        bd1.updateNotaLugar(lugar);
 
         PerfilMusica perfilMusica = new PerfilMusica();
         perfilMusica.setNome(context.getString(R.string.sertanejo));
@@ -482,9 +485,9 @@ public class AlimentarBancoDeDados {
         bd = new LugarDAO();
         bd.getLer(context);
         lugar = bd.getLugar(lugar.getNome());
-        bd = new LugarDAO();
-        bd.getEscrever(context);
-        bd.update(lugar);
+        AvaliacaoDAO bd1 = new AvaliacaoDAO();
+        bd1.getEscrever(context);
+        bd1.updateNotaLugar(lugar);
 
         String[] list = {context.getString(R.string.caminhada), context.getString(R.string.corrida),
                 context.getString(R.string.ciclismo)};
@@ -511,9 +514,9 @@ public class AlimentarBancoDeDados {
         bd = new LugarDAO();
         bd.getLer(context);
         lugar = bd.getLugar(lugar.getNome());
-        bd = new LugarDAO();
-        bd.getEscrever(context);
-        bd.update(lugar);
+        AvaliacaoDAO bd1 = new AvaliacaoDAO();
+        bd1.getEscrever(context);
+        bd1.updateNotaLugar(lugar);
 
         String[] list = {context.getString(R.string.futebol),context.getString(R.string.volei),context.getString(R.string.caminhada),context.getString(R.string.ciclismo)};
         for (String x : list) {
@@ -539,9 +542,9 @@ public class AlimentarBancoDeDados {
         bd = new LugarDAO();
         bd.getLer(context);
         lugar = bd.getLugar(lugar.getNome());
-        bd = new LugarDAO();
-        bd.getEscrever(context);
-        bd.update(lugar);
+        AvaliacaoDAO bd1 = new AvaliacaoDAO();
+        bd1.getEscrever(context);
+        bd1.updateNotaLugar(lugar);
 
         String[] list = {context.getString(R.string.futebol),context.getString(R.string.volei),context.getString(R.string.caminhada),context.getString(R.string.ciclismo)};
         for (String x : list) {
@@ -567,9 +570,9 @@ public class AlimentarBancoDeDados {
         bd = new LugarDAO();
         bd.getLer(context);
         lugar = bd.getLugar(lugar.getNome());
-        bd = new LugarDAO();
-        bd.getEscrever(context);
-        bd.update(lugar);
+        AvaliacaoDAO bd1 = new AvaliacaoDAO();
+        bd1.getEscrever(context);
+        bd1.updateNotaLugar(lugar);
 
         PerfilComida perfilComida = new PerfilComida();
         perfilComida.setNome(context.getString(R.string.fastFood));
@@ -592,9 +595,9 @@ public class AlimentarBancoDeDados {
         bd = new LugarDAO();
         bd.getLer(context);
         lugar = bd.getLugar(lugar.getNome());
-        bd = new LugarDAO();
-        bd.getEscrever(context);
-        bd.update(lugar);
+        AvaliacaoDAO bd1 = new AvaliacaoDAO();
+        bd1.getEscrever(context);
+        bd1.updateNotaLugar(lugar);
 
         PerfilComida perfilComida = new PerfilComida();
         perfilComida.setNome(context.getString(R.string.fastFood));
@@ -618,9 +621,9 @@ public class AlimentarBancoDeDados {
         bd = new LugarDAO();
         bd.getLer(context);
         lugar = bd.getLugar(lugar.getNome());
-        bd = new LugarDAO();
-        bd.getEscrever(context);
-        bd.update(lugar);
+        AvaliacaoDAO bd1 = new AvaliacaoDAO();
+        bd1.getEscrever(context);
+        bd1.updateNotaLugar(lugar);
 
         PerfilComida perfilComida = new PerfilComida();
         perfilComida.setNome(context.getString(R.string.pizza));

@@ -7,7 +7,6 @@ import android.net.Uri;
 import android.widget.Toast;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 import br.ufrpe.beela.gui.R;
 import br.ufrpe.beela.lugar.dao.LugarDAO;
@@ -18,9 +17,8 @@ import br.ufrpe.beela.perfil.dominio.PerfilEsporte;
 import br.ufrpe.beela.perfil.dominio.PerfilMusica;
 import br.ufrpe.beela.perfil.dominio.PerfilUsuario;
 import br.ufrpe.beela.perfil.dominio.PerfilLugar;
-import br.ufrpe.beela.usuario.dao.PessoaDAO;
-import br.ufrpe.beela.usuario.dao.UsuarioDAO;
-import br.ufrpe.beela.usuario.dominio.Pessoa;
+import br.ufrpe.beela.pessoa.dao.PessoaDAO;
+import br.ufrpe.beela.pessoa.dominio.Pessoa;
 import br.ufrpe.beela.usuario.gui.LoginAct;
 
 /**
@@ -131,36 +129,7 @@ public class LugarService {
         bd.getLer(context);
         return bd.getLugar(id);
     }
-    public void addVoto(int idPessoa,Lugar lugar,double nota,Context context){
-        int idLugar = lugar.getId();
-        UsuarioDAO bd = new UsuarioDAO();
-        bd.getLer(context);
-        if(bd.verificarJaVotouNoLugar(idPessoa,idLugar)){
-            bd = new UsuarioDAO();
-            bd.getEscrever(context);
-            bd.setNota(idPessoa,idLugar,nota);
 
-        }
-        else{
-            bd = new UsuarioDAO();
-            bd.getEscrever(context);
-            bd.updateNota(idPessoa,idLugar,nota);
-        }
-        LugarDAO bdl = new LugarDAO();
-        bdl.getEscrever(context);
-        bdl.update(lugar);
-
-    }
-    public HashMap<Lugar,Double> getNotasPorPessoa(int id,Context context) {
-        UsuarioDAO userDao = new UsuarioDAO();
-        userDao.getLer(context);
-        return userDao.getNotasPorPessoa(id);
-    }
-    public Boolean verificarJaVotou(int id,Context context) {
-        UsuarioDAO bd = new UsuarioDAO();
-        bd.getLer(context);
-        return bd.verificarJaVotou(id);
-    }
     public ArrayList<Pessoa> gerarListaTodasPessoa(Context context) {
         PessoaDAO bd = new PessoaDAO();
         bd.getLer(context);
@@ -177,10 +146,7 @@ public class LugarService {
             LugarDAO bd = new LugarDAO();
             bd.getLer(context);
             lugar = bd.getLugar(lugar.getId());
-            //todo tem que tirar esse IF daqui.
-            if (lugar.getNotaGeral() >=3.8 && listLugar.size() <= 4) {
                 listLugar.add(lugar);
-            }
         }
         return listLugar;
 

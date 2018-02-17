@@ -3,13 +3,15 @@ package br.ufrpe.beela.usuario.negocio;
 import android.content.Context;
 import java.util.ArrayList;
 import java.util.Random;
+
+import br.ufrpe.beela.avaliacao.dao.AvaliacaoDAO;
 import br.ufrpe.beela.lugar.dao.LugarDAO;
 import br.ufrpe.beela.lugar.dominio.Lugar;
 import br.ufrpe.beela.perfil.dao.PerfilDAO;
 import br.ufrpe.beela.perfil.dominio.PerfilUsuario;
-import br.ufrpe.beela.usuario.dao.PessoaDAO;
+import br.ufrpe.beela.pessoa.dao.PessoaDAO;
 import br.ufrpe.beela.usuario.dao.UsuarioDAO;
-import br.ufrpe.beela.usuario.dominio.Pessoa;
+import br.ufrpe.beela.pessoa.dominio.Pessoa;
 import br.ufrpe.beela.usuario.dominio.Usuario;
 
 /**
@@ -59,14 +61,6 @@ public class UsuarioService {
 
     }
 
-    public void salvarPessoaBancoDados(Usuario usuario,Pessoa pessoa, Context context) {
-        pessoa.setUsuario(usuario);
-        PessoaDAO bdp = new PessoaDAO();
-        bdp.getEscrever(context);
-        bdp.inserir(pessoa);
-    }
-
-
     public boolean verificarEmailSenhaLogar(String email, String senha, Context context) {
         UsuarioDAO bd = new UsuarioDAO();
         bd.getLer(context);
@@ -77,12 +71,6 @@ public class UsuarioService {
         UsuarioDAO bd = new UsuarioDAO();
         bd.getLer(context);
         return bd.getUsuario(email, senha);
-    }
-
-    public Pessoa gerarPessoa(int id_usuario, Context context) {
-        PessoaDAO bd = new PessoaDAO();
-        bd.getLer(context);
-        return bd.getPessoa(id_usuario);
     }
 
     public PerfilUsuario gerarPerfilAtual(int id, Context context) {
@@ -125,6 +113,9 @@ public class UsuarioService {
         UsuarioDAO bd = new UsuarioDAO();
         bd.getEscrever(context);
         bd.delete(usuario);
+        AvaliacaoDAO ava = new AvaliacaoDAO();
+        ava.getEscrever(context);
+        ava.deleteNota(pessoa.getId());
         PessoaDAO bdp = new PessoaDAO();
         bdp.getEscrever(context);
         bdp.delete(pessoa);

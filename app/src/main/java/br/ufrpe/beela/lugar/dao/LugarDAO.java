@@ -48,7 +48,8 @@ public class LugarDAO {
         bd.insert("lugar", null, valores);
         bd.close();
     }
-    public void update(Lugar lugar) {
+
+    public void updateNotaLugar(Lugar lugar) {
         String where3 = "SELECT AVG(nota) FROM avaliacao WHERE idLugar = '"+ String.valueOf(lugar.getId()) + "'";
         Cursor cursor3 = bd.rawQuery(where3, null);
         cursor3.moveToFirst();
@@ -56,7 +57,6 @@ public class LugarDAO {
         formatter.format(cursor3.getDouble(0));
         Double notaG = cursor3.getDouble(0)*5;
         lugar.setNotaGeral(notaG);
-
         String where = "id = '" + String.valueOf(lugar.getId()) + "'";
         ContentValues valores = new ContentValues();
         valores.put("nome", lugar.getNome());
