@@ -44,7 +44,7 @@ public class AdcCachorroAct extends AppCompatActivity {
         cachorro.setNome(nome.getText().toString());
         cachorro.setRaca(raca.getText().toString());
         cachorro.setCor(cor.getText().toString());
-        cachorroService.adcCachorro(cachorro, this);
+        cachorroService.adc(cachorro, this);
         mudarTela();
     }
 

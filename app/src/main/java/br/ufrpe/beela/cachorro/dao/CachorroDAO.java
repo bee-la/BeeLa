@@ -32,7 +32,7 @@ public class CachorroDAO {
         return bd;
     }
 
-    public void criarCachorro(Cachorro cachorro, int idPessoa){
+    public void criar(Cachorro cachorro, int idPessoa){
         ContentValues valores = new ContentValues();
         valores.put("idPessoa", idPessoa);
         valores.put("nome", cachorro.getNome());
@@ -42,7 +42,7 @@ public class CachorroDAO {
         bd.close();
     }
 
-    public ArrayList<Cachorro> lerCachorro(int id){
+    public ArrayList<Cachorro> ler(int id){
             ArrayList<Cachorro> cachorros = new ArrayList<Cachorro>();
             String where = "SELECT * FROM cachorro WHERE idPessoa = '" + String.valueOf(id) + "'";
             Cursor cursor = bd.rawQuery(where, null);

@@ -17,17 +17,17 @@ import br.ufrpe.beela.usuario.gui.LoginAct;
 public class CachorroService {
     private Pessoa pessoa = LoginAct.getPessoa();
 
-    public void adcCachorro(Cachorro cachorro, Context context) {
+    public void adc(Cachorro cachorro, Context context) {
         CachorroDAO bd = new CachorroDAO();
         bd.getEscrever(context);
-        bd.criarCachorro(cachorro, pessoa.getId());
+        bd.criar(cachorro, pessoa.getId());
 
     }
 
     public ArrayList<Cachorro> getCachorro(Context context, int id){
         CachorroDAO bd = new CachorroDAO();
         bd.getLer(context);
-        return bd.lerCachorro(id);
+        return bd.ler(id);
     }
 
     public void excluir(int Id, String nome, Context context) {
