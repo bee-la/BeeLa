@@ -24,8 +24,8 @@ public class SlopeOne {
     private  Map<Pessoa, HashMap<Lugar, Double>> matrizFinal = new HashMap<>();
     private  Map<Pessoa, HashMap<Lugar, Double>> matrizInicial= new HashMap<>();
 
-    private  ArrayList<Lugar> listaLugares= new ArrayList<Lugar>();
-    private  ArrayList<Lugar> listaRecomendados= new ArrayList<Lugar>();
+    private  ArrayList<Lugar> listaLugares= new ArrayList<>();
+    private  ArrayList<Lugar> listaRecomendados= new ArrayList<>();
 
 
     public SlopeOne(Map<Pessoa, HashMap<Lugar, Double>> matriz,ArrayList<Lugar> listaLugar){
@@ -128,7 +128,7 @@ public class SlopeOne {
         return listaRecomendados;
     }
     public void getRecomendadosAux(HashMap<Lugar,Double> matrizFinal){
-        HashMap<Lugar,Double> m = new HashMap<Lugar,Double>();
+        HashMap<Lugar,Double> m = new HashMap<>();
 
         ArrayList<Integer> l = new ArrayList<Integer>();
         try {

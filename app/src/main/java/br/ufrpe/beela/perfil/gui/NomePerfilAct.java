@@ -28,7 +28,7 @@ public class NomePerfilAct extends AppCompatActivity {
         Bundle bundle = getIntent().getExtras();
         perfilUsuario = (PerfilUsuario) bundle.getSerializable("perfilUsuario");
 
-        campoNomePerfil = (EditText) findViewById(R.id.editText12);
+        campoNomePerfil = findViewById(R.id.editText12);
         alterarFonte();
         clicarBotaoNomear();
 
@@ -40,7 +40,7 @@ public class NomePerfilAct extends AppCompatActivity {
     }
 
     private void clicarBotaoNomear() {
-        botaoNomear = (Button) findViewById(R.id.button22);
+        botaoNomear = findViewById(R.id.button22);
         botaoNomear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

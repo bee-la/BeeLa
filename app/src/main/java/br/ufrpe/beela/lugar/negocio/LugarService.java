@@ -27,8 +27,8 @@ import br.ufrpe.beela.usuario.gui.LoginAct;
 
 public class LugarService {
     public ArrayList<Lugar> gerarListaLugar(PerfilUsuario perfilUsuario, Context context) {
-        ArrayList<Lugar> listLugar = new ArrayList<Lugar>();
-        ArrayList<Integer> listId = new ArrayList<Integer>();
+        ArrayList<Lugar> listLugar = new ArrayList<>();
+        ArrayList<Integer> listId = new ArrayList<>();
 
         try {
             for (PerfilComida comida : perfilUsuario.getComida()) {
@@ -52,6 +52,7 @@ public class LugarService {
                 listId = bd.getPerfilParaLugar(listId, lugar);
             }
         } catch (Exception e) {
+            e.printStackTrace();
         }
         for (int id : listId) {
             LugarDAO bd = new LugarDAO();
@@ -91,7 +92,7 @@ public class LugarService {
     }
 
     public ArrayList<Pessoa> gerarPerfisPessoasAcompanhado(ArrayList<Pessoa> pessoaArrayList, Context context) {
-        ArrayList<Pessoa> pessoaArrayList1 = new ArrayList<Pessoa>();
+        ArrayList<Pessoa> pessoaArrayList1 = new ArrayList<>();
         try {
             for (Pessoa pessoaAcompanhada : pessoaArrayList) {
                 PerfilDAO bdp = new PerfilDAO();
@@ -141,7 +142,7 @@ public class LugarService {
         return bd.getListaLugar();
     }
     public ArrayList<Lugar> atualizarNotaSlope(ArrayList<Lugar> lugarArrayList,Context context){
-        ArrayList<Lugar> listLugar = new ArrayList<Lugar>();
+        ArrayList<Lugar> listLugar = new ArrayList<>();
         for (Lugar lugar : lugarArrayList) {
             LugarDAO bd = new LugarDAO();
             bd.getLer(context);
@@ -154,8 +155,8 @@ public class LugarService {
 
 
     public ArrayList<Lugar> gerarLugarAcompanhado(ArrayList<Pessoa> pessoaArrayList, Context context) {
-        ArrayList<Lugar> listLugar = new ArrayList<Lugar>();
-        ArrayList<Integer> listId = new ArrayList<Integer>();
+        ArrayList<Lugar> listLugar = new ArrayList<>();
+        ArrayList<Integer> listId = new ArrayList<>();
         try {
             for (Pessoa pessoaAcompanhada : pessoaArrayList) {
                 PerfilDAO bdp = new PerfilDAO();
@@ -195,7 +196,9 @@ public class LugarService {
                     listId = bd.getPerfilParaLugar(listId, perfilEsporte);
                 }
             }
-        } catch (Exception e) {}
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         for (int id : listId) {
             LugarDAO bd = new LugarDAO();

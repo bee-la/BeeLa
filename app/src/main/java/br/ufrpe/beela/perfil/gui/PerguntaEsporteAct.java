@@ -18,7 +18,7 @@ public class PerguntaEsporteAct extends AppCompatActivity implements Serializabl
 
     private PerfilUsuario perfilUsuario = new PerfilUsuario();
     private ArrayList<CheckBox> checkBoxesEsportes = new ArrayList<>();
-    private ArrayList<PerfilEsporte> listaEsporte = new ArrayList<PerfilEsporte>();
+    private ArrayList<PerfilEsporte> listaEsporte = new ArrayList<>();
 
     private TextView pergunta;
     private Button botaoConfirmar;
@@ -38,7 +38,7 @@ public class PerguntaEsporteAct extends AppCompatActivity implements Serializabl
 
     private void alterarFonte() {
         Typeface fonte = Typeface.createFromAsset(getAssets(), "fonts/Chewy.ttf");
-        pergunta = (TextView) findViewById(R.id.textView13);
+        pergunta = findViewById(R.id.textView13);
         pergunta.setTypeface(fonte);
     }
 
@@ -51,7 +51,7 @@ public class PerguntaEsporteAct extends AppCompatActivity implements Serializabl
 
     private void clicarBotaoConfirmar() {
 
-        botaoConfirmar = (Button) findViewById(R.id.button13);
+        botaoConfirmar = findViewById(R.id.button13);
         botaoConfirmar.setOnClickListener(new View.OnClickListener() {
 
             @Override

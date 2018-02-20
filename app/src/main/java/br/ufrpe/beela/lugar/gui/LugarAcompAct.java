@@ -18,12 +18,8 @@ import br.ufrpe.beela.lugar.negocio.LugarService;
  */
 
 public class LugarAcompAct extends AppCompatActivity {
-    private double destinolatitude;
-    private double destinolongitude;
-//    private static Lugar lugarSelecionado;
-    private ArrayList<Lugar> listLugar = new ArrayList<Lugar>();
+    private ArrayList<Lugar> listLugar = new ArrayList<>();
     private ListView listViewLugares;
-    private LugarService mapa = new LugarService();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +34,7 @@ public class LugarAcompAct extends AppCompatActivity {
     }
 
     private void setListView() {
-        listViewLugares = (ListView) findViewById(R.id.listView2);
+        listViewLugares = findViewById(R.id.listView2);
 
         AdapterCustomizado max = new AdapterCustomizado(getApplicationContext(), getLugares());
         listViewLugares.setAdapter(max);
@@ -52,7 +48,6 @@ public class LugarAcompAct extends AppCompatActivity {
     }
 
     public void irTelaDescricaoLugar(Lugar lugar) {
-//        lugarSelecionado = lugarzinho;
         Intent intent = new Intent(LugarAcompAct.this, LugarDetalhesAct.class);
         intent.putExtra(getString(R.string.lugar), (Serializable) lugar);
         startActivity(intent);

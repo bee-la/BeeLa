@@ -2,7 +2,6 @@ package br.ufrpe.beela.usuario.gui;
 
 import android.content.Intent;
 import android.graphics.Typeface;
-import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -12,12 +11,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Random;
 
 import br.ufrpe.beela.database.negocio.AlimentarBancoDeDados;
 import br.ufrpe.beela.gui.R;
-import br.ufrpe.beela.lugar.dao.LugarDAO;
 import br.ufrpe.beela.lugar.dominio.Lugar;
 import br.ufrpe.beela.lugar.gui.EscolhaProgramaAct;
 import br.ufrpe.beela.lugar.gui.LugarDetalhesAct;
@@ -27,7 +23,9 @@ import br.ufrpe.beela.usuario.negocio.UsuarioService;
 public class HomeAct extends AppCompatActivity {
     private TextView eAi;
     private TextView oQueTuQuer;
-    private ImageButton botaoPerfil, botaoLugares, botaoConfiguracoes;
+    private ImageButton botaoPerfil;
+    private ImageButton botaoLugares;
+    private ImageButton botaoConfiguracoes;
     private AlimentarBancoDeDados alimentarBancoDeDados = new AlimentarBancoDeDados();
     private UsuarioService usuarioService = new UsuarioService();
     private Button oqTuQuer;
@@ -46,15 +44,15 @@ public class HomeAct extends AppCompatActivity {
 
     private void alterarFonte() {
         Typeface fonte = Typeface.createFromAsset(getAssets(), "fonts/Chewy.ttf");
-        eAi = (TextView) findViewById(R.id.textView4);
+        eAi = findViewById(R.id.textView4);
         eAi.setTypeface(fonte);
 
-        oQueTuQuer = (TextView) findViewById(R.id.button4);
+        oQueTuQuer = findViewById(R.id.button4);
         oQueTuQuer.setTypeface(fonte);
     }
 
     private void irPerfil() {
-        botaoPerfil = (ImageButton) findViewById(R.id.imageButton);
+        botaoPerfil = findViewById(R.id.imageButton);
         botaoPerfil.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -78,7 +76,7 @@ public class HomeAct extends AppCompatActivity {
     }
 
     private void irConfiguracoes() {
-        botaoConfiguracoes = (ImageButton) findViewById(R.id.imageButton3);
+        botaoConfiguracoes = findViewById(R.id.imageButton3);
         botaoConfiguracoes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -88,7 +86,7 @@ public class HomeAct extends AppCompatActivity {
     }
 
     private void irOqTuQuer() {
-        oqTuQuer = (Button) findViewById(R.id.button4);
+        oqTuQuer = findViewById(R.id.button4);
         oqTuQuer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

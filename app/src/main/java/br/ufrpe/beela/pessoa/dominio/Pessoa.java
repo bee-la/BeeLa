@@ -15,7 +15,7 @@ public class Pessoa implements Serializable{
     private String nome;
     private String celular;
     private Usuario usuario = new Usuario();
-    private ArrayList<PerfilUsuario> perfilUsuarioArrayList = new ArrayList<PerfilUsuario>();
+    private ArrayList<PerfilUsuario> perfilUsuarioArrayList = new ArrayList<>();
     private PerfilUsuario perfilAtual = new PerfilUsuario();
 
     public int getId() {

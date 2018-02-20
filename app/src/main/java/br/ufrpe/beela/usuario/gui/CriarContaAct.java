@@ -14,7 +14,6 @@ import java.util.ArrayList;
 
 import br.ufrpe.beela.gui.R;
 import br.ufrpe.beela.pessoa.negocio.PessoaService;
-import br.ufrpe.beela.usuario.dominio.Usuario;
 import br.ufrpe.beela.usuario.negocio.Criptografia;
 import br.ufrpe.beela.usuario.negocio.UsuarioService;
 
@@ -23,9 +22,17 @@ public class CriarContaAct extends AppCompatActivity {
 
     private Button botaoCriar;
     private Toast contaCriada;
-    private String nome, celular, email, senha, repetirSenha;
-    private EditText campoNome, campoCelular, campoEmail, campoSenha, campoRepetirSenha;
-    private ArrayList<TextView> textoCampos = new ArrayList<TextView>();
+    private String nome;
+    private String celular;
+    private String email;
+    private String senha;
+    private String repetirSenha;
+    private EditText campoNome;
+    private EditText campoCelular;
+    private EditText campoEmail;
+    private EditText campoSenha;
+    private EditText campoRepetirSenha;
+    private ArrayList<TextView> textoCampos = new ArrayList<>();
     private UsuarioService usuarioValido = new UsuarioService();
     private PessoaService pessoaService = new PessoaService();
 
@@ -34,11 +41,11 @@ public class CriarContaAct extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_criar_conta);
 
-        campoNome = (EditText) findViewById(R.id.editText4);
-        campoCelular = (EditText) findViewById(R.id.editText5);
-        campoEmail = (EditText) findViewById(R.id.editText6);
-        campoSenha = (EditText) findViewById(R.id.editText10);
-        campoRepetirSenha = (EditText) findViewById(R.id.editText11);
+        campoNome = findViewById(R.id.editText4);
+        campoCelular = findViewById(R.id.editText5);
+        campoEmail = findViewById(R.id.editText6);
+        campoSenha = findViewById(R.id.editText10);
+        campoRepetirSenha = findViewById(R.id.editText11);
 
         alterarFonte();
         clicarBotaoCriar();
@@ -62,7 +69,7 @@ public class CriarContaAct extends AppCompatActivity {
     }
 
     private void clicarBotaoCriar() {
-        botaoCriar = (Button) findViewById(R.id.button3);
+        botaoCriar = findViewById(R.id.button3);
         botaoCriar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

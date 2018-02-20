@@ -21,13 +21,27 @@ import br.ufrpe.beela.usuario.negocio.Criptografia;
 import br.ufrpe.beela.usuario.negocio.UsuarioService;
 
 public class ConfiguracoesAct extends AppCompatActivity {
-    private TextView alterar, apagarConta, alterarNome, alterarSenha, sair, carregarFoto, nomeUser;
+    private TextView alterar;
+    private TextView  apagarConta;
+    private TextView  alterarNome;
+    private TextView alterarSenha;
+    private TextView sair;
+    private TextView carregarFoto;
+    private TextView nomeUser;
     private Pessoa pessoa = new LoginAct().getPessoa();
     private ArrayList<TextView> textoCampos = new ArrayList<TextView>();
     private static final int RESULT_LOAD_IMAGE = 9002;
-    private String senhaAtual, novaSenha, repetirSenha, nome;
-    private EditText campoSenha, campoNovaSenha, campoRepetirSenha, campoAlterarNome;
-    private Toast senhaAlterada, erro, nomeAlterado;
+    private String senhaAtual;
+    private String novaSenha;
+    private String repetirSenha;
+    private String nome;
+    private EditText campoSenha;
+    private EditText campoNovaSenha;
+    private EditText campoRepetirSenha;
+    private EditText campoAlterarNome;
+    private Toast senhaAlterada;
+    private Toast erro;
+    private Toast nomeAlterado;
     private Usuario usuario = LoginAct.getPessoa().getUsuario();
     private UsuarioService usuarioService = new UsuarioService();
     private String nomeUsuario = LoginAct.getPessoa().getNome();
@@ -37,12 +51,12 @@ public class ConfiguracoesAct extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_configuracoes);
 
-        alterar = (TextView) findViewById(R.id.textView17);
-        alterarNome = (TextView) findViewById(R.id.textView15);
-        alterarSenha = (TextView) findViewById(R.id.textView16);
-        sair = (TextView) findViewById(R.id.textView12);
-        apagarConta = (TextView) findViewById(R.id.textView18);
-        nomeUser = (TextView) findViewById(R.id.textView3);
+        alterar = findViewById(R.id.textView17);
+        alterarNome = findViewById(R.id.textView15);
+        alterarSenha = findViewById(R.id.textView16);
+        sair = findViewById(R.id.textView12);
+        apagarConta = findViewById(R.id.textView18);
+        nomeUser = findViewById(R.id.textView3);
         nomeUser.setText(nomeUsuario);
 
         alterarFonte();
@@ -87,8 +101,8 @@ public class ConfiguracoesAct extends AppCompatActivity {
             public void onClick(View v) {
                 AlertDialog.Builder alertaNome = new AlertDialog.Builder(ConfiguracoesAct.this);
                 View ViewAltrNome = getLayoutInflater().inflate(R.layout.activity_alterar_nome, null);
-                campoAlterarNome = (EditText) ViewAltrNome.findViewById(R.id.editText3);
-                Button botaoAlterarNome = (Button)ViewAltrNome.findViewById(R.id.button11);
+                campoAlterarNome = ViewAltrNome.findViewById(R.id.editText3);
+                Button botaoAlterarNome = ViewAltrNome.findViewById(R.id.button11);
 
                 botaoAlterarNome.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -122,10 +136,10 @@ public class ConfiguracoesAct extends AppCompatActivity {
             public void onClick(View v) {
                 AlertDialog.Builder alertaAltrSenha = new AlertDialog.Builder(ConfiguracoesAct.this);
                 View ViewAltrSenha = getLayoutInflater().inflate(R.layout.activity_alterar_senha, null);
-                campoSenha = (EditText) ViewAltrSenha.findViewById(R.id.editText7);
-                campoNovaSenha = (EditText) ViewAltrSenha.findViewById(R.id.editText8);
-                campoRepetirSenha = (EditText) ViewAltrSenha.findViewById(R.id.editText9);
-                Button botaoAltrSenha = (Button) ViewAltrSenha.findViewById(R.id.button10);
+                campoSenha = ViewAltrSenha.findViewById(R.id.editText7);
+                campoNovaSenha = ViewAltrSenha.findViewById(R.id.editText8);
+                campoRepetirSenha = ViewAltrSenha.findViewById(R.id.editText9);
+                Button botaoAltrSenha = ViewAltrSenha.findViewById(R.id.button10);
 
                 botaoAltrSenha.setOnClickListener(new View.OnClickListener() {
                     @Override

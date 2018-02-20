@@ -24,10 +24,7 @@ public class AvaliacaoAct extends AppCompatActivity {
     private Button btnSubmit;
     private Lugar lugarRecuperado;
     private Bundle bundle;
-    private LugarService lugarService= new LugarService();
-
     private AvaliacaoService avaliacaoService = new AvaliacaoService();
-
     private double nota;
 
     @Override
@@ -40,8 +37,8 @@ public class AvaliacaoAct extends AppCompatActivity {
     }
 
     public void addListenerOnRatingBar() {
-        ratingBar = (RatingBar) findViewById(R.id.ratingBar);
-        txtValorAvaliacao = (TextView) findViewById(R.id.txtValorAvaliacao);
+        ratingBar = findViewById(R.id.ratingBar);
+        txtValorAvaliacao = findViewById(R.id.txtValorAvaliacao);
         ratingBar.setOnRatingBarChangeListener(new OnRatingBarChangeListener() {
             public void onRatingChanged(RatingBar ratingBar, float avaliacao, boolean fromUser) {
                 txtValorAvaliacao.setText(String.valueOf(avaliacao));
@@ -51,8 +48,8 @@ public class AvaliacaoAct extends AppCompatActivity {
     }
 
     public void addListenerOnButton() {
-        ratingBar = (RatingBar) findViewById(R.id.ratingBar);
-        btnSubmit = (Button) findViewById(R.id.btnSubmit);
+        ratingBar = findViewById(R.id.ratingBar);
+        btnSubmit = findViewById(R.id.btnSubmit);
         btnSubmit.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {

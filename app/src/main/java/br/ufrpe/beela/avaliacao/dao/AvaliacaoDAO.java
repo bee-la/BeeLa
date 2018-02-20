@@ -35,7 +35,9 @@ public class AvaliacaoDAO {
                 bd.close();
                 return false;}
         }
-        catch (Exception e){}
+        catch (Exception e){
+            e.printStackTrace();
+        }
         bd.close();
         return true;
     }
@@ -49,7 +51,9 @@ public class AvaliacaoDAO {
                 bd.close();
                 return true;}
         }
-        catch (Exception e){}
+        catch (Exception e){
+            e.printStackTrace();
+        }
         bd.close();
         return false;
     }

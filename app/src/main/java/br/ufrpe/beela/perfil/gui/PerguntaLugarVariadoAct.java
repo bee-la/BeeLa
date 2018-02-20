@@ -38,7 +38,7 @@ public class PerguntaLugarVariadoAct extends AppCompatActivity implements Serial
 
     public void alterarFonte() {
         Typeface fonte = Typeface.createFromAsset(getAssets(), "fonts/Chewy.ttf");
-        pergunta = (TextView) findViewById(R.id.textView8);
+        pergunta = findViewById(R.id.textView8);
         pergunta.setTypeface(fonte);
 
     }
@@ -53,7 +53,7 @@ public class PerguntaLugarVariadoAct extends AppCompatActivity implements Serial
     }
 
     private void clicarBotaoConfirmar() {
-        botaoConfirmar = (Button) findViewById(R.id.buttonConfirmarlugar);
+        botaoConfirmar = findViewById(R.id.buttonConfirmarlugar);
         botaoConfirmar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

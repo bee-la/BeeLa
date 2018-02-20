@@ -2,7 +2,6 @@ package br.ufrpe.beela.lugar.gui;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -21,9 +20,9 @@ public class ProgramaSozinhoAct extends AppCompatActivity {
     private Pessoa pessoa = LoginAct.getPessoa();
     private LugarService lugarService = new LugarService();
     private PerfilUsuario perfilUsuario = LoginAct.getPessoa().getPerfilAtual();
-    private ArrayList<Lugar> listaLugaresRecomendados = new ArrayList<Lugar>();
+    private ArrayList<Lugar> listaLugaresRecomendados = new ArrayList<>();
 
-    private  ArrayList<Lugar> listaLugar = new ArrayList<Lugar>();
+    private  ArrayList<Lugar> listaLugar = new ArrayList<>();
     private AvaliacaoService avaliacaoService = new AvaliacaoService();
 
 
@@ -41,7 +40,6 @@ public class ProgramaSozinhoAct extends AppCompatActivity {
             setFiltraPorNota(listaLugar);
         }
 
-//        listaLugaresRecomendados = lugarService.atualizarNotaSlope(getRecomendacao(),this);
         listaLugaresRecomendados = getRecomendacao();
 
 
@@ -63,7 +61,7 @@ public class ProgramaSozinhoAct extends AppCompatActivity {
         finish();
     }
     public void setFiltraPorNota(ArrayList<Lugar> listaBruta){
-        ArrayList<Lugar> listaFiltrada = new ArrayList<Lugar>();
+        ArrayList<Lugar> listaFiltrada = new ArrayList<>();
         for (Lugar lugar:listaBruta){
             if(lugar.getNotaGeral()>= 3.8){
                 listaFiltrada.add(lugar);
@@ -73,7 +71,7 @@ public class ProgramaSozinhoAct extends AppCompatActivity {
     }
     public ArrayList<Lugar> getListaLugaresQuandoNaoVotou(){
         HashMap<Pessoa, HashMap<Lugar, Double>> matrizTotal = new HashMap<>();
-        ArrayList<Pessoa> listaPessoas = new ArrayList<Pessoa>();
+        ArrayList<Pessoa> listaPessoas = new ArrayList<>();
 
         listaPessoas=lugarService.gerarListaPessoaSistema(this);
 
@@ -97,7 +95,7 @@ public class ProgramaSozinhoAct extends AppCompatActivity {
     public ArrayList<Lugar> getListaLugaresQuandoVotou(){
         HashMap<Pessoa, HashMap<Lugar, Double>> matrizTotal = new HashMap<>();
 
-        ArrayList<Pessoa> listaTodasPessoas = new ArrayList<Pessoa>();
+        ArrayList<Pessoa> listaTodasPessoas = new ArrayList<>();
         listaTodasPessoas=lugarService.gerarListaTodasPessoa(this);
 
         for (int i=0; i<listaTodasPessoas.size(); i++){

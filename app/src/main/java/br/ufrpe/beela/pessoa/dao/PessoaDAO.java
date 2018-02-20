@@ -71,7 +71,7 @@ public class PessoaDAO {
         return pessoa;
     }
     public ArrayList<Pessoa> getListaPessoa() {
-        ArrayList<Pessoa> listaPessoa = new ArrayList<Pessoa>();
+        ArrayList<Pessoa> listaPessoa = new ArrayList<>();
         String where = "SELECT * FROM pessoa";
         Cursor cursor = bd.rawQuery(where, null);
         if (cursor.getCount() > 0) {
@@ -81,7 +81,7 @@ public class PessoaDAO {
                 pessoa.setId(cursor.getInt(0));
                 pessoa.setNome(cursor.getString(1));
                 pessoa.setCelular(cursor.getString(2));
-                if (cursor.getInt(3) > 1 & cursor.getInt(0) != LoginAct.getPessoa().getId()) {
+                if (cursor.getInt(3) > 1 && cursor.getInt(0) != LoginAct.getPessoa().getId()) {
                     listaPessoa.add(pessoa);
                 }
             } while (cursor.moveToNext());
@@ -92,7 +92,7 @@ public class PessoaDAO {
 
 
     public ArrayList<Pessoa> getListaPessoasSistema() {
-        ArrayList<Pessoa> listaPessoa = new ArrayList<Pessoa>();
+        ArrayList<Pessoa> listaPessoa = new ArrayList<>();
         String where = "SELECT * FROM pessoa";
         Cursor cursor = bd.rawQuery(where, null);
         if (cursor.getCount() > 0) {
@@ -111,7 +111,7 @@ public class PessoaDAO {
         return listaPessoa;
     }
     public ArrayList<Pessoa> getListaTodasPesssoas() {
-        ArrayList<Pessoa> listaPessoa = new ArrayList<Pessoa>();
+        ArrayList<Pessoa> listaPessoa = new ArrayList<>();
         String where = "SELECT * FROM pessoa";
         Cursor cursor = bd.rawQuery(where, null);
         if (cursor.getCount() > 0) {

@@ -38,7 +38,7 @@ public class PerguntaComidaAct extends AppCompatActivity implements Serializable
 
     public void alterarFonte() {
         Typeface fonte = Typeface.createFromAsset(getAssets(), "fonts/Chewy.ttf");
-        pergunta = (TextView) findViewById(R.id.textView7);
+        pergunta = findViewById(R.id.textView7);
         pergunta.setTypeface(fonte);
 
     }
@@ -52,7 +52,7 @@ public class PerguntaComidaAct extends AppCompatActivity implements Serializable
     }
 
     private void clicarBotaoConfirmar() {
-        botaoConfirmar = (Button) findViewById(R.id.buttonConfirmar2);
+        botaoConfirmar = findViewById(R.id.buttonConfirmar2);
         botaoConfirmar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -21,8 +21,7 @@ import android.widget.CompoundButton.OnCheckedChangeListener;
 public class ListViewNomePerfil extends BaseAdapter {
 
     private Context ctx;
-    private PerfilAct perfil = new PerfilAct();
-    private ArrayList<PerfilUsuario> listaPerfil = perfil.getListaPerfis();
+    private ArrayList<PerfilUsuario> listaPerfil = PerfilAct.getListaPerfis();
 
     public ListViewNomePerfil(Context ctx) {
         this.ctx = ctx;
@@ -49,7 +48,7 @@ public class ListViewNomePerfil extends BaseAdapter {
 
         View view = LayoutInflater.from(ctx).inflate(R.layout.activity_list_view_perfil, null);
         TextView texto = view.findViewById(R.id.textView2);
-        CheckBox listCheckBox6 = (CheckBox) view.findViewById(R.id.checkBox6);
+        CheckBox listCheckBox6 = view.findViewById(R.id.checkBox6);
 
         listCheckBox6.setOnCheckedChangeListener(new OnCheckedChangeListener() {
             @Override

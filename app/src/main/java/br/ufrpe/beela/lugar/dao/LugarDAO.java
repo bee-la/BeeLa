@@ -11,9 +11,6 @@ import java.util.ArrayList;
 
 import br.ufrpe.beela.database.dao.BD;
 import br.ufrpe.beela.lugar.dominio.Lugar;
-import br.ufrpe.beela.perfil.dominio.PerfilComida;
-import br.ufrpe.beela.perfil.dominio.PerfilLugar;
-import br.ufrpe.beela.perfil.dominio.PerfilMusica;
 
 /**
  * Created by vidal on 20/12/2017.
@@ -122,7 +119,7 @@ public class LugarDAO {
     }
 
     public ArrayList<Lugar> getListaLugar() {
-        ArrayList<Lugar> lugarArrayList = new ArrayList<Lugar>();
+        ArrayList<Lugar> lugarArrayList = new ArrayList<>();
         String where = "SELECT * FROM lugar";
         Cursor cursor = bd.rawQuery(where, null);
         if (cursor.getCount() > 0) {

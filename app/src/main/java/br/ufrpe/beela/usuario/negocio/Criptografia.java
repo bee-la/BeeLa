@@ -9,6 +9,10 @@ import java.security.MessageDigest;
 
 public class Criptografia {
 
+    private Criptografia(){
+        throw new IllegalStateException("Utility class");
+    }
+
     public static String criptografar(String senha) {
         String senhaCriptografada = "";
         MessageDigest algoritmo;
@@ -17,7 +21,7 @@ public class Criptografia {
             BigInteger hash = new BigInteger(1, algoritmo.digest(senha.getBytes()));
             senhaCriptografada = hash.toString(16);
         } catch (Exception e) {
-
+            e.printStackTrace();
         }
         return senhaCriptografada;
     }

@@ -53,7 +53,6 @@ public class AlimentarBancoDeDados {
         lugar.setTexto(context.getString(R.string.loremIpsum));
         lugar.setLocalicao(context.getString(R.string.localRU));
         lugar.setCaminho(context.getString(R.string.caminhoRu));
-        lugar.setTipo("comida");
 
         LugarDAO bd = new LugarDAO();
         bd.getEscrever(context);
@@ -86,8 +85,6 @@ public class AlimentarBancoDeDados {
         lugar.setTexto(context.getString(R.string.loremIpsum));
         lugar.setLocalicao(context.getString(R.string.igLocal));
         lugar.setCaminho(context.getString(R.string.igCaminho));
-        lugar.setTipo("variado");
-
 
         LugarDAO bd = new LugarDAO();
         bd.getEscrever(context);
@@ -114,8 +111,6 @@ public class AlimentarBancoDeDados {
         lugar.setTexto(context.getString(R.string.loremIpsum));
         lugar.setLocalicao(context.getString(R.string.ribsLocal));
         lugar.setCaminho(context.getString(R.string.ribsCaminho));
-        lugar.setTipo("comida");
-
 
         LugarDAO bd = new LugarDAO();
         bd.getEscrever(context);
@@ -143,8 +138,6 @@ public class AlimentarBancoDeDados {
         lugar.setTexto(context.getString(R.string.loremIpsum));
         lugar.setLocalicao(context.getString(R.string.shopLocal));
         lugar.setCaminho(context.getString(R.string.shopCaminho));
-        lugar.setTipo("variado");
-
 
         LugarDAO bd = new LugarDAO();
         bd.getEscrever(context);
@@ -174,7 +167,6 @@ public class AlimentarBancoDeDados {
         lugar.setTexto(context.getString(R.string.loremIpsum));
         lugar.setLocalicao(context.getString(R.string.mirabiLocal));
         lugar.setCaminho(context.getString(R.string.mirabiCaminho));
-        lugar.setTipo("variado");
 
         LugarDAO bd = new LugarDAO();
         bd.getEscrever(context);
@@ -204,8 +196,6 @@ public class AlimentarBancoDeDados {
         lugar.setTexto(context.getString(R.string.loremIpsum));
         lugar.setLocalicao(context.getString(R.string.baileLocal));
         lugar.setCaminho(context.getString(R.string.baileCaminho));
-        lugar.setTipo("musica");
-
 
         //
         LugarDAO bd = new LugarDAO();
@@ -231,7 +221,6 @@ public class AlimentarBancoDeDados {
         bdp.inserirPerfilLugarMusica(lugar.getId(),perfilMusica);
     }
 
-    //TODO lugares Musicas
     public void criarBeboRockRibs(Context context) {
         Lugar lugar = new Lugar();
         lugar.setNome(context.getString(R.string.beboRockRibs));
@@ -239,7 +228,6 @@ public class AlimentarBancoDeDados {
         lugar.setDescriacao(context.getString(R.string.bar));
         lugar.setLocalicao("-8.0391429,-34.8943923");
         lugar.setCaminho("barx");
-        lugar.setTipo("comida");
 
         LugarDAO bd = new LugarDAO();
         bd.getEscrever(context);
@@ -265,7 +253,6 @@ public class AlimentarBancoDeDados {
         lugar.setDescriacao("Bar e Restaurante");
         lugar.setLocalicao("-8.064217,-34.8753367");
         lugar.setCaminho("barx");
-        lugar.setTipo("musica");
 
         LugarDAO bd = new LugarDAO();
         bd.getEscrever(context);
@@ -297,7 +284,6 @@ public class AlimentarBancoDeDados {
         lugar.setDescriacao(context.getString(R.string.bar));
         lugar.setLocalicao("-8.032956,-34.9175807");
         lugar.setCaminho("barx");
-        lugar.setTipo("musica");
 
         LugarDAO bd = new LugarDAO();
         bd.getEscrever(context);
@@ -323,8 +309,6 @@ public class AlimentarBancoDeDados {
         lugar.setDescriacao(context.getString(R.string.bar));
         lugar.setLocalicao("-8.051227,-34.8999917");
         lugar.setCaminho("barx");
-        lugar.setTipo("musica");
-
 
         LugarDAO bd = new LugarDAO();
         bd.getEscrever(context);
@@ -349,8 +333,6 @@ public class AlimentarBancoDeDados {
         lugar.setDescriacao(context.getString(R.string.bar));
         lugar.setLocalicao("-8.0640389,-34.8746559");
         lugar.setCaminho("barx");
-        lugar.setTipo("musica");
-
 
         LugarDAO bd = new LugarDAO();
         bd.getEscrever(context);
@@ -375,8 +357,6 @@ public class AlimentarBancoDeDados {
         lugar.setDescriacao(context.getString(R.string.bar));
         lugar.setLocalicao("-8.0537027,-34.9222478");
         lugar.setCaminho("barx");
-        lugar.setTipo("musica");
-
 
         LugarDAO bd = new LugarDAO();
         bd.getEscrever(context);
@@ -401,7 +381,6 @@ public class AlimentarBancoDeDados {
         lugar.setDescriacao(context.getString(R.string.bar));
         lugar.setLocalicao("-8.06026,-34.9303302");
         lugar.setCaminho("barx");
-        lugar.setTipo("musica");
 
         LugarDAO bd = new LugarDAO();
         bd.getEscrever(context);
@@ -426,7 +405,6 @@ public class AlimentarBancoDeDados {
         lugar.setDescriacao(context.getString(R.string.bar));
         lugar.setLocalicao("-8.0247618,-34.8958559");
         lugar.setCaminho("barx");
-        lugar.setTipo("musica");
 
         LugarDAO bd = new LugarDAO();
         bd.getEscrever(context);
@@ -451,7 +429,6 @@ public class AlimentarBancoDeDados {
         lugar.setDescriacao(context.getString(R.string.bar));
         lugar.setLocalicao("-8.042149,-34.8935926");
         lugar.setCaminho("barx");
-        lugar.setTipo("musica");
 
         LugarDAO bd = new LugarDAO();
         bd.getEscrever(context);
@@ -477,7 +454,6 @@ public class AlimentarBancoDeDados {
         lugar.setTexto(context.getString(R.string.loremIpsum));
         lugar.setLocalicao(context.getString(R.string.jaqueiraLocal));
         lugar.setCaminho(context.getString(R.string.jaqueiraCaminho));
-        lugar.setTipo("variado");
 
         LugarDAO bd = new LugarDAO();
         bd.getEscrever(context);
@@ -492,7 +468,7 @@ public class AlimentarBancoDeDados {
         String[] list = {context.getString(R.string.caminhada), context.getString(R.string.corrida),
                 context.getString(R.string.ciclismo)};
         for (String x : list) {
-            PerfilEsporte perfilEsporte = new PerfilEsporte();;
+            PerfilEsporte perfilEsporte = new PerfilEsporte();
             perfilEsporte.setNome(x);
             PerfilDAO bdp = new PerfilDAO();
             bdp.getEscrever(context);
@@ -506,7 +482,6 @@ public class AlimentarBancoDeDados {
         lugar.setDescriacao("Praia");
         lugar.setLocalicao("-8.1309239,-34.9155127");
         lugar.setCaminho(context.getString(R.string.praiaX));
-        lugar.setTipo("variado");
 
         LugarDAO bd = new LugarDAO();
         bd.getEscrever(context);
@@ -520,7 +495,7 @@ public class AlimentarBancoDeDados {
 
         String[] list = {context.getString(R.string.futebol),context.getString(R.string.volei),context.getString(R.string.caminhada),context.getString(R.string.ciclismo)};
         for (String x : list) {
-            PerfilEsporte perfilEsporte = new PerfilEsporte();;
+            PerfilEsporte perfilEsporte = new PerfilEsporte();
             perfilEsporte.setNome(x);
             PerfilDAO bdp = new PerfilDAO();
             bdp.getEscrever(context);
@@ -534,7 +509,6 @@ public class AlimentarBancoDeDados {
         lugar.setDescriacao("Praia");
         lugar.setLocalicao("-8.1049151,-34.9214614");
         lugar.setCaminho(context.getString(R.string.praiaX));
-        lugar.setTipo("variado");
 
         LugarDAO bd = new LugarDAO();
         bd.getEscrever(context);
@@ -548,7 +522,7 @@ public class AlimentarBancoDeDados {
 
         String[] list = {context.getString(R.string.futebol),context.getString(R.string.volei),context.getString(R.string.caminhada),context.getString(R.string.ciclismo)};
         for (String x : list) {
-            PerfilEsporte perfilEsporte = new PerfilEsporte();;
+            PerfilEsporte perfilEsporte = new PerfilEsporte();
             perfilEsporte.setNome(x);
             PerfilDAO bdp = new PerfilDAO();
             bdp.getEscrever(context);
@@ -562,7 +536,6 @@ public class AlimentarBancoDeDados {
         lugar.setDescriacao("Fast Food");
         lugar.setLocalicao("-8.0507299,-34.9305708");
         lugar.setCaminho("mcdonald");
-        lugar.setTipo("comida");
 
         LugarDAO bd = new LugarDAO();
         bd.getEscrever(context);
@@ -587,7 +560,6 @@ public class AlimentarBancoDeDados {
         lugar.setDescriacao("Fast Food");
         lugar.setLocalicao("-8.0206476,-35.0181816");
         lugar.setCaminho("subway");
-        lugar.setTipo("comida");
 
         LugarDAO bd = new LugarDAO();
         bd.getEscrever(context);
@@ -612,8 +584,6 @@ public class AlimentarBancoDeDados {
         lugar.setDescriacao("Pizzaria");
         lugar.setLocalicao("-8.0206225,-35.1232507");
         lugar.setCaminho("pizzahut");
-        lugar.setTipo("comida");
-
 
         LugarDAO bd = new LugarDAO();
         bd.getEscrever(context);

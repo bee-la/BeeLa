@@ -1,4 +1,4 @@
-package br.ufrpe.beela.usuario.gui;
+    package br.ufrpe.beela.usuario.gui;
 
 import android.content.Intent;
 import android.graphics.Typeface;
@@ -16,7 +16,8 @@ import br.ufrpe.beela.usuario.negocio.UsuarioService;
 
 public class ApagarContaAct extends AppCompatActivity {
     private Button botaoApagar;
-    private TextView aviso1, aviso2;
+    private TextView aviso1;
+    private TextView aviso2;
     private Toast mensagemApagada;
     private UsuarioService usuarioService = new UsuarioService();
     private Pessoa pessoa = LoginAct.getPessoa();
@@ -27,15 +28,15 @@ public class ApagarContaAct extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_apagar_conta);
 
-        botaoApagar = (Button) findViewById(R.id.button9);
+        botaoApagar = findViewById(R.id.button9);
         alterarFonte();
         clicarBotaoApagar();
 
     }
 
     private void alterarFonte() {
-        aviso1 = (TextView) findViewById(R.id.textView5);
-        aviso2 = (TextView) findViewById(R.id.textView6);
+        aviso1 = findViewById(R.id.textView5);
+        aviso2 = findViewById(R.id.textView6);
         Typeface fonte = Typeface.createFromAsset(getAssets(), "fonts/Chewy.ttf");
         botaoApagar.setTypeface(fonte);
         aviso1.setTypeface(fonte);

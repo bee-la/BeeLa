@@ -26,9 +26,12 @@ public class LoginAct extends AppCompatActivity {
     private static Pessoa pessoa = new Pessoa();
     private Usuario usuario = new Usuario();
     private UsuarioService usuarioValido = new UsuarioService();
-    private TextView nomeApp, esqueceuSenha, botaoCriarConta;
+    private TextView nomeApp;
+    private TextView esqueceuSenha;
+    private TextView botaoCriarConta;
     private Button botaoEntrar;
-    private EditText campoEmail, campoSenha;
+    private EditText campoEmail;
+    private EditText campoSenha;
     private String email, senha, senha2;
     private Toast mensagemEsqSenha;
     private PessoaService pessoaService = new PessoaService();
@@ -38,9 +41,9 @@ public class LoginAct extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        campoEmail = (EditText) findViewById(R.id.editText);
-        campoSenha = (EditText) findViewById(R.id.editText2);
-        nomeApp = (TextView) findViewById(R.id.textView);
+        campoEmail = findViewById(R.id.editText);
+        campoSenha = findViewById(R.id.editText2);
+        nomeApp = findViewById(R.id.textView);
 
         verificarLembrarMim();
         alterarFonte();
@@ -57,7 +60,7 @@ public class LoginAct extends AppCompatActivity {
     }
 
     private void clicarBotaoEntrar() {
-        botaoEntrar = (Button) findViewById(R.id.button);
+        botaoEntrar = findViewById(R.id.button);
         botaoEntrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -68,7 +71,7 @@ public class LoginAct extends AppCompatActivity {
 
     private void irTelaCriarConta(){
 
-        botaoCriarConta = (TextView) findViewById(textViewCriarConta);
+        botaoCriarConta = findViewById(textViewCriarConta);
         botaoCriarConta.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -79,7 +82,7 @@ public class LoginAct extends AppCompatActivity {
     }
 
     private void irTelaEsqueceuSenha() {
-        esqueceuSenha = (TextView) findViewById(R.id.textViewEsqueceuSenha);
+        esqueceuSenha = findViewById(R.id.textViewEsqueceuSenha);
 
         esqueceuSenha.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -152,7 +155,7 @@ public class LoginAct extends AppCompatActivity {
     public void verificarLembrarMim(){
         if(!usuarioValido.verificarLembrarLogin(this)) {
             ArrayList<String> campos = usuarioValido.getLembrarMim(this);
-            if (campos.size() > 0) {
+            if (!campos.isEmpty()) {
                 campoEmail.setText(campos.get(0));
                 campoSenha.setText(campos.get(1));
             }

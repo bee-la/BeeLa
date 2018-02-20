@@ -24,7 +24,9 @@ public class LugarDetalhesAct extends AppCompatActivity  implements Serializable
 
     private ImageButton localizacaoBt;
     private Button classificacao;
-    private TextView nome,descricao, nota;
+    private TextView nome;
+    private TextView descricao;
+    private TextView nota;
     private ImageView foto;
     private double destinolatitude;
     private double destinolongitude;
@@ -40,22 +42,22 @@ public class LugarDetalhesAct extends AppCompatActivity  implements Serializable
     }
 
     private void setarDetalhes() {
-        classificacao = (Button)findViewById(R.id.buttonClass);
+        classificacao = findViewById(R.id.buttonClass);
         classificacao.setOnClickListener(this);
 
-        nome = (TextView)findViewById(R.id.nomeDoLugar);
+        nome = findViewById(R.id.nomeDoLugar);
         nome.setText(getLugarRecuperado().getNome().toString());
 
-        nota= (TextView) findViewById(R.id.textView10);
+        nota= findViewById(R.id.textView10);
         nota.setText(String.valueOf(getLugarRecuperado().getNotaGeral()));
 
         descricao = findViewById(R.id.decriçãoLugar);
         descricao.setText(getLugarRecuperado().getDescricao());
 
-        localizacaoBt = (ImageButton) findViewById(R.id.imageButtonLocalizacao);
+        localizacaoBt = findViewById(R.id.imageButtonLocalizacao);
         localizacaoBt.setOnClickListener(this);
 
-        foto = (ImageView)findViewById(R.id.imgViewLugarFoto);
+        foto = findViewById(R.id.imgViewLugarFoto);
         String recuperar =  getLugarRecuperado().getCaminho();
         int id = getResources().getIdentifier(recuperar,getString(R.string.drawable),getPackageName());
         foto.setImageResource(id);

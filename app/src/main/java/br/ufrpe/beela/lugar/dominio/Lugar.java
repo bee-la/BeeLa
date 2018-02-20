@@ -3,12 +3,6 @@ package br.ufrpe.beela.lugar.dominio;
 import com.google.android.gms.maps.model.LatLng;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-
-import br.ufrpe.beela.perfil.dominio.PerfilComida;
-import br.ufrpe.beela.perfil.dominio.PerfilEsporte;
-import br.ufrpe.beela.perfil.dominio.PerfilLugar;
-import br.ufrpe.beela.perfil.dominio.PerfilMusica;
 
 /**
  * Created by vidal on 20/12/2017.

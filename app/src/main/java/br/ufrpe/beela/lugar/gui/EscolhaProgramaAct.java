@@ -16,7 +16,7 @@ public class EscolhaProgramaAct extends AppCompatActivity {
     private ImageButton botaoSozinho;
     private ImageButton botaoAcompanhado;
 
-    private static ArrayList<Pessoa> listaPessoa = new ArrayList<Pessoa>();
+    private static ArrayList<Pessoa> listaPessoa = new ArrayList<>();
     private LugarService lugarService = new LugarService();
 
     @Override
@@ -28,7 +28,7 @@ public class EscolhaProgramaAct extends AppCompatActivity {
     }
 
     private void encontrarLugarSozinho() {
-        botaoSozinho = (ImageButton) findViewById(R.id.imageButton5);
+        botaoSozinho = findViewById(R.id.imageButton5);
         botaoSozinho.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -38,7 +38,7 @@ public class EscolhaProgramaAct extends AppCompatActivity {
     }
 
     private void encontratLugarAcompanhado() {
-        botaoAcompanhado = (ImageButton) findViewById(R.id.imageButton7);
+        botaoAcompanhado = findViewById(R.id.imageButton7);
         botaoAcompanhado.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

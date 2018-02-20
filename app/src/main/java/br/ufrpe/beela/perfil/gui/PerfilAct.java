@@ -25,7 +25,9 @@ import br.ufrpe.beela.usuario.gui.LoginAct;
 
 
 public class PerfilAct extends AppCompatActivity {
-    private ImageButton botaoAdicionarPerfil, botaoApagar, botaoSalvar;
+    private ImageButton botaoAdicionarPerfil;
+    private ImageButton botaoApagar;
+    private ImageButton botaoSalvar;
     private ListView listViewPerfis;
     private TextView fonteBotaoComecar;
     private Button botaoComecar;
@@ -58,12 +60,12 @@ public class PerfilAct extends AppCompatActivity {
 
     private void alterarFonte() {
         Typeface fonte = Typeface.createFromAsset(getAssets(), "fonts/Chewy.ttf");
-        fonteBotaoComecar = (Button) findViewById(R.id.button14);
+        fonteBotaoComecar = findViewById(R.id.button14);
         fonteBotaoComecar.setTypeface(fonte);
     }
 
     private void adicionarPerfil() {
-        botaoAdicionarPerfil = (ImageButton) findViewById(R.id.imageButton4);
+        botaoAdicionarPerfil = findViewById(R.id.imageButton4);
         botaoAdicionarPerfil.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {irTelaPerguntasMusica();}});
@@ -75,7 +77,7 @@ public class PerfilAct extends AppCompatActivity {
     }
 
     private void irExcluirPerfil() {
-        botaoApagar = (ImageButton) findViewById(R.id.imageButton6);
+        botaoApagar = findViewById(R.id.imageButton6);
         botaoApagar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -87,7 +89,7 @@ public class PerfilAct extends AppCompatActivity {
     private void verificarListViewExcluir() {
         try {
             if (listViewPerfis != null) {
-                Adapter adapter = (Adapter) listViewPerfis.getAdapter();
+                Adapter adapter = listViewPerfis.getAdapter();
                 for (int i = 0; i < adapter.getCount(); i++) {
                     PerfilUsuario perfil = (PerfilUsuario) adapter.getItem(i);
                     if (perfil.isSelecionado()) {
@@ -102,7 +104,7 @@ public class PerfilAct extends AppCompatActivity {
 
     private void setListView(){
         montarPerfil();
-        listViewPerfis = (ListView) findViewById(R.id.listView);
+        listViewPerfis = findViewById(R.id.listView);
         ListViewNomePerfil lista = new ListViewNomePerfil(PerfilAct.this);
         listViewPerfis.setAdapter(lista);
     }
@@ -135,7 +137,7 @@ public class PerfilAct extends AppCompatActivity {
     }
 
     public void irTelaEscolhaPrograma() {
-        botaoComecar = (Button) findViewById(R.id.button14);
+        botaoComecar = findViewById(R.id.button14);
         botaoComecar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -149,7 +151,7 @@ public class PerfilAct extends AppCompatActivity {
     }
 
     public void salvarPerfilAtual() {
-        botaoSalvar = (ImageButton) findViewById(R.id.imageButton9);
+        botaoSalvar = findViewById(R.id.imageButton9);
         botaoSalvar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -159,7 +161,7 @@ public class PerfilAct extends AppCompatActivity {
     }
 
     public boolean verificaSelecionados() {
-        Adapter adapter = (Adapter) listViewPerfis.getAdapter();
+        Adapter adapter = listViewPerfis.getAdapter();
         PerfilUsuario perfilAtual = new PerfilUsuario();
         for (int i = 0; i < adapter.getCount(); i++) {
             PerfilUsuario perfil = (PerfilUsuario) adapter.getItem(i);
@@ -199,7 +201,6 @@ public class PerfilAct extends AppCompatActivity {
     public void setPerfilAtual() {
         try {
             if (listViewPerfis != null) {
-                Adapter adapter = (Adapter) listViewPerfis.getAdapter();
                 contadorPerfil = 0;
                 if (!verificaSelecionados()) {
                     Toast.makeText(getApplicationContext(), R.string.selecionarPerfil, Toast.LENGTH_SHORT).show();

@@ -29,10 +29,10 @@ public class ContatoAct extends AppCompatActivity {
     private ListView listViewContatos;
     private Pessoa pessoa = LoginAct.getPessoa();
     private ArrayList<Pessoa> pessoaArrayList = EscolhaProgramaAct.getListaPessoa();
-    private ArrayList<Lugar> lugarArrayList = new ArrayList<Lugar>();
+    private ArrayList<Lugar> lugarArrayList = new ArrayList<>();
     private LugarService lugarService = new LugarService();
     private ArrayList<Lugar> listaFiltradaPorNota = new ArrayList<>();
-    private ArrayList<Lugar> listaLugaresGrupo = new ArrayList<Lugar>();
+    private ArrayList<Lugar> listaLugaresGrupo = new ArrayList<>();
 
     private AvaliacaoService avaliacaoService = new AvaliacaoService();
 
@@ -50,14 +50,14 @@ public class ContatoAct extends AppCompatActivity {
     }
 
     public void setListView() {
-        listViewContatos = (ListView) findViewById(R.id.listView3);
+        listViewContatos = findViewById(R.id.listView3);
         ListViewContato lista = new ListViewContato(ContatoAct.this);
         listViewContatos.setAdapter(lista);
     }
 
     private void clicarBotaoConfirmar() {
 
-        botaoConfirmar = (Button) findViewById(R.id.button5);
+        botaoConfirmar = findViewById(R.id.button5);
         botaoConfirmar.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -71,10 +71,10 @@ public class ContatoAct extends AppCompatActivity {
     }
 
     private void verificaSelecionados() {
-        ArrayList<Pessoa> pessoaArrayList = new ArrayList<Pessoa>();
+        ArrayList<Pessoa> pessoaArrayList = new ArrayList<>();
         try {
             if (listViewContatos != null) {
-                Adapter adapter = (Adapter) listViewContatos.getAdapter();
+                Adapter adapter = listViewContatos.getAdapter();
                 for (int i = 0; i < adapter.getCount(); i++) {
                     Pessoa pessoa = (Pessoa) adapter.getItem(i);
                     if (pessoa.isSelecionado()) {
@@ -107,7 +107,7 @@ public class ContatoAct extends AppCompatActivity {
 
     public ArrayList<Lugar> getRecomendacao(){
         HashMap<Pessoa, HashMap<Lugar, Double>> matrizTotal = new HashMap<>();
-        ArrayList<Pessoa> listaPessoas = new ArrayList<Pessoa>();
+        ArrayList<Pessoa> listaPessoas = new ArrayList<>();
 
         listaPessoas=lugarService.gerarListaPessoaSistema(this);
 
