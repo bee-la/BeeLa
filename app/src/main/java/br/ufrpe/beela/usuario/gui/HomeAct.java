@@ -15,6 +15,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Random;
 
+import br.ufrpe.beela.cachorro.gui.MeusCachorrosAct;
 import br.ufrpe.beela.database.negocio.AlimentarBancoDeDados;
 import br.ufrpe.beela.gui.R;
 import br.ufrpe.beela.lugar.dao.LugarDAO;
@@ -98,11 +99,13 @@ public class HomeAct extends AppCompatActivity {
     }
 
     private void oQueTuQuerEuQuero() {
-        Lugar lugarzinho;
+        startActivity(new Intent(HomeAct.this, MeusCachorrosAct.class));
+       /** Lugar lugarzinho;
         lugarzinho = usuarioService.getLugar(this);
         Intent intent = new Intent(HomeAct.this, LugarDetalhesAct.class);
         intent.putExtra("lugar", (Serializable) lugarzinho);
-        startActivity(intent);
+        startActivity(intent);**/
+
 
 
     }

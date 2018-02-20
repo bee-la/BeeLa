@@ -96,7 +96,10 @@
         <activity
             android:name="br.ufrpe.beela.lugar.gui.GoogleMapsActivity"
             android:label="@string/title_activity_google_maps" />
-        <activity android:name="br.ufrpe.beela.avaliacao.gui.AvaliacaoAct"></activity>
+        <activity android:name="br.ufrpe.beela.avaliacao.gui.AvaliacaoAct" />
+        <activity android:name="br.ufrpe.beela.cachorro.gui.MeusCachorrosAct" />
+        <activity android:name="br.ufrpe.beela.cachorro.gui.AdcCachorroAct" />
+        <activity android:name="br.ufrpe.beela.cachorro.gui.List_view_nome_cachorro"></activity>
     </application>
 
 </manifest>

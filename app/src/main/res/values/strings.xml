@@ -197,5 +197,9 @@
     <string name="praiadoPina">Praia do Pina</string>
     <string name="erroBuscarLugares">Erro ao buscar lugares</string>
     <string name="votoComputado">Voto computado:</string>
+    <string name="corAnimal">Cor</string>
+    <string name="racaAnimais">Raça</string>
+    <string name="NomeAnimal">Nome</string>
+    <string name="conta">Conta</string>
 
 </resources>

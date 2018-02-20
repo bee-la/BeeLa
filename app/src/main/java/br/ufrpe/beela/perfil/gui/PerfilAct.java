@@ -14,6 +14,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 import java.util.ArrayList;
+
+import br.ufrpe.beela.cachorro.gui.MeusCachorrosAct;
 import br.ufrpe.beela.gui.R;
 import br.ufrpe.beela.lugar.gui.EscolhaProgramaAct;
 import br.ufrpe.beela.perfil.dao.PerfilDAO;

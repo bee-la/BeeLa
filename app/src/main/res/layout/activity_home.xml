@@ -80,7 +80,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="4dp"
             android:backgroundTint="@color/verdeBotao"
-            android:text="@string/O_que_tu_quer"
+            android:text="Cadastre seu au au"
             android:textAllCaps="false"
             android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="parent"
