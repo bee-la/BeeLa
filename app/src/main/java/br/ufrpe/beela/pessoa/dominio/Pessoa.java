@@ -2,6 +2,8 @@ package br.ufrpe.beela.pessoa.dominio;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+
+import br.ufrpe.beela.cachorro.dominio.Cachorro;
 import br.ufrpe.beela.perfil.dominio.PerfilUsuario;
 import br.ufrpe.beela.usuario.dominio.Usuario;
 
@@ -16,6 +18,7 @@ public class Pessoa implements Serializable{
     private String celular;
     private Usuario usuario = new Usuario();
     private ArrayList<PerfilUsuario> perfilUsuarioArrayList = new ArrayList<PerfilUsuario>();
+    private ArrayList<Cachorro> cachorroArrayList = new ArrayList<Cachorro>();
     private PerfilUsuario perfilAtual = new PerfilUsuario();
 
     public int getId() {
@@ -38,6 +41,8 @@ public class Pessoa implements Serializable{
 
     public ArrayList<PerfilUsuario> getPerfilUsuarioArrayList() {return perfilUsuarioArrayList;}
 
+    public ArrayList<Cachorro> getCachorroArrayList(){return  cachorroArrayList;}
+
     public void setId(int id) {
         this.id = id;
     }
@@ -56,6 +61,10 @@ public class Pessoa implements Serializable{
 
     public void setPerfilAtual(PerfilUsuario perfilAtual) {
         this.perfilAtual = perfilAtual;
+    }
+
+    public void setCachorroArrayList(ArrayList<Cachorro> cachorroArrayList){
+        this.cachorroArrayList = cachorroArrayList;
     }
 
     public void setPerfilUsuarioArrayList(ArrayList<PerfilUsuario> perfilUsuarioArrayList) {

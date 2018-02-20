@@ -32,7 +32,7 @@ public class MeusCachorrosAct extends AppCompatActivity {
     private Toast nomeAlterado;
 
     private CachorroService cachorroService = new CachorroService();
-    private static ArrayList<Cachorro> listaTodosCachorros = new ArrayList<Cachorro>();
+    private static ArrayList<Cachorro> listaTodosCachorros = MeusCachorrosAct.getListaTodosCachorro();
     private Pessoa pessoa = LoginAct.getPessoa();
 
 
@@ -50,7 +50,11 @@ public class MeusCachorrosAct extends AppCompatActivity {
         botaoEditarCachorro();
         setListViewCachorro();
 
-        setListaTodosCachorro(cachorroService.getCachorro(MeusCachorrosAct.this, pessoa.getId()));
+       // setListaTodosCachorro(cachorroService.getCachorro(MeusCachorrosAct.this, pessoa.getId()));
+    }
+
+    public static ArrayList<Cachorro> getListaTodosCachorro() {
+        return listaTodosCachorros;
     }
 
     public void botaoEditarCachorro(){
@@ -106,6 +110,7 @@ public class MeusCachorrosAct extends AppCompatActivity {
             campoAlterarNome.setText("");
             nomeAlterado = Toast.makeText(getApplicationContext(), R.string.nomeAlterado, Toast.LENGTH_SHORT);
             nomeAlterado.show();
+            setListViewCachorro();
         }
     }
 
@@ -130,11 +135,18 @@ public class MeusCachorrosAct extends AppCompatActivity {
         });
     }
     public void setListViewCachorro(){
+        montarPerfil();
         listaCachorros = (ListView) findViewById(R.id.listViewAnimais);
         ListViewNomeCachorro lista = new ListViewNomeCachorro(MeusCachorrosAct.this);
         listaCachorros.setAdapter(lista);
 
     }
+
+    private void montarPerfil() {
+        pessoa.setCachorroArrayList(cachorroService.getCachorro(MeusCachorrosAct.this, pessoa.getId()));
+        listaTodosCachorros = pessoa.getCachorroArrayList();
+    }
+
 
 
     private void verificarListViewExcluir() {
@@ -176,9 +188,6 @@ public class MeusCachorrosAct extends AppCompatActivity {
 
     }
 
-    public static ArrayList<Cachorro> getListaTodosCachorro() {
-        return listaTodosCachorros;
-    }
 
     public static void setListaTodosCachorro(ArrayList<Cachorro> lista) {
         listaTodosCachorros = lista;
