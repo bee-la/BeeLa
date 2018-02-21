@@ -72,20 +72,17 @@
         android:id="@+id/buttonCriarAnimal"
         android:layout_width="166dp"
         android:layout_height="56dp"
-        android:layout_marginBottom="196dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="40dp"
         android:backgroundTint="@color/verdeBotao"
         android:text="@string/criar"
         android:textAllCaps="false"
         android:textColor="@color/preto"
         android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.499"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText11" />
+        app:layout_constraintTop_toBottomOf="@+id/editCorAnimal" />
 
 
 
